@@ -151,7 +151,7 @@
         <module>dao</module>
         <module>service</module>
         <module>webservice</module>
-<!--        <module>sberintegration</module>-->
+        <module>sberintegration</module>
         <module>importexport</module>
         <module>db</module>
     </modules>

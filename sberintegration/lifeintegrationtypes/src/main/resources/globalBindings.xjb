@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<jxb:bindings xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+    xmlns:xs="http://www.w3.org/2000/10/XMLSchema-instance"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://esb.sberinsur.ru/partner/Shema" targetNamespace="http://esb.sberinsur.ru/partner/Shema"
+    jxb:version="1.0">
+    <jxb:globalBindings generateElementProperty="false">
+        <jxb:javaType name="javax.xml.datatype.XMLGregorianCalendar" xmlType="xsd:date"
+                          parseMethod="com.bivgroup.lifeintegrationtypes.LocalDateConverter.parseLocalDate"
+                          printMethod="com.bivgroup.lifeintegrationtypes.LocalDateConverter.printLocalDate"/>
+        <jxb:javaType name="javax.xml.datatype.XMLGregorianCalendar" xmlType="xsd:dateTime"
+                          parseMethod="com.bivgroup.lifeintegrationtypes.LocalDateTimeConverter.parseLocalDateTime"
+                          printMethod="com.bivgroup.lifeintegrationtypes.LocalDateTimeConverter.printLocalDateTime"/>
+        <!--jxb:javaType name="javax.xml.datatype.XMLGregorianCalendar" xmlType="rsa:LocalDate"
+        parseMethod="ru.diasoft.rsa.rsatypes.LocalDateConverter.parseLocalDate" 
+        printMethod="ru.diasoft.rsa.rsatypes.LocalDateConverter.printLocalDate"/-->
+    </jxb:globalBindings>
+</jxb:bindings>

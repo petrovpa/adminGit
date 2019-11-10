@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2015 rel. 3 (x64) (http://www.altova.com) by Valerij I. Lambreht (Sberbank Insurance) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://sberbankins.ru/schema/sbolmain10" targetNamespace="http://sberbankins.ru/schema/sbolmain10" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="Contract">
+		<xs:annotation>
+			<xs:documentation>Договор</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ID">
+					<xs:annotation>
+						<xs:documentation>Идентификатор транзакции банка</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1"/>
+							<xs:maxLength value="50"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="InsProduct" type="masterKeyType">
+					<xs:annotation>
+						<xs:documentation>Страховой продукт</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="InsProgram" type="masterKeyType">
+					<xs:annotation>
+						<xs:documentation>Программа страхования</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="DateSigning" type="xs:dateTime">
+					<xs:annotation>
+						<xs:documentation>Дата подписания договора</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Options" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Дополнительные условия</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="DateBeginTravel" type="xs:date" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Дата начала поездки</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Insurer" type="PhysicalType">
+					<xs:annotation>
+						<xs:documentation>Страхователь</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Members" type="MembersType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Список застрахованных</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="CreditContract" type="CreditContractType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Информация о кредитном договоре</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Address" type="AddressType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Адрес имущества</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="masterKeyType">
+		<xs:annotation>
+			<xs:documentation>Тип для MasterKey поля</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="255"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="PhysicalType">
+		<xs:annotation>
+			<xs:documentation>Тип для физического лица</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Contry">
+				<xs:annotation>
+					<xs:documentation>Гражданство</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="masterKeyType"/>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Surname" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Фамилия</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Имя</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Patronymic" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Отчество</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DateOfBirth" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>Дата рождения</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Sex">
+				<xs:annotation>
+					<xs:documentation>Пол</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="male"/>
+						<xs:enumeration value="female"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="INN" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Идентификационный номер налогоплательщика</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:length value="12"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Email" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Электронная почта </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MobilePhone" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Мобильный телефон</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Document" type="DocumentType">
+				<xs:annotation>
+					<xs:documentation>Удостоверение личности</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Address" type="AddressType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Адрес регистрации</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DocumentType">
+		<xs:annotation>
+			<xs:documentation>Тип для документ</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Kind" type="masterKeyType">
+				<xs:annotation>
+					<xs:documentation>Вид документа</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Series" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Серия документа</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Number">
+				<xs:annotation>
+					<xs:documentation>Номер документа</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="DateOfIssue" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>Дата выдачи</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Code" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Код подразделения</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Authority" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Кем выдан</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AddressType">
+		<xs:annotation>
+			<xs:documentation>Тип для адреса</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:choice>
+				<xs:element name="LocalityCode">
+					<xs:annotation>
+						<xs:documentation>Код населенного пункта по КЛАДР</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:length value="13"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:sequence>
+					<xs:element name="Region" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Регион строкой</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="City" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Город строкой</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:choice>
+			<xs:element name="Street" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Улица строкой</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="House" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Дом</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Housing" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Корпус</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Building" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Строение</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Flat" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Квартира</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ZipCode" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Почтовый индекс</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MembersType">
+		<xs:annotation>
+			<xs:documentation>Тип для лиц по договору</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Member" type="MemberType" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Застрахованный</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MemberType">
+		<xs:annotation>
+			<xs:documentation>Тип для лица по договору</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Surname" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Фамилия</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Имя</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DateOfBirth" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>Дата рождения</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CreditContractType">
+		<xs:annotation>
+			<xs:documentation>Тип для кредитного договора</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="DateBegin" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>Дата начала кредитного договора</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Number" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Номер кредитного договора</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Debt" type="xs:decimal">
+				<xs:annotation>
+					<xs:documentation>Остаток кредитной задолженности</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

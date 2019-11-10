@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:tns="http://sberinsur.ru/fuse/files"
+    targetNamespace="http://sberinsur.ru/fuse/files"
+    attributeFormDefault="unqualified"
+    elementFormDefault="qualified">
+  <xs:complexType name="File">
+    <xs:sequence>
+      <xs:element name="Code"
+          type="xs:string"/>
+      <xs:element name="Name"
+          type="xs:string"/>
+      <xs:element name="Extension"
+          type="xs:string"/>
+      <xs:element name="BinaryData"
+          type="xs:base64Binary"
+          minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FileList">
+    <xs:sequence>
+      <xs:element name="Files"
+          type="tns:ShortFileInfo"
+          minOccurs="0"
+          maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Folder">
+    <xs:sequence>
+      <xs:element name="Code"
+          type="xs:string"/>
+      <xs:element name="Name"
+          type="xs:string"/>
+      <xs:element name="Description"
+          type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ShortFileInfo">
+    <xs:sequence>
+      <xs:element name="Code"
+          type="xs:string"/>
+      <xs:element name="Name"
+          type="xs:string"/>
+      <xs:element name="Extension"
+          type="xs:string"/>
+      <xs:element name="Description"
+          type="xs:string"/>
+      <xs:element name="Size"
+          type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetFileList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Folder"
+            type="tns:Folder"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFileListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="return"
+            type="tns:FileList"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddFolder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="ParentFolder"
+            type="tns:Folder"/>
+        <xs:element name="NewFolderName"
+            type="xs:string"/>
+        <xs:element name="NewFolderDescr"
+            type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddFolderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="return"
+            type="tns:Folder"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Code"
+            type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="return"
+            type="tns:File"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddFile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Folder"
+            type="tns:Folder"/>
+        <xs:element name="File"
+            type="tns:File"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddFileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="return"
+            type="tns:ShortFileInfo"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteFile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Code"
+            type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteFileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="return"
+            type="xs:boolean"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindFolder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="ParentFolder"
+            type="tns:Folder"/>
+        <xs:element name="Name"
+            type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindFolderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="return"
+            type="tns:Folder"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+  </wsdl:types>
+</wsdl:definitions>

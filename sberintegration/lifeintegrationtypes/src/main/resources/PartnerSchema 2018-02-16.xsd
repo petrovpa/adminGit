@@ -1,0 +1,3148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2017 rel. 3 sp1 (x64) (http://www.altova.com) by Ilya Gleykin (Insurance company Sberbank) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://esb.sberinsur.ru/partner/Shema" targetNamespace="http://esb.sberinsur.ru/partner/Shema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+	<xsd:complexType name="Address">
+		<xsd:sequence>
+			<xsd:element name="AddressFull" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Полный адрес</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Country" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Страна</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="255"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="AddressType" type="tns:AddressType">
+				<xsd:annotation>
+					<xsd:documentation>Тип адреса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AddressTxt" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Адрес текстом</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="300"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="CladrCode" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Код из КЛАДР</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PostCode" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Индекс</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="255"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Area" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Федеральный окртуг</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="255"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="District" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Район</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="255"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Town" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Город</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="255"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Street" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Улица</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="255"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="StreetNr" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дом</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="255"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="StreetBuild" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Строение</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="255"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="StreetFlat" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Квартира</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="255"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="AddressType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="REGISTRATION"/>
+			<xsd:enumeration value="ACTUAL"/>
+			<xsd:enumeration value="BORN"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:element name="AnswerImportList" type="tns:AnswerImportListType">
+		<xsd:annotation>
+			<xsd:documentation>Ответ</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="AnswerImportListType">
+		<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="AnswerImport" type="tns:AnswerImportType">
+				<xsd:annotation>
+					<xsd:documentation>Ответ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AnswerImportType">
+		<xsd:sequence>
+			<xsd:element name="PolicyNumber" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Номер полиса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:choice>
+				<xsd:element name="PolicyId" type="xsd:string">
+					<xsd:annotation>
+						<xsd:documentation>Идентификатор полиса</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element name="ClaimId" type="xsd:string">
+					<xsd:annotation>
+						<xsd:documentation>Идентификатор заявления</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:sequence>
+					<xsd:element name="ChangeId" type="xsd:string">
+						<xsd:annotation>
+							<xsd:documentation>Идентификатор изменения</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="ChangeType" type="xsd:string">
+						<xsd:annotation>
+							<xsd:documentation>Тип изменения</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="ChangeTypeId" type="xsd:string">
+						<xsd:annotation>
+							<xsd:documentation>Идентификатор заявления</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:choice>
+			<xsd:element name="Status" type="tns:StatusIntType">
+				<xsd:annotation>
+					<xsd:documentation>Статус</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Err" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Ошибка</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DocFolder1C" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Код папки в 1с документооборот</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SignDeleted" type="tns:IntBoolean" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Признак для отправки информации по удаленным объектам</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="AnswerServiceOperation">
+		<xsd:annotation>
+			<xsd:documentation>  Ответная информация на запрос номера сервисной операции</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="ServiceOperationNumber">
+					<xsd:annotation>
+						<xsd:documentation>Номер сервисной операции</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:simpleType name="ASalesServOnlineType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="NONE"/>
+			<xsd:enumeration value="YES_FROM_REGISTER"/>
+			<xsd:enumeration value="YES_CLIENT_CABINET"/>
+			<xsd:enumeration value="YES_EMPLOYEE"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="BankAccount">
+		<xsd:sequence>
+			<xsd:element name="AccountNumber" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Номер счета</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="BIK" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>БИК</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AccountCorresp" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Корреспондентский счет</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Currency" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Валюта</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="BeneficiaryType">
+		<xsd:sequence>
+			<xsd:element name="Split" type="xsd:double">
+				<xsd:annotation>
+					<xsd:documentation>Доля выгодоприобретателя</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RiskId" type="tns:Id" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Идентификатор риска</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RiskCode" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Код риска</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Risk" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Риск</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="BenParty">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="LastName" type="xsd:string" nillable="true">
+							<xsd:annotation>
+								<xsd:documentation>Фамилия</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="FirstName" type="xsd:string">
+							<xsd:annotation>
+								<xsd:documentation>Имя</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Patronymic" type="xsd:string">
+							<xsd:annotation>
+								<xsd:documentation>Отчество</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Gender">
+							<xsd:annotation>
+								<xsd:documentation>Пол</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:enumeration value="F"/>
+									<xsd:enumeration value="M"/>
+									<xsd:enumeration value="unknow"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="FullName">
+							<xsd:annotation>
+								<xsd:documentation>Полно имя контрагента</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="255"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="BirthDate" type="xsd:date">
+							<xsd:annotation>
+								<xsd:documentation>День рождения физлица</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Broker">
+		<xsd:sequence>
+			<xsd:element name="BrokerRoot" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Территориальный банк</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="BankRegion" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Регион банка</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="BrokerParent" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>ОСБ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Broker" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>ВСП</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CalculatedFieldsType">
+		<xsd:sequence>
+			<xsd:element name="Currency" type="tns:CurrencyType">
+				<xsd:annotation>
+					<xsd:documentation>Валюта</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PaymentTerm" type="xsd:int">
+				<xsd:annotation>
+					<xsd:documentation>Срок оплаты задолженности</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="GarPeriodStartDate" type="xsd:date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Гарантированный период выплат дата начала</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="GarPeriodEndDate" type="xsd:date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Гарантированный период выплат дата окончания</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PayPeriodStartDate" type="xsd:date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Период выплаты ренты дата начала</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PayPeriodEndDate" type="xsd:date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Период выплаты ренты дата окончания</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AccumPeriodStartDate" type="xsd:date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Накопительный период дата начала</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AccumPeriodEndDate" type="xsd:date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Накопительный период дата окончания</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PaymPeriodStartDate" type="xsd:date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Период уплаты взносов дата начал</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PaymPeriodEndDate" type="xsd:date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Период уплаты взносов дата окончания</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="NextPayDate" type="xsd:date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дата оплаты следующего взноса </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="FirstPaym" type="tns:SumType">
+				<xsd:annotation>
+					<xsd:documentation>Размер первого взноса </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RegularPaym" type="tns:SumType">
+				<xsd:annotation>
+					<xsd:documentation>Сумма регулярного взноса </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PayArrears" type="tns:SumType">
+				<xsd:annotation>
+					<xsd:documentation>Задолженность по оплате </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SumPaySum" type="tns:SumType">
+				<xsd:annotation>
+					<xsd:documentation>Всего к оплате </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RentUpperSum" type="tns:SumType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Размер ренты на период повышенных выплат</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RentSum" type="tns:SumType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Размер ренты</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CurrentPay" type="tns:SumType">
+				<xsd:annotation>
+					<xsd:documentation>Оплачено на "дата"</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RemainsToPay" type="tns:SumType">
+				<xsd:annotation>
+					<xsd:documentation>Осталось оплатить всего</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="OutPayPeriodicity" type="tns:PeriodicityType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Периодичность выплаты</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ChangeApplicationListType">
+		<xsd:sequence>
+			<xsd:element name="ApplicationChange" type="tns:ChangeApplicationType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Изменение</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ChangeApplicationType">
+		<xsd:sequence>
+			<xsd:element name="ExternalId" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Id заявления </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ApplicationDate" type="xsd:date" nillable="true">
+				<xsd:annotation>
+					<xsd:documentation>Дата поступления заявелния</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="EndorsementDate" type="xsd:date">
+				<xsd:annotation>
+					<xsd:documentation>Дата подписания заявления клиентом</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PolicyId" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Id Полис</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PolicyNumber" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Номер полис</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ServiceOperationNumber" type="tns:ServiceNumberType">
+				<xsd:annotation>
+					<xsd:documentation>Номер сервисной опрерации</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ChangeType" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Тип изменения</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PaymentPeriodicity" type="tns:PeriodicityType" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Периодичность взносов</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PolicyEndDate" type="xsd:date" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дата окончания полиса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CoverageList" type="tns:ListCoverageType" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Перечень покрытий</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="InvestCoverage" type="tns:InvestCoverageType" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Перечень инвестиционных покрытий</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ThirdPartys" type="tns:ThirdPartyListType" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Перечень контрагентов</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Comment" type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Примечание</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="BankAccount" type="tns:BankAccount" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Банковские документы</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ASalesServOnlineType" type="tns:ASalesServOnlineType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Признак ППО Онлайн</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ChangeCutList" type="tns:ChangeCutListType">
+		<xsd:annotation>
+			<xsd:documentation>Перечень изменений по урезанной схеме</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="ChangeCutListType">
+		<xsd:sequence>
+			<xsd:element name="Change" type="tns:ChangeCutType" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Изменение</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ChangeCutType">
+		<xsd:sequence>
+			<xsd:element name="ChangeId" type="tns:Id">
+				<xsd:annotation>
+					<xsd:documentation>Id изменения</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ChangeTypeId" type="tns:Id" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Id состава изменения</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ServiceOperationNumber" type="tns:ServiceNumberType">
+				<xsd:annotation>
+					<xsd:documentation>Номер сервисной опрерации</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="EndorsementDate" type="xsd:date">
+				<xsd:annotation>
+					<xsd:documentation>Дата подписания заявления клиентом</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PolicyId" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Id Полис</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PolicyNumber" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Номер полис</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ChangeType" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Тип изменения</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Status" type="tns:Status">
+				<xsd:annotation>
+					<xsd:documentation>Текущий статус</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Comment" type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Примечание</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DocFolder1C" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Код папки в 1с документооборот</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ChangeImport" type="tns:ChangeApplicationListType">
+		<xsd:annotation>
+			<xsd:documentation>Зявление на изменение</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ChangeList" type="tns:ChangeListType">
+		<xsd:annotation>
+			<xsd:documentation>Перечень изменений</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="ChangeListType">
+		<xsd:sequence>
+			<xsd:element name="Change" type="tns:ChangeType" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ChangeType">
+		<xsd:sequence>
+			<xsd:element name="ChangeId" type="tns:Id">
+				<xsd:annotation>
+					<xsd:documentation>Id изменения</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ChangeTypeId" type="tns:Id" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Id состава изменения</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="EndorsementDate" type="xsd:date">
+				<xsd:annotation>
+					<xsd:documentation>Дата подписания заявления клиентом</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PolicyId" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Id Полис</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PolicyNumber" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Номер полис</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ServiceOperationNumber" type="tns:ServiceNumberType">
+				<xsd:annotation>
+					<xsd:documentation>Номер сервисной опрерации</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ChangeType" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Тип изменения</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ChangePersonType" type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>ТИп изменения персональных данных</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ApplicationDate" type="xsd:date" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дата поступления заявелния</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Reason" type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Причина</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Broker" type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Брокер</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PaymentPeriodicity" type="tns:PeriodicityType" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Периодичность взносов</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ChangeForm" type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Форма поступившего изменения</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PolicyEndDate" type="xsd:date" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дата окончания полиса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CreditSum" type="tns:SumType" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Сумма кредита</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CreditNumb" type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Номер кредитного договора</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CreditDate" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дата кредитного договора</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:date"/>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="LetterNumb" type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Номер информационного письма</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ReleaseDate" type="xsd:date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дата релиза</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ReleazeShift" type="xsd:date" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дата сдвига релиза</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CoverageList" type="tns:ListCoverageType" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Перечень покрытий</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="InvestCoverage" type="tns:ListInvestCoverageType" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Перечень инвестиционных покрытий</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ThirdPartys" type="tns:ThirdPartyListType" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Перечень контрагентов</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ListParameter" type="tns:ListParameterType" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Перечень метаданных</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ChangeStatusList" type="tns:ListStatusType" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Статус изменения</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ChangeDocumentsList" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Перечень документов</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="ChangeDocument" type="tns:DocumentObjType" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Документ</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Comment" type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Примечание</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DocFolder1C" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Код папки в 1с документооборот</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="ChannelType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="BANK"/>
+			<xsd:enumeration value="UNDERWRITTENG"/>
+			<xsd:enumeration value="COLLABORATOR"/>
+			<xsd:enumeration value="CREDITMARKET"/>
+			<xsd:enumeration value="SBERONLINE"/>
+			<xsd:enumeration value="DSA"/>
+			<xsd:enumeration value="IC"/>
+			<xsd:enumeration value="SBERERROR"/>
+			<xsd:enumeration value="PARTNERS"/>
+			<xsd:enumeration value="DEALER"/>
+			<xsd:enumeration value="OFFICE"/>
+			<xsd:enumeration value="MARKETONLINE"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:element name="Claim" type="tns:ClaimType">
+		<xsd:annotation>
+			<xsd:documentation>Перечень рисков по договору</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ClaimCut" type="tns:ClaimCutType">
+		<xsd:annotation>
+			<xsd:documentation>Перечень рисков по договору</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="ClaimCutType">
+		<xsd:sequence>
+			<xsd:element name="ClaimCut" type="tns:ClaimPolicyCutType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Риск по договору</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ClaimImport" type="tns:ClaimImportType">
+		<xsd:annotation>
+			<xsd:documentation>Заявление на убыток</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="ClaimImportType">
+		<xsd:sequence>
+			<xsd:element name="ExternalId" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Id системы</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ServiceOperationNumber" type="tns:ServiceNumberType">
+				<xsd:annotation>
+					<xsd:documentation>Номер сервисной опрерации</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RegistryDate" type="xsd:date">
+				<xsd:annotation>
+					<xsd:documentation>Дата регистрации события</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="EventDate" type="xsd:date">
+				<xsd:annotation>
+					<xsd:documentation>Дата события, имеющего признак страхового события</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="EventCode" type="tns:EventCodeType">
+				<xsd:annotation>
+					<xsd:documentation>Идентификатор события</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ReasonCode" type="tns:ReasonType">
+				<xsd:annotation>
+					<xsd:documentation>Идентификатор причины события</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PolicyList" type="tns:PolicyListType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Полисы по заявлению</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LaLastName" type="xsd:string" nillable="true">
+				<xsd:annotation>
+					<xsd:documentation>Фамилия застрахованный</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LaFirstName" type="xsd:string" nillable="true">
+				<xsd:annotation>
+					<xsd:documentation>Имя застрахованный</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LaPatromic" type="xsd:string" nillable="true">
+				<xsd:annotation>
+					<xsd:documentation>Отчетство застрахованный</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LaBirthDate" type="xsd:date">
+				<xsd:annotation>
+					<xsd:documentation>Дата рождения застрахованного</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Address" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Адрес направления корреспонденции</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ApplicantName" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>ФИО Представителя</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ApplicantEmail" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Адрес электронной почты Представителя</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ApplicantPhone" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Номер мобильного телефона Представителя</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ClaimPaymentListType">
+		<xsd:sequence>
+			<xsd:element name="ClaimPayment" type="tns:ClaimPaymentType" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>РЗНУ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ClaimPaymentType">
+		<xsd:sequence>
+			<xsd:element name="PaymentDate" type="xsd:date">
+				<xsd:annotation>
+					<xsd:documentation>Дата актуализации </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ClaimPaymentSum" type="tns:SumType">
+				<xsd:annotation>
+					<xsd:documentation>Сумма платежа в валюте</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ClaimPaymentCur" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Валюта</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ClaimPaymentSumToRub" type="tns:SumType">
+				<xsd:annotation>
+					<xsd:documentation>Сумма платежа (эквивалент)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ClaimPaymentPersent" type="tns:SumType">
+				<xsd:annotation>
+					<xsd:documentation>Размер страховой выплаты</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ClaimPolicyCutType">
+		<xsd:sequence>
+			<xsd:element name="ServiceOperationNumber" type="tns:ServiceNumberType">
+				<xsd:annotation>
+					<xsd:documentation>Номер сервисной опрерации</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ClaimID" type="tns:Id">
+				<xsd:annotation>
+					<xsd:documentation>Идентификатор заявления на убыток</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PolicyID" type="tns:Id" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Идентификатор полиса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="EventDate" type="xsd:date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дата события, имеющего признак страхового события</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RegistryDate" type="xsd:date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дата регистрации в ЖУСВ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ThirdPartyId" type="tns:Id" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Id Застрахованного</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="EventCode" type="tns:EventCodeType">
+				<xsd:annotation>
+					<xsd:documentation>Идентификатор события</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ReasonCode" type="tns:ReasonType">
+				<xsd:annotation>
+					<xsd:documentation>Идентификатор причины события</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LaLastName" type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Фамилия застрахованный</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LaFirstName" type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Имя застрахованный</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LaPatromic" type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Отчетство застрахованный</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LaBirthDate" type="xsd:date">
+				<xsd:annotation>
+					<xsd:documentation>Дата рождения застрахованного</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Status" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Статус заявления</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="FINAL"/>
+						<xsd:enumeration value="PROGRESS"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="DocFolder1C" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Код папки в 1с документооборот</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ClaimPolicyType">
+		<xsd:sequence>
+			<xsd:element name="ClaimID" type="tns:Id">
+				<xsd:annotation>
+					<xsd:documentation>Идентификатор заявления на убыток</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ClaimPolicyID" type="tns:Id">
+				<xsd:annotation>
+					<xsd:documentation>Идентификатор убытка</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ServiceOperationNumber" type="tns:ServiceNumberType">
+				<xsd:annotation>
+					<xsd:documentation>Номер сервисной опрерации</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PolicyId" type="tns:Id">
+				<xsd:annotation>
+					<xsd:documentation>Идентификатор полиса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PolicyNumber" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Номер полиса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ClaimNumb" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Номер убытка</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="EventDate" type="xsd:date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дата события, имеющего признак страхового события</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ApplicationDate" type="xsd:date">
+				<xsd:annotation>
+					<xsd:documentation>Дата заявления</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="EventCode" type="tns:EventCodeType">
+				<xsd:annotation>
+					<xsd:documentation>Идентификатор события</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ReasonCode" type="tns:ReasonType">
+				<xsd:annotation>
+					<xsd:documentation>Идентификатор причины события</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ProgramCode" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Имя программы</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ProductRisk" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Код риска по продукту</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Ben" type="tns:ThirdParty" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Выгодоприобретатель</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="StatusList">
+				<xsd:annotation>
+					<xsd:documentation>Перечень статусов</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Status" type="tns:Status" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Статус</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ClaimDocumentList">
+				<xsd:annotation>
+					<xsd:documentation>Перечень документов</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="ClaimDocument" type="tns:DocumentObjType" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Документ</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ListParameter" type="tns:ListParameterType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Перечень метаданных</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DocFolder1C" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Код папки в 1с документооборот</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ClaimType">
+		<xsd:sequence>
+			<xsd:element name="ClaimPolicy" type="tns:ClaimPolicyType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Риск по договору</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ContractCut">
+		<xsd:annotation>
+			<xsd:documentation>Договор</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="ProductName" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Наименование продуктов</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PolicySeries" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Серия полиса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PolicyProgram" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Программа страхования</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ThirdPartyList">
+				<xsd:annotation>
+					<xsd:documentation>Перечень контрагентов</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="tns:ThirdPartyCutList"/>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="PolicyNumber" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Номер полиса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PolicyID" type="tns:Id">
+				<xsd:annotation>
+					<xsd:documentation>ID полиса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Currency" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Валюта</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PolicyDocDate" type="xsd:date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дата подписания полиса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PolicyStartDate" type="xsd:date">
+				<xsd:annotation>
+					<xsd:documentation>Дата начала действия полиса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AmountAssured" type="tns:SumType">
+				<xsd:annotation>
+					<xsd:documentation>Максимальная страховая сумма</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PolicyEndDate" type="xsd:date">
+				<xsd:annotation>
+					<xsd:documentation>Дата окончания действия полиса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PayPeriodStartDate" type="xsd:date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Период выплаты рент дата начала</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="UpperPayPeriodEndDate" type="xsd:date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дата окончания выплаты повышенной ренты</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PayPeriodEndDate" type="xsd:date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Период выплаты рент дата окончания</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RentUpperSum" type="tns:SumType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Размер ренты на период повышенных выплат</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RentSum" type="tns:SumType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Размер ренты</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CurrentPay" type="tns:SumType">
+				<xsd:annotation>
+					<xsd:documentation>Оплачено на "дата"</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="UnpdaidSum" type="tns:SumType">
+				<xsd:annotation>
+					<xsd:documentation>Сумма неоплаченных платежей (план - факт)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PaymentPeriodicity" type="tns:PeriodicityType">
+				<xsd:annotation>
+					<xsd:documentation>Периодичность оплаты</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="OutPayPeriodicity" type="tns:PeriodicityType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Периодичность выплаты</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PolicyStatus" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Статус полиса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="InvestCoverage" type="tns:ListInvestCoverageType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Перечень инвестиционных покрытий</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ContractCutList" type="tns:ListContractCutType">
+		<xsd:annotation>
+			<xsd:documentation>Перечень полисов по урезанной схеме</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ContractExport" type="tns:ListContractType">
+		<xsd:annotation>
+			<xsd:documentation>Перечень полисов</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="ContractImportType">
+		<xsd:annotation>
+			<xsd:documentation>Договор (Импорт)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="RqUID" type="xsd:string"/>
+			<xsd:element name="RqTM" type="xsd:string"/>
+			<xsd:element name="ExternalId" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>ID внешней системы</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ProductName" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Наименование продуктов</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PolicySeries" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Серия полиса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PolicyProgram" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Программа страхования</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Activation">
+				<xsd:annotation>
+					<xsd:documentation>Признак активации</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="NEW_POLICY"/>
+						<xsd:enumeration value="ACTIVATION"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="PolicyNumber" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Номер полиса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="GroupPolicy" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Номер группового полиса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Currency" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Валюта</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PolicyChannel" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Канал продаж</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ThirdPartyList" type="tns:ListThirdPartyImportType">
+				<xsd:annotation>
+					<xsd:documentation>Перечень контрагентов</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PolicyDocDate" type="xsd:date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дата подписания полиса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PolicyStartDate" type="xsd:date">
+				<xsd:annotation>
+					<xsd:documentation>Дата начала действия полиса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PolicyEndDate" type="xsd:date">
+				<xsd:annotation>
+					<xsd:documentation>Дата окончания действия полиса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PaymentPeriodicity" type="tns:PeriodicityType">
+				<xsd:annotation>
+					<xsd:documentation>Периодичность</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="WarrantyLevel" type="xsd:decimal" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Гарантированная доходность</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="InvestCoverage" type="tns:ListInvestCoverageType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Перечень инвестиционных покрытий</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CoverageList" type="tns:ListCoverageType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Перечень покрытий</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Broker" type="tns:Broker">
+				<xsd:annotation>
+					<xsd:documentation>Брокер</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Payment" type="tns:ListPaymentType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Перечень платежей</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Manager" type="tns:ManagerType">
+				<xsd:annotation>
+					<xsd:documentation>КМ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PolicyStatus" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Статус полиса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ParameterList" type="tns:ListParameterType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Перечень метаданных</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="GarantPeriodUnit" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Гарантированный период, единицы измерения</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="GarantPeriodTerm" type="xsd:integer" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Гарантированный период, срок</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LifeOfTermDSP" type="xsd:date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дата начала выплат, первый период</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LifeOfTermDSP2" type="xsd:date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дата начала выплат, второй период</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SurvPayRatio" type="xsd:decimal" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Соотношение размера обычных и повышенных выплат</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LifeOfTermPP" type="tns:PeriodicityType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Периодичность ренты</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ContractList" type="tns:ListContractImportType">
+		<xsd:annotation>
+			<xsd:documentation>Перечень полисов</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="ContractType">
+		<xsd:annotation>
+			<xsd:documentation>Договор</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="RqUID" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="RqTM" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="PolicyId" type="tns:Id" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Уникальный идентификатор полиса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ExternalId" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>ID внешней системы</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ProductName" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Наименование продуктов</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PolicySeries" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Серия полиса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PolicyProgram" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Программа страхования</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Activation" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Признак активации</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="NEW_POLICY"/>
+						<xsd:enumeration value="ACTIVATION"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="PolicyNumber" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Номер полиса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="GroupPolicy" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Номер группового полиса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Currency" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Валюта</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PolicyChannel" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Канал продаж</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ThirdPartyList" type="tns:ListThirdPartyType">
+				<xsd:annotation>
+					<xsd:documentation>Перечень контрагентов</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PolicyDocDate" type="xsd:date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дата подписания полиса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PolicyStartDate" type="xsd:date">
+				<xsd:annotation>
+					<xsd:documentation>Дата начала действия полиса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PolicyEndDate" type="xsd:date">
+				<xsd:annotation>
+					<xsd:documentation>Дата окончания действия полиса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PaymentPeriodicity" type="tns:PeriodicityType">
+				<xsd:annotation>
+					<xsd:documentation>Периодичность</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="WarrantyLevel" type="xsd:decimal" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Гарантированная доходность</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CalculatedFields" type="tns:CalculatedFieldsType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Расчетные поля</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="InvestCoverage" type="tns:ListInvestCoverageType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Перечень инвестиционных покрытий</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CoverageList" type="tns:ListCoverageType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Перечень покрытий</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Broker" type="tns:Broker">
+				<xsd:annotation>
+					<xsd:documentation>Брокер</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Payment" type="tns:ListPaymentType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Перечень платежей</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PaymentSchedulerList" type="tns:ListPaymentSchedulerType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>График платежей</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Manager" type="tns:ManagerType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>КМ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PolicyStatus" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Статус полиса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ParameterList" type="tns:ListParameterType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Перечень метаданных</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Coverage">
+		<xsd:sequence>
+			<xsd:element name="CoverageName">
+				<xsd:annotation>
+					<xsd:documentation>Наименование покрытия</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="50"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Periodicity" type="tns:PeriodicityType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Периодичность выплаты</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PaymentStartDate" type="xsd:date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дата начала вылаты</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PaymentEndDate" type="xsd:date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дата окончания вылаты</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="StartDate" type="xsd:date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дата начала действия покрытия</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="EndDate" type="xsd:date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дата окончания действия покрытия</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PayPeriodicity" type="tns:PeriodicityType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Периодичность оплаты премии клиентом</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CoverageDetList" type="tns:ListCoverageDetType">
+				<xsd:annotation>
+					<xsd:documentation>Перечень детализированных покрытий (страховые суммы и премии)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LifeAssureds" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Перечень застрахованных по покрытию</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="LifeAssured" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Застрахованный по покрытию</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="ThirdPartyId" type="tns:Id">
+										<xsd:annotation>
+											<xsd:documentation>Индетификатор по контрагента</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="ThirdPartyFullName" type="xsd:string">
+										<xsd:annotation>
+											<xsd:documentation>Полное наименование контрагента</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="RiskCode" type="xsd:string">
+										<xsd:annotation>
+											<xsd:documentation>Риск</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ExtraPremList" type="tns:ListExtraPremType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Перечень экстрапремий</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CoverageDet">
+		<xsd:sequence>
+			<xsd:element name="AmountAssured" type="tns:SumType">
+				<xsd:annotation>
+					<xsd:documentation>Страховая сумма</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AmountPrem" type="tns:SumType">
+				<xsd:annotation>
+					<xsd:documentation>Страховая премия</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Currency" type="tns:CurrencyType">
+				<xsd:annotation>
+					<xsd:documentation>Валюта</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="CurrencyType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="EUR"/>
+			<xsd:enumeration value="RUB"/>
+			<xsd:enumeration value="USD"/>
+			<xsd:enumeration value="GBP"/>
+			<xsd:enumeration value="RUB USD"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:element name="DeletedObjectsList" type="tns:DeleteObjectListType">
+		<xsd:annotation>
+			<xsd:documentation>Перечень объектов для удаления</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="DeleteObjectListType">
+		<xsd:sequence>
+			<xsd:element name="DeletedObject" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:choice>
+							<xsd:element name="PolicyId" type="xsd:string">
+								<xsd:annotation>
+									<xsd:documentation>Идентификатор полиса</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="ClaimId" type="xsd:string">
+								<xsd:annotation>
+									<xsd:documentation>Идентификатор заявления</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="ChangeId" type="xsd:string">
+								<xsd:annotation>
+									<xsd:documentation>Идентификатор изменения</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="ChangeTypeId" type="tns:Id" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>Id состава изменения</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+						</xsd:choice>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DocumentImportType">
+		<xsd:sequence>
+			<xsd:element name="ObjId" type="tns:Id">
+				<xsd:annotation>
+					<xsd:documentation>Документ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="TypeObject" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Тип объекта</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Document" type="tns:DocumentObjType">
+				<xsd:annotation>
+					<xsd:documentation>Документ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="DocumentListImport" type="tns:DocumentListImportType">
+		<xsd:annotation>
+			<xsd:documentation>Перечень документов</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="DocumentListImportType">
+		<xsd:sequence>
+			<xsd:element name="Document" type="tns:DocumentImportType" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Документ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DocumentObjType">
+		<xsd:sequence>
+			<xsd:element name="DocUrl" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Код документа в 1C документооборот</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DocExtension" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Расширение документа</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Name" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Наименование документа</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Date" type="xsd:date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дата документа</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Mistake" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Ошибка</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DocumentsImportType">
+		<xsd:sequence>
+			<xsd:element name="DocumentFull" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Полное наименование документа</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DocumentType" type="tns:DocumentType">
+				<xsd:annotation>
+					<xsd:documentation>Тип документа, подтверждающего личность</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DocumentCountry" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Страна выпустивший докуметн</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DocumentNumber" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Номер документа</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DocumentSeries" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Серия документа</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DocumentInstitution" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Орган, выпустиший документ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DocumentData" type="xsd:date">
+				<xsd:annotation>
+					<xsd:documentation>Дата документа</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DocumentCity" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Город</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DocumentCodeIns" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Код органа, выпустившего документа</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DocumentsListImportType">
+		<xsd:sequence>
+			<xsd:element name="Document" type="tns:DocumentsImportType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DocumentsListType">
+		<xsd:sequence>
+			<xsd:element name="Document" type="tns:DocumentsType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DocumentsType">
+		<xsd:sequence>
+			<xsd:element name="DocumentFull" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Полное наименование документа</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DocumentType" type="tns:DocumentType">
+				<xsd:annotation>
+					<xsd:documentation>Тип документа, подтверждающего личность</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DocumentCountry" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Страна выпустивший докуметн</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DocumentNumber" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Номер документа</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DocumentSeries" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Серия документа</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DocumentInstitution" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Орган, выпустиший документ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DocumentDate" type="xsd:date">
+				<xsd:annotation>
+					<xsd:documentation>Дата документа</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DocumentCity" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Город</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DocumentCodeIns" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Код органа, выпустившего документа</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="DocumentType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="PASSPORT"/>
+			<xsd:enumeration value="BIRTH_CERTIFICATE"/>
+			<xsd:enumeration value="MIGRATION_CARD"/>
+			<xsd:enumeration value="CONF_RIGHTS_RF"/>
+			<xsd:enumeration value="PERMISSION_FOR_TEMPORARY_RESIDENCE"/>
+			<xsd:enumeration value="VIEW_OF_THE_RESIDENCE"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="EventCodeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="eDeath"/>
+			<xsd:enumeration value="eHospitalization"/>
+			<xsd:enumeration value="eDisabilitygr"/>
+			<xsd:enumeration value="eDisability1gr"/>
+			<xsd:enumeration value="eDisability2gr"/>
+			<xsd:enumeration value="eDisability3gr"/>
+			<xsd:enumeration value="eInjury"/>
+			<xsd:enumeration value="eSurgical"/>
+			<xsd:enumeration value="eTempDisability"/>
+			<xsd:enumeration value="eDismiss"/>
+			<xsd:enumeration value="eDiseaseDiag"/>
+			<xsd:enumeration value="eAny"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="ExtraPremType">
+		<xsd:sequence>
+			<xsd:element name="Val1" type="tns:SumType">
+				<xsd:annotation>
+					<xsd:documentation>Значение 1</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Val2" type="tns:SumType">
+				<xsd:annotation>
+					<xsd:documentation>Значение 2</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Risk" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Риск</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="GetChange">
+		<xsd:annotation>
+			<xsd:documentation>Запрос информации по изменению</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension base="tns:GetObjType"/>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="GetChangeList">
+		<xsd:annotation>
+			<xsd:documentation>Запрос информации по изменению в урезанной схеме</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="RowCount" type="xsd:int">
+					<xsd:annotation>
+						<xsd:documentation>Кол-во</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element name="ChangeList">
+					<xsd:annotation>
+						<xsd:documentation>Перечень изменений </xsd:documentation>
+					</xsd:annotation>
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="Change" type="xsd:string" maxOccurs="unbounded">
+								<xsd:annotation>
+									<xsd:documentation>Изменение</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="GetClaim" type="tns:GetObjType">
+		<xsd:annotation>
+			<xsd:documentation>Запрос информации</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="GetClaimList" type="tns:GetObjListType">
+		<xsd:annotation>
+			<xsd:documentation>Запрос информации</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="GetDeletedObjects">
+		<xsd:annotation>
+			<xsd:documentation>Запрос информации об удаленных объектов</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="RowCount" type="xsd:int">
+					<xsd:annotation>
+						<xsd:documentation>Кол-во запрошенных объектов</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="GetObjListType">
+		<xsd:sequence>
+			<xsd:element name="RowCount" type="xsd:int">
+				<xsd:annotation>
+					<xsd:documentation>Кол-во</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ProgramList" type="tns:ListProgramType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Перечень программ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="To" type="xsd:date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дата по (В случае необходимости восстановления данных)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="From" type="xsd:date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дата с (В случае необходимости восстановления данных)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="GetObjType">
+		<xsd:choice>
+			<xsd:element name="ClaimId" type="tns:Id">
+				<xsd:annotation>
+					<xsd:documentation>Идентификатор заявления</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PolicyId" type="tns:Id">
+				<xsd:annotation>
+					<xsd:documentation>ID полиса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:sequence>
+				<xsd:element name="ChangeType" type="xsd:string">
+					<xsd:annotation>
+						<xsd:documentation>Тип изменения</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element name="ChangeId" type="tns:Id">
+					<xsd:annotation>
+						<xsd:documentation>Изентификатор заявления</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:choice>
+	</xsd:complexType>
+	<xsd:element name="GetPolicy" type="tns:GetObjType">
+		<xsd:annotation>
+			<xsd:documentation>Запрос информации</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="GetPolicyList" type="tns:GetObjListType">
+		<xsd:annotation>
+			<xsd:documentation>Запрос информации</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="GetServiceOperation">
+		<xsd:annotation>
+			<xsd:documentation>Запрос информации о сервисной информации</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Code">
+					<xsd:annotation>
+						<xsd:documentation>Код операции</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element name="ProductCode">
+					<xsd:annotation>
+						<xsd:documentation>Код продукта</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element name="OperationChanel">
+					<xsd:annotation>
+						<xsd:documentation>Канал операции</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="GuardianType">
+		<xsd:sequence>
+			<xsd:element name="GuardianParty" type="tns:ThirdParty"/>
+			<xsd:element name="BenParty" type="tns:ThirdParty"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="Id">
+		<xsd:restriction base="xsd:long">
+			<xsd:minInclusive value="0"/>
+			<xsd:maxInclusive value="99999999999999999"/>
+			<xsd:whiteSpace value="collapse"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="IntBoolean">
+		<xsd:restriction base="xsd:integer">
+			<xsd:enumeration value="0"/>
+			<xsd:enumeration value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="InvestCoverageType">
+		<xsd:sequence>
+			<xsd:element name="BaseActiveCode" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Тип базового актива (код)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="BaseActive" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Тип базового актива (наименование)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="InvestConditions" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Условаия инвестирования</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CustomerCoupon" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Купон клиента</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="TypeOperation" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Тип операции</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="BASE_ACTIVE"/>
+						<xsd:enumeration value="ADD_SUMBONUS"/>
+						<xsd:enumeration value="FIX"/>
+						<xsd:enumeration value="PAYMENT_SUMBONUS"/>
+						<xsd:enumeration value="INITIAL"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="InvestDate" type="xsd:date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дата инвестирования</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="StopLoss" type="xsd:decimal" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Нижний лимит фиксации</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="TakeProfit" type="xsd:decimal" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Верхний лимит фиксации</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Fix" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Тип фиксации</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="FIXED_PERIOD"/>
+						<xsd:enumeration value="ANNUAL_FIXED_DATE"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="AmountCur1" type="xsd:decimal" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Сумма доп.взноса в валюте 1</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AmountCur2" type="xsd:decimal" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Сумма доп.взноса в валюте 2</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AmountBonus" type="xsd:decimal" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Сумма ДИД</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="LegalFormType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="LTD"/>
+			<xsd:enumeration value="JSC"/>
+			<xsd:enumeration value="CJSC"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="ListAddressType">
+		<xsd:sequence>
+			<xsd:element name="Address" type="tns:Address" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Адрес</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListBankAccount">
+		<xsd:sequence>
+			<xsd:element name="BankAccount" type="tns:BankAccount" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Банковский счет</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListContractCutType">
+		<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="Contract" type="tns:ContractCut">
+				<xsd:annotation>
+					<xsd:documentation>Полис по урезанной схеме</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListContractImportType">
+		<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="Contract" type="tns:ContractImportType">
+				<xsd:annotation>
+					<xsd:documentation>Полис</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListContractType">
+		<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="Contract" type="tns:ContractType">
+				<xsd:annotation>
+					<xsd:documentation>Полис</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListCoverageDetType">
+		<xsd:sequence>
+			<xsd:element name="CoverageDet" type="tns:CoverageDet" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Покрытие</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListCoverageType">
+		<xsd:sequence>
+			<xsd:element name="Coverage" type="tns:Coverage" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Покрытие</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListExtraPremType">
+		<xsd:sequence maxOccurs="unbounded">
+			<xsd:element name="ExtraPrem" type="tns:ExtraPremType">
+				<xsd:annotation>
+					<xsd:documentation>Экстрапремия</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListGuardianType">
+		<xsd:sequence>
+			<xsd:element name="Guardian" type="tns:GuardianType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListInvestCoverageType">
+		<xsd:sequence>
+			<xsd:element name="InvestCoverage" type="tns:InvestCoverageType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Инвестиционное покрытие</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListParameterType">
+		<xsd:sequence>
+			<xsd:element name="Parameter" type="tns:ParameterType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Метаданная</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ListPayment" type="tns:PaymentListType">
+		<xsd:annotation>
+			<xsd:documentation>Перечень рисков по договору</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="ListPaymentExecutionType">
+		<xsd:sequence>
+			<xsd:element name="PaymentExecution" type="tns:PaymentExecutionType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Соотношение суммы платежа и графика платежей</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListPaymentSchedulerType">
+		<xsd:sequence>
+			<xsd:element name="PaymentScheduler" type="tns:PaymentSchedulerType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>График платежей</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListPaymentType">
+		<xsd:sequence>
+			<xsd:element name="Payment" type="tns:PaymentType" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Платеж</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListProgramType">
+		<xsd:sequence>
+			<xsd:element name="Program" type="xsd:string" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListStatusType">
+		<xsd:sequence>
+			<xsd:element name="Status" type="tns:Status" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListThirdPartyImportType">
+		<xsd:sequence>
+			<xsd:element name="ThirdParty" type="tns:ThirdPartyImport" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Контрагент</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListThirdPartyType">
+		<xsd:sequence>
+			<xsd:element name="ThirdParty" type="tns:ThirdParty" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Контрагент</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ManagerType">
+		<xsd:sequence>
+			<xsd:element name="ManagerID" type="tns:Id" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>ID менеджера</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ManageName" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Имя менеджера</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ManagerNumber" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Табельный номер менеджера</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ManagerDate" type="xsd:date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Актуальная дата</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ParameterType">
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Наименование метаданных</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="value" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Значение</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PaymentExecutionType">
+		<xsd:sequence>
+			<xsd:element name="ExecutionSum" type="tns:SumType">
+				<xsd:annotation>
+					<xsd:documentation>Фактическая сумма по графику</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Currency" type="tns:CurrencyType">
+				<xsd:annotation>
+					<xsd:documentation>Валюта</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PaymentDate" type="xsd:date">
+				<xsd:annotation>
+					<xsd:documentation>Дата совершения платежа</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PaymentListType">
+		<xsd:sequence>
+			<xsd:element name="Payment" type="tns:PaymentType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Платеж</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PaymentSchedulerType">
+		<xsd:sequence>
+			<xsd:element name="SchedulerDate" type="xsd:date">
+				<xsd:annotation>
+					<xsd:documentation>Дата платежеа по графику</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SchedulerSum" type="tns:SumType">
+				<xsd:annotation>
+					<xsd:documentation>Сумма по графику</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SchedulerCurrency" type="tns:CurrencyType">
+				<xsd:annotation>
+					<xsd:documentation>Валюта по графику</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PaymentExecutionList" type="tns:ListPaymentExecutionType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Перечень соотношений суммы платежа и графика платежей</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PaymentStructureListType">
+		<xsd:sequence>
+			<xsd:element name="PaymentStructure" type="tns:PaymentStructureType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Отработка по полису</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PaymentStructureType">
+		<xsd:sequence>
+			<xsd:element name="PaymentId" type="tns:Id" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Идентификатор платежа</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Ammount" type="tns:SumType">
+				<xsd:annotation>
+					<xsd:documentation>Сумма платежа по графику</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AmmountVat" type="tns:SumType">
+				<xsd:annotation>
+					<xsd:documentation>Сумма платежа по графику (НДС)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AmmountRub" type="tns:SumType">
+				<xsd:annotation>
+					<xsd:documentation>Эквивалент в рублях</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PlanDate" type="xsd:date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Плановая дата из графика</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Currency" type="tns:CurrencyType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Валюта</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PaymentType">
+		<xsd:sequence>
+			<xsd:element name="PaymentType" type="tns:PayType"/>
+			<xsd:element name="Ammount" type="tns:SumType">
+				<xsd:annotation>
+					<xsd:documentation>Сумма платежа</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Currency" type="tns:CurrencyType">
+				<xsd:annotation>
+					<xsd:documentation>Валюта платежа</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PaymentDate" type="xsd:date" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дата платежа</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="PayType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="COMMISION"/>
+			<xsd:enumeration value="PAYMENT"/>
+			<xsd:enumeration value="REDEMPTION"/>
+			<xsd:enumeration value="CLAIM"/>
+			<xsd:enumeration value="SUM_BONUS"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PeriodicityType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="ONE"/>
+			<xsd:enumeration value="SEM"/>
+			<xsd:enumeration value="WEEK"/>
+			<xsd:enumeration value="ANN"/>
+			<xsd:enumeration value="DAY"/>
+			<xsd:enumeration value="MON"/>
+			<xsd:enumeration value="QUA"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="PolicyListType">
+		<xsd:sequence maxOccurs="unbounded">
+			<xsd:element name="Policy">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="PolicyID" type="xsd:integer" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Индетификатор полиса</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="ProgramCode" type="xsd:string">
+							<xsd:annotation>
+								<xsd:documentation>Код программы</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="PolicySeries" type="xsd:string">
+							<xsd:annotation>
+								<xsd:documentation>Серия полиса</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="PolicyNumber" type="xsd:string">
+							<xsd:annotation>
+								<xsd:documentation>Номер полиса</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="ReasonType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="cAccident"/>
+			<xsd:enumeration value="cDisease"/>
+			<xsd:enumeration value="cAny"/>
+			<xsd:enumeration value="NULL"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:element name="RegistrationUser">
+		<xsd:annotation>
+			<xsd:documentation>Регистрация пользователя</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension base="tns:RegistrationUserType"/>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="RegistrationUserAnswer">
+		<xsd:annotation>
+			<xsd:documentation>Ответное сообщение ригистрации пользователя</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension base="tns:RegistrationUserAnswerType"/>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="RegistrationUserAnswerType">
+		<xsd:sequence>
+			<xsd:element name="ThirdPartyId" type="tns:Id"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="RegistrationUserType">
+		<xsd:sequence>
+			<xsd:element name="ThirdPartyFullName" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Полное имя пользователя</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="BirthDate" type="xsd:date">
+				<xsd:annotation>
+					<xsd:documentation>Дата рождения</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PolicyNumber" type="xsd:string"/>
+			<xsd:element name="PhoneMobile" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Мобильный телефон</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Document" type="tns:DocumentsType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Документ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="RiskCategory">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="SURVIVAL"/>
+			<xsd:enumeration value="DISABILITY"/>
+			<xsd:enumeration value="DEATH"/>
+			<xsd:enumeration value="TRAUMA"/>
+			<xsd:enumeration value="OTHERS"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RolesType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="BEN"/>
+			<xsd:enumeration value="LIFE ASSURED"/>
+			<xsd:enumeration value="HOLDER"/>
+			<xsd:enumeration value="GUARDIAN"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ServiceNumberType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:complexType name="Status">
+		<xsd:sequence>
+			<xsd:element name="Status" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Статус</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Date" type="xsd:dateTime">
+				<xsd:annotation>
+					<xsd:documentation>Дата статуса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="StatusIntType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="SUCCESS"/>
+			<xsd:enumeration value="FAIL"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="SumType">
+		<xsd:restriction base="xsd:decimal">
+			<xsd:minExclusive value="-1"/>
+			<xsd:maxExclusive value="9999999999999999999999999999999"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="ThirdParty">
+		<xsd:sequence>
+			<xsd:element name="ThirdPartyId" type="tns:Id" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>ID контрагента</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ThirdPartyType" type="tns:ThirdPartyType">
+				<xsd:annotation>
+					<xsd:documentation>Тип контрагента (физ или юр лицо)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="FullName">
+				<xsd:annotation>
+					<xsd:documentation>Полное наименование</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="255"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Role" type="tns:RolesType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Роль контрагента</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PhoneMobile" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Мобильный телефон</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PhoneWorking" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Рабочий телефон</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PhoneHome" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Домашний телефон</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:choice>
+				<xsd:sequence>
+					<xsd:element name="LegalFormText" type="tns:LegalFormType">
+						<xsd:annotation>
+							<xsd:documentation>Форма собственности для юр лиц</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="Ogrn" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>ОГРН</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+				<xsd:sequence>
+					<xsd:element name="BirthPlace" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>Место рождения</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="LastName" type="xsd:string" nillable="true">
+						<xsd:annotation>
+							<xsd:documentation>Фамилия</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="FirstName" type="xsd:string">
+						<xsd:annotation>
+							<xsd:documentation>Имя</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="Patronymic" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>Отчетсво</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="Citizenship" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>Гражданство</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="BirthDate" type="xsd:date">
+						<xsd:annotation>
+							<xsd:documentation>Дата рождения</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="MaritalStatus" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>Семейное положение</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="Occupation" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>Профессия</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="FrameReference" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>Сфера деятельности</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="EmployerName" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>Наименование организации</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="Gender" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>Пол</xsd:documentation>
+						</xsd:annotation>
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:enumeration value="F"/>
+								<xsd:enumeration value="M"/>
+								<xsd:enumeration value="unknow"/>
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="Position" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>Должность</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="ASalesServOnline" type="tns:ASalesServOnlineType" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>Признак ППО онлайн</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:choice>
+			<xsd:element name="DocumentsList" type="tns:DocumentsListType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Перечень документов</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ListAddress" type="tns:ListAddressType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Перечень адресов</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Email" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Электронная почта</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Resident" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Обычный резидент (наименование страны)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Tax_Resident" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Налоговый резидент (наименование страны)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Tin" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>ИНН</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Split" type="xsd:int" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Доля выгодоприобретателя (только для выгодоприобретателей)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RiskCode" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Риск выгодоприобретателя (только для выгодоприобретателя)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ThirdPartyCutList">
+		<xsd:sequence>
+			<xsd:element name="ThirdParty" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Перечень контагентов (укороченно)</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="ThirdPartyId" type="tns:Id">
+							<xsd:annotation>
+								<xsd:documentation>ID контрагента</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Role" type="tns:RolesType">
+							<xsd:annotation>
+								<xsd:documentation>Роль контрагента</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="HashCode" type="xsd:string" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Хешированное значение ФИОДУЛДР</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ThirdPartyImport">
+		<xsd:sequence>
+			<xsd:element name="ThirdPartyId" type="tns:Id" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>ID контрагента</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ThirdPartyType" type="tns:ThirdPartyType">
+				<xsd:annotation>
+					<xsd:documentation>Тип контрагента (физ или юр лицо)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="FullName">
+				<xsd:annotation>
+					<xsd:documentation>Полное наименование</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="255"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Role" type="tns:RolesType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Роль контрагента</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PhoneMobile" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Мобильный телефон</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PhoneWorking" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Рабочий телефон</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PhoneHome" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Домашний телефон</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:choice>
+				<xsd:sequence>
+					<xsd:element name="LegalFormText" type="tns:LegalFormType">
+						<xsd:annotation>
+							<xsd:documentation>Форма собственности для юр лиц</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="Ogrn" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>ОГРН</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+				<xsd:sequence>
+					<xsd:element name="BirthPlace" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>Местро рождения</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="LastName" type="xsd:string" nillable="true">
+						<xsd:annotation>
+							<xsd:documentation>Фамилия</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="FirstName" type="xsd:string">
+						<xsd:annotation>
+							<xsd:documentation>Имя</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="Patronymic" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>Отчетсво</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="Citizenship" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>Гражданство</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="BirthDate" type="xsd:date">
+						<xsd:annotation>
+							<xsd:documentation>Дата рождения</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="MaritalStatus" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>Семейное положение</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="Occupation" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>Профессия</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="FrameReference" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>Сфера деятельности</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="EmployerName" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>Наименование организации</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="Gender" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>Пол</xsd:documentation>
+						</xsd:annotation>
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:enumeration value="F"/>
+								<xsd:enumeration value="M"/>
+								<xsd:enumeration value="unknow"/>
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="Position" type="xsd:string" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation>Должность</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="ASalesServOnline" type="tns:ASalesServOnlineType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:choice>
+			<xsd:element name="DocumntsList" type="tns:DocumentsListImportType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Перечень документов</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ListAddress" type="tns:ListAddressType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Перечень адресов</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Email" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Электронная почта</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Resident" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Обычный резидент (наименование страны)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Tax_Resident" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Налоговый резидент (наименование страны)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Tin" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>ИНН</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Split" type="xsd:int" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Доля выгодоприобретателя (только для выгодоприобретателей)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RiskCode" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Риск выгодоприобретателя (только для выгодоприобретателя)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ThirdPartyListType">
+		<xsd:sequence>
+			<xsd:element name="ThirdParty" type="tns:ThirdParty" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Контрагент</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="ThirdPartyType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="LEGAL_PERSON"/>
+			<xsd:enumeration value="PERSON"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="TPType">
+		<xsd:sequence>
+			<xsd:element name="ThirdPartyId" type="tns:Id" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>ID контрагента</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="BirthPlace" type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Место рождения</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LastName" type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Фамилия</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="FirstName" type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Имя</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Patromic" type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Отчетство</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="BirthDate" type="xsd:date" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дата рождения</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Citizenship" type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Гражданство</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="InsuredPosition" type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Должность</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="EmpoyerName" type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Работодатель</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Profession" type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Профессия</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="FrameReference" type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Сфера деятельности</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Beneficiary" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Выгодоприобретатель</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="tns:BeneficiaryType"/>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="PhoneMobile" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Мобильный телефон</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PhoneWorking" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Рабочий телефон</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PhoneHome" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Домашний телефон</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ASalesServOnline" type="tns:ASalesServOnlineType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Признак ППО онлайн</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ThirdPartyDocuments" type="tns:DocumentsListType" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Перечень документов</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AddressList" type="tns:ListAddressType" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Перечень адресов</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Email" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Электронная почта</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Resident" type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Резидент</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Tin" type="xsd:string" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>ИНН</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Split" type="xsd:int" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Доля выгодоприобретателя (только для выгодоприобретателей)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RiskCode" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Риск выгодоприобретателя (только для выгодоприобретателя)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ThirdParty" type="tns:ThirdParty" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

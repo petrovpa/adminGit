@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2015 rel. 3 (x64) (http://www.altova.com) by Valerij I. Lambreht (Sberbank Insurance) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://sberbankins.ru/schema/sbolantimiterosspecify10" targetNamespace="http://sberbankins.ru/schema/sbolantimiterosspecify10" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="Payment">
+		<xs:annotation>
+			<xs:documentation>Оплата договора</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Date" type="xs:dateTime">
+					<xs:annotation>
+						<xs:documentation>Дата оплаты</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Number">
+					<xs:annotation>
+						<xs:documentation>Номер чека</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1"/>
+							<xs:maxLength value="255"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
