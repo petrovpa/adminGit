@@ -101,7 +101,7 @@
         <dependency>
             <groupId>com.bivgroup.core.audit.implementation</groupId>
             <artifactId>audit-impl</artifactId>
-            <version>1.00.00</version>
+            <version>1.00.01</version>
         </dependency>
         <dependency>
             <groupId>com.bivgroup.flextera.insurance.bivsberfront.utils</groupId>
