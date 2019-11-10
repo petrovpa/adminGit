@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<BODY version="2.11">
+	<EXPIRATION_DATE type="java.util.Date">2999-02-01T00:00:00:000+0400</EXPIRATION_DATE>
+	<MAX_PRIVILEGED_USER type="java.lang.Integer">500</MAX_PRIVILEGED_USER>
+	<MAX_USER type="java.lang.Integer">500</MAX_USER>
+	<MODULES type="java.util.List">
+		<ListItems>
+			<Item type="java.util.Map">
+				<LicenseOption type="java.util.Map">
+					<SystemPlatform type="java.lang.Integer">1</SystemPlatform>
+				</LicenseOption>
+				<MODULENAME type="java.lang.String">ADMWS</MODULENAME>
+			</Item>
+			<Item type="java.util.Map">
+				<LicenseOption type="java.util.Map">
+					<SystemPlatform type="java.lang.Integer">1</SystemPlatform>
+				</LicenseOption>
+				<MODULEHASH type="java.lang.String">-43:-72:-24:78:-47:5f:3e:-1d:39:15:-4e:-6a:-e:-2:-33:2:6c:-1f:-80:43</MODULEHASH>
+				<MODULENAME type="java.lang.String">ADMINWS</MODULENAME>
+				<REGDATE type="java.util.Date">2011-08-19T15:15:10:903+0400</REGDATE>
+			</Item>
+			<Item type="java.util.Map">
+				<LicenseOption type="java.util.Map">
+					<SystemPlatform type="java.lang.Integer">1</SystemPlatform>
+				</LicenseOption>
+				<MODULEHASH type="java.lang.String">-43:-72:-24:78:-47:5f:3e:-1d:39:15:-4e:-6a:-e:-2:-33:2:6c:-1f:-80:43</MODULEHASH>
+				<MODULENAME type="java.lang.String">COREWS</MODULENAME>
+				<REGDATE type="java.util.Date">2011-08-19T15:15:11:041+0400</REGDATE>
+			</Item>
+			<Item type="java.util.Map">
+				<LicenseOption type="java.util.Map">
+					<SystemPlatform type="java.lang.Integer">1</SystemPlatform>
+				</LicenseOption>
+				<MODULEHASH type="java.lang.String">-43:-72:-24:78:-47:5f:3e:-1d:39:15:-4e:-6a:-e:-2:-33:2:6c:-1f:-80:43</MODULEHASH>
+				<MODULENAME type="java.lang.String">REFWS</MODULENAME>
+				<REGDATE type="java.util.Date">2011-08-19T15:15:30:516+0400</REGDATE>
+			</Item>
+			<Item type="java.util.Map">
+				<LicenseOption type="java.util.Map">
+					<SystemPlatform type="java.lang.Integer">1</SystemPlatform>
+				</LicenseOption>
+				<MODULEHASH type="java.lang.String">-43:-72:-24:78:-47:5f:3e:-1d:39:15:-4e:-6a:-e:-2:-33:2:6c:-1f:-80:43</MODULEHASH>
+				<MODULENAME type="java.lang.String">MSGWS</MODULENAME>
+				<REGDATE type="java.util.Date">2011-08-19T15:15:10:298+0400</REGDATE>
+			</Item>
+			<Item type="java.util.Map">
+				<LicenseOption type="java.util.Map">
+					<SystemPlatform type="java.lang.Integer">1</SystemPlatform>
+				</LicenseOption>
+				<MODULEHASH type="java.lang.String">-43:-72:-24:78:-47:5f:3e:-1d:39:15:-4e:-6a:-e:-2:-33:2:6c:-1f:-80:43</MODULEHASH>
+				<MODULENAME type="java.lang.String">AUDITWS</MODULENAME>
+				<REGDATE type="java.util.Date">2011-08-19T15:15:21:168+0400</REGDATE>
+			</Item>
+			<Item type="java.util.Map">
+				<LicenseOption type="java.util.Map">
+					<SystemPlatform type="java.lang.Integer">1</SystemPlatform>
+				</LicenseOption>
+				<MODULEHASH type="java.lang.String">-43:-72:-24:78:-47:5f:3e:-1d:39:15:-4e:-6a:-e:-2:-33:2:6c:-1f:-80:43</MODULEHASH>
+				<MODULENAME type="java.lang.String">OTPMANAGERWS</MODULENAME>
+				<REGDATE type="java.util.Date">2011-08-19T15:15:31:423+0400</REGDATE>
+			</Item>
+			<Item type="java.util.Map">
+				<LicenseOption type="java.util.Map">
+					<SystemPlatform type="java.lang.Integer">1</SystemPlatform>
+				</LicenseOption>
+				<MODULEHASH type="java.lang.String">-43:-72:-24:78:-47:5f:3e:-1d:39:15:-4e:-6a:-e:-2:-33:2:6c:-1f:-80:43</MODULEHASH>
+				<MODULENAME type="java.lang.String">VERSIONWS</MODULENAME>
+				<REGDATE type="java.util.Date">2011-08-19T15:15:14:143+0400</REGDATE>
+			</Item>
+			<Item type="java.util.Map">
+				<LicenseOption type="java.util.Map">
+					<SystemPlatform type="java.lang.Integer">1</SystemPlatform>
+				</LicenseOption>
+				<MODULEHASH type="java.lang.String">-43:-72:-24:78:-47:5f:3e:-1d:39:15:-4e:-6a:-e:-2:-33:2:6c:-1f:-80:43</MODULEHASH>
+				<MODULENAME type="java.lang.String">REGISTRYWS</MODULENAME>
+				<REGDATE type="java.util.Date">2011-08-19T15:15:29:626+0400</REGDATE>
+			</Item>
+			<Item type="java.util.Map">
+				<LicenseOption type="java.util.Map">
+					<SystemPlatform type="java.lang.Integer">1</SystemPlatform>
+				</LicenseOption>
+				<MODULEHASH type="java.lang.String">-43:-72:-24:78:-47:5f:3e:-1d:39:15:-4e:-6a:-e:-2:-33:2:6c:-1f:-80:43</MODULEHASH>
+				<MODULENAME type="java.lang.String">SMWS</MODULENAME>
+				<REGDATE type="java.util.Date">2011-08-19T15:15:13:296+0400</REGDATE>
+			</Item>
+			<Item type="java.util.Map">
+				<LicenseOption type="java.util.Map">
+					<SystemPlatform type="java.lang.Integer">1</SystemPlatform>
+				</LicenseOption>
+				<MODULEHASH type="java.lang.String">-43:-72:-24:78:-47:5f:3e:-1d:39:15:-4e:-6a:-e:-2:-33:2:6c:-1f:-80:43</MODULEHASH>
+				<MODULENAME type="java.lang.String">WEBSMSWS</MODULENAME>
+				<REGDATE type="java.util.Date">2011-08-19T15:15:18:809+0400</REGDATE>
+			</Item>
+			<Item type="java.util.Map">
+				<LicenseOption type="java.util.Map">
+					<SystemPlatform type="java.lang.Integer">1</SystemPlatform>
+				</LicenseOption>
+				<MODULEHASH type="java.lang.String">-43:-72:-24:78:-47:5f:3e:-1d:39:15:-4e:-6a:-e:-2:-33:2:6c:-1f:-80:43</MODULEHASH>
+				<MODULENAME type="java.lang.String">REPORTWS</MODULENAME>
+				<REGDATE type="java.util.Date">2011-08-19T15:15:22:999+0400</REGDATE>
+			</Item>
+			<Item type="java.util.Map">
+				<LicenseOption type="java.util.Map">
+					<FT_ClientRegistry type="java.lang.Integer">1</FT_ClientRegistry>
+				</LicenseOption>
+				<MODULEHASH type="java.lang.String">-7f:59:38:4b:-19:-4a:5:-3:53:e:72:2a:-20:-4:-5b:6f:4b:-17:-75:5f</MODULEHASH>
+				<MODULENAME type="java.lang.String">CRMWS</MODULENAME>
+				<REGDATE type="java.util.Date">2011-08-19T15:15:09:339+0400</REGDATE>
+			</Item>
+			<Item type="java.util.Map">
+				<LicenseOption type="java.util.Map">
+					<FT_Front_InsPos type="java.lang.Integer">1</FT_Front_InsPos>
+				</LicenseOption>
+				<MODULEHASH type="java.lang.String">-43:-72:-24:78:-47:5f:3e:-1d:39:15:-4e:-6a:-e:-2:-33:2:6c:-1f:-80:43</MODULEHASH>
+				<MODULENAME type="java.lang.String">INSPOSWS</MODULENAME>
+				<REGDATE type="java.util.Date">2011-08-19T15:15:22:144+0400</REGDATE>
+			</Item>
+		</ListItems>
+	</MODULES>
+	<OWNER type="java.lang.String">**DIASOFT</OWNER>
+	<PUBLIC_KEY type="java.lang.String">MIIBuDCCASwGByqGSM44BAEwggEfAoGBAP1/U4EddRIpUt9KnC7s5Of2EbdSPO9EAMMeP4C2USZpRV1AIlH7WT2NWPq/xfW6MPbLm1Vs14E7gB00b/JmYLdrmVClpJ+f6AR7ECLCT7up1/63xhv4O1fnxqimFQ8E+4P208UewwI1VBNaFpEy9nXzrith1yrv8iIDGZ3RSAHHAhUAl2BQjxUjC8yykrmCouuEC/BYHPUCgYEA9+GghdabPd7LvKtcNrhXuXmUr7v6OuqC+VdMCz0HgmdRWVeOutRZT+ZxBxCBgLRJFnEj6EwoFhO3zwkyjMim4TwWeotUfI0o4KOuHiuzpnWRbqN/C/ohNWLx+2J6ASQ7zKTxvqhRkImog9/hWuWfBpKLZl6Ae1UlZAFMO/7PSSoDgYUAAoGBALgUkG3Lq0qJw/10kk7ua90NFgTQXH5I33j6OuSofsgPebbVohhF9JisrXULgols/tHKGt4UKW+5eEbG1JUcjlZEzLNyHSoFoBceEMy6LN04xUKGYME9jD4Dyx74I3HT2WHgp3EFfRpp7vMwD2p/h4OehpVLTeIJF1+ry6UjLoQC</PUBLIC_KEY>
+	<PURPOSE type="java.lang.String"/>
+	<SECRET_KEY type="java.lang.String">wsPEzukMzQZWe8bUksLhoGOSLEoGx3GK&#xd;
+	</SECRET_KEY>
+	<SECRET_LENGTH type="java.lang.Integer">24</SECRET_LENGTH>
+	<SERIAL_NUMBER type="java.lang.String">D8E28E11-914D-445B-A038-6227138B3AE8</SERIAL_NUMBER>
+	<SIGNATURE type="java.lang.String">MCwCFHOXbszqiDAUFkfbeWt8/A9UfYlkAhQWpmcsNtMDhCQrbCgH5c5H5YJS/w==</SIGNATURE>
+</BODY>

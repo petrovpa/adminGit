@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<kladrFolderPath><!-- specify absolute path to the directory where KLADR db files is located. Ex. C:/CLADR/cladr/db/'--></kladrFolderPath>
+	<dateFormat>dd.MM.yyyy</dateFormat>
+</root>
