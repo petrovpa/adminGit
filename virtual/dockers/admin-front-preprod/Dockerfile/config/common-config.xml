@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<jndiDriver>java:/DataSourceEx</jndiDriver>
+	<!--jdbcDriver>
+		oracle.jdbc.driver.OracleDriver
+	</jdbcDriver>
+	<dataSourceUrl>
+		jdbc:oracle:thin:@10.2.55.5:1521:333
+	</dataSourceUrl>
+	<minCon>1</minCon>
+	<maxCon>10</maxCon>
+	<userName>111</userName>
+	<password>222</password-->
+        <!--password>eu2y85yxOV</password-->
+
+	<dateFormat>dd.MM.yyyy</dateFormat>
+	<corews>http://localhost:8080/corews/corews</corews>
+	<auditws>http://localhost:8080/auditws/auditws</auditws>
+	<reportws>http://localhost:8080/reportws/reportws?</reportws>
+	<service>http://localhost:8080</service>
+	<rootPath>/data/diasoft/SGIREFUND/METADATA/</rootPath>
+	<userFilePath>/data/diasoft/USERUPLOAD/</userFilePath>
+	<uploadPath>/data/diasoft/UPLOAD/</uploadPath>
+	<reportOutput>/data/diasoft/UPLOAD/</reportOutput>		
+	<defaultPageFlow>WELCOME</defaultPageFlow>
+	<isCachNotNeeded>1</isCachNotNeeded>
+	<maxPageSize>4</maxPageSize>
+	<maxSessionSize>10</maxSessionSize>
+	<maxChannelSize>50</maxChannelSize>
+	<allowMultipleLogin>true</allowMultipleLogin>
+	<useAudit>false</useAudit>
+	<product><!-- prefix of tables relationship (PREFIX_CLS2OBJ) --></product>
+	<fontPath>/data/diasoft/SGIREFUND/</fontPath>
+
+<!--	<CONSULAPPLISTSOURCE>http://10.2.55.22:8500/v1/health/service/lifefront-8080?passing=true</CONSULAPPLISTSOURCE>-->
+<!--	Имя образа lifefront-preprod подставляется jenkins`ом. 10.2.55.204 - ip консула-->
+	<CONSULAPPLISTSOURCE>http://10.2.55.204:8500/v1/health/service/lifefront-preprod-8080?passing=true</CONSULAPPLISTSOURCE>
+</root>

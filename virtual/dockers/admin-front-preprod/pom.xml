@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>Sevice</groupId>
+        <artifactId>sberfrontdocker</artifactId>
+        <version>${global.version}</version> 
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <groupId>Sevice</groupId>
+    <artifactId>front-admin-preprod</artifactId>
+    <version>${admin.version}</version>
+    <description>Generated docker</description>
+
+    <build>
+        <plugins>
+            <!-- copy template docker file -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.7</version>
+                <executions>
+                    <execution>
+                        <id>copy-metadata diasoft</id>
+                        <!-- here the phase you need -->
+                        <phase>integration-test</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/Dockerfile</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${basedir}/template</directory> 
+                                    <filtering>true</filtering>									
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+	
+    <profiles>
+        <profile>
+            <id>docker_build</id>
+            <build>
+                <plugins>
+                    <!-- build dockers images -->
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>1.2.1</version>
+                        <executions>
+                            <execution>
+                                <id>chmod +x</id>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <phase>integration-test</phase>
+                                <configuration>
+                                    <workingDirectory>${project.basedir}</workingDirectory>
+                                    <executable>chmod</executable>
+                                    <commandlineArgs>+x ${project.basedir}/Task.sh</commandlineArgs>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>build--dockers--integration system</id>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <phase>integration-test</phase>
+                                <configuration>
+                                    <environmentVariables>
+                                        <WORK_DIR>${project.build.directory}</WORK_DIR>
+                                        <DOCKER_FILE_LOCATION>${project.basedir}/Dockerfile</DOCKER_FILE_LOCATION>
+                                        <PROJECT_VERSION>${project.artifactId}:${project.version}</PROJECT_VERSION>
+                                    </environmentVariables>
+                                    <executable>${project.basedir}/Task.sh</executable>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>	
+            </build>
+        </profile>
+    </profiles>	
+</project>
