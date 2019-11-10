@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2015 rel. 3 (x64) (http://www.altova.com) by Valerij I. Lambreht (Sberbank Insurance) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://sberbankins.ru/schema/sbolvzr10" targetNamespace="http://sberbankins.ru/schema/sbolvzr10" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="Contract">
+		<xs:annotation>
+			<xs:documentation>Договор</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ID">
+					<xs:annotation>
+						<xs:documentation>Идентификатор транзакции банка</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1"/>
+							<xs:maxLength value="50"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="InsProduct">
+					<xs:annotation>
+						<xs:documentation>Страховой продукт</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="masterKeyType">
+							<xs:enumeration value="99003"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="InsProgram">
+					<xs:annotation>
+						<xs:documentation>Программа страхования</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="masterKeyType">
+							<xs:enumeration value="000001"/>
+							<xs:enumeration value="000002"/>
+							<xs:enumeration value="000003"/>
+							<xs:enumeration value="000004"/>
+							<xs:enumeration value="000005"/>
+							<xs:enumeration value="000006"/>
+							<xs:enumeration value="000007"/>
+							<xs:enumeration value="000008"/>
+							<xs:enumeration value="000009"/>
+							<xs:enumeration value="000010"/>
+							<xs:enumeration value="000011"/>
+							<xs:enumeration value="000012"/>
+							<xs:enumeration value="000013"/>
+							<xs:enumeration value="000014"/>
+							<xs:enumeration value="000015"/>
+							<xs:enumeration value="000016"/>
+							<xs:enumeration value="000017"/>
+							<xs:enumeration value="000018"/>
+							<xs:enumeration value="000019"/>
+							<xs:enumeration value="000020"/>
+							<xs:enumeration value="000021"/>
+							<xs:enumeration value="000022"/>
+							<xs:enumeration value="000023"/>
+							<xs:enumeration value="000024"/>
+							<xs:enumeration value="000025"/>
+							<xs:enumeration value="000026"/>
+							<xs:enumeration value="000027"/>
+							<xs:enumeration value="000028"/>
+							<xs:enumeration value="000029"/>
+							<xs:enumeration value="000030"/>
+							<xs:enumeration value="000031"/>
+							<xs:enumeration value="000032"/>
+							<xs:enumeration value="000033"/>
+							<xs:enumeration value="000034"/>
+							<xs:enumeration value="000035"/>
+							<xs:enumeration value="000036"/>
+							<xs:enumeration value="000037"/>
+							<xs:enumeration value="000038"/>
+							<xs:enumeration value="000039"/>
+							<xs:enumeration value="000040"/>
+							<xs:enumeration value="000041"/>
+							<xs:enumeration value="000042"/>
+							<xs:enumeration value="000043"/>
+							<xs:enumeration value="000044"/>
+							<xs:enumeration value="000045"/>
+							<xs:enumeration value="000046"/>
+							<xs:enumeration value="000047"/>
+							<xs:enumeration value="000048"/>
+							<xs:enumeration value="000049"/>
+							<xs:enumeration value="000050"/>
+							<xs:enumeration value="000051"/>
+							<xs:enumeration value="000052"/>
+							<xs:enumeration value="000053"/>
+							<xs:enumeration value="000054"/>
+							<xs:enumeration value="000055"/>
+							<xs:enumeration value="000056"/>
+							<xs:enumeration value="000057"/>
+							<xs:enumeration value="000058"/>
+							<xs:enumeration value="000059"/>
+							<xs:enumeration value="000060"/>
+                                                        <xs:enumeration value="000061"/>
+							<xs:enumeration value="000062"/>
+							<xs:enumeration value="000063"/>
+							<xs:enumeration value="000064"/>
+							<xs:enumeration value="000065"/>
+							<xs:enumeration value="000066"/>
+							<xs:enumeration value="000067"/>
+							<xs:enumeration value="000068"/>
+							<xs:enumeration value="000069"/>
+							<xs:enumeration value="000071"/>
+							<xs:enumeration value="000072"/>
+							<xs:enumeration value="000073"/>
+							<xs:enumeration value="000074"/>
+							<xs:enumeration value="000075"/>
+							<xs:enumeration value="000076"/>
+							<xs:enumeration value="000077"/>
+							<xs:enumeration value="000078"/>
+							<xs:enumeration value="000079"/>
+							<xs:enumeration value="000080"/>
+							<xs:enumeration value="000081"/>
+							<xs:enumeration value="000082"/>
+							<xs:enumeration value="000083"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="DateSigning" type="xs:dateTime">
+					<xs:annotation>
+						<xs:documentation>Дата подписания договора</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="DateBeginTravel" type="xs:date">
+					<xs:annotation>
+						<xs:documentation>Дата начала поездки</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Insurer" type="PhysicalType">
+					<xs:annotation>
+						<xs:documentation>Страхователь</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Members" type="MembersType">
+					<xs:annotation>
+						<xs:documentation>Список застрахованных</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="masterKeyType">
+		<xs:annotation>
+			<xs:documentation>Тип для MasterKey поля</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="255"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="PhysicalType">
+		<xs:annotation>
+			<xs:documentation>Тип для физического лица</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Contry">
+				<xs:annotation>
+					<xs:documentation>Гражданство</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="masterKeyType">
+						<xs:enumeration value="643"/>
+						<xs:enumeration value="000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Surname" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Фамилия</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Имя</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Patronymic" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Отчество</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DateOfBirth" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>Дата рождения</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Sex">
+				<xs:annotation>
+					<xs:documentation>Пол</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="male"/>
+						<xs:enumeration value="female"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="INN" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Идентификационный номер налогоплательщика</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:length value="12"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Email" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Электронная почта </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MobilePhone" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Мобильный телефон</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Document" type="DocumentType">
+				<xs:annotation>
+					<xs:documentation>Удостоверение личности</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DocumentType">
+		<xs:annotation>
+			<xs:documentation>Тип для документ</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Kind">
+				<xs:annotation>
+					<xs:documentation>Вид документа</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="masterKeyType">
+						<xs:enumeration value="21"/>
+						<xs:enumeration value="10"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Series" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Серия документа</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Number">
+				<xs:annotation>
+					<xs:documentation>Номер документа</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="DateOfIssue" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>Дата выдачи</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Code" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Код подразделения</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Authority" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Кем выдан</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MembersType">
+		<xs:annotation>
+			<xs:documentation>Тип для лиц по договору</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Member" type="MemberType" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Застрахованный</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MemberType">
+		<xs:annotation>
+			<xs:documentation>Тип для лица по договору</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Surname" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Фамилия</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Имя</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DateOfBirth" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>Дата рождения</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

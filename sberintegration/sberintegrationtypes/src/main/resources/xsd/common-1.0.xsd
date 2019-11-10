@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sberc="http://sberbankins.ru/schema/common10" targetNamespace="http://sberbankins.ru/schema/common10" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xs:simpleType name="masterKeyType">        
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+        </xs:restriction>        
+    </xs:simpleType>
+</xs:schema>
