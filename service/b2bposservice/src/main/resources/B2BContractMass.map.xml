@@ -1,0 +1,1108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+    <query name="dsB2BContractMassCreate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BContractMass" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+INSERT INTO B2B_CONTR (
+CANCELDATE,
+CONTRID,
+CONTRNDNUMBER,
+CONTRNODEID,
+CONTRNUMBER,
+CONTRPOLNUM,
+CONTRPOLSER,
+CURRENCYRATE,
+DOCUMENTDATE,
+DURATION,
+EXTERNALID,
+FILLPROGRESS,
+FINISHDATE,
+INSAMCURRENCYID,
+INSAMVALUE,
+INSREGIONCODE,
+INSURERID,
+INSURERREPID,
+LINK,
+NOTE,
+NUMMETHODID,
+PAYVARID,
+PREMCURRENCYID,
+PREMDELTA,
+PREMVALUE,
+PRINTDOCEMAILSEND,
+PRINTDOCFORMED,
+PRODPROGID,
+PRODVERID,
+REFERRAL,
+REFERRALBACK,
+REQUESTQUEUEID,
+SALESOFFICE,
+SELLERID,
+SESSIONID,
+SIGNDATE,
+SMSCODE,
+STARTDATE,
+TERMID,
+VERNUMBER,
+STATEID
+)
+            #foreach($row in $rows)
+SELECT 
+#bind($row.CANCELDATE 'FLOAT'),
+#bind($row.CONTRID 'NUMERIC'),
+#bind($row.CONTRNDNUMBER 'VARCHAR'),
+#bind($row.CONTRNODEID 'NUMERIC'),
+#bind($row.CONTRNUMBER 'VARCHAR'),
+#bind($row.CONTRPOLNUM 'VARCHAR'),
+#bind($row.CONTRPOLSER 'VARCHAR'),
+#bind($row.CURRENCYRATE 'FLOAT'),
+#bind($row.DOCUMENTDATE 'FLOAT'),
+#bind($row.DURATION 'NUMERIC'),
+#bind($row.EXTERNALID 'VARCHAR'),
+#bind($row.FILLPROGRESS 'VARCHAR'),
+#bind($row.FINISHDATE 'FLOAT'),
+#bind($row.INSAMCURRENCYID 'NUMERIC'),
+#bind($row.INSAMVALUE 'NUMERIC'),
+#bind($row.INSREGIONCODE 'VARCHAR'),
+#bind($row.INSURERID 'NUMERIC'),
+#bind($row.INSURERREPID 'NUMERIC'),
+#bind($row.LINK 'VARCHAR'),
+#bind($row.NOTE 'VARCHAR'),
+#bind($row.NUMMETHODID 'NUMERIC'),
+#bind($row.PAYVARID 'NUMERIC'),
+#bind($row.PREMCURRENCYID 'NUMERIC'),
+#bind($row.PREMDELTA 'NUMERIC'),
+#bind($row.PREMVALUE 'NUMERIC'),
+#bind($row.PRINTDOCEMAILSEND 'NUMERIC'),
+#bind($row.PRINTDOCFORMED 'NUMERIC'),
+#bind($row.PRODPROGID 'NUMERIC'),
+#bind($row.PRODVERID 'NUMERIC'),
+#bind($row.REFERRAL 'VARCHAR'),
+#bind($row.REFERRALBACK 'VARCHAR'),
+#bind($row.REQUESTQUEUEID 'NUMERIC'),
+#bind($row.SALESOFFICE 'VARCHAR'),
+#bind($row.SELLERID 'NUMERIC'),
+#bind($row.SESSIONID 'VARCHAR'),
+#bind($row.SIGNDATE 'FLOAT'),
+#bind($row.SMSCODE 'VARCHAR'),
+#bind($row.STARTDATE 'FLOAT'),
+#bind($row.TERMID 'NUMERIC'),
+#bind($row.VERNUMBER 'NUMERIC'),
+#bind($row.STATEID 'NUMERIC')
+              FROM dual
+              #if($velocityCount < $totalCount)
+                UNION ALL
+#end 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BContractNodeMassCreate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BContractMass" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+INSERT INTO B2B_CONTRNODE (
+CONTRID,
+CONTRNODEID,
+EXTERNALID,
+LASTVERNUMBER,
+RVERSION 
+)             
+            #foreach($row in $rows)
+SELECT 
+#bind($row.CONTRID 'NUMERIC'),
+#bind($row.CONTRNODEID 'NUMERIC'),
+#bind($row.EXTERNALID 'VARCHAR'),
+#bind($row.LASTVERNUMBER 'NUMERIC'),
+#bind($row.RVERSION 'NUMERIC')
+              FROM dual
+              #if($velocityCount < $totalCount)
+                UNION ALL
+#end 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BContractExtensionMassCreate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BContractMass" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+INSERT INTO B2B_CONTREXT (
+CONTREXTID,
+CONTRID,
+DOUBLEFIELD00,
+DOUBLEFIELD01,
+DOUBLEFIELD02,
+DOUBLEFIELD03,
+DOUBLEFIELD04,
+DOUBLEFIELD05,
+DOUBLEFIELD06,
+DOUBLEFIELD07,
+DOUBLEFIELD08,
+DOUBLEFIELD09,
+DOUBLEFIELD10,
+DOUBLEFIELD11,
+DOUBLEFIELD12,
+DOUBLEFIELD13,
+DOUBLEFIELD14,
+DOUBLEFIELD15,
+DOUBLEFIELD16,
+DOUBLEFIELD17,
+DOUBLEFIELD18,
+DOUBLEFIELD19,
+DOUBLEFIELD20,
+DOUBLEFIELD21,
+DOUBLEFIELD22,
+DOUBLEFIELD23,
+DOUBLEFIELD24,
+DOUBLEFIELD25,
+DOUBLEFIELD26,
+DOUBLEFIELD27,
+DOUBLEFIELD28,
+DOUBLEFIELD29,
+DOUBLEFIELD30,
+DOUBLEFIELD31,
+DOUBLEFIELD32,
+DOUBLEFIELD33,
+DOUBLEFIELD34,
+DOUBLEFIELD35,
+DOUBLEFIELD36,
+DOUBLEFIELD37,
+DOUBLEFIELD38,
+DOUBLEFIELD39,
+DOUBLEFIELD40,
+HBDATAVERID,
+LONGFIELD00,
+LONGFIELD01,
+LONGFIELD02,
+LONGFIELD03,
+LONGFIELD04,
+LONGFIELD05,
+LONGFIELD06,
+LONGFIELD07,
+LONGFIELD08,
+LONGFIELD09,
+LONGFIELD10,
+LONGFIELD11,
+LONGFIELD12,
+LONGFIELD13,
+LONGFIELD14,
+LONGFIELD15,
+LONGFIELD16,
+LONGFIELD17,
+LONGFIELD18,
+LONGFIELD19,
+LONGFIELD20,
+LONGFIELD21,
+LONGFIELD22,
+LONGFIELD23,
+LONGFIELD24,
+LONGFIELD25,
+LONGFIELD26,
+LONGFIELD27,
+LONGFIELD28,
+LONGFIELD29,
+LONGFIELD30,
+STRINGFIELD00,
+STRINGFIELD01,
+STRINGFIELD02,
+STRINGFIELD03,
+STRINGFIELD04,
+STRINGFIELD05,
+STRINGFIELD06,
+STRINGFIELD07,
+STRINGFIELD08,
+STRINGFIELD09,
+STRINGFIELD10,
+STRINGFIELD11,
+STRINGFIELD12,
+STRINGFIELD13,
+STRINGFIELD14,
+STRINGFIELD15,
+STRINGFIELD16,
+STRINGFIELD17,
+STRINGFIELD18,
+STRINGFIELD19,
+STRINGFIELD20 
+) 
+            #foreach($row in $rows)
+SELECT 
+#bind($row.CONTREXTID 'NUMERIC'),
+#bind($row.CONTRID 'NUMERIC'),
+#bind($row.DOUBLEFIELD00 'NUMERIC'),
+#bind($row.DOUBLEFIELD01 'NUMERIC'),
+#bind($row.DOUBLEFIELD02 'NUMERIC'),
+#bind($row.DOUBLEFIELD03 'NUMERIC'),
+#bind($row.DOUBLEFIELD04 'NUMERIC'),
+#bind($row.DOUBLEFIELD05 'NUMERIC'),
+#bind($row.DOUBLEFIELD06 'NUMERIC'),
+#bind($row.DOUBLEFIELD07 'NUMERIC'),
+#bind($row.DOUBLEFIELD08 'NUMERIC'),
+#bind($row.DOUBLEFIELD09 'NUMERIC'),
+#bind($row.DOUBLEFIELD10 'NUMERIC'),
+#bind($row.DOUBLEFIELD11 'NUMERIC'),
+#bind($row.DOUBLEFIELD12 'NUMERIC'),
+#bind($row.DOUBLEFIELD13 'NUMERIC'),
+#bind($row.DOUBLEFIELD14 'NUMERIC'),
+#bind($row.DOUBLEFIELD15 'NUMERIC'),
+#bind($row.DOUBLEFIELD16 'NUMERIC'),
+#bind($row.DOUBLEFIELD17 'NUMERIC'),
+#bind($row.DOUBLEFIELD18 'NUMERIC'),
+#bind($row.DOUBLEFIELD19 'NUMERIC'),
+#bind($row.DOUBLEFIELD20 'NUMERIC'),
+#bind($row.DOUBLEFIELD21 'NUMERIC'),
+#bind($row.DOUBLEFIELD22 'NUMERIC'),
+#bind($row.DOUBLEFIELD23 'NUMERIC'),
+#bind($row.DOUBLEFIELD24 'NUMERIC'),
+#bind($row.DOUBLEFIELD25 'NUMERIC'),
+#bind($row.DOUBLEFIELD26 'NUMERIC'),
+#bind($row.DOUBLEFIELD27 'NUMERIC'),
+#bind($row.DOUBLEFIELD28 'NUMERIC'),
+#bind($row.DOUBLEFIELD29 'NUMERIC'),
+#bind($row.DOUBLEFIELD30 'NUMERIC'),
+#bind($row.DOUBLEFIELD31 'NUMERIC'),
+#bind($row.DOUBLEFIELD32 'NUMERIC'),
+#bind($row.DOUBLEFIELD33 'NUMERIC'),
+#bind($row.DOUBLEFIELD34 'NUMERIC'),
+#bind($row.DOUBLEFIELD35 'NUMERIC'),
+#bind($row.DOUBLEFIELD36 'NUMERIC'),
+#bind($row.DOUBLEFIELD37 'NUMERIC'),
+#bind($row.DOUBLEFIELD38 'NUMERIC'),
+#bind($row.DOUBLEFIELD39 'NUMERIC'),
+#bind($row.DOUBLEFIELD40 'NUMERIC'),
+#bind($row.HBDATAVERID 'NUMERIC'),
+#bind($row.LONGFIELD00 'NUMERIC'),
+#bind($row.LONGFIELD01 'NUMERIC'),
+#bind($row.LONGFIELD02 'NUMERIC'),
+#bind($row.LONGFIELD03 'NUMERIC'),
+#bind($row.LONGFIELD04 'NUMERIC'),
+#bind($row.LONGFIELD05 'NUMERIC'),
+#bind($row.LONGFIELD06 'NUMERIC'),
+#bind($row.LONGFIELD07 'NUMERIC'),
+#bind($row.LONGFIELD08 'NUMERIC'),
+#bind($row.LONGFIELD09 'NUMERIC'),
+#bind($row.LONGFIELD10 'NUMERIC'),
+#bind($row.LONGFIELD11 'NUMERIC'),
+#bind($row.LONGFIELD12 'NUMERIC'),
+#bind($row.LONGFIELD13 'NUMERIC'),
+#bind($row.LONGFIELD14 'NUMERIC'),
+#bind($row.LONGFIELD15 'NUMERIC'),
+#bind($row.LONGFIELD16 'NUMERIC'),
+#bind($row.LONGFIELD17 'NUMERIC'),
+#bind($row.LONGFIELD18 'NUMERIC'),
+#bind($row.LONGFIELD19 'NUMERIC'),
+#bind($row.LONGFIELD20 'NUMERIC'),
+#bind($row.LONGFIELD21 'NUMERIC'),
+#bind($row.LONGFIELD22 'NUMERIC'),
+#bind($row.LONGFIELD23 'NUMERIC'),
+#bind($row.LONGFIELD24 'NUMERIC'),
+#bind($row.LONGFIELD25 'NUMERIC'),
+#bind($row.LONGFIELD26 'NUMERIC'),
+#bind($row.LONGFIELD27 'NUMERIC'),
+#bind($row.LONGFIELD28 'NUMERIC'),
+#bind($row.LONGFIELD29 'NUMERIC'),
+#bind($row.LONGFIELD30 'NUMERIC'),
+#bind($row.STRINGFIELD00 'VARCHAR'),
+#bind($row.STRINGFIELD01 'VARCHAR'),
+#bind($row.STRINGFIELD02 'VARCHAR'),
+#bind($row.STRINGFIELD03 'VARCHAR'),
+#bind($row.STRINGFIELD04 'VARCHAR'),
+#bind($row.STRINGFIELD05 'VARCHAR'),
+#bind($row.STRINGFIELD06 'VARCHAR'),
+#bind($row.STRINGFIELD07 'VARCHAR'),
+#bind($row.STRINGFIELD08 'VARCHAR'),
+#bind($row.STRINGFIELD09 'VARCHAR'),
+#bind($row.STRINGFIELD10 'VARCHAR'),
+#bind($row.STRINGFIELD11 'VARCHAR'),
+#bind($row.STRINGFIELD12 'VARCHAR'),
+#bind($row.STRINGFIELD13 'VARCHAR'),
+#bind($row.STRINGFIELD14 'VARCHAR'),
+#bind($row.STRINGFIELD15 'VARCHAR'),
+#bind($row.STRINGFIELD16 'VARCHAR'),
+#bind($row.STRINGFIELD17 'VARCHAR'),
+#bind($row.STRINGFIELD18 'VARCHAR'),
+#bind($row.STRINGFIELD19 'VARCHAR'),
+#bind($row.STRINGFIELD20 'VARCHAR')
+              FROM dual
+              #if($velocityCount < $totalCount)
+                UNION ALL
+#end 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BContractObjectMassCreate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BContractMass" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+INSERT INTO B2B_CONTROBJ (
+CANCELDATE,
+CONTRID,
+CONTROBJID,
+CURRENCYID,
+DURATION,
+FINISHDATE,
+INSAMCURRENCYID,
+INSAMVALUE,
+MAINCONTROBJCALCID,
+PAYPREMVALUE,
+PREMCURRENCYID,
+PREMVALUE,
+STARTDATE 
+) 
+            #foreach($row in $rows)
+              SELECT
+#bind($row.CANCELDATE 'FLOAT'),
+#bind($row.CONTRID 'NUMERIC'),
+#bind($row.CONTROBJID 'NUMERIC'),
+#bind($row.CURRENCYID 'NUMERIC'),
+#bind($row.DURATION 'NUMERIC'),
+#bind($row.FINISHDATE 'FLOAT'),
+#bind($row.INSAMCURRENCYID 'NUMERIC'),
+#bind($row.INSAMVALUE 'NUMERIC'),
+#bind($row.MAINCONTROBJCALCID 'NUMERIC'),
+#bind($row.PAYPREMVALUE 'NUMERIC'),
+#bind($row.PREMCURRENCYID 'NUMERIC'),
+#bind($row.PREMVALUE 'NUMERIC'),
+#bind($row.STARTDATE 'FLOAT')
+              FROM dual
+              #if($velocityCount < $totalCount)
+                UNION ALL
+              #end
+            #end
+            ]]>
+        </sql>
+    </query>
+    <query name="dsB2BContractRiskMassCreate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BContractMass" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+INSERT INTO B2B_CONTRRISK (
+CANCELDATE,
+CONTROBJID,
+CONTRRISKID,
+CURRENCYID,
+DURATION,
+EXTERNALID,
+FINISHDATE,
+INSAMCURRENCYID,
+INSAMVALUE,
+ISMANUAL,
+PAYPREMVALUE,
+PREMCURRENCYID,
+PREMVALUE,
+PRODRISKID,
+PRODSTRUCTID,
+STARTDATE,
+TARIFFVALUE 
+) 
+            #foreach($row in $rows)
+                SELECT 
+#bind($row.CANCELDATE 'FLOAT'),
+#bind($row.CONTROBJID 'NUMERIC'),
+#bind($row.CONTRRISKID 'NUMERIC'),
+#bind($row.CURRENCYID 'NUMERIC'),
+#bind($row.DURATION 'NUMERIC'),
+#bind($row.EXTERNALID 'VARCHAR'),
+#bind($row.FINISHDATE 'FLOAT'),
+#bind($row.INSAMCURRENCYID 'NUMERIC'),
+#bind($row.INSAMVALUE 'NUMERIC'),
+#bind($row.ISMANUAL 'INTEGER'),
+#bind($row.PAYPREMVALUE 'NUMERIC'),
+#bind($row.PREMCURRENCYID 'NUMERIC'),
+#bind($row.PREMVALUE 'NUMERIC'),
+#bind($row.PRODRISKID 'NUMERIC'),
+#bind($row.PRODSTRUCTID 'NUMERIC'),
+#bind($row.STARTDATE 'FLOAT'),
+#bind($row.TARIFFVALUE 'NUMERIC')
+              FROM dual
+              #if($velocityCount < $totalCount)
+                UNION ALL
+                #end 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BBeneficiaryMassCreate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BContractMass" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+INSERT INTO B2B_BENEFICIARY (
+BENEFICIARYID,
+CONTRID,
+INSCOVERID,
+MEMBERID,
+PART,
+PARTICIPANTID,
+TYPEID 
+)
+            #foreach($row in $rows)
+SELECT 
+#bind($row.BENEFICIARYID 'NUMERIC'),
+#bind($row.CONTRID 'NUMERIC'),
+#bind($row.INSCOVERID 'NUMERIC'),
+#bind($row.MEMBERID 'NUMERIC'),
+#bind($row.PART 'NUMERIC'),
+#bind($row.PARTICIPANTID 'NUMERIC'),
+#bind($row.TYPEID 'NUMERIC')
+              FROM dual
+              #if($velocityCount < $totalCount)
+                UNION ALL
+#end 
+                #end 
+            ]]>
+        </sql>
+    </query>
+    <query name="dsB2BMemberMassCreate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BContractMass" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+INSERT INTO B2B_MEMBER (
+BIRTHDATE,
+CONTRID,
+DOUBLEFIELD00,
+DOUBLEFIELD01,
+DOUBLEFIELD02,
+DOUBLEFIELD03,
+DOUBLEFIELD04,
+DOUBLEFIELD05,
+FIO,
+FIO_ENG,
+HBDATAVERID,
+LONGFIELD00,
+LONGFIELD01,
+LONGFIELD02,
+LONGFIELD03,
+LONGFIELD04,
+LONGFIELD05,
+MEMBERID,
+MIDDLENAME,
+NAME,
+NAME_ENG,
+PARTICIPANTID,
+STRINGFIELD00,
+STRINGFIELD01,
+STRINGFIELD02,
+STRINGFIELD03,
+STRINGFIELD04,
+STRINGFIELD05,
+SURNAME,
+SURNAME_ENG,
+TYPESYSNAME 
+)
+            #foreach($row in $rows)
+              SELECT
+#bind($row.BIRTHDATE 'FLOAT'),
+#bind($row.CONTRID 'NUMERIC'),
+#bind($row.DOUBLEFIELD00 'NUMERIC'),
+#bind($row.DOUBLEFIELD01 'NUMERIC'),
+#bind($row.DOUBLEFIELD02 'NUMERIC'),
+#bind($row.DOUBLEFIELD03 'NUMERIC'),
+#bind($row.DOUBLEFIELD04 'NUMERIC'),
+#bind($row.DOUBLEFIELD05 'NUMERIC'),
+#bind($row.FIO 'VARCHAR'),
+#bind($row.FIO_ENG 'VARCHAR'),
+#bind($row.HBDATAVERID 'NUMERIC'),
+#bind($row.LONGFIELD00 'NUMERIC'),
+#bind($row.LONGFIELD01 'NUMERIC'),
+#bind($row.LONGFIELD02 'NUMERIC'),
+#bind($row.LONGFIELD03 'NUMERIC'),
+#bind($row.LONGFIELD04 'NUMERIC'),
+#bind($row.LONGFIELD05 'NUMERIC'),
+#bind($row.MEMBERID 'NUMERIC'),
+#bind($row.MIDDLENAME 'VARCHAR'),
+#bind($row.NAME 'VARCHAR'),
+#bind($row.NAME_ENG 'VARCHAR'),
+#bind($row.PARTICIPANTID 'NUMERIC'),
+#bind($row.STRINGFIELD00 'VARCHAR'),
+#bind($row.STRINGFIELD01 'VARCHAR'),
+#bind($row.STRINGFIELD02 'VARCHAR'),
+#bind($row.STRINGFIELD03 'VARCHAR'),
+#bind($row.STRINGFIELD04 'VARCHAR'),
+#bind($row.STRINGFIELD05 'VARCHAR'),
+#bind($row.SURNAME 'VARCHAR'),
+#bind($row.SURNAME_ENG 'VARCHAR'),
+#bind($row.TYPESYSNAME 'VARCHAR')
+              FROM dual
+              #if($velocityCount < $totalCount)
+                UNION ALL
+              #end
+            #end
+            ]]>
+        </sql>
+    </query>
+    <query name="dsB2BPaymentMassCreate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BContractMass" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+INSERT INTO B2B_PAY (
+ADDAGRID,
+AMOUNT,
+CONTRID,
+CONTROBJID,
+CONTRRISKID,
+EXTERNALID,
+ORDERNUM,
+PAYDATE,
+PAYID,
+STARTDATE 
+)
+            #foreach($row in $rows)
+              SELECT
+#bind($row.ADDAGRID 'NUMERIC'),
+#bind($row.AMOUNT 'NUMERIC'),
+#bind($row.CONTRID 'NUMERIC'),
+#bind($row.CONTROBJID 'NUMERIC'),
+#bind($row.CONTRRISKID 'NUMERIC'),
+#bind($row.EXTERNALID 'VARCHAR'),
+#bind($row.ORDERNUM 'NUMERIC'),
+#bind($row.PAYDATE 'FLOAT'),
+#bind($row.PAYID 'NUMERIC'),
+#bind($row.STARTDATE 'FLOAT')
+              FROM dual
+              #if($velocityCount < $totalCount)
+                UNION ALL
+              #end
+            #end
+            ]]>
+        </sql>
+    </query>
+    <query name="dsB2BPaymentFactMassCreate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BContractMass" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+INSERT INTO B2B_PAYFACT (
+AMCURRENCYID,
+AMVALUE,
+AMVALUERUB,
+CONTRNODEID,
+NAME,
+NOTE,
+PAYFACTDATE,
+PAYFACTID,
+PAYFACTNUMBER,
+PAYFACTTYPE,
+SERIES 
+)
+            #foreach($row in $rows)
+              SELECT
+#bind($row.AMCURRENCYID 'NUMERIC'),
+#bind($row.AMVALUE 'NUMERIC'),
+#bind($row.AMVALUERUB 'NUMERIC'),
+#bind($row.CONTRNODEID 'NUMERIC'),
+#bind($row.NAME 'VARCHAR'),
+#bind($row.NOTE 'VARCHAR'),
+#bind($row.PAYFACTDATE 'FLOAT'),
+#bind($row.PAYFACTID 'NUMERIC'),
+#bind($row.PAYFACTNUMBER 'VARCHAR'),
+#bind($row.PAYFACTTYPE 'NUMERIC'),
+#bind($row.SERIES 'VARCHAR')
+              FROM dual
+              #if($velocityCount < $totalCount)
+                UNION ALL
+              #end
+            #end
+            ]]>
+        </sql>
+    </query>
+    <query name="dsB2BContractSectionMassCreate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BContractMass" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+INSERT INTO B2B_CONTRSECTION (
+CONTRID,
+CONTRSECTIONID,
+FINISHDATE,
+INSAMCURRENCYID,
+INSAMVALUE,
+PREMCURRENCYID,
+PREMVALUE,
+PRODSTRUCTID,
+STARTDATE 
+)
+            #foreach($row in $rows)
+              SELECT
+#bind($row.CONTRID 'NUMERIC'),
+#bind($row.CONTRSECTIONID 'NUMERIC'),
+#bind($row.FINISHDATE 'FLOAT'),
+#bind($row.INSAMCURRENCYID 'NUMERIC'),
+              #bind($row.INSAMVALUE 'NUMERIC'),
+#bind($row.PREMCURRENCYID 'NUMERIC'),
+#bind($row.PREMVALUE 'NUMERIC'),
+#bind($row.PRODSTRUCTID 'NUMERIC'),
+#bind($row.STARTDATE 'FLOAT')
+              FROM dual
+              #if($velocityCount < $totalCount)
+                UNION ALL
+              #end
+            #end
+            ]]>
+        </sql>
+    </query>
+    <query name="dsB2BInsuranceObjectGroupMassCreate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BContractMass" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+INSERT INTO B2B_INSOBJGROUP (
+CONTRID,
+CONTRSECTIONID,
+DOUBLEFIELD00,
+DOUBLEFIELD01,
+DOUBLEFIELD02,
+DOUBLEFIELD03,
+DOUBLEFIELD04,
+DOUBLEFIELD05,
+DOUBLEFIELD06,
+DOUBLEFIELD07,
+DOUBLEFIELD08,
+DOUBLEFIELD09,
+DOUBLEFIELD10,
+DOUBLEFIELD11,
+DOUBLEFIELD12,
+DOUBLEFIELD13,
+DOUBLEFIELD14,
+DOUBLEFIELD15,
+DOUBLEFIELD16,
+DOUBLEFIELD17,
+DOUBLEFIELD18,
+DOUBLEFIELD19,
+DOUBLEFIELD20,
+DOUBLEFIELD21,
+DOUBLEFIELD22,
+DOUBLEFIELD23,
+DOUBLEFIELD24,
+DOUBLEFIELD25,
+DOUBLEFIELD26,
+DOUBLEFIELD27,
+DOUBLEFIELD28,
+DOUBLEFIELD29,
+DOUBLEFIELD30,
+DOUBLEFIELD31,
+DOUBLEFIELD32,
+DOUBLEFIELD33,
+DOUBLEFIELD34,
+DOUBLEFIELD35,
+DOUBLEFIELD36,
+DOUBLEFIELD37,
+DOUBLEFIELD38,
+DOUBLEFIELD39,
+DOUBLEFIELD40,
+HBDATAVERID,
+INSOBJGROUPID,
+LONGFIELD00,
+LONGFIELD01,
+LONGFIELD02,
+LONGFIELD03,
+LONGFIELD04,
+LONGFIELD05,
+LONGFIELD06,
+LONGFIELD07,
+LONGFIELD08,
+LONGFIELD09,
+LONGFIELD10,
+LONGFIELD11,
+LONGFIELD12,
+LONGFIELD13,
+LONGFIELD14,
+LONGFIELD15,
+LONGFIELD16,
+LONGFIELD17,
+LONGFIELD18,
+LONGFIELD19,
+LONGFIELD20,
+LONGFIELD21,
+LONGFIELD22,
+LONGFIELD23,
+LONGFIELD24,
+LONGFIELD25,
+LONGFIELD26,
+LONGFIELD27,
+LONGFIELD28,
+LONGFIELD29,
+LONGFIELD30,
+LONGFIELD31,
+LONGFIELD32,
+LONGFIELD33,
+LONGFIELD34,
+LONGFIELD35,
+LONGFIELD36,
+LONGFIELD37,
+LONGFIELD38,
+LONGFIELD39,
+LONGFIELD40,
+PRODSTRUCTID,
+STRINGFIELD00,
+STRINGFIELD01,
+STRINGFIELD02,
+STRINGFIELD03,
+STRINGFIELD04,
+STRINGFIELD05,
+STRINGFIELD06,
+STRINGFIELD07,
+STRINGFIELD08,
+STRINGFIELD09,
+STRINGFIELD10,
+STRINGFIELD11,
+STRINGFIELD12,
+STRINGFIELD13,
+STRINGFIELD14,
+STRINGFIELD15,
+STRINGFIELD16,
+STRINGFIELD17,
+STRINGFIELD18,
+STRINGFIELD19,
+STRINGFIELD20 
+)
+            #foreach($row in $rows)
+              SELECT
+#bind($row.CONTRID 'NUMERIC'),
+#bind($row.CONTRSECTIONID 'NUMERIC'),
+#bind($row.DOUBLEFIELD00 'NUMERIC'),
+#bind($row.DOUBLEFIELD01 'NUMERIC'),
+#bind($row.DOUBLEFIELD02 'NUMERIC'),
+#bind($row.DOUBLEFIELD03 'NUMERIC'),
+#bind($row.DOUBLEFIELD04 'NUMERIC'),
+#bind($row.DOUBLEFIELD05 'NUMERIC'),
+#bind($row.DOUBLEFIELD06 'NUMERIC'),
+#bind($row.DOUBLEFIELD07 'NUMERIC'),
+#bind($row.DOUBLEFIELD08 'NUMERIC'),
+#bind($row.DOUBLEFIELD09 'NUMERIC'),
+#bind($row.DOUBLEFIELD10 'NUMERIC'),
+#bind($row.DOUBLEFIELD11 'NUMERIC'),
+#bind($row.DOUBLEFIELD12 'NUMERIC'),
+#bind($row.DOUBLEFIELD13 'NUMERIC'),
+#bind($row.DOUBLEFIELD14 'NUMERIC'),
+#bind($row.DOUBLEFIELD15 'NUMERIC'),
+#bind($row.DOUBLEFIELD16 'NUMERIC'),
+#bind($row.DOUBLEFIELD17 'NUMERIC'),
+#bind($row.DOUBLEFIELD18 'NUMERIC'),
+#bind($row.DOUBLEFIELD19 'NUMERIC'),
+#bind($row.DOUBLEFIELD20 'NUMERIC'),
+#bind($row.DOUBLEFIELD21 'NUMERIC'),
+#bind($row.DOUBLEFIELD22 'NUMERIC'),
+#bind($row.DOUBLEFIELD23 'NUMERIC'),
+#bind($row.DOUBLEFIELD24 'NUMERIC'),
+#bind($row.DOUBLEFIELD25 'NUMERIC'),
+#bind($row.DOUBLEFIELD26 'NUMERIC'),
+#bind($row.DOUBLEFIELD27 'NUMERIC'),
+#bind($row.DOUBLEFIELD28 'NUMERIC'),
+#bind($row.DOUBLEFIELD29 'NUMERIC'),
+#bind($row.DOUBLEFIELD30 'NUMERIC'),
+#bind($row.DOUBLEFIELD31 'NUMERIC'),
+#bind($row.DOUBLEFIELD32 'NUMERIC'),
+#bind($row.DOUBLEFIELD33 'NUMERIC'),
+#bind($row.DOUBLEFIELD34 'NUMERIC'),
+#bind($row.DOUBLEFIELD35 'NUMERIC'),
+#bind($row.DOUBLEFIELD36 'NUMERIC'),
+#bind($row.DOUBLEFIELD37 'NUMERIC'),
+#bind($row.DOUBLEFIELD38 'NUMERIC'),
+#bind($row.DOUBLEFIELD39 'NUMERIC'),
+#bind($row.DOUBLEFIELD40 'NUMERIC'),
+#bind($row.HBDATAVERID 'NUMERIC'),
+#bind($row.INSOBJGROUPID 'NUMERIC'),
+#bind($row.LONGFIELD00 'NUMERIC'),
+#bind($row.LONGFIELD01 'NUMERIC'),
+#bind($row.LONGFIELD02 'NUMERIC'),
+#bind($row.LONGFIELD03 'NUMERIC'),
+#bind($row.LONGFIELD04 'NUMERIC'),
+#bind($row.LONGFIELD05 'NUMERIC'),
+#bind($row.LONGFIELD06 'NUMERIC'),
+#bind($row.LONGFIELD07 'NUMERIC'),
+#bind($row.LONGFIELD08 'NUMERIC'),
+#bind($row.LONGFIELD09 'NUMERIC'),
+#bind($row.LONGFIELD10 'NUMERIC'),
+#bind($row.LONGFIELD11 'NUMERIC'),
+#bind($row.LONGFIELD12 'NUMERIC'),
+#bind($row.LONGFIELD13 'NUMERIC'),
+#bind($row.LONGFIELD14 'NUMERIC'),
+#bind($row.LONGFIELD15 'NUMERIC'),
+#bind($row.LONGFIELD16 'NUMERIC'),
+#bind($row.LONGFIELD17 'NUMERIC'),
+#bind($row.LONGFIELD18 'NUMERIC'),
+#bind($row.LONGFIELD19 'NUMERIC'),
+#bind($row.LONGFIELD20 'NUMERIC'),
+#bind($row.LONGFIELD21 'NUMERIC'),
+#bind($row.LONGFIELD22 'NUMERIC'),
+#bind($row.LONGFIELD23 'NUMERIC'),
+#bind($row.LONGFIELD24 'NUMERIC'),
+#bind($row.LONGFIELD25 'NUMERIC'),
+#bind($row.LONGFIELD26 'NUMERIC'),
+#bind($row.LONGFIELD27 'NUMERIC'),
+#bind($row.LONGFIELD28 'NUMERIC'),
+#bind($row.LONGFIELD29 'NUMERIC'),
+#bind($row.LONGFIELD30 'NUMERIC'),
+#bind($row.LONGFIELD31 'NUMERIC'),
+#bind($row.LONGFIELD32 'NUMERIC'),
+#bind($row.LONGFIELD33 'NUMERIC'),
+#bind($row.LONGFIELD34 'NUMERIC'),
+#bind($row.LONGFIELD35 'NUMERIC'),
+#bind($row.LONGFIELD36 'NUMERIC'),
+#bind($row.LONGFIELD37 'NUMERIC'),
+#bind($row.LONGFIELD38 'NUMERIC'),
+#bind($row.LONGFIELD39 'NUMERIC'),
+#bind($row.LONGFIELD40 'NUMERIC'),
+#bind($row.PRODSTRUCTID 'NUMERIC'),
+#bind($row.STRINGFIELD00 'VARCHAR'),
+#bind($row.STRINGFIELD01 'VARCHAR'),
+#bind($row.STRINGFIELD02 'VARCHAR'),
+#bind($row.STRINGFIELD03 'VARCHAR'),
+#bind($row.STRINGFIELD04 'VARCHAR'),
+#bind($row.STRINGFIELD05 'VARCHAR'),
+#bind($row.STRINGFIELD06 'VARCHAR'),
+#bind($row.STRINGFIELD07 'VARCHAR'),
+#bind($row.STRINGFIELD08 'VARCHAR'),
+#bind($row.STRINGFIELD09 'VARCHAR'),
+#bind($row.STRINGFIELD10 'VARCHAR'),
+#bind($row.STRINGFIELD11 'VARCHAR'),
+#bind($row.STRINGFIELD12 'VARCHAR'),
+#bind($row.STRINGFIELD13 'VARCHAR'),
+#bind($row.STRINGFIELD14 'VARCHAR'),
+#bind($row.STRINGFIELD15 'VARCHAR'),
+#bind($row.STRINGFIELD16 'VARCHAR'),
+#bind($row.STRINGFIELD17 'VARCHAR'),
+#bind($row.STRINGFIELD18 'VARCHAR'),
+#bind($row.STRINGFIELD19 'VARCHAR'),
+#bind($row.STRINGFIELD20 'VARCHAR')
+              FROM dual
+              #if($velocityCount < $totalCount)
+                UNION ALL
+              #end
+            #end
+            ]]>
+        </sql>
+    </query>
+    <query name="dsB2BInsuranceObjectMassCreate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BContractMass" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+INSERT INTO B2B_INSOBJ (
+CONTROBJID,
+DOUBLEFIELD00,
+DOUBLEFIELD01,
+DOUBLEFIELD02,
+DOUBLEFIELD03,
+DOUBLEFIELD04,
+DOUBLEFIELD05,
+DOUBLEFIELD06,
+DOUBLEFIELD07,
+DOUBLEFIELD08,
+DOUBLEFIELD09,
+DOUBLEFIELD10,
+DOUBLEFIELD11,
+DOUBLEFIELD12,
+DOUBLEFIELD13,
+DOUBLEFIELD14,
+DOUBLEFIELD15,
+DOUBLEFIELD16,
+DOUBLEFIELD17,
+DOUBLEFIELD18,
+DOUBLEFIELD19,
+DOUBLEFIELD20,
+DOUBLEFIELD21,
+DOUBLEFIELD22,
+DOUBLEFIELD23,
+DOUBLEFIELD24,
+DOUBLEFIELD25,
+DOUBLEFIELD26,
+DOUBLEFIELD27,
+DOUBLEFIELD28,
+DOUBLEFIELD29,
+DOUBLEFIELD30,
+DOUBLEFIELD31,
+DOUBLEFIELD32,
+DOUBLEFIELD33,
+DOUBLEFIELD34,
+DOUBLEFIELD35,
+DOUBLEFIELD36,
+DOUBLEFIELD37,
+DOUBLEFIELD38,
+DOUBLEFIELD39,
+DOUBLEFIELD40,
+HBDATAVERID,
+INSOBJGROUPID,
+INSOBJID,
+LONGFIELD00,
+LONGFIELD01,
+LONGFIELD02,
+LONGFIELD03,
+LONGFIELD04,
+LONGFIELD05,
+LONGFIELD06,
+LONGFIELD07,
+LONGFIELD08,
+LONGFIELD09,
+LONGFIELD10,
+LONGFIELD11,
+LONGFIELD12,
+LONGFIELD13,
+LONGFIELD14,
+LONGFIELD15,
+LONGFIELD16,
+LONGFIELD17,
+LONGFIELD18,
+LONGFIELD19,
+LONGFIELD20,
+LONGFIELD21,
+LONGFIELD22,
+LONGFIELD23,
+LONGFIELD24,
+LONGFIELD25,
+LONGFIELD26,
+LONGFIELD27,
+LONGFIELD28,
+LONGFIELD29,
+LONGFIELD30,
+LONGFIELD31,
+LONGFIELD32,
+LONGFIELD33,
+LONGFIELD34,
+LONGFIELD35,
+LONGFIELD36,
+LONGFIELD37,
+LONGFIELD38,
+LONGFIELD39,
+LONGFIELD40,
+PRODSTRUCTID,
+STRINGFIELD00,
+STRINGFIELD01,
+STRINGFIELD02,
+STRINGFIELD03,
+STRINGFIELD04,
+STRINGFIELD05,
+STRINGFIELD06,
+STRINGFIELD07,
+STRINGFIELD08,
+STRINGFIELD09,
+STRINGFIELD10,
+STRINGFIELD11,
+STRINGFIELD12,
+STRINGFIELD13,
+STRINGFIELD14,
+STRINGFIELD15,
+STRINGFIELD16,
+STRINGFIELD17,
+STRINGFIELD18,
+STRINGFIELD19,
+STRINGFIELD20 
+)
+            #foreach($row in $rows)
+SELECT 
+#bind($row.CONTROBJID 'NUMERIC'),
+#bind($row.DOUBLEFIELD00 'NUMERIC'),
+#bind($row.DOUBLEFIELD01 'NUMERIC'),
+#bind($row.DOUBLEFIELD02 'NUMERIC'),
+#bind($row.DOUBLEFIELD03 'NUMERIC'),
+#bind($row.DOUBLEFIELD04 'NUMERIC'),
+#bind($row.DOUBLEFIELD05 'NUMERIC'),
+#bind($row.DOUBLEFIELD06 'NUMERIC'),
+#bind($row.DOUBLEFIELD07 'NUMERIC'),
+#bind($row.DOUBLEFIELD08 'NUMERIC'),
+#bind($row.DOUBLEFIELD09 'NUMERIC'),
+#bind($row.DOUBLEFIELD10 'NUMERIC'),
+#bind($row.DOUBLEFIELD11 'NUMERIC'),
+#bind($row.DOUBLEFIELD12 'NUMERIC'),
+#bind($row.DOUBLEFIELD13 'NUMERIC'),
+#bind($row.DOUBLEFIELD14 'NUMERIC'),
+#bind($row.DOUBLEFIELD15 'NUMERIC'),
+#bind($row.DOUBLEFIELD16 'NUMERIC'),
+#bind($row.DOUBLEFIELD17 'NUMERIC'),
+#bind($row.DOUBLEFIELD18 'NUMERIC'),
+#bind($row.DOUBLEFIELD19 'NUMERIC'),
+#bind($row.DOUBLEFIELD20 'NUMERIC'),
+#bind($row.DOUBLEFIELD21 'NUMERIC'),
+#bind($row.DOUBLEFIELD22 'NUMERIC'),
+#bind($row.DOUBLEFIELD23 'NUMERIC'),
+#bind($row.DOUBLEFIELD24 'NUMERIC'),
+#bind($row.DOUBLEFIELD25 'NUMERIC'),
+#bind($row.DOUBLEFIELD26 'NUMERIC'),
+#bind($row.DOUBLEFIELD27 'NUMERIC'),
+#bind($row.DOUBLEFIELD28 'NUMERIC'),
+#bind($row.DOUBLEFIELD29 'NUMERIC'),
+#bind($row.DOUBLEFIELD30 'NUMERIC'),
+#bind($row.DOUBLEFIELD31 'NUMERIC'),
+#bind($row.DOUBLEFIELD32 'NUMERIC'),
+#bind($row.DOUBLEFIELD33 'NUMERIC'),
+#bind($row.DOUBLEFIELD34 'NUMERIC'),
+#bind($row.DOUBLEFIELD35 'NUMERIC'),
+#bind($row.DOUBLEFIELD36 'NUMERIC'),
+#bind($row.DOUBLEFIELD37 'NUMERIC'),
+#bind($row.DOUBLEFIELD38 'NUMERIC'),
+#bind($row.DOUBLEFIELD39 'NUMERIC'),
+#bind($row.DOUBLEFIELD40 'NUMERIC'),
+#bind($row.HBDATAVERID 'NUMERIC'),
+#bind($row.INSOBJGROUPID 'NUMERIC'),
+#bind($row.INSOBJID 'NUMERIC'),
+#bind($row.LONGFIELD00 'NUMERIC'),
+#bind($row.LONGFIELD01 'NUMERIC'),
+#bind($row.LONGFIELD02 'NUMERIC'),
+#bind($row.LONGFIELD03 'NUMERIC'),
+#bind($row.LONGFIELD04 'NUMERIC'),
+#bind($row.LONGFIELD05 'NUMERIC'),
+#bind($row.LONGFIELD06 'NUMERIC'),
+#bind($row.LONGFIELD07 'NUMERIC'),
+#bind($row.LONGFIELD08 'NUMERIC'),
+#bind($row.LONGFIELD09 'NUMERIC'),
+#bind($row.LONGFIELD10 'NUMERIC'),
+#bind($row.LONGFIELD11 'NUMERIC'),
+#bind($row.LONGFIELD12 'NUMERIC'),
+#bind($row.LONGFIELD13 'NUMERIC'),
+#bind($row.LONGFIELD14 'NUMERIC'),
+#bind($row.LONGFIELD15 'NUMERIC'),
+#bind($row.LONGFIELD16 'NUMERIC'),
+#bind($row.LONGFIELD17 'NUMERIC'),
+#bind($row.LONGFIELD18 'NUMERIC'),
+#bind($row.LONGFIELD19 'NUMERIC'),
+#bind($row.LONGFIELD20 'NUMERIC'),
+#bind($row.LONGFIELD21 'NUMERIC'),
+#bind($row.LONGFIELD22 'NUMERIC'),
+#bind($row.LONGFIELD23 'NUMERIC'),
+#bind($row.LONGFIELD24 'NUMERIC'),
+#bind($row.LONGFIELD25 'NUMERIC'),
+#bind($row.LONGFIELD26 'NUMERIC'),
+#bind($row.LONGFIELD27 'NUMERIC'),
+#bind($row.LONGFIELD28 'NUMERIC'),
+#bind($row.LONGFIELD29 'NUMERIC'),
+#bind($row.LONGFIELD30 'NUMERIC'),
+#bind($row.LONGFIELD31 'NUMERIC'),
+#bind($row.LONGFIELD32 'NUMERIC'),
+#bind($row.LONGFIELD33 'NUMERIC'),
+#bind($row.LONGFIELD34 'NUMERIC'),
+#bind($row.LONGFIELD35 'NUMERIC'),
+#bind($row.LONGFIELD36 'NUMERIC'),
+#bind($row.LONGFIELD37 'NUMERIC'),
+#bind($row.LONGFIELD38 'NUMERIC'),
+#bind($row.LONGFIELD39 'NUMERIC'),
+#bind($row.LONGFIELD40 'NUMERIC'),
+#bind($row.PRODSTRUCTID 'NUMERIC'),
+#bind($row.STRINGFIELD00 'VARCHAR'),
+#bind($row.STRINGFIELD01 'VARCHAR'),
+#bind($row.STRINGFIELD02 'VARCHAR'),
+#bind($row.STRINGFIELD03 'VARCHAR'),
+#bind($row.STRINGFIELD04 'VARCHAR'),
+#bind($row.STRINGFIELD05 'VARCHAR'),
+#bind($row.STRINGFIELD06 'VARCHAR'),
+#bind($row.STRINGFIELD07 'VARCHAR'),
+#bind($row.STRINGFIELD08 'VARCHAR'),
+#bind($row.STRINGFIELD09 'VARCHAR'),
+#bind($row.STRINGFIELD10 'VARCHAR'),
+#bind($row.STRINGFIELD11 'VARCHAR'),
+#bind($row.STRINGFIELD12 'VARCHAR'),
+#bind($row.STRINGFIELD13 'VARCHAR'),
+#bind($row.STRINGFIELD14 'VARCHAR'),
+#bind($row.STRINGFIELD15 'VARCHAR'),
+#bind($row.STRINGFIELD16 'VARCHAR'),
+#bind($row.STRINGFIELD17 'VARCHAR'),
+#bind($row.STRINGFIELD18 'VARCHAR'),
+#bind($row.STRINGFIELD19 'VARCHAR'),
+#bind($row.STRINGFIELD20 'VARCHAR')
+              FROM dual
+              #if($velocityCount < $totalCount)
+                UNION ALL
+              #end
+#end 
+]]>
+        </sql>
+    </query>
+
+</data-map>

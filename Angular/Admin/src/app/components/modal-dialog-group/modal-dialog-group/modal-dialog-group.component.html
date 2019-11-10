@@ -1,0 +1,25 @@
+<modal-dialog #dialog [modal-dialog-config]="{
+  clickOutsideToClose: true,
+  styles:{'width': '600px', 'height': '500px', 'text-align': 'left'},
+  isModal:true,
+  enterTransitionDuration: 400,
+  leaveTransitionDuration: 400}">
+  <form #f="ngForm" [ngClass]="{'was-validated': true}">
+    <h3 class="modal-dialog__title">{{options?.modalDialogTitle}}</h3>
+
+    <div class="tree">
+      <tree-root (activate)="selectGroup($event?.node?.data)" [nodes]="groupTree" [options]="options"></tree-root>
+    </div>
+
+    <div class="modal-dialog__actions row">
+      <div class="col-6 text-center">
+        <button class="btn btn-primary btn-rounded btn-modal" (click)="options?.onClickAddButton(group)">Добавить
+        </button>
+      </div>
+      <div class="col-6 text-center">
+        <button class="btn btn-link btn-rounded btn-modal" (click)="dialog?.close()">Отмена</button>
+      </div>
+    </div>
+  </form>
+
+</modal-dialog>

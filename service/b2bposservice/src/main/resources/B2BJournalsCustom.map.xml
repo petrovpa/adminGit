@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+    <query name="dsB2B_JournalParamCustomBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.DATATYPEID', 'java.lang.Long', 'DATATYPEID'),
+        #result('T.DATAPROVIDERID', 'java.lang.Long', 'DATAPROVIDERID'),
+        #result('T.HANDBOOKID', 'java.lang.Long', 'HANDBOOKID'),
+        #result('T.ID', 'java.lang.Long', 'ID'),
+        #result('T.ISCOMPLEX', 'java.lang.Long', 'ISCOMPLEX'),
+        #result('T.ISREQUIRED', 'java.lang.Long', 'ISREQUIRED'),
+        #result('T.JOURNALID', 'java.lang.Long', 'JOURNALID'),
+        #result('T.KEYFIELD', 'java.lang.String', 'KEYFIELD'),
+        #result('T.MAINPARAMID', 'java.lang.Long', 'MAINPARAMID'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.NAMEFIELD', 'java.lang.String', 'NAMEFIELD'),
+        #result('T.NAMESPACE', 'java.lang.String', 'NAMESPACE'),
+        #result('T.NOTE', 'java.lang.String', 'NOTE'),
+        #result('T.PARAMSHOWEXPR', 'java.lang.String', 'PARAMSHOWEXPR'),
+        #result('T.PARENTID', 'java.lang.Long', 'PARENTID'),
+        #result('T.SEQUENCE', 'java.lang.Long', 'SEQUENCE'),
+        #result('T.SYSNAME', 'java.lang.String', 'SYSNAME'),
+        #result('T.TABLEALIAS', 'java.lang.String', 'TABLEALIAS'),
+        #result('T.URLCOMPONENT', 'java.lang.String', 'URLCOMPONENT'),
+
+        #result('T1.NAME', 'java.lang.String', 'TYPENAME'),
+        #result('T1.SYSNAME', 'java.lang.String', 'TYPESYSNAME'),
+
+        #result('T2.CATEGORY', 'java.lang.Long', 'HBCATEGORY'),
+        #result('T2.HBDATAVERSIONID', 'java.lang.Long', 'HBDATAVERSIONID'),
+        #result('T2.IMPLEMENTATIONID', 'java.lang.Long', 'HBIMPLEMENTATIONID'),
+        #result('T2.NAME', 'java.lang.String', 'HBNAME'),
+        #result('T2.SYSNAME', 'java.lang.String', 'HBSYSNAME'),
+        #result('T2.SQLDATA', 'java.lang.String', 'HBSQLDATA'),
+        
+        #result('T3.NAME', 'java.lang.String', 'IMPLNAME'),
+        #result('T3.SYSNAME', 'java.lang.String', 'IMPLSYSNAME'),
+                                
+        #result('LEVEL', 'java.lang.Long', 'LEVEL')
+
+       $ASPECTFIELDS 
+FROM 
+      B2B_JOURNALPARAM T 
+  INNER JOIN B2B_JOURNALPARAMDATATYPE T1 ON (T.DATATYPEID = T1.ID)
+  LEFT JOIN B2B_KINDHANDBOOK T2 ON (T.HANDBOOKID = T2.ID)
+  LEFT JOIN B2B_HANDBOOK_IMPLEMENTATION T3 ON (T2.IMPLEMENTATIONID = T3.ID)
+  
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($DATATYPEID) T.DATATYPEID = #bind($DATATYPEID 'NUMERIC') #end 
+       #chunk($HANDBOOKID) T.HANDBOOKID = #bind($HANDBOOKID 'NUMERIC') #end 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($ISCOMPLEX) T.ISCOMPLEX = #bind($ISCOMPLEX 'NUMERIC') #end 
+       #chunk($ISREQUIRED) T.ISREQUIRED = #bind($ISREQUIRED 'NUMERIC') #end 
+       #chunk($JOURNALID) T.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+       #chunk($MAINPARAMID) T.MAINPARAMID = #bind($MAINPARAMID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($PARAMSHOWEXPR) T.PARAMSHOWEXPR = #bind($PARAMSHOWEXPR 'VARCHAR') #end 
+       #chunk($PARENTID) T.PARENTID = #bind($PARENTID 'NUMERIC') #end 
+       #chunk($SEQUENCE) T.SEQUENCE = #bind($SEQUENCE 'NUMERIC') #end 
+       #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+       #chunk($URLCOMPONENT) T.URLCOMPONENT = #bind($URLCOMPONENT 'VARCHAR') #end 
+       
+      $ASPECTRESTRICTION 
+#end 
+  START WITH T.PARENTID IS NULL
+  CONNECT BY PRIOR T.ID = T.PARENTID
+  ORDER SIBLINGS BY
+    T.SEQUENCE
+]]>
+        </sql>
+    </query>
+    <query name="dsB2B_JournalParamCustomBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_JOURNALPARAM T 
+  INNER JOIN B2B_JOURNALPARAMDATATYPE T1 ON (T.DATATYPEID = T1.ID)
+      
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($DATATYPEID) T.DATATYPEID = #bind($DATATYPEID 'NUMERIC') #end 
+       #chunk($HANDBOOKID) T.HANDBOOKID = #bind($HANDBOOKID 'NUMERIC') #end 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($ISCOMPLEX) T.ISCOMPLEX = #bind($ISCOMPLEX 'NUMERIC') #end 
+       #chunk($ISREQUIRED) T.ISREQUIRED = #bind($ISREQUIRED 'NUMERIC') #end 
+       #chunk($JOURNALID) T.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+       #chunk($MAINPARAMID) T.MAINPARAMID = #bind($MAINPARAMID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($PARAMSHOWEXPR) T.PARAMSHOWEXPR = #bind($PARAMSHOWEXPR 'VARCHAR') #end 
+       #chunk($PARENTID) T.PARENTID = #bind($PARENTID 'NUMERIC') #end 
+       #chunk($SEQUENCE) T.SEQUENCE = #bind($SEQUENCE 'NUMERIC') #end 
+       #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+       #chunk($URLCOMPONENT) T.URLCOMPONENT = #bind($URLCOMPONENT 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+<query name="dsB2B_JournalButtonCustomBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.ACTION', 'java.lang.String', 'ACTION'),
+        #result('T.GROUPNAME', 'java.lang.String', 'GROUPNAME'),
+        #result('T.ID', 'java.lang.Long', 'ID'),
+        #result('T.JOURNALID', 'java.lang.Long', 'JOURNALID'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.NOTE', 'java.lang.String', 'NOTE'),
+        #result('T.SEQUENCE', 'java.lang.Long', 'SEQUENCE'),
+        #result('T.TYPEBUTTON', 'java.lang.Long', 'TYPEBUTTON'),
+        #result('T.URLPICTURE', 'java.lang.String', 'URLPICTURE') 
+       $ASPECTFIELDS 
+FROM 
+      B2B_JOURNALBUTTON T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ACTION) T.ACTION = #bind($ACTION 'VARCHAR') #end 
+       #chunk($GROUPNAME) T.GROUPNAME = #bind($GROUPNAME 'VARCHAR') #end 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($JOURNALID) T.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($SEQUENCE) T.SEQUENCE = #bind($SEQUENCE 'NUMERIC') #end 
+       #chunk($TYPEBUTTON) T.TYPEBUTTON = #bind($TYPEBUTTON 'NUMERIC') #end 
+       #chunk($URLPICTURE) T.URLPICTURE = #bind($URLPICTURE 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+  ORDER BY T.GROUPNAME, T.SEQUENCE
+]]>
+</sql>
+</query>
+<query name="dsB2B_JournalButtonCustomBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_JOURNALBUTTON T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ACTION) T.ACTION = #bind($ACTION 'VARCHAR') #end 
+       #chunk($GROUPNAME) T.GROUPNAME = #bind($GROUPNAME 'VARCHAR') #end 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($JOURNALID) T.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($SEQUENCE) T.SEQUENCE = #bind($SEQUENCE 'NUMERIC') #end 
+       #chunk($TYPEBUTTON) T.TYPEBUTTON = #bind($TYPEBUTTON 'NUMERIC') #end 
+       #chunk($URLPICTURE) T.URLPICTURE = #bind($URLPICTURE 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+
+<query name="dsB2BHandbookListBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.HANDBOOKID', 'java.lang.Long', 'HANDBOOKID'),
+        #result('T.ID', 'java.lang.Long', 'ID'),
+        #result('T.USERID', 'java.lang.Long', 'USERID'),
+
+        #result('T1.ID', 'java.lang.Long', 'HANDBOOK_IMPLEMENTATIONID'),
+        #result('T1.NAME', 'java.lang.String', 'HANDBOOK_IMPLEMENTATIONNAME'),
+        #result('T1.SYSNAME', 'java.lang.String', 'HANDBOOK_IMPLEMENTATIONSYSNAME'),
+        
+        #result('T2.CATEGORY', 'java.math.Long', 'KINDHANDBOOKCATEGORY'),
+        #result('T2.HBDATAVERSIONID', 'java.math.Long', 'KINDHANDBOOKHBDATAVERSIONID'),
+        #result('T2.JOURNALID', 'java.math.Long', 'KINDHANDBOOKJOURNALID'),
+        #result('T2.ID', 'java.lang.Long', 'KINDHANDBOOKID'),
+        #result('T2.NAME', 'java.lang.String', 'KINDHANDBOOKNAME'),
+        #result('T2.SQLDATA', 'java.lang.String', 'KINDHANDBOOKSQLDATA'),
+        #result('T2.SYSNAME', 'java.lang.String', 'KINDHANDBOOKSYSNAME') 
+       $ASPECTFIELDS 
+FROM 
+      B2B_HANDBOOK_OWNER T 
+INNER JOIN B2B_HANDBOOK_IMPLEMENTATION T1 ON (T1.ID = T.HANDBOOKID)
+INNER JOIN B2B_KINDHANDBOOK T2 ON (T2.IMPLEMENTATIONID = T1.ID)
+
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($HANDBOOKID) T.HANDBOOKID = #bind($HANDBOOKID 'NUMERIC') #end 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+       
+       #chunk($HANDBOOK_IMPLEMENTATIONID) T1.ID = #bind($HANDBOOK_IMPLEMENTATIONID 'NUMERIC') #end 
+       #chunk($HANDBOOK_IMPLEMENTATIONNAME) T1.NAME = #bind($HANDBOOK_IMPLEMENTATIONNAME 'VARCHAR') #end 
+       #chunk($HANDBOOK_IMPLEMENTATIONSYSNAME) T1.SYSNAME = #bind($HANDBOOK_IMPLEMENTATIONSYSNAME 'VARCHAR') #end 
+       
+       #chunk($KINDHANDBOOKCATEGORY) T2.CATEGORY = #bind($KINDHANDBOOKCATEGORY 'NUMERIC') #end 
+       #chunk($KINDHANDBOOKHBDATAVERSIONID) T2.HBDATAVERSIONID = #bind($KINDHANDBOOKHBDATAVERSIONID 'NUMERIC') #end 
+       #chunk($KINDHANDBOOKJOURNALID) T2.JOURNALID = #bind($KINDHANDBOOKJOURNALID 'NUMERIC') #end 
+       #chunk($KINDHANDBOOKID) T2.ID = #bind($KINDHANDBOOKID 'NUMERIC') #end 
+       #chunk($KINDHANDBOOKIMPLEMENTATIONID) T2.IMPLEMENTATIONID = #bind($KINDHANDBOOKIMPLEMENTATIONID 'NUMERIC') #end 
+       #chunk($KINDHANDBOOKNAME) T2.NAME = #bind($KINDHANDBOOKNAME 'VARCHAR') #end 
+       #chunk($KINDHANDBOOKSQLDATA) T2.SQLDATA = #bind($KINDHANDBOOKSQLDATA 'VARCHAR') #end 
+       #chunk($KINDHANDBOOKSYSNAME) T2.SYSNAME = #bind($KINDHANDBOOKSYSNAME 'VARCHAR') #end 
+       #chunk($CUSTOMWHERE) $CUSTOMWHERE #end  
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+
+<query name="dsB2BHandbookListBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_HANDBOOK_OWNER T 
+INNER JOIN B2B_HANDBOOK_IMPLEMENTATION T1 ON (T1.ID = T.HANDBOOKID)
+INNER JOIN B2B_KINDHANDBOOK T2 ON (T2.IMPLEMENTATIONID = T1.ID)
+
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($HANDBOOKID) T.HANDBOOKID = #bind($HANDBOOKID 'NUMERIC') #end 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+       
+       #chunk($HANDBOOK_IMPLEMENTATIONID) T1.ID = #bind($HANDBOOK_IMPLEMENTATIONID 'NUMERIC') #end 
+       #chunk($HANDBOOK_IMPLEMENTATIONNAME) T1.NAME = #bind($HANDBOOK_IMPLEMENTATIONNAME 'VARCHAR') #end 
+       #chunk($HANDBOOK_IMPLEMENTATIONSYSNAME) T1.SYSNAME = #bind($HANDBOOK_IMPLEMENTATIONSYSNAME 'VARCHAR') #end 
+       
+       #chunk($KINDHANDBOOKCATEGORY) T2.CATEGORY = #bind($KINDHANDBOOKCATEGORY 'NUMERIC') #end 
+       #chunk($KINDHANDBOOKHBDATAVERSIONID) T2.HBDATAVERSIONID = #bind($KINDHANDBOOKHBDATAVERSIONID 'NUMERIC') #end 
+       #chunk($KINDHANDBOOKJOURNALID) T2.JOURNALID = #bind($KINDHANDBOOKJOURNALID 'NUMERIC') #end 
+       #chunk($KINDHANDBOOKID) T2.ID = #bind($KINDHANDBOOKID 'NUMERIC') #end 
+       #chunk($KINDHANDBOOKIMPLEMENTATIONID) T2.IMPLEMENTATIONID = #bind($KINDHANDBOOKIMPLEMENTATIONID 'NUMERIC') #end 
+       #chunk($KINDHANDBOOKNAME) T2.NAME = #bind($KINDHANDBOOKNAME 'VARCHAR') #end 
+       #chunk($KINDHANDBOOKSQLDATA) T2.SQLDATA = #bind($KINDHANDBOOKSQLDATA 'VARCHAR') #end 
+       #chunk($KINDHANDBOOKSYSNAME) T2.SYSNAME = #bind($KINDHANDBOOKSYSNAME 'VARCHAR') #end 
+       #chunk($CUSTOMWHERE) $CUSTOMWHERE #end  
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+
+<query name="dsB2BHandbookListBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.HANDBOOKID', 'java.lang.Long', 'HANDBOOKID'),
+        #result('T.ID', 'java.lang.Long', 'ID'),
+        #result('T.USERID', 'java.lang.Long', 'USERID'),
+
+        #result('T1.ID', 'java.lang.Long', 'HANDBOOK_IMPLEMENTATIONID'),
+        #result('T1.NAME', 'java.lang.String', 'HANDBOOK_IMPLEMENTATIONNAME'),
+        #result('T1.SYSNAME', 'java.lang.String', 'HANDBOOK_IMPLEMENTATIONSYSNAME'),
+        
+        #result('T2.CATEGORY', 'java.math.Long', 'KINDHANDBOOKCATEGORY'),
+        #result('T2.HBDATAVERSIONID', 'java.math.Long', 'KINDHANDBOOKHBDATAVERSIONID'),
+        #result('T2.JOURNALID', 'java.math.Long', 'KINDHANDBOOKJOURNALID'),
+        #result('T2.ID', 'java.lang.Long', 'KINDHANDBOOKID'),
+        #result('T5.HBDATAVERID', 'java.lang.Long', 'HBDATAVERID'),
+        #result('T2.NAME', 'java.lang.String', 'KINDHANDBOOKNAME'),
+        #result('T2.SQLDATA', 'java.lang.String', 'KINDHANDBOOKSQLDATA'),
+        #result('T2.SYSNAME', 'java.lang.String', 'KINDHANDBOOKSYSNAME') 
+       $ASPECTFIELDS 
+FROM 
+      B2B_HANDBOOK_OWNER T 
+INNER JOIN B2B_HANDBOOK_IMPLEMENTATION T1 ON (T1.ID = T.HANDBOOKID)
+INNER JOIN B2B_KINDHANDBOOK T2 ON (T2.IMPLEMENTATIONID = T1.ID)
+left join ins_calc T4 on (t2.hbdataversionid = t4.curverid)
+left join ins_calchandbook t5 on (t4.curverid = t5.calcverid)
+
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($HANDBOOKID) T.HANDBOOKID = #bind($HANDBOOKID 'NUMERIC') #end 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+       #chunk($HBDATAVERID) T5.HBDATAVERID = #bind($HBDATAVERID 'NUMERIC') #end 
+       
+       #chunk($HANDBOOK_IMPLEMENTATIONID) T1.ID = #bind($HANDBOOK_IMPLEMENTATIONID 'NUMERIC') #end 
+       #chunk($HANDBOOK_IMPLEMENTATIONNAME) T1.NAME = #bind($HANDBOOK_IMPLEMENTATIONNAME 'VARCHAR') #end 
+       #chunk($HANDBOOK_IMPLEMENTATIONSYSNAME) T1.SYSNAME = #bind($HANDBOOK_IMPLEMENTATIONSYSNAME 'VARCHAR') #end 
+       
+       #chunk($KINDHANDBOOKCATEGORY) T2.CATEGORY = #bind($KINDHANDBOOKCATEGORY 'NUMERIC') #end 
+       #chunk($KINDHANDBOOKHBDATAVERSIONID) T2.HBDATAVERSIONID = #bind($KINDHANDBOOKHBDATAVERSIONID 'NUMERIC') #end 
+       #chunk($KINDHANDBOOKJOURNALID) T2.JOURNALID = #bind($KINDHANDBOOKJOURNALID 'NUMERIC') #end 
+       #chunk($KINDHANDBOOKID) T2.ID = #bind($KINDHANDBOOKID 'NUMERIC') #end 
+       #chunk($KINDHANDBOOKIMPLEMENTATIONID) T2.IMPLEMENTATIONID = #bind($KINDHANDBOOKIMPLEMENTATIONID 'NUMERIC') #end 
+       #chunk($KINDHANDBOOKNAME) T2.NAME = #bind($KINDHANDBOOKNAME 'VARCHAR') #end 
+       #chunk($KINDHANDBOOKSQLDATA) T2.SQLDATA = #bind($KINDHANDBOOKSQLDATA 'VARCHAR') #end 
+       #chunk($KINDHANDBOOKSYSNAME) T2.SYSNAME = #bind($KINDHANDBOOKSYSNAME 'VARCHAR') #end 
+       #chunk($CUSTOMWHERE) $CUSTOMWHERE #end  
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+
+<query name="dsB2BHandbookListBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_HANDBOOK_OWNER T 
+INNER JOIN B2B_HANDBOOK_IMPLEMENTATION T1 ON (T1.ID = T.HANDBOOKID)
+INNER JOIN B2B_KINDHANDBOOK T2 ON (T2.IMPLEMENTATIONID = T1.ID)
+left join ins_calc T4 on (t2.hbdataversionid = t4.curverid)
+left join ins_calchandbook t5 on (t4.curverid = t5.calcverid)
+
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($HANDBOOKID) T.HANDBOOKID = #bind($HANDBOOKID 'NUMERIC') #end 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+       #chunk($HBDATAVERID) T5.HBDATAVERID = #bind($HBDATAVERID 'NUMERIC') #end 
+       
+       #chunk($HANDBOOK_IMPLEMENTATIONID) T1.ID = #bind($HANDBOOK_IMPLEMENTATIONID 'NUMERIC') #end 
+       #chunk($HANDBOOK_IMPLEMENTATIONNAME) T1.NAME = #bind($HANDBOOK_IMPLEMENTATIONNAME 'VARCHAR') #end 
+       #chunk($HANDBOOK_IMPLEMENTATIONSYSNAME) T1.SYSNAME = #bind($HANDBOOK_IMPLEMENTATIONSYSNAME 'VARCHAR') #end 
+       
+       #chunk($KINDHANDBOOKCATEGORY) T2.CATEGORY = #bind($KINDHANDBOOKCATEGORY 'NUMERIC') #end 
+       #chunk($KINDHANDBOOKHBDATAVERSIONID) T2.HBDATAVERSIONID = #bind($KINDHANDBOOKHBDATAVERSIONID 'NUMERIC') #end 
+       #chunk($KINDHANDBOOKJOURNALID) T2.JOURNALID = #bind($KINDHANDBOOKJOURNALID 'NUMERIC') #end 
+       #chunk($KINDHANDBOOKID) T2.ID = #bind($KINDHANDBOOKID 'NUMERIC') #end 
+       #chunk($KINDHANDBOOKIMPLEMENTATIONID) T2.IMPLEMENTATIONID = #bind($KINDHANDBOOKIMPLEMENTATIONID 'NUMERIC') #end 
+       #chunk($KINDHANDBOOKNAME) T2.NAME = #bind($KINDHANDBOOKNAME 'VARCHAR') #end 
+       #chunk($KINDHANDBOOKSQLDATA) T2.SQLDATA = #bind($KINDHANDBOOKSQLDATA 'VARCHAR') #end 
+       #chunk($KINDHANDBOOKSYSNAME) T2.SYSNAME = #bind($KINDHANDBOOKSYSNAME 'VARCHAR') #end 
+       #chunk($CUSTOMWHERE) $CUSTOMWHERE #end  
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+       
+</data-map>

@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+    <query name="dsB2BInvestBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvestCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.INVAMID', 'java.lang.Long', 'INVAMID'),
+        #result('T.DISCRIMINATOR', 'java.lang.Long', 'DISCRIMINATOR'),
+        #result('T.CONTRID', 'java.lang.Long', 'CONTRID'),
+        #result('T.CONTRNUMBER', 'java.lang.String', 'CONTRNUMBER'),
+        #result('T.CALCDATE', 'java.math.BigDecimal', 'CALCDATE'),
+        #result('T.INSAMVALUE', 'java.lang.Double', 'INSAMVALUE'),
+        #result('T.INDVALUE', 'java.lang.Double', 'INDVALUE'),
+        #result('T.INVVALUE', 'java.lang.Double', 'INVVALUE'),
+        #result('T.BAVALUE', 'java.lang.Double', 'BAVALUE'),
+        #result('T.REDEMPVALUE', 'java.lang.Double', 'REDEMPVALUE'),
+        #result('T.DIDVALUE', 'java.lang.Double', 'DIDVALUE'),
+        #result('T.INSAMIDDVALUE', 'java.lang.Double', 'INSAMIDDVALUE'),
+        #result('T.IDDVALUE', 'java.lang.Double', 'IDDVALUE'),
+        #result('T.COEFINTVALUE', 'java.lang.Double', 'COEFINTVALUE'),
+        #result('nvl(T.REDEMPVALUE,0) + nvl(T.INVVALUE, 0)', 'java.lang.Double', 'REDEMPDIDVALUE')
+       $ASPECTFIELDS 
+FROM 
+      B2B_INVAM T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($DISCRIMINATOR) T.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+       #chunk($CONTRNUMBER) T.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+       #chunk($CALCDATE) T.CALCDATE = #bind($CALCDATE 'FLOAT') #end 
+       #chunk($CALCSTARTDATE) TRUNC(T.CALCDATE) >= #bind($CALCSTARTDATE 'FLOAT') #end
+       #chunk($CALCFINISHDATE) TRUNC(T.CALCDATE) <= #bind($CALCFINISHDATE 'FLOAT') #end
+      $ASPECTRESTRICTION 
+#end 
+#chunk($ORDERBYCALCDATE) ORDER BY T.CALCDATE ASC #end
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvestCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.INVAMID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_INVAM T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($DISCRIMINATOR) T.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+       #chunk($CONTRNUMBER) T.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+       #chunk($CALCDATE) T.CALCDATE = #bind($CALCDATE 'FLOAT') #end 
+       #chunk($CALCSTARTDATE) TRUNC(T.CALCDATE) >= #bind($CALCSTARTDATE 'FLOAT') #end
+       #chunk($CALCFINISHDATE) TRUNC(T.CALCDATE) <= #bind($CALCFINISHDATE 'FLOAT') #end
+      $ASPECTRESTRICTION 
+#end 
+#chunk($ORDERBYCALCDATE) ORDER BY T.CALCDATE ASC #end
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestCouponBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvestCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.INVAMID', 'java.lang.Long', 'INVAMID'),
+        #result('T.DISCRIMINATOR', 'java.lang.Long', 'DISCRIMINATOR'),
+        #result('T.CONTRID', 'java.lang.Long', 'CONTRID'),
+        #result('T.CONTRNUMBER', 'java.lang.String', 'CONTRNUMBER'),
+        #result('T.CALCDATE', 'java.math.BigDecimal', 'CALCDATE'),
+        #result('T.CPPCTMEM', 'java.lang.Double', 'CPPCTMEM'),
+        #result('T.CPCONTRAMVALUE', 'java.lang.Double', 'CPCONTRAMVALUE'),
+        #result('T.CPRVLTAMVALUE', 'java.lang.Double', 'CPRVLTAMVALUE'),
+        #result('T.CPACRDCONTRAMVALUE', 'java.lang.Double', 'CPACRDCONTRAMVALUE'),
+        #result('T.CPACRDRVLTAMVALUE', 'java.lang.Double', 'CPACRDRVLTAMVALUE'),
+        #result('T.PREMVALUE', 'java.lang.Double', 'PREMVALUE'),
+        #result('T.CPPCTWMEM', 'java.lang.Double', 'CPPCTWMEM'),
+        #result('T.RATESTART', 'java.lang.Double', 'RATESTART'),
+        #result('T.RATECALC', 'java.lang.Double', 'RATECALC'),
+        #result('T.CONTRCURRENCYID', 'java.lang.Long', 'CONTRCURRENCYID'),
+        #result('T.CONDINVCURRENCYID', 'java.lang.Long', 'CONDINVCURRENCYID'),
+        #result('T.ISCONDITION', 'java.lang.Long', 'ISCONDITION'),
+        #result('T.ISTODAYCPACRD', 'java.lang.Long', 'ISTODAYCPACRD'),
+        #result('T.BARRIERVALUE', 'java.lang.Double', 'BARRIERVALUE'),
+        #result('T.MULTIMEMVALUE', 'java.lang.Double', 'MULTIMEMVALUE'),
+        #result('T.CONDNOTE', 'java.lang.String', 'CONDNOTE'),
+        #result('T.CONDCODE', 'java.lang.String', 'CONDCODE')
+                
+       $ASPECTFIELDS 
+FROM 
+      B2B_INVAM T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($DISCRIMINATOR) T.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+       #chunk($CONTRNUMBER) T.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+       #chunk($CALCDATE) T.CALCDATE = #bind($CALCDATE 'FLOAT') #end 
+       #chunk($CALCSTARTDATE) TRUNC(T.CALCDATE) >= #bind($CALCSTARTDATE 'FLOAT') #end
+       #chunk($CALCFINISHDATE) TRUNC(T.CALCDATE) <= #bind($CALCFINISHDATE 'FLOAT') #end
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestCouponBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvestCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.INVAMID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_INVAM T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($DISCRIMINATOR) T.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+       #chunk($CONTRNUMBER) T.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+       #chunk($CALCDATE) T.CALCDATE = #bind($CALCDATE 'FLOAT') #end 
+       #chunk($CALCSTARTDATE) TRUNC(T.CALCDATE) >= #bind($CALCSTARTDATE 'FLOAT') #end
+       #chunk($CALCFINISHDATE) TRUNC(T.CALCDATE) <= #bind($CALCFINISHDATE 'FLOAT') #end
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestMaxDateBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvestCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT
+        #result('T.INVAMID', 'java.lang.Long', 'INVAMID'),
+        #result('T.DISCRIMINATOR', 'java.lang.Long', 'DISCRIMINATOR'),
+        #result('T.CONTRID', 'java.lang.Long', 'CONTRID'),
+        #result('T.CONTRNUMBER', 'java.lang.String', 'CONTRNUMBER'),
+        #result('T.CALCDATE', 'java.math.BigDecimal', 'CALCDATE'),
+        #result('T.INSAMVALUE', 'java.lang.Double', 'INSAMVALUE'),
+        #result('T.INDVALUE', 'java.lang.Double', 'INDVALUE'),
+        #result('T.INVVALUE', 'java.lang.Double', 'INVVALUE'),
+        #result('T.BAVALUE', 'java.lang.Double', 'BAVALUE'),
+        #result('T.REDEMPVALUE', 'java.lang.Double', 'REDEMPVALUE'),
+        #result('T.DIDVALUE', 'java.lang.Double', 'DIDVALUE'),
+        #result('T.INSAMIDDVALUE', 'java.lang.Double', 'INSAMIDDVALUE'),
+        #result('T.IDDVALUE', 'java.lang.Double', 'IDDVALUE'),
+        #result('T.COEFINTVALUE', 'java.lang.Double', 'COEFINTVALUE')
+       $ASPECTFIELDS 
+FROM 
+      B2B_INVAM T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($DISCRIMINATOR) T.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+       #chunk($CONTRNUMBER) T.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+       #chunk($CALCDATE) T.CALCDATE = #bind($CALCDATE 'FLOAT') #end 
+       #chunk($CALCSTARTDATE) TRUNC(T.CALCDATE) >= #bind($CALCSTARTDATE 'FLOAT') #end
+       #chunk($CALCFINISHDATE) TRUNC(T.CALCDATE) <= #bind($CALCFINISHDATE 'FLOAT') #end
+       #chunk($CONTRNUMBER)
+       T.CALCDATE = (
+select max(T2.CALCDATE)
+from B2B_INVAM T2
+where T2.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') AND T2.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC'))
+       #end
+      
+$ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestMaxDateBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvestCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.INVAMID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_INVAM T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($DISCRIMINATOR) T.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+       #chunk($CONTRNUMBER) T.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+       #chunk($CALCDATE) T.CALCDATE = #bind($CALCDATE 'FLOAT') #end 
+       #chunk($CALCSTARTDATE) TRUNC(T.CALCDATE) >= #bind($CALCSTARTDATE 'FLOAT') #end
+       #chunk($CALCFINISHDATE) TRUNC(T.CALCDATE) <= #bind($CALCFINISHDATE 'FLOAT') #end
+       #chunk($CONTRNUMBER)
+       T.CALCDATE = (
+select max(T2.CALCDATE)
+from B2B_INVAM T2
+where T2.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') AND T2.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC'))
+       #end
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestCouponMaxDateBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvestCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.INVAMID', 'java.lang.Long', 'INVAMID'),
+        #result('T.DISCRIMINATOR', 'java.lang.Long', 'DISCRIMINATOR'),
+        #result('T.CONTRID', 'java.lang.Long', 'CONTRID'),
+        #result('T.CONTRNUMBER', 'java.lang.String', 'CONTRNUMBER'),
+        #result('T.CALCDATE', 'java.math.BigDecimal', 'CALCDATE'),
+        #result('T.CPPCTMEM', 'java.lang.Double', 'CPPCTMEM'),
+        #result('T.CPCONTRAMVALUE', 'java.lang.Double', 'CPCONTRAMVALUE'),
+        #result('T.CPRVLTAMVALUE', 'java.lang.Double', 'CPRVLTAMVALUE'),
+        #result('T.CPACRDCONTRAMVALUE', 'java.lang.Double', 'CPACRDCONTRAMVALUE'),
+        #result('T.CPACRDRVLTAMVALUE', 'java.lang.Double', 'CPACRDRVLTAMVALUE'),
+        #result('T.PREMVALUE', 'java.lang.Double', 'PREMVALUE'),
+        #result('T.CPPCTWMEM', 'java.lang.Double', 'CPPCTWMEM'),
+        #result('T.RATESTART', 'java.lang.Double', 'RATESTART'),
+        #result('T.RATECALC', 'java.lang.Double', 'RATECALC'),
+        #result('T.CONTRCURRENCYID', 'java.lang.Long', 'CONTRCURRENCYID'),
+        #result('T.CONDINVCURRENCYID', 'java.lang.Long', 'CONDINVCURRENCYID'),
+        #result('T.ISCONDITION', 'java.lang.Long', 'ISCONDITION'),
+        #result('T.ISTODAYCPACRD', 'java.lang.Long', 'ISTODAYCPACRD'),
+        #result('T.BARRIERVALUE', 'java.lang.Double', 'BARRIERVALUE'),
+        #result('T.MULTIMEMVALUE', 'java.lang.Double', 'MULTIMEMVALUE'),
+        #result('T.CONDNOTE', 'java.lang.String', 'CONDNOTE'),
+        #result('T.CONDCODE', 'java.lang.String', 'CONDCODE')
+                
+       $ASPECTFIELDS 
+FROM 
+      B2B_INVAM T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($DISCRIMINATOR) T.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+       #chunk($CONTRNUMBER) T.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+       #chunk($CALCDATE) T.CALCDATE = #bind($CALCDATE 'FLOAT') #end 
+       #chunk($CALCSTARTDATE) TRUNC(T.CALCDATE) >= #bind($CALCSTARTDATE 'FLOAT') #end
+       #chunk($CALCFINISHDATE) TRUNC(T.CALCDATE) <= #bind($CALCFINISHDATE 'FLOAT') #end
+       #chunk($CONTRNUMBER)
+       T.CALCDATE = (
+select max(T2.CALCDATE)
+from B2B_INVAM T2
+where T2.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') AND T2.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC'))
+       #end
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestCouponMaxDateBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvestCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.INVAMID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_INVAM T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($DISCRIMINATOR) T.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+       #chunk($CONTRNUMBER) T.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+       #chunk($CALCDATE) T.CALCDATE = #bind($CALCDATE 'FLOAT') #end 
+       #chunk($CALCSTARTDATE) TRUNC(T.CALCDATE) >= #bind($CALCSTARTDATE 'FLOAT') #end
+       #chunk($CALCFINISHDATE) TRUNC(T.CALCDATE) <= #bind($CALCFINISHDATE 'FLOAT') #end
+       #chunk($CONTRNUMBER)
+       T.CALCDATE = (
+select max(T2.CALCDATE)
+from B2B_INVAM T2
+where T2.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') AND T2.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC'))
+       #end
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestDIDMaxDateBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvestCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.INVAMID', 'java.lang.Long', 'INVAMID'),
+        #result('T.DISCRIMINATOR', 'java.lang.Long', 'DISCRIMINATOR'),
+        #result('T.CONTRID', 'java.lang.Long', 'CONTRID'),
+        #result('T.CONTRNUMBER', 'java.lang.String', 'CONTRNUMBER'),
+        #result('T.PROGNAME', 'java.lang.String', 'PROGNAME'),
+        #result('T.INSUREDNAME', 'java.lang.String', 'INSUREDNAME'),
+        #result('T.CONTRCURRENCYID', 'java.lang.Long', 'CONTRCURRENCYID'),
+        #result('T.CONTRSTARTDATE', 'java.math.BigDecimal', 'CONTRSTARTDATE'),
+        #result('T.TERMYEARCOUNT', 'java.lang.Long', 'TERMYEARCOUNT'),
+        #result('T.PAYVAR', 'java.lang.Long', 'PAYVAR'),
+        #result('T.INSAMVALUE', 'java.lang.Double', 'INSAMVALUE'),
+        #result('T.PREMVALUE', 'java.lang.Double', 'PREMVALUE'),
+        #result('T.PREMTOTALVALUE', 'java.lang.Double', 'PREMTOTALVALUE'),
+        #result('T.DIDCONTRVALUE', 'java.lang.Double', 'DIDCONTRVALUE'),
+        #result('T.DIDPAYMENTVALUE', 'java.lang.Double', 'DIDPAYMENTVALUE'),
+        #result('T.INDVALUE', 'java.lang.Double', 'INDVALUE'),
+        #result('T.DIDVALUE', 'java.lang.Double', 'DIDVALUE'),
+        #result('T.DIDYEAR', 'java.lang.Long', 'DIDYEAR'),
+        #result('T.RATEVALUE', 'java.lang.Double', 'RATEVALUE')
+       $ASPECTFIELDS 
+FROM 
+      B2B_INVAM T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($DISCRIMINATOR) T.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+       #chunk($CONTRNUMBER) T.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+       #chunk($DIDYEAR) T.DIDYEAR = #bind($DIDYEAR 'NUMERIC') #end 
+       #chunk($CONTRNUMBER)
+       T.DIDYEAR = (
+select max(T2.DIDYEAR)
+from B2B_INVAM T2
+where T2.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') AND T2.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC'))
+       #end
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestDIDMaxDateBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvestCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.INVAMID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_INVAM T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($DISCRIMINATOR) T.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+       #chunk($CONTRNUMBER) T.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+       #chunk($CONTRNUMBER)
+       T.DIDYEAR = (
+select max(T2.DIDYEAR)
+from B2B_INVAM T2
+where T2.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') AND T2.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC'))
+       #end
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestTickerBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvestCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.BRIEFNAME', 'java.lang.String', 'BRIEFNAME'),
+        #result('T.CODE', 'java.lang.String', 'CODE'),
+        #result('T.INVTICKERID', 'java.lang.Long', 'INVTICKERID'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.STOCKEXCHNAME', 'java.lang.String', 'STOCKEXCHNAME'),
+        #result('T.SYSNAME', 'java.lang.String', 'SYSNAME'),
+        #result('T3.INVBASEACTIVEID', 'java.lang.Long', 'INVBASEACTIVEID'),
+        #result('T3.CODE', 'java.lang.String', 'INVBASEACTIVECODE') 
+        
+       $ASPECTFIELDS 
+FROM 
+      B2B_INVTICKER T 
+      INNER JOIN B2B_INVBATICKER T2 ON (T.INVTICKERID=T2.INVTICKERID)
+      INNER JOIN B2B_INVBASEACTIVE T3 ON (T2.INVBASEACTIVEID = T3.INVBASEACTIVEID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($BRIEFNAME) T.BRIEFNAME = #bind($BRIEFNAME 'VARCHAR') #end 
+       #chunk($CODE) T.CODE = #bind($CODE 'VARCHAR') #end 
+       #chunk($INVTICKERID) T.INVTICKERID = #bind($INVTICKERID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($STOCKEXCHNAME) T.STOCKEXCHNAME = #bind($STOCKEXCHNAME 'VARCHAR') #end 
+       #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+       #chunk($INVBASEACTIVEID) T3.INVBASEACTIVEID = #bind($INVBASEACTIVEID 'NUMERIC') #end 
+       #chunk($INVBASEACTIVECODE) T3.CODE = #bind($INVBASEACTIVECODE 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestTickerBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvestCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.INVTICKERID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_INVTICKER T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($BRIEFNAME) T.BRIEFNAME = #bind($BRIEFNAME 'VARCHAR') #end 
+       #chunk($CODE) T.CODE = #bind($CODE 'VARCHAR') #end 
+       #chunk($INVTICKERID) T.INVTICKERID = #bind($INVTICKERID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($STOCKEXCHNAME) T.STOCKEXCHNAME = #bind($STOCKEXCHNAME 'VARCHAR') #end 
+       #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+       #chunk($INVBASEACTIVEID) T3.INVBASEACTIVEID = #bind($INVBASEACTIVEID 'NUMERIC') #end 
+       #chunk($INVBASEACTIVECODE) T3.CODE = #bind($INVBASEACTIVECODE 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+     <query name="dsB2BTickerRateBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvestCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.INVTICKERRATEID', 'java.lang.Long', 'INVTICKERRATEID'),
+        #result('T.INVTICKERID', 'java.lang.Long', 'INVTICKERID'),
+        #result('T.TRDATE', 'java.math.BigDecimal', 'TRDATE'),
+        #result('T.RATEVALUE', 'java.lang.Double', 'RATEVALUE'),
+        #result('T.TICKERCODE', 'java.lang.String', 'TICKERCODE'),
+        #result('T.TICKERNAME', 'java.lang.String', 'TICKERNAME') 
+        
+       $ASPECTFIELDS 
+FROM 
+      B2B_INVTICKERRATE T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($INVTICKERRATEID) T.INVTICKERRATEID = #bind($INVTICKERRATEID 'NUMERIC') #end 
+       #chunk($INVTICKERID) T.INVTICKERID = #bind($INVTICKERID 'NUMERIC') #end 
+       #chunk($TRDATE) T.TRDATE = #bind($TRDATE 'FLOAT') #end 
+       #chunk($TICKERCODE) T.TICKERCODE = #bind($TICKERCODE 'VARCHAR') #end 
+       #chunk($TICKERNAME) T.TICKERNAME = #bind($TICKERNAME 'VARCHAR') #end 
+       #chunk($TRSTARTDATE) TRUNC(T.TRDATE) >= #bind($TRSTARTDATE 'FLOAT') #end
+       #chunk($TRFINISHDATE) TRUNC(T.TRDATE) <= #bind($TRFINISHDATE 'FLOAT') #end
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BTickerRateBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvestCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.INVTICKERRATEID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_INVTICKERRATE T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($INVTICKERRATEID) T.INVTICKERRATEID = #bind($INVTICKERRATEID 'NUMERIC') #end 
+       #chunk($INVTICKERID) T.INVTICKERID = #bind($INVTICKERID 'NUMERIC') #end 
+       #chunk($TRDATE) T.TRDATE = #bind($TRDATE 'FLOAT') #end 
+       #chunk($TICKERCODE) T.TICKERCODE = #bind($TICKERCODE 'VARCHAR') #end 
+       #chunk($TICKERNAME) T.TICKERNAME = #bind($TICKERNAME 'VARCHAR') #end 
+       #chunk($TRSTARTDATE) TRUNC(T.TRDATE) >= #bind($TRSTARTDATE 'FLOAT') #end
+       #chunk($TRFINISHDATE) TRUNC(T.TRDATE) <= #bind($TRFINISHDATE 'FLOAT') #end
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>  
+     <query name="dsB2BTickerRateCouponBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvestCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.INVTICKERRATEID', 'java.lang.Long', 'INVTICKERRATEID'),
+        #result('T.INVTICKERID', 'java.lang.Long', 'INVTICKERID'),
+        #result('T.TRDATE', 'java.math.BigDecimal', 'TRDATE'),
+        #result('T.RATEVALUE', 'java.lang.Double', 'RATEVALUE'),
+        #result('T.TICKERCODE', 'java.lang.String', 'TICKERCODE'),
+        #result('T.TICKERNAME', 'java.lang.String', 'TICKERNAME'),
+        #result('NVL(T2.ISCONDITION, 0)', 'java.lang.Long', 'ISCONDITION') 
+      
+       $ASPECTFIELDS 
+FROM 
+      B2B_INVTICKERRATE T 
+      LEFT JOIN B2B_INVAM T2 ON (T2.DISCRIMINATOR=2 
+                                                         AND T2.CONTRNUMBER=#bind($CONTRNUMBER 'VARCHAR') 
+                                                         AND T.TRDATE=T2.CALCDATE)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($INVTICKERRATEID) T.INVTICKERRATEID = #bind($INVTICKERRATEID 'NUMERIC') #end 
+       #chunk($INVTICKERID) T.INVTICKERID = #bind($INVTICKERID 'NUMERIC') #end 
+       #chunk($TRDATE) T.TRDATE = #bind($TRDATE 'FLOAT') #end 
+       #chunk($TICKERCODE) T.TICKERCODE = #bind($TICKERCODE 'VARCHAR') #end 
+       #chunk($TICKERNAME) T.TICKERNAME = #bind($TICKERNAME 'VARCHAR') #end 
+       #chunk($TRSTARTDATE) TRUNC(T.TRDATE) >= #bind($TRSTARTDATE 'FLOAT') #end
+       #chunk($TRFINISHDATE) TRUNC(T.TRDATE) <= #bind($TRFINISHDATE 'FLOAT') #end
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BTickerRateCouponBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvestCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.INVTICKERRATEID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_INVTICKERRATE T 
+      LEFT JOIN B2B_INVAM T2 ON (T2.DISCRIMINATOR=2 
+                                                         AND T2.CONTRNUMBER=#bind($CONTRNUMBER 'VARCHAR') 
+                                                         AND T.TRDATE=T2.CALCDATE)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($INVTICKERRATEID) T.INVTICKERRATEID = #bind($INVTICKERRATEID 'NUMERIC') #end 
+       #chunk($INVTICKERID) T.INVTICKERID = #bind($INVTICKERID 'NUMERIC') #end 
+       #chunk($TRDATE) T.TRDATE = #bind($TRDATE 'FLOAT') #end 
+       #chunk($TICKERCODE) T.TICKERCODE = #bind($TICKERCODE 'VARCHAR') #end 
+       #chunk($TICKERNAME) T.TICKERNAME = #bind($TICKERNAME 'VARCHAR') #end 
+       #chunk($TRSTARTDATE) TRUNC(T.TRDATE) >= #bind($TRSTARTDATE 'FLOAT') #end
+       #chunk($TRFINISHDATE) TRUNC(T.TRDATE) <= #bind($TRFINISHDATE 'FLOAT') #end
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>  
+</data-map>

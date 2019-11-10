@@ -1,0 +1,32 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <parent>
+        <groupId>com.bivgroup.flextera.insurance</groupId>
+        <artifactId>bivsberfront</artifactId>
+        <version>1.00.001</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.bivgroup.flextera.insurance.bivsberfront</groupId>
+    <artifactId>utils</artifactId>
+    <name>utils</name>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>passwordutils</module>
+        <module>chainproxyutils</module>
+        <module>serviceloaderutils</module>
+        <module>dateutil</module>
+        <module>serviceutils</module>
+        <module>configutils</module>
+        <module>stringutils</module>
+        <module>xmlutils</module>
+        <module>sessionutils</module>
+    </modules>
+</project>

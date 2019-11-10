@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<domains project-version="2.0">
+    <domain name="WSDomain">
+        <property name="cayenne.DataDomain.usingExternalTransactions" value="false"/>
+        <node name="MapNode" datasource="MapNode.driver.xml" factory="org.apache.cayenne.conf.DriverDataSourceFactory"></node>
+    </domain>
+</domains>

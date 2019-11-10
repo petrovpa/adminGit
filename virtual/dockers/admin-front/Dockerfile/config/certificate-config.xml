@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<!-- 
+		This is the configuration file for certificate authentification.
+	 -->
+
+	<!-- 
+		Параметры verifierFactoryClass, signerFactoryClass, certificateProviderName, certificateType, securityProviderClass не обязательны. 
+		Если вы хотите использовать cтандартную Java реализацию аутентификации по сертификатам то инициализацию данных параметров можно не делать.
+ 	-->		
+
+	<!-- 
+		Ниже приведена реализация аутентификации по сертификатам с использованием ключей, созданных по стандарту ГОСТ 3410 от провайдера kz.gamma
+		На клиентской стороне, для генерации цифровой подписи для документа по стандарту ГОСТ 3410, используется Tumar CSP v.4
+		-->
+
+	<verifierFactoryClass>ru.diasoft.fa.commons.authentication.gamma.GammaVerifierFactory</verifierFactoryClass> 
+	<signerFactoryClass>ru.diasoft.fa.commons.authentication.gamma.GammaSignerFactory</signerFactoryClass> 
+
+	<certificateProviderName>GAMMA</certificateProviderName> 
+	<certificateType>X.509</certificateType>
+	<securityProviderClass>kz.gamma.jce.provider.GammaTechProvider</securityProviderClass> 
+
+</root>

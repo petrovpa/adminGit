@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss-deployment-structure>
+    <deployment>
+        <exclusions>
+            <module name="org.apache.log4j"/>
+        </exclusions>
+        <dependencies>
+            <module name="org.dom4j"/>
+            <module name="org.jdom"/>
+            <module name="org.codehaus.woodstox"/>
+            <module name="org.apache.commons.beanutils"/>
+        </dependencies>
+    </deployment>
+</jboss-deployment-structure> 

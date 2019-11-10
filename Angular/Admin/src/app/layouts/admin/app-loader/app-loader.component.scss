@@ -1,0 +1,51 @@
+@import '~app/themes/_mixins';
+@import '~app/themes/_variables';
+
+.page-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 99999;
+}
+
+.page-load-block {
+  background: #fff;
+  border: 1px solid #ccc;
+  @include border-radius(10px);
+  @include box-shadow(10px 10px 10px rgba(0, 0, 0, 0.15));
+  color: $primary; //#2e6db4
+  padding: 30px;
+  width: 96%;
+  max-width: 500px;
+  text-align: center;
+}
+
+@keyframes animate-stripes {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+.page-load-block .progress {
+  border: 1px solid #d2d2d2;
+  @include border-radius(10px);
+  background: #fff;
+  height: 16px;
+}
+
+.page-load-block .progress-bar {
+  @include border-radius(10px);
+  @include animation(animate-stripes 3s linear infinite);
+}

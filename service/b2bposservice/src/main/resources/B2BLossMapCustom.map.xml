@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+    <query name="dsB2BLossCompReqBrowseListByParamCustomeWhereEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BLossMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.ADDRESSID', 'java.lang.Long', 'ADDRESSID'),
+        #result('T.APPLICANTID', 'java.lang.Long', 'APPLICANTID'),
+        #result('T.BANKDETAILID', 'java.lang.Long', 'BANKDETAILID'),
+        #result('T.CONTRID', 'java.math.BigDecimal', 'CONTRID'),
+        #result('T.LOSSCOMPREQID', 'java.lang.Long', 'LOSSCOMPREQID'),
+        #result('T.CREATEDATE', 'java.math.BigDecimal', 'CREATEDATE'),
+        #result('T.LOSSDATE', 'java.math.BigDecimal', 'LOSSDATE'),
+        #result('T.LOSSDESCR', 'java.lang.String', 'LOSSDESCR'),
+        #result('T.PRODVERID', 'java.math.BigDecimal', 'PRODVERID'),
+        #result('T.RECEIPTDATE', 'java.math.BigDecimal', 'RECEIPTDATE'),
+        #result('T.RECIPIENTID', 'java.lang.Long', 'RECIPIENTID'),
+        #result('T.REQUESTDATE', 'java.math.BigDecimal', 'REQUESTDATE'),
+        #result('T.VICTIMID', 'java.lang.Long', 'VICTIMID'),
+        #result('T.CULPRIT', 'java.lang.String', 'CULPRIT'),
+        #result('T.INCOMPAUTHORITY', 'java.lang.String', 'INCOMPAUTHORITY'),
+        #result('T3.NAME', 'java.lang.String', 'PRODVERNAME'),
+        #result('T4.NAME', 'java.lang.String', 'PRODNAME'),
+        #result('T4.PRODID', 'java.lang.Long', 'PRODID'),
+        #result('T5.BRIEFNAME', 'java.lang.String', 'APPLICANTBRIEFNAME'),
+        #result('T6.BRIEFNAME', 'java.lang.String', 'RECIPIENTBRIEFNAME')
+       $ASPECTFIELDS 
+FROM 
+      B2B_LOSSCOMPREQ T
+      INNER JOIN B2B_PRODVER T3 ON (T.PRODVERID = T3.PRODVERID)
+      INNER JOIN B2B_PROD T4 ON (T3.PRODID = T4.PRODID) AND ((T4.ISHIDDEN is null) or (T4.ISHIDDEN != 1))
+      LEFT JOIN CRM_PARTICIPANT T5 ON (T.APPLICANTID = T5.PARTICIPANTID)
+      LEFT JOIN CRM_PARTICIPANT T6 ON (T.RECIPIENTID = T6.PARTICIPANTID) 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CUSTOMWHERE) $CUSTOMWHERE #end  
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BLossCompReqBrowseListByParamCustomeWhereExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BLossMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.LOSSCOMPREQID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_LOSSCOMPREQ T 
+      INNER JOIN B2B_PRODVER T3 ON (T.PRODVERID = T3.PRODVERID)
+      INNER JOIN B2B_PROD T4 ON (T3.PRODID = T4.PRODID) AND ((T4.ISHIDDEN is null) or (T4.ISHIDDEN != 1))
+      LEFT JOIN CRM_PARTICIPANT T5 ON (T.APPLICANTID = T5.PARTICIPANTID)
+      LEFT JOIN CRM_PARTICIPANT T6 ON (T.RECIPIENTID = T6.PARTICIPANTID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CUSTOMWHERE) $CUSTOMWHERE #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+
+<query name="dsB2BLossCompReqBrowseListByParamExBrief" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BLossMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.ADDRESSID', 'java.lang.Long', 'ADDRESSID'),
+        #result('T.APPLICANTID', 'java.lang.Long', 'APPLICANTID'),
+        #result('T.BANKDETAILID', 'java.lang.Long', 'BANKDETAILID'),
+        #result('T.CONTRID', 'java.math.BigDecimal', 'CONTRID'),
+        #result('T.LOSSCOMPREQID', 'java.lang.Long', 'LOSSCOMPREQID'),
+        #result('T.LOSSDATE', 'java.math.BigDecimal', 'LOSSDATE'),
+        #result('T.LOSSDESCR', 'java.lang.String', 'LOSSDESCR'),
+        #result('T.PRODVERID', 'java.math.BigDecimal', 'PRODVERID'),
+        #result('T.RECEIPTDATE', 'java.math.BigDecimal', 'RECEIPTDATE'),
+        #result('T.RECIPIENTID', 'java.lang.Long', 'RECIPIENTID'),
+        #result('T.REQUESTDATE', 'java.math.BigDecimal', 'REQUESTDATE'),
+        #result('T.VICTIMID', 'java.lang.Long', 'VICTIMID'),
+        #result('T.CULPRIT', 'java.lang.String', 'CULPRIT'),
+        #result('T.INCOMPAUTHORITY', 'java.lang.String', 'INCOMPAUTHORITY'),
+        #result('S.TYPEID', 'java.lang.Long', 'STATETYPEID'),
+        #result('S.PUBLICNAME', 'java.lang.String', 'STATENAME'),
+        #result('S.SYSNAME', 'java.lang.String', 'STATESYSNAME') 
+       $ASPECTFIELDS 
+FROM 
+      B2B_LOSSCOMPREQ T 
+LEFT JOIN
+      CORE_SM_STATE S ON S.ID = T.STATEID
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ADDRESSID) T.ADDRESSID = #bind($ADDRESSID 'NUMERIC') #end 
+       #chunk($APPLICANTID) T.APPLICANTID = #bind($APPLICANTID 'NUMERIC') #end 
+       #chunk($BANKDETAILID) T.BANKDETAILID = #bind($BANKDETAILID 'NUMERIC') #end 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($LOSSCOMPREQID) T.LOSSCOMPREQID = #bind($LOSSCOMPREQID 'NUMERIC') #end 
+       #chunk($LOSSDATE) T.LOSSDATE = #bind($LOSSDATE 'FLOAT') #end 
+       #chunk($LOSSDESCR) T.LOSSDESCR = #bind($LOSSDESCR 'VARCHAR') #end 
+       #chunk($PRODVERID) T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+       #chunk($RECEIPTDATE) T.RECEIPTDATE = #bind($RECEIPTDATE 'FLOAT') #end 
+       #chunk($RECIPIENTID) T.RECIPIENTID = #bind($RECIPIENTID 'NUMERIC') #end 
+       #chunk($REQUESTDATE) T.REQUESTDATE = #bind($REQUESTDATE 'FLOAT') #end 
+       #chunk($VICTIMID) T.VICTIMID = #bind($VICTIMID 'NUMERIC') #end 
+       #chunk($CULPRIT) T.CULPRIT = #bind($CULPRIT 'VARCHAR') #end 
+       #chunk($INCOMPAUTHORITY) T.INCOMPAUTHORITY = #bind($INCOMPAUTHORITY 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2BLossCompReqDocBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdditionalAgreementsMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.LOSSCOMPREQDOCID', 'java.lang.Long', 'LOSSCOMPREQDOCID'),
+        #result('T.LOSSCOMPREQID', 'java.lang.Long', 'LOSSCOMPREQID'),
+        #result('T.PRODBINDOCID', 'java.lang.Long', 'PRODBINDOCID'),
+        
+        #result('T2.BINFILEID', 'java.lang.Long', 'BINFILEID'), 
+        #result('T2.FILENAME', 'java.lang.String', 'FILENAME'), 
+        #result('T2.FILEPATH', 'java.lang.String', 'FILEPATH'), 
+        #result('T2.FILESIZE', 'java.lang.String', 'FILESIZE'), 
+        #result('T2.FILETYPEID', 'java.lang.Long', 'FILETYPEID'), 
+        #result('T2.FILETYPENAME', 'java.lang.String', 'FILETYPENAME'), 
+        #result('T2.NOTE', 'java.lang.String', 'NOTE'),
+        #result('T2.FSID', 'java.lang.String', 'FSID'),
+        #result('T3.DOCLEVEL', 'java.lang.String', 'DOCTYPELEVEL'),
+        #result('T3.DOCSYSNAME', 'java.lang.String', 'DOCSYSNAME'),
+        #result('T3.NAME', 'java.lang.String', 'DOCTYPENAME')
+          
+       $ASPECTFIELDS 
+FROM 
+      B2B_LOSSCOMPREQDOC T 
+      LEFT JOIN INS_BINFILE T2 ON (T2.OBJID = T.LOSSCOMPREQDOCID) and (T2.OBJTABLENAME = 'B2B_LOSSCOMPREQDOC')
+      left join b2b_prodbindoc T3 on (T.PRODBINDOCID = T3.PRODBINDOCID)
+      
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($LOSSCOMPREQDOCID) T.LOSSCOMPREQDOCID = #bind($LOSSCOMPREQDOCID 'NUMERIC') #end 
+       #chunk($LOSSCOMPREQID) T.LOSSCOMPREQID = #bind($LOSSCOMPREQID 'NUMERIC') #end 
+       #chunk($PRODBINDOCID) T.PRODBINDOCID = #bind($PRODBINDOCID 'NUMERIC') #end 
+        #chunk($DOCLEVEL) T3.DOCLEVEL = #bind($DOCLEVEL 'NUMERIC') #end        
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2BLossCompReqDocBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdditionalAgreementsMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.LOSSCOMPREQDOCID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_LOSSCOMPREQDOC T 
+      LEFT JOIN INS_BINFILE T2 ON (T2.OBJID = T.LOSSCOMPREQDOCID) and (T2.OBJTABLENAME = 'B2B_LOSSCOMPREQDOC')
+      left join b2b_prodbindoc T3 on (T.PRODBINDOCID = T3.PRODBINDOCID)
+      
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($LOSSCOMPREQDOCID) T.LOSSCOMPREQDOCID = #bind($LOSSCOMPREQDOCID 'NUMERIC') #end 
+       #chunk($LOSSCOMPREQID) T.LOSSCOMPREQID = #bind($LOSSCOMPREQID 'NUMERIC') #end 
+       #chunk($PRODBINDOCID) T.PRODBINDOCID = #bind($PRODBINDOCID 'NUMERIC') #end 
+        #chunk($DOCLEVEL) T3.DOCLEVEL = #bind($DOCLEVEL 'NUMERIC') #end        
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+
+<query name="dsB2BLossCompReqBrowseListByParamExBriefCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BLossMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.LOSSCOMPREQID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_LOSSCOMPREQ T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ADDRESSID) T.ADDRESSID = #bind($ADDRESSID 'NUMERIC') #end 
+       #chunk($APPLICANTID) T.APPLICANTID = #bind($APPLICANTID 'NUMERIC') #end 
+       #chunk($BANKDETAILID) T.BANKDETAILID = #bind($BANKDETAILID 'NUMERIC') #end 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($LOSSCOMPREQID) T.LOSSCOMPREQID = #bind($LOSSCOMPREQID 'NUMERIC') #end 
+       #chunk($LOSSDATE) T.LOSSDATE = #bind($LOSSDATE 'FLOAT') #end 
+       #chunk($LOSSDESCR) T.LOSSDESCR = #bind($LOSSDESCR 'VARCHAR') #end 
+       #chunk($PRODVERID) T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+       #chunk($RECEIPTDATE) T.RECEIPTDATE = #bind($RECEIPTDATE 'FLOAT') #end 
+       #chunk($RECIPIENTID) T.RECIPIENTID = #bind($RECIPIENTID 'NUMERIC') #end 
+       #chunk($REQUESTDATE) T.REQUESTDATE = #bind($REQUESTDATE 'FLOAT') #end 
+       #chunk($VICTIMID) T.VICTIMID = #bind($VICTIMID 'NUMERIC') #end 
+       #chunk($CULPRIT) T.CULPRIT = #bind($CULPRIT 'VARCHAR') #end 
+       #chunk($INCOMPAUTHORITY) T.INCOMPAUTHORITY = #bind($INCOMPAUTHORITY 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2BLossCompReqCntBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BLossMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.CULPRIT', 'java.lang.String', 'CULPRIT'),
+        #result('T.LOSSCOMPREQCNTID', 'java.lang.Long', 'LOSSCOMPREQCNTID'),
+        #result('T.INSEVENTID', 'java.math.BigDecimal', 'INSEVENTID'),
+        #result('T.ISOTHERSK', 'java.math.BigDecimal', 'ISOTHERSK'),
+        #result('T.KINDID', 'java.lang.Long', 'KINDID'),
+        #result('T.LOSSCOMPREQID', 'java.lang.Long', 'LOSSCOMPREQID'),
+        #result('T.LOSSID', 'java.lang.Long', 'LOSSID'),
+        #result('T.OTHERSK', 'java.lang.String', 'OTHERSK'),
+        #result('T.PENDINGLOSSID', 'java.lang.Long', 'PENDINGLOSSID'),
+        #result('T.PRODDAMAGECATID', 'java.lang.Long', 'PRODDAMAGECATID'),
+        #result('T2.NAME', 'java.lang.String', 'PRODDAMAGECATNAME'),
+        #result('T2.HINT', 'java.lang.String', 'PRODDAMAGECATHINT'),
+        #result('T3.NAME', 'java.lang.String', 'DAMAGECATNAME'),
+        #result('T3.HINT', 'java.lang.String', 'DAMAGECATHINT'),
+        #result('T3.SYSNAME', 'java.lang.String', 'DAMAGECATSYSNAME'),
+        #result('T3.DETAILHBDATAVERID', 'java.lang.Long', 'DETAILHBDATAVERID'),
+        #result('T3.VALUEHBDATAVERID', 'java.lang.Long', 'VALUEHBDATAVERID'),
+        #result('T.SUMVALUE', 'java.lang.Double', 'SUMVALUE') 
+       $ASPECTFIELDS 
+FROM 
+      B2B_LOSSCOMPREQCNT T 
+      left join B2B_PRODDAMAGECAT T2 on (T.PRODDAMAGECATID = T2.PRODDAMAGECATID)
+      left join B2B_DAMAGECAT T3 on (T3.DAMAGECATID = T2.DAMAGECATID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CULPRIT) T.CULPRIT = #bind($CULPRIT 'VARCHAR') #end 
+       #chunk($INSEVENTID) T.INSEVENTID = #bind($INSEVENTID 'NUMERIC') #end 
+       #chunk($ISOTHERSK) T.ISOTHERSK = #bind($ISOTHERSK 'NUMERIC') #end 
+       #chunk($KINDID) T.KINDID = #bind($KINDID 'NUMERIC') #end 
+       #chunk($LOSSCOMPREQCNTID) T.LOSSCOMPREQCNTID = #bind($LOSSCOMPREQCNTID 'NUMERIC') #end 
+       #chunk($LOSSCOMPREQID) T.LOSSCOMPREQID = #bind($LOSSCOMPREQID 'NUMERIC') #end 
+       #chunk($LOSSID) T.LOSSID = #bind($LOSSID 'NUMERIC') #end 
+       #chunk($OTHERSK) T.OTHERSK = #bind($OTHERSK 'VARCHAR') #end 
+       #chunk($PENDINGLOSSID) T.PENDINGLOSSID = #bind($PENDINGLOSSID 'NUMERIC') #end 
+       #chunk($PRODDAMAGECATID) T.PRODDAMAGECATID = #bind($PRODDAMAGECATID 'NUMERIC') #end 
+       #chunk($SUMVALUE) T.SUMVALUE = #bind($SUMVALUE 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2BLossCompReqCntBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BLossMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.LOSSCOMPREQCNTID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_LOSSCOMPREQCNT T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CULPRIT) T.CULPRIT = #bind($CULPRIT 'VARCHAR') #end 
+       #chunk($INSEVENTID) T.INSEVENTID = #bind($INSEVENTID 'NUMERIC') #end 
+       #chunk($ISOTHERSK) T.ISOTHERSK = #bind($ISOTHERSK 'NUMERIC') #end 
+       #chunk($KINDID) T.KINDID = #bind($KINDID 'NUMERIC') #end 
+       #chunk($LOSSCOMPREQCNTID) T.LOSSCOMPREQCNTID = #bind($LOSSCOMPREQCNTID 'NUMERIC') #end 
+       #chunk($LOSSCOMPREQID) T.LOSSCOMPREQID = #bind($LOSSCOMPREQID 'NUMERIC') #end 
+       #chunk($LOSSID) T.LOSSID = #bind($LOSSID 'NUMERIC') #end 
+       #chunk($OTHERSK) T.OTHERSK = #bind($OTHERSK 'VARCHAR') #end 
+       #chunk($PENDINGLOSSID) T.PENDINGLOSSID = #bind($PENDINGLOSSID 'NUMERIC') #end 
+       #chunk($PRODDAMAGECATID) T.PRODDAMAGECATID = #bind($PRODDAMAGECATID 'NUMERIC') #end 
+       #chunk($SUMVALUE) T.SUMVALUE = #bind($SUMVALUE 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+
+<query name="dsB2BLossCompReqCntBrowseListByParamExBrief" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BLossMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.CULPRIT', 'java.lang.String', 'CULPRIT'),
+        #result('T.LOSSCOMPREQCNTID', 'java.lang.Long', 'LOSSCOMPREQCNTID'),
+        #result('T.INSEVENTID', 'java.math.BigDecimal', 'INSEVENTID'),
+        #result('T.ISOTHERSK', 'java.math.BigDecimal', 'ISOTHERSK'),
+        #result('T.KINDID', 'java.lang.Long', 'KINDID'),
+        #result('T.LOSSCOMPREQID', 'java.lang.Long', 'LOSSCOMPREQID'),
+        #result('T.LOSSID', 'java.lang.Long', 'LOSSID'),
+        #result('T.OTHERSK', 'java.lang.String', 'OTHERSK'),
+        #result('T.PENDINGLOSSID', 'java.lang.Long', 'PENDINGLOSSID'),
+        #result('T.PRODDAMAGECATID', 'java.lang.Long', 'PRODDAMAGECATID'),
+        #result('T.SUMVALUE', 'java.lang.Double', 'SUMVALUE'),
+        #result('T2.NAME', 'java.lang.String', 'PRODDAMAGECATNAME') 
+       $ASPECTFIELDS 
+FROM 
+      B2B_LOSSCOMPREQCNT T 
+      LEFT JOIN B2B_PRODDAMAGECAT T2 on (T2.PRODDAMAGECATID = T.PRODDAMAGECATID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CULPRIT) T.CULPRIT = #bind($CULPRIT 'VARCHAR') #end 
+       #chunk($INSEVENTID) T.INSEVENTID = #bind($INSEVENTID 'NUMERIC') #end 
+       #chunk($ISOTHERSK) T.ISOTHERSK = #bind($ISOTHERSK 'NUMERIC') #end 
+       #chunk($KINDID) T.KINDID = #bind($KINDID 'NUMERIC') #end 
+       #chunk($LOSSCOMPREQCNTID) T.LOSSCOMPREQCNTID = #bind($LOSSCOMPREQCNTID 'NUMERIC') #end 
+       #chunk($LOSSCOMPREQID) T.LOSSCOMPREQID = #bind($LOSSCOMPREQID 'NUMERIC') #end 
+       #chunk($LOSSID) T.LOSSID = #bind($LOSSID 'NUMERIC') #end 
+       #chunk($OTHERSK) T.OTHERSK = #bind($OTHERSK 'VARCHAR') #end 
+       #chunk($PENDINGLOSSID) T.PENDINGLOSSID = #bind($PENDINGLOSSID 'NUMERIC') #end 
+       #chunk($PRODDAMAGECATID) T.PRODDAMAGECATID = #bind($PRODDAMAGECATID 'NUMERIC') #end 
+       #chunk($SUMVALUE) T.SUMVALUE = #bind($SUMVALUE 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2BLossCompReqCntBrowseListByParamExBriefCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BLossMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.LOSSCOMPREQCNTID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_LOSSCOMPREQCNT T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CULPRIT) T.CULPRIT = #bind($CULPRIT 'VARCHAR') #end 
+       #chunk($INSEVENTID) T.INSEVENTID = #bind($INSEVENTID 'NUMERIC') #end 
+       #chunk($ISOTHERSK) T.ISOTHERSK = #bind($ISOTHERSK 'NUMERIC') #end 
+       #chunk($KINDID) T.KINDID = #bind($KINDID 'NUMERIC') #end 
+       #chunk($LOSSCOMPREQCNTID) T.LOSSCOMPREQCNTID = #bind($LOSSCOMPREQCNTID 'NUMERIC') #end 
+       #chunk($LOSSCOMPREQID) T.LOSSCOMPREQID = #bind($LOSSCOMPREQID 'NUMERIC') #end 
+       #chunk($LOSSID) T.LOSSID = #bind($LOSSID 'NUMERIC') #end 
+       #chunk($OTHERSK) T.OTHERSK = #bind($OTHERSK 'VARCHAR') #end 
+       #chunk($PENDINGLOSSID) T.PENDINGLOSSID = #bind($PENDINGLOSSID 'NUMERIC') #end 
+       #chunk($PRODDAMAGECATID) T.PRODDAMAGECATID = #bind($PRODDAMAGECATID 'NUMERIC') #end 
+       #chunk($SUMVALUE) T.SUMVALUE = #bind($SUMVALUE 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+
+    <query name="dsB2BLossNoticeDocCustomBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BLossMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT
+                    $NEEDDISTINCT
+
+                    #result('T1.BINDOCTYPE', 'java.lang.Long', 'BINDOCTYPE'),
+                    #result('T1.EXTERNALID', 'java.lang.Long', 'EXTERNALID'),
+                    #result('T1.LOSSNOTICEDOCID', 'java.lang.Long', 'LOSSNOTICEDOCID'),
+                    #result('T1.LOSSNOTICEID', 'java.lang.Long', 'LOSSNOTICEID'),
+                    #result('T1.PATHINPARTNER', 'java.lang.String', 'PATHINPARTNER'),
+                    #result('T1.NAME', 'java.lang.String', 'NAME'),
+                    #result('T1.NOTE', 'java.lang.String', 'NOTE'),
+                    #result('T1.STATEID', 'java.lang.Long', 'STATEID'),
+
+                    #result('T2.BINFILEID', 'java.lang.Long', 'BINFILEID'),
+                    #result('T2.FILENAME', 'java.lang.String', 'FILENAME'),
+                    #result('T2.FILEPATH', 'java.lang.String', 'FILEPATH'),
+                    #result('T2.FILESIZE', 'java.lang.String', 'FILESIZE'),
+                    #result('T2.FILETYPEID', 'java.lang.Long', 'FILETYPEID'),
+                    #result('T2.FILETYPENAME', 'java.lang.String', 'FILETYPENAME'),
+                    #result('T2.NOTE', 'java.lang.String', 'NOTE'),
+                    #result('T2.FSID', 'java.lang.String', 'FSID')
+
+                    $ASPECTFIELDS
+                FROM
+                    B2B_LOSSNOTICEDOC T1
+                    LEFT JOIN INS_BINFILE T2
+                        on (T2.OBJID = T1.LOSSNOTICEDOCID)
+                        and(T2.OBJTABLENAME = 'B2B_LOSSNOTICEDOC')
+                    $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                    #chunk($LOSSNOTICEID) T1.LOSSNOTICEID = #bind($LOSSNOTICEID 'NUMERIC') #end
+                    #chunk($BINDOCTYPE)   T1.BINDOCTYPE   = #bind($BINDOCTYPE 'NUMERIC') #end
+
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+    <query name="dsB2BLossNoticeDocCustomBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BLossMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT
+                    #result('COUNT($NEEDDISTINCT T1.LOSSNOTICEDOCID)', 'java.lang.Long', 'LOSSNOTICEDOCID')
+                FROM
+                    B2B_LOSSNOTICEDOC T
+                    LEFT JOIN INS_BINFILE T2 on (T2.OBJID = T1.LOSSNOTICEDOCID)
+                    $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                    #chunk($LOSSNOTICEID) T1.LOSSNOTICEID = #bind($LOSSNOTICEID 'NUMERIC') #end
+                    #chunk($BINDOCTYPE)   T1.BINDOCTYPE   = #bind($BINDOCTYPE 'NUMERIC') #end
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+    <query name="dsB2BLossNoticeDocCustomBrowseListByParamEx4Integration" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BLossMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT
+                    $NEEDDISTINCT
+
+                    #result('T1.BINDOCTYPE', 'java.lang.Long', 'BINDOCTYPE'),
+                    #result('T1.EXTERNALID', 'java.lang.Long', 'EXTERNALID'),
+                    #result('T1.LOSSNOTICEDOCID', 'java.lang.Long', 'LOSSNOTICEDOCID'),
+                    #result('T1.LOSSNOTICEID', 'java.lang.Long', 'LOSSNOTICEID'),
+                    #result('T1.PATHINPARTNER', 'java.lang.String', 'PATHINPARTNER'),
+                    #result('T1.NAME', 'java.lang.String', 'NAME'),
+                    #result('T1.NOTE', 'java.lang.String', 'NOTE'),
+                    #result('T1.STATEID', 'java.lang.Long', 'STATEID'),
+                    #result('T1.CREATEDATE', 'java.math.BigDecimal', 'CREATEDATE'),
+
+                    #result('T2.BINFILEID', 'java.lang.Long', 'BINFILEID'),
+                    #result('T2.FILENAME', 'java.lang.String', 'FILENAME'),
+                    #result('T2.FILEPATH', 'java.lang.String', 'FILEPATH'),
+                    #result('T2.FILESIZE', 'java.lang.String', 'FILESIZE'),
+                    #result('T2.FILETYPEID', 'java.lang.Long', 'FILETYPEID'),
+                    #result('T2.FILETYPENAME', 'java.lang.String', 'FILETYPENAME'),
+                    #result('T2.NOTE', 'java.lang.String', 'NOTE'),
+                    #result('T2.FSID', 'java.lang.String', 'FSID'),
+                    #result('T3.SYSNAME', 'java.lang.String', 'STATESYSNAME'),
+                    #result('T3.PUBLICNAME', 'java.lang.String', 'STATENAME'),
+                    #result('T4.EXTERNALID', 'java.lang.String', 'LOSSNOTICEEXTID'),
+                    #result('T4.DOCFOLDER1C', 'java.lang.String', 'DOCFOLDER1C'),
+                    #result('T5.NAME', 'java.lang.String', 'DOCTYPENAME'),
+                    #result('T5.NOTE', 'java.lang.String', 'DOCTYPEOISNAME')
+                    $ASPECTFIELDS
+                FROM
+                    B2B_LOSSNOTICEDOC T1
+                    LEFT JOIN INS_BINFILE T2
+                        on (T2.OBJID = T1.LOSSNOTICEDOCID)
+                        and(T2.OBJTABLENAME = 'B2B_LOSSNOTICEDOC')
+                    LEFT JOIN CORE_SM_STATE T3 ON T1.STATEID = T3.ID
+                    LEFT JOIN B2B_LOSSNOTICE T4 ON T1.LOSSNOTICEID = T4.LOSSNOTICEID
+                    LEFT JOIN B2B_BINDOCTYPE T5 ON T1.BINDOCTYPE = T5.BINDOCTYPE
+                    $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                    #chunk() T4.DOCFOLDER1C is not null #end
+                    #chunk($STATESYSNAME) T3.SYSNAME = #bind($STATESYSNAME 'NUMERIC') #end
+                    #chunk($LOSSNOTICEID) T1.LOSSNOTICEID = #bind($LOSSNOTICEID 'NUMERIC') #end
+                    #chunk($BINDOCTYPE)   T1.BINDOCTYPE   = #bind($BINDOCTYPE 'NUMERIC') #end
+
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+    <query name="dsB2BLossNoticeDocCustomBrowseListByParamEx4IntegrationCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BLossMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT
+                    #result('COUNT($NEEDDISTINCT T1.LOSSNOTICEDOCID)', 'java.lang.Long', 'LOSSNOTICEDOCID')
+                FROM
+                      B2B_LOSSNOTICEDOC T1
+                    LEFT JOIN INS_BINFILE T2
+                        on (T2.OBJID = T1.LOSSNOTICEDOCID)
+                        and(T2.OBJTABLENAME = 'B2B_LOSSNOTICEDOC')
+                    LEFT JOIN CORE_SM_STATE T3 ON T1.STATEID = T3.ID
+                    LEFT JOIN B2B_LOSSNOTICE T4 ON T1.LOSSNOTICEID = T4.LOSSNOTICEID
+                    $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                    #chunk() T4.DOCFOLDER1C is not null #end
+                    #chunk($STATESYSNAME) T3.SYSNAME = #bind($STATESYSNAME 'NUMERIC') #end
+                    #chunk($LOSSNOTICEID) T1.LOSSNOTICEID = #bind($LOSSNOTICEID 'NUMERIC') #end
+                    #chunk($BINDOCTYPE)   T1.BINDOCTYPE   = #bind($BINDOCTYPE 'NUMERIC') #end
+
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+
+    <query name="dsB2BLossNoticeDocBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BLossMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+            <sql>
+            <![CDATA[
+		SELECT $NEEDDISTINCT
+			#result('T.LOSSNOTICEDOCID', 'java.lang.Long', 'LOSSNOTICEDOCID'),
+			#result('T.LOSSNOTICEID', 'java.lang.Long', 'LOSSNOTICEID'),
+			#result('T.STATEID', 'java.lang.Long', 'STATEID'),
+			#result('T.BINDOCTYPE', 'java.lang.Long', 'BINDOCTYPE'),
+			#result('T.EXTERNALID', 'java.lang.Long', 'EXTERNALID'),
+			#result('T.PATHINPARTNER', 'java.lang.String', 'PATHINPARTNER'),
+			#result('T.NOTE', 'java.lang.String', 'NOTE'),
+			#result('T.NAME', 'java.lang.String', 'NAME'),
+			#result('T.CREATEDATE', 'java.lang.Double', 'CREATEDATE'),
+			#result('T.CREATEUSERID', 'java.lang.Long', 'CREATEUSERID'),
+			#result('T.UPDATEDATE', 'java.lang.Double', 'UPDATEDATE'),
+			#result('T.UPDATEUSERID', 'java.lang.Long', 'UPDATEUSERID'),
+			#result('T2.BINFILEID', 'java.lang.Long', 'BINFILEID')
+
+			$ASPECTFIELDS
+		FROM
+      		B2B_LOSSNOTICEDOC T
+      		INNER JOIN INS_BINFILE T2 ON (T.LOSSNOTICEDOCID = T2.OBJID)
+			$ASPECTTABLES
+				#chain('AND' 'WHERE')
+       				#chunk($LOSSNOTICEDOCID) T.LOSSNOTICEDOCID = #bind($LOSSNOTICEDOCID 'NUMERIC') #end
+       				#chunk($LOSSNOTICEID) T.LOSSNOTICEID = #bind($LOSSNOTICEID 'NUMERIC') #end
+       				#chunk($STATEID) T.STATEID = #bind($STATEID 'NUMERIC') #end
+       				#chunk($BINDOCTYPE) T.BINDOCTYPE = #bind($BINDOCTYPE 'NUMERIC') #end
+       				#chunk($EXTERNALID) T.EXTERNALID = #bind($EXTERNALID 'NUMERIC') #end
+       				#chunk($PATHINPARTNER) T.PATHINPARTNER = #bind($PATHINPARTNER 'NUMERIC') #end
+       				#chunk($NOTE) T.NOTE = #bind($NOTE 'NUMERIC') #end
+       				#chunk($NAME) T.NAME = #bind($NAME 'NUMERIC') #end
+       				#chunk($CREATEDATE) T.CREATEDATE = #bind($CREATEDATE 'FLOAT') #end
+       				#chunk($CREATEUSERID) T.CREATEUSERID = #bind($CREATEUSERID 'NUMERIC') #end
+       				#chunk($UPDATEDATE) T.UPDATEDATE = #bind($UPDATEDATE 'FLOAT') #end
+       				#chunk($UPDATEUSERID) T.UPDATEUSERID = #bind($UPDATEUSERID 'NUMERIC') #end
+					$ASPECTRESTRICTION
+				#end
+	]]>
+        </sql>
+    </query>
+
+
+    <query name="dsB2BLossNoticeDocBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BLossMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+			SELECT
+        		#result('COUNT($NEEDDISTINCT T.LOSSNOTICEDOCID)', 'java.lang.Long', 'CNT')
+		FROM
+      		B2B_LOSSNOTICEDOC T
+      		INNER JOIN INS_BINFILE T2 ON (T.LOSSNOTICEDOCID = T2.OBJID)
+			$ASPECTTABLES
+				#chain('AND' 'WHERE')
+       				#chunk($LOSSNOTICEDOCID) T.LOSSNOTICEDOCID = #bind($LOSSNOTICEDOCID 'NUMERIC') #end
+       				#chunk($LOSSNOTICEID) T.LOSSNOTICEID = #bind($LOSSNOTICEID 'NUMERIC') #end
+       				#chunk($STATEID) T.STATEID = #bind($STATEID 'NUMERIC') #end
+       				#chunk($BINDOCTYPE) T.BINDOCTYPE = #bind($BINDOCTYPE 'NUMERIC') #end
+       				#chunk($EXTERNALID) T.EXTERNALID = #bind($EXTERNALID 'NUMERIC') #end
+       				#chunk($PATHINPARTNER) T.PATHINPARTNER = #bind($PATHINPARTNER 'NUMERIC') #end
+       				#chunk($NOTE) T.NOTE = #bind($NOTE 'NUMERIC') #end
+       				#chunk($NAME) T.NAME = #bind($NAME 'NUMERIC') #end
+       				#chunk($CREATEDATE) T.CREATEDATE = #bind($CREATEDATE 'FLOAT') #end
+       				#chunk($CREATEUSERID) T.CREATEUSERID = #bind($CREATEUSERID 'NUMERIC') #end
+       				#chunk($UPDATEDATE) T.UPDATEDATE = #bind($UPDATEDATE 'FLOAT') #end
+       				#chunk($UPDATEUSERID) T.UPDATEUSERID = #bind($UPDATEUSERID 'NUMERIC') #end
+					$ASPECTRESTRICTION
+				#end
+			]]>
+        </sql>
+    </query>
+
+</data-map>

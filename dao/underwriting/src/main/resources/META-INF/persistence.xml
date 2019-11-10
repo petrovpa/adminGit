@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+    <!-- Generate by core-dictionary-plugin for module ${className} -->
+    <!--<persistence-unit name="Underwriting" transaction-type="RESOURCE_LOCAL">-->
+    <persistence-unit name="Underwriting" transaction-type="JTA">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <jta-data-source>java:/DataSourceEx</jta-data-source>
+        <!-- Configuring class Entity -->
+        <class>com.bivgroup.underwriting.Answer</class>
+        <class>com.bivgroup.underwriting.UwRiskDetail</class>
+        <class>com.bivgroup.underwriting.FilledQuestionnaire</class>
+        <class>com.bivgroup.underwriting.Questionnaire</class>
+        <class>com.bivgroup.underwriting.AnswerEnumType</class>
+        <class>com.bivgroup.underwriting.QuestionnaireByProduct</class>
+        <class>com.bivgroup.underwriting.UwResult</class>
+        <class>com.bivgroup.underwriting.AnswerEnumValue</class>
+        <class>com.bivgroup.underwriting.UwCommonDetail</class>
+        <class>com.bivgroup.underwriting.Question</class>
+        <class>com.bivgroup.underwriting.QuestionnaireType</class>
+        <class>com.bivgroup.underwriting.QuestionnaireVersion</class>
+        <class>com.bivgroup.underwriting.QuestionComponent</class>
+        <class>com.bivgroup.underwriting.AnswerComponent</class>
+        <properties>
+            <!-- Hibernate properties -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.use_sql_comments" value="true"/>
+            <!-- Configuring inner hbm.xml-->
+            <!-- todo is it necessary -->
+
+            <property name="jboss.as.jpa.providerModule" value="org.hibernate:5.2.4.Final"/>
+        </properties>
+    </persistence-unit>
+
+</persistence>

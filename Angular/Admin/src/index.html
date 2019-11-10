@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="format-detection" content="telephone=no">
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <meta name="description" content="<%= htmlWebpackPlugin.options.title %>">
+  <!-- base url -->
+  <base href="<%= htmlWebpackPlugin.options.metadata.baseUrl %>">
+  <% if (webpackConfig.htmlElements.headTags) { %>
+  <!-- Configured Head Tags  -->
+  <%= webpackConfig.htmlElements.headTags %>
+  <% } %>
+
+  <%= htmlWebpackPlugin.files.webpackManifest %>
+
+  <% if (htmlWebpackPlugin.options.metadata.isDevServer && htmlWebpackPlugin.options.metadata.HMR !== true) { %>
+  <!-- Webpack Dev Server reload -->
+  <script src="/webpack-dev-server.js"></script>
+  <% } %>
+
+  <!-- CSS will be injected by webpack here -->
+  <!-- Preload link tags will be injected by webpack here -->
+  <link rel="stylesheet" href="assets/css/loading.min.css">
+</head>
+<body>
+  <app>
+    <div class="app-loading">
+      <div class="app-loading__logo"></div>
+      <svg class="spinner" viewBox="25 25 50 50">
+        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="1" stroke-miterlimit="10"></circle>
+      </svg>
+    </div>
+  </app>
+</body>
+</html>

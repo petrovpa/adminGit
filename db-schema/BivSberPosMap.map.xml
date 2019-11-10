@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+	<db-entity name="INS_CLIENTACTLOG">
+		<db-attribute name="ACTION" type="VARCHAR" length="255"/>
+		<db-attribute name="CLIENTACTLOGID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="CLIENTACTLOGTYPEID" type="NUMERIC" length="19"/>
+		<db-attribute name="CONTRID" type="NUMERIC" length="19"/>
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="255"/>
+		<db-attribute name="PARAM1" type="VARCHAR" length="255"/>
+		<db-attribute name="PARAM2" type="VARCHAR" length="255"/>
+		<db-attribute name="PARAM3" type="VARCHAR" length="255"/>
+		<db-attribute name="PARAM4" type="VARCHAR" length="255"/>
+		<db-attribute name="PARAM5" type="VARCHAR" length="255"/>
+		<db-attribute name="RAWDATA" type="CLOB"/>
+		<db-attribute name="SESSIONID" type="VARCHAR" length="255"/>
+		<db-attribute name="TABLENAME" type="VARCHAR" length="255"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="VALUE" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="INS_CLIENTACTLOGTYPE">
+		<db-attribute name="CLIENTACTLOGTYPEID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="INS_INSOBJ">
+		<db-attribute name="ALTMIDDLENAME" type="VARCHAR" length="255"/>
+		<db-attribute name="ALTNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="ALTSURNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="BIRTHDATE" type="FLOAT"/>
+		<db-attribute name="BODYNUMBER" type="VARCHAR" length="255"/>
+		<db-attribute name="BOXTYPEID" type="NUMERIC" length="19"/>
+		<db-attribute name="CHASSISNUMBER" type="VARCHAR" length="255"/>
+		<db-attribute name="CLEARANCEID" type="NUMERIC" length="19"/>
+		<db-attribute name="CONTRPROPERTYID" type="NUMERIC" length="19"/>
+		<db-attribute name="CREATEDATE" type="FLOAT"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="DISCRIMINATOR" type="NUMERIC" length="19"/>
+		<db-attribute name="DOCNUMBER" type="VARCHAR" length="255"/>
+		<db-attribute name="DOCSERIES" type="VARCHAR" length="255"/>
+		<db-attribute name="DOORSCOUNT" type="NUMERIC" length="19"/>
+		<db-attribute name="ENGINENUMBER" type="VARCHAR" length="255"/>
+		<db-attribute name="ENGINEPOWER" type="FLOAT"/>
+		<db-attribute name="ENGINETYPEID" type="NUMERIC" length="19"/>
+		<db-attribute name="ENGINEVOLUME" type="NUMERIC" length="19"/>
+		<db-attribute name="EXPLPERIOD" type="NUMERIC" length="19"/>
+		<db-attribute name="EXTERNALID" type="VARCHAR" length="255"/>
+		<db-attribute name="FACINGTYPE" type="VARCHAR" length="255"/>
+		<db-attribute name="FIRSTNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="GENDER" type="VARCHAR" length="1"/>
+		<db-attribute name="GROSSWEIGHT" type="NUMERIC" length="19"/>
+		<db-attribute name="GROWTH" type="NUMERIC" length="19"/>
+		<db-attribute name="HOUSEHAS" type="VARCHAR" length="255"/>
+		<db-attribute name="IMPORTANCEID" type="NUMERIC" length="19"/>
+		<db-attribute name="INSOBJID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="INSOBJNODEID" type="NUMERIC" length="19"/>
+		<db-attribute name="ISSTUDENT" type="INTEGER"/>
+		<db-attribute name="KILOMETRAGE" type="NUMERIC" length="19"/>
+		<db-attribute name="LASTNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="MIDDLENAME" type="VARCHAR" length="255"/>
+		<db-attribute name="MODIFICATION" type="VARCHAR" length="255"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="1024"/>
+		<db-attribute name="OBJAREA" type="NUMERIC" length="19"/>
+		<db-attribute name="OBJTYPESYSNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="ORIGCOSTCURRENCYID" type="NUMERIC" length="19"/>
+		<db-attribute name="ORIGCOSTVALUE" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="OWNERID" type="NUMERIC" length="19"/>
+		<db-attribute name="PAYLOAD" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODUCTIONYEAR" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODYEARSYSNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="REGNUMBER" type="VARCHAR" length="255"/>
+		<db-attribute name="SEATCOUNT" type="NUMERIC" length="19"/>
+		<db-attribute name="STATEDATE" type="FLOAT"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="USERCOMMENT" type="CLOB"/>
+		<db-attribute name="USERCOMMENT2" type="CLOB"/>
+		<db-attribute name="VEHBUYDATE" type="FLOAT"/>
+		<db-attribute name="VEHCOLOR" type="VARCHAR" length="255"/>
+		<db-attribute name="VEHMARKID" type="NUMERIC" length="19"/>
+		<db-attribute name="VEHMODELANOTHER" type="VARCHAR" length="255"/>
+		<db-attribute name="VEHMODELID" type="NUMERIC" length="19"/>
+		<db-attribute name="VEHORIGINID" type="NUMERIC" length="19"/>
+		<db-attribute name="VEHTYPEID" type="NUMERIC" length="19"/>
+		<db-attribute name="VERNUMBER" type="NUMERIC" length="19"/>
+		<db-attribute name="VIN" type="VARCHAR" length="255"/>
+		<db-attribute name="WALMATERIAL" type="VARCHAR" length="255"/>
+		<db-attribute name="WEIGHT" type="NUMERIC" length="19"/>
+		<db-attribute name="WHEELTYPEID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="INS_PARTICIPANTBINFILE">
+		<db-attribute name="ISVALID" type="NUMERIC" length="19"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="255"/>
+		<db-attribute name="PARTICIPANTBINFILEID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="PARTICIPANTID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="INS_PROMOCODES">
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="PROMOCODE" type="VARCHAR" length="255"/>
+		<db-attribute name="PROMOCODEID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="SHAREID" type="NUMERIC" length="19"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="INS_SHARES">
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="FINISHDATE" type="FLOAT" length="38"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="PRODVERID" type="NUMERIC" length="19"/>
+		<db-attribute name="SHAREID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="STARTDATE" type="FLOAT" length="38"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="TYPESYSNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="VALUE" type="NUMERIC" length="19" precision="6"/>
+	</db-entity>
+	<obj-entity name="InsClientActionLog" dbEntityName="INS_CLIENTACTLOG">
+		<obj-attribute name="action" type="java.lang.String" db-attribute-path="ACTION" note="совершенное действие"/>
+		<obj-attribute name="clientactlogtypeid" type="java.math.BigDecimal" db-attribute-path="CLIENTACTLOGTYPEID" note="ИД типа записи лога"/>
+		<obj-attribute name="contrid" type="java.lang.String" db-attribute-path="CONTRID" note="Ид договора"/>
+		<obj-attribute name="createdate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания записи"/>
+		<obj-attribute name="createuserid" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="ИД пользователя создавшего запись"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="CLIENTACTLOGID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД записи лога"/>
+		<obj-attribute name="note" type="java.lang.String" db-attribute-path="NOTE" note="Описание действия"/>
+		<obj-attribute name="param1" type="java.lang.String" db-attribute-path="PARAM1" note="параметр 1"/>
+		<obj-attribute name="param2" type="java.lang.String" db-attribute-path="PARAM2" note="параметр 2"/>
+		<obj-attribute name="param3" type="java.lang.String" db-attribute-path="PARAM3" note="параметр 3"/>
+		<obj-attribute name="param4" type="java.lang.String" db-attribute-path="PARAM4" note="параметр 4"/>
+		<obj-attribute name="param5" type="java.lang.String" db-attribute-path="PARAM5" note="параметр 5"/>
+		<obj-attribute name="rawData" type="java.lang.String" db-attribute-path="RAWDATA" note="Любые данные"/>
+		<obj-attribute name="sessionid" type="java.lang.String" db-attribute-path="SESSIONID" note="ид сессии"/>
+		<obj-attribute name="tablename" type="java.lang.String" db-attribute-path="TABLENAME" note="имя таблицы договора"/>
+		<obj-attribute name="updatedate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата изменения"/>
+		<obj-attribute name="updateuserid" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="ИД изменившего пользователя"/>
+		<obj-attribute name="value" type="java.lang.String" db-attribute-path="VALUE" note="Значение"/>
+	</obj-entity>
+	<obj-entity name="InsClientActionLogType" dbEntityName="INS_CLIENTACTLOGTYPE">
+		<obj-attribute name="clientactlogtypeid" type="java.math.BigDecimal" db-attribute-path="CLIENTACTLOGTYPEID" requiredCreate="true" requiredInsert="true" requiredUpdate="true" requiredDelete="true"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME"/>
+		<obj-attribute name="sysname" type="java.lang.String" db-attribute-path="SYSNAME"/>
+	</obj-entity>
+	<obj-entity name="InsObj" dbEntityName="INS_INSOBJ">
+		<obj-attribute name="contrPropertyId" type="java.lang.Long" db-attribute-path="CONTRPROPERTYID"/>
+		<obj-attribute name="createDate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания"/>
+		<obj-attribute name="createUserId" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="ИД пользователя, создавшего объект сущности"/>
+		<obj-attribute name="discriminator" type="java.lang.Long" db-attribute-path="DISCRIMINATOR" note="Тип сущности"/>
+		<obj-attribute name="facingType" type="java.lang.String" db-attribute-path="FACINGTYPE" note="Системное наименование типа отделки"/>
+		<obj-attribute name="houseHas" type="java.lang.String" db-attribute-path="HOUSEHAS" note="В доме есть"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="INSOBJID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД записи"/>
+		<obj-attribute name="insuranceObjectNodeId" type="java.lang.Long" db-attribute-path="INSOBJNODEID" requiredCreate="true" requiredInsert="true" note="ИД нода"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование объекта"/>
+		<obj-attribute name="note" type="java.lang.String" db-attribute-path="NOTE" note="Примечание"/>
+		<obj-attribute name="objArea" type="java.lang.Long" db-attribute-path="OBJAREA" note="Площадь объекта"/>
+		<obj-attribute name="objTypeSysName" type="java.lang.String" db-attribute-path="OBJTYPESYSNAME" note="Системное наименование вида объекта"/>
+		<obj-attribute name="prodYearSysName" type="java.lang.String" db-attribute-path="PRODYEARSYSNAME" note="Системное наименование периода постройки"/>
+		<obj-attribute name="updateDate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата редактирования"/>
+		<obj-attribute name="updateUserId" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="ИД редактировавшего пользователя"/>
+		<obj-attribute name="userComment" type="java.lang.String" db-attribute-path="USERCOMMENT" note="Комментарий"/>
+		<obj-attribute name="userComment2" type="java.lang.String" db-attribute-path="USERCOMMENT2" note="Дополнительный комментарий"/>
+		<obj-attribute name="versionNumber" type="java.lang.Long" db-attribute-path="VERNUMBER" note="Номер версии"/>
+		<obj-attribute name="walMaterial" type="java.lang.String" db-attribute-path="WALMATERIAL" note="Материал стен"/>
+	</obj-entity>
+	<obj-entity name="InsObjFlat" dbEntityName="INS_INSOBJ">
+		<obj-attribute name="contrPropertyId" type="java.lang.Long" db-attribute-path="CONTRPROPERTYID"/>
+		<obj-attribute name="createDate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания"/>
+		<obj-attribute name="createUserId" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="ИД пользователя, создавшего объект сущности"/>
+		<obj-attribute name="discriminator" type="java.lang.Long" db-attribute-path="DISCRIMINATOR" note="Тип сущности"/>
+		<obj-attribute name="facingType" type="java.lang.String" db-attribute-path="FACINGTYPE" note="Системное наименование типа отделки"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="INSOBJID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД записи"/>
+		<obj-attribute name="insuranceObjectNodeId" type="java.lang.Long" db-attribute-path="INSOBJNODEID" requiredCreate="true" requiredInsert="true" note="ИД нода"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование объекта"/>
+		<obj-attribute name="note" type="java.lang.String" db-attribute-path="NOTE" note="Примечание"/>
+		<obj-attribute name="objArea" type="java.lang.Long" db-attribute-path="OBJAREA" note="Площадь объекта"/>
+		<obj-attribute name="objTypeSysName" type="java.lang.String" db-attribute-path="OBJTYPESYSNAME" note="Системное наименование вида объекта"/>
+		<obj-attribute name="prodYearSysName" type="java.lang.String" db-attribute-path="PRODYEARSYSNAME" note="Системное наименование периода постройки"/>
+		<obj-attribute name="updateDate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата редактирования"/>
+		<obj-attribute name="updateUserId" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="ИД редактировавшего пользователя"/>
+		<obj-attribute name="userComment" type="java.lang.String" db-attribute-path="USERCOMMENT" note="Комментарий"/>
+		<obj-attribute name="userComment2" type="java.lang.String" db-attribute-path="USERCOMMENT2" note="Дополнительный комментарий"/>
+		<obj-attribute name="versionNumber" type="java.lang.Long" db-attribute-path="VERNUMBER" note="Номер версии"/>
+		<obj-attribute name="walMaterial" type="java.lang.String" db-attribute-path="WALMATERIAL" note="Материал стен"/>
+	</obj-entity>
+	<obj-entity name="InsObjGO" dbEntityName="INS_INSOBJ">
+		<obj-attribute name="contrPropertyId" type="java.lang.Long" db-attribute-path="CONTRPROPERTYID"/>
+		<obj-attribute name="contrpropertyid" type="java.lang.Long" db-attribute-path="CONTRPROPERTYID" note="ИД описания имущества"/>
+		<obj-attribute name="createDate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания"/>
+		<obj-attribute name="createUserId" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="ИД пользователя, создавшего объект сущности"/>
+		<obj-attribute name="discriminator" type="java.lang.Long" db-attribute-path="DISCRIMINATOR" note="Тип сущности"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="INSOBJID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД записи"/>
+		<obj-attribute name="insuranceObjectNodeId" type="java.lang.Long" db-attribute-path="INSOBJNODEID" requiredCreate="true" requiredInsert="true" note="ИД нода"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="ФИО"/>
+		<obj-attribute name="note" type="java.lang.String" db-attribute-path="NOTE" note="Примечание"/>
+		<obj-attribute name="updateDate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата редактирования"/>
+		<obj-attribute name="updateUserId" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="ИД редактировавшего пользователя"/>
+		<obj-attribute name="userComment" type="java.lang.String" db-attribute-path="USERCOMMENT" note="Комментарий"/>
+		<obj-attribute name="userComment2" type="java.lang.String" db-attribute-path="USERCOMMENT2" note="Дополнительный комментарий"/>
+		<obj-attribute name="versionNumber" type="java.lang.Long" db-attribute-path="VERNUMBER" note="Номер версии"/>
+	</obj-entity>
+	<obj-entity name="InsObjHouse" dbEntityName="INS_INSOBJ">
+		<obj-attribute name="createDate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания"/>
+		<obj-attribute name="createUserId" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="ИД пользователя, создавшего объект сущности"/>
+		<obj-attribute name="discriminator" type="java.lang.Long" db-attribute-path="DISCRIMINATOR" note="Тип сущности"/>
+		<obj-attribute name="facingType" type="java.lang.String" db-attribute-path="FACINGTYPE" note="Системное наименование типа отделки"/>
+		<obj-attribute name="houseHas" type="java.lang.String" db-attribute-path="HOUSEHAS" note="В доме есть"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="INSOBJID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД записи"/>
+		<obj-attribute name="insuranceObjectNodeId" type="java.lang.Long" db-attribute-path="INSOBJNODEID" requiredCreate="true" requiredInsert="true" note="ИД нода"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование объекта"/>
+		<obj-attribute name="note" type="java.lang.String" db-attribute-path="NOTE" note="Примечание"/>
+		<obj-attribute name="objArea" type="java.lang.Long" db-attribute-path="OBJAREA" note="Площадь объекта"/>
+		<obj-attribute name="objTypeSysName" type="java.lang.String" db-attribute-path="OBJTYPESYSNAME" note="Системное наименование вида объекта"/>
+		<obj-attribute name="untitledAttr" type="java.lang.Long" db-attribute-path="CONTRPROPERTYID"/>
+		<obj-attribute name="updateDate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата редактирования"/>
+		<obj-attribute name="updateUserId" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="ИД редактировавшего пользователя"/>
+		<obj-attribute name="userComment" type="java.lang.String" db-attribute-path="USERCOMMENT" note="Комментарий"/>
+		<obj-attribute name="userComment2" type="java.lang.String" db-attribute-path="USERCOMMENT2" note="Дополнительный комментарий"/>
+		<obj-attribute name="versionNumber" type="java.lang.Long" db-attribute-path="VERNUMBER" note="Номер версии"/>
+		<obj-attribute name="walMaterial" type="java.lang.String" db-attribute-path="WALMATERIAL" note="Материал стен"/>
+	</obj-entity>
+	<obj-entity name="InsObjMovable" dbEntityName="INS_INSOBJ">
+		<obj-attribute name="contrPropertyId" type="java.lang.Long" db-attribute-path="CONTRPROPERTYID"/>
+		<obj-attribute name="contrpropertyid" type="java.lang.Long" db-attribute-path="CONTRPROPERTYID" note="ИД описания имущества"/>
+		<obj-attribute name="createDate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания"/>
+		<obj-attribute name="createUserId" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="ИД пользователя, создавшего объект сущности"/>
+		<obj-attribute name="discriminator" type="java.lang.Long" db-attribute-path="DISCRIMINATOR" note="Тип сущности"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="INSOBJID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД записи"/>
+		<obj-attribute name="insuranceObjectNodeId" type="java.lang.Long" db-attribute-path="INSOBJNODEID" requiredCreate="true" requiredInsert="true" note="ИД нода"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="ФИО"/>
+		<obj-attribute name="note" type="java.lang.String" db-attribute-path="NOTE" note="Примечание"/>
+		<obj-attribute name="updateDate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата редактирования"/>
+		<obj-attribute name="updateUserId" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="ИД редактировавшего пользователя"/>
+		<obj-attribute name="userComment" type="java.lang.String" db-attribute-path="USERCOMMENT" note="Комментарий"/>
+		<obj-attribute name="userComment2" type="java.lang.String" db-attribute-path="USERCOMMENT2" note="Дополнительный комментарий"/>
+		<obj-attribute name="versionNumber" type="java.lang.Long" db-attribute-path="VERNUMBER" note="Номер версии"/>
+	</obj-entity>
+	<obj-entity name="InsObjOther" dbEntityName="INS_INSOBJ">
+		<obj-attribute name="contrPropertyId" type="java.lang.Long" db-attribute-path="CONTRPROPERTYID"/>
+		<obj-attribute name="createDate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания"/>
+		<obj-attribute name="createUserId" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="ИД пользователя, создавшего объект сущности"/>
+		<obj-attribute name="discriminator" type="java.lang.Long" db-attribute-path="DISCRIMINATOR" note="Тип сущности"/>
+		<obj-attribute name="facingType" type="java.lang.String" db-attribute-path="FACINGTYPE" note="Системное наименование типа отделки"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="INSOBJID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД записи"/>
+		<obj-attribute name="insuranceObjectNodeId" type="java.lang.Long" db-attribute-path="INSOBJNODEID" requiredCreate="true" requiredInsert="true" note="ИД нода"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование объекта"/>
+		<obj-attribute name="note" type="java.lang.String" db-attribute-path="NOTE" note="Примечание"/>
+		<obj-attribute name="objArea" type="java.lang.Long" db-attribute-path="OBJAREA" note="Площадь объекта"/>
+		<obj-attribute name="objTypeSysName" type="java.lang.String" db-attribute-path="OBJTYPESYSNAME" note="Системное наименование вида объекта"/>
+		<obj-attribute name="updateDate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата редактирования"/>
+		<obj-attribute name="updateUserId" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="ИД редактировавшего пользователя"/>
+		<obj-attribute name="userComment" type="java.lang.String" db-attribute-path="USERCOMMENT" note="Комментарий"/>
+		<obj-attribute name="userComment2" type="java.lang.String" db-attribute-path="USERCOMMENT2" note="Дополнительный комментарий"/>
+		<obj-attribute name="versionNumber" type="java.lang.Long" db-attribute-path="VERNUMBER" note="Номер версии"/>
+	</obj-entity>
+	<obj-entity name="InsObjSauna" dbEntityName="INS_INSOBJ">
+		<obj-attribute name="contrPropertyId" type="java.lang.Long" db-attribute-path="CONTRPROPERTYID"/>
+		<obj-attribute name="createDate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания"/>
+		<obj-attribute name="createUserId" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="ИД пользователя, создавшего объект сущности"/>
+		<obj-attribute name="discriminator" type="java.lang.Long" db-attribute-path="DISCRIMINATOR" note="Тип сущности"/>
+		<obj-attribute name="facingType" type="java.lang.String" db-attribute-path="FACINGTYPE" note="Системное наименование типа отделки"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="INSOBJID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД записи"/>
+		<obj-attribute name="insuranceObjectNodeId" type="java.lang.Long" db-attribute-path="INSOBJNODEID" requiredCreate="true" requiredInsert="true" note="ИД нода"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование объекта"/>
+		<obj-attribute name="note" type="java.lang.String" db-attribute-path="NOTE" note="Примечание"/>
+		<obj-attribute name="objArea" type="java.lang.Long" db-attribute-path="OBJAREA" note="Площадь объекта"/>
+		<obj-attribute name="objTypeSysName" type="java.lang.String" db-attribute-path="OBJTYPESYSNAME" note="Системное наименование вида объекта"/>
+		<obj-attribute name="updateDate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата редактирования"/>
+		<obj-attribute name="updateUserId" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="ИД редактировавшего пользователя"/>
+		<obj-attribute name="userComment" type="java.lang.String" db-attribute-path="USERCOMMENT" note="Комментарий"/>
+		<obj-attribute name="userComment2" type="java.lang.String" db-attribute-path="USERCOMMENT2" note="Дополнительный комментарий"/>
+		<obj-attribute name="versionNumber" type="java.lang.Long" db-attribute-path="VERNUMBER" note="Номер версии"/>
+	</obj-entity>
+	<obj-entity name="InsParticipantBinFile" dbEntityName="INS_PARTICIPANTBINFILE">
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PARTICIPANTBINFILEID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ид записи"/>
+		<obj-attribute name="isvalid" type="java.lang.Long" db-attribute-path="ISVALID" note="Флаг Документ валиден"/>
+		<obj-attribute name="note" type="java.lang.String" db-attribute-path="NOTE" note="Примечание"/>
+		<obj-attribute name="participantId" type="java.lang.Long" db-attribute-path="PARTICIPANTID" note="ИД партиципанта"/>
+	</obj-entity>
+	<obj-entity name="InsPromocodes" dbEntityName="INS_PROMOCODES">
+		<obj-attribute name="createDate" type="java.lang.Double" db-attribute-path="CREATEDATE" note="Дата создания промокода"/>
+		<obj-attribute name="createUserId" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="ИД пользователя создавшего промокод"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PROMOCODEID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД промокода"/>
+		<obj-attribute name="promoCode" type="java.lang.String" db-attribute-path="PROMOCODE" note="промокод"/>
+		<obj-attribute name="shareId" type="java.lang.Long" db-attribute-path="SHAREID" note="ИД акции"/>
+		<obj-attribute name="updateDate" type="java.lang.Double" db-attribute-path="UPDATEDATE" note="Дата изменения промокода"/>
+		<obj-attribute name="updateUserId" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="ИД пользователя изменившего промокод"/>
+	</obj-entity>
+	<obj-entity name="InsShares" dbEntityName="INS_SHARES">
+		<obj-attribute name="createDate" type="java.lang.Double" db-attribute-path="CREATEDATE" note="Дата создания акции"/>
+		<obj-attribute name="createUserId" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="Пользователь создавший акцию"/>
+		<obj-attribute name="finishDate" type="java.lang.Double" db-attribute-path="FINISHDATE" note="Дата окончания акции"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="SHAREID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД акции"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование акции"/>
+		<obj-attribute name="prodVerId" type="java.lang.Long" db-attribute-path="PRODVERID" note="Связь с продуктом"/>
+		<obj-attribute name="startDate" type="java.lang.Double" db-attribute-path="STARTDATE" note="Дата начала действия акции"/>
+		<obj-attribute name="sysName" type="java.lang.String" db-attribute-path="SYSNAME" note="Системное наименование акции"/>
+		<obj-attribute name="typeSysName" type="java.lang.String" db-attribute-path="TYPESYSNAME" note="Вид акции"/>
+		<obj-attribute name="updateDate" type="java.lang.Double" db-attribute-path="UPDATEDATE" note="Дата изменения акции"/>
+		<obj-attribute name="updateUserId" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="Ид пользователя изменившего акцию"/>
+		<obj-attribute name="value" type="java.math.BigDecimal" db-attribute-path="VALUE" note="Значение коеффициента скидки"/>
+	</obj-entity>
+</data-map>

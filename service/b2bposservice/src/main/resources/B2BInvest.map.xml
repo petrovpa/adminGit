@@ -1,0 +1,1814 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+    <query name="dsB2BInvestBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvest" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.INVAMID', 'java.lang.Long', 'INVAMID'),
+        #result('T.DISCRIMINATOR', 'java.lang.Long', 'DISCRIMINATOR'),
+        #result('T.CONTRID', 'java.lang.Long', 'CONTRID'),
+        #result('T.CONTRNUMBER', 'java.lang.String', 'CONTRNUMBER'),
+        #result('T.CALCDATE', 'java.math.BigDecimal', 'CALCDATE'),
+        #result('T.INSAMVALUE', 'java.lang.Double', 'INSAMVALUE'),
+        #result('T.INDVALUE', 'java.lang.Double', 'INDVALUE'),
+        #result('T.INVVALUE', 'java.lang.Double', 'INVVALUE'),
+        #result('T.BAVALUE', 'java.lang.Double', 'BAVALUE'),
+        #result('T.REDEMPVALUE', 'java.lang.Double', 'REDEMPVALUE'),
+        #result('T.DIDVALUE', 'java.lang.Double', 'DIDVALUE'),
+        #result('T.INSAMIDDVALUE', 'java.lang.Double', 'INSAMIDDVALUE'),
+        #result('T.IDDVALUE', 'java.lang.Double', 'IDDVALUE'),
+        #result('T.COEFINTVALUE', 'java.lang.Double', 'COEFINTVALUE')
+       $ASPECTFIELDS 
+FROM 
+      B2B_INVAM T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($DISCRIMINATOR) T.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+       #chunk($CONTRNUMBER) T.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+       #chunk($CALCDATE) T.CALCDATE = #bind($CALCDATE 'FLOAT') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvest" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.INVAMID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_INVAM T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($DISCRIMINATOR) T.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+       #chunk($CONTRNUMBER) T.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+       #chunk($CALCDATE) T.CALCDATE = #bind($CALCDATE 'FLOAT') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvest" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+INSERT INTO B2B_INVAM (
+INVAMID,
+DISCRIMINATOR,
+CONTRID,
+CONTRNUMBER,
+CALCDATE,
+INSAMVALUE,
+INDVALUE,
+INVVALUE,
+BAVALUE,
+REDEMPVALUE,
+DIDVALUE,
+INSAMIDDVALUE,
+IDDVALUE,
+COEFINTVALUE
+$ASPECTFIELDS ) VALUES (
+#bind($INVAMID 'NUMERIC'),
+#bind($DISCRIMINATOR 'NUMERIC'),
+#bind($CONTRID 'NUMERIC'),
+#bind($CONTRNUMBER 'VARCHAR'),
+#bind($CALCDATE 'FLOAT'),
+#bind($INSAMVALUE 'NUMERIC'),
+#bind($INDVALUE 'NUMERIC'),
+#bind($INVVALUE 'NUMERIC'),
+#bind($BAVALUE 'NUMERIC'),
+#bind($REDEMPVALUE 'NUMERIC'),
+#bind($DIDVALUE 'NUMERIC'),
+#bind($INSAMIDDVALUE 'NUMERIC'),
+#bind($IDDVALUE 'NUMERIC'),
+#bind($COEFINTVALUE 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO B2B_INVAM (
+INVAMID,
+DISCRIMINATOR,
+CONTRID,
+CONTRNUMBER,
+CALCDATE,
+INSAMVALUE,
+INDVALUE,
+INVVALUE,
+BAVALUE,
+REDEMPVALUE,
+DIDVALUE,
+INSAMIDDVALUE,
+IDDVALUE,
+COEFINTVALUE
+$ASPECTFIELDS ) VALUES (
+#bind($INVAMID 'NUMERIC'),
+#bind($DISCRIMINATOR 'NUMERIC'),
+#bind($CONTRID 'NUMERIC'),
+#bind($CONTRNUMBER 'VARCHAR'),
+#bind($CALCDATE 'FLOAT'),
+#bind($INSAMVALUE 'NUMERIC'),
+#bind($INDVALUE 'NUMERIC'),
+#bind($INVVALUE 'NUMERIC'),
+#bind($BAVALUE 'NUMERIC'),
+#bind($REDEMPVALUE 'NUMERIC'),
+#bind($DIDVALUE 'NUMERIC'),
+#bind($INSAMIDDVALUE 'NUMERIC'),
+#bind($IDDVALUE 'NUMERIC'),
+#bind($COEFINTVALUE 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO B2B_INVAM (
+INVAMID,
+DISCRIMINATOR,
+CONTRID,
+CONTRNUMBER,
+CALCDATE,
+INSAMVALUE,
+INDVALUE,
+INVVALUE,
+BAVALUE,
+REDEMPVALUE,
+DIDVALUE,
+INSAMIDDVALUE,
+IDDVALUE,
+COEFINTVALUE
+$ASPECTFIELDS ) VALUES (
+#bind($INVAMID 'NUMERIC'),
+#bind($DISCRIMINATOR 'NUMERIC'),
+#bind($CONTRID 'NUMERIC'),
+#bind($CONTRNUMBER 'VARCHAR'),
+#bind($CALCDATE 'FLOAT'),
+#bind($INSAMVALUE 'NUMERIC'),
+#bind($INDVALUE 'NUMERIC'),
+#bind($INVVALUE 'NUMERIC'),
+#bind($BAVALUE 'NUMERIC'),
+#bind($REDEMPVALUE 'NUMERIC'),
+#bind($DIDVALUE 'NUMERIC'),
+#bind($INSAMIDDVALUE 'NUMERIC'),
+#bind($IDDVALUE 'NUMERIC'),
+#bind($COEFINTVALUE 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvest" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.INVAMID = #bind($INVAMID 'NUMERIC') 
+#chunk($DISCRIMINATOR) , T.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+#chunk($CONTRID) , T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+#chunk($CONTRNUMBER) , T.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+#chunk($CALCDATE) , T.CALCDATE = #bind($CALCDATE 'FLOAT') #end 
+#chunk($INSAMVALUE) , T.INSAMVALUE = #bind($INSAMVALUE 'NUMERIC') #end 
+#chunk($INDVALUE) , T.INDVALUE = #bind($INDVALUE 'NUMERIC') #end 
+#chunk($INVVALUE) , T.INVVALUE = #bind($INVVALUE 'NUMERIC') #end 
+#chunk($BAVALUE) , T.BAVALUE = #bind($BAVALUE 'NUMERIC') #end 
+#chunk($REDEMPVALUE) , T.REDEMPVALUE = #bind($REDEMPVALUE 'NUMERIC') #end 
+#chunk($DIDVALUE) , T.DIDVALUE = #bind($DIDVALUE 'NUMERIC') #end 
+#chunk($INSAMIDDVALUE) , T.INSAMIDDVALUE = #bind($INSAMIDDVALUE 'NUMERIC') #end 
+#chunk($IDDVALUE) , T.IDDVALUE = #bind($IDDVALUE 'NUMERIC') #end 
+#chunk($COEFINTVALUE) , T.COEFINTVALUE = #bind($COEFINTVALUE 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_INVAM T 
+#chain('AND' 'WHERE') 
+       #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.INVAMID = #bind($INVAMID 'NUMERIC') 
+#chunk($DISCRIMINATOR) , T.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+#chunk($CONTRID) , T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+#chunk($CONTRNUMBER) , T.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+#chunk($CALCDATE) , T.CALCDATE = #bind($CALCDATE 'FLOAT') #end 
+#chunk($INSAMVALUE) , T.INSAMVALUE = #bind($INSAMVALUE 'NUMERIC') #end 
+#chunk($INDVALUE) , T.INDVALUE = #bind($INDVALUE 'NUMERIC') #end 
+#chunk($INVVALUE) , T.INVVALUE = #bind($INVVALUE 'NUMERIC') #end 
+#chunk($BAVALUE) , T.BAVALUE = #bind($BAVALUE 'NUMERIC') #end 
+#chunk($REDEMPVALUE) , T.REDEMPVALUE = #bind($REDEMPVALUE 'NUMERIC') #end 
+#chunk($DIDVALUE) , T.DIDVALUE = #bind($DIDVALUE 'NUMERIC') #end 
+#chunk($INSAMIDDVALUE) , T.INSAMIDDVALUE = #bind($INSAMIDDVALUE 'NUMERIC') #end 
+#chunk($IDDVALUE) , T.IDDVALUE = #bind($IDDVALUE 'NUMERIC') #end 
+#chunk($COEFINTVALUE) , T.COEFINTVALUE = #bind($COEFINTVALUE 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_INVAM T 
+#chain('AND' 'WHERE') 
+       #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       B2B_INVAM T 
+SET 
+    T.INVAMID = #bind($INVAMID 'NUMERIC') 
+#chunk($DISCRIMINATOR) , T.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+#chunk($CONTRID) , T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+#chunk($CONTRNUMBER) , T.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+#chunk($CALCDATE) , T.CALCDATE = #bind($CALCDATE 'FLOAT') #end 
+#chunk($INSAMVALUE) , T.INSAMVALUE = #bind($INSAMVALUE 'NUMERIC') #end 
+#chunk($INDVALUE) , T.INDVALUE = #bind($INDVALUE 'NUMERIC') #end 
+#chunk($INVVALUE) , T.INVVALUE = #bind($INVVALUE 'NUMERIC') #end 
+#chunk($BAVALUE) , T.BAVALUE = #bind($BAVALUE 'NUMERIC') #end 
+#chunk($REDEMPVALUE) , T.REDEMPVALUE = #bind($REDEMPVALUE 'NUMERIC') #end 
+#chunk($DIDVALUE) , T.DIDVALUE = #bind($DIDVALUE 'NUMERIC') #end 
+#chunk($INSAMIDDVALUE) , T.INSAMIDDVALUE = #bind($INSAMIDDVALUE 'NUMERIC') #end 
+#chunk($IDDVALUE) , T.IDDVALUE = #bind($IDDVALUE 'NUMERIC') #end 
+#chunk($COEFINTVALUE) , T.COEFINTVALUE = #bind($COEFINTVALUE 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvest" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.INVAMID = #bind($INVAMID 'NUMERIC') 
+#chunk($DISCRIMINATOR) , TA.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+#chunk($CONTRID) , TA.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+#chunk($CONTRNUMBER) , TA.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+#chunk($CALCDATE) , TA.CALCDATE = #bind($CALCDATE 'FLOAT') #end 
+#chunk($INSAMVALUE) , TA.INSAMVALUE = #bind($INSAMVALUE 'NUMERIC') #end 
+#chunk($INDVALUE) , TA.INDVALUE = #bind($INDVALUE 'NUMERIC') #end 
+#chunk($INVVALUE) , TA.INVVALUE = #bind($INVVALUE 'NUMERIC') #end 
+#chunk($BAVALUE) , TA.BAVALUE = #bind($BAVALUE 'NUMERIC') #end 
+#chunk($REDEMPVALUE) , TA.REDEMPVALUE = #bind($REDEMPVALUE 'NUMERIC') #end 
+#chunk($DIDVALUE) , TA.DIDVALUE = #bind($DIDVALUE 'NUMERIC') #end 
+#chunk($INSAMIDDVALUE) , TA.INSAMIDDVALUE = #bind($INSAMIDDVALUE 'NUMERIC') #end 
+#chunk($IDDVALUE) , TA.IDDVALUE = #bind($IDDVALUE 'NUMERIC') #end 
+#chunk($COEFINTVALUE) , TA.COEFINTVALUE = #bind($COEFINTVALUE 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_INVAM TA 
+WHERE 
+     TA.INVAMID in ( 
+       SELECT 
+         T.INVAMID
+       FROM 
+         B2B_INVAM T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.INVAMID = #bind($INVAMID 'NUMERIC') 
+#chunk($DISCRIMINATOR) , TA.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+#chunk($CONTRID) , TA.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+#chunk($CONTRNUMBER) , TA.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+#chunk($CALCDATE) , TA.CALCDATE = #bind($CALCDATE 'FLOAT') #end 
+#chunk($INSAMVALUE) , TA.INSAMVALUE = #bind($INSAMVALUE 'NUMERIC') #end 
+#chunk($INDVALUE) , TA.INDVALUE = #bind($INDVALUE 'NUMERIC') #end 
+#chunk($INVVALUE) , TA.INVVALUE = #bind($INVVALUE 'NUMERIC') #end 
+#chunk($BAVALUE) , TA.BAVALUE = #bind($BAVALUE 'NUMERIC') #end 
+#chunk($REDEMPVALUE) , TA.REDEMPVALUE = #bind($REDEMPVALUE 'NUMERIC') #end 
+#chunk($DIDVALUE) , TA.DIDVALUE = #bind($DIDVALUE 'NUMERIC') #end 
+#chunk($INSAMIDDVALUE) , TA.INSAMIDDVALUE = #bind($INSAMIDDVALUE 'NUMERIC') #end 
+#chunk($IDDVALUE) , TA.IDDVALUE = #bind($IDDVALUE 'NUMERIC') #end 
+#chunk($COEFINTVALUE) , TA.COEFINTVALUE = #bind($COEFINTVALUE 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_INVAM TA 
+WHERE 
+     TA.INVAMID in ( 
+       SELECT 
+         T.INVAMID
+       FROM 
+         B2B_INVAM T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       B2B_INVAM TA 
+SET 
+    TA.INVAMID = #bind($INVAMID 'NUMERIC') 
+#chunk($DISCRIMINATOR) , TA.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+#chunk($CONTRID) , TA.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+#chunk($CONTRNUMBER) , TA.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+#chunk($CALCDATE) , TA.CALCDATE = #bind($CALCDATE 'FLOAT') #end 
+#chunk($INSAMVALUE) , TA.INSAMVALUE = #bind($INSAMVALUE 'NUMERIC') #end 
+#chunk($INDVALUE) , TA.INDVALUE = #bind($INDVALUE 'NUMERIC') #end 
+#chunk($INVVALUE) , TA.INVVALUE = #bind($INVVALUE 'NUMERIC') #end 
+#chunk($BAVALUE) , TA.BAVALUE = #bind($BAVALUE 'NUMERIC') #end 
+#chunk($REDEMPVALUE) , TA.REDEMPVALUE = #bind($REDEMPVALUE 'NUMERIC') #end 
+#chunk($DIDVALUE) , TA.DIDVALUE = #bind($DIDVALUE 'NUMERIC') #end 
+#chunk($INSAMIDDVALUE) , TA.INSAMIDDVALUE = #bind($INSAMIDDVALUE 'NUMERIC') #end 
+#chunk($IDDVALUE) , TA.IDDVALUE = #bind($IDDVALUE 'NUMERIC') #end 
+#chunk($COEFINTVALUE) , TA.COEFINTVALUE = #bind($COEFINTVALUE 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.INVAMID in ( 
+       SELECT 
+         T.INVAMID
+       FROM 
+         B2B_INVAM T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvest" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+DELETE  T
+FROM 
+      B2B_INVAM T 
+#chain('AND' 'WHERE') 
+      #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      B2B_INVAM T 
+#chain('AND' 'WHERE') 
+      #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       B2B_INVAM T 
+#chain('AND' 'WHERE') 
+      #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvest" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      B2B_INVAM TA 
+WHERE 
+     TA.INVAMID in ( 
+       SELECT 
+         T.INVAMID
+       FROM 
+         B2B_INVAM T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+             #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      B2B_INVAM TA 
+WHERE 
+     TA.INVAMID in ( 
+       SELECT 
+         T.INVAMID
+       FROM 
+         B2B_INVAM T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+             #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       B2B_INVAM TA 
+WHERE 
+     TA.INVAMID in ( 
+       SELECT 
+         T.INVAMID
+       FROM 
+         B2B_INVAM T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+             #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestCouponBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvest" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.INVAMID', 'java.lang.Long', 'INVAMID'),
+        #result('T.DISCRIMINATOR', 'java.lang.Long', 'DISCRIMINATOR'),
+        #result('T.CONTRID', 'java.lang.Long', 'CONTRID'),
+        #result('T.CONTRNUMBER', 'java.lang.String', 'CONTRNUMBER'),
+        #result('T.CALCDATE', 'java.math.BigDecimal', 'CALCDATE'),
+        #result('T.CPPCTMEM', 'java.lang.Double', 'CPPCTMEM'),
+        #result('T.CPCONTRAMVALUE', 'java.lang.Double', 'CPCONTRAMVALUE'),
+        #result('T.CPRVLTAMVALUE', 'java.lang.Double', 'CPRVLTAMVALUE'),
+        #result('T.CPACRDCONTRAMVALUE', 'java.lang.Double', 'CPACRDCONTRAMVALUE'),
+        #result('T.CPACRDRVLTAMVALUE', 'java.lang.Double', 'CPACRDRVLTAMVALUE'),
+        #result('T.PREMVALUE', 'java.lang.Double', 'PREMVALUE'),
+        #result('T.CPPCTWMEM', 'java.lang.Double', 'CPPCTWMEM'),
+        #result('T.RATESTART', 'java.lang.Double', 'RATESTART'),
+        #result('T.RATECALC', 'java.lang.Double', 'RATECALC'),
+        #result('T.CONTRCURRENCYID', 'java.lang.Long', 'CONTRCURRENCYID'),
+        #result('T.CONDINVCURRENCYID', 'java.lang.Long', 'CONDINVCURRENCYID'),
+        #result('T.ISCONDITION', 'java.lang.Long', 'ISCONDITION'),
+        #result('T.ISTODAYCPACRD', 'java.lang.Long', 'ISTODAYCPACRD'),
+        #result('T.BARRIERVALUE', 'java.lang.Double', 'BARRIERVALUE'),
+        #result('T.MULTIMEMVALUE', 'java.lang.Double', 'MULTIMEMVALUE'),
+        #result('T.CONDNOTE', 'java.lang.String', 'CONDNOTE'),
+        #result('T.CONDCODE', 'java.lang.String', 'CONDCODE')
+                
+       $ASPECTFIELDS 
+FROM 
+      B2B_INVAM T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($DISCRIMINATOR) T.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+       #chunk($CONTRNUMBER) T.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+       #chunk($CALCDATE) T.CALCDATE = #bind($CALCDATE 'FLOAT') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestCouponBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvest" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.INVAMID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_INVAM T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($DISCRIMINATOR) T.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+       #chunk($CONTRNUMBER) T.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+       #chunk($CALCDATE) T.CALCDATE = #bind($CALCDATE 'FLOAT') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestCouponInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvest" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+INSERT INTO B2B_INVAM (
+INVAMID,
+DISCRIMINATOR,
+CONTRID,
+CONTRNUMBER,
+CALCDATE,
+CPPCTMEM,
+CPCONTRAMVALUE,
+CPRVLTAMVALUE,
+CPACRDCONTRAMVALUE,
+CPACRDRVLTAMVALUE,
+PREMVALUE,
+CPPCTWMEM,
+RATESTART,
+RATECALC,
+CONTRCURRENCYID,
+CONDINVCURRENCYID,
+ISCONDITION,
+ISTODAYCPACRD,
+BARRIERVALUE,
+MULTIMEMVALUE,
+CONDNOTE,
+CONDCODE
+$ASPECTFIELDS ) VALUES (
+#bind($INVAMID 'NUMERIC'),
+#bind($DISCRIMINATOR 'NUMERIC'),
+#bind($CONTRID 'NUMERIC'),
+#bind($CONTRNUMBER 'VARCHAR'),
+#bind($CALCDATE 'FLOAT'),
+#bind($CPPCTMEM 'NUMERIC'),
+#bind($CPCONTRAMVALUE 'NUMERIC'),
+#bind($CPRVLTAMVALUE 'NUMERIC'),
+#bind($CPACRDCONTRAMVALUE 'NUMERIC'),
+#bind($CPACRDRVLTAMVALUE 'NUMERIC'),
+#bind($PREMVALUE 'NUMERIC'),
+#bind($CPPCTWMEM 'NUMERIC'),
+#bind($RATESTART 'NUMERIC'),
+#bind($RATECALC 'NUMERIC'),
+#bind($CONTRCURRENCYID 'NUMERIC'),
+#bind($CONDINVCURRENCYID 'NUMERIC'),
+#bind($ISCONDITION 'NUMERIC'),
+#bind($ISTODAYCPACRD 'NUMERIC'),
+#bind($BARRIERVALUE 'NUMERIC'),
+#bind($MULTIMEMVALUE 'NUMERIC'),
+#bind($CONDNOTE 'VARCHAR'),
+#bind($CONDCODE 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO B2B_INVAM (
+INVAMID,
+DISCRIMINATOR,
+CONTRID,
+CONTRNUMBER,
+CALCDATE,
+CPPCTMEM,
+CPCONTRAMVALUE,
+CPRVLTAMVALUE,
+CPACRDCONTRAMVALUE,
+CPACRDRVLTAMVALUE,
+PREMVALUE,
+CPPCTWMEM,
+RATESTART,
+RATECALC,
+CONTRCURRENCYID,
+CONDINVCURRENCYID,
+ISCONDITION,
+ISTODAYCPACRD,
+BARRIERVALUE,
+MULTIMEMVALUE,
+CONDNOTE,
+CONDCODE
+$ASPECTFIELDS ) VALUES (
+#bind($INVAMID 'NUMERIC'),
+#bind($DISCRIMINATOR 'NUMERIC'),
+#bind($CONTRID 'NUMERIC'),
+#bind($CONTRNUMBER 'VARCHAR'),
+#bind($CALCDATE 'FLOAT'),
+#bind($CPPCTMEM 'NUMERIC'),
+#bind($CPCONTRAMVALUE 'NUMERIC'),
+#bind($CPRVLTAMVALUE 'NUMERIC'),
+#bind($CPACRDCONTRAMVALUE 'NUMERIC'),
+#bind($CPACRDRVLTAMVALUE 'NUMERIC'),
+#bind($PREMVALUE 'NUMERIC'),
+#bind($CPPCTWMEM 'NUMERIC'),
+#bind($RATESTART 'NUMERIC'),
+#bind($RATECALC 'NUMERIC'),
+#bind($CONTRCURRENCYID 'NUMERIC'),
+#bind($CONDINVCURRENCYID 'NUMERIC'),
+#bind($ISCONDITION 'NUMERIC'),
+#bind($ISTODAYCPACRD 'NUMERIC'),
+#bind($BARRIERVALUE 'NUMERIC'),
+#bind($MULTIMEMVALUE 'NUMERIC'),
+#bind($CONDNOTE 'VARCHAR'),
+#bind($CONDCODE 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO B2B_INVAM (
+INVAMID,
+DISCRIMINATOR,
+CONTRID,
+CONTRNUMBER,
+CALCDATE,
+CPPCTMEM,
+CPCONTRAMVALUE,
+CPRVLTAMVALUE,
+CPACRDCONTRAMVALUE,
+CPACRDRVLTAMVALUE,
+PREMVALUE,
+CPPCTWMEM,
+RATESTART,
+RATECALC,
+CONTRCURRENCYID,
+CONDINVCURRENCYID,
+ISCONDITION,
+ISTODAYCPACRD,
+BARRIERVALUE,
+MULTIMEMVALUE,
+CONDNOTE,
+CONDCODE
+$ASPECTFIELDS ) VALUES (
+#bind($INVAMID 'NUMERIC'),
+#bind($DISCRIMINATOR 'NUMERIC'),
+#bind($CONTRID 'NUMERIC'),
+#bind($CONTRNUMBER 'VARCHAR'),
+#bind($CALCDATE 'FLOAT'),
+#bind($CPPCTMEM 'NUMERIC'),
+#bind($CPCONTRAMVALUE 'NUMERIC'),
+#bind($CPRVLTAMVALUE 'NUMERIC'),
+#bind($CPACRDCONTRAMVALUE 'NUMERIC'),
+#bind($CPACRDRVLTAMVALUE 'NUMERIC'),
+#bind($PREMVALUE 'NUMERIC'),
+#bind($CPPCTWMEM 'NUMERIC'),
+#bind($RATESTART 'NUMERIC'),
+#bind($RATECALC 'NUMERIC'),
+#bind($CONTRCURRENCYID 'NUMERIC'),
+#bind($CONDINVCURRENCYID 'NUMERIC'),
+#bind($ISCONDITION 'NUMERIC'),
+#bind($ISTODAYCPACRD 'NUMERIC'),
+#bind($BARRIERVALUE 'NUMERIC'),
+#bind($MULTIMEMVALUE 'NUMERIC'),
+#bind($CONDNOTE 'VARCHAR'),
+#bind($CONDCODE 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestCouponUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvest" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.INVAMID = #bind($INVAMID 'NUMERIC') 
+#chunk($DISCRIMINATOR) , T.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+#chunk($CONTRID) , T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+#chunk($CONTRNUMBER) , T.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+#chunk($CALCDATE) , T.CALCDATE = #bind($CALCDATE 'FLOAT') #end 
+#chunk($CPPCTMEM) , T.CPPCTMEM = #bind($CPPCTMEM 'NUMERIC') #end 
+#chunk($CPCONTRAMVALUE) , T.CPCONTRAMVALUE = #bind($CPCONTRAMVALUE 'NUMERIC') #end 
+#chunk($CPRVLTAMVALUE) , T.CPRVLTAMVALUE = #bind($CPRVLTAMVALUE 'NUMERIC') #end 
+#chunk($CPACRDCONTRAMVALUE) , T.CPACRDCONTRAMVALUE = #bind($CPACRDCONTRAMVALUE 'NUMERIC') #end 
+#chunk($CPACRDRVLTAMVALUE) , T.CPACRDRVLTAMVALUE = #bind($CPACRDRVLTAMVALUE 'NUMERIC') #end 
+#chunk($PREMVALUE) , T.PREMVALUE = #bind($PREMVALUE 'NUMERIC') #end 
+#chunk($CPPCTWMEM) , T.CPPCTWMEM = #bind($CPPCTWMEM 'NUMERIC') #end 
+#chunk($RATESTART) , T.RATESTART = #bind($RATESTART 'NUMERIC') #end 
+#chunk($RATECALC) , T.RATECALC = #bind($RATECALC 'NUMERIC') #end 
+#chunk($CONTRCURRENCYID) , T.CONTRCURRENCYID = #bind($CONTRCURRENCYID 'NUMERIC') #end 
+#chunk($CONDINVCURRENCYID) , T.CONDINVCURRENCYID = #bind($CONDINVCURRENCYID 'NUMERIC') #end 
+#chunk($ISCONDITION) , T.ISCONDITION = #bind($ISCONDITION 'NUMERIC') #end 
+#chunk($ISTODAYCPACRD) , T.ISTODAYCPACRD = #bind($ISTODAYCPACRD 'NUMERIC') #end 
+#chunk($BARRIERVALUE) , T.BARRIERVALUE = #bind($BARRIERVALUE 'NUMERIC') #end 
+#chunk($MULTIMEMVALUE) , T.MULTIMEMVALUE = #bind($MULTIMEMVALUE 'NUMERIC') #end 
+#chunk($CONDNOTE) , T.CONDNOTE = #bind($CONDNOTE 'VARCHAR') #end 
+#chunk($CONDCODE) , T.CONDCODE = #bind($CONDCODE 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_INVAM T 
+#chain('AND' 'WHERE') 
+       #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.INVAMID = #bind($INVAMID 'NUMERIC') 
+#chunk($DISCRIMINATOR) , T.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+#chunk($CONTRID) , T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+#chunk($CONTRNUMBER) , T.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+#chunk($CALCDATE) , T.CALCDATE = #bind($CALCDATE 'FLOAT') #end 
+#chunk($CPPCTMEM) , T.CPPCTMEM = #bind($CPPCTMEM 'NUMERIC') #end 
+#chunk($CPCONTRAMVALUE) , T.CPCONTRAMVALUE = #bind($CPCONTRAMVALUE 'NUMERIC') #end 
+#chunk($CPRVLTAMVALUE) , T.CPRVLTAMVALUE = #bind($CPRVLTAMVALUE 'NUMERIC') #end 
+#chunk($CPACRDCONTRAMVALUE) , T.CPACRDCONTRAMVALUE = #bind($CPACRDCONTRAMVALUE 'NUMERIC') #end 
+#chunk($CPACRDRVLTAMVALUE) , T.CPACRDRVLTAMVALUE = #bind($CPACRDRVLTAMVALUE 'NUMERIC') #end 
+#chunk($PREMVALUE) , T.PREMVALUE = #bind($PREMVALUE 'NUMERIC') #end 
+#chunk($CPPCTWMEM) , T.CPPCTWMEM = #bind($CPPCTWMEM 'NUMERIC') #end 
+#chunk($RATESTART) , T.RATESTART = #bind($RATESTART 'NUMERIC') #end 
+#chunk($RATECALC) , T.RATECALC = #bind($RATECALC 'NUMERIC') #end 
+#chunk($CONTRCURRENCYID) , T.CONTRCURRENCYID = #bind($CONTRCURRENCYID 'NUMERIC') #end 
+#chunk($CONDINVCURRENCYID) , T.CONDINVCURRENCYID = #bind($CONDINVCURRENCYID 'NUMERIC') #end 
+#chunk($ISCONDITION) , T.ISCONDITION = #bind($ISCONDITION 'NUMERIC') #end 
+#chunk($ISTODAYCPACRD) , T.ISTODAYCPACRD = #bind($ISTODAYCPACRD 'NUMERIC') #end 
+#chunk($BARRIERVALUE) , T.BARRIERVALUE = #bind($BARRIERVALUE 'NUMERIC') #end 
+#chunk($MULTIMEMVALUE) , T.MULTIMEMVALUE = #bind($MULTIMEMVALUE 'NUMERIC') #end 
+#chunk($CONDNOTE) , T.CONDNOTE = #bind($CONDNOTE 'VARCHAR') #end 
+#chunk($CONDCODE) , T.CONDCODE = #bind($CONDCODE 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_INVAM T 
+#chain('AND' 'WHERE') 
+       #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       B2B_INVAM T 
+SET 
+    T.INVAMID = #bind($INVAMID 'NUMERIC') 
+#chunk($DISCRIMINATOR) , T.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+#chunk($CONTRID) , T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+#chunk($CONTRNUMBER) , T.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+#chunk($CALCDATE) , T.CALCDATE = #bind($CALCDATE 'FLOAT') #end 
+#chunk($CPPCTMEM) , T.CPPCTMEM = #bind($CPPCTMEM 'NUMERIC') #end 
+#chunk($CPCONTRAMVALUE) , T.CPCONTRAMVALUE = #bind($CPCONTRAMVALUE 'NUMERIC') #end 
+#chunk($CPRVLTAMVALUE) , T.CPRVLTAMVALUE = #bind($CPRVLTAMVALUE 'NUMERIC') #end 
+#chunk($CPACRDCONTRAMVALUE) , T.CPACRDCONTRAMVALUE = #bind($CPACRDCONTRAMVALUE 'NUMERIC') #end 
+#chunk($CPACRDRVLTAMVALUE) , T.CPACRDRVLTAMVALUE = #bind($CPACRDRVLTAMVALUE 'NUMERIC') #end 
+#chunk($PREMVALUE) , T.PREMVALUE = #bind($PREMVALUE 'NUMERIC') #end 
+#chunk($CPPCTWMEM) , T.CPPCTWMEM = #bind($CPPCTWMEM 'NUMERIC') #end 
+#chunk($RATESTART) , T.RATESTART = #bind($RATESTART 'NUMERIC') #end 
+#chunk($RATECALC) , T.RATECALC = #bind($RATECALC 'NUMERIC') #end 
+#chunk($CONTRCURRENCYID) , T.CONTRCURRENCYID = #bind($CONTRCURRENCYID 'NUMERIC') #end 
+#chunk($CONDINVCURRENCYID) , T.CONDINVCURRENCYID = #bind($CONDINVCURRENCYID 'NUMERIC') #end 
+#chunk($ISCONDITION) , T.ISCONDITION = #bind($ISCONDITION 'NUMERIC') #end 
+#chunk($ISTODAYCPACRD) , T.ISTODAYCPACRD = #bind($ISTODAYCPACRD 'NUMERIC') #end 
+#chunk($BARRIERVALUE) , T.BARRIERVALUE = #bind($BARRIERVALUE 'NUMERIC') #end 
+#chunk($MULTIMEMVALUE) , T.MULTIMEMVALUE = #bind($MULTIMEMVALUE 'NUMERIC') #end 
+#chunk($CONDNOTE) , T.CONDNOTE = #bind($CONDNOTE 'VARCHAR') #end 
+#chunk($CONDCODE) , T.CONDCODE = #bind($CONDCODE 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestCouponUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvest" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.INVAMID = #bind($INVAMID 'NUMERIC') 
+#chunk($DISCRIMINATOR) , TA.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+#chunk($CONTRID) , TA.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+#chunk($CONTRNUMBER) , TA.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+#chunk($CALCDATE) , TA.CALCDATE = #bind($CALCDATE 'FLOAT') #end 
+#chunk($CPPCTMEM) , TA.CPPCTMEM = #bind($CPPCTMEM 'NUMERIC') #end 
+#chunk($CPCONTRAMVALUE) , TA.CPCONTRAMVALUE = #bind($CPCONTRAMVALUE 'NUMERIC') #end 
+#chunk($CPRVLTAMVALUE) , TA.CPRVLTAMVALUE = #bind($CPRVLTAMVALUE 'NUMERIC') #end 
+#chunk($CPACRDCONTRAMVALUE) , TA.CPACRDCONTRAMVALUE = #bind($CPACRDCONTRAMVALUE 'NUMERIC') #end 
+#chunk($CPACRDRVLTAMVALUE) , TA.CPACRDRVLTAMVALUE = #bind($CPACRDRVLTAMVALUE 'NUMERIC') #end 
+#chunk($PREMVALUE) , TA.PREMVALUE = #bind($PREMVALUE 'NUMERIC') #end 
+#chunk($CPPCTWMEM) , TA.CPPCTWMEM = #bind($CPPCTWMEM 'NUMERIC') #end 
+#chunk($RATESTART) , TA.RATESTART = #bind($RATESTART 'NUMERIC') #end 
+#chunk($RATECALC) , TA.RATECALC = #bind($RATECALC 'NUMERIC') #end 
+#chunk($CONTRCURRENCYID) , TA.CONTRCURRENCYID = #bind($CONTRCURRENCYID 'NUMERIC') #end 
+#chunk($CONDINVCURRENCYID) , TA.CONDINVCURRENCYID = #bind($CONDINVCURRENCYID 'NUMERIC') #end 
+#chunk($ISCONDITION) , TA.ISCONDITION = #bind($ISCONDITION 'NUMERIC') #end 
+#chunk($ISTODAYCPACRD) , TA.ISTODAYCPACRD = #bind($ISTODAYCPACRD 'NUMERIC') #end 
+#chunk($BARRIERVALUE) , TA.BARRIERVALUE = #bind($BARRIERVALUE 'NUMERIC') #end 
+#chunk($MULTIMEMVALUE) , TA.MULTIMEMVALUE = #bind($MULTIMEMVALUE 'NUMERIC') #end 
+#chunk($CONDNOTE) , TA.CONDNOTE = #bind($CONDNOTE 'VARCHAR') #end 
+#chunk($CONDCODE) , TA.CONDCODE = #bind($CONDCODE 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_INVAM TA 
+WHERE 
+     TA.INVAMID in ( 
+       SELECT 
+         T.INVAMID
+       FROM 
+         B2B_INVAM T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.INVAMID = #bind($INVAMID 'NUMERIC') 
+#chunk($DISCRIMINATOR) , TA.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+#chunk($CONTRID) , TA.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+#chunk($CONTRNUMBER) , TA.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+#chunk($CALCDATE) , TA.CALCDATE = #bind($CALCDATE 'FLOAT') #end 
+#chunk($CPPCTMEM) , TA.CPPCTMEM = #bind($CPPCTMEM 'NUMERIC') #end 
+#chunk($CPCONTRAMVALUE) , TA.CPCONTRAMVALUE = #bind($CPCONTRAMVALUE 'NUMERIC') #end 
+#chunk($CPRVLTAMVALUE) , TA.CPRVLTAMVALUE = #bind($CPRVLTAMVALUE 'NUMERIC') #end 
+#chunk($CPACRDCONTRAMVALUE) , TA.CPACRDCONTRAMVALUE = #bind($CPACRDCONTRAMVALUE 'NUMERIC') #end 
+#chunk($CPACRDRVLTAMVALUE) , TA.CPACRDRVLTAMVALUE = #bind($CPACRDRVLTAMVALUE 'NUMERIC') #end 
+#chunk($PREMVALUE) , TA.PREMVALUE = #bind($PREMVALUE 'NUMERIC') #end 
+#chunk($CPPCTWMEM) , TA.CPPCTWMEM = #bind($CPPCTWMEM 'NUMERIC') #end 
+#chunk($RATESTART) , TA.RATESTART = #bind($RATESTART 'NUMERIC') #end 
+#chunk($RATECALC) , TA.RATECALC = #bind($RATECALC 'NUMERIC') #end 
+#chunk($CONTRCURRENCYID) , TA.CONTRCURRENCYID = #bind($CONTRCURRENCYID 'NUMERIC') #end 
+#chunk($CONDINVCURRENCYID) , TA.CONDINVCURRENCYID = #bind($CONDINVCURRENCYID 'NUMERIC') #end 
+#chunk($ISCONDITION) , TA.ISCONDITION = #bind($ISCONDITION 'NUMERIC') #end 
+#chunk($ISTODAYCPACRD) , TA.ISTODAYCPACRD = #bind($ISTODAYCPACRD 'NUMERIC') #end 
+#chunk($BARRIERVALUE) , TA.BARRIERVALUE = #bind($BARRIERVALUE 'NUMERIC') #end 
+#chunk($MULTIMEMVALUE) , TA.MULTIMEMVALUE = #bind($MULTIMEMVALUE 'NUMERIC') #end 
+#chunk($CONDNOTE) , TA.CONDNOTE = #bind($CONDNOTE 'VARCHAR') #end 
+#chunk($CONDCODE) , TA.CONDCODE = #bind($CONDCODE 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_INVAM TA 
+WHERE 
+     TA.INVAMID in ( 
+       SELECT 
+         T.INVAMID
+       FROM 
+         B2B_INVAM T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       B2B_INVAM TA 
+SET 
+    TA.INVAMID = #bind($INVAMID 'NUMERIC') 
+#chunk($DISCRIMINATOR) , TA.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+#chunk($CONTRID) , TA.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+#chunk($CONTRNUMBER) , TA.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+#chunk($CALCDATE) , TA.CALCDATE = #bind($CALCDATE 'FLOAT') #end 
+#chunk($CPPCTMEM) , TA.CPPCTMEM = #bind($CPPCTMEM 'NUMERIC') #end 
+#chunk($CPCONTRAMVALUE) , TA.CPCONTRAMVALUE = #bind($CPCONTRAMVALUE 'NUMERIC') #end 
+#chunk($CPRVLTAMVALUE) , TA.CPRVLTAMVALUE = #bind($CPRVLTAMVALUE 'NUMERIC') #end 
+#chunk($CPACRDCONTRAMVALUE) , TA.CPACRDCONTRAMVALUE = #bind($CPACRDCONTRAMVALUE 'NUMERIC') #end 
+#chunk($CPACRDRVLTAMVALUE) , TA.CPACRDRVLTAMVALUE = #bind($CPACRDRVLTAMVALUE 'NUMERIC') #end 
+#chunk($PREMVALUE) , TA.PREMVALUE = #bind($PREMVALUE 'NUMERIC') #end 
+#chunk($CPPCTWMEM) , TA.CPPCTWMEM = #bind($CPPCTWMEM 'NUMERIC') #end 
+#chunk($RATESTART) , TA.RATESTART = #bind($RATESTART 'NUMERIC') #end 
+#chunk($RATECALC) , TA.RATECALC = #bind($RATECALC 'NUMERIC') #end 
+#chunk($CONTRCURRENCYID) , TA.CONTRCURRENCYID = #bind($CONTRCURRENCYID 'NUMERIC') #end 
+#chunk($CONDINVCURRENCYID) , TA.CONDINVCURRENCYID = #bind($CONDINVCURRENCYID 'NUMERIC') #end 
+#chunk($ISCONDITION) , TA.ISCONDITION = #bind($ISCONDITION 'NUMERIC') #end 
+#chunk($ISTODAYCPACRD) , TA.ISTODAYCPACRD = #bind($ISTODAYCPACRD 'NUMERIC') #end 
+#chunk($BARRIERVALUE) , TA.BARRIERVALUE = #bind($BARRIERVALUE 'NUMERIC') #end 
+#chunk($MULTIMEMVALUE) , TA.MULTIMEMVALUE = #bind($MULTIMEMVALUE 'NUMERIC') #end 
+#chunk($CONDNOTE) , TA.CONDNOTE = #bind($CONDNOTE 'VARCHAR') #end 
+#chunk($CONDCODE) , TA.CONDCODE = #bind($CONDCODE 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.INVAMID in ( 
+       SELECT 
+         T.INVAMID
+       FROM 
+         B2B_INVAM T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestDIDBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvest" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.INVAMID', 'java.lang.Long', 'INVAMID'),
+        #result('T.DISCRIMINATOR', 'java.lang.Long', 'DISCRIMINATOR'),
+        #result('T.CONTRID', 'java.lang.Long', 'CONTRID'),
+        #result('T.CONTRNUMBER', 'java.lang.String', 'CONTRNUMBER'),
+        #result('T.PROGNAME', 'java.lang.String', 'PROGNAME'),
+        #result('T.INSUREDNAME', 'java.lang.String', 'INSUREDNAME'),
+        #result('T.CONTRCURRENCYID', 'java.lang.Long', 'CONTRCURRENCYID'),
+        #result('T.CONTRSTARTDATE', 'java.math.BigDecimal', 'CONTRSTARTDATE'),
+        #result('T.TERMYEARCOUNT', 'java.lang.Long', 'TERMYEARCOUNT'),
+        #result('T.PAYVAR', 'java.lang.Long', 'PAYVAR'),
+        #result('T.INSAMVALUE', 'java.lang.Double', 'INSAMVALUE'),
+        #result('T.PREMVALUE', 'java.lang.Double', 'PREMVALUE'),
+        #result('T.PREMTOTALVALUE', 'java.lang.Double', 'PREMTOTALVALUE'),
+        #result('T.DIDCONTRVALUE', 'java.lang.Double', 'DIDCONTRVALUE'),
+        #result('T.DIDPAYMENTVALUE', 'java.lang.Double', 'DIDPAYMENTVALUE'),
+        #result('T.INDVALUE', 'java.lang.Double', 'INDVALUE'),
+        #result('T.DIDVALUE', 'java.lang.Double', 'DIDVALUE'),
+        #result('T.DIDYEAR', 'java.lang.Long', 'DIDYEAR'),
+        #result('T.RATEVALUE', 'java.lang.Double', 'RATEVALUE')
+       $ASPECTFIELDS 
+FROM 
+      B2B_INVAM T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($DISCRIMINATOR) T.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+       #chunk($CONTRNUMBER) T.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+       #chunk($DIDYEAR) T.DIDYEAR = #bind($DIDYEAR 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestDIDBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvest" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.INVAMID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_INVAM T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($DISCRIMINATOR) T.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+       #chunk($CONTRNUMBER) T.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestDIDInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvest" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+INSERT INTO B2B_INVAM (
+INVAMID,
+DISCRIMINATOR,
+CONTRID,
+CONTRNUMBER,
+PROGNAME,
+INSUREDNAME,
+CONTRCURRENCYID,
+CONTRSTARTDATE,
+TERMYEARCOUNT,
+PAYVAR,
+INSAMVALUE,
+PREMVALUE,
+PREMTOTALVALUE,
+DIDCONTRVALUE,
+DIDPAYMENTVALUE,
+INDVALUE,
+DIDVALUE,
+DIDYEAR,
+RATEVALUE
+$ASPECTFIELDS ) VALUES (
+#bind($INVAMID 'NUMERIC'),
+#bind($DISCRIMINATOR 'NUMERIC'),
+#bind($CONTRID 'NUMERIC'),
+#bind($CONTRNUMBER 'VARCHAR'),
+#bind($PROGNAME 'VARCHAR'),
+#bind($INSUREDNAME 'VARCHAR'),
+#bind($CONTRCURRENCYID 'NUMERIC'),
+#bind($CONTRSTARTDATE 'FLOAT'),
+#bind($TERMYEARCOUNT 'NUMERIC'),
+#bind($PAYVAR 'NUMERIC'),
+#bind($INSAMVALUE 'NUMERIC'),
+#bind($PREMVALUE 'NUMERIC'),
+#bind($PREMTOTALVALUE 'NUMERIC'),
+#bind($DIDCONTRVALUE 'NUMERIC'),
+#bind($DIDPAYMENTVALUE 'NUMERIC'),
+#bind($INDVALUE 'NUMERIC'),
+#bind($DIDVALUE 'NUMERIC'),
+#bind($DIDYEAR 'NUMERIC'),
+#bind($RATEVALUE 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO B2B_INVAM (
+INVAMID,
+DISCRIMINATOR,
+CONTRID,
+CONTRNUMBER,
+PROGNAME,
+INSUREDNAME,
+CONTRCURRENCYID,
+CONTRSTARTDATE,
+TERMYEARCOUNT,
+PAYVAR,
+INSAMVALUE,
+PREMVALUE,
+PREMTOTALVALUE,
+DIDCONTRVALUE,
+DIDPAYMENTVALUE,
+INDVALUE,
+DIDVALUE,
+DIDYEAR,
+RATEVALUE
+$ASPECTFIELDS ) VALUES (
+#bind($INVAMID 'NUMERIC'),
+#bind($DISCRIMINATOR 'NUMERIC'),
+#bind($CONTRID 'NUMERIC'),
+#bind($CONTRNUMBER 'VARCHAR'),
+#bind($PROGNAME 'VARCHAR'),
+#bind($INSUREDNAME 'VARCHAR'),
+#bind($CONTRCURRENCYID 'NUMERIC'),
+#bind($CONTRSTARTDATE 'FLOAT'),
+#bind($TERMYEARCOUNT 'NUMERIC'),
+#bind($PAYVAR 'NUMERIC'),
+#bind($INSAMVALUE 'NUMERIC'),
+#bind($PREMVALUE 'NUMERIC'),
+#bind($PREMTOTALVALUE 'NUMERIC'),
+#bind($DIDCONTRVALUE 'NUMERIC'),
+#bind($DIDPAYMENTVALUE 'NUMERIC'),
+#bind($INDVALUE 'NUMERIC'),
+#bind($DIDVALUE 'NUMERIC'),
+#bind($DIDYEAR 'NUMERIC'),
+#bind($RATEVALUE 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO B2B_INVAM (
+INVAMID,
+DISCRIMINATOR,
+CONTRID,
+CONTRNUMBER,
+PROGNAME,
+INSUREDNAME,
+CONTRCURRENCYID,
+CONTRSTARTDATE,
+TERMYEARCOUNT,
+PAYVAR,
+INSAMVALUE,
+PREMVALUE,
+PREMTOTALVALUE,
+DIDCONTRVALUE,
+DIDPAYMENTVALUE,
+INDVALUE,
+DIDVALUE,
+DIDYEAR,
+RATEVALUE
+$ASPECTFIELDS ) VALUES (
+#bind($INVAMID 'NUMERIC'),
+#bind($DISCRIMINATOR 'NUMERIC'),
+#bind($CONTRID 'NUMERIC'),
+#bind($CONTRNUMBER 'VARCHAR'),
+#bind($PROGNAME 'VARCHAR'),
+#bind($INSUREDNAME 'VARCHAR'),
+#bind($CONTRCURRENCYID 'NUMERIC'),
+#bind($CONTRSTARTDATE 'FLOAT'),
+#bind($TERMYEARCOUNT 'NUMERIC'),
+#bind($PAYVAR 'NUMERIC'),
+#bind($INSAMVALUE 'NUMERIC'),
+#bind($PREMVALUE 'NUMERIC'),
+#bind($PREMTOTALVALUE 'NUMERIC'),
+#bind($DIDCONTRVALUE 'NUMERIC'),
+#bind($DIDPAYMENTVALUE 'NUMERIC'),
+#bind($INDVALUE 'NUMERIC'),
+#bind($DIDVALUE 'NUMERIC'),
+#bind($DIDYEAR 'NUMERIC'),
+#bind($RATEVALUE 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestDIDUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvest" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.INVAMID = #bind($INVAMID 'NUMERIC') 
+#chunk($DISCRIMINATOR) , T.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+#chunk($CONTRID) , T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+#chunk($CONTRNUMBER) , T.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+#chunk($PROGNAME) , T.PROGNAME = #bind($PROGNAME 'VARCHAR') #end 
+#chunk($INSUREDNAME) , T.INSUREDNAME = #bind($INSUREDNAME 'VARCHAR') #end 
+#chunk($CONTRCURRENCYID) , T.CONTRCURRENCYID = #bind($CONTRCURRENCYID 'NUMERIC') #end 
+#chunk($CONTRSTARTDATE) , T.CONTRSTARTDATE = #bind($CONTRSTARTDATE 'FLOAT') #end 
+#chunk($TERMYEARCOUNT) , T.TERMYEARCOUNT = #bind($TERMYEARCOUNT 'NUMERIC') #end 
+#chunk($PAYVAR) , T.PAYVAR = #bind($PAYVAR 'NUMERIC') #end 
+#chunk($INSAMVALUE) , T.INSAMVALUE = #bind($INSAMVALUE 'NUMERIC') #end 
+#chunk($PREMVALUE) , T.PREMVALUE = #bind($PREMVALUE 'NUMERIC') #end 
+#chunk($PREMTOTALVALUE) , T.PREMTOTALVALUE = #bind($PREMTOTALVALUE 'NUMERIC') #end 
+#chunk($DIDCONTRVALUE) , T.DIDCONTRVALUE = #bind($DIDCONTRVALUE 'NUMERIC') #end 
+#chunk($DIDPAYMENTVALUE) , T.DIDPAYMENTVALUE = #bind($DIDPAYMENTVALUE 'NUMERIC') #end 
+#chunk($INDVALUE) , T.INDVALUE = #bind($INDVALUE 'NUMERIC') #end 
+#chunk($DIDVALUE) , T.DIDVALUE = #bind($DIDVALUE 'NUMERIC') #end 
+#chunk($DIDYEAR) , T.DIDYEAR = #bind($DIDYEAR 'NUMERIC') #end 
+#chunk($RATEVALUE) , T.RATEVALUE = #bind($RATEVALUE 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_INVAM T 
+#chain('AND' 'WHERE') 
+       #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.INVAMID = #bind($INVAMID 'NUMERIC') 
+#chunk($DISCRIMINATOR) , T.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+#chunk($CONTRID) , T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+#chunk($CONTRNUMBER) , T.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+#chunk($PROGNAME) , T.PROGNAME = #bind($PROGNAME 'VARCHAR') #end 
+#chunk($INSUREDNAME) , T.INSUREDNAME = #bind($INSUREDNAME 'VARCHAR') #end 
+#chunk($CONTRCURRENCYID) , T.CONTRCURRENCYID = #bind($CONTRCURRENCYID 'NUMERIC') #end 
+#chunk($CONTRSTARTDATE) , T.CONTRSTARTDATE = #bind($CONTRSTARTDATE 'FLOAT') #end 
+#chunk($TERMYEARCOUNT) , T.TERMYEARCOUNT = #bind($TERMYEARCOUNT 'NUMERIC') #end 
+#chunk($PAYVAR) , T.PAYVAR = #bind($PAYVAR 'NUMERIC') #end 
+#chunk($INSAMVALUE) , T.INSAMVALUE = #bind($INSAMVALUE 'NUMERIC') #end 
+#chunk($PREMVALUE) , T.PREMVALUE = #bind($PREMVALUE 'NUMERIC') #end 
+#chunk($PREMTOTALVALUE) , T.PREMTOTALVALUE = #bind($PREMTOTALVALUE 'NUMERIC') #end 
+#chunk($DIDCONTRVALUE) , T.DIDCONTRVALUE = #bind($DIDCONTRVALUE 'NUMERIC') #end 
+#chunk($DIDPAYMENTVALUE) , T.DIDPAYMENTVALUE = #bind($DIDPAYMENTVALUE 'NUMERIC') #end 
+#chunk($INDVALUE) , T.INDVALUE = #bind($INDVALUE 'NUMERIC') #end 
+#chunk($DIDVALUE) , T.DIDVALUE = #bind($DIDVALUE 'NUMERIC') #end 
+#chunk($DIDYEAR) , T.DIDYEAR = #bind($DIDYEAR 'NUMERIC') #end 
+#chunk($RATEVALUE) , T.RATEVALUE = #bind($RATEVALUE 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_INVAM T 
+#chain('AND' 'WHERE') 
+       #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       B2B_INVAM T 
+SET 
+    T.INVAMID = #bind($INVAMID 'NUMERIC') 
+#chunk($DISCRIMINATOR) , T.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+#chunk($CONTRID) , T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+#chunk($CONTRNUMBER) , T.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+#chunk($PROGNAME) , T.PROGNAME = #bind($PROGNAME 'VARCHAR') #end 
+#chunk($INSUREDNAME) , T.INSUREDNAME = #bind($INSUREDNAME 'VARCHAR') #end 
+#chunk($CONTRCURRENCYID) , T.CONTRCURRENCYID = #bind($CONTRCURRENCYID 'NUMERIC') #end 
+#chunk($CONTRSTARTDATE) , T.CONTRSTARTDATE = #bind($CONTRSTARTDATE 'FLOAT') #end 
+#chunk($TERMYEARCOUNT) , T.TERMYEARCOUNT = #bind($TERMYEARCOUNT 'NUMERIC') #end 
+#chunk($PAYVAR) , T.PAYVAR = #bind($PAYVAR 'NUMERIC') #end 
+#chunk($INSAMVALUE) , T.INSAMVALUE = #bind($INSAMVALUE 'NUMERIC') #end 
+#chunk($PREMVALUE) , T.PREMVALUE = #bind($PREMVALUE 'NUMERIC') #end 
+#chunk($PREMTOTALVALUE) , T.PREMTOTALVALUE = #bind($PREMTOTALVALUE 'NUMERIC') #end 
+#chunk($DIDCONTRVALUE) , T.DIDCONTRVALUE = #bind($DIDCONTRVALUE 'NUMERIC') #end 
+#chunk($DIDPAYMENTVALUE) , T.DIDPAYMENTVALUE = #bind($DIDPAYMENTVALUE 'NUMERIC') #end 
+#chunk($INDVALUE) , T.INDVALUE = #bind($INDVALUE 'NUMERIC') #end 
+#chunk($DIDVALUE) , T.DIDVALUE = #bind($DIDVALUE 'NUMERIC') #end 
+#chunk($DIDYEAR) , T.DIDYEAR = #bind($DIDYEAR 'NUMERIC') #end 
+#chunk($RATEVALUE) , T.RATEVALUE = #bind($RATEVALUE 'NUMERIC') #end 
+
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestDIDUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvest" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.INVAMID = #bind($INVAMID 'NUMERIC') 
+#chunk($DISCRIMINATOR) , TA.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+#chunk($CONTRID) , TA.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+#chunk($CONTRNUMBER) , TA.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+#chunk($PROGNAME) , TA.PROGNAME = #bind($PROGNAME 'VARCHAR') #end 
+#chunk($INSUREDNAME) , TA.INSUREDNAME = #bind($INSUREDNAME 'VARCHAR') #end 
+#chunk($CONTRCURRENCYID) , TA.CONTRCURRENCYID = #bind($CONTRCURRENCYID 'NUMERIC') #end 
+#chunk($CONTRSTARTDATE) , TA.CONTRSTARTDATE = #bind($CONTRSTARTDATE 'FLOAT') #end 
+#chunk($TERMYEARCOUNT) , TA.TERMYEARCOUNT = #bind($TERMYEARCOUNT 'NUMERIC') #end 
+#chunk($PAYVAR) , TA.PAYVAR = #bind($PAYVAR 'NUMERIC') #end 
+#chunk($INSAMVALUE) , TA.INSAMVALUE = #bind($INSAMVALUE 'NUMERIC') #end 
+#chunk($PREMVALUE) , TA.PREMVALUE = #bind($PREMVALUE 'NUMERIC') #end 
+#chunk($PREMTOTALVALUE) , TA.PREMTOTALVALUE = #bind($PREMTOTALVALUE 'NUMERIC') #end 
+#chunk($DIDCONTRVALUE) , TA.DIDCONTRVALUE = #bind($DIDCONTRVALUE 'NUMERIC') #end 
+#chunk($DIDPAYMENTVALUE) , TA.DIDPAYMENTVALUE = #bind($DIDPAYMENTVALUE 'NUMERIC') #end 
+#chunk($INDVALUE) , TA.INDVALUE = #bind($INDVALUE 'NUMERIC') #end 
+#chunk($DIDVALUE) , TA.DIDVALUE = #bind($DIDVALUE 'NUMERIC') #end 
+#chunk($DIDYEAR) , TA.DIDYEAR = #bind($DIDYEAR 'NUMERIC') #end 
+#chunk($RATEVALUE) , TA.RATEVALUE = #bind($RATEVALUE 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_INVAM TA 
+WHERE 
+     TA.INVAMID in ( 
+       SELECT 
+         T.INVAMID
+       FROM 
+         B2B_INVAM T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.INVAMID = #bind($INVAMID 'NUMERIC') 
+#chunk($DISCRIMINATOR) , TA.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+#chunk($CONTRID) , TA.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+#chunk($CONTRNUMBER) , TA.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+#chunk($PROGNAME) , TA.PROGNAME = #bind($PROGNAME 'VARCHAR') #end 
+#chunk($INSUREDNAME) , TA.INSUREDNAME = #bind($INSUREDNAME 'VARCHAR') #end 
+#chunk($CONTRCURRENCYID) , TA.CONTRCURRENCYID = #bind($CONTRCURRENCYID 'NUMERIC') #end 
+#chunk($CONTRSTARTDATE) , TA.CONTRSTARTDATE = #bind($CONTRSTARTDATE 'FLOAT') #end 
+#chunk($TERMYEARCOUNT) , TA.TERMYEARCOUNT = #bind($TERMYEARCOUNT 'NUMERIC') #end 
+#chunk($PAYVAR) , TA.PAYVAR = #bind($PAYVAR 'NUMERIC') #end 
+#chunk($INSAMVALUE) , TA.INSAMVALUE = #bind($INSAMVALUE 'NUMERIC') #end 
+#chunk($PREMVALUE) , TA.PREMVALUE = #bind($PREMVALUE 'NUMERIC') #end 
+#chunk($PREMTOTALVALUE) , TA.PREMTOTALVALUE = #bind($PREMTOTALVALUE 'NUMERIC') #end 
+#chunk($DIDCONTRVALUE) , TA.DIDCONTRVALUE = #bind($DIDCONTRVALUE 'NUMERIC') #end 
+#chunk($DIDPAYMENTVALUE) , TA.DIDPAYMENTVALUE = #bind($DIDPAYMENTVALUE 'NUMERIC') #end 
+#chunk($INDVALUE) , TA.INDVALUE = #bind($INDVALUE 'NUMERIC') #end 
+#chunk($DIDVALUE) , TA.DIDVALUE = #bind($DIDVALUE 'NUMERIC') #end 
+#chunk($DIDYEAR) , TA.DIDYEAR = #bind($DIDYEAR 'NUMERIC') #end 
+#chunk($RATEVALUE) , TA.RATEVALUE = #bind($RATEVALUE 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_INVAM TA 
+WHERE 
+     TA.INVAMID in ( 
+       SELECT 
+         T.INVAMID
+       FROM 
+         B2B_INVAM T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       B2B_INVAM TA 
+SET 
+    TA.INVAMID = #bind($INVAMID 'NUMERIC') 
+#chunk($DISCRIMINATOR) , TA.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+#chunk($CONTRID) , TA.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+#chunk($CONTRNUMBER) , TA.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+#chunk($PROGNAME) , TA.PROGNAME = #bind($PROGNAME 'VARCHAR') #end 
+#chunk($INSUREDNAME) , TA.INSUREDNAME = #bind($INSUREDNAME 'VARCHAR') #end 
+#chunk($CONTRCURRENCYID) , TA.CONTRCURRENCYID = #bind($CONTRCURRENCYID 'NUMERIC') #end 
+#chunk($CONTRSTARTDATE) , TA.CONTRSTARTDATE = #bind($CONTRSTARTDATE 'FLOAT') #end 
+#chunk($TERMYEARCOUNT) , TA.TERMYEARCOUNT = #bind($TERMYEARCOUNT 'NUMERIC') #end 
+#chunk($PAYVAR) , TA.PAYVAR = #bind($PAYVAR 'NUMERIC') #end 
+#chunk($INSAMVALUE) , TA.INSAMVALUE = #bind($INSAMVALUE 'NUMERIC') #end 
+#chunk($PREMVALUE) , TA.PREMVALUE = #bind($PREMVALUE 'NUMERIC') #end 
+#chunk($PREMTOTALVALUE) , TA.PREMTOTALVALUE = #bind($PREMTOTALVALUE 'NUMERIC') #end 
+#chunk($DIDCONTRVALUE) , TA.DIDCONTRVALUE = #bind($DIDCONTRVALUE 'NUMERIC') #end 
+#chunk($DIDPAYMENTVALUE) , TA.DIDPAYMENTVALUE = #bind($DIDPAYMENTVALUE 'NUMERIC') #end 
+#chunk($INDVALUE) , TA.INDVALUE = #bind($INDVALUE 'NUMERIC') #end 
+#chunk($DIDVALUE) , TA.DIDVALUE = #bind($DIDVALUE 'NUMERIC') #end 
+#chunk($DIDYEAR) , TA.DIDYEAR = #bind($DIDYEAR 'NUMERIC') #end 
+#chunk($RATEVALUE) , TA.RATEVALUE = #bind($RATEVALUE 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.INVAMID in ( 
+       SELECT 
+         T.INVAMID
+       FROM 
+         B2B_INVAM T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestCommonBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvest" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.INVAMID', 'java.lang.Long', 'INVAMID'),
+        #result('T.DISCRIMINATOR', 'java.lang.Long', 'DISCRIMINATOR'),
+        #result('T.CONTRID', 'java.lang.Long', 'CONTRID'),
+        #result('T.CONTRNUMBER', 'java.lang.String', 'CONTRNUMBER'),
+        #result('T.CALCDATE', 'java.math.BigDecimal', 'CALCDATE'),
+        #result('T.INSAMVALUE', 'java.lang.Double', 'INSAMVALUE'),
+        #result('T.INDVALUE', 'java.lang.Double', 'INDVALUE'),
+        #result('T.INVVALUE', 'java.lang.Double', 'INVVALUE'),
+        #result('T.BAVALUE', 'java.lang.Double', 'BAVALUE'),
+        #result('T.REDEMPVALUE', 'java.lang.Double', 'REDEMPVALUE'),
+        #result('T.DIDVALUE', 'java.lang.Double', 'DIDVALUE'),
+        #result('T.INSAMIDDVALUE', 'java.lang.Double', 'INSAMIDDVALUE'),
+        #result('T.IDDVALUE', 'java.lang.Double', 'IDDVALUE'),
+        #result('T.COEFINTVALUE', 'java.lang.Double', 'COEFINTVALUE'),
+        #result('T.CPPCTMEM', 'java.lang.Double', 'CPPCTMEM'),
+        #result('T.CPCONTRAMVALUE', 'java.lang.Double', 'CPCONTRAMVALUE'),
+        #result('T.CPRVLTAMVALUE', 'java.lang.Double', 'CPRVLTAMVALUE'),
+        #result('T.CPACRDCONTRAMVALUE', 'java.lang.Double', 'CPACRDCONTRAMVALUE'),
+        #result('T.CPACRDRVLTAMVALUE', 'java.lang.Double', 'CPACRDRVLTAMVALUE'),
+        #result('T.PREMVALUE', 'java.lang.Double', 'PREMVALUE'),
+        #result('T.CPPCTWMEM', 'java.lang.Double', 'CPPCTWMEM'),
+        #result('T.RATESTART', 'java.lang.Double', 'RATESTART'),
+        #result('T.RATECALC', 'java.lang.Double', 'RATECALC'),
+        #result('T.CONTRCURRENCYID', 'java.lang.Long', 'CONTRCURRENCYID'),
+        #result('T.CONDINVCURRENCYID', 'java.lang.Long', 'CONDINVCURRENCYID'),
+        #result('T.ISCONDITION', 'java.lang.Long', 'ISCONDITION'),
+        #result('T.ISTODAYCPACRD', 'java.lang.Long', 'ISTODAYCPACRD'),
+        #result('T.BARRIERVALUE', 'java.lang.Double', 'BARRIERVALUE'),
+        #result('T.MULTIMEMVALUE', 'java.lang.Double', 'MULTIMEMVALUE'),
+        #result('T.CONDNOTE', 'java.lang.String', 'CONDNOTE'),
+        #result('T.CONDCODE', 'java.lang.String', 'CONDCODE'),
+        #result('T.PROGNAME', 'java.lang.String', 'PROGNAME'),
+        #result('T.INSUREDNAME', 'java.lang.String', 'INSUREDNAME'),
+        #result('T.CONTRSTARTDATE', 'java.math.BigDecimal', 'CONTRSTARTDATE'),
+        #result('T.TERMYEARCOUNT', 'java.lang.Long', 'TERMYEARCOUNT'),
+        #result('T.PAYVAR', 'java.lang.Long', 'PAYVAR'),
+        #result('T.PREMTOTALVALUE', 'java.lang.Double', 'PREMTOTALVALUE'),
+        #result('T.DIDCONTRVALUE', 'java.lang.Double', 'DIDCONTRVALUE'),
+        #result('T.DIDPAYMENTVALUE', 'java.lang.Double', 'DIDPAYMENTVALUE'),
+        #result('T.DIDYEAR', 'java.lang.Long', 'DIDYEAR'),
+        #result('T.RATEVALUE', 'java.lang.Double', 'RATEVALUE') 
+        
+       $ASPECTFIELDS 
+FROM 
+      B2B_INVAM T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($DISCRIMINATOR) T.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+       #chunk($CONTRNUMBER) T.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+       #chunk($CALCDATE) T.CALCDATE = #bind($CALCDATE 'FLOAT') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestCommonBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvest" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.INVAMID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_INVAM T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($INVAMID) T.INVAMID = #bind($INVAMID 'NUMERIC') #end 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($DISCRIMINATOR) T.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+       #chunk($CONTRNUMBER) T.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+       #chunk($CALCDATE) T.CALCDATE = #bind($CALCDATE 'FLOAT') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BTickerRateBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvest" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.INVTICKERRATEID', 'java.lang.Long', 'INVTICKERRATEID'),
+        #result('T.INVTICKERID', 'java.lang.Long', 'INVTICKERID'),
+        #result('T.TRDATE', 'java.math.BigDecimal', 'TRDATE'),
+        #result('T.RATEVALUE', 'java.lang.Double', 'RATEVALUE'),
+        #result('T.TICKERCODE', 'java.lang.String', 'TICKERCODE'),
+        #result('T.TICKERNAME', 'java.lang.String', 'TICKERNAME') 
+        
+       $ASPECTFIELDS 
+FROM 
+      B2B_INVTICKERRATE T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($INVTICKERRATEID) T.INVTICKERRATEID = #bind($INVTICKERRATEID 'NUMERIC') #end 
+       #chunk($INVTICKERID) T.INVTICKERID = #bind($INVTICKERID 'NUMERIC') #end 
+       #chunk($TRDATE) T.TRDATE = #bind($TRDATE 'FLOAT') #end 
+       #chunk($TICKERCODE) T.TICKERCODE = #bind($TICKERCODE 'VARCHAR') #end 
+       #chunk($TICKERNAME) T.TICKERNAME = #bind($TICKERNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BTickerRateBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvest" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.INVTICKERRATEID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_INVTICKERRATE T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($INVTICKERRATEID) T.INVTICKERRATEID = #bind($INVTICKERRATEID 'NUMERIC') #end 
+       #chunk($INVTICKERID) T.INVTICKERID = #bind($INVTICKERID 'NUMERIC') #end 
+       #chunk($TRDATE) T.TRDATE = #bind($TRDATE 'FLOAT') #end 
+       #chunk($TICKERCODE) T.TICKERCODE = #bind($TICKERCODE 'VARCHAR') #end 
+       #chunk($TICKERNAME) T.TICKERNAME = #bind($TICKERNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BTickerRateInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvest" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+INSERT INTO B2B_INVTICKERRATE (
+INVTICKERRATEID,
+INVTICKERID,
+TRDATE,
+RATEVALUE,
+TICKERCODE,
+TICKERNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($INVTICKERRATEID, 'NUMERIC'),
+#bind($INVTICKERID 'NUMERIC'),
+#bind($TRDATE 'FLOAT'),
+#bind($RATEVALUE 'NUMERIC'),
+#bind($TICKERCODE 'VARCHAR'),
+#bind($TICKERNAME 'VARCHAR') 
+$ASPECTVALUESBINDINGS
+ )
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO B2B_INVTICKERRATE (
+INVTICKERRATEID,
+INVTICKERID,
+TRDATE,
+RATEVALUE,
+TICKERCODE,
+TICKERNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($INVTICKERRATEID, 'NUMERIC'),
+#bind($INVTICKERID 'NUMERIC'),
+#bind($TRDATE 'FLOAT'),
+#bind($RATEVALUE 'NUMERIC'),
+#bind($TICKERCODE 'VARCHAR'),
+#bind($TICKERNAME 'VARCHAR') 
+$ASPECTVALUESBINDINGS
+ )
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO B2B_INVTICKERRATE (
+INVTICKERRATEID,
+INVTICKERID,
+TRDATE,
+RATEVALUE,
+TICKERCODE,
+TICKERNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($INVTICKERRATEID, 'NUMERIC'),
+#bind($INVTICKERID 'NUMERIC'),
+#bind($TRDATE 'FLOAT'),
+#bind($RATEVALUE 'NUMERIC'),
+#bind($TICKERCODE 'VARCHAR'),
+#bind($TICKERNAME 'VARCHAR') 
+$ASPECTVALUESBINDINGS
+ )
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BTickerRateUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvest" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.INVTICKERRATEID = #bind($INVTICKERRATEID 'NUMERIC') 
+#chunk($INVTICKERID) , T.INVTICKERID = #bind($INVTICKERID 'NUMERIC') #end 
+#chunk($TRDATE) , T.TRDATE = #bind($TRDATE 'FLOAT') #end 
+#chunk($RATEVALUE) , T.RATEVALUE = #bind($RATEVALUE 'NUMERIC') #end 
+#chunk($TICKERCODE) , T.TICKERCODE = #bind($TICKERCODE 'VARCHAR') #end 
+#chunk($TICKERNAME) , T.TICKERNAME = #bind($TICKERNAME 'VARCHAR') #end 
+
+       $ASPECTFIELDS 
+FROM 
+      B2B_INVTICKERRATE T 
+#chain('AND' 'WHERE') 
+       #chunk($INVTICKERRATEID) T.INVTICKERRATEID = #bind($INVTICKERRATEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.INVTICKERRATEID = #bind($INVTICKERRATEID 'NUMERIC') 
+#chunk($INVTICKERID) , T.INVTICKERID = #bind($INVTICKERID 'NUMERIC') #end 
+#chunk($TRDATE) , T.TRDATE = #bind($TRDATE 'FLOAT') #end 
+#chunk($RATEVALUE) , T.RATEVALUE = #bind($RATEVALUE 'NUMERIC') #end 
+#chunk($TICKERCODE) , T.TICKERCODE = #bind($TICKERCODE 'VARCHAR') #end 
+#chunk($TICKERNAME) , T.TICKERNAME = #bind($TICKERNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_INVTICKERRATE T 
+#chain('AND' 'WHERE') 
+       #chunk($INVTICKERRATEID) T.INVTICKERRATEID = #bind($INVTICKERRATEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       B2B_INVTICKERRATE T 
+SET 
+    T.INVTICKERRATEID = #bind($INVTICKERRATEID 'NUMERIC') 
+#chunk($INVTICKERID) , T.INVTICKERID = #bind($INVTICKERID 'NUMERIC') #end 
+#chunk($TRDATE) , T.TRDATE = #bind($TRDATE 'FLOAT') #end 
+#chunk($RATEVALUE) , T.RATEVALUE = #bind($RATEVALUE 'NUMERIC') #end 
+#chunk($TICKERCODE) , T.TICKERCODE = #bind($TICKERCODE 'VARCHAR') #end 
+#chunk($TICKERNAME) , T.TICKERNAME = #bind($TICKERNAME 'VARCHAR') #end 
+
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($INVTICKERRATEID) T.INVTICKERRATEID = #bind($INVTICKERRATEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BTickerRateUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvest" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.INVTICKERRATEID = #bind($INVTICKERRATEID 'NUMERIC') 
+#chunk($INVTICKERID) , TA.INVTICKERID = #bind($INVTICKERID 'NUMERIC') #end 
+#chunk($TRDATE) , TA.TRDATE = #bind($TRDATE 'FLOAT') #end 
+#chunk($RATEVALUE) , TA.RATEVALUE = #bind($RATEVALUE 'NUMERIC') #end 
+#chunk($TICKERCODE) , TA.TICKERCODE = #bind($TICKERCODE 'VARCHAR') #end 
+#chunk($TICKERNAME) , TA.TICKERNAME = #bind($TICKERNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_INVTICKERRATE TA 
+WHERE 
+     TA.INVTICKERRATEID in ( 
+       SELECT 
+         T.INVTICKERRATEID
+       FROM 
+         B2B_INVTICKERRATE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($INVTICKERRATEID) T.INVTICKERRATEID = #bind($INVTICKERRATEID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.INVTICKERRATEID = #bind($INVTICKERRATEID 'NUMERIC') 
+#chunk($INVTICKERID) , TA.INVTICKERID = #bind($INVTICKERID 'NUMERIC') #end 
+#chunk($TRDATE) , TA.TRDATE = #bind($TRDATE 'FLOAT') #end 
+#chunk($RATEVALUE) , TA.RATEVALUE = #bind($RATEVALUE 'NUMERIC') #end 
+#chunk($TICKERCODE) , TA.TICKERCODE = #bind($TICKERCODE 'VARCHAR') #end 
+#chunk($TICKERNAME) , TA.TICKERNAME = #bind($TICKERNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_INVTICKERRATE TA 
+WHERE 
+     TA.INVTICKERRATEID in ( 
+       SELECT 
+         T.INVTICKERRATEID
+       FROM 
+         B2B_INVTICKERRATE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($INVAMID) T.INVTICKERRATEID = #bind($INVTICKERRATEID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       B2B_INVTICKERRATE TA 
+SET 
+    TA.INVTICKERRATEID = #bind($INVTICKERRATEID 'NUMERIC') 
+#chunk($INVTICKERID) , TA.INVTICKERID = #bind($INVTICKERID 'NUMERIC') #end 
+#chunk($TRDATE) , TA.TRDATE = #bind($TRDATE 'FLOAT') #end 
+#chunk($RATEVALUE) , TA.RATEVALUE = #bind($RATEVALUE 'NUMERIC') #end 
+#chunk($TICKERCODE) , TA.TICKERCODE = #bind($TICKERCODE 'VARCHAR') #end 
+#chunk($TICKERNAME) , TA.TICKERNAME = #bind($TICKERNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.INVTICKERRATEID in ( 
+       SELECT 
+         T.INVTICKERRATEID
+       FROM 
+         B2B_INVTICKERRATE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($INVTICKERRATEID) T.INVTICKERRATEID = #bind($INVTICKERRATEID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BTickerRateDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvest" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+DELETE  T
+FROM 
+      B2B_INVTICKERRATE T 
+#chain('AND' 'WHERE') 
+      #chunk($INVTICKERRATEID) T.INVTICKERRATEID = #bind($INVTICKERRATEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      B2B_INVTICKERRATE T 
+#chain('AND' 'WHERE') 
+      #chunk($INVTICKERRATEID) T.INVTICKERRATEID = #bind($INVTICKERRATEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       B2B_INVTICKERRATE T 
+#chain('AND' 'WHERE') 
+      #chunk($INVTICKERRATEID) T.INVTICKERRATEID = #bind($INVTICKERRATEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BTickerRateDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvest" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      B2B_INVTICKERRATE TA 
+WHERE 
+     TA.INVTICKERRATEID in ( 
+       SELECT 
+         T.INVTICKERRATEID
+       FROM 
+         B2B_INVTICKERRATE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+             #chunk($INVTICKERRATEID) T.INVTICKERRATEID = #bind($INVTICKERRATEID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      B2B_INVTICKERRATE TA 
+WHERE 
+     TA.INVTICKERRATEID in ( 
+       SELECT 
+         T.INVTICKERRATEID
+       FROM 
+         B2B_INVTICKERRATE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+             #chunk($INVTICKERRATEID) T.INVTICKERRATEID = #bind($INVTICKERRATEID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       B2B_INVTICKERRATE TA 
+WHERE 
+     TA.INVTICKERRATEID in ( 
+       SELECT 
+         T.INVTICKERRATEID
+       FROM 
+         B2B_INVTICKERRATE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+             #chunk($INVTICKERRATEID) T.INVTICKERRATEID = #bind($INVTICKERRATEID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+        </sql>
+    </query>
+    
+      <query name="dsB2B2BCashFlowSetTypeModifyString" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BInvest" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            UPDATE B2B_BANKCASHFLOW T
+            SET 
+                T.BANKCASHFLOWID = #bind($BANKCASHFLOWID 'NUMERIC') 
+            #chunk($TYPEMODIFYSTRING) , T.TYPEMODIFYSTRING = #bind($TYPEMODIFYSTRING 'NUMERIC') #end 
+                   $ASPECTFIELDS          
+            #chain('AND' 'WHERE') 
+                   #chunk($BANKCASHFLOWID) T.BANKCASHFLOWID = #bind($BANKCASHFLOWID 'NUMERIC') #end 
+                  $ASPECTRESTRICTION 
+            #end 
+            ]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+            <![CDATA[
+            UPDATE B2B_BANKCASHFLOW T
+            SET 
+                T.BANKCASHFLOWID = #bind($BANKCASHFLOWID 'NUMERIC') 
+            #chunk($TYPEMODIFYSTRING) , T.TYPEMODIFYSTRING = #bind($TYPEMODIFYSTRING 'NUMERIC') #end 
+                   $ASPECTFIELDS 
+            #chain('AND' 'WHERE') 
+                   #chunk($BANKCASHFLOWID) T.BANKCASHFLOWID = #bind($BANKCASHFLOWID 'NUMERIC') #end 
+                  $ASPECTRESTRICTION 
+            #end 
+            ]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+            <![CDATA[
+            UPDATE B2B_BANKCASHFLOW T
+            SET 
+                T.BANKCASHFLOWID = #bind($BANKCASHFLOWID 'NUMERIC') 
+            #chunk($TYPEMODIFYSTRING) , T.TYPEMODIFYSTRING = #bind($TYPEMODIFYSTRING 'NUMERIC') #end 
+                   $ASPECTFIELDS 
+            #chain('AND' 'WHERE') 
+                   #chunk($BANKCASHFLOWID) T.BANKCASHFLOWID = #bind($BANKCASHFLOWID 'NUMERIC') #end 
+                  $ASPECTRESTRICTION 
+            #end 
+            ]]>
+        </sql>
+    </query>
+</data-map>

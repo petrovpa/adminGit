@@ -1,0 +1,30 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>bivsberfront</artifactId>
+        <groupId>com.bivgroup.flextera.insurance</groupId>
+        <version>1.00.001</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.bivgroup.flextera.insurance.bivsberfront</groupId>
+    <artifactId>core</artifactId>
+    <name>core</name>
+    <packaging>pom</packaging>
+    <dependencies>
+        <dependency>
+            <groupId>ru.diasoft.flextera.insurance.front.core</groupId>
+            <artifactId>inscore</artifactId>
+            <version>${inscore.version}</version>
+        </dependency>
+    </dependencies>
+    <modules>
+        <module>audit</module>
+        <module>biv-ldap</module>
+        <module>validators</module>
+        <module>servicecaller</module>
+        <module>externalcaller</module>
+        <!--<module>gosuslygi</module>-->
+        <module>yandexmoneyapicaller</module>
+        <module>cbrCurrancyRateGetter</module>
+    </modules>
+</project>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://sberbank.ru/mort900" targetNamespace="http://sberbank.ru/mort900">
+    <xs:element name="BankStatement" type="tns:BankStatement"/>
+    <xs:complexType name="Header">
+        <xs:sequence>
+            <xs:element type="xs:string" name="Signature"/>
+            <xs:element type="xs:string" name="FormatVersion"/>
+            <xs:element type="xs:string" name="Charset"/>
+            <xs:element type="xs:string" name="Sender"/>
+            <xs:element type="xs:string" name="Receiver"/>
+            <xs:element type="xs:date" name="CreateDate"/>
+            <xs:element type="xs:time" name="CreateTime"/>
+            <xs:element type="xs:date" name="StartDate"/>
+            <xs:element type="xs:date" name="EndDate"/>
+            <xs:element type="xs:string" name="BankAccount"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="BankAccountBalance">
+        <xs:sequence>
+            <xs:element type="xs:date" name="StartDate"/>
+            <xs:element type="xs:date" name="EndDate"/>
+            <xs:element type="xs:double" name="StartBalance"/>
+            <xs:element type="xs:string" name="BankAccount"/>
+            <xs:element type="xs:double" name="TotalWithdraw"/>
+            <xs:element type="xs:double" name="TotalIncome"/>
+            <xs:element type="xs:double" name="EndBalance"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ContragentInfo">
+        <xs:sequence>
+            <xs:element type="xs:string" name="Name"/>
+            <xs:element type="xs:string" name="INN"/>
+            <xs:element type="xs:string" name="KPP"/>
+            <xs:element type="xs:string" name="Account"/>
+            <xs:element type="xs:string" name="BankName"/>
+            <xs:element type="xs:string" name="BankBIK"/>
+            <xs:element type="xs:string" name="BankCorrespondAccount"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Contragent">
+        <xs:sequence>
+            <xs:element type="xs:string" name="BankAccount"/>
+            <xs:element type="xs:date" name="WithdrawDate"/>
+            <xs:element name="ContragentInfo" type="tns:ContragentInfo"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="PaymentOrder">
+        <xs:sequence>
+            <xs:element type="xs:string" name="DocumentType"/>
+            <xs:element type="xs:string" name="Number"/>
+            <xs:element type="xs:date" name="DocumentDate"/>
+            <xs:element type="xs:double" name="Sum"/>
+            <xs:element name="Payer" type="tns:Contragent"/>
+            <xs:element name="Receiver" type="tns:Contragent"/>
+            <xs:element type="xs:string" name="PaymentType"/>
+            <xs:element type="xs:string" name="PaymentKind"/>
+            <xs:element type="xs:string" name="Code"/>
+            <xs:element type="xs:string" name="CreatorStatus"/>
+            <xs:element type="xs:string" name="KBK"/>
+            <xs:element type="xs:string" name="OKATO"/>
+            <xs:element type="xs:string" name="PurposeMark"/>
+            <xs:element type="xs:string" name="PeriodMark"/>
+            <xs:element type="xs:string" name="NumberMark"/>
+            <xs:element type="xs:string" name="DateMark"/>
+            <xs:element type="xs:string" name="TypeMark"/>
+            <xs:element type="xs:integer" name="Priority"/>
+            <xs:element type="xs:string" name="Description"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Documents">
+        <xs:sequence>
+            <xs:element name="PaymentOrder" type="tns:PaymentOrder" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="BankStatement">
+        <xs:sequence>
+            <xs:element name="Header" type="tns:Header"/>        
+            <xs:element name="BankAccountBalance" type="tns:BankAccountBalance"/>
+            <xs:element name="Documents" type="tns:Documents"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

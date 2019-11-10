@@ -1,0 +1,2670 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+	<db-entity name="B2B_HANDBOOK_IMPLEMENTATION">
+		<db-attribute name="ID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="4000"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="4000"/>
+	</db-entity>
+	<db-entity name="B2B_HANDBOOK_OWNER">
+		<db-attribute name="HANDBOOKID" type="NUMERIC" length="19"/>
+		<db-attribute name="ID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="USERID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_JOURNAL">
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="DATAPROVIDERID" type="NUMERIC" length="19"/>
+		<db-attribute name="ID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="4000"/>
+		<db-attribute name="SQLDATA" type="VARCHAR" length="4000"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_JOURNALBUTTON">
+		<db-attribute name="ACTION" type="VARCHAR" length="4000"/>
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="GROUPNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="ID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="JOURNALID" type="NUMERIC" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="4000"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="4000"/>
+		<db-attribute name="SEQUENCE" type="NUMERIC" length="19"/>
+		<db-attribute name="TYPEBUTTON" type="NUMERIC" length="19"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="URLPICTURE" type="VARCHAR" length="4000"/>
+	</db-entity>
+	<db-entity name="B2B_JOURNALPARAM">
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="DATAPROVIDERID" type="NUMERIC" length="19"/>
+		<db-attribute name="DATATYPEID" type="NUMERIC" length="19"/>
+		<db-attribute name="HANDBOOKID" type="NUMERIC" length="19"/>
+		<db-attribute name="ID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="ISCOMPLEX" type="NUMERIC" length="19"/>
+		<db-attribute name="ISREQUIRED" type="NUMERIC" length="19"/>
+		<db-attribute name="JOURNALID" type="NUMERIC" length="19"/>
+		<db-attribute name="KEYFIELD" type="VARCHAR" length="255"/>
+		<db-attribute name="MAINPARAMID" type="NUMERIC" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="4000"/>
+		<db-attribute name="NAMEFIELD" type="VARCHAR" length="255"/>
+		<db-attribute name="NAMESPACE" type="VARCHAR" length="255"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="4000"/>
+		<db-attribute name="PARAMSHOWEXPR" type="VARCHAR" length="4000"/>
+		<db-attribute name="PARENTID" type="NUMERIC" length="19"/>
+		<db-attribute name="SEQUENCE" type="NUMERIC" length="19"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="TABLEALIAS" type="VARCHAR" length="255"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="URLCOMPONENT" type="VARCHAR" length="4000"/>
+	</db-entity>
+	<db-entity name="B2B_JOURNALPARAMDATATYPE">
+		<db-attribute name="ID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="4000"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="B2B_KINDHANDBOOK">
+		<db-attribute name="CATEGORY" type="NUMERIC" length="19"/>
+		<db-attribute name="HBDATAVERSIONID" type="NUMERIC" length="19"/>
+		<db-attribute name="JOURNALID" type="NUMERIC" length="19"/>
+		<db-attribute name="ID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="IMPLEMENTATIONID" type="NUMERIC" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="4000"/>
+		<db-attribute name="SQLDATA" type="VARCHAR" length="4000"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="4000"/>
+	</db-entity>
+	<obj-entity name="B2B_Handbook_Implementation" dbEntityName="B2B_HANDBOOK_IMPLEMENTATION">
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="ID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="содержит название способа"/>
+		<obj-attribute name="sysName" type="java.lang.String" db-attribute-path="SYSNAME" note="содержит служебное название способа"/>
+	</obj-entity>
+	<obj-entity name="B2B_Handbook_Owner" dbEntityName="B2B_HANDBOOK_OWNER">
+		<obj-attribute name="handbookId" type="java.lang.Long" db-attribute-path="HANDBOOKID" note="ссылка на объект учета «Классификатор видов справочника»"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="ID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД"/>
+		<obj-attribute name="userId" type="java.lang.Long" db-attribute-path="USERID" note="ссылка на объект учета «Пользователь системы»"/>
+	</obj-entity>
+	<obj-entity name="B2B_Journal" dbEntityName="B2B_JOURNAL">
+		<obj-attribute name="createdate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания"/>
+		<obj-attribute name="createuserid" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="Пользователь создавший запись"/>
+		<obj-attribute name="dataproviderid" type="java.lang.Long" db-attribute-path="DATAPROVIDERID" note="Ссылка на дата провайдер"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="ID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="содержит название журнала"/>
+		<obj-attribute name="sqlData" type="java.lang.String" db-attribute-path="SQLDATA" note="содержит SQL запрос для формирования табличной части журнала"/>
+		<obj-attribute name="sysName" type="java.lang.String" db-attribute-path="SYSNAME" note="содержит системное имя журнала"/>
+		<obj-attribute name="updatedate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата изменения записи"/>
+		<obj-attribute name="updateuserid" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="Пользователь изменивший запись"/>
+	</obj-entity>
+	<obj-entity name="B2B_JournalButton" dbEntityName="B2B_JOURNALBUTTON">
+		<obj-attribute name="action" type="java.lang.String" db-attribute-path="ACTION" note="действие"/>
+		<obj-attribute name="createdate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания"/>
+		<obj-attribute name="createuserid" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="Пользователь создавший запись"/>
+		<obj-attribute name="groupName" type="java.lang.String" db-attribute-path="GROUPNAME" note="содержит название группировки кнопок"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="ID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД объекта"/>
+		<obj-attribute name="journalId" type="java.lang.Long" db-attribute-path="JOURNALID" note="ссылка на объект учета «Журнал»"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="содержит название кнопки"/>
+		<obj-attribute name="note" type="java.lang.String" db-attribute-path="NOTE" note="содержит текст подробного описания кнопки"/>
+		<obj-attribute name="sequence" type="java.lang.Long" db-attribute-path="SEQUENCE" note="содержит сквозной порядковый номер кнопки"/>
+		<obj-attribute name="typeButton" type="java.lang.Long" db-attribute-path="TYPEBUTTON" note="тип кнопки"/>
+		<obj-attribute name="updatedate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата изменения записи"/>
+		<obj-attribute name="updateuserid" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="Пользователь изменивший запись"/>
+		<obj-attribute name="urlPicture" type="java.lang.String" db-attribute-path="URLPICTURE" note="содержит URL на иконку кнопки"/>
+	</obj-entity>
+	<obj-entity name="B2B_JournalParam" dbEntityName="B2B_JOURNALPARAM">
+		<obj-attribute name="createdate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания"/>
+		<obj-attribute name="createuserid" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="Пользователь создавший запись"/>
+		<obj-attribute name="dataTypeId" type="java.lang.Long" db-attribute-path="DATATYPEID" note="содержит классификацию параметра по значению"/>
+		<obj-attribute name="dataproviderid" type="java.lang.Long" db-attribute-path="DATAPROVIDERID" note="содержит ссылку на дата провайдер"/>
+		<obj-attribute name="handbookId" type="java.lang.Long" db-attribute-path="HANDBOOKID" note="ссылка на объект учета «Классификатор видов справочника»"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="ID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="Ид"/>
+		<obj-attribute name="isComplex" type="java.lang.Long" db-attribute-path="ISCOMPLEX" note="содержит признак комплексного параметра"/>
+		<obj-attribute name="isRequired" type="java.lang.Long" db-attribute-path="ISREQUIRED" note="признак обязательного заполнения параметра, без возможности исключения"/>
+		<obj-attribute name="journalID" type="java.lang.Long" db-attribute-path="JOURNALID" note="ссылка на объект учета «Журнал»"/>
+		<obj-attribute name="keyfield" type="java.lang.String" db-attribute-path="KEYFIELD" note="Поле идентификатор для справочника"/>
+		<obj-attribute name="mainParamId" type="java.lang.Long" db-attribute-path="MAINPARAMID" note="ссылка на объект учета «Параметр журнала», используется для связи подчиненных параметров, которые выводиться при выполнении условия главного параметра"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="содержит название параметра"/>
+		<obj-attribute name="namefield" type="java.lang.String" db-attribute-path="NAMEFIELD" note="поле наименование для справочника"/>
+		<obj-attribute name="namespace" type="java.lang.String" db-attribute-path="NAMESPACE" note="Путь к параметру ограничения"/>
+		<obj-attribute name="note" type="java.lang.String" db-attribute-path="NOTE" note="содержит текст подробного описания параметра"/>
+		<obj-attribute name="paramShowExpr" type="java.lang.String" db-attribute-path="PARAMSHOWEXPR" note="содержит список параметров, которые связаны с текущим и выводиться при выполнении условия"/>
+		<obj-attribute name="parentID" type="java.lang.Long" db-attribute-path="PARENTID" note="ссылка на объект учета «Параметр журнала», используется для связи параметров, которые являются частью комплексного параметра"/>
+		<obj-attribute name="sequence" type="java.lang.Long" db-attribute-path="SEQUENCE" note="содержит сквозной порядковый номер параметра"/>
+		<obj-attribute name="sysName" type="java.lang.String" db-attribute-path="SYSNAME" note="содержит системное имя параметра"/>
+		<obj-attribute name="tableAlias" type="java.lang.String" db-attribute-path="TABLEALIAS" note="Алиас таблицы при построении ограничений"/>
+                
+		<obj-attribute name="updatedate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата изменения записи"/>
+		<obj-attribute name="updateuserid" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="Пользователь изменивший запись"/>
+		<obj-attribute name="urlComponent" type="java.lang.String" db-attribute-path="URLCOMPONENT" note="содержит URL на компоненту параметра"/>
+	</obj-entity>
+	<obj-entity name="B2B_JournalParamDataType" dbEntityName="B2B_JOURNALPARAMDATATYPE">
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="ID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME"/>
+		<obj-attribute name="sysName" type="java.lang.String" db-attribute-path="SYSNAME"/>
+	</obj-entity>
+	<obj-entity name="B2B_KindHandbook" dbEntityName="B2B_KINDHANDBOOK">
+		<obj-attribute name="category" type="java.lang.Long" db-attribute-path="CATEGORY" note="содержит классификацию справочника по категории"/>
+		<obj-attribute name="hbDataVersionId" type="java.lang.Long" db-attribute-path="HBDATAVERSIONID" note="Версия данных справочника"/>
+		<obj-attribute name="journalId" type="java.lang.Long" db-attribute-path="JOURNALID" note="Ссылка на журнал"/>
+                <obj-attribute name="id" type="java.lang.Long" db-attribute-path="ID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД"/>
+		<obj-attribute name="implementationId" type="java.lang.Long" db-attribute-path="IMPLEMENTATIONID" note="ссылка на объект учета «Способ реализации справочника»"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="содержит название параметра"/>
+		<obj-attribute name="sqlData" type="java.lang.String" db-attribute-path="SQLDATA" note="содержит SQL запрос для формирования списка объектов"/>
+		<obj-attribute name="sysName" type="java.lang.String" db-attribute-path="SYSNAME" note="содержит системное имя параметра"/>
+	</obj-entity>
+<query name="dsB2B_Handbook_ImplementationBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.ID', 'java.lang.Long', 'ID'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.SYSNAME', 'java.lang.String', 'SYSNAME') 
+       $ASPECTFIELDS 
+FROM 
+      B2B_HANDBOOK_IMPLEMENTATION T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2B_Handbook_ImplementationBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_HANDBOOK_IMPLEMENTATION T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2B_Handbook_ImplementationInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO B2B_HANDBOOK_IMPLEMENTATION (
+ID,
+NAME,
+SYSNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($ID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($SYSNAME 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO B2B_HANDBOOK_IMPLEMENTATION (
+ID,
+NAME,
+SYSNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($ID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($SYSNAME 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO B2B_HANDBOOK_IMPLEMENTATION (
+ID,
+NAME,
+SYSNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($ID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($SYSNAME 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsB2B_Handbook_ImplementationUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SYSNAME) , T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_HANDBOOK_IMPLEMENTATION T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SYSNAME) , T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_HANDBOOK_IMPLEMENTATION T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       B2B_HANDBOOK_IMPLEMENTATION T 
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SYSNAME) , T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2B_Handbook_ImplementationUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SYSNAME) , TA.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_HANDBOOK_IMPLEMENTATION TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_HANDBOOK_IMPLEMENTATION T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SYSNAME) , TA.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_HANDBOOK_IMPLEMENTATION TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_HANDBOOK_IMPLEMENTATION T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       B2B_HANDBOOK_IMPLEMENTATION TA 
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SYSNAME) , TA.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_HANDBOOK_IMPLEMENTATION T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsB2B_Handbook_ImplementationDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      B2B_HANDBOOK_IMPLEMENTATION T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      B2B_HANDBOOK_IMPLEMENTATION T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       B2B_HANDBOOK_IMPLEMENTATION T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2B_Handbook_ImplementationDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      B2B_HANDBOOK_IMPLEMENTATION TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_HANDBOOK_IMPLEMENTATION T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      B2B_HANDBOOK_IMPLEMENTATION TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_HANDBOOK_IMPLEMENTATION T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       B2B_HANDBOOK_IMPLEMENTATION TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_HANDBOOK_IMPLEMENTATION T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsB2B_Handbook_OwnerBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.HANDBOOKID', 'java.lang.Long', 'HANDBOOKID'),
+        #result('T.ID', 'java.lang.Long', 'ID'),
+        #result('T.USERID', 'java.lang.Long', 'USERID') 
+       $ASPECTFIELDS 
+FROM 
+      B2B_HANDBOOK_OWNER T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($HANDBOOKID) T.HANDBOOKID = #bind($HANDBOOKID 'NUMERIC') #end 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2B_Handbook_OwnerBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_HANDBOOK_OWNER T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($HANDBOOKID) T.HANDBOOKID = #bind($HANDBOOKID 'NUMERIC') #end 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2B_Handbook_OwnerInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO B2B_HANDBOOK_OWNER (
+HANDBOOKID,
+ID,
+USERID 
+$ASPECTFIELDS ) VALUES (
+#bind($HANDBOOKID 'NUMERIC'),
+#bind($ID 'NUMERIC'),
+#bind($USERID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO B2B_HANDBOOK_OWNER (
+HANDBOOKID,
+ID,
+USERID 
+$ASPECTFIELDS ) VALUES (
+#bind($HANDBOOKID 'NUMERIC'),
+#bind($ID 'NUMERIC'),
+#bind($USERID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO B2B_HANDBOOK_OWNER (
+HANDBOOKID,
+ID,
+USERID 
+$ASPECTFIELDS ) VALUES (
+#bind($HANDBOOKID 'NUMERIC'),
+#bind($ID 'NUMERIC'),
+#bind($USERID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsB2B_Handbook_OwnerUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($HANDBOOKID) , T.HANDBOOKID = #bind($HANDBOOKID 'NUMERIC') #end 
+#chunk($USERID) , T.USERID = #bind($USERID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_HANDBOOK_OWNER T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($HANDBOOKID) , T.HANDBOOKID = #bind($HANDBOOKID 'NUMERIC') #end 
+#chunk($USERID) , T.USERID = #bind($USERID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_HANDBOOK_OWNER T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       B2B_HANDBOOK_OWNER T 
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($HANDBOOKID) , T.HANDBOOKID = #bind($HANDBOOKID 'NUMERIC') #end 
+#chunk($USERID) , T.USERID = #bind($USERID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2B_Handbook_OwnerUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($HANDBOOKID) , TA.HANDBOOKID = #bind($HANDBOOKID 'NUMERIC') #end 
+#chunk($USERID) , TA.USERID = #bind($USERID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_HANDBOOK_OWNER TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_HANDBOOK_OWNER T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($HANDBOOKID) , TA.HANDBOOKID = #bind($HANDBOOKID 'NUMERIC') #end 
+#chunk($USERID) , TA.USERID = #bind($USERID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_HANDBOOK_OWNER TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_HANDBOOK_OWNER T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       B2B_HANDBOOK_OWNER TA 
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($HANDBOOKID) , TA.HANDBOOKID = #bind($HANDBOOKID 'NUMERIC') #end 
+#chunk($USERID) , TA.USERID = #bind($USERID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_HANDBOOK_OWNER T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsB2B_Handbook_OwnerDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      B2B_HANDBOOK_OWNER T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      B2B_HANDBOOK_OWNER T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       B2B_HANDBOOK_OWNER T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2B_Handbook_OwnerDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      B2B_HANDBOOK_OWNER TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_HANDBOOK_OWNER T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      B2B_HANDBOOK_OWNER TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_HANDBOOK_OWNER T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       B2B_HANDBOOK_OWNER TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_HANDBOOK_OWNER T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsB2B_JournalBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.DATAPROVIDERID', 'java.lang.Long', 'DATAPROVIDERID'),
+        #result('T.ID', 'java.lang.Long', 'ID'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.SQLDATA', 'java.lang.String', 'SQLDATA'),
+        #result('T.SYSNAME', 'java.lang.String', 'SYSNAME') 
+       $ASPECTFIELDS 
+FROM 
+      B2B_JOURNAL T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($DATAPROVIDERID) T.DATAPROVIDERID = #bind($DATAPROVIDERID 'NUMERIC') #end 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($SQLDATA) T.SQLDATA = #bind($SQLDATA 'VARCHAR') #end 
+       #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2B_JournalBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_JOURNAL T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($DATAPROVIDERID) T.DATAPROVIDERID = #bind($DATAPROVIDERID 'NUMERIC') #end 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($SQLDATA) T.SQLDATA = #bind($SQLDATA 'VARCHAR') #end 
+       #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2B_JournalInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO B2B_JOURNAL (
+DATAPROVIDERID,
+ID,
+NAME,
+SQLDATA,
+SYSNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($DATAPROVIDERID 'NUMERIC'),
+#bind($ID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($SQLDATA 'VARCHAR'),
+#bind($SYSNAME 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO B2B_JOURNAL (
+DATAPROVIDERID,
+ID,
+NAME,
+SQLDATA,
+SYSNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($DATAPROVIDERID 'NUMERIC'),
+#bind($ID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($SQLDATA 'VARCHAR'),
+#bind($SYSNAME 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO B2B_JOURNAL (
+DATAPROVIDERID,
+ID,
+NAME,
+SQLDATA,
+SYSNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($DATAPROVIDERID 'NUMERIC'),
+#bind($ID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($SQLDATA 'VARCHAR'),
+#bind($SYSNAME 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsB2B_JournalUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($DATAPROVIDERID) , T.DATAPROVIDERID = #bind($DATAPROVIDERID 'NUMERIC') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SQLDATA) , T.SQLDATA = #bind($SQLDATA 'VARCHAR') #end 
+#chunk($SYSNAME) , T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_JOURNAL T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($DATAPROVIDERID) , T.DATAPROVIDERID = #bind($DATAPROVIDERID 'NUMERIC') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SQLDATA) , T.SQLDATA = #bind($SQLDATA 'VARCHAR') #end 
+#chunk($SYSNAME) , T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_JOURNAL T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       B2B_JOURNAL T 
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($DATAPROVIDERID) , T.DATAPROVIDERID = #bind($DATAPROVIDERID 'NUMERIC') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SQLDATA) , T.SQLDATA = #bind($SQLDATA 'VARCHAR') #end 
+#chunk($SYSNAME) , T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2B_JournalUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($DATAPROVIDERID) , TA.DATAPROVIDERID = #bind($DATAPROVIDERID 'NUMERIC') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SQLDATA) , TA.SQLDATA = #bind($SQLDATA 'VARCHAR') #end 
+#chunk($SYSNAME) , TA.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_JOURNAL TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_JOURNAL T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($DATAPROVIDERID) , TA.DATAPROVIDERID = #bind($DATAPROVIDERID 'NUMERIC') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SQLDATA) , TA.SQLDATA = #bind($SQLDATA 'VARCHAR') #end 
+#chunk($SYSNAME) , TA.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_JOURNAL TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_JOURNAL T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       B2B_JOURNAL TA 
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($DATAPROVIDERID) , TA.DATAPROVIDERID = #bind($DATAPROVIDERID 'NUMERIC') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SQLDATA) , TA.SQLDATA = #bind($SQLDATA 'VARCHAR') #end 
+#chunk($SYSNAME) , TA.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_JOURNAL T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsB2B_JournalDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      B2B_JOURNAL T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      B2B_JOURNAL T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       B2B_JOURNAL T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2B_JournalDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      B2B_JOURNAL TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_JOURNAL T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      B2B_JOURNAL TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_JOURNAL T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       B2B_JOURNAL TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_JOURNAL T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsB2B_JournalButtonBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.ACTION', 'java.lang.String', 'ACTION'),
+        #result('T.GROUPNAME', 'java.lang.String', 'GROUPNAME'),
+        #result('T.ID', 'java.lang.Long', 'ID'),
+        #result('T.JOURNALID', 'java.lang.Long', 'JOURNALID'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.NOTE', 'java.lang.String', 'NOTE'),
+        #result('T.SEQUENCE', 'java.lang.Long', 'SEQUENCE'),
+        #result('T.TYPEBUTTON', 'java.lang.Long', 'TYPEBUTTON'),
+        #result('T.URLPICTURE', 'java.lang.String', 'URLPICTURE') 
+       $ASPECTFIELDS 
+FROM 
+      B2B_JOURNALBUTTON T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ACTION) T.ACTION = #bind($ACTION 'VARCHAR') #end 
+       #chunk($GROUPNAME) T.GROUPNAME = #bind($GROUPNAME 'VARCHAR') #end 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($JOURNALID) T.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($SEQUENCE) T.SEQUENCE = #bind($SEQUENCE 'NUMERIC') #end 
+       #chunk($TYPEBUTTON) T.TYPEBUTTON = #bind($TYPEBUTTON 'NUMERIC') #end 
+       #chunk($URLPICTURE) T.URLPICTURE = #bind($URLPICTURE 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2B_JournalButtonBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_JOURNALBUTTON T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ACTION) T.ACTION = #bind($ACTION 'VARCHAR') #end 
+       #chunk($GROUPNAME) T.GROUPNAME = #bind($GROUPNAME 'VARCHAR') #end 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($JOURNALID) T.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($SEQUENCE) T.SEQUENCE = #bind($SEQUENCE 'NUMERIC') #end 
+       #chunk($TYPEBUTTON) T.TYPEBUTTON = #bind($TYPEBUTTON 'NUMERIC') #end 
+       #chunk($URLPICTURE) T.URLPICTURE = #bind($URLPICTURE 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2B_JournalButtonInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO B2B_JOURNALBUTTON (
+ACTION,
+GROUPNAME,
+ID,
+JOURNALID,
+NAME,
+NOTE,
+SEQUENCE,
+TYPEBUTTON,
+URLPICTURE 
+$ASPECTFIELDS ) VALUES (
+#bind($ACTION 'VARCHAR'),
+#bind($GROUPNAME 'VARCHAR'),
+#bind($ID 'NUMERIC'),
+#bind($JOURNALID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($NOTE 'VARCHAR'),
+#bind($SEQUENCE 'NUMERIC'),
+#bind($TYPEBUTTON 'NUMERIC'),
+#bind($URLPICTURE 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO B2B_JOURNALBUTTON (
+ACTION,
+GROUPNAME,
+ID,
+JOURNALID,
+NAME,
+NOTE,
+SEQUENCE,
+TYPEBUTTON,
+URLPICTURE 
+$ASPECTFIELDS ) VALUES (
+#bind($ACTION 'VARCHAR'),
+#bind($GROUPNAME 'VARCHAR'),
+#bind($ID 'NUMERIC'),
+#bind($JOURNALID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($NOTE 'VARCHAR'),
+#bind($SEQUENCE 'NUMERIC'),
+#bind($TYPEBUTTON 'NUMERIC'),
+#bind($URLPICTURE 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO B2B_JOURNALBUTTON (
+ACTION,
+GROUPNAME,
+ID,
+JOURNALID,
+NAME,
+NOTE,
+SEQUENCE,
+TYPEBUTTON,
+URLPICTURE 
+$ASPECTFIELDS ) VALUES (
+#bind($ACTION 'VARCHAR'),
+#bind($GROUPNAME 'VARCHAR'),
+#bind($ID 'NUMERIC'),
+#bind($JOURNALID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($NOTE 'VARCHAR'),
+#bind($SEQUENCE 'NUMERIC'),
+#bind($TYPEBUTTON 'NUMERIC'),
+#bind($URLPICTURE 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsB2B_JournalButtonUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($ACTION) , T.ACTION = #bind($ACTION 'VARCHAR') #end 
+#chunk($GROUPNAME) , T.GROUPNAME = #bind($GROUPNAME 'VARCHAR') #end 
+#chunk($JOURNALID) , T.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($NOTE) , T.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($SEQUENCE) , T.SEQUENCE = #bind($SEQUENCE 'NUMERIC') #end 
+#chunk($TYPEBUTTON) , T.TYPEBUTTON = #bind($TYPEBUTTON 'NUMERIC') #end 
+#chunk($URLPICTURE) , T.URLPICTURE = #bind($URLPICTURE 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_JOURNALBUTTON T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($ACTION) , T.ACTION = #bind($ACTION 'VARCHAR') #end 
+#chunk($GROUPNAME) , T.GROUPNAME = #bind($GROUPNAME 'VARCHAR') #end 
+#chunk($JOURNALID) , T.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($NOTE) , T.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($SEQUENCE) , T.SEQUENCE = #bind($SEQUENCE 'NUMERIC') #end 
+#chunk($TYPEBUTTON) , T.TYPEBUTTON = #bind($TYPEBUTTON 'NUMERIC') #end 
+#chunk($URLPICTURE) , T.URLPICTURE = #bind($URLPICTURE 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_JOURNALBUTTON T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       B2B_JOURNALBUTTON T 
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($ACTION) , T.ACTION = #bind($ACTION 'VARCHAR') #end 
+#chunk($GROUPNAME) , T.GROUPNAME = #bind($GROUPNAME 'VARCHAR') #end 
+#chunk($JOURNALID) , T.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($NOTE) , T.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($SEQUENCE) , T.SEQUENCE = #bind($SEQUENCE 'NUMERIC') #end 
+#chunk($TYPEBUTTON) , T.TYPEBUTTON = #bind($TYPEBUTTON 'NUMERIC') #end 
+#chunk($URLPICTURE) , T.URLPICTURE = #bind($URLPICTURE 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2B_JournalButtonUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($ACTION) , TA.ACTION = #bind($ACTION 'VARCHAR') #end 
+#chunk($GROUPNAME) , TA.GROUPNAME = #bind($GROUPNAME 'VARCHAR') #end 
+#chunk($JOURNALID) , TA.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($NOTE) , TA.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($SEQUENCE) , TA.SEQUENCE = #bind($SEQUENCE 'NUMERIC') #end 
+#chunk($TYPEBUTTON) , TA.TYPEBUTTON = #bind($TYPEBUTTON 'NUMERIC') #end 
+#chunk($URLPICTURE) , TA.URLPICTURE = #bind($URLPICTURE 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_JOURNALBUTTON TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_JOURNALBUTTON T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($ACTION) , TA.ACTION = #bind($ACTION 'VARCHAR') #end 
+#chunk($GROUPNAME) , TA.GROUPNAME = #bind($GROUPNAME 'VARCHAR') #end 
+#chunk($JOURNALID) , TA.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($NOTE) , TA.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($SEQUENCE) , TA.SEQUENCE = #bind($SEQUENCE 'NUMERIC') #end 
+#chunk($TYPEBUTTON) , TA.TYPEBUTTON = #bind($TYPEBUTTON 'NUMERIC') #end 
+#chunk($URLPICTURE) , TA.URLPICTURE = #bind($URLPICTURE 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_JOURNALBUTTON TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_JOURNALBUTTON T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       B2B_JOURNALBUTTON TA 
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($ACTION) , TA.ACTION = #bind($ACTION 'VARCHAR') #end 
+#chunk($GROUPNAME) , TA.GROUPNAME = #bind($GROUPNAME 'VARCHAR') #end 
+#chunk($JOURNALID) , TA.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($NOTE) , TA.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($SEQUENCE) , TA.SEQUENCE = #bind($SEQUENCE 'NUMERIC') #end 
+#chunk($TYPEBUTTON) , TA.TYPEBUTTON = #bind($TYPEBUTTON 'NUMERIC') #end 
+#chunk($URLPICTURE) , TA.URLPICTURE = #bind($URLPICTURE 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_JOURNALBUTTON T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsB2B_JournalButtonDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      B2B_JOURNALBUTTON T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      B2B_JOURNALBUTTON T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       B2B_JOURNALBUTTON T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2B_JournalButtonDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      B2B_JOURNALBUTTON TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_JOURNALBUTTON T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      B2B_JOURNALBUTTON TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_JOURNALBUTTON T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       B2B_JOURNALBUTTON TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_JOURNALBUTTON T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsB2B_JournalParamBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.DATATYPEID', 'java.lang.Long', 'DATATYPEID'),
+        #result('T.DATAPROVIDERID', 'java.lang.Long', 'DATAPROVIDERID'),
+        #result('T.HANDBOOKID', 'java.lang.Long', 'HANDBOOKID'),
+        #result('T.ID', 'java.lang.Long', 'ID'),
+        #result('T.ISCOMPLEX', 'java.lang.Long', 'ISCOMPLEX'),
+        #result('T.ISREQUIRED', 'java.lang.Long', 'ISREQUIRED'),
+        #result('T.JOURNALID', 'java.lang.Long', 'JOURNALID'),
+        #result('T.KEYFIELD', 'java.lang.String', 'KEYFIELD'),
+        #result('T.MAINPARAMID', 'java.lang.Long', 'MAINPARAMID'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.NAMEFIELD', 'java.lang.String', 'NAMEFIELD'),
+        #result('T.NAMESPACE', 'java.lang.String', 'NAMESPACE'),
+        #result('T.NOTE', 'java.lang.String', 'NOTE'),
+        #result('T.PARAMSHOWEXPR', 'java.lang.String', 'PARAMSHOWEXPR'),
+        #result('T.PARENTID', 'java.lang.Long', 'PARENTID'),
+        #result('T.SEQUENCE', 'java.lang.Long', 'SEQUENCE'),
+        #result('T.SYSNAME', 'java.lang.String', 'SYSNAME'),
+        #result('T.TABLEALIAS', 'java.lang.String', 'TABLEALIAS'),
+        #result('T.URLCOMPONENT', 'java.lang.String', 'URLCOMPONENT') 
+       $ASPECTFIELDS 
+FROM 
+      B2B_JOURNALPARAM T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($DATAPROVIDERID) T.DATAPROVIDERID = #bind($DATAPROVIDERID 'NUMERIC') #end 
+       #chunk($DATATYPEID) T.DATATYPEID = #bind($DATATYPEID 'NUMERIC') #end 
+       #chunk($HANDBOOKID) T.HANDBOOKID = #bind($HANDBOOKID 'NUMERIC') #end 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($ISCOMPLEX) T.ISCOMPLEX = #bind($ISCOMPLEX 'NUMERIC') #end 
+       #chunk($ISREQUIRED) T.ISREQUIRED = #bind($ISREQUIRED 'NUMERIC') #end 
+       #chunk($JOURNALID) T.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+       #chunk($KEYFIELD) T.KEYFIELD = #bind($KEYFIELD 'VARCHAR') #end 
+       #chunk($MAINPARAMID) T.MAINPARAMID = #bind($MAINPARAMID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($NAMEFIELD) T.NAMEFIELD = #bind($NAMEFIELD 'VARCHAR') #end 
+       #chunk($NAMESPACE) T.NAMESPACE = #bind($NAMESPACE 'VARCHAR') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($PARAMSHOWEXPR) T.PARAMSHOWEXPR = #bind($PARAMSHOWEXPR 'VARCHAR') #end 
+       #chunk($PARENTID) T.PARENTID = #bind($PARENTID 'NUMERIC') #end 
+       #chunk($SEQUENCE) T.SEQUENCE = #bind($SEQUENCE 'NUMERIC') #end 
+       #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+       #chunk($TABLEALIAS) T.TABLEALIAS = #bind($TABLEALIAS 'VARCHAR') #end 
+       #chunk($URLCOMPONENT) T.URLCOMPONENT = #bind($URLCOMPONENT 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2B_JournalParamBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_JOURNALPARAM T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($DATAPROVIDERID) T.DATAPROVIDERID = #bind($DATAPROVIDERID 'NUMERIC') #end 
+       #chunk($DATATYPEID) T.DATATYPEID = #bind($DATATYPEID 'NUMERIC') #end 
+       #chunk($HANDBOOKID) T.HANDBOOKID = #bind($HANDBOOKID 'NUMERIC') #end 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($ISCOMPLEX) T.ISCOMPLEX = #bind($ISCOMPLEX 'NUMERIC') #end 
+       #chunk($ISREQUIRED) T.ISREQUIRED = #bind($ISREQUIRED 'NUMERIC') #end 
+       #chunk($JOURNALID) T.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+       #chunk($KEYFIELD) T.KEYFIELD = #bind($KEYFIELD 'VARCHAR') #end 
+       #chunk($MAINPARAMID) T.MAINPARAMID = #bind($MAINPARAMID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($NAMEFIELD) T.NAMEFIELD = #bind($NAMEFIELD 'VARCHAR') #end 
+       #chunk($NAMESPACE) T.NAMESPACE = #bind($NAMESPACE 'VARCHAR') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($PARAMSHOWEXPR) T.PARAMSHOWEXPR = #bind($PARAMSHOWEXPR 'VARCHAR') #end 
+       #chunk($PARENTID) T.PARENTID = #bind($PARENTID 'NUMERIC') #end 
+       #chunk($SEQUENCE) T.SEQUENCE = #bind($SEQUENCE 'NUMERIC') #end 
+       #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+       #chunk($TABLEALIAS) T.TABLEALIAS = #bind($TABLEALIAS 'VARCHAR') #end 
+       #chunk($URLCOMPONENT) T.URLCOMPONENT = #bind($URLCOMPONENT 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2B_JournalParamInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO B2B_JOURNALPARAM (
+DATAPROVIDERID,
+DATATYPEID,
+HANDBOOKID,
+ID,
+ISCOMPLEX,
+ISREQUIRED,
+JOURNALID,
+KEYFIELD,
+MAINPARAMID,
+NAME,
+NAMEFIELD,
+NAMESPACE,
+NOTE,
+PARAMSHOWEXPR,
+PARENTID,
+SEQUENCE,
+SYSNAME,
+TABLEALIAS,
+URLCOMPONENT 
+$ASPECTFIELDS ) VALUES (
+#bind($DATAPROVIDERID 'NUMERIC'),
+#bind($DATATYPEID 'NUMERIC'),
+#bind($HANDBOOKID 'NUMERIC'),
+#bind($ID 'NUMERIC'),
+#bind($ISCOMPLEX 'NUMERIC'),
+#bind($ISREQUIRED 'NUMERIC'),
+#bind($JOURNALID 'NUMERIC'),
+#bind($KEYFIELD 'VARCHAR'),
+#bind($MAINPARAMID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($NAMEFIELD 'VARCHAR'),
+#bind($NAMESPACE 'VARCHAR'),
+#bind($NOTE 'VARCHAR'),
+#bind($PARAMSHOWEXPR 'VARCHAR'),
+#bind($PARENTID 'NUMERIC'),
+#bind($SEQUENCE 'NUMERIC'),
+#bind($SYSNAME 'VARCHAR'),
+#bind($TABLEALIAS 'VARCHAR'),
+#bind($URLCOMPONENT 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO B2B_JOURNALPARAM (
+DATAPROVIDERID,
+DATATYPEID,
+HANDBOOKID,
+ID,
+ISCOMPLEX,
+ISREQUIRED,
+JOURNALID,
+KEYFIELD,
+MAINPARAMID,
+NAME,
+NAMEFIELD,
+NAMESPACE,
+NOTE,
+PARAMSHOWEXPR,
+PARENTID,
+SEQUENCE,
+SYSNAME,
+TABLEALIAS,
+URLCOMPONENT 
+$ASPECTFIELDS ) VALUES (
+#bind($DATAPROVIDERID 'NUMERIC'),
+#bind($DATATYPEID 'NUMERIC'),
+#bind($HANDBOOKID 'NUMERIC'),
+#bind($ID 'NUMERIC'),
+#bind($ISCOMPLEX 'NUMERIC'),
+#bind($ISREQUIRED 'NUMERIC'),
+#bind($JOURNALID 'NUMERIC'),
+#bind($KEYFIELD 'VARCHAR'),
+#bind($MAINPARAMID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($NAMEFIELD 'VARCHAR'),
+#bind($NAMESPACE 'VARCHAR'),
+#bind($NOTE 'VARCHAR'),
+#bind($PARAMSHOWEXPR 'VARCHAR'),
+#bind($PARENTID 'NUMERIC'),
+#bind($SEQUENCE 'NUMERIC'),
+#bind($SYSNAME 'VARCHAR'),
+#bind($TABLEALIAS 'VARCHAR'),
+#bind($URLCOMPONENT 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO B2B_JOURNALPARAM (
+DATAPROVIDERID,
+DATATYPEID,
+HANDBOOKID,
+ID,
+ISCOMPLEX,
+ISREQUIRED,
+JOURNALID,
+KEYFIELD,
+MAINPARAMID,
+NAME,
+NAMEFIELD,
+NAMESPACE,
+NOTE,
+PARAMSHOWEXPR,
+PARENTID,
+SEQUENCE,
+SYSNAME,
+TABLEALIAS,
+URLCOMPONENT 
+$ASPECTFIELDS ) VALUES (
+#bind($DATAPROVIDERID 'NUMERIC'),
+#bind($DATATYPEID 'NUMERIC'),
+#bind($HANDBOOKID 'NUMERIC'),
+#bind($ID 'NUMERIC'),
+#bind($ISCOMPLEX 'NUMERIC'),
+#bind($ISREQUIRED 'NUMERIC'),
+#bind($JOURNALID 'NUMERIC'),
+#bind($KEYFIELD 'VARCHAR'),
+#bind($MAINPARAMID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($NAMEFIELD 'VARCHAR'),
+#bind($NAMESPACE 'VARCHAR'),
+#bind($NOTE 'VARCHAR'),
+#bind($PARAMSHOWEXPR 'VARCHAR'),
+#bind($PARENTID 'NUMERIC'),
+#bind($SEQUENCE 'NUMERIC'),
+#bind($SYSNAME 'VARCHAR'),
+#bind($TABLEALIAS 'VARCHAR'),
+#bind($URLCOMPONENT 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsB2B_JournalParamUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($DATATYPEID) , T.DATATYPEID = #bind($DATATYPEID 'NUMERIC') #end 
+#chunk($DATAPROVIDERID) , T.DATAPROVIDERID = #bind($DATAPROVIDERID 'NUMERIC') #end 
+#chunk($HANDBOOKID) , T.HANDBOOKID = #bind($HANDBOOKID 'NUMERIC') #end 
+#chunk($ISCOMPLEX) , T.ISCOMPLEX = #bind($ISCOMPLEX 'NUMERIC') #end 
+#chunk($ISREQUIRED) , T.ISREQUIRED = #bind($ISREQUIRED 'NUMERIC') #end 
+#chunk($JOURNALID) , T.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+#chunk($KEYFIELD) , T.KEYFIELD = #bind($KEYFIELD 'VARCHAR') #end 
+#chunk($MAINPARAMID) , T.MAINPARAMID = #bind($MAINPARAMID 'NUMERIC') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($NAMEFIELD) , T.NAMEFIELD = #bind($NAMEFIELD 'VARCHAR') #end 
+#chunk($NAMESPACE) , T.NAMESPACE = #bind($NAMESPACE 'VARCHAR') #end 
+#chunk($NOTE) , T.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($PARAMSHOWEXPR) , T.PARAMSHOWEXPR = #bind($PARAMSHOWEXPR 'VARCHAR') #end 
+#chunk($PARENTID) , T.PARENTID = #bind($PARENTID 'NUMERIC') #end 
+#chunk($SEQUENCE) , T.SEQUENCE = #bind($SEQUENCE 'NUMERIC') #end 
+#chunk($SYSNAME) , T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+#chunk($TABLEALIAS) T.TABLEALIAS = #bind($TABLEALIAS 'VARCHAR') #end 
+#chunk($URLCOMPONENT) , T.URLCOMPONENT = #bind($URLCOMPONENT 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_JOURNALPARAM T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($DATATYPEID) , T.DATATYPEID = #bind($DATATYPEID 'NUMERIC') #end 
+#chunk($DATAPROVIDERID) , T.DATAPROVIDERID = #bind($DATAPROVIDERID 'NUMERIC') #end 
+#chunk($HANDBOOKID) , T.HANDBOOKID = #bind($HANDBOOKID 'NUMERIC') #end 
+#chunk($ISCOMPLEX) , T.ISCOMPLEX = #bind($ISCOMPLEX 'NUMERIC') #end 
+#chunk($ISREQUIRED) , T.ISREQUIRED = #bind($ISREQUIRED 'NUMERIC') #end 
+#chunk($JOURNALID) , T.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+#chunk($KEYFIELD) , T.KEYFIELD = #bind($KEYFIELD 'VARCHAR') #end 
+#chunk($MAINPARAMID) , T.MAINPARAMID = #bind($MAINPARAMID 'NUMERIC') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($NAMEFIELD) , T.NAMEFIELD = #bind($NAMEFIELD 'VARCHAR') #end 
+#chunk($NAMESPACE) , T.NAMESPACE = #bind($NAMESPACE 'VARCHAR') #end 
+#chunk($NOTE) , T.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($PARAMSHOWEXPR) , T.PARAMSHOWEXPR = #bind($PARAMSHOWEXPR 'VARCHAR') #end 
+#chunk($PARENTID) , T.PARENTID = #bind($PARENTID 'NUMERIC') #end 
+#chunk($SEQUENCE) , T.SEQUENCE = #bind($SEQUENCE 'NUMERIC') #end 
+#chunk($TABLEALIAS) T.TABLEALIAS = #bind($TABLEALIAS 'VARCHAR') #end 
+#chunk($SYSNAME) , T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+#chunk($URLCOMPONENT) , T.URLCOMPONENT = #bind($URLCOMPONENT 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_JOURNALPARAM T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       B2B_JOURNALPARAM T 
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($DATATYPEID) , T.DATATYPEID = #bind($DATATYPEID 'NUMERIC') #end 
+#chunk($DATAPROVIDERID) , T.DATAPROVIDERID = #bind($DATAPROVIDERID 'NUMERIC') #end 
+#chunk($HANDBOOKID) , T.HANDBOOKID = #bind($HANDBOOKID 'NUMERIC') #end 
+#chunk($ISCOMPLEX) , T.ISCOMPLEX = #bind($ISCOMPLEX 'NUMERIC') #end 
+#chunk($ISREQUIRED) , T.ISREQUIRED = #bind($ISREQUIRED 'NUMERIC') #end 
+#chunk($JOURNALID) , T.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+#chunk($KEYFIELD) , T.KEYFIELD = #bind($KEYFIELD 'VARCHAR') #end 
+#chunk($MAINPARAMID) , T.MAINPARAMID = #bind($MAINPARAMID 'NUMERIC') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($NAMEFIELD) , T.NAMEFIELD = #bind($NAMEFIELD 'VARCHAR') #end 
+#chunk($NAMESPACE) , T.NAMESPACE = #bind($NAMESPACE 'VARCHAR') #end 
+#chunk($NOTE) , T.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($PARAMSHOWEXPR) , T.PARAMSHOWEXPR = #bind($PARAMSHOWEXPR 'VARCHAR') #end 
+#chunk($PARENTID) , T.PARENTID = #bind($PARENTID 'NUMERIC') #end 
+#chunk($SEQUENCE) , T.SEQUENCE = #bind($SEQUENCE 'NUMERIC') #end 
+#chunk($SYSNAME) , T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+#chunk($TABLEALIAS) T.TABLEALIAS = #bind($TABLEALIAS 'VARCHAR') #end 
+#chunk($URLCOMPONENT) , T.URLCOMPONENT = #bind($URLCOMPONENT 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2B_JournalParamUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($DATATYPEID) , TA.DATATYPEID = #bind($DATATYPEID 'NUMERIC') #end 
+#chunk($DATAPROVIDERID) , TA.DATAPROVIDERID = #bind($DATAPROVIDERID 'NUMERIC') #end 
+#chunk($HANDBOOKID) , TA.HANDBOOKID = #bind($HANDBOOKID 'NUMERIC') #end 
+#chunk($ISCOMPLEX) , TA.ISCOMPLEX = #bind($ISCOMPLEX 'NUMERIC') #end 
+#chunk($ISREQUIRED) , TA.ISREQUIRED = #bind($ISREQUIRED 'NUMERIC') #end 
+#chunk($JOURNALID) , TA.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+#chunk($KEYFIELD) , TA.KEYFIELD = #bind($KEYFIELD 'VARCHAR') #end 
+#chunk($MAINPARAMID) , TA.MAINPARAMID = #bind($MAINPARAMID 'NUMERIC') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($NAMEFIELD) , TA.NAMEFIELD = #bind($NAMEFIELD 'VARCHAR') #end 
+#chunk($NAMESPACE) , TA.NAMESPACE = #bind($NAMESPACE 'VARCHAR') #end 
+#chunk($NOTE) , TA.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($PARAMSHOWEXPR) , TA.PARAMSHOWEXPR = #bind($PARAMSHOWEXPR 'VARCHAR') #end 
+#chunk($PARENTID) , TA.PARENTID = #bind($PARENTID 'NUMERIC') #end 
+#chunk($SEQUENCE) , TA.SEQUENCE = #bind($SEQUENCE 'NUMERIC') #end 
+#chunk($SYSNAME) , TA.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+#chunk($TABLEALIAS) T.TABLEALIAS = #bind($TABLEALIAS 'VARCHAR') #end 
+#chunk($URLCOMPONENT) , TA.URLCOMPONENT = #bind($URLCOMPONENT 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_JOURNALPARAM TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_JOURNALPARAM T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($DATATYPEID) , TA.DATATYPEID = #bind($DATATYPEID 'NUMERIC') #end 
+#chunk($DATAPROVIDERID) , TA.DATAPROVIDERID = #bind($DATAPROVIDERID 'NUMERIC') #end 
+#chunk($HANDBOOKID) , TA.HANDBOOKID = #bind($HANDBOOKID 'NUMERIC') #end 
+#chunk($ISCOMPLEX) , TA.ISCOMPLEX = #bind($ISCOMPLEX 'NUMERIC') #end 
+#chunk($ISREQUIRED) , TA.ISREQUIRED = #bind($ISREQUIRED 'NUMERIC') #end 
+#chunk($JOURNALID) , TA.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+#chunk($KEYFIELD) , TA.KEYFIELD = #bind($KEYFIELD 'VARCHAR') #end 
+#chunk($MAINPARAMID) , TA.MAINPARAMID = #bind($MAINPARAMID 'NUMERIC') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($NAMEFIELD) , TA.NAMEFIELD = #bind($NAMEFIELD 'VARCHAR') #end 
+#chunk($NAMESPACE) , TA.NAMESPACE = #bind($NAMESPACE 'VARCHAR') #end 
+#chunk($NOTE) , TA.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($PARAMSHOWEXPR) , TA.PARAMSHOWEXPR = #bind($PARAMSHOWEXPR 'VARCHAR') #end 
+#chunk($PARENTID) , TA.PARENTID = #bind($PARENTID 'NUMERIC') #end 
+#chunk($SEQUENCE) , TA.SEQUENCE = #bind($SEQUENCE 'NUMERIC') #end 
+#chunk($SYSNAME) , TA.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+#chunk($TABLEALIAS) T.TABLEALIAS = #bind($TABLEALIAS 'VARCHAR') #end 
+#chunk($URLCOMPONENT) , TA.URLCOMPONENT = #bind($URLCOMPONENT 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_JOURNALPARAM TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_JOURNALPARAM T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       B2B_JOURNALPARAM TA 
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($DATATYPEID) , TA.DATATYPEID = #bind($DATATYPEID 'NUMERIC') #end 
+#chunk($DATAPROVIDERID) , TA.DATAPROVIDERID = #bind($DATAPROVIDERID 'NUMERIC') #end 
+#chunk($HANDBOOKID) , TA.HANDBOOKID = #bind($HANDBOOKID 'NUMERIC') #end 
+#chunk($ISCOMPLEX) , TA.ISCOMPLEX = #bind($ISCOMPLEX 'NUMERIC') #end 
+#chunk($ISREQUIRED) , TA.ISREQUIRED = #bind($ISREQUIRED 'NUMERIC') #end 
+#chunk($JOURNALID) , TA.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+#chunk($KEYFIELD) , TA.KEYFIELD = #bind($KEYFIELD 'VARCHAR') #end 
+#chunk($MAINPARAMID) , TA.MAINPARAMID = #bind($MAINPARAMID 'NUMERIC') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($NAMEFIELD) , TA.NAMEFIELD = #bind($NAMEFIELD 'VARCHAR') #end 
+#chunk($NAMESPACE) , TA.NAMESPACE = #bind($NAMESPACE 'VARCHAR') #end 
+#chunk($NOTE) , TA.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($PARAMSHOWEXPR) , TA.PARAMSHOWEXPR = #bind($PARAMSHOWEXPR 'VARCHAR') #end 
+#chunk($PARENTID) , TA.PARENTID = #bind($PARENTID 'NUMERIC') #end 
+#chunk($SEQUENCE) , TA.SEQUENCE = #bind($SEQUENCE 'NUMERIC') #end 
+#chunk($SYSNAME) , TA.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+#chunk($TABLEALIAS) T.TABLEALIAS = #bind($TABLEALIAS 'VARCHAR') #end 
+#chunk($URLCOMPONENT) , TA.URLCOMPONENT = #bind($URLCOMPONENT 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_JOURNALPARAM T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsB2B_JournalParamDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      B2B_JOURNALPARAM T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      B2B_JOURNALPARAM T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       B2B_JOURNALPARAM T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2B_JournalParamDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      B2B_JOURNALPARAM TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_JOURNALPARAM T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      B2B_JOURNALPARAM TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_JOURNALPARAM T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       B2B_JOURNALPARAM TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_JOURNALPARAM T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsB2B_JournalParamDataTypeBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.ID', 'java.lang.Long', 'ID'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.SYSNAME', 'java.lang.String', 'SYSNAME') 
+       $ASPECTFIELDS 
+FROM 
+      B2B_JOURNALPARAMDATATYPE T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2B_JournalParamDataTypeBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_JOURNALPARAMDATATYPE T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2B_JournalParamDataTypeInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO B2B_JOURNALPARAMDATATYPE (
+ID,
+NAME,
+SYSNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($ID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($SYSNAME 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO B2B_JOURNALPARAMDATATYPE (
+ID,
+NAME,
+SYSNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($ID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($SYSNAME 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO B2B_JOURNALPARAMDATATYPE (
+ID,
+NAME,
+SYSNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($ID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($SYSNAME 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsB2B_JournalParamDataTypeUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SYSNAME) , T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_JOURNALPARAMDATATYPE T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SYSNAME) , T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_JOURNALPARAMDATATYPE T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       B2B_JOURNALPARAMDATATYPE T 
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SYSNAME) , T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2B_JournalParamDataTypeUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SYSNAME) , TA.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_JOURNALPARAMDATATYPE TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_JOURNALPARAMDATATYPE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SYSNAME) , TA.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_JOURNALPARAMDATATYPE TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_JOURNALPARAMDATATYPE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       B2B_JOURNALPARAMDATATYPE TA 
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SYSNAME) , TA.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_JOURNALPARAMDATATYPE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsB2B_JournalParamDataTypeDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      B2B_JOURNALPARAMDATATYPE T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      B2B_JOURNALPARAMDATATYPE T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       B2B_JOURNALPARAMDATATYPE T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2B_JournalParamDataTypeDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      B2B_JOURNALPARAMDATATYPE TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_JOURNALPARAMDATATYPE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      B2B_JOURNALPARAMDATATYPE TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_JOURNALPARAMDATATYPE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       B2B_JOURNALPARAMDATATYPE TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_JOURNALPARAMDATATYPE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsB2B_KindHandbookBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.CATEGORY', 'java.math.Long', 'CATEGORY'),
+        #result('T.HBDATAVERSIONID', 'java.math.Long', 'HBDATAVERSIONID'),
+        #result('T.JOURNALID', 'java.math.Long', 'JOURNALID'),
+        #result('T.ID', 'java.lang.Long', 'ID'),
+        #result('T.IMPLEMENTATIONID', 'java.math.Long', 'IMPLEMENTATIONID'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.SQLDATA', 'java.lang.String', 'SQLDATA'),
+        #result('T.SYSNAME', 'java.lang.String', 'SYSNAME') 
+       $ASPECTFIELDS 
+FROM 
+      B2B_KINDHANDBOOK T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CATEGORY) T.CATEGORY = #bind($CATEGORY 'NUMERIC') #end 
+       #chunk($HBDATAVERSIONID) T.HBDATAVERSIONID = #bind($HBDATAVERSIONID 'NUMERIC') #end 
+       #chunk($JOURNALID) T.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($IMPLEMENTATIONID) T.IMPLEMENTATIONID = #bind($IMPLEMENTATIONID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($SQLDATA) T.SQLDATA = #bind($SQLDATA 'VARCHAR') #end 
+       #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2B_KindHandbookBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_KINDHANDBOOK T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CATEGORY) T.CATEGORY = #bind($CATEGORY 'NUMERIC') #end 
+       #chunk($HBDATAVERSIONID) T.HBDATAVERSIONID = #bind($HBDATAVERSIONID 'NUMERIC') #end 
+       #chunk($JOURNALID) T.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($IMPLEMENTATIONID) T.IMPLEMENTATIONID = #bind($IMPLEMENTATIONID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($SQLDATA) T.SQLDATA = #bind($SQLDATA 'VARCHAR') #end 
+       #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2B_KindHandbookInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO B2B_KINDHANDBOOK (
+CATEGORY,
+HBDATAVERSIONID,
+JOURNALID,
+ID,
+IMPLEMENTATIONID,
+NAME,
+SQLDATA,
+SYSNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($CATEGORY 'NUMERIC'),
+#bind($HBDATAVERSIONID 'NUMERIC'),
+#bind($JOURNALID 'NUMERIC'),
+#bind($ID 'NUMERIC'),
+#bind($IMPLEMENTATIONID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($SQLDATA 'VARCHAR'),
+#bind($SYSNAME 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO B2B_KINDHANDBOOK (
+CATEGORY,
+HBDATAVERSIONID,
+JOURNALID,
+ID,
+IMPLEMENTATIONID,
+NAME,
+SQLDATA,
+SYSNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($CATEGORY 'NUMERIC'),
+#bind($HBDATAVERSIONID 'NUMERIC'),
+#bind($JOURNALID 'NUMERIC'),
+#bind($ID 'NUMERIC'),
+#bind($IMPLEMENTATIONID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($SQLDATA 'VARCHAR'),
+#bind($SYSNAME 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO B2B_KINDHANDBOOK (
+CATEGORY,
+HBDATAVERSIONID,
+JOURNALID,
+ID,
+IMPLEMENTATIONID,
+NAME,
+SQLDATA,
+SYSNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($CATEGORY 'NUMERIC'),
+#bind($HBDATAVERSIONID 'NUMERIC'),
+#bind($JOURNALID 'NUMERIC'),
+#bind($ID 'NUMERIC'),
+#bind($IMPLEMENTATIONID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($SQLDATA 'VARCHAR'),
+#bind($SYSNAME 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsB2B_KindHandbookUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($CATEGORY) , T.CATEGORY = #bind($CATEGORY 'NUMERIC') #end 
+#chunk($HBDATAVERSIONID) , T.HBDATAVERSIONID = #bind($HBDATAVERSIONID 'NUMERIC') #end 
+#chunk($JOURNALID) T.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+#chunk($IMPLEMENTATIONID) , T.IMPLEMENTATIONID = #bind($IMPLEMENTATIONID 'NUMERIC') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SQLDATA) , T.SQLDATA = #bind($SQLDATA 'VARCHAR') #end 
+#chunk($SYSNAME) , T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_KINDHANDBOOK T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($CATEGORY) , T.CATEGORY = #bind($CATEGORY 'NUMERIC') #end 
+#chunk($HBDATAVERSIONID) , T.HBDATAVERSIONID = #bind($HBDATAVERSIONID 'NUMERIC') #end 
+#chunk($JOURNALID) T.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+#chunk($IMPLEMENTATIONID) , T.IMPLEMENTATIONID = #bind($IMPLEMENTATIONID 'NUMERIC') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SQLDATA) , T.SQLDATA = #bind($SQLDATA 'VARCHAR') #end 
+#chunk($SYSNAME) , T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_KINDHANDBOOK T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       B2B_KINDHANDBOOK T 
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($CATEGORY) , T.CATEGORY = #bind($CATEGORY 'NUMERIC') #end 
+#chunk($HBDATAVERSIONID) , T.HBDATAVERSIONID = #bind($HBDATAVERSIONID 'NUMERIC') #end 
+#chunk($JOURNALID) T.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+#chunk($IMPLEMENTATIONID) , T.IMPLEMENTATIONID = #bind($IMPLEMENTATIONID 'NUMERIC') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SQLDATA) , T.SQLDATA = #bind($SQLDATA 'VARCHAR') #end 
+#chunk($SYSNAME) , T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2B_KindHandbookUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($CATEGORY) , TA.CATEGORY = #bind($CATEGORY 'NUMERIC') #end 
+#chunk($HBDATAVERSIONID) , TA.HBDATAVERSIONID = #bind($HBDATAVERSIONID 'NUMERIC') #end 
+#chunk($JOURNALID) T.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+#chunk($IMPLEMENTATIONID) , TA.IMPLEMENTATIONID = #bind($IMPLEMENTATIONID 'NUMERIC') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SQLDATA) , TA.SQLDATA = #bind($SQLDATA 'VARCHAR') #end 
+#chunk($SYSNAME) , TA.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_KINDHANDBOOK TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_KINDHANDBOOK T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($CATEGORY) , TA.CATEGORY = #bind($CATEGORY 'NUMERIC') #end 
+#chunk($HBDATAVERSIONID) , TA.HBDATAVERSIONID = #bind($HBDATAVERSIONID 'NUMERIC') #end 
+#chunk($JOURNALID) T.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+#chunk($IMPLEMENTATIONID) , TA.IMPLEMENTATIONID = #bind($IMPLEMENTATIONID 'NUMERIC') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SQLDATA) , TA.SQLDATA = #bind($SQLDATA 'VARCHAR') #end 
+#chunk($SYSNAME) , TA.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_KINDHANDBOOK TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_KINDHANDBOOK T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       B2B_KINDHANDBOOK TA 
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($CATEGORY) , TA.CATEGORY = #bind($CATEGORY 'NUMERIC') #end 
+#chunk($HBDATAVERSIONID) , TA.HBDATAVERSIONID = #bind($HBDATAVERSIONID 'NUMERIC') #end 
+#chunk($JOURNALID) T.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+#chunk($IMPLEMENTATIONID) , TA.IMPLEMENTATIONID = #bind($IMPLEMENTATIONID 'NUMERIC') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SQLDATA) , TA.SQLDATA = #bind($SQLDATA 'VARCHAR') #end 
+#chunk($SYSNAME) , TA.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_KINDHANDBOOK T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsB2B_KindHandbookDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      B2B_KINDHANDBOOK T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      B2B_KINDHANDBOOK T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       B2B_KINDHANDBOOK T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2B_KindHandbookDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      B2B_KINDHANDBOOK TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_KINDHANDBOOK T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      B2B_KINDHANDBOOK TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_KINDHANDBOOK T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       B2B_KINDHANDBOOK TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         B2B_KINDHANDBOOK T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+</data-map>

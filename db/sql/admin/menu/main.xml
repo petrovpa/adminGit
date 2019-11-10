@@ -1,0 +1,103 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet author="pzabaluev" context="update" id="admin-menu-add">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <sqlCheck expectedResult="0">
+                    SELECT COUNT(*) FROM B2B_MENU WHERE MENUID=10000;
+                </sqlCheck>
+            </and>
+        </preConditions>
+        <sqlFile path="admin/menu/data/addMenu.sql" encoding="UTF-8" />
+        <comment>add Admin menu</comment>
+    </changeSet>
+
+    <changeSet author="pzabaluev" context="update" id="admin-menu-addMenuRole">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <sqlCheck expectedResult="0">
+                    SELECT COUNT(*) FROM CORE_RIGHT WHERE RIGHTID=2030;
+                </sqlCheck>
+            </and>
+        </preConditions>
+        <sql>INSERT INTO CORE_RIGHT (RIGHTID, RIGHTSYSNAME, RIGHTNAME, PARENTID, RIGHTTYPE) VALUES (2030, 'RPAccessMenuRole', 'Право на доступ к пунктам меню в зависимости от роли пользователя', null, 1);</sql>
+        <comment>add role for menu</comment>
+    </changeSet>
+
+    <changeSet author="pzabaluev" context="update" id="admin-menu-menuRights">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <sqlCheck expectedResult="0">
+                    SELECT COUNT(*) FROM CORE_RIGHTUSERROLE WHERE RIGHTUSERROLEID=1000;
+                </sqlCheck>
+            </and>
+        </preConditions>
+        <sqlFile path="admin/menu/data/menuRights.sql" encoding="UTF-8" />
+        <comment>add menu role for admin</comment>
+    </changeSet>
+
+    <changeSet author="pzabaluev" context="update" id="admin-menu-RPAccessMenuRole-type">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <sqlCheck expectedResult="0">
+                    SELECT COUNT(*) FROM CORE_RIGHT WHERE RIGHTID=2030 AND RIGHTTYPE=2;
+                </sqlCheck>
+            </and>
+        </preConditions>
+        <sql>UPDATE CORE_RIGHT SET RIGHTTYPE=2 WHERE RIGHTID=2030;</sql>
+        <comment>new type for RPAccessMenuRole</comment>
+    </changeSet>
+
+    <changeSet author="pzabaluev" context="update" id="admin-menu-rename-password">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <sqlCheck expectedResult="1">
+                    SELECT COUNT(*) FROM B2B_MENU WHERE MENUID=10006 AND NAME='Настройка паролей';
+                </sqlCheck>
+            </and>
+        </preConditions>
+        <sql>UPDATE B2B_MENU SET NAME='Парольная политика' WHERE MENUID=10006;</sql>
+        <comment>new type for RPAccessMenuRole</comment>
+    </changeSet>
+
+    <changeSet author="pzabaluev" context="update" id="admin-menu-rename-profile-right">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <sqlCheck expectedResult="1">
+                    SELECT COUNT(*) FROM B2B_MENU WHERE MENUID=10005 AND ACTIONURL='/user-accounts/profile-right';
+                </sqlCheck>
+            </and>
+        </preConditions>
+        <sql>UPDATE B2B_MENU SET ACTIONURL='/user-accounts/rights', NAME='Права' WHERE MENUID=10005;</sql>
+        <comment>new link to profile right</comment>
+    </changeSet>
+
+    <changeSet author="esemenova" context="update" id="admin-menu-add-autoimport-options">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <sqlCheck expectedResult="0">
+                    SELECT COUNT(*) FROM B2B_MENU WHERE MENUID=10100 AND ACTIONURL='/autoimport-options';
+                </sqlCheck>
+            </and>
+        </preConditions>
+        <sql>INSERT INTO B2B_MENU (MENUID, NAME, SYSNAME, ACTIONURL, PICTUREURL, PRODCONFIGID, MENUTYPEID, PARENTMENUID, POSITION, JOURNALID) 
+        VALUES (10100, 'Параметры автозагрузки файлов', 'autoimportOptions', '/autoimport-options', 'icon-accounts', null, 2, null, 2, null);</sql>
+        <comment>add autoimport options to the menu</comment>
+    </changeSet>
+
+        <changeSet author="esemenova" context="update" id="admin-menu-add-autoimport-options-right">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <sqlCheck expectedResult="0">
+                    SELECT COUNT(*) FROM CORE_RFVALUE WHERE RIGHTFILTERVALUEID=10100;
+                </sqlCheck>
+            </and>
+        </preConditions>
+        <sql>INSERT INTO CORE_RFVALUE (RIGHTFILTERVALUEID, RIGHTFILTERID, VALUE, VKEY) VALUES (10100, 1100, 'Параметры автозагрузки файлов', '10100');</sql>
+        <comment>add right for autoimport options to the menu</comment>
+    </changeSet>
+
+</databaseChangeLog>

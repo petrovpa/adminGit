@@ -1,0 +1,12 @@
+url=
+driver=
+username=
+password=
+admin=
+adminPassword=
+database=
+sqlFile=
+sqlFileEncoding=UTF-8
+logLevel=info
+logFile=
+-Dmastername=dbo

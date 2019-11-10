@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+        <SMS_SKIP>TRUE</SMS_SKIP>
+        <ip>yandex.ru</ip>
+        <port>4442</port>
+        <EnquireLink>0</EnquireLink>
+        <SourceAddr>diasoft</SourceAddr>
+        <ServiceType>0</ServiceType>
+        <USESMTPSSL>true</USESMTPSSL>
+        <SMTPUser>LK</SMTPUser>
+        <SMTPPassword>ooY4Laicheghoboh</SMTPPassword>
+        <SMTPHost>92.242.39.142</SMTPHost>
+        <SMTPPort>587</SMTPPort>
+        <SMTPStartTLS>true</SMTPStartTLS>
+        <SMTPFrom>noreply@noreply.sberbank-insurance.ru</SMTPFrom>
+        <XMailer>BIV Mailer</XMailer>
+        <MIMEVersion> 1.0</MIMEVersion>
+        <ContentTransferEncoding>8bit</ContentTransferEncoding>
+        <ContentType>text/plain; charset=utf-8</ContentType>
+        <ReturnPath>noreply@noreply.sberbank-insurance.ru</ReturnPath>
+        <minCon>1</minCon>
+        <maxCon>10</maxCon>
+
+        <corews>http://localhost:8080/corews/corews</corews>
+        <service>http://localhost:8080</service>
+</root>

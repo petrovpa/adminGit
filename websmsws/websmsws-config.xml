@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+         <SMS_SKIP>true</SMS_SKIP>
+        <Operator>OCK</Operator>
+        <ip>81.176.77.130</ip>
+        <port>8086</port>
+        <SystemID>test</SystemID>
+        <Password>test</Password>
+        <EnquireLink>0</EnquireLink>
+        <SourceAddr>Test</SourceAddr>
+        <ServiceType>0</ServiceType>
+        <!-- Необязательные параметры
+        <SourceTON>1</SourceTON>
+        <SourceNPI>1</SourceNPI>
+        <DestTON>1</DestTON>
+        <DestNPI>1</DestNPI>
+        -->
+        <SMTPUser></SMTPUser>
+        <SMTPPassword></SMTPPassword>
+        <SMTPHost>10.1.2.98</SMTPHost>
+        <SMTPPort>25</SMTPPort>
+        <SMTPFrom>websmsws@diasoft.ru</SMTPFrom>
+        <!-- MIME header parameters -->
+        <XMailer>Diasoft Mailer</XMailer>
+        <MIMEVersion> 1.0</MIMEVersion>
+        <ContentTransferEncoding>8bit</ContentTransferEncoding>
+        <ContentType>text/plain; charset=windows-1251</ContentType>
+        <ReturnPath>websmsws@diasoft.ru</ReturnPath>
+	<dataSourceUrl>jdbc:oracle:thin:@192.168.76.146:1521:XE</dataSourceUrl>
+	<jdbcDriver>oracle.jdbc.driver.OracleDriver</jdbcDriver>
+	<minCon>1</minCon>
+	<maxCon>10</maxCon>
+	<userName>front_barclwork</userName>
+	<password>front_barclwork</password>	
+	<corews>http://localhost:8080/corews/corews</corews>
+	<service>http://localhost:8080</service>
+</root>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<driver project-version="2.0" class="net.sourceforge.jtds.jdbc.Driver">
+	<url value="jdbc:jtds:sqlserver://10.1.2.66:1243/icbphyar"/>
+	<connectionPool min="1" max="1" />
+	<login userName="sa" password="123456"/>
+</driver>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<jboss-deployment-structure>
+    <deployment>
+        <exclusions>
+            <module name="org.apache.log4j" />
+        </exclusions>
+        <dependencies>
+            <module name="org.dom4j" />
+            <module name="com.sun.xml.messaging.saaj" />
+            <module name="javax.xml.soap.api" />
+        </dependencies>
+    </deployment>
+</jboss-deployment-structure> 

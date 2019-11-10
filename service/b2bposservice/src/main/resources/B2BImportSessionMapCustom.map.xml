@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+
+    <!-- Получение идентификаторов обрабатываемых записей (для регламентных заданий) -->
+    <query name="dsB2BImportSessionContentBrowseListByParamForProcessing"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map"
+           root-name="B2BImportSessionMapCustom">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT $NEEDDISTINCT
+                    #result('T.ID', 'java.lang.Long', 'ID')
+                    $ASPECTFIELDS
+                FROM
+                    B2B_IMPORTSESSION_CNT T
+                    $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                    #chunk($IMPORTSESSIONID) T.IMPORTSESSIONID = #bind($IMPORTSESSIONID 'NUMERIC') #end
+                    #chunk($STATEID) T.STATEID = #bind($STATEID 'NUMERIC') #end
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+    <query name="dsB2BImportSessionContentBrowseListByParamForProcessingCount"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map"
+           root-name="B2BImportSessionMapCustom">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT
+                    #result('COUNT($NEEDDISTINCT T.ID)', 'java.lang.Long', 'CNT')
+                FROM
+                    B2B_IMPORTSESSION_CNT T
+                    $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                    #chunk($IMPORTSESSIONID) T.IMPORTSESSIONID = #bind($IMPORTSESSIONID 'NUMERIC') #end
+                    #chunk($STATEID) T.STATEID = #bind($STATEID 'NUMERIC') #end
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+
+    <query name="dsB2BImportSessionContentExistsByParam"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map"
+           root-name="B2BImportSessionMapCustom">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT
+                    #result('COUNT(1)', 'java.lang.Long', 'ISEXISTS')
+                FROM
+                    DUAL
+                    $ASPECTTABLES
+                WHERE
+                    EXISTS (
+                        SELECT
+                            *
+                        FROM
+                            B2B_IMPORTSESSION_CNT T
+                        #chain('AND' 'WHERE')
+                            #chunk($IMPORTSESSIONID) T.IMPORTSESSIONID = #bind($IMPORTSESSIONID 'NUMERIC') #end
+                            #chunk($STATEID) T.STATEID = #bind($STATEID 'NUMERIC') #end
+                            $ASPECTRESTRICTION
+                        #end
+                    )
+            ]]>
+        </sql>
+    </query>
+
+    <query name="dsB2BImportSessionLogCreateForCoreRFValue"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map"
+           root-name="B2BImportSessionMapCustom">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                INSERT INTO
+                    CORE_RFVALUE_LOG
+                (
+                    LOGID
+                    , IMPORTSESSIONID
+                    , RIGHTFILTERVALUEID
+                    , RIGHTFILTERID
+                    , VALUE
+                    , VKEY
+                )
+                SELECT
+                    T.RIGHTFILTERVALUEID + (SELECT NVL(MAX(i.LOGID), 0) FROM CORE_RFVALUE_LOG i) + 1
+                    , #bind($IMPORTSESSIONID 'NUMERIC')
+                    , T.RIGHTFILTERVALUEID
+                    , T.RIGHTFILTERID
+                    , T.VALUE
+                    , T.VKEY
+                FROM
+                    CORE_RFVALUE T
+            ]]>
+        </sql>
+    </query>
+
+    <query name="dsB2BImportSessionLogCreateForCoreRightDept"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map"
+           root-name="B2BImportSessionMapCustom">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                INSERT INTO
+                    CORE_RIGHTDEPT_LOG
+                (
+                    LOGID
+                    , IMPORTSESSIONID
+                    , RIGHTDEPTID
+                    , DEPARTMENTID
+                    , RIGHTID
+                    , ACCESSMODE
+                    , STARTDATE
+                    , ENDDATE
+                    , ISEXCEPTION
+                    , EXCEPTIONMODE
+                    , ANYVALUE
+                )
+                SELECT
+                    T.RIGHTDEPTID + (SELECT NVL(MAX(i.LOGID), 0) FROM CORE_RIGHTDEPT_LOG i) + 1
+                    , #bind($IMPORTSESSIONID 'NUMERIC')
+                    , T.RIGHTDEPTID
+                    , T.DEPARTMENTID
+                    , T.RIGHTID
+                    , T.ACCESSMODE
+                    , T.STARTDATE
+                    , T.ENDDATE
+                    , T.ISEXCEPTION
+                    , T.EXCEPTIONMODE
+                    , T.ANYVALUE
+                FROM
+                    CORE_RIGHTDEPT T
+            ]]>
+        </sql>
+    </query>
+
+    <query name="dsB2BImportSessionLogCreateForCoreRightFilter"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map"
+           root-name="B2BImportSessionMapCustom">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                INSERT INTO
+                    CORE_RIGHTFILTER_LOG
+                (
+                    LOGID
+                    , IMPORTSESSIONID
+                    , RIGHTFILTERID
+                    , RELATIONTYPE
+                    , RELATIONID
+                    , SYSNAME
+                    , OPERATION
+                    , ANYVALUE
+                )
+                SELECT
+                    T.RIGHTFILTERID + (SELECT NVL(MAX(i.LOGID), 0) FROM CORE_RIGHTFILTER_LOG i) + 1
+                    , #bind($IMPORTSESSIONID 'NUMERIC')
+                    , T.RIGHTFILTERID
+                    , T.RELATIONTYPE
+                    , T.RELATIONID
+                    , T.SYSNAME
+                    , T.OPERATION
+                    , T.ANYVALUE
+                FROM
+                    CORE_RIGHTFILTER T
+            ]]>
+        </sql>
+    </query>
+
+    <query name="dsB2BImportSessionLogCreateForDepDepartment"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map"
+           root-name="B2BImportSessionMapCustom">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                INSERT INTO
+                    DEP_DEPARTMENT_LOG
+                (
+                    LOGID
+                    , IMPORTSESSIONID
+                    , DEPARTMENTID
+                    , PARENTDEPARTMENT
+                    , DEPTLEVEL
+                    , DEPTCODE
+                    , DEPTSHORTNAME
+                    , DEPTFULLNAME
+                    , MANAGER
+                    , PARAM1
+                    , PARAM2
+                    , PARAM3
+                    , DEPUSELINK
+                    , DEPLINKID
+                    , DEPPHONE
+                    , DEPMAIL
+                    , DEPPARENTTZ
+                    , DEPTZNAME
+                    , DEPTZDIFF
+                    , DEPTZCHANGE
+                )
+                SELECT
+                    T.DEPARTMENTID + (SELECT NVL(MAX(i.LOGID), 0) FROM DEP_DEPARTMENT_LOG i) + 1
+                    , #bind($IMPORTSESSIONID 'NUMERIC')
+                    , T.DEPARTMENTID
+                    , T.PARENTDEPARTMENT
+                    , T.DEPTLEVEL
+                    , T.DEPTCODE
+                    , T.DEPTSHORTNAME
+                    , T.DEPTFULLNAME
+                    , T.MANAGER
+                    , T.PARAM1
+                    , T.PARAM2
+                    , T.PARAM3
+                    , T.DEPUSELINK
+                    , T.DEPLINKID
+                    , T.DEPPHONE
+                    , T.DEPMAIL
+                    , T.DEPPARENTTZ
+                    , T.DEPTZNAME
+                    , T.DEPTZDIFF
+                    , T.DEPTZCHANGE
+                FROM
+                    DEP_DEPARTMENT T
+            ]]>
+        </sql>
+    </query>
+
+    <query name="dsB2BImportSessionLogCreateForDepDepParent"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map"
+           root-name="B2BImportSessionMapCustom">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                INSERT INTO
+                    DEP_DEPPARENT_LOG
+                (
+                    LOGID
+                    , IMPORTSESSIONID
+                    , DEPPARENTID
+                    , DEPARTMENTID
+                    , PARENTDEPARTMENT
+                    , RELATIONSHIP
+                )
+                SELECT
+                    T.DEPPARENTID + (SELECT NVL(MAX(i.LOGID), 0) FROM DEP_DEPPARENT_LOG i) + 1
+                    , #bind($IMPORTSESSIONID 'NUMERIC')
+                    , T.DEPPARENTID
+                    , T.DEPARTMENTID
+                    , T.PARENTDEPARTMENT
+                    , T.RELATIONSHIP
+                FROM
+                    DEP_DEPPARENT T
+            ]]>
+        </sql>
+    </query>
+
+    <!-- Получение текущего набора прав на договор; todo: переместить в отдельный фасад (по работе с договорами при импорте и пр.) -->
+    <query name="dsB2BContractOrgStructBrowseListByParamExForEvents"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map"
+           root-name="B2BImportSessionMapCustom">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT $NEEDDISTINCT
+                    #result('T.CONTRID', 'java.lang.Long', 'CONTRID'),
+                    #result('ctr.CONTRNUMBER', 'java.lang.String', 'CONTRNUMBER'),
+                    #result('T.CONTRORGSTRUCTID', 'java.lang.Long', 'CONTRORGSTRUCTID'),
+                    #result('T.ORGSTRUCTID', 'java.lang.Long', 'ORGSTRUCTID'),
+                    #result('T.ORGSTRUCTID', 'java.lang.Long', 'DEPARTMENTID'),
+                    #result('T.ROLEID', 'java.lang.Long', 'ROLEID'),
+                    #result('T.USERID', 'java.lang.Long', 'USERACCOUNTID'),
+                    #result('T.GROUPID', 'java.lang.Long', 'GROUPID'),
+                    #result('cu.OBJECTID', 'java.lang.Long', 'EMPLOYEEID'),
+                    #result('T.ISBLOCKED', 'java.lang.Long', 'ISBLOCKED')
+                    $ASPECTFIELDS
+                FROM
+                    B2B_CONTRORGSTRUCT T
+                    INNER JOIN B2B_CONTR ctr ON (ctr.CONTRID = T.CONTRID)
+                    INNER JOIN CORE_USERACCOUNT ua ON (ua.USERACCOUNTID = T.USERID)
+                    INNER JOIN CORE_USER cu ON (cu.USERID = ua.USERID)
+                    /* INNER JOIN DEP_EMPLOYEE de ON (de.EMPLOYEEID = cu.OBJECTID) */
+                    $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                    #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end
+                    #chunk($CONTRORGSTRUCTID) T.CONTRORGSTRUCTID = #bind($CONTRORGSTRUCTID 'NUMERIC') #end
+                    #chunk($ORGSTRUCTID) T.ORGSTRUCTID = #bind($ORGSTRUCTID 'NUMERIC') #end
+                    #chunk($DEPARTMENTID) T.ORGSTRUCTID = #bind($DEPARTMENTID 'NUMERIC') #end
+                    #chunk($ROLEID) T.ROLEID = #bind($ROLEID 'NUMERIC') #end
+                    #chunk($USERACCOUNTID) T.USERID = #bind($USERACCOUNTID 'NUMERIC') #end
+                    #chunk($USERACCOUNTIDISNOTNULL) (T.USERID IS NOT NULL) #end
+                    #chunk($ISBLOCKED) T.ISBLOCKED = #bind($ISBLOCKED 'NUMERIC') #end
+                    #chunk($ISBLOCKEDNOTEQUAL) T.ISBLOCKED <> #bind($ISBLOCKEDNOTEQUAL 'NUMERIC') #end
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+    <query name="dsB2BContractOrgStructBrowseListByParamExForEventsCount"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map"
+           root-name="B2BImportSessionMapCustom">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT
+                    #result('COUNT($NEEDDISTINCT T.CONTRORGSTRUCTID)', 'java.lang.Long', 'CNT')
+                FROM
+                    B2B_CONTRORGSTRUCT T
+                    INNER JOIN B2B_CONTR ctr ON (ctr.CONTRID = T.CONTRID)
+                    INNER JOIN CORE_USERACCOUNT ua ON (ua.USERACCOUNTID = T.USERID)
+                    INNER JOIN CORE_USER cu ON (cu.USERID = ua.USERID)
+                    /* INNER JOIN DEP_EMPLOYEE de ON (de.EMPLOYEEID = cu.OBJECTID) */
+                    $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                    #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end
+                    #chunk($CONTRORGSTRUCTID) T.CONTRORGSTRUCTID = #bind($CONTRORGSTRUCTID 'NUMERIC') #end
+                    #chunk($ORGSTRUCTID) T.ORGSTRUCTID = #bind($ORGSTRUCTID 'NUMERIC') #end
+                    #chunk($DEPARTMENTID) T.ORGSTRUCTID = #bind($DEPARTMENTID 'NUMERIC') #end
+                    #chunk($ROLEID) T.ROLEID = #bind($ROLEID 'NUMERIC') #end
+                    #chunk($USERACCOUNTID) T.USERID = #bind($USERACCOUNTID 'NUMERIC') #end
+                    #chunk($USERACCOUNTIDISNOTNULL) (T.USERID IS NOT NULL) #end
+                    #chunk($ISBLOCKED) T.ISBLOCKED = #bind($ISBLOCKED 'NUMERIC') #end
+                    #chunk($ISBLOCKEDNOTEQUAL) T.ISBLOCKED <> #bind($ISBLOCKEDNOTEQUAL 'NUMERIC') #end
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+
+    <!-- Получение списка групп пользователей -->
+    <query name="dsB2BUserGroupBrowseListByParamEx"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map"
+           root-name="B2BImportSessionMapCustom">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT $NEEDDISTINCT
+                    #result('T.USERGROUPID', 'java.lang.Long', 'USERGROUPID'),
+                    #result('T.PROJECTID', 'java.lang.Long', 'PROJECTID'),
+                    #result('T.GROUPNAME', 'java.lang.String', 'GROUPNAME'),
+                    #result('T.SYSNAME', 'java.lang.String', 'SYSNAME'),
+                    #result('T.DESCRIPTION', 'java.lang.String', 'DESCRIPTION'),
+                    #result('T.PARENTGROUP', 'java.lang.Long', 'PARENTGROUP')
+                    $ASPECTFIELDS
+                FROM
+                    CORE_USERGROUP T
+                    $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                    #chunk($USERGROUPID) T.USERGROUPID = #bind($USERGROUPID 'NUMERIC') #end
+                    #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+    <query name="dsB2BUserGroupBrowseListByParamExCount"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map"
+           root-name="B2BImportSessionMapCustom">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT
+                    #result('COUNT($NEEDDISTINCT T.USERGROUPID)', 'java.lang.Long', 'CNT')
+                FROM
+                    CORE_USERGROUP T
+                    $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                    #chunk($USERGROUPID) T.USERGROUPID = #bind($USERGROUPID 'NUMERIC') #end
+                    #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+
+</data-map>

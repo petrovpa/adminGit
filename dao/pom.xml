@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>bivsberfront</artifactId>
+        <groupId>com.bivgroup.flextera.insurance</groupId>
+        <version>1.00.001</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.bivgroup</groupId>
+    <artifactId>dao</artifactId>
+    <version>1.01.01</version>
+    <packaging>pom</packaging>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <hibernate-version>5.2.4.Final</hibernate-version>
+        <hibernate-tool-version>5.0.2.Final</hibernate-tool-version>
+    </properties>
+    <modules>
+        <module>crm</module>
+        <module>termination</module>
+        <module>loss</module>
+        <module>messages</module>
+        <module>underwriting</module>
+        <module>system</module>
+        <module>imports</module>
+    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>com.bivgroup</groupId>
+            <artifactId>core-autopksupport</artifactId>
+            <version>${core-autopksupport-version}</version>
+        </dependency>
+    </dependencies>
+</project>

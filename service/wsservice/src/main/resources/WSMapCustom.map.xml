@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+    <query name="dsWSUserCheckAuth" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMapCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT  
+        #result('T.AUTHMETHODID', 'java.lang.Long', 'AUTHMETHODID'),
+        #result('T.DESCRIPTION', 'java.lang.String', 'DESCRIPTION'),
+        #result('T.USERID', 'java.lang.Long', 'USERID'),
+        #result('T.LOGIN', 'java.lang.String', 'LOGIN'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.PASSWORD', 'java.lang.String', 'PASSWORD'),
+        #result('T.PWDEXPDATE', 'java.math.BigDecimal', 'PWDEXPDATE'),
+        #result('T2.NAME', 'java.lang.String', 'AUTHMETHODNAME'),
+        #result('T2.SYSNAME', 'java.lang.String', 'AUTHMETHODSYSNAME'),
+        #result('T3.NAME', 'java.lang.String', 'METHODNAME'),
+        #result('T3.METHODID', 'java.lang.Long', 'METHODID'),
+        #result('T5.NAME', 'java.lang.String', 'SERVICENAME'),
+        #result('T7.CODE', 'java.lang.String', 'TEMPLATECODE'),
+        #result('T7.DESCRIPTION', 'java.lang.String', 'TEMPLATEDESCR'),
+        #result('T7.TEMPLATEID', 'java.lang.Long', 'TEMPLATEID'),
+        #result('T7.NAME', 'java.lang.String', 'TEMPLATENAME'),
+        #result('T7.XSDSCHEME', 'java.lang.String', 'TEMPLATEXSDSCHEME'),
+        #result('T7.XSDSCHEME2', 'java.lang.String', 'TEMPLATEXSDSCHEME2')
+FROM 
+      WS_USER T 
+      LEFT JOIN WS_AUTHMETHOD T2 ON (T2.AUTHMETHODID = T.AUTHMETHODID) AND (T2.SYSNAME = #bind($AUTHMETHODSYSNAME 'VARCHAR'))
+      LEFT JOIN 
+          (select um.USERID as USERID, m.METHODID as METHODID, m.SERVICEID as SERVICEID, m.NAME as NAME 
+           from WS_USERMETHOD um INNER JOIN WS_METHOD m ON (um.METHODID = m.METHODID)) T3
+        ON ((T3.USERID = T.USERID) AND (T3.NAME = #bind($METHODNAME 'VARCHAR')))
+      LEFT JOIN WS_SERVICE T5 ON (T5.SERVICEID = T3.SERVICEID) AND (T5.NAME = #bind($SERVICENAME 'VARCHAR'))
+      LEFT JOIN
+          (select t.CODE as CODE, t.DESCRIPTION as DESCRIPTION, t.TEMPLATEID as TEMPLATEID, t.NAME as NAME, t.XSDSCHEME as XSDSCHEME, t.XSDSCHEME2 as XSDSCHEME2
+           from WS_METHODTEMPLATE mt INNER JOIN WS_TEMPLATE t ON (mt.TEMPLATEID = t.TEMPLATEID)) T7
+        ON (T7.CODE = #bind($TEMPLATECODE 'VARCHAR'))
+#chain('AND' 'WHERE') 
+       #chunk($LOGIN) T.LOGIN = #bind($LOGIN 'VARCHAR') #end 
+#end 
+]]>
+        </sql>
+    </query>
+<query name="dsWSTemplateBrowseListByParamWithMethodConstraint" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMapCustom" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.CODE', 'java.lang.String', 'CODE'),
+        #result('T.DESCRIPTION', 'java.lang.String', 'DESCRIPTION'),
+        #result('T.ISONEPRODUCT', 'java.lang.Long', 'ISONEPRODUCT'),
+        #result('T.TEMPLATEID', 'java.lang.Long', 'TEMPLATEID'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.PRODCODEXPATH', 'java.lang.String', 'PRODCODEXPATH'),
+        #result('T.XSDSCHEME', 'java.lang.String', 'XSDSCHEME'),
+        #result('T.XSDSCHEME2', 'java.lang.String', 'XSDSCHEME2') 
+       $ASPECTFIELDS 
+FROM 
+      WS_TEMPLATE T 
+      INNER JOIN WS_METHODTEMPLATE T2 ON (T.TEMPLATEID = T2.TEMPLATEID)
+      INNER JOIN WS_METHOD T3 ON (T3.METHODID = T2.METHODID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($METHODNAME) T3.NAME = #bind($METHODNAME 'VARCHAR') #end 
+       #chunk($CODE) T.CODE = #bind($CODE 'VARCHAR') #end 
+       #chunk($DESCRIPTION) T.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($TEMPLATEID) T.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+       #chunk($XSDSCHEME) T.XSDSCHEME = #bind($XSDSCHEME 'VARCHAR') #end 
+       #chunk($XSDSCHEME2) T.XSDSCHEME2 = #bind($XSDSCHEME2 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsWSTemplateBrowseListByParamWithMethodConstraintCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMapCustom" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.TEMPLATEID)', 'java.lang.Long', 'CNT') 
+FROM 
+      WS_TEMPLATE T 
+      INNER JOIN WS_METHODTEMPLATE T2 ON (T.TEMPLATEID = T2.TEMPLATEID)
+      INNER JOIN WS_METHOD T3 ON (T3.METHODID = T2.METHODID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($METHODNAME) T3.NAME = #bind($METHODNAME 'VARCHAR') #end 
+       #chunk($CODE) T.CODE = #bind($CODE 'VARCHAR') #end 
+       #chunk($DESCRIPTION) T.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($TEMPLATEID) T.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+       #chunk($XSDSCHEME) T.XSDSCHEME = #bind($XSDSCHEME 'VARCHAR') #end 
+       #chunk($XSDSCHEME2) T.XSDSCHEME2 = #bind($XSDSCHEME2 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+
+</data-map>

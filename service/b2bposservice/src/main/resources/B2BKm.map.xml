@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+<query name="dsKmBrowseChatListByParams" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map"
+           root-name="B2BKm">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql> <![CDATA[
+            SELECT
+                #result('INNERSELECT.ID', 'java.lang.Long', 'ID'),
+                #result('INNERSELECT.CHATID ', 'java.lang.Long', 'CHATID'),
+                #result('SDM.NOTE', 'java.lang.String', 'NOTE'),
+                #result('INNERSELECT.TITLE', 'java.lang.String', 'TITLE'),
+                #result('SDM.TITLEHASH', 'java.lang.Long', 'TITLEHASH'),
+                #result('SDM.CREATEUSERID', 'java.lang.Long', 'CREATEUSERID'),
+                #result('SDM.CREATEDATE', 'java.lang.Date', 'createDate'),
+                #result('SDM.LOSSNOTICEID', 'java.math.BigDecimal', 'LOSSNOTICEID'),
+                #result('INNERSELECT.CLIENTNAME', 'java.lang.String', 'CLIENTNAME'),
+                #result('INNERSELECT.DATEOFBIRTH', 'java.lang.Date', 'DATEOFBIRTH'),
+                #result('INNERSELECT.CLIENTEMAIL', 'java.lang.String', 'CLIENTEMAIL'),
+                #result('INNERSELECT.CLIENTPHONE', 'java.lang.String', 'CLIENTPHONE'),
+                #result('INNERSELECT.STATEID', 'java.lang.Long', 'STATEID'),
+                #result('INNERSELECT.ISUNREAD', 'java.lang.String', 'ISUNREAD'),
+                #result('INNERSELECT.APPLICANTID', 'java.lang.String', 'APPLICANTID'),
+                #result('INNERSELECT.TYPE', 'java.lang.String', 'TYPE'),
+                #result('INNERSELECT.CONTRNUMBER', 'java.lang.String', 'CONTRNUMBER'),
+                #result("CONCAT(INNERSELECT.EMPLOYEELASTNAME, CONCAT(' ', CONCAT(INNERSELECT.EMPLOYEEFIRSTNAME, CONCAT(' ', INNERSELECT.EMPLOYEEMIDDLENAME))))", 'java.lang.String', 'EMPLOYEEFULLNAME')
+                $ASPECTFIELDS
+            FROM (SELECT DISTINCT
+                T.LASTMESSAGEID     AS ID,
+                T.ID                AS CHATID,
+                T.TITLE             AS TITLE,
+                PCLIENT.FULLNAME    AS CLIENTNAME,
+                PCLIENT.DATEOFBIRTH AS dateOfBirth,
+                T6.CLIENTEMAIL      AS CLIENTEMAIL,
+                T7.CLIENTPHONE      AS CLIENTPHONE,
+                ST.ID               AS STATEID,
+                ST.PUBLICNAME       AS ISUNREAD,
+                T.APPLICANTID       AS APPLICANTID,
+                KC.NAME             AS TYPE,
+                C.CONTRNUMBER       AS CONTRNUMBER,
+                DE.LASTNAME         AS EMPLOYEELASTNAME,
+                DE.MIDDLENAME       AS EMPLOYEEMIDDLENAME,
+                DE.FIRSTNAME        AS EMPLOYEEFIRSTNAME
+                FROM
+                SD_CHAT T
+                LEFT JOIN CORE_SM_STATE ST
+                ON ST.ID = T.STATEID
+                LEFT JOIN CDM_PCLIENT_VER PCLIENT
+                ON PCLIENT.VERID = T.APPLICANTID
+                LEFT JOIN B2B_CONTR C
+                ON C.CONTRID = T.CONTRACTID
+                LEFT JOIN HB_KINDCHAT KC
+                ON KC.ID = T.CHATTOPICTYPEID
+                LEFT JOIN
+                    (SELECT CLIENTID,
+                    LISTAGG(VALUE, ', ') WITHIN GROUP (
+                    ORDER BY CLIENTID) AS CLIENTEMAIL
+                    FROM CDM_CLIENT_CONTACT
+                LEFT JOIN SD_CONTACT
+                ON (CDM_CLIENT_CONTACT.ID           = SD_CONTACT.ID)
+                WHERE (CDM_CLIENT_CONTACT.ISPRIMARY = 1
+                AND SD_CONTACT.TYPEID               = 1006)
+                GROUP BY CLIENTID
+                ) T6 ON (T.APPLICANTID = T6.CLIENTID)
+                LEFT JOIN
+                (SELECT CLIENTID,
+                    LISTAGG(VALUE, ', ') WITHIN GROUP (
+                    ORDER BY CLIENTID) AS CLIENTPHONE
+                    FROM CDM_CLIENT_CONTACT
+                    LEFT JOIN SD_CONTACT
+                    ON (CDM_CLIENT_CONTACT.ID           = SD_CONTACT.ID)
+                    WHERE (CDM_CLIENT_CONTACT.ISPRIMARY = 1
+                    AND SD_CONTACT.TYPEID               = 1005)
+                    GROUP BY CLIENTID
+                ) T7 ON (T.APPLICANTID = T7.CLIENTID)
+                LEFT JOIN DEP_EMPLOYEE DE ON T.USERID = DE.EMPLOYEEID
+               $ASPECTTABLES
+            #chain('AND' 'WHERE')
+                   #chunk($CHATID) T.ID = #bind($CHATID 'NUMERIC') #end
+                   #chunk($APPLICANTID) T.APPLICANTID = #bind($APPLICANTID 'NUMERIC') #end
+                   #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+                   #chunk(1) T.LASTMESSAGEID is not null #end
+                   #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end
+                   #chunk($CONTRACTID) T.CONTRACTID = #bind($CONTRACTID 'NUMERIC') #end
+                   $ASPECTRESTRICTION
+            #end
+            #chunk($ORDERBY) ORDER BY $ORDERBY #end
+            ) INNERSELECT
+            LEFT JOIN SD_MESSAGE SDM ON SDM.ID = INNERSELECT.ID
+        ]]>
+
+        </sql>
+    </query>
+    
+     <query name="dsKmBrowseChatListByParamsCount" factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map" root-name="B2BKm">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+           SELECT
+                #result('COUNT($NEEDDISTINCT INNERSELECT.CHATID)', 'java.lang.Long', 'CNT')
+            FROM (SELECT DISTINCT
+                T.LASTMESSAGEID     AS ID,
+                T.ID                AS CHATID,
+                T.TITLE             AS TITLE,
+                PCLIENT.FULLNAME    AS CLIENTNAME,
+                PCLIENT.DATEOFBIRTH AS dateOfBirth,
+                T6.CLIENTEMAIL      AS CLIENTEMAIL,
+                T7.CLIENTPHONE      AS CLIENTPHONE,
+                ST.ID               AS STATEID,
+                ST.PUBLICNAME       AS ISUNREAD,
+                T.APPLICANTID       AS APPLICANTID,
+                KC.NAME             AS TYPE,
+                C.CONTRNUMBER       AS CONTRNUMBER
+                FROM
+                SD_CHAT T
+                LEFT JOIN CORE_SM_STATE ST
+                ON ST.ID = T.STATEID
+                LEFT JOIN CDM_PCLIENT_VER PCLIENT
+                ON PCLIENT.VERID = T.APPLICANTID
+                LEFT JOIN B2B_CONTR C
+                ON C.CONTRID = T.CONTRACTID
+                LEFT JOIN HB_KINDCHAT KC
+                ON KC.ID = T.CHATTOPICTYPEID
+                LEFT JOIN
+                    (SELECT CLIENTID,
+                    LISTAGG(VALUE, ', ') WITHIN GROUP (
+                    ORDER BY CLIENTID) AS CLIENTEMAIL
+                    FROM CDM_CLIENT_CONTACT
+                LEFT JOIN SD_CONTACT
+                ON (CDM_CLIENT_CONTACT.ID           = SD_CONTACT.ID)
+                WHERE (CDM_CLIENT_CONTACT.ISPRIMARY = 1
+                AND SD_CONTACT.TYPEID               = 1006)
+                GROUP BY CLIENTID
+                ) T6 ON (T.APPLICANTID = T6.CLIENTID)
+                LEFT JOIN
+                (SELECT CLIENTID,
+                    LISTAGG(VALUE, ', ') WITHIN GROUP (
+                    ORDER BY CLIENTID) AS CLIENTPHONE
+                    FROM CDM_CLIENT_CONTACT
+                    LEFT JOIN SD_CONTACT
+                    ON (CDM_CLIENT_CONTACT.ID           = SD_CONTACT.ID)
+                    WHERE (CDM_CLIENT_CONTACT.ISPRIMARY = 1
+                    AND SD_CONTACT.TYPEID               = 1005)
+                    GROUP BY CLIENTID
+                ) T7 ON (T.APPLICANTID = T7.CLIENTID)
+               $ASPECTTABLES
+            #chain('AND' 'WHERE')
+                   #chunk($CHATID) T.ID = #bind($CHATID 'NUMERIC') #end
+                   #chunk($APPLICANTID) T.APPLICANTID = #bind($APPLICANTID 'NUMERIC') #end
+                   #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+                   #chunk(1) T.LASTMESSAGEID is not null #end
+                   #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end
+                   #chunk($CONTRACTID) T.CONTRACTID = #bind($CONTRACTID 'NUMERIC') #end
+                   $ASPECTRESTRICTION
+            #end
+            #chunk($ORDERBY) ORDER BY $ORDERBY #end
+            ) INNERSELECT
+            LEFT JOIN SD_MESSAGE SDM ON SDM.ID = INNERSELECT.ID
+        ]]>
+        </sql>
+    </query>
+    <query name="dsKMSBBrowseChatAuthorsListByParams" factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map" root-name="InsPOSCustom">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql><![CDATA[
+        SELECT
+           #result('ID', 'java.lang.Long', 'ID'),
+           #result('FULLNAME', 'java.lang.String', 'FULLNAME'),
+           #result('NAME', 'java.lang.String', 'NAME'),
+           #result('TYPE', 'java.lang.String', 'TYPE'),
+           #result('CODE', 'java.lang.String', 'CODE')
+           $ASPECTFIELDS
+        FROM
+            (
+            SELECT
+                TCU.USERID                                                ID,
+                lower(TDE.LASTNAME || TDE.FIRSTNAME || TDE.MIDDLENAME) AS FULLNAME,
+                (TDE.LASTNAME || ' ' || TDE.FIRSTNAME || ' ' || TDE.MIDDLENAME) AS NAME,
+                'coreUserAccount'                                      AS TYPE,
+                'coreUserAccount-' || TCU.USERID AS CODE
+            FROM
+                CORE_USER TCU
+                INNER JOIN DEP_EMPLOYEE TDE ON (TCU.OBJECTID = TDE.EMPLOYEEID)
+                #chunk($AUTHORSONLY) WHERE EXISTS (SELECT ID FROM SD_CHAT WHERE SD_CHAT.USERID = TCU.USERID) #end
+
+            UNION ALL
+
+            SELECT
+              TPC.ID                                    ID,
+              lower(replace(TPCV.FULLNAME, ' ', '')) AS FULLNAME,
+              TPCV.FULLNAME AS NAME,
+              'applicant'                            AS TYPE,
+              'applicant-' || TPC.ID                 AS CODE
+
+            FROM CDM_PCLIENT TPC
+              INNER JOIN CDM_PCLIENT_VER TPCV ON (TPC.ID = TPCV.VERID)
+              #chunk($AUTHORSONLY) WHERE EXISTS (SELECT ID FROM SD_CHAT WHERE SD_CHAT.APPLICANTID = TPC.ID) #end
+            )
+             WHERE FULLNAME IS NOT NULL AND length(FULLNAME) > 0
+
+            #chain('AND' 'WHERE')
+                $ASPECTRESTRICTION
+            #end
+
+            ]]>
+        </sql>
+    </query>
+</data-map>

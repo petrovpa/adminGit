@@ -1,0 +1,21 @@
+<form #f="ngForm" [ngClass]="{'was-validated': true}">
+  <h3 class="modal-dialog__title">Идентификатор узла структуры</h3>
+  <div class="tree">
+    <tree-root (activate)="selectDepartment($event?.node?.data)"
+               [nodes]="departmentTree"
+               [options]="{}"></tree-root>
+  </div>
+
+  <div class="modal-dialog__actions row">
+    <div class="col-6 text-center">
+      <button class="btn btn-primary btn-rounded btn-modal"
+              (click)="add()">Добавить
+      </button>
+    </div>
+    <div class="col-6 text-center">
+      <button class="btn btn-link btn-rounded btn-modal"
+              (click)="close()">Отмена
+      </button>
+    </div>
+  </div>
+</form>

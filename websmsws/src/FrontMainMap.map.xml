@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+	<property name="defaultSchema" value="dbo"/>	
+	<query name="insertSMSHist" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="FrontMainMap">	
+		<property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+		<sql><![CDATA[
+		INSERT INTO SMS_HIST (MESSAGEID,PARENTID,ACTDATE,SMSSTATUS)	VALUES
+		(
+			$MESSAGEID,(SELECT MAX(MESSAGEID) FROM SMS_MESSAGE WHERE  EXTERNALID = $EXTERNALID),$DATA,$STATUS
+		)
+		]]></sql>
+	</query>	
+	<query name="storeSMS" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="FrontMainMap">
+		<property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+		<sql><![CDATA[INSERT INTO SMS_MESSAGE (
+		MESSAGEID,
+		EXTERNALID,
+		EXTERNALCODE,
+		SRCNUMBER,
+		DSTNUMBER,
+		MSGBODY,
+		SPLITMSG,
+		STATUS,
+		MSGDATE,
+		EXTID)
+		VALUES(
+		$MESSAGEID,
+		$EXTERNALID,
+		NULL,
+		NULL,'$DSTNUMBER',
+		#bind($MSGBODY),
+		NULL,
+		$STATUS,
+		$DATA,
+		#bind($EXTID 'VARCHAR'))]]></sql>
+	</query>
+	<query name="updateSMS" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="FrontMainMap">
+		<property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+		<sql><![CDATA[UPDATE SMS_MESSAGE 
+		SET 
+		SRCNUMBER = '$SRCNUMBER',
+		DSTNUMBER='$DSTNUMBER', 
+		SPLITMSG = $SPLITMSG, 
+		MSGBODY = #bind($MSGBODY),
+		EXTID = #bind($EXTID 'VARCHAR') 
+		WHERE  
+		EXTERNALID = $EXTERNALID]]></sql>
+	</query>
+	<query name="checkSMSHistory" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="FrontMainMap">
+	<property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+		<sql><![CDATA[
+		SELECT MESSAGEID FROM SMS_HIST WHERE  EXTERNALID = $EXTERNALID
+		]]></sql>
+	</query>
+	<query name="messageFindById" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="FrontMainMap">
+		<property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+		<sql><![CDATA[
+		SELECT * 
+		FROM SMS_MESSAGE MSG
+		WHERE MSG.MESSAGEID = #bind($MESSAGEID 'INTEGER')
+		]]></sql>
+	</query>
+	<query name="messageFindListByParams" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="FrontMainMap">
+		<property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+		<sql><![CDATA[
+		SELECT HIST.*, MSG.* 
+     
+FROM SMS_MESSAGE MSG
+LEFT JOIN SMS_HIST HIST ON HIST.PARENTID = MSG.MESSAGEID
+/* AND HIST.ACTDATE = (SELECT max(ACTDATE) FROM SMS_HIST HIST_INNER WHERE HIST_INNER.PARENTID = MSG.MESSAGEID) Расскоментировать после подключения гарантированной доставки сообщений */
+
+#chain('AND' 'WHERE') 		
+	#chunk($MSGMINDATE) MSG.MSGDATE >= #bind($MSGMINDATE 'FLOAT') #end
+	#chunk($MSGMAXDATE) MSG.MSGDATE <= #bind($MSGMAXDATE 'FLOAT') #end
+	#chunk($EXTERNALID) MSG.EXTERNALID = #bind($EXTERNALID 'INTEGER') #end
+	#chunk($EXTERNALCODE) MSG.EXTERNALCODE = #bind($EXTERNALCODE 'INTEGER') #end
+	#chunk($SRCNUMBER) MSG.SRCNUMBER LIKE #bind($SRCNUMBER 'VARCHAR') #end
+	#chunk($DSTNUMBER) MSG.DSTNUMBER LIKE #bind($DSTNUMBER 'VARCHAR') #end
+	#chunk($SPLITMSG) MSG.SPLITMSG = #bind($SPLITMSG 'INTEGER') #end
+	#chunk($STATUS) MSG.STATUS = #bind($STATUS 'INTEGER') #end
+	#chunk($EXTID) MSG.EXTID = #bind($EXTID 'VARCHAR') #end
+	#chunk($SPLITMSG_IS_NULL) (MSG.SPLITMSG IS NULL OR MSG.SPLITMSG = 0) #end
+#end
+
+#chunk($ORDERBY)
+	ORDER BY $ORDERBY
+#end		
+		]]></sql>
+	</query>
+	<query name="messageFindListByParamsCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="FrontMainMap">
+		<property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+		<sql><![CDATA[
+		SELECT COUNT(*) 
+     
+FROM SMS_MESSAGE MSG
+LEFT JOIN SMS_HIST HIST ON HIST.PARENTID = MSG.MESSAGEID
+/* AND HIST.ACTDATE = (SELECT max(ACTDATE) FROM SMS_HIST HIST_INNER WHERE HIST_INNER.PARENTID = MSG.MESSAGEID) Расскоментировать после подключения гарантированной доставки сообщений */
+
+#chain('AND' 'WHERE') 		
+	#chunk($MSGMINDATE) MSG.MSGDATE >= #bind($MSGMINDATE 'FLOAT') #end
+	#chunk($MSGMAXDATE) MSG.MSGDATE <= #bind($MSGMAXDATE 'FLOAT') #end
+	#chunk($EXTERNALID) MSG.EXTERNALID = #bind($EXTERNALID 'INTEGER') #end
+	#chunk($EXTERNALCODE) MSG.EXTERNALCODE = #bind($EXTERNALCODE 'INTEGER') #end
+	#chunk($SRCNUMBER) MSG.SRCNUMBER LIKE #bind($SRCNUMBER 'VARCHAR') #end
+	#chunk($DSTNUMBER) MSG.DSTNUMBER LIKE #bind($DSTNUMBER 'VARCHAR') #end
+	#chunk($SPLITMSG) MSG.SPLITMSG = #bind($SPLITMSG 'INTEGER') #end
+	#chunk($STATUS) MSG.STATUS = #bind($STATUS 'INTEGER') #end
+	#chunk($EXTID) MSG.EXTID = #bind($EXTID 'VARCHAR') #end
+	#chunk($SPLITMSG_IS_NULL) (MSG.SPLITMSG IS NULL OR MSG.SPLITMSG = 0) #end
+#end
+		]]></sql>
+	</query>
+</data-map>

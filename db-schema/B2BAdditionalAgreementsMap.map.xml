@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+	<db-entity name="B2B_ADDAGR">
+		<db-attribute name="ADDAGRID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="AGRNUMBER" type="VARCHAR" length="19"/>
+		<db-attribute name="CONTRID" type="NUMERIC" length="19"/>
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="INITIATOR" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODCONFIGID" type="NUMERIC" length="19"/>
+		<db-attribute name="SIGNDATE" type="FLOAT"/>
+		<db-attribute name="STARTDATE" type="FLOAT"/>
+		<db-attribute name="STATEID" type="NUMERIC" length="19"/>
+		<db-attribute name="TYPEID" type="NUMERIC" length="19"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_ADDAGRCAUSE">
+		<db-attribute name="ADDAGRCAUSEID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="CHECKID" type="NUMERIC" length="19"/>
+		<db-attribute name="FIELDMAPPING" type="VARCHAR" length="2048"/>
+		<db-attribute name="HBDATAVERID" type="NUMERIC" length="19"/>
+		<db-attribute name="ISNEEDATTACH" type="NUMERIC" length="1"/>
+		<db-attribute name="ISNEEDCALC" type="NUMERIC" length="1"/>
+		<db-attribute name="ISNEEDINNERAGR" type="NUMERIC" length="1"/>
+		<db-attribute name="ISNEEDMANUALCHECK" type="NUMERIC" length="1"/>
+		<db-attribute name="ISNEEDORIGINAL" type="NUMERIC" length="1"/>
+		<db-attribute name="ISNEEDPARTNER" type="NUMERIC" length="1"/>
+		<db-attribute name="ISNEEDUW" type="NUMERIC" length="1"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="255"/>
+		<db-attribute name="PAGECONTENT" type="VARCHAR" length="2048"/>
+		<db-attribute name="PRODVERID" type="NUMERIC" length="19"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="B2B_ADDAGRCNT">
+		<db-attribute name="ADDAGRCAUSEID" type="NUMERIC" length="19"/>
+		<db-attribute name="ADDAGRCNTID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="ADDAGRID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_ADDAGRDOC">
+		<db-attribute name="ADDAGRDOCID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="ADDAGRID" type="NUMERIC" length="19"/>
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODBINDOCID" type="NUMERIC" length="19"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="PD_DECLARATIONDOC">
+		<db-attribute name="DECLARATIONDOCID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="DECLARATIONID" type="NUMERIC" length="19"/>
+		<db-attribute name="BINDOCTYPE" type="NUMERIC" length="19"/>
+		<db-attribute name="EXTERNALID" type="NUMERIC" length="19"/>
+		<db-attribute name="PATHINPARTNER" type="VARCHAR" length="1024"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="1024"/>
+		<db-attribute name="NAME" type="VARCHAR" length="1024"/>
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<obj-entity name="B2BAddAgr" dbEntityName="B2B_ADDAGR">
+		<obj-attribute name="addagrid" type="java.lang.Long" db-attribute-path="ADDAGRID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД"/>
+		<obj-attribute name="agrnumber" type="java.lang.String" db-attribute-path="AGRNUMBER" note="Номер"/>
+		<obj-attribute name="contrId" type="java.lang.Long" db-attribute-path="CONTRID" note="ИД договора"/>
+		<obj-attribute name="createdate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания"/>
+		<obj-attribute name="createuserid" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="Пользователь создавший запись"/>
+		<obj-attribute name="initiator" type="java.lang.Long" db-attribute-path="INITIATOR" note="Ид инициатора"/>
+		<obj-attribute name="prodconfigid" type="java.lang.Long" db-attribute-path="PRODCONFIGID" note="Ид продукта"/>
+		<obj-attribute name="signdate" type="java.lang.Long" db-attribute-path="SIGNDATE" note="Дата принятия"/>
+		<obj-attribute name="startdate" type="java.math.BigDecimal" db-attribute-path="STARTDATE" note="Дата создания заявки"/>
+		<obj-attribute name="stateid" type="java.lang.Long" db-attribute-path="STATEID" note="Состояние"/>
+		<obj-attribute name="typeid" type="java.lang.Long" db-attribute-path="TYPEID" note="Тип допса"/>
+		<obj-attribute name="updatedate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата изменения записи"/>
+		<obj-attribute name="updateuserid" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="Пользователь изменивший запись"/>
+	</obj-entity>
+	<obj-entity name="B2BAddAgrCause" dbEntityName="B2B_ADDAGRCAUSE">
+		<obj-attribute name="addagrcauseid" type="java.lang.Long" db-attribute-path="ADDAGRCAUSEID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="Ид"/>
+		<obj-attribute name="checkid" type="java.lang.Long" db-attribute-path="CHECKID" note="Ид проверки"/>
+		<obj-attribute name="fieldmapping" type="java.lang.String" db-attribute-path="FIELDMAPPING" note="Маппинг полей"/>
+		<obj-attribute name="hbdataverid" type="java.lang.Long" db-attribute-path="HBDATAVERID" note="Ид версии справочника"/>
+		<obj-attribute name="isNeedCalc" type="java.lang.Long" db-attribute-path="ISNEEDCALC" note="Требуется перерасчет"/>
+		<obj-attribute name="isneedattach" type="java.lang.Long" db-attribute-path="ISNEEDATTACH" note="Признак требуется оригинал заявления"/>
+		<obj-attribute name="isneedinneragr" type="java.lang.Long" db-attribute-path="ISNEEDINNERAGR" note="настройка процесса согласования с внутренними подразделениям компании (Юридический отдел, Безопасность и т.д.)"/>
+		<obj-attribute name="isneedmanualcheck" type="java.lang.Long" db-attribute-path="ISNEEDMANUALCHECK" note="Признак для ручного контроля прикрепленных документов"/>
+		<obj-attribute name="isneedoriginal" type="java.lang.Long" db-attribute-path="ISNEEDORIGINAL" note="Признак требуется оригинал заявления"/>
+		<obj-attribute name="isneedpartner" type="java.lang.Long" db-attribute-path="ISNEEDPARTNER" note="Признак о необходимости выполнить запрос согласования внесения изменений с Партнером"/>
+		<obj-attribute name="isneeduw" type="java.lang.Long" db-attribute-path="ISNEEDUW" note="Признак вызова модуля «online Андеррайтинг»"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Название причины"/>
+		<obj-attribute name="note" type="java.lang.String" db-attribute-path="NOTE" note="Посказка"/>
+		<obj-attribute name="pagecontent" type="java.lang.String" db-attribute-path="PAGECONTENT" note="Страница содержимого причины"/>
+		<obj-attribute name="prodVerId" type="java.lang.Long" db-attribute-path="PRODVERID" note="ИД версии продукта"/>
+		<obj-attribute name="sysname" type="java.lang.String" db-attribute-path="SYSNAME" note="Системное наименование"/>
+	</obj-entity>
+	<obj-entity name="B2BAddAgrDoc" dbEntityName="B2B_ADDAGRDOC">
+		<obj-attribute name="addagrdocsid" type="java.lang.Long" db-attribute-path="ADDAGRDOCID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="Ид"/>
+		<obj-attribute name="addagrid" type="java.lang.Long" db-attribute-path="ADDAGRID" note="Ид допса"/>
+		<obj-attribute name="createdate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания"/>
+		<obj-attribute name="createuserid" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="Пользователь создавший запись"/>
+		<obj-attribute name="prodbindocid" type="java.lang.Long" db-attribute-path="PRODBINDOCID" note="Ид типа документа"/>
+		<obj-attribute name="updatedate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата изменения"/>
+		<obj-attribute name="updateuserid" type="java.math.Long" db-attribute-path="UPDATEUSERID" note="Пользователь изменивший запись"/>
+	</obj-entity>
+	<obj-entity name="B2bAddAgrCnt" dbEntityName="B2B_ADDAGRCNT">
+		<obj-attribute name="addAgrCauseId" type="java.lang.Long" db-attribute-path="ADDAGRCAUSEID" note="ИД причины изменения"/>
+		<obj-attribute name="addAgrCntId" type="java.lang.Long" db-attribute-path="ADDAGRCNTID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД"/>
+		<obj-attribute name="addAgrId" type="java.lang.Long" db-attribute-path="ADDAGRID" note="ИД заголовка заявки на допс"/>
+	</obj-entity>
+	<obj-entity name="PDDeaclaration" dbEntityName="PD_DECLARATIONDOC">
+		<obj-attribute name="DECLARATIONDOCID" type="java.lang.Long" db-attribute-path="DECLARATIONDOCID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note=""/>
+		<obj-attribute name="DECLARATIONID" type="java.lang.Long" db-attribute-path="DECLARATIONID" note=""/>
+		<obj-attribute name="BINDOCTYPE" type="java.lang.Long" db-attribute-path="BINDOCTYPE" note=""/>
+		<obj-attribute name="EXTERNALID" type="java.lang.Long" db-attribute-path="EXTERNALID" note=""/>
+		<obj-attribute name="PATHINPARTNER" type="java.lang.String" db-attribute-path="PATHINPARTNER" note=""/>
+		<obj-attribute name="NOTE" type="java.lang.String" db-attribute-path="NOTE" note=""/>
+		<obj-attribute name="NAME" type="java.lang.String" db-attribute-path="NAME" note=""/>
+		<obj-attribute name="CREATEDATE" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note=""/>
+		<obj-attribute name="CREATEUSERID" type="java.lang.Long" db-attribute-path="CREATEUSERID" note=""/>
+		<obj-attribute name="UPDATEDATE" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note=""/>
+		<obj-attribute name="UPDATEUSERID" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note=""/>
+	</obj-entity>
+</data-map>

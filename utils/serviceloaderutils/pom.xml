@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <parent>
+        <groupId>com.bivgroup.flextera.insurance.bivsberfront</groupId>
+        <artifactId>utils</artifactId>
+        <version>1.00.001</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.bivgroup.flextera.insurance.bivsberfront.utils</groupId>
+    <artifactId>service-loader-utils</artifactId>
+    <version>${service-loader-utils.version}</version>
+    <packaging>jar</packaging>
+    <name>serviceloaderutils</name>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <distributionManagement>
+        <repository>
+            <id>biv-nexus</id>
+            <name>BIV nexus repository</name>
+            <url>https://192.168.1.46:8443/repository/biv-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>biv-nexus-snapshots</id>
+            <name>BIV snapshots nexus repository</name>
+            <url>https://192.168.1.46:8443/repository/biv-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+</project>

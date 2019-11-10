@@ -1,0 +1,1689 @@
+<?xml version='1.0' encoding='UTF-8'?><BODY version="2.11">
+    <CONTRPOLSER type="java.lang.String">ИМПР50</CONTRPOLSER>
+    <CONTRPOLNUM type="java.lang.String">000000449</CONTRPOLNUM>
+    <DOCUMENTDATE type="java.util.Date">2017-01-01T03:00:00:000+0300</DOCUMENTDATE>
+    <DOCUMENTDATESTR type="java.lang.String">24.12.2017</DOCUMENTDATESTR>
+	<TODAYDATESTR type="java.lang.String">25.12.2017</TODAYDATESTR>
+	<STARTDATESTR type="java.lang.String">29.12.2017</STARTDATESTR>
+	<FINISHDATESTR type="java.lang.String">28.12.2022</FINISHDATESTR>
+	<INSAMCURRENCYID type="java.lang.String">2</INSAMCURRENCYID>
+	<PAYVARSTR type="java.lang.String">ANNUALLY</PAYVARSTR>
+	<TERMYEARCOUNT type="java.lang.String">5</TERMYEARCOUNT>
+	<CURRENCYRATE type="java.lang.String">60</CURRENCYRATE>
+	<CURRENCYRATEVALUESTR type="java.lang.String">60,00</CURRENCYRATEVALUESTR>
+	<PREMVALUESTR type="java.lang.String">100 000,00</PREMVALUESTR>
+	<PREMVALUESTRBILL type="java.lang.String">100 000 (сто тысяч) рублей 00 копеек</PREMVALUESTRBILL>
+	<RUBPREMVALUESTR type="java.lang.String">100 000,00</RUBPREMVALUESTR>
+	<RUBPREMVALUESTRBILL type="java.lang.String">100 000 (сто тысяч) рублей 00 копеек</RUBPREMVALUESTRBILL>	
+	<ISSAMPLE type="java.lang.String">FALSE</ISSAMPLE>
+
+	<INSURERMAP type="java.util.Map">        	
+		<LASTNAME type="java.lang.String">Страхователев</LASTNAME>
+		<FIRSTNAME type="java.lang.String">Страхователь</FIRSTNAME>
+		<MIDDLENAME type="java.lang.String">Страхователевич</MIDDLENAME>
+		<BRIEFNAME type="java.lang.String">Страхователев С.С.</BRIEFNAME>
+		<BIRTHDATESTR type="java.lang.String">19.10.1970</BIRTHDATESTR>
+		<INN type="java.lang.String">123456789012</INN>
+		<CITIZENSHIP type="java.lang.String">0</CITIZENSHIP>
+		<GENDER type="java.lang.String">0</GENDER>
+		<BIRTHPLACE type="java.lang.String">BIRTHPLACE</BIRTHPLACE>
+		<COUNTRYCODE type="java.lang.String">RUS</COUNTRYCODE>
+		<contactList type="java.util.List">
+		<ListItems>
+		<Item type="java.util.Map">
+		<clientId type="java.lang.Long">20994</clientId>
+		<typeId_EN type="java.util.Map">
+		<eId type="java.lang.Long">1006</eId>
+		<sysname type="java.lang.String">PersonalEmail</sysname>
+		<name type="java.lang.String">Личный E-mail</name>
+		<ROWSTATUS type="java.lang.Long">0</ROWSTATUS>
+		<id type="java.lang.Long">1006</id>
+		<JHR5cGUk encoded="true" type="java.lang.String">KindContact</JHR5cGUk>
+		</typeId_EN>
+		<ROWSTATUS type="java.lang.Long">0</ROWSTATUS>
+		<VALUE type="java.lang.String">mashkel@sberinsur.ruSchkel@mail.ru</VALUE>
+		<CONTACTTYPESYSNAME type="java.lang.String">PersonalEmail</CONTACTTYPESYSNAME>
+		<JHR5cGUk encoded="true" type="java.lang.String">ClientContact</JHR5cGUk>
+		<CONTACTTYPENAME type="java.lang.String">Личный E-mail</CONTACTTYPENAME>
+		<isPrimary type="java.lang.Integer">1</isPrimary>
+		<typeId type="java.lang.Long">1006</typeId>
+		<id type="java.lang.Long">1056647793</id>
+		<value type="java.lang.String">mashkel@sberinsur.ruSchkel@mail.ru</value>
+		</Item>
+		<Item type="java.util.Map">
+		<clientId type="java.lang.Long">20994</clientId>
+		<typeId_EN type="java.util.Map">
+		<eId type="java.lang.Long">1005</eId>
+		<sysname type="java.lang.String">MobilePhone</sysname>
+		<name type="java.lang.String">Мобильный телефон</name>
+		<ROWSTATUS type="java.lang.Long">0</ROWSTATUS>
+		<id type="java.lang.Long">1005</id>
+		<JHR5cGUk encoded="true" type="java.lang.String">KindContact</JHR5cGUk>
+		</typeId_EN>
+		<ROWSTATUS type="java.lang.Long">0</ROWSTATUS>
+		<VALUE type="java.lang.String">9039660300</VALUE>
+		<CONTACTTYPESYSNAME type="java.lang.String">MobilePhone</CONTACTTYPESYSNAME>
+		<JHR5cGUk encoded="true" type="java.lang.String">ClientContact</JHR5cGUk>
+		<CONTACTTYPENAME type="java.lang.String">Мобильный телефон</CONTACTTYPENAME>
+		<isPrimary type="java.lang.Integer">1</isPrimary>
+		<typeId type="java.lang.Long">1005</typeId>
+		<id type="java.lang.Long">43004</id>
+		<value type="java.lang.String">9039660300</value>
+		</Item>
+		</ListItems>
+		</contactList>
+		<documentList type="java.util.List">
+		<ListItems>
+		<Item type="java.util.Map">
+		<no type="java.lang.String">111111</no>
+		<typeId_EN type="java.util.Map">
+		<eId type="java.lang.Long">1001</eId>
+		<sysname type="java.lang.String">PassportRF</sysname>
+		<name type="java.lang.String">Паспорт гражданина РФ</name>
+		<ROWSTATUS type="java.lang.Long">0</ROWSTATUS>
+		<id type="java.lang.Long">1001</id>
+		<JHR5cGUk encoded="true" type="java.lang.String">KindDocument</JHR5cGUk>
+		</typeId_EN>
+		<ISSUEDATE type="java.util.Date">2005-11-11T00:00:00:000+0300</ISSUEDATE>
+		<ISSUEDBY type="java.lang.String">Тест</ISSUEDBY>
+		<JHR5cGUk encoded="true" type="java.lang.String">ClientDocument</JHR5cGUk>
+		<DOCSERIES type="java.lang.String">1111</DOCSERIES>
+		<ISSUERCODE type="java.lang.String">111111</ISSUERCODE>
+		<ISSUEDATESTR type="java.lang.String">11.11.2005</ISSUEDATESTR>
+		<dateOfIssueMONTHLYSTR type="java.lang.String">«11» ноября 2005</dateOfIssueMONTHLYSTR>
+		<isPrimary type="java.lang.Integer">1</isPrimary>
+		<id type="java.lang.Long">43398</id>
+		<ISSUEDATEMONTHLYSTR type="java.lang.String">«11» ноября 2005</ISSUEDATEMONTHLYSTR>
+		<DOCTYPESYSNAME type="java.lang.String">PassportRF</DOCTYPESYSNAME>
+		<clientId type="java.lang.Long">20994</clientId>
+		<DOCTYPENAME type="java.lang.String">Паспорт гражданина РФ</DOCTYPENAME>
+		<ROWSTATUS type="java.lang.Long">0</ROWSTATUS>
+		<dateOfIssue type="java.util.Date">2005-11-11T00:00:00:000+0300</dateOfIssue>
+		<dateOfIssueSTR type="java.lang.String">11.11.2005</dateOfIssueSTR>
+		<series type="java.lang.String">1111</series>
+		<DOCNUMBER type="java.lang.String">111111</DOCNUMBER>
+		<authority type="java.lang.String">Тест</authority>
+		<typeId type="java.lang.Long">1001</typeId>
+		<issuerCode type="java.lang.String">111111</issuerCode>
+		</Item>
+		</ListItems>
+		</documentList>
+		<addressList type="java.util.List">
+		<ListItems>
+		<Item type="java.util.Map">
+		<ADDRESSTYPENAME type="java.lang.String">Адрес проживания</ADDRESSTYPENAME>
+		<typeId_EN type="java.util.Map">
+		<eId type="java.lang.Long">1005</eId>
+		<sysname type="java.lang.String">FactAddress</sysname>
+		<name type="java.lang.String">Адрес проживания</name>
+		<ROWSTATUS type="java.lang.Long">0</ROWSTATUS>
+		<id type="java.lang.Long">1005</id>
+		<JHR5cGUk encoded="true" type="java.lang.String">KindAddress</JHR5cGUk>
+		</typeId_EN>
+		<city type="java.lang.String">Москва г</city>
+		<ADDRESSTYPESYSNAME type="java.lang.String">FactAddress</ADDRESSTYPESYSNAME>
+		<house type="java.lang.String">д. 8</house>
+		<JHR5cGUk encoded="true" type="java.lang.String">ClientAddress</JHR5cGUk>
+		<QUREUkVTU1RFWFQy encoded="true" type="java.lang.String">г. Москва, ул. Истринская, д. 8, кв. 1</QUREUkVTU1RFWFQy>
+		<QUREUkVTU1RFWFQx encoded="true" type="java.lang.String">г. Москва, ул. Истринская, д. 8, кв. 1</QUREUkVTU1RFWFQx>
+		<QUREUkVTU1RFWFQz encoded="true" type="java.lang.String">-</QUREUkVTU1RFWFQz>
+		<flat type="java.lang.String">1</flat>
+		<isPrimary type="java.lang.Integer">1</isPrimary>
+		<street type="java.lang.String">Истринская ул</street>
+		<FLAT type="java.lang.String">1</FLAT>
+		<id type="java.lang.Long">37623</id>
+		<HOUSE type="java.lang.String">д. 8</HOUSE>
+		<POSTALCODE type="java.lang.String">121467</POSTALCODE>
+		<address type="java.lang.String">г. Москва, ул. Истринская, д. 8, кв. 1</address>
+		<clientId type="java.lang.Long">20994</clientId>
+		<YWRkcmVzczI encoded="true" type="java.lang.String">-</YWRkcmVzczI>
+		<postcode type="java.lang.String">121467</postcode>
+		<ROWSTATUS type="java.lang.Long">0</ROWSTATUS>
+		<STREET type="java.lang.String">Истринская ул</STREET>
+		<REGION type="java.lang.String">-</REGION>
+		<CITY type="java.lang.String">Москва г</CITY>
+		<typeId type="java.lang.Long">1005</typeId>
+		<region type="java.lang.String">-</region>
+		</Item>
+		<Item type="java.util.Map">
+		<ADDRESSTYPENAME type="java.lang.String">Адрес регистрации</ADDRESSTYPENAME>
+		<typeId_EN type="java.util.Map">
+		<eId type="java.lang.Long">1003</eId>
+		<sysname type="java.lang.String">RegisterAddress</sysname>
+		<name type="java.lang.String">Адрес регистрации</name>
+		<ROWSTATUS type="java.lang.Long">0</ROWSTATUS>
+		<id type="java.lang.Long">1003</id>
+		<JHR5cGUk encoded="true" type="java.lang.String">KindAddress</JHR5cGUk>
+		</typeId_EN>
+		<city type="java.lang.String">Москва г</city>
+		<ADDRESSTYPESYSNAME type="java.lang.String">RegisterAddress</ADDRESSTYPESYSNAME>
+		<house type="java.lang.String">д. 8</house>
+		<JHR5cGUk encoded="true" type="java.lang.String">ClientAddress</JHR5cGUk>
+		<QUREUkVTU1RFWFQy encoded="true" type="java.lang.String">г. Москва, ул. Истринская, д. 8, кв. 1</QUREUkVTU1RFWFQy>
+		<QUREUkVTU1RFWFQx encoded="true" type="java.lang.String">г. Москва, ул. Истринская, д. 8, кв. 1</QUREUkVTU1RFWFQx>
+		<QUREUkVTU1RFWFQz encoded="true" type="java.lang.String">-</QUREUkVTU1RFWFQz>
+		<flat type="java.lang.String">1</flat>
+		<isPrimary type="java.lang.Integer">1</isPrimary>
+		<street type="java.lang.String">Истринская ул</street>
+		<FLAT type="java.lang.String">1</FLAT>
+		<id type="java.lang.Long">37622</id>
+		<HOUSE type="java.lang.String">д. 8</HOUSE>
+		<POSTALCODE type="java.lang.String">121467</POSTALCODE>
+		<address type="java.lang.String">г. Москва, ул. Истринская, д. 8, кв. 1</address>
+		<clientId type="java.lang.Long">20994</clientId>
+		<YWRkcmVzczI encoded="true" type="java.lang.String">-</YWRkcmVzczI>
+		<postcode type="java.lang.String">121467</postcode>
+		<ROWSTATUS type="java.lang.Long">0</ROWSTATUS>
+		<STREET type="java.lang.String">Истринская ул</STREET>
+		<REGION type="java.lang.String">-</REGION>
+		<CITY type="java.lang.String">Москва г</CITY>
+		<typeId type="java.lang.Long">1003</typeId>
+		<region type="java.lang.String">-</region>
+		</Item>
+		</ListItems>
+		</addressList>		
+		<extAttributeList2 type="java.util.List">
+			<ListItems>
+				<Item type="java.util.Map">
+					<EXTATT_SYSNAME type="java.lang.String">factAddressType</EXTATT_SYSNAME>
+					<EXTATTVAL_VALUE type="java.lang.String">regAddr1</EXTATTVAL_VALUE>
+				</Item>
+				<Item type="java.util.Map">
+					<EXTATT_SYSNAME type="java.lang.String">birthPlaceExt</EXTATT_SYSNAME>
+					<EXTATTVAL_VALUE type="java.lang.String">Россия</EXTATTVAL_VALUE>
+				</Item>
+				<Item type="java.util.Map">
+					<EXTATT_SYSNAME type="java.lang.String">unResident</EXTATT_SYSNAME>
+					<EXTATTVAL_VALUE type="java.lang.String">0</EXTATTVAL_VALUE>
+				</Item>
+				<Item type="java.util.Map">
+					<EXTATT_SYSNAME type="java.lang.String">MaritalStatus</EXTATT_SYSNAME>
+					<EXTATTVAL_VALUE type="java.lang.String">MARITAL02</EXTATTVAL_VALUE>
+				</Item>
+				<Item type="java.util.Map">
+					<EXTATT_SYSNAME type="java.lang.String">isTaxResidentUSA</EXTATT_SYSNAME>
+					<EXTATTVAL_VALUE type="java.lang.String">0</EXTATTVAL_VALUE>
+				</Item>
+				<Item type="java.util.Map">
+					<EXTATT_SYSNAME type="java.lang.String">taxResidentOtherCountry</EXTATT_SYSNAME>
+					<EXTATTVAL_VALUE type="java.lang.String"></EXTATTVAL_VALUE>
+				</Item>
+				<Item type="java.util.Map">
+					<EXTATT_SYSNAME type="java.lang.String">residencePermitForeignCountry</EXTATT_SYSNAME>
+					<EXTATTVAL_VALUE type="java.lang.String"></EXTATTVAL_VALUE>
+				</Item>
+				<Item type="java.util.Map">
+					<EXTATT_SYSNAME type="java.lang.String">INNUSA</EXTATT_SYSNAME>
+					<EXTATTVAL_VALUE type="java.lang.String"></EXTATTVAL_VALUE>
+				</Item>
+				<Item type="java.util.Map">
+					<EXTATT_SYSNAME type="java.lang.String">education</EXTATT_SYSNAME>
+					<EXTATTVAL_VALUE type="java.lang.String">Вязальщик-мотальщик</EXTATTVAL_VALUE>
+				</Item>
+				<Item type="java.util.Map">
+					<EXTATT_SYSNAME type="java.lang.String">EmployerName</EXTATT_SYSNAME>
+					<EXTATTVAL_VALUE type="java.lang.String">Завод №1</EXTATTVAL_VALUE>
+				</Item>
+				<Item type="java.util.Map">
+					<EXTATT_SYSNAME type="java.lang.String">activityBusinessKind</EXTATT_SYSNAME>
+					<EXTATTVAL_VALUE type="java.lang.String">Вязание-мотание</EXTATTVAL_VALUE>
+				</Item>
+				<Item type="java.util.Map">
+					<EXTATT_SYSNAME type="java.lang.String">Position</EXTATT_SYSNAME>
+					<EXTATTVAL_VALUE type="java.lang.String">Старший вязальщик-мотальщик</EXTATTVAL_VALUE>
+				</Item>
+			</ListItems>
+		</extAttributeList2>		
+	</INSURERMAP>	
+	
+	<INSUREDMAP type="java.util.Map">        	
+		<LASTNAME type="java.lang.String">Дитятков</LASTNAME>
+		<FIRSTNAME type="java.lang.String">Дитятко</FIRSTNAME>
+		<MIDDLENAME type="java.lang.String">Дитяткович</MIDDLENAME>
+		<BRIEFNAME type="java.lang.String">Дитятков Д.Д.</BRIEFNAME>
+		<BIRTHDATESTR type="java.lang.String">01.10.2007</BIRTHDATESTR>
+		<INN type="java.lang.String">123456789012</INN>
+		<CITIZENSHIP type="java.lang.String">0</CITIZENSHIP>
+		<GENDER type="java.lang.String">0</GENDER>
+		<BIRTHPLACE type="java.lang.String">BIRTHPLACE</BIRTHPLACE>
+		<COUNTRYCODE type="java.lang.String">RUS</COUNTRYCODE>
+		<contactList type="java.util.List">
+		<ListItems>
+		<Item type="java.util.Map">
+		<clientId type="java.lang.Long">20994</clientId>
+		<typeId_EN type="java.util.Map">
+		<eId type="java.lang.Long">1006</eId>
+		<sysname type="java.lang.String">PersonalEmail</sysname>
+		<name type="java.lang.String">Личный E-mail</name>
+		<ROWSTATUS type="java.lang.Long">0</ROWSTATUS>
+		<id type="java.lang.Long">1006</id>
+		<JHR5cGUk encoded="true" type="java.lang.String">KindContact</JHR5cGUk>
+		</typeId_EN>
+		<ROWSTATUS type="java.lang.Long">0</ROWSTATUS>
+		<VALUE type="java.lang.String">child@mail.ru</VALUE>
+		<CONTACTTYPESYSNAME type="java.lang.String">PersonalEmail</CONTACTTYPESYSNAME>
+		<JHR5cGUk encoded="true" type="java.lang.String">ClientContact</JHR5cGUk>
+		<CONTACTTYPENAME type="java.lang.String">Личный E-mail</CONTACTTYPENAME>
+		<isPrimary type="java.lang.Integer">1</isPrimary>
+		<typeId type="java.lang.Long">1006</typeId>
+		<id type="java.lang.Long">1056647793</id>
+		<value type="java.lang.String">mashkel@sberinsur.ruSchkel@mail.ru</value>
+		</Item>
+		<Item type="java.util.Map">
+		<clientId type="java.lang.Long">20994</clientId>
+		<typeId_EN type="java.util.Map">
+		<eId type="java.lang.Long">1005</eId>
+		<sysname type="java.lang.String">MobilePhone</sysname>
+		<name type="java.lang.String">Мобильный телефон</name>
+		<ROWSTATUS type="java.lang.Long">0</ROWSTATUS>
+		<id type="java.lang.Long">1005</id>
+		<JHR5cGUk encoded="true" type="java.lang.String">KindContact</JHR5cGUk>
+		</typeId_EN>
+		<ROWSTATUS type="java.lang.Long">0</ROWSTATUS>
+		<VALUE type="java.lang.String">9039667777</VALUE>
+		<CONTACTTYPESYSNAME type="java.lang.String">MobilePhone</CONTACTTYPESYSNAME>
+		<JHR5cGUk encoded="true" type="java.lang.String">ClientContact</JHR5cGUk>
+		<CONTACTTYPENAME type="java.lang.String">Мобильный телефон</CONTACTTYPENAME>
+		<isPrimary type="java.lang.Integer">1</isPrimary>
+		<typeId type="java.lang.Long">1005</typeId>
+		<id type="java.lang.Long">43004</id>
+		<value type="java.lang.String">9039660300</value>
+		</Item>
+		</ListItems>
+		</contactList>
+		<documentList type="java.util.List">
+		<ListItems>
+		<Item type="java.util.Map">
+		<no type="java.lang.String">111111</no>
+		<typeId_EN type="java.util.Map">
+		<eId type="java.lang.Long">1001</eId>
+		<sysname type="java.lang.String">PassportRF</sysname>
+		<name type="java.lang.String">Паспорт гражданина РФ</name>
+		<ROWSTATUS type="java.lang.Long">0</ROWSTATUS>
+		<id type="java.lang.Long">1001</id>
+		<JHR5cGUk encoded="true" type="java.lang.String">KindDocument</JHR5cGUk>
+		</typeId_EN>
+		<ISSUEDATE type="java.util.Date">2005-11-11T00:00:00:000+0300</ISSUEDATE>
+		<ISSUEDBY type="java.lang.String">Тест</ISSUEDBY>
+		<JHR5cGUk encoded="true" type="java.lang.String">ClientDocument</JHR5cGUk>
+		<DOCSERIES type="java.lang.String">1111</DOCSERIES>
+		<ISSUERCODE type="java.lang.String">111111</ISSUERCODE>
+		<ISSUEDATESTR type="java.lang.String">11.11.2005</ISSUEDATESTR>
+		<dateOfIssueMONTHLYSTR type="java.lang.String">«11» ноября 2005</dateOfIssueMONTHLYSTR>
+		<isPrimary type="java.lang.Integer">1</isPrimary>
+		<id type="java.lang.Long">43398</id>
+		<ISSUEDATEMONTHLYSTR type="java.lang.String">«11» ноября 2005</ISSUEDATEMONTHLYSTR>
+		<DOCTYPESYSNAME type="java.lang.String">BornCertificate</DOCTYPESYSNAME>
+		<clientId type="java.lang.Long">20994</clientId>
+		<DOCTYPENAME type="java.lang.String">Свидетельство о рождении</DOCTYPENAME>
+		<ROWSTATUS type="java.lang.Long">0</ROWSTATUS>
+		<dateOfIssue type="java.util.Date">2005-11-11T00:00:00:000+0300</dateOfIssue>
+		<dateOfIssueSTR type="java.lang.String">11.11.2005</dateOfIssueSTR>
+		<series type="java.lang.String">1111</series>
+		<DOCNUMBER type="java.lang.String">111111</DOCNUMBER>
+		<authority type="java.lang.String">Тест</authority>
+		<typeId type="java.lang.Long">1001</typeId>
+		<issuerCode type="java.lang.String">111111</issuerCode>
+		</Item>
+		</ListItems>
+		</documentList>
+		<addressList type="java.util.List">
+		<ListItems>
+		<Item type="java.util.Map">
+		<ADDRESSTYPENAME type="java.lang.String">Адрес проживания</ADDRESSTYPENAME>
+		<typeId_EN type="java.util.Map">
+		<eId type="java.lang.Long">1005</eId>
+		<sysname type="java.lang.String">FactAddress</sysname>
+		<name type="java.lang.String">Адрес проживания</name>
+		<ROWSTATUS type="java.lang.Long">0</ROWSTATUS>
+		<id type="java.lang.Long">1005</id>
+		<JHR5cGUk encoded="true" type="java.lang.String">KindAddress</JHR5cGUk>
+		</typeId_EN>
+		<city type="java.lang.String">Москва г</city>
+		<ADDRESSTYPESYSNAME type="java.lang.String">FactAddress</ADDRESSTYPESYSNAME>
+		<house type="java.lang.String">д. 8</house>
+		<JHR5cGUk encoded="true" type="java.lang.String">ClientAddress</JHR5cGUk>
+		<QUREUkVTU1RFWFQy encoded="true" type="java.lang.String">г. Москва, ул. 123123, д. 8, кв. 1</QUREUkVTU1RFWFQy>
+		<QUREUkVTU1RFWFQx encoded="true" type="java.lang.String">г. Москва, ул. Истринская, д. 8, кв. 1</QUREUkVTU1RFWFQx>
+		<QUREUkVTU1RFWFQz encoded="true" type="java.lang.String">-</QUREUkVTU1RFWFQz>
+		<flat type="java.lang.String">1</flat>
+		<isPrimary type="java.lang.Integer">1</isPrimary>
+		<street type="java.lang.String">Истринская ул</street>
+		<FLAT type="java.lang.String">1</FLAT>
+		<id type="java.lang.Long">37623</id>
+		<HOUSE type="java.lang.String">д. 8</HOUSE>
+		<POSTALCODE type="java.lang.String">121467</POSTALCODE>
+		<ADDRESSTEXT1 type="java.lang.String">г. Москва, ул. 123123, д. 1, кв. 2</ADDRESSTEXT1>
+		<clientId type="java.lang.Long">20994</clientId>
+		<YWRkcmVzczI encoded="true" type="java.lang.String">-</YWRkcmVzczI>
+		<postcode type="java.lang.String">121467</postcode>
+		<ROWSTATUS type="java.lang.Long">0</ROWSTATUS>
+		<STREET type="java.lang.String">Истринская ул</STREET>
+		<REGION type="java.lang.String">-</REGION>
+		<CITY type="java.lang.String">Москва г</CITY>
+		<typeId type="java.lang.Long">1005</typeId>
+		<region type="java.lang.String">-</region>
+		</Item>
+		<Item type="java.util.Map">
+		<ADDRESSTYPENAME type="java.lang.String">Адрес регистрации</ADDRESSTYPENAME>
+		<typeId_EN type="java.util.Map">
+		<eId type="java.lang.Long">1003</eId>
+		<sysname type="java.lang.String">RegisterAddress</sysname>
+		<name type="java.lang.String">Адрес регистрации</name>
+		<ROWSTATUS type="java.lang.Long">0</ROWSTATUS>
+		<id type="java.lang.Long">1003</id>
+		<JHR5cGUk encoded="true" type="java.lang.String">KindAddress</JHR5cGUk>
+		</typeId_EN>
+		<city type="java.lang.String">Москва г</city>
+		<ADDRESSTYPESYSNAME type="java.lang.String">RegisterAddress</ADDRESSTYPESYSNAME>
+		<house type="java.lang.String">д. 8</house>
+		<JHR5cGUk encoded="true" type="java.lang.String">ClientAddress</JHR5cGUk>
+		<QUREUkVTU1RFWFQy encoded="true" type="java.lang.String">г. Москва, ул. Истринская, д. 8, кв. 1</QUREUkVTU1RFWFQy>
+		<QUREUkVTU1RFWFQx encoded="true" type="java.lang.String">г. Москва, ул. Истринская, д. 8, кв. 1</QUREUkVTU1RFWFQx>
+		<QUREUkVTU1RFWFQz encoded="true" type="java.lang.String">-</QUREUkVTU1RFWFQz>
+		<flat type="java.lang.String">1</flat>
+		<isPrimary type="java.lang.Integer">1</isPrimary>
+		<street type="java.lang.String">Истринская ул</street>
+		<FLAT type="java.lang.String">1</FLAT>
+		<id type="java.lang.Long">37622</id>
+		<HOUSE type="java.lang.String">д. 8</HOUSE>
+		<POSTALCODE type="java.lang.String">121467</POSTALCODE>
+		<ADDRESSTEXT1 type="java.lang.String">г. Москва, ул. 321321, д. 2, кв. 1</ADDRESSTEXT1>
+		<clientId type="java.lang.Long">20994</clientId>
+		<YWRkcmVzczI encoded="true" type="java.lang.String">-</YWRkcmVzczI>
+		<postcode type="java.lang.String">121467</postcode>
+		<ROWSTATUS type="java.lang.Long">0</ROWSTATUS>
+		<STREET type="java.lang.String">Истринская ул</STREET>
+		<REGION type="java.lang.String">-</REGION>
+		<CITY type="java.lang.String">Москва г</CITY>
+		<typeId type="java.lang.Long">1003</typeId>
+		<region type="java.lang.String">-</region>
+		</Item>
+		</ListItems>
+		</addressList>		
+		<extAttributeList2 type="java.util.List">
+			<ListItems>
+				<Item type="java.util.Map">
+					<EXTATT_SYSNAME type="java.lang.String">birthPlaceExt</EXTATT_SYSNAME>
+					<EXTATTVAL_VALUE type="java.lang.String">Россия</EXTATTVAL_VALUE>
+				</Item>
+				<Item type="java.util.Map">
+					<EXTATT_SYSNAME type="java.lang.String">unResident</EXTATT_SYSNAME>
+					<EXTATTVAL_VALUE type="java.lang.String">0</EXTATTVAL_VALUE>
+				</Item>
+				<Item type="java.util.Map">
+					<EXTATT_SYSNAME type="java.lang.String">MaritalStatus</EXTATT_SYSNAME>
+					<EXTATTVAL_VALUE type="java.lang.String">MARITAL02</EXTATTVAL_VALUE>
+				</Item>
+				<Item type="java.util.Map">
+					<EXTATT_SYSNAME type="java.lang.String">isTaxResidentUSA</EXTATT_SYSNAME>
+					<EXTATTVAL_VALUE type="java.lang.String">0</EXTATTVAL_VALUE>
+				</Item>
+				<Item type="java.util.Map">
+					<EXTATT_SYSNAME type="java.lang.String">taxResidentOtherCountry</EXTATT_SYSNAME>
+					<EXTATTVAL_VALUE type="java.lang.String">0</EXTATTVAL_VALUE>
+				</Item>
+				<Item type="java.util.Map">
+					<EXTATT_SYSNAME type="java.lang.String">residencePermitForeignCountry</EXTATT_SYSNAME>
+					<EXTATTVAL_VALUE type="java.lang.String"></EXTATTVAL_VALUE>
+				</Item>
+				<Item type="java.util.Map">
+					<EXTATT_SYSNAME type="java.lang.String">INNUSA</EXTATT_SYSNAME>
+					<EXTATTVAL_VALUE type="java.lang.String"></EXTATTVAL_VALUE>
+				</Item>
+				<Item type="java.util.Map">
+					<EXTATT_SYSNAME type="java.lang.String">education</EXTATT_SYSNAME>
+					<EXTATTVAL_VALUE type="java.lang.String">Промэлектронщик</EXTATTVAL_VALUE>
+				</Item>
+				<Item type="java.util.Map">
+					<EXTATT_SYSNAME type="java.lang.String">EmployerName</EXTATT_SYSNAME>
+					<EXTATTVAL_VALUE type="java.lang.String">ВУЗ</EXTATTVAL_VALUE>
+				</Item>
+				<Item type="java.util.Map">
+					<EXTATT_SYSNAME type="java.lang.String">activityBusinessKind</EXTATT_SYSNAME>
+					<EXTATTVAL_VALUE type="java.lang.String">Паять</EXTATTVAL_VALUE>
+				</Item>
+				<Item type="java.util.Map">
+					<EXTATT_SYSNAME type="java.lang.String">Position</EXTATT_SYSNAME>
+					<EXTATTVAL_VALUE type="java.lang.String">Студент</EXTATTVAL_VALUE>
+				</Item>
+			</ListItems>
+		</extAttributeList2>		
+		<UNDER14 type="java.lang.String">TRUE</UNDER14>
+		<FROM1TO17 type="java.lang.String">TRUE</FROM1TO17>
+	</INSUREDMAP>	
+
+	<CONTREXTMAP type="java.util.Map">		
+		<insurerIsInsured type="java.lang.String">1</insurerIsInsured>
+		<interPay type="java.lang.String">TRUE</interPay>
+		<interPayYears type="java.lang.String">3</interPayYears>
+		<interPayDATE type="java.lang.String">29.12.2020</interPayDATE>
+		<sport type="java.lang.String">TRUE</sport>
+		<survivalPayVarStr type="java.lang.String">ANNUALLY</survivalPayVarStr>
+		<accSumWithoutDidVALUESTR type="java.lang.String">123 456,78</accSumWithoutDidVALUESTR>
+		<accSumWithoutDidVALUESTRBILL type="java.lang.String">123 456 (сто двадцать три тысячи четыреста пятьдесят шесть) рублей 78 копеек</accSumWithoutDidVALUESTRBILL>		
+		<guarantPeriodYears type="java.lang.String">3</guarantPeriodYears>
+		<survivalToDateDATESTR type="java.lang.String">01.01.2020</survivalToDateDATESTR>
+		<uwPolicy43Changes type="java.lang.String">Тут выводятся особые условия адын-адын-адын</uwPolicy43Changes>
+		<firstPayDATESTR type="java.lang.String">28.12.2017</firstPayDATESTR>
+		<regularPayDATESTR type="java.lang.String">28.12.2018</regularPayDATESTR>		
+		<insTariffVALUESTR type="java.lang.String">1,23</insTariffVALUESTR>
+	</CONTREXTMAP>	
+	
+        <INSOBJGROUPLIST type="java.util.List">
+            <ListItems>
+                <Item type="java.util.Map">
+                    <INSOBJGROUPID type="java.lang.Long">800147</INSOBJGROUPID>
+                    <PRODSTRUCTID type="java.lang.Long">510000</PRODSTRUCTID>
+                    <HBDATAVERID type="java.lang.Long">140034</HBDATAVERID>
+                    <OBJLIST type="java.util.List">
+                        <ListItems>
+                            <Item type="java.util.Map">
+                                <CONTROBJMAP type="java.util.Map">
+                                    <FINISHDATESTR type="java.lang.String">25.12.2018</FINISHDATESTR>
+                                    <LT_CREATEDATETIME type="java.lang.String">22:15</LT_CREATEDATETIME>
+                                    <CT_CREATEDATETIME type="java.lang.String">23:15</CT_CREATEDATETIME>
+                                    <CT_CREATEDATEMONTHLYSTR type="java.lang.String">«25» декабря 2017
+                                    </CT_CREATEDATEMONTHLYSTR>
+                                    <FINISHDATE type="java.lang.String">25.12.2018</FINISHDATE>
+                                    <CREATEDATESTR type="java.lang.String">25.12.2017</CREATEDATESTR>
+                                    <CURRENCYID type="java.lang.Long">1</CURRENCYID>
+                                    <INSAMVALUE type="java.lang.Double">0.0</INSAMVALUE>
+                                    <LT_CREATEDATE type="java.lang.String">25.12.2017</LT_CREATEDATE>
+                                    <CREATEDATETIME type="java.lang.String">19:15</CREATEDATETIME>
+                                    <CREATEDATE type="java.lang.String">25.12.2017</CREATEDATE>
+                                    <ROWSTATUS type="java.lang.Integer">0</ROWSTATUS>
+                                    <LT_CREATEDATEMONTHLYSTR type="java.lang.String">«25» декабря 2017
+                                    </LT_CREATEDATEMONTHLYSTR>
+                                    <FINISHDATEMONTHLYSTR type="java.lang.String">«25» декабря 2018
+                                    </FINISHDATEMONTHLYSTR>
+                                    <INSAMVALUESTR type="java.lang.String">0 (Ноль рублей)</INSAMVALUESTR>
+                                    <CONTRRISKLIST type="java.util.List">
+                                        <ListItems>
+                                            <Item type="java.util.Map">
+                                                <FINISHDATESTR type="java.lang.String">25.12.2018</FINISHDATESTR>
+                                                <PRODSTRUCTID type="java.lang.Long">512002</PRODSTRUCTID>
+                                                <ROWSTATUS type="java.lang.Integer">0</ROWSTATUS>
+                                                <FINISHDATEMONTHLYSTR type="java.lang.String">«25» декабря 2018
+                                                </FINISHDATEMONTHLYSTR>
+                                                <INSAMVALUESTR type="java.lang.String">1 000 000 (Один миллион рублей)
+                                                </INSAMVALUESTR>
+                                                <CONTROBJID type="java.lang.Long">1074019</CONTROBJID>
+                                                <FINISHDATE type="java.lang.String">25.12.2018</FINISHDATE>
+                                                <INSAMVALUESTRBILL type="java.lang.String">1 000 000 (Один миллион)
+                                                    рублей 00 копеек
+                                                </INSAMVALUESTRBILL>
+                                                <PREMVALUESTRBILL type="java.lang.String">1 240 (Одна тысяча двести
+                                                    сорок) рублей 00 копеек
+                                                </PREMVALUESTRBILL>
+                                                <CONTRRISKID type="java.lang.Long">1148037</CONTRRISKID>
+                                                <PREMVALUESTR type="java.lang.String">1 240 (Одна тысяча двести сорок
+                                                    рублей)
+                                                </PREMVALUESTR>
+                                                <CURRENCYID type="java.lang.Long">1</CURRENCYID>
+                                                <INSAMVALUE type="java.lang.Double">1000000.0</INSAMVALUE>
+                                                <SU5TQU1WQUxVRVNUUjI encoded="true" type="java.lang.String">1 000 000
+                                                    (Один миллион) рублей
+                                                </SU5TQU1WQUxVRVNUUjI>
+                                                <PREMVALUE type="java.lang.Double">1240.0</PREMVALUE>
+                                                <CONTRRISKEXTMAP type="java.util.Map">
+                                                    <Status type="java.lang.String">OK</Status>
+                                                    <CONTRRISKID type="java.lang.Long">1148037</CONTRRISKID>
+                                                    <HBDATAVERID type="java.lang.Long">140050</HBDATAVERID>
+                                                    <ROWSTATUS type="java.lang.Integer">0</ROWSTATUS>
+                                                    <CONTRRISKEXTID type="java.lang.Long">712547</CONTRRISKEXTID>
+                                                </CONTRRISKEXTMAP>
+                                                <FINISHDATETIME type="java.lang.String">03:00</FINISHDATETIME>
+                                                <PRODRISKSYSNAME type="java.lang.String">adultDeathAccident
+                                                </PRODRISKSYSNAME>
+                                                <UFJFTVZBTFVFU1RSMg encoded="true" type="java.lang.String">1 240 (Одна
+                                                    тысяча двести сорок) рублей
+                                                </UFJFTVZBTFVFU1RSMg>
+                                                <EXTERNALID type="java.lang.String">
+                                                    5fc25676-6e36-49b0-b979-991302fc1399
+                                                </EXTERNALID>
+                                            </Item>
+                                            <Item type="java.util.Map">
+                                                <FINISHDATESTR type="java.lang.String">25.12.2018</FINISHDATESTR>
+                                                <PRODSTRUCTID type="java.lang.Long">512011</PRODSTRUCTID>
+                                                <ROWSTATUS type="java.lang.Integer">0</ROWSTATUS>
+                                                <FINISHDATEMONTHLYSTR type="java.lang.String">«25» декабря 2018
+                                                </FINISHDATEMONTHLYSTR>
+                                                <INSAMVALUESTR type="java.lang.String">0 (Ноль рублей)</INSAMVALUESTR>
+                                                <CONTROBJID type="java.lang.Long">1074019</CONTROBJID>
+                                                <FINISHDATE type="java.lang.String">25.12.2018</FINISHDATE>
+                                                <INSAMVALUESTRBILL type="java.lang.String">0 (Ноль) рублей 00 копеек
+                                                </INSAMVALUESTRBILL>
+                                                <PREMVALUESTRBILL type="java.lang.String">12 298 (Двенадцать тысяч
+                                                    двести девяносто восемь) рублей 00 копеек
+                                                </PREMVALUESTRBILL>
+                                                <CONTRRISKID type="java.lang.Long">1148036</CONTRRISKID>
+                                                <PREMVALUESTR type="java.lang.String">12 298 (Двенадцать тысяч двести
+                                                    девяносто восемь рублей)
+                                                </PREMVALUESTR>
+                                                <CURRENCYID type="java.lang.Long">1</CURRENCYID>
+                                                <INSAMVALUE type="java.lang.Double">0.0</INSAMVALUE>
+                                                <SU5TQU1WQUxVRVNUUjI encoded="true" type="java.lang.String">0 (Ноль)
+                                                    рублей
+                                                </SU5TQU1WQUxVRVNUUjI>
+                                                <PREMVALUE type="java.lang.Double">12298.0</PREMVALUE>
+                                                <CONTRRISKEXTMAP type="java.util.Map">
+                                                    <Status type="java.lang.String">OK</Status>
+                                                    <CONTRRISKID type="java.lang.Long">1148036</CONTRRISKID>
+                                                    <HBDATAVERID type="java.lang.Long">140050</HBDATAVERID>
+                                                    <ROWSTATUS type="java.lang.Integer">0</ROWSTATUS>
+                                                    <CONTRRISKEXTID type="java.lang.Long">712546</CONTRRISKEXTID>
+                                                </CONTRRISKEXTMAP>
+                                                <FINISHDATETIME type="java.lang.String">03:00</FINISHDATETIME>
+                                                <PRODRISKSYSNAME type="java.lang.String">
+                                                    exemptionPremiumsDeathOrDisability
+                                                </PRODRISKSYSNAME>
+                                                <UFJFTVZBTFVFU1RSMg encoded="true" type="java.lang.String">12 298
+                                                    (Двенадцать тысяч двести девяносто восемь) рублей
+                                                </UFJFTVZBTFVFU1RSMg>
+                                                <EXTERNALID type="java.lang.String">
+                                                    39a94696-552b-4416-8b79-e18ab9c68578
+                                                </EXTERNALID>
+                                            </Item>
+                                            <Item type="java.util.Map">
+                                                <FINISHDATESTR type="java.lang.String">25.12.2018</FINISHDATESTR>
+                                                <PRODSTRUCTID type="java.lang.Long">512012</PRODSTRUCTID>
+                                                <ROWSTATUS type="java.lang.Integer">0</ROWSTATUS>
+                                                <FINISHDATEMONTHLYSTR type="java.lang.String">«25» декабря 2018
+                                                </FINISHDATEMONTHLYSTR>
+                                                <INSAMVALUESTR type="java.lang.String">0 (Ноль рублей)</INSAMVALUESTR>
+                                                <CONTROBJID type="java.lang.Long">1074019</CONTROBJID>
+                                                <FINISHDATE type="java.lang.String">25.12.2018</FINISHDATE>
+                                                <INSAMVALUESTRBILL type="java.lang.String">0 (Ноль) рублей 00 копеек
+                                                </INSAMVALUESTRBILL>
+                                                <PREMVALUESTRBILL type="java.lang.String">12 298 (Двенадцать тысяч
+                                                    двести девяносто восемь) рублей 00 копеек
+                                                </PREMVALUESTRBILL>
+                                                <CONTRRISKID type="java.lang.Long">1148035</CONTRRISKID>
+                                                <PREMVALUESTR type="java.lang.String">12 298 (Двенадцать тысяч двести
+                                                    девяносто восемь рублей)
+                                                </PREMVALUESTR>
+                                                <CURRENCYID type="java.lang.Long">1</CURRENCYID>
+                                                <INSAMVALUE type="java.lang.Double">0.0</INSAMVALUE>
+                                                <SU5TQU1WQUxVRVNUUjI encoded="true" type="java.lang.String">0 (Ноль)
+                                                    рублей
+                                                </SU5TQU1WQUxVRVNUUjI>
+                                                <PREMVALUE type="java.lang.Double">12298.0</PREMVALUE>
+                                                <CONTRRISKEXTMAP type="java.util.Map">
+                                                    <Status type="java.lang.String">OK</Status>
+                                                    <CONTRRISKID type="java.lang.Long">1148035</CONTRRISKID>
+                                                    <HBDATAVERID type="java.lang.Long">140050</HBDATAVERID>
+                                                    <ROWSTATUS type="java.lang.Integer">0</ROWSTATUS>
+                                                    <CONTRRISKEXTID type="java.lang.Long">712545</CONTRRISKEXTID>
+                                                </CONTRRISKEXTMAP>
+                                                <FINISHDATETIME type="java.lang.String">03:00</FINISHDATETIME>
+                                                <PRODRISKSYSNAME type="java.lang.String">exemptionPremiumsDeath
+                                                </PRODRISKSYSNAME>
+                                                <UFJFTVZBTFVFU1RSMg encoded="true" type="java.lang.String">12 298
+                                                    (Двенадцать тысяч двести девяносто восемь) рублей
+                                                </UFJFTVZBTFVFU1RSMg>
+                                                <EXTERNALID type="java.lang.String">
+                                                    09d970cb-d655-4103-809b-2f45374ecca0
+                                                </EXTERNALID>
+                                            </Item>
+                                        </ListItems>
+                                    </CONTRRISKLIST>
+                                    <CONTROBJID type="java.lang.Long">1074019</CONTROBJID>
+                                    <INSAMVALUESTRBILL type="java.lang.String">0 (Ноль) рублей 00 копеек
+                                    </INSAMVALUESTRBILL>
+                                    <PREMVALUESTRBILL type="java.lang.String">0 (Ноль) рублей 00 копеек
+                                    </PREMVALUESTRBILL>
+                                    <CT_CREATEDATESTR type="java.lang.String">25.12.2017</CT_CREATEDATESTR>
+                                    <PREMVALUESTR type="java.lang.String">0 (Ноль рублей)</PREMVALUESTR>
+                                    <SU5TQU1WQUxVRVNUUjI encoded="true" type="java.lang.String">0 (Ноль) рублей
+                                    </SU5TQU1WQUxVRVNUUjI>
+                                    <PREMVALUE type="java.lang.Double">0.0</PREMVALUE>
+                                    <CREATEUSERID type="java.lang.Long">49009</CREATEUSERID>
+                                    <CT_CREATEDATE type="java.lang.String">25.12.2017</CT_CREATEDATE>
+                                    <CONTRID type="java.lang.Long">3212006</CONTRID>
+                                    <FINISHDATETIME type="java.lang.String">03:00</FINISHDATETIME>
+                                    <LT_CREATEDATESTR type="java.lang.String">25.12.2017</LT_CREATEDATESTR>
+                                    <CREATEDATEMONTHLYSTR type="java.lang.String">«25» декабря 2017
+                                    </CREATEDATEMONTHLYSTR>
+                                    <UFJFTVZBTFVFU1RSMg encoded="true" type="java.lang.String">0 (Ноль) рублей
+                                    </UFJFTVZBTFVFU1RSMg>
+                                </CONTROBJMAP>
+                                <INSOBJMAP type="java.util.Map">
+                                    <INSOBJGROUPID type="java.lang.Long">800147</INSOBJGROUPID>
+                                    <PRODSTRUCTID type="java.lang.Long">512000</PRODSTRUCTID>
+                                    <insuredDeclCompliance type="java.lang.Long">1</insuredDeclCompliance>
+                                    <sex type="java.lang.Long">0</sex>
+                                    <arterialPressureTop type="java.lang.Long">120</arterialPressureTop>
+                                    <weight type="java.lang.Long">80</weight>
+                                    <ROWSTATUS type="java.lang.Integer">0</ROWSTATUS>
+                                    <INSOBJSYSNAME type="java.lang.String">insuredAdult</INSOBJSYSNAME>
+                                    <birthDATEMONTHLYSTR type="java.lang.String">«01» декабря 1960</birthDATEMONTHLYSTR>
+                                    <CONTROBJID type="java.lang.Long">1074019</CONTROBJID>
+                                    <INSOBJID type="java.lang.Long">761804</INSOBJID>
+                                    <birthDATE type="java.lang.String">01.12.1960</birthDATE>
+                                    <indexBW type="java.lang.String">27,34</indexBW>
+                                    <HBDATAVERID type="java.lang.Long">512000</HBDATAVERID>
+                                    <arterialPressureDown type="java.lang.Long">90</arterialPressureDown>
+                                    <bloodPressureLower type="java.lang.Long">90</bloodPressureLower>
+                                    <bloodPressureTop type="java.lang.Long">120</bloodPressureTop>
+                                    <birthDATESTR type="java.lang.String">01.12.1960</birthDATESTR>
+                                    <growth type="java.lang.Long">180</growth>
+                                    <birthDATETIME type="java.lang.String">03:00</birthDATETIME>
+                                    <height type="java.lang.Long">180</height>
+                                </INSOBJMAP>
+                                <ROWSTATUS type="java.lang.Integer">0</ROWSTATUS>
+                            </Item>
+                            <Item type="java.util.Map">
+                                <CONTROBJMAP type="java.util.Map">
+                                    <FINISHDATESTR type="java.lang.String">25.12.2018</FINISHDATESTR>
+                                    <LT_CREATEDATETIME type="java.lang.String">22:15</LT_CREATEDATETIME>
+                                    <CT_CREATEDATETIME type="java.lang.String">23:15</CT_CREATEDATETIME>
+                                    <CT_CREATEDATEMONTHLYSTR type="java.lang.String">«25» декабря 2017
+                                    </CT_CREATEDATEMONTHLYSTR>
+                                    <FINISHDATE type="java.lang.String">25.12.2018</FINISHDATE>
+                                    <CREATEDATESTR type="java.lang.String">25.12.2017</CREATEDATESTR>
+                                    <CURRENCYID type="java.lang.Long">1</CURRENCYID>
+                                    <INSAMVALUE type="java.lang.Double">0.0</INSAMVALUE>
+                                    <LT_CREATEDATE type="java.lang.String">25.12.2017</LT_CREATEDATE>
+                                    <CREATEDATETIME type="java.lang.String">19:15</CREATEDATETIME>
+                                    <CREATEDATE type="java.lang.String">25.12.2017</CREATEDATE>
+                                    <ROWSTATUS type="java.lang.Integer">0</ROWSTATUS>
+                                    <LT_CREATEDATEMONTHLYSTR type="java.lang.String">«25» декабря 2017
+                                    </LT_CREATEDATEMONTHLYSTR>
+                                    <FINISHDATEMONTHLYSTR type="java.lang.String">«25» декабря 2018
+                                    </FINISHDATEMONTHLYSTR>
+                                    <INSAMVALUESTR type="java.lang.String">0 (Ноль рублей)</INSAMVALUESTR>
+                                    <CONTRRISKLIST type="java.util.List">
+                                        <ListItems>
+                                            <Item type="java.util.Map">
+                                                <FINISHDATESTR type="java.lang.String">25.12.2018</FINISHDATESTR>
+                                                <PRODSTRUCTID type="java.lang.Long">511010</PRODSTRUCTID>
+                                                <ROWSTATUS type="java.lang.Integer">0</ROWSTATUS>
+                                                <FINISHDATEMONTHLYSTR type="java.lang.String">«25» декабря 2018
+                                                </FINISHDATEMONTHLYSTR>
+                                                <INSAMVALUESTR type="java.lang.String">1 000 000 (Один миллион рублей)
+                                                </INSAMVALUESTR>
+                                                <CONTROBJID type="java.lang.Long">1074020</CONTROBJID>
+                                                <FINISHDATE type="java.lang.String">25.12.2018</FINISHDATE>
+                                                <INSAMVALUESTRBILL type="java.lang.String">1 000 000 (Один миллион)
+                                                    рублей 00 копеек
+                                                </INSAMVALUESTRBILL>
+                                                <PREMVALUESTRBILL type="java.lang.String">94 378 (Девяносто четыре
+                                                    тысячи триста семьдесят восемь) рублей 00 копеек
+                                                </PREMVALUESTRBILL>
+                                                <CONTRRISKID type="java.lang.Long">1148041</CONTRRISKID>
+                                                <PREMVALUESTR type="java.lang.String">94 378 (Девяносто четыре тысячи
+                                                    триста семьдесят восемь рублей)
+                                                </PREMVALUESTR>
+                                                <CURRENCYID type="java.lang.Long">1</CURRENCYID>
+                                                <INSAMVALUE type="java.lang.Double">1000000.0</INSAMVALUE>
+                                                <SU5TQU1WQUxVRVNUUjI encoded="true" type="java.lang.String">1 000 000
+                                                    (Один миллион) рублей
+                                                </SU5TQU1WQUxVRVNUUjI>
+                                                <PREMVALUE type="java.lang.Double">94378.0</PREMVALUE>
+                                                <CONTRRISKEXTMAP type="java.util.Map">
+                                                    <Status type="java.lang.String">OK</Status>
+                                                    <CONTRRISKID type="java.lang.Long">1148041</CONTRRISKID>
+                                                    <HBDATAVERID type="java.lang.Long">140050</HBDATAVERID>
+                                                    <ROWSTATUS type="java.lang.Integer">0</ROWSTATUS>
+                                                    <CONTRRISKEXTID type="java.lang.Long">712551</CONTRRISKEXTID>
+                                                </CONTRRISKEXTMAP>
+                                                <FINISHDATETIME type="java.lang.String">03:00</FINISHDATETIME>
+                                                <PRODRISKSYSNAME type="java.lang.String">childSurvives2</PRODRISKSYSNAME>
+                                                <UFJFTVZBTFVFU1RSMg encoded="true" type="java.lang.String">94 378
+                                                    (Девяносто четыре тысячи триста семьдесят восемь) рублей
+                                                </UFJFTVZBTFVFU1RSMg>
+                                                <EXTERNALID type="java.lang.String">
+                                                    4b0b3fba-496f-4fba-8320-51214ab30fa6
+                                                </EXTERNALID>
+                                            </Item>
+                                            <Item type="java.util.Map">
+                                                <FINISHDATESTR type="java.lang.String">25.12.2018</FINISHDATESTR>
+                                                <PRODSTRUCTID type="java.lang.Long">511006</PRODSTRUCTID>
+                                                <ROWSTATUS type="java.lang.Integer">0</ROWSTATUS>
+                                                <FINISHDATEMONTHLYSTR type="java.lang.String">«25» декабря 2018
+                                                </FINISHDATEMONTHLYSTR>
+                                                <INSAMVALUESTR type="java.lang.String">1 000 000 (Один миллион рублей)
+                                                </INSAMVALUESTR>
+                                                <CONTROBJID type="java.lang.Long">1074020</CONTROBJID>
+                                                <FINISHDATE type="java.lang.String">25.12.2018</FINISHDATE>
+                                                <INSAMVALUESTRBILL type="java.lang.String">1 000 000 (Один миллион)
+                                                    рублей 00 копеек
+                                                </INSAMVALUESTRBILL>
+                                                <PREMVALUESTRBILL type="java.lang.String">8 268 (Восемь тысяч двести
+                                                    шестьдесят восемь) рублей 00 копеек
+                                                </PREMVALUESTRBILL>
+                                                <CONTRRISKID type="java.lang.Long">1148040</CONTRRISKID>
+                                                <PREMVALUESTR type="java.lang.String">8 268 (Восемь тысяч двести
+                                                    шестьдесят восемь рублей)
+                                                </PREMVALUESTR>
+                                                <CURRENCYID type="java.lang.Long">1</CURRENCYID>
+                                                <INSAMVALUE type="java.lang.Double">1000000.0</INSAMVALUE>
+                                                <SU5TQU1WQUxVRVNUUjI encoded="true" type="java.lang.String">1 000 000
+                                                    (Один миллион) рублей
+                                                </SU5TQU1WQUxVRVNUUjI>
+                                                <PREMVALUE type="java.lang.Double">8268.0</PREMVALUE>
+                                                <CONTRRISKEXTMAP type="java.util.Map">
+                                                    <Status type="java.lang.String">OK</Status>
+                                                    <CONTRRISKID type="java.lang.Long">1148040</CONTRRISKID>
+                                                    <HBDATAVERID type="java.lang.Long">140050</HBDATAVERID>
+                                                    <ROWSTATUS type="java.lang.Integer">0</ROWSTATUS>
+                                                    <CONTRRISKEXTID type="java.lang.Long">712550</CONTRRISKEXTID>
+                                                </CONTRRISKEXTMAP>
+                                                <FINISHDATETIME type="java.lang.String">03:00</FINISHDATETIME>
+                                                <PRODRISKSYSNAME type="java.lang.String">childDiagnosedMorbidDisease
+                                                </PRODRISKSYSNAME>
+                                                <UFJFTVZBTFVFU1RSMg encoded="true" type="java.lang.String">8 268 (Восемь
+                                                    тысяч двести шестьдесят восемь) рублей
+                                                </UFJFTVZBTFVFU1RSMg>
+                                                <EXTERNALID type="java.lang.String">
+                                                    31eff789-6713-47a0-be3b-450724afc89a
+                                                </EXTERNALID>
+                                            </Item>
+                                            <Item type="java.util.Map">
+                                                <FINISHDATESTR type="java.lang.String">25.12.2018</FINISHDATESTR>
+                                                <PRODSTRUCTID type="java.lang.Long">511007</PRODSTRUCTID>
+                                                <ROWSTATUS type="java.lang.Integer">0</ROWSTATUS>
+                                                <FINISHDATEMONTHLYSTR type="java.lang.String">«25» декабря 2018
+                                                </FINISHDATEMONTHLYSTR>
+                                                <INSAMVALUESTR type="java.lang.String">1 000 000 (Один миллион рублей)
+                                                </INSAMVALUESTR>
+                                                <CONTROBJID type="java.lang.Long">1074020</CONTROBJID>
+                                                <FINISHDATE type="java.lang.String">25.12.2018</FINISHDATE>
+                                                <INSAMVALUESTRBILL type="java.lang.String">1 000 000 (Один миллион)
+                                                    рублей 00 копеек
+                                                </INSAMVALUESTRBILL>
+                                                <PREMVALUESTRBILL type="java.lang.String">2 480 (Две тысячи четыреста
+                                                    восемьдесят) рублей 00 копеек
+                                                </PREMVALUESTRBILL>
+                                                <CONTRRISKID type="java.lang.Long">1148039</CONTRRISKID>
+                                                <PREMVALUESTR type="java.lang.String">2 480 (Две тысячи четыреста
+                                                    восемьдесят рублей)
+                                                </PREMVALUESTR>
+                                                <CURRENCYID type="java.lang.Long">1</CURRENCYID>
+                                                <INSAMVALUE type="java.lang.Double">1000000.0</INSAMVALUE>
+                                                <SU5TQU1WQUxVRVNUUjI encoded="true" type="java.lang.String">1 000 000
+                                                    (Один миллион) рублей
+                                                </SU5TQU1WQUxVRVNUUjI>
+                                                <PREMVALUE type="java.lang.Double">2480.0</PREMVALUE>
+                                                <CONTRRISKEXTMAP type="java.util.Map">
+                                                    <Status type="java.lang.String">OK</Status>
+                                                    <CONTRRISKID type="java.lang.Long">1148039</CONTRRISKID>
+                                                    <HBDATAVERID type="java.lang.Long">140050</HBDATAVERID>
+                                                    <ROWSTATUS type="java.lang.Integer">0</ROWSTATUS>
+                                                    <CONTRRISKEXTID type="java.lang.Long">712549</CONTRRISKEXTID>
+                                                </CONTRRISKEXTMAP>
+                                                <FINISHDATETIME type="java.lang.String">03:00</FINISHDATETIME>
+                                                <PRODRISKSYSNAME type="java.lang.String">childSurgeryAccident
+                                                </PRODRISKSYSNAME>
+                                                <UFJFTVZBTFVFU1RSMg encoded="true" type="java.lang.String">2 480 (Две
+                                                    тысячи четыреста восемьдесят) рублей
+                                                </UFJFTVZBTFVFU1RSMg>
+                                                <EXTERNALID type="java.lang.String">
+                                                    e67c2aa7-59d2-4493-a67d-3664ce530842
+                                                </EXTERNALID>
+                                            </Item>
+                                            <Item type="java.util.Map">
+                                                <FINISHDATESTR type="java.lang.String">25.12.2018</FINISHDATESTR>
+                                                <PRODSTRUCTID type="java.lang.Long">511008</PRODSTRUCTID>
+                                                <ROWSTATUS type="java.lang.Integer">0</ROWSTATUS>
+                                                <FINISHDATEMONTHLYSTR type="java.lang.String">«25» декабря 2018
+                                                </FINISHDATEMONTHLYSTR>
+                                                <INSAMVALUESTR type="java.lang.String">750 000 (Семьсот пятьдесят тысяч
+                                                    рублей)
+                                                </INSAMVALUESTR>
+                                                <CONTROBJID type="java.lang.Long">1074020</CONTROBJID>
+                                                <FINISHDATE type="java.lang.String">25.12.2018</FINISHDATE>
+                                                <INSAMVALUESTRBILL type="java.lang.String">750 000 (Семьсот пятьдесят
+                                                    тысяч) рублей 00 копеек
+                                                </INSAMVALUESTRBILL>
+                                                <PREMVALUESTRBILL type="java.lang.String">13 297 (Тринадцать тысяч
+                                                    двести девяносто семь) рублей 00 копеек
+                                                </PREMVALUESTRBILL>
+                                                <CONTRRISKID type="java.lang.Long">1148038</CONTRRISKID>
+                                                <PREMVALUESTR type="java.lang.String">13 297 (Тринадцать тысяч двести
+                                                    девяносто семь рублей)
+                                                </PREMVALUESTR>
+                                                <CURRENCYID type="java.lang.Long">1</CURRENCYID>
+                                                <INSAMVALUE type="java.lang.Double">750000.0</INSAMVALUE>
+                                                <SU5TQU1WQUxVRVNUUjI encoded="true" type="java.lang.String">750 000
+                                                    (Семьсот пятьдесят тысяч) рублей
+                                                </SU5TQU1WQUxVRVNUUjI>
+                                                <PREMVALUE type="java.lang.Double">13297.0</PREMVALUE>
+                                                <CONTRRISKEXTMAP type="java.util.Map">
+                                                    <Status type="java.lang.String">OK</Status>
+                                                    <CONTRRISKID type="java.lang.Long">1148038</CONTRRISKID>
+                                                    <HBDATAVERID type="java.lang.Long">140050</HBDATAVERID>
+                                                    <ROWSTATUS type="java.lang.Integer">0</ROWSTATUS>
+                                                    <CONTRRISKEXTID type="java.lang.Long">712548</CONTRRISKEXTID>
+                                                </CONTRRISKEXTMAP>
+                                                <FINISHDATETIME type="java.lang.String">03:00</FINISHDATETIME>
+                                                <PRODRISKSYSNAME type="java.lang.String">childDisabledLpOrInjuredNs
+                                                </PRODRISKSYSNAME>
+                                                <UFJFTVZBTFVFU1RSMg encoded="true" type="java.lang.String">13 297
+                                                    (Тринадцать тысяч двести девяносто семь) рублей
+                                                </UFJFTVZBTFVFU1RSMg>
+                                                <EXTERNALID type="java.lang.String">
+                                                    1043cfc7-fade-4c26-ae20-04ed66db2d0d
+                                                </EXTERNALID>
+                                            </Item>
+                                        </ListItems>
+                                    </CONTRRISKLIST>
+                                    <CONTROBJID type="java.lang.Long">1074020</CONTROBJID>
+                                    <INSAMVALUESTRBILL type="java.lang.String">0 (Ноль) рублей 00 копеек
+                                    </INSAMVALUESTRBILL>
+                                    <PREMVALUESTRBILL type="java.lang.String">0 (Ноль) рублей 00 копеек
+                                    </PREMVALUESTRBILL>
+                                    <CT_CREATEDATESTR type="java.lang.String">25.12.2017</CT_CREATEDATESTR>
+                                    <PREMVALUESTR type="java.lang.String">0 (Ноль рублей)</PREMVALUESTR>
+                                    <SU5TQU1WQUxVRVNUUjI encoded="true" type="java.lang.String">0 (Ноль) рублей
+                                    </SU5TQU1WQUxVRVNUUjI>
+                                    <PREMVALUE type="java.lang.Double">0.0</PREMVALUE>
+                                    <CREATEUSERID type="java.lang.Long">49009</CREATEUSERID>
+                                    <CT_CREATEDATE type="java.lang.String">25.12.2017</CT_CREATEDATE>
+                                    <CONTRID type="java.lang.Long">3212006</CONTRID>
+                                    <FINISHDATETIME type="java.lang.String">03:00</FINISHDATETIME>
+                                    <LT_CREATEDATESTR type="java.lang.String">25.12.2017</LT_CREATEDATESTR>
+                                    <CREATEDATEMONTHLYSTR type="java.lang.String">«25» декабря 2017
+                                    </CREATEDATEMONTHLYSTR>
+                                    <UFJFTVZBTFVFU1RSMg encoded="true" type="java.lang.String">0 (Ноль) рублей
+                                    </UFJFTVZBTFVFU1RSMg>
+                                </CONTROBJMAP>
+                                <INSOBJMAP type="java.util.Map">
+                                    <INSOBJGROUPID type="java.lang.Long">800147</INSOBJGROUPID>
+                                    <PRODSTRUCTID type="java.lang.Long">511000</PRODSTRUCTID>
+                                    <insuredDeclCompliance type="java.lang.Long">1</insuredDeclCompliance>
+                                    <arterialPressureTop type="java.lang.Long">120</arterialPressureTop>
+                                    <sex type="java.lang.Long">0</sex>
+                                    <weight type="java.lang.Long">60</weight>
+                                    <ROWSTATUS type="java.lang.Integer">0</ROWSTATUS>
+                                    <INSOBJSYSNAME type="java.lang.String">insuredChild</INSOBJSYSNAME>
+                                    <birthDATEMONTHLYSTR type="java.lang.String">«08» декабря 2005</birthDATEMONTHLYSTR>
+                                    <CONTROBJID type="java.lang.Long">1074020</CONTROBJID>
+                                    <INSOBJID type="java.lang.Long">761805</INSOBJID>
+                                    <birthDATE type="java.lang.String">08.12.2005</birthDATE>
+                                    <indexBW type="java.lang.String">22,3</indexBW>
+                                    <HBDATAVERID type="java.lang.Long">511000</HBDATAVERID>
+                                    <arterialPressureDown type="java.lang.Long">90</arterialPressureDown>
+                                    <bloodPressureLower type="java.lang.Long">90</bloodPressureLower>
+                                    <bloodPressureTop type="java.lang.Long">120</bloodPressureTop>
+                                    <birthDATESTR type="java.lang.String">08.12.2005</birthDATESTR>
+                                    <growth type="java.lang.Long">170</growth>
+                                    <birthDATETIME type="java.lang.String">03:00</birthDATETIME>
+                                    <height type="java.lang.Long">170</height>
+                                </INSOBJMAP>
+                                <ROWSTATUS type="java.lang.Integer">0</ROWSTATUS>
+                            </Item>
+                        </ListItems>
+                    </OBJLIST>
+                    <INSOBJGROUPSYSNAME type="java.lang.String">life</INSOBJGROUPSYSNAME>
+                    <CONTRID type="java.lang.Long">3212006</CONTRID>
+                    <ROWSTATUS type="java.lang.Integer">0</ROWSTATUS>
+                    <CONTRSECTIONID type="java.lang.Long">1041650</CONTRSECTIONID>
+                </Item>
+            </ListItems>
+        </INSOBJGROUPLIST>
+	
+	<BANKDETAILMAP type="java.util.Map">		
+		<bankAccount type="java.lang.String">123123123123123</bankAccount>
+		<bankBIK type="java.lang.String">123123123</bankBIK>
+		<bankINN type="java.lang.String">12312312312</bankINN>
+		<bankSettlementAccount type="java.lang.String">1231231231223</bankSettlementAccount>
+		<bankName type="java.lang.String">СБС</bankName>
+		<bankAddressPhone type="java.lang.String">москва, 8(495)123123123</bankAddressPhone>
+		<bankAddress type="java.lang.String">москва</bankAddress>
+		<bankPhone type="java.lang.String">8(495)123123123</bankPhone>
+		<account type="java.lang.String">777777777777</account>
+		<cardNumber type="java.lang.String">12903489763</cardNumber>
+	</BANKDETAILMAP>		
+
+	<REDEMPTSUMLIST type="java.util.List">
+		<ListItems>
+			<Item type="java.util.Map">
+				<redemptStartDATESTR type="java.lang.String">01.01.2018</redemptStartDATESTR>
+				<redemptFinishDATESTR type="java.lang.String">01.01.2019</redemptFinishDATESTR>
+				<redemptDeathLPAmVALUESTR type="java.lang.String">123 456,00</redemptDeathLPAmVALUESTR>
+				<redemptSumVALUESTR type="java.lang.String">12 345,12</redemptSumVALUESTR>
+			</Item>
+			<Item type="java.util.Map">
+				<redemptStartDATESTR type="java.lang.String">01.01.2019</redemptStartDATESTR>
+				<redemptFinishDATESTR type="java.lang.String">01.01.2020</redemptFinishDATESTR>
+				<redemptDeathLPAmVALUESTR type="java.lang.String">223 456,00</redemptDeathLPAmVALUESTR>
+				<redemptSumVALUESTR type="java.lang.String">22 345,12</redemptSumVALUESTR>
+			</Item>
+			<Item type="java.util.Map">
+				<redemptStartDATESTR type="java.lang.String">01.01.2020</redemptStartDATESTR>
+				<redemptFinishDATESTR type="java.lang.String">01.01.2021</redemptFinishDATESTR>
+				<redemptDeathLPAmVALUESTR type="java.lang.String">323 456,00</redemptDeathLPAmVALUESTR>
+				<redemptSumVALUESTR type="java.lang.String">32 345,12</redemptSumVALUESTR>
+			</Item>
+			<Item type="java.util.Map">
+				<redemptStartDATESTR type="java.lang.String">01.01.2021</redemptStartDATESTR>
+				<redemptFinishDATESTR type="java.lang.String">01.01.2022</redemptFinishDATESTR>
+				<redemptDeathLPAmVALUESTR type="java.lang.String">423 456,00</redemptDeathLPAmVALUESTR>
+				<redemptSumVALUESTR type="java.lang.String">42 345,12</redemptSumVALUESTR>
+			</Item>
+			<Item type="java.util.Map">
+				<redemptStartDATESTR type="java.lang.String">01.01.2022</redemptStartDATESTR>
+				<redemptFinishDATESTR type="java.lang.String">01.01.2023</redemptFinishDATESTR>
+				<redemptDeathLPAmVALUESTR type="java.lang.String">523 456,00</redemptDeathLPAmVALUESTR>
+				<redemptSumVALUESTR type="java.lang.String">52 345,12</redemptSumVALUESTR>
+			</Item>			
+		</ListItems>
+	</REDEMPTSUMLIST>
+
+	<CONTRIBUTIONLIST type="java.util.List">
+		<ListItems>
+			<Item type="java.util.Map">
+				<contributionStartDATESTR type="java.lang.String">01.01.2018</contributionStartDATESTR>
+				<contributionFinishDATESTR type="java.lang.String">01.01.2019</contributionFinishDATESTR>
+				<contributionSumVALUESTR type="java.lang.String">123 456,00</contributionSumVALUESTR>
+				<contributionTarifVALUESTR type="java.lang.String">12 345,12</contributionTarifVALUESTR>
+			</Item>
+			<Item type="java.util.Map">
+				<contributionStartDATESTR type="java.lang.String">01.01.2019</contributionStartDATESTR>
+				<contributionFinishDATESTR type="java.lang.String">01.01.2020</contributionFinishDATESTR>
+				<contributionSumVALUESTR type="java.lang.String">223 456,00</contributionSumVALUESTR>
+				<contributionTarifVALUESTR type="java.lang.String">22 345,12</contributionTarifVALUESTR>
+			</Item>
+			<Item type="java.util.Map">
+				<contributionStartDATESTR type="java.lang.String">01.01.2020</contributionStartDATESTR>
+				<contributionFinishDATESTR type="java.lang.String">01.01.2021</contributionFinishDATESTR>
+				<contributionSumVALUESTR type="java.lang.String">323 456,00</contributionSumVALUESTR>
+				<contributionTarifVALUESTR type="java.lang.String">32 345,12</contributionTarifVALUESTR>
+			</Item>
+			<Item type="java.util.Map">
+				<contributionStartDATESTR type="java.lang.String">01.01.2021</contributionStartDATESTR>
+				<contributionFinishDATESTR type="java.lang.String">01.01.2022</contributionFinishDATESTR>
+				<contributionSumVALUESTR type="java.lang.String">423 456,00</contributionSumVALUESTR>
+				<contributionTarifVALUESTR type="java.lang.String">42 345,12</contributionTarifVALUESTR>
+			</Item>
+			<Item type="java.util.Map">
+				<contributionStartDATESTR type="java.lang.String">01.01.2022</contributionStartDATESTR>
+				<contributionFinishDATESTR type="java.lang.String">01.01.2023</contributionFinishDATESTR>
+				<contributionSumVALUESTR type="java.lang.String">523 456,00</contributionSumVALUESTR>
+				<contributionTarifVALUESTR type="java.lang.String">52 345,12</contributionTarifVALUESTR>
+			</Item>			
+		</ListItems>
+	</CONTRIBUTIONLIST>
+	
+	<DECLADULT_NSMAP type="java.util.Map">		
+		<APPLNUM type="java.lang.String">1</APPLNUM>
+		<SUMOVERLIMIT type="java.lang.String">TRUE</SUMOVERLIMIT>
+		<QW1 type="java.lang.String">Да</QW1>
+		<QW1_1 type="java.lang.String">Да</QW1_1>
+		<QW1_2 type="java.lang.String">Да</QW1_2>
+		<QW1_3 type="java.lang.String">Да</QW1_3>
+		<QW1_4 type="java.lang.String">Да</QW1_4>
+		<QW1_5 type="java.lang.String">Да</QW1_5>
+		<QW1_6 type="java.lang.String">Да</QW1_6>
+		<QW2 type="java.lang.String">Да</QW2>
+		<QW2_1 type="java.lang.String">Да</QW2_1>
+		<QW2_2 type="java.lang.String">Да</QW2_2>
+		<QW2_3 type="java.lang.String">Да</QW2_3>
+		<QW2_4 type="java.lang.String">Да</QW2_4>
+		<QW2_5 type="java.lang.String">Да</QW2_5>
+		<QW3 type="java.lang.String">Да</QW3>
+		<QW3_1 type="java.lang.String">Да</QW3_1>
+		<QW3_2 type="java.lang.String">Да</QW3_2>
+		<QW4 type="java.lang.String">Да</QW4>
+		<QW4_1 type="java.lang.String">Да</QW4_1>
+		<QW4_2 type="java.lang.String">Да</QW4_2>
+		<QW4_3 type="java.lang.String">Да</QW4_3>
+		<QW4_4 type="java.lang.String">Да</QW4_4>
+		<QW5 type="java.lang.String">Да</QW5>
+		<QW5_1 type="java.lang.String">Да</QW5_1>
+		<QW5_2 type="java.lang.String">Да</QW5_2>
+		<QW5_3 type="java.lang.String">Да</QW5_3>
+		<QW5_4 type="java.lang.String">Да</QW5_4>
+		<QW6 type="java.lang.String">Да</QW6>
+		<QW6_1 type="java.lang.String">Да</QW6_1>
+		<QW6_2 type="java.lang.String">Да</QW6_2>
+		<QW6_3 type="java.lang.String">Да</QW6_3>
+		<QW6_4 type="java.lang.String">Да</QW6_4>
+		<QW7 type="java.lang.String">Да</QW7>
+		<QW7_1 type="java.lang.String">Да</QW7_1>
+		<QW7_2 type="java.lang.String">Да</QW7_2>
+		<QW7_3 type="java.lang.String">Да</QW7_3>
+		<QW7_4 type="java.lang.String">Да</QW7_4>
+		<QW8 type="java.lang.String">Да</QW8>
+		<QW8_1 type="java.lang.String">Да</QW8_1>
+		<QW8_2 type="java.lang.String">Да</QW8_2>
+		<QW8_3 type="java.lang.String">Да</QW8_3>
+		<QW8_4 type="java.lang.String">Да</QW8_4>
+		<QW8_5 type="java.lang.String">Да</QW8_5>
+		<QW8_6 type="java.lang.String">Да</QW8_6>
+		<QW9 type="java.lang.String">Да</QW9>
+		<QW9_1 type="java.lang.String">Да</QW9_1>
+		<QW9_2 type="java.lang.String">Да</QW9_2>
+		<QW9_3 type="java.lang.String">Да</QW9_3>
+		<QW10 type="java.lang.String">Да</QW10>
+		<QW10_1 type="java.lang.String">Да</QW10_1>
+		<QW10_2 type="java.lang.String">Да</QW10_2>
+		<QW10_3 type="java.lang.String">Да</QW10_3>
+		<QW10_4 type="java.lang.String">Да</QW10_4>
+		<QW10_5 type="java.lang.String">Да</QW10_5>
+		<QW10_6 type="java.lang.String">Да</QW10_6>
+		<QW11 type="java.lang.String">Да</QW11>
+		<QW11_1 type="java.lang.String">Да</QW11_1>
+		<QW11_2 type="java.lang.String">Да</QW11_2>
+		<QW11_3 type="java.lang.String">Да</QW11_3>
+		<QW11_4 type="java.lang.String">Да</QW11_4>
+		<QW11_5 type="java.lang.String">Да</QW11_5>
+		<QW11_6 type="java.lang.String">Да</QW11_6>
+		<QW12 type="java.lang.String">Да</QW12>
+		<QW13 type="java.lang.String">Да</QW13>
+		<QW14 type="java.lang.String">Да</QW14>
+		<QW14_1 type="java.lang.String">Да</QW14_1>
+		<QW14_2 type="java.lang.String">Да</QW14_2>
+		<QW14_3 type="java.lang.String">Да</QW14_3>
+		<QW15 type="java.lang.String">Да</QW15>
+		<QW16 type="java.lang.String">Да</QW16>
+		<QW17 type="java.lang.String">Да</QW17>
+		<QW17_1 type="java.lang.String">Да</QW17_1>
+		<QW18 type="java.lang.String">Нет</QW18>
+		<QW18_1 type="java.lang.String">Да</QW18_1>
+		<QW18_2 type="java.lang.String">Да</QW18_2>
+		<QW18_3 type="java.lang.String">Да</QW18_3>
+		<QW18_4 type="java.lang.String">Да</QW18_4>
+		<QW18_5 type="java.lang.String">Да</QW18_5>
+		<QW18_6 type="java.lang.String">Да</QW18_6>
+		<QW18_7 type="java.lang.String">Да</QW18_7>
+		<QW18_8 type="java.lang.String">Да</QW18_8>
+		<QW18_9 type="java.lang.String">Да</QW18_9>		
+	</DECLADULT_NSMAP>		
+	
+	<DECLFULLMAP type="java.util.Map">		
+		<APPLNUM type="java.lang.String">2</APPLNUM>
+		<APPLNUMBOTH type="java.lang.String">3</APPLNUMBOTH>
+		<SUMOVERLIMIT type="java.lang.String">TRUE</SUMOVERLIMIT>
+		<QW_ADULT1 type="java.lang.String">Да</QW_ADULT1>
+		<QW_ADULT1_1 type="java.lang.String">Да</QW_ADULT1_1>
+		<QW_ADULT1_2 type="java.lang.String">Да</QW_ADULT1_2>
+		<QW_ADULT1_3 type="java.lang.String">Да</QW_ADULT1_3>
+		<QW_ADULT1_4 type="java.lang.String">Да</QW_ADULT1_4>
+		<QW_ADULT1_5 type="java.lang.String">Да</QW_ADULT1_5>
+		<QW_ADULT1_6 type="java.lang.String">Да</QW_ADULT1_6>
+		<QW_ADULT2 type="java.lang.String">Да</QW_ADULT2>
+		<QW_ADULT2_1 type="java.lang.String">Да</QW_ADULT2_1>
+		<QW_ADULT2_2 type="java.lang.String">Да</QW_ADULT2_2>
+		<QW_ADULT2_3 type="java.lang.String">Да</QW_ADULT2_3>
+		<QW_ADULT2_4 type="java.lang.String">Да</QW_ADULT2_4>
+		<QW_ADULT2_5 type="java.lang.String">Да</QW_ADULT2_5>
+		<QW_ADULT3 type="java.lang.String">Да</QW_ADULT3>
+		<QW_ADULT3_1 type="java.lang.String">Да</QW_ADULT3_1>
+		<QW_ADULT3_2 type="java.lang.String">Да</QW_ADULT3_2>
+		<QW_ADULT4 type="java.lang.String">Да</QW_ADULT4>
+		<QW_ADULT4_1 type="java.lang.String">Да</QW_ADULT4_1>
+		<QW_ADULT4_2 type="java.lang.String">Да</QW_ADULT4_2>
+		<QW_ADULT4_3 type="java.lang.String">Да</QW_ADULT4_3>
+		<QW_ADULT4_4 type="java.lang.String">Да</QW_ADULT4_4>
+		<QW_ADULT5 type="java.lang.String">Да</QW_ADULT5>
+		<QW_ADULT5_1 type="java.lang.String">Да</QW_ADULT5_1>
+		<QW_ADULT5_2 type="java.lang.String">Да</QW_ADULT5_2>
+		<QW_ADULT5_3 type="java.lang.String">Да</QW_ADULT5_3>
+		<QW_ADULT5_4 type="java.lang.String">Да</QW_ADULT5_4>
+		<QW_ADULT6 type="java.lang.String">Да</QW_ADULT6>
+		<QW_ADULT6_1 type="java.lang.String">Да</QW_ADULT6_1>
+		<QW_ADULT6_2 type="java.lang.String">Да</QW_ADULT6_2>
+		<QW_ADULT6_3 type="java.lang.String">Да</QW_ADULT6_3>
+		<QW_ADULT6_4 type="java.lang.String">Да</QW_ADULT6_4>
+		<QW_ADULT7 type="java.lang.String">Да</QW_ADULT7>
+		<QW_ADULT7_1 type="java.lang.String">Да</QW_ADULT7_1>
+		<QW_ADULT7_2 type="java.lang.String">Да</QW_ADULT7_2>
+		<QW_ADULT7_3 type="java.lang.String">Да</QW_ADULT7_3>
+		<QW_ADULT7_4 type="java.lang.String">Да</QW_ADULT7_4>
+		<QW_ADULT8 type="java.lang.String">Да</QW_ADULT8>
+		<QW_ADULT8_1 type="java.lang.String">Да</QW_ADULT8_1>
+		<QW_ADULT8_2 type="java.lang.String">Да</QW_ADULT8_2>
+		<QW_ADULT8_3 type="java.lang.String">Да</QW_ADULT8_3>
+		<QW_ADULT8_4 type="java.lang.String">Да</QW_ADULT8_4>
+		<QW_ADULT8_5 type="java.lang.String">Да</QW_ADULT8_5>
+		<QW_ADULT8_6 type="java.lang.String">Да</QW_ADULT8_6>
+		<QW_ADULT9 type="java.lang.String">Да</QW_ADULT9>
+		<QW_ADULT9_1 type="java.lang.String">Да</QW_ADULT9_1>
+		<QW_ADULT9_2 type="java.lang.String">Да</QW_ADULT9_2>
+		<QW_ADULT9_3 type="java.lang.String">Да</QW_ADULT9_3>
+		<QW_ADULT10 type="java.lang.String">Да</QW_ADULT10>
+		<QW_ADULT10_1 type="java.lang.String">Да</QW_ADULT10_1>
+		<QW_ADULT10_2 type="java.lang.String">Да</QW_ADULT10_2>
+		<QW_ADULT10_3 type="java.lang.String">Да</QW_ADULT10_3>
+		<QW_ADULT10_4 type="java.lang.String">Да</QW_ADULT10_4>
+		<QW_ADULT10_5 type="java.lang.String">Да</QW_ADULT10_5>
+		<QW_ADULT10_6 type="java.lang.String">Да</QW_ADULT10_6>
+		<QW_ADULT11 type="java.lang.String">Да</QW_ADULT11>
+		<QW_ADULT11_1 type="java.lang.String">Да</QW_ADULT11_1>
+		<QW_ADULT11_2 type="java.lang.String">Да</QW_ADULT11_2>
+		<QW_ADULT11_3 type="java.lang.String">Да</QW_ADULT11_3>
+		<QW_ADULT11_4 type="java.lang.String">Да</QW_ADULT11_4>
+		<QW_ADULT11_5 type="java.lang.String">Да</QW_ADULT11_5>
+		<QW_ADULT11_6 type="java.lang.String">Да</QW_ADULT11_6>
+		<QW_ADULT11_7 type="java.lang.String">Да</QW_ADULT11_7>
+		<QW_ADULT11_8 type="java.lang.String">Да</QW_ADULT11_8>
+		<QW_ADULT12 type="java.lang.String">Да</QW_ADULT12>
+		<QW_ADULT12_1 type="java.lang.String">Да</QW_ADULT12_1>
+		<QW_ADULT12_2 type="java.lang.String">Да</QW_ADULT12_2>
+		<QW_ADULT12_3 type="java.lang.String">Да</QW_ADULT12_3>
+		<QW_ADULT13 type="java.lang.String">Да</QW_ADULT13>
+		<QW_ADULT13_1 type="java.lang.String">Да</QW_ADULT13_1>
+		<QW_ADULT13_2 type="java.lang.String">Да</QW_ADULT13_2>
+		<QW_ADULT13_3 type="java.lang.String">Да</QW_ADULT13_3>
+		<QW_ADULT13_4 type="java.lang.String">Да</QW_ADULT13_4>
+		<QW_ADULT14 type="java.lang.String">Да</QW_ADULT14>
+		<QW_ADULT14_1 type="java.lang.String">Да</QW_ADULT14_1>
+		<QW_ADULT14_2 type="java.lang.String">Да</QW_ADULT14_2>
+		<QW_ADULT14_3 type="java.lang.String">Да</QW_ADULT14_3>
+		<QW_ADULT15 type="java.lang.String">Да</QW_ADULT15>
+		<QW_ADULT15_1 type="java.lang.String">Да</QW_ADULT15_1>
+		<QW_ADULT15_1_1 type="java.lang.String">Да</QW_ADULT15_1_1>
+		<QW_ADULT15_1_2 type="java.lang.String">Да</QW_ADULT15_1_2>
+		<QW_ADULT15_1_3 type="java.lang.String">Да</QW_ADULT15_1_3>
+		<QW_ADULT15_1_4 type="java.lang.String">Да</QW_ADULT15_1_4>
+		<QW_ADULT15_1_5 type="java.lang.String">Да</QW_ADULT15_1_5>
+		<QW_ADULT15_1_6 type="java.lang.String">Да</QW_ADULT15_1_6>
+		<QW_ADULT15_1_7 type="java.lang.String">Да</QW_ADULT15_1_7>
+		<QW_ADULT15_2 type="java.lang.String">Да</QW_ADULT15_2>
+		<QW_ADULT15_2_1 type="java.lang.String">Да</QW_ADULT15_2_1>
+		<QW_ADULT15_2_2 type="java.lang.String">Да</QW_ADULT15_2_2>
+		<QW_ADULT15_2_3 type="java.lang.String">Да</QW_ADULT15_2_3>
+		<QW_ADULT15_2_4 type="java.lang.String">Да</QW_ADULT15_2_4>
+		<QW_ADULT15_2_5 type="java.lang.String">Да</QW_ADULT15_2_5>
+		<QW_ADULT15_2_6 type="java.lang.String">Да</QW_ADULT15_2_6>
+		<QW_ADULT15_2_7 type="java.lang.String">Да</QW_ADULT15_2_7>
+		<QW_ADULT15_3 type="java.lang.String">Да</QW_ADULT15_3>
+		<QW_ADULT15_3_1 type="java.lang.String">Да</QW_ADULT15_3_1>
+		<QW_ADULT15_3_2 type="java.lang.String">Да</QW_ADULT15_3_2>
+		<QW_ADULT15_3_3 type="java.lang.String">Да</QW_ADULT15_3_3>
+		<QW_ADULT15_3_4 type="java.lang.String">Да</QW_ADULT15_3_4>
+		<QW_ADULT15_3_5 type="java.lang.String">Да</QW_ADULT15_3_5>
+		<QW_ADULT15_3_6 type="java.lang.String">Да</QW_ADULT15_3_6>
+		<QW_ADULT15_3_7 type="java.lang.String">Да</QW_ADULT15_3_7>
+		<QW_ADULT15_4 type="java.lang.String">Да</QW_ADULT15_4>
+		<QW_ADULT15_4_1 type="java.lang.String">Да</QW_ADULT15_4_1>
+		<QW_ADULT15_4_2 type="java.lang.String">Да</QW_ADULT15_4_2>
+		<QW_ADULT15_4_3 type="java.lang.String">Да</QW_ADULT15_4_3>
+		<QW_ADULT15_4_4 type="java.lang.String">Да</QW_ADULT15_4_4>
+		<QW_ADULT15_4_5 type="java.lang.String">Да</QW_ADULT15_4_5>
+		<QW_ADULT15_4_6 type="java.lang.String">Да</QW_ADULT15_4_6>
+		<QW_ADULT15_4_7 type="java.lang.String">Да</QW_ADULT15_4_7>
+		<QW_ADULT15_5 type="java.lang.String">Да</QW_ADULT15_5>
+		<QW_ADULT15_5_1 type="java.lang.String">Да</QW_ADULT15_5_1>
+		<QW_ADULT15_5_2 type="java.lang.String">Да</QW_ADULT15_5_2>
+		<QW_ADULT15_5_3 type="java.lang.String">Да</QW_ADULT15_5_3>
+		<QW_ADULT15_5_4 type="java.lang.String">Да</QW_ADULT15_5_4>
+		<QW_ADULT15_5_5 type="java.lang.String">Да</QW_ADULT15_5_5>
+		<QW_ADULT15_5_6 type="java.lang.String">Да</QW_ADULT15_5_6>
+		<QW_ADULT15_5_7 type="java.lang.String">Да</QW_ADULT15_5_7>
+		<QW_ADULT15_6 type="java.lang.String">Да</QW_ADULT15_6>
+		<QW_ADULT15_6_1 type="java.lang.String">Да</QW_ADULT15_6_1>
+		<QW_ADULT15_6_2 type="java.lang.String">Да</QW_ADULT15_6_2>
+		<QW_ADULT15_6_3 type="java.lang.String">Да</QW_ADULT15_6_3>
+		<QW_ADULT15_6_4 type="java.lang.String">Да</QW_ADULT15_6_4>
+		<QW_ADULT15_6_5 type="java.lang.String">Да</QW_ADULT15_6_5>
+		<QW_ADULT15_6_6 type="java.lang.String">Да</QW_ADULT15_6_6>
+		<QW_ADULT15_6_7 type="java.lang.String">Да</QW_ADULT15_6_7>
+		<QW_ADULT15_6_8 type="java.lang.String">Да</QW_ADULT15_6_8>
+		<QW_ADULT15_6_9 type="java.lang.String">Да</QW_ADULT15_6_9>
+		<QW_ADULT15_6_10 type="java.lang.String">Да</QW_ADULT15_6_10>
+		<QW_ADULT15_7 type="java.lang.String">Да</QW_ADULT15_7>
+		<QW_ADULT15_7_1 type="java.lang.String">Да</QW_ADULT15_7_1>
+		<QW_ADULT15_7_2 type="java.lang.String">Да</QW_ADULT15_7_2>
+		<QW_ADULT15_7_3 type="java.lang.String">Да</QW_ADULT15_7_3>
+		<QW_ADULT15_7_4 type="java.lang.String">Да</QW_ADULT15_7_4>
+		<QW_ADULT15_7_5 type="java.lang.String">Да</QW_ADULT15_7_5>
+		<QW_ADULT15_7_6 type="java.lang.String">Да</QW_ADULT15_7_6>
+		<QW_ADULT15_7_7 type="java.lang.String">Да</QW_ADULT15_7_7>
+		<QW_ADULT15_8 type="java.lang.String">Да</QW_ADULT15_8>
+		<QW_ADULT15_8_1 type="java.lang.String">Да</QW_ADULT15_8_1>
+		<QW_ADULT15_8_2 type="java.lang.String">Да</QW_ADULT15_8_2>
+		<QW_ADULT15_8_3 type="java.lang.String">Да</QW_ADULT15_8_3>
+		<QW_ADULT15_8_4 type="java.lang.String">Да</QW_ADULT15_8_4>
+		<QW_ADULT15_8_5 type="java.lang.String">Да</QW_ADULT15_8_5>
+		<QW_ADULT15_8_6 type="java.lang.String">Да</QW_ADULT15_8_6>
+		<QW_ADULT15_8_7 type="java.lang.String">Да</QW_ADULT15_8_7>
+		<QW_ADULT15_9 type="java.lang.String">Да</QW_ADULT15_9>
+		<QW_ADULT15_9_1 type="java.lang.String">Да</QW_ADULT15_9_1>
+		<QW_ADULT15_9_2 type="java.lang.String">Да</QW_ADULT15_9_2>
+		<QW_ADULT15_9_3 type="java.lang.String">Да</QW_ADULT15_9_3>
+		<QW_ADULT15_9_4 type="java.lang.String">Да</QW_ADULT15_9_4>
+		<QW_ADULT15_9_5 type="java.lang.String">Да</QW_ADULT15_9_5>
+		<QW_ADULT15_9_6 type="java.lang.String">Да</QW_ADULT15_9_6>
+		<QW_ADULT15_9_7 type="java.lang.String">Да</QW_ADULT15_9_7>
+		<QW_ADULT15_10 type="java.lang.String">Да</QW_ADULT15_10>
+		<QW_ADULT15_10_1 type="java.lang.String">Да</QW_ADULT15_10_1>
+		<QW_ADULT15_10_2 type="java.lang.String">Да</QW_ADULT15_10_2>
+		<QW_ADULT15_10_3 type="java.lang.String">Да</QW_ADULT15_10_3>
+		<QW_ADULT15_10_4 type="java.lang.String">Да</QW_ADULT15_10_4>
+		<QW_ADULT15_10_5 type="java.lang.String">Да</QW_ADULT15_10_5>
+		<QW_ADULT15_10_6 type="java.lang.String">Да</QW_ADULT15_10_6>
+		<QW_ADULT15_10_7 type="java.lang.String">Да</QW_ADULT15_10_7>
+		<QW_ADULT15_11 type="java.lang.String">Да</QW_ADULT15_11>
+		<QW_ADULT15_11_1 type="java.lang.String">Да</QW_ADULT15_11_1>
+		<QW_ADULT15_11_2 type="java.lang.String">Да</QW_ADULT15_11_2>
+		<QW_ADULT15_11_3 type="java.lang.String">Да</QW_ADULT15_11_3>
+		<QW_ADULT15_11_4 type="java.lang.String">Да</QW_ADULT15_11_4>
+		<QW_ADULT15_11_5 type="java.lang.String">Да</QW_ADULT15_11_5>
+		<QW_ADULT15_11_6 type="java.lang.String">Да</QW_ADULT15_11_6>
+		<QW_ADULT15_11_7 type="java.lang.String">Да</QW_ADULT15_11_7>
+		<QW_ADULT15_12 type="java.lang.String">Да</QW_ADULT15_12>
+		<QW_ADULT15_12_1 type="java.lang.String">Да</QW_ADULT15_12_1>
+		<QW_ADULT15_12_2 type="java.lang.String">Да</QW_ADULT15_12_2>
+		<QW_ADULT15_12_3 type="java.lang.String">Да</QW_ADULT15_12_3>
+		<QW_ADULT15_12_4 type="java.lang.String">Да</QW_ADULT15_12_4>
+		<QW_ADULT15_12_5 type="java.lang.String">Да</QW_ADULT15_12_5>
+		<QW_ADULT15_12_6 type="java.lang.String">Да</QW_ADULT15_12_6>
+		<QW_ADULT15_12_7 type="java.lang.String">Да</QW_ADULT15_12_7>
+		<QW_ADULT15_13 type="java.lang.String">Да</QW_ADULT15_13>
+		<QW_ADULT15_13_1 type="java.lang.String">Да</QW_ADULT15_13_1>
+		<QW_ADULT15_13_2 type="java.lang.String">Да</QW_ADULT15_13_2>
+		<QW_ADULT15_13_3 type="java.lang.String">Да</QW_ADULT15_13_3>
+		<QW_ADULT15_13_4 type="java.lang.String">Да</QW_ADULT15_13_4>
+		<QW_ADULT15_13_5 type="java.lang.String">Да</QW_ADULT15_13_5>
+		<QW_ADULT15_13_6 type="java.lang.String">Да</QW_ADULT15_13_6>
+		<QW_ADULT15_13_7 type="java.lang.String">Да</QW_ADULT15_13_7>
+		<QW_ADULT15_14 type="java.lang.String">Да</QW_ADULT15_14>
+		<QW_ADULT15_14_1 type="java.lang.String">Да</QW_ADULT15_14_1>
+		<QW_ADULT16 type="java.lang.String">Да</QW_ADULT16>
+		<QW_ADULT16_1 type="java.lang.String">Да</QW_ADULT16_1>
+		<QW_ADULT16_2 type="java.lang.String">Да</QW_ADULT16_2>
+		<QW_ADULT16_3 type="java.lang.String">Да</QW_ADULT16_3>
+		<QW_ADULT16_4 type="java.lang.String">Да</QW_ADULT16_4>
+		<QW_ADULT16_5 type="java.lang.String">Да</QW_ADULT16_5>
+		<QW_ADULT16_6 type="java.lang.String">Да</QW_ADULT16_6>
+		<QW_ADULT16_7 type="java.lang.String">Да</QW_ADULT16_7>
+		<QW_ADULT17 type="java.lang.String">Да</QW_ADULT17>
+		<QW_ADULT17_1 type="java.lang.String">Да</QW_ADULT17_1>
+		<QW_ADULT17_2 type="java.lang.String">Да</QW_ADULT17_2>
+		<QW_ADULT17_3 type="java.lang.String">Да</QW_ADULT17_3>
+		<QW_ADULT17_4 type="java.lang.String">Да</QW_ADULT17_4>
+		<QW_ADULT17_5 type="java.lang.String">Да</QW_ADULT17_5>
+		<QW_ADULT17_6 type="java.lang.String">Да</QW_ADULT17_6>
+		<QW_ADULT17_7 type="java.lang.String">Да</QW_ADULT17_7>
+		<QW_ADULT18 type="java.lang.String">Да</QW_ADULT18>
+		<QW_ADULT18_1 type="java.lang.String">Да</QW_ADULT18_1>
+		<QW_ADULT18_2 type="java.lang.String">Да</QW_ADULT18_2>
+		<QW_ADULT18_3 type="java.lang.String">Да</QW_ADULT18_3>
+		<QW_ADULT18_4 type="java.lang.String">Да</QW_ADULT18_4>
+		<QW_ADULT18_5 type="java.lang.String">Да</QW_ADULT18_5>
+		<QW_ADULT18_6 type="java.lang.String">Да</QW_ADULT18_6>
+		<QW_ADULT18_7 type="java.lang.String">Да</QW_ADULT18_7>
+		<QW_ADULT19 type="java.lang.String">Да</QW_ADULT19>
+		<QW_ADULT19_1 type="java.lang.String">Да</QW_ADULT19_1>
+		<QW_ADULT19_2 type="java.lang.String">Да</QW_ADULT19_2>
+		<QW_ADULT19_3 type="java.lang.String">Да</QW_ADULT19_3>
+		<QW_ADULT20 type="java.lang.String">Да</QW_ADULT20>
+		<QW_ADULT20_1 type="java.lang.String">Да</QW_ADULT20_1>
+		<QW_ADULT20_2 type="java.lang.String">Да</QW_ADULT20_2>
+		<QW_ADULT20_3 type="java.lang.String">Да</QW_ADULT20_3>
+		<QW_ADULT21 type="java.lang.String">Да</QW_ADULT21>
+		<QW_ADULT22 type="java.lang.String">Да</QW_ADULT22>
+		<QW_ADULT23 type="java.lang.String">Да</QW_ADULT23>
+		<QW_ADULT23_1 type="java.lang.String">Да</QW_ADULT23_1>
+		<QW_ADULT23_2 type="java.lang.String">Да</QW_ADULT23_2>
+		<QW_ADULT23_3 type="java.lang.String">Да</QW_ADULT23_3>
+		<QW_ADULT24 type="java.lang.String">Да</QW_ADULT24>
+		<QW_ADULT25 type="java.lang.String">Да</QW_ADULT25>
+		<QW_ADULT26 type="java.lang.String">Да</QW_ADULT26>
+		<QW_ADULT26_1 type="java.lang.String">Да</QW_ADULT26_1>
+		<QW_ADULT27 type="java.lang.String">Нет</QW_ADULT27>
+		<QW_ADULT27_1 type="java.lang.String">Да</QW_ADULT27_1>
+		<QW_ADULT27_2 type="java.lang.String">Да</QW_ADULT27_2>
+		<QW_ADULT27_3 type="java.lang.String">Да</QW_ADULT27_3>
+		<QW_ADULT27_4 type="java.lang.String">Да</QW_ADULT27_4>
+		<QW_ADULT27_5 type="java.lang.String">Да</QW_ADULT27_5>
+		<QW_ADULT27_6 type="java.lang.String">Да</QW_ADULT27_6>
+		<QW_ADULT27_7 type="java.lang.String">Да</QW_ADULT27_7>
+		<QW_ADULT27_8 type="java.lang.String">Да</QW_ADULT27_8>
+		<QW_ADULT27_9 type="java.lang.String">Да</QW_ADULT27_9>		
+		<QW_CHILD1 type="java.lang.String">Да</QW_CHILD1>
+		<QW_CHILD1_1 type="java.lang.String">Да</QW_CHILD1_1>
+		<QW_CHILD1_2 type="java.lang.String">Да</QW_CHILD1_2>
+		<QW_CHILD1_3 type="java.lang.String">Да</QW_CHILD1_3>
+		<QW_CHILD1_4 type="java.lang.String">Да</QW_CHILD1_4>
+		<QW_CHILD1_5 type="java.lang.String">Да</QW_CHILD1_5>
+		<QW_CHILD1_6 type="java.lang.String">Да</QW_CHILD1_6>
+		<QW_CHILD2 type="java.lang.String">Да</QW_CHILD2>
+		<QW_CHILD2_1 type="java.lang.String">Да</QW_CHILD2_1>
+		<QW_CHILD2_2 type="java.lang.String">Да</QW_CHILD2_2>
+		<QW_CHILD2_3 type="java.lang.String">Да</QW_CHILD2_3>
+		<QW_CHILD2_4 type="java.lang.String">Да</QW_CHILD2_4>
+		<QW_CHILD2_5 type="java.lang.String">Да</QW_CHILD2_5>
+		<QW_CHILD3 type="java.lang.String">Да</QW_CHILD3>
+		<QW_CHILD3_1 type="java.lang.String">Да</QW_CHILD3_1>
+		<QW_CHILD3_2 type="java.lang.String">Да</QW_CHILD3_2>
+		<QW_CHILD4 type="java.lang.String">Да</QW_CHILD4>
+		<QW_CHILD4_1 type="java.lang.String">Да</QW_CHILD4_1>
+		<QW_CHILD4_2 type="java.lang.String">Да</QW_CHILD4_2>
+		<QW_CHILD4_3 type="java.lang.String">Да</QW_CHILD4_3>
+		<QW_CHILD4_4 type="java.lang.String">Да</QW_CHILD4_4>
+		<QW_CHILD5 type="java.lang.String">Да</QW_CHILD5>
+		<QW_CHILD5_1 type="java.lang.String">Да</QW_CHILD5_1>
+		<QW_CHILD5_2 type="java.lang.String">Да</QW_CHILD5_2>
+		<QW_CHILD5_3 type="java.lang.String">Да</QW_CHILD5_3>
+		<QW_CHILD5_4 type="java.lang.String">Да</QW_CHILD5_4>
+		<QW_CHILD6 type="java.lang.String">Да</QW_CHILD6>
+		<QW_CHILD6_1 type="java.lang.String">Да</QW_CHILD6_1>
+		<QW_CHILD6_2 type="java.lang.String">Да</QW_CHILD6_2>
+		<QW_CHILD6_3 type="java.lang.String">Да</QW_CHILD6_3>
+		<QW_CHILD6_4 type="java.lang.String">Да</QW_CHILD6_4>
+		<QW_CHILD7 type="java.lang.String">Да</QW_CHILD7>
+		<QW_CHILD7_1 type="java.lang.String">Да</QW_CHILD7_1>
+		<QW_CHILD7_2 type="java.lang.String">Да</QW_CHILD7_2>
+		<QW_CHILD7_3 type="java.lang.String">Да</QW_CHILD7_3>
+		<QW_CHILD7_4 type="java.lang.String">Да</QW_CHILD7_4>
+		<QW_CHILD8 type="java.lang.String">Да</QW_CHILD8>
+		<QW_CHILD8_1 type="java.lang.String">Да</QW_CHILD8_1>
+		<QW_CHILD8_2 type="java.lang.String">Да</QW_CHILD8_2>
+		<QW_CHILD8_3 type="java.lang.String">Да</QW_CHILD8_3>
+		<QW_CHILD8_4 type="java.lang.String">Да</QW_CHILD8_4>
+		<QW_CHILD8_5 type="java.lang.String">Да</QW_CHILD8_5>
+		<QW_CHILD8_6 type="java.lang.String">Да</QW_CHILD8_6>
+		<QW_CHILD9 type="java.lang.String">Да</QW_CHILD9>
+		<QW_CHILD9_1 type="java.lang.String">Да</QW_CHILD9_1>
+		<QW_CHILD9_2 type="java.lang.String">Да</QW_CHILD9_2>
+		<QW_CHILD9_3 type="java.lang.String">Да</QW_CHILD9_3>
+		<QW_CHILD10 type="java.lang.String">Да</QW_CHILD10>
+		<QW_CHILD10_1 type="java.lang.String">Да</QW_CHILD10_1>
+		<QW_CHILD10_2 type="java.lang.String">Да</QW_CHILD10_2>
+		<QW_CHILD10_3 type="java.lang.String">Да</QW_CHILD10_3>
+		<QW_CHILD10_4 type="java.lang.String">Да</QW_CHILD10_4>
+		<QW_CHILD10_5 type="java.lang.String">Да</QW_CHILD10_5>
+		<QW_CHILD10_6 type="java.lang.String">Да</QW_CHILD10_6>
+		<QW_CHILD11 type="java.lang.String">Да</QW_CHILD11>
+		<QW_CHILD11_1 type="java.lang.String">Да</QW_CHILD11_1>
+		<QW_CHILD11_2 type="java.lang.String">Да</QW_CHILD11_2>
+		<QW_CHILD11_3 type="java.lang.String">Да</QW_CHILD11_3>
+		<QW_CHILD11_4 type="java.lang.String">Да</QW_CHILD11_4>
+		<QW_CHILD11_5 type="java.lang.String">Да</QW_CHILD11_5>
+		<QW_CHILD11_6 type="java.lang.String">Да</QW_CHILD11_6>
+		<QW_CHILD11_7 type="java.lang.String">Да</QW_CHILD11_7>
+		<QW_CHILD11_8 type="java.lang.String">Да</QW_CHILD11_8>
+		<QW_CHILD12 type="java.lang.String">Да</QW_CHILD12>
+		<QW_CHILD12_1 type="java.lang.String">Да</QW_CHILD12_1>
+		<QW_CHILD12_2 type="java.lang.String">Да</QW_CHILD12_2>
+		<QW_CHILD12_3 type="java.lang.String">Да</QW_CHILD12_3>
+		<QW_CHILD13 type="java.lang.String">Да</QW_CHILD13>
+		<QW_CHILD13_1 type="java.lang.String">Да</QW_CHILD13_1>
+		<QW_CHILD13_2 type="java.lang.String">Да</QW_CHILD13_2>
+		<QW_CHILD13_3 type="java.lang.String">Да</QW_CHILD13_3>
+		<QW_CHILD13_4 type="java.lang.String">Да</QW_CHILD13_4>
+		<QW_CHILD14 type="java.lang.String">Да</QW_CHILD14>
+		<QW_CHILD14_1 type="java.lang.String">Да</QW_CHILD14_1>
+		<QW_CHILD14_2 type="java.lang.String">Да</QW_CHILD14_2>
+		<QW_CHILD14_3 type="java.lang.String">Да</QW_CHILD14_3>
+		<QW_CHILD15 type="java.lang.String">Да</QW_CHILD15>
+		<QW_CHILD15_1 type="java.lang.String">Да</QW_CHILD15_1>
+		<QW_CHILD15_1_1 type="java.lang.String">Да</QW_CHILD15_1_1>
+		<QW_CHILD15_1_2 type="java.lang.String">Да</QW_CHILD15_1_2>
+		<QW_CHILD15_1_3 type="java.lang.String">Да</QW_CHILD15_1_3>
+		<QW_CHILD15_1_4 type="java.lang.String">Да</QW_CHILD15_1_4>
+		<QW_CHILD15_1_5 type="java.lang.String">Да</QW_CHILD15_1_5>
+		<QW_CHILD15_1_6 type="java.lang.String">Да</QW_CHILD15_1_6>
+		<QW_CHILD15_1_7 type="java.lang.String">Да</QW_CHILD15_1_7>
+		<QW_CHILD15_2 type="java.lang.String">Да</QW_CHILD15_2>
+		<QW_CHILD15_2_1 type="java.lang.String">Да</QW_CHILD15_2_1>
+		<QW_CHILD15_2_2 type="java.lang.String">Да</QW_CHILD15_2_2>
+		<QW_CHILD15_2_3 type="java.lang.String">Да</QW_CHILD15_2_3>
+		<QW_CHILD15_2_4 type="java.lang.String">Да</QW_CHILD15_2_4>
+		<QW_CHILD15_2_5 type="java.lang.String">Да</QW_CHILD15_2_5>
+		<QW_CHILD15_2_6 type="java.lang.String">Да</QW_CHILD15_2_6>
+		<QW_CHILD15_2_7 type="java.lang.String">Да</QW_CHILD15_2_7>
+		<QW_CHILD15_3 type="java.lang.String">Да</QW_CHILD15_3>
+		<QW_CHILD15_3_1 type="java.lang.String">Да</QW_CHILD15_3_1>
+		<QW_CHILD15_3_2 type="java.lang.String">Да</QW_CHILD15_3_2>
+		<QW_CHILD15_3_3 type="java.lang.String">Да</QW_CHILD15_3_3>
+		<QW_CHILD15_3_4 type="java.lang.String">Да</QW_CHILD15_3_4>
+		<QW_CHILD15_3_5 type="java.lang.String">Да</QW_CHILD15_3_5>
+		<QW_CHILD15_3_6 type="java.lang.String">Да</QW_CHILD15_3_6>
+		<QW_CHILD15_3_7 type="java.lang.String">Да</QW_CHILD15_3_7>
+		<QW_CHILD15_4 type="java.lang.String">Да</QW_CHILD15_4>
+		<QW_CHILD15_4_1 type="java.lang.String">Да</QW_CHILD15_4_1>
+		<QW_CHILD15_4_2 type="java.lang.String">Да</QW_CHILD15_4_2>
+		<QW_CHILD15_4_3 type="java.lang.String">Да</QW_CHILD15_4_3>
+		<QW_CHILD15_4_4 type="java.lang.String">Да</QW_CHILD15_4_4>
+		<QW_CHILD15_4_5 type="java.lang.String">Да</QW_CHILD15_4_5>
+		<QW_CHILD15_4_6 type="java.lang.String">Да</QW_CHILD15_4_6>
+		<QW_CHILD15_4_7 type="java.lang.String">Да</QW_CHILD15_4_7>
+		<QW_CHILD15_5 type="java.lang.String">Да</QW_CHILD15_5>
+		<QW_CHILD15_5_1 type="java.lang.String">Да</QW_CHILD15_5_1>
+		<QW_CHILD15_5_2 type="java.lang.String">Да</QW_CHILD15_5_2>
+		<QW_CHILD15_5_3 type="java.lang.String">Да</QW_CHILD15_5_3>
+		<QW_CHILD15_5_4 type="java.lang.String">Да</QW_CHILD15_5_4>
+		<QW_CHILD15_5_5 type="java.lang.String">Да</QW_CHILD15_5_5>
+		<QW_CHILD15_5_6 type="java.lang.String">Да</QW_CHILD15_5_6>
+		<QW_CHILD15_5_7 type="java.lang.String">Да</QW_CHILD15_5_7>
+		<QW_CHILD15_6 type="java.lang.String">Да</QW_CHILD15_6>
+		<QW_CHILD15_6_1 type="java.lang.String">Да</QW_CHILD15_6_1>
+		<QW_CHILD15_6_2 type="java.lang.String">Да</QW_CHILD15_6_2>
+		<QW_CHILD15_6_3 type="java.lang.String">Да</QW_CHILD15_6_3>
+		<QW_CHILD15_6_4 type="java.lang.String">Да</QW_CHILD15_6_4>
+		<QW_CHILD15_6_5 type="java.lang.String">Да</QW_CHILD15_6_5>
+		<QW_CHILD15_6_6 type="java.lang.String">Да</QW_CHILD15_6_6>
+		<QW_CHILD15_6_7 type="java.lang.String">Да</QW_CHILD15_6_7>
+		<QW_CHILD15_6_8 type="java.lang.String">Да</QW_CHILD15_6_8>
+		<QW_CHILD15_6_9 type="java.lang.String">Да</QW_CHILD15_6_9>
+		<QW_CHILD15_6_10 type="java.lang.String">Да</QW_CHILD15_6_10>
+		<QW_CHILD15_7 type="java.lang.String">Да</QW_CHILD15_7>
+		<QW_CHILD15_7_1 type="java.lang.String">Да</QW_CHILD15_7_1>
+		<QW_CHILD15_7_2 type="java.lang.String">Да</QW_CHILD15_7_2>
+		<QW_CHILD15_7_3 type="java.lang.String">Да</QW_CHILD15_7_3>
+		<QW_CHILD15_7_4 type="java.lang.String">Да</QW_CHILD15_7_4>
+		<QW_CHILD15_7_5 type="java.lang.String">Да</QW_CHILD15_7_5>
+		<QW_CHILD15_7_6 type="java.lang.String">Да</QW_CHILD15_7_6>
+		<QW_CHILD15_7_7 type="java.lang.String">Да</QW_CHILD15_7_7>
+		<QW_CHILD15_8 type="java.lang.String">Да</QW_CHILD15_8>
+		<QW_CHILD15_8_1 type="java.lang.String">Да</QW_CHILD15_8_1>
+		<QW_CHILD15_8_2 type="java.lang.String">Да</QW_CHILD15_8_2>
+		<QW_CHILD15_8_3 type="java.lang.String">Да</QW_CHILD15_8_3>
+		<QW_CHILD15_8_4 type="java.lang.String">Да</QW_CHILD15_8_4>
+		<QW_CHILD15_8_5 type="java.lang.String">Да</QW_CHILD15_8_5>
+		<QW_CHILD15_8_6 type="java.lang.String">Да</QW_CHILD15_8_6>
+		<QW_CHILD15_8_7 type="java.lang.String">Да</QW_CHILD15_8_7>
+		<QW_CHILD15_9 type="java.lang.String">Да</QW_CHILD15_9>
+		<QW_CHILD15_9_1 type="java.lang.String">Да</QW_CHILD15_9_1>
+		<QW_CHILD15_9_2 type="java.lang.String">Да</QW_CHILD15_9_2>
+		<QW_CHILD15_9_3 type="java.lang.String">Да</QW_CHILD15_9_3>
+		<QW_CHILD15_9_4 type="java.lang.String">Да</QW_CHILD15_9_4>
+		<QW_CHILD15_9_5 type="java.lang.String">Да</QW_CHILD15_9_5>
+		<QW_CHILD15_9_6 type="java.lang.String">Да</QW_CHILD15_9_6>
+		<QW_CHILD15_9_7 type="java.lang.String">Да</QW_CHILD15_9_7>
+		<QW_CHILD15_10 type="java.lang.String">Да</QW_CHILD15_10>
+		<QW_CHILD15_10_1 type="java.lang.String">Да</QW_CHILD15_10_1>
+		<QW_CHILD15_10_2 type="java.lang.String">Да</QW_CHILD15_10_2>
+		<QW_CHILD15_10_3 type="java.lang.String">Да</QW_CHILD15_10_3>
+		<QW_CHILD15_10_4 type="java.lang.String">Да</QW_CHILD15_10_4>
+		<QW_CHILD15_10_5 type="java.lang.String">Да</QW_CHILD15_10_5>
+		<QW_CHILD15_10_6 type="java.lang.String">Да</QW_CHILD15_10_6>
+		<QW_CHILD15_10_7 type="java.lang.String">Да</QW_CHILD15_10_7>
+		<QW_CHILD15_11 type="java.lang.String">Да</QW_CHILD15_11>
+		<QW_CHILD15_11_1 type="java.lang.String">Да</QW_CHILD15_11_1>
+		<QW_CHILD15_11_2 type="java.lang.String">Да</QW_CHILD15_11_2>
+		<QW_CHILD15_11_3 type="java.lang.String">Да</QW_CHILD15_11_3>
+		<QW_CHILD15_11_4 type="java.lang.String">Да</QW_CHILD15_11_4>
+		<QW_CHILD15_11_5 type="java.lang.String">Да</QW_CHILD15_11_5>
+		<QW_CHILD15_11_6 type="java.lang.String">Да</QW_CHILD15_11_6>
+		<QW_CHILD15_11_7 type="java.lang.String">Да</QW_CHILD15_11_7>
+		<QW_CHILD15_12 type="java.lang.String">Да</QW_CHILD15_12>
+		<QW_CHILD15_12_1 type="java.lang.String">Да</QW_CHILD15_12_1>
+		<QW_CHILD15_12_2 type="java.lang.String">Да</QW_CHILD15_12_2>
+		<QW_CHILD15_12_3 type="java.lang.String">Да</QW_CHILD15_12_3>
+		<QW_CHILD15_12_4 type="java.lang.String">Да</QW_CHILD15_12_4>
+		<QW_CHILD15_12_5 type="java.lang.String">Да</QW_CHILD15_12_5>
+		<QW_CHILD15_12_6 type="java.lang.String">Да</QW_CHILD15_12_6>
+		<QW_CHILD15_12_7 type="java.lang.String">Да</QW_CHILD15_12_7>
+		<QW_CHILD15_13 type="java.lang.String">Да</QW_CHILD15_13>
+		<QW_CHILD15_13_1 type="java.lang.String">Да</QW_CHILD15_13_1>
+		<QW_CHILD15_13_2 type="java.lang.String">Да</QW_CHILD15_13_2>
+		<QW_CHILD15_13_3 type="java.lang.String">Да</QW_CHILD15_13_3>
+		<QW_CHILD15_13_4 type="java.lang.String">Да</QW_CHILD15_13_4>
+		<QW_CHILD15_13_5 type="java.lang.String">Да</QW_CHILD15_13_5>
+		<QW_CHILD15_13_6 type="java.lang.String">Да</QW_CHILD15_13_6>
+		<QW_CHILD15_13_7 type="java.lang.String">Да</QW_CHILD15_13_7>
+		<QW_CHILD15_14 type="java.lang.String">Да</QW_CHILD15_14>
+		<QW_CHILD15_14_1 type="java.lang.String">Да</QW_CHILD15_14_1>
+		<QW_CHILD16 type="java.lang.String">Да</QW_CHILD16>
+		<QW_CHILD16_1 type="java.lang.String">Да</QW_CHILD16_1>
+		<QW_CHILD16_2 type="java.lang.String">Да</QW_CHILD16_2>
+		<QW_CHILD16_3 type="java.lang.String">Да</QW_CHILD16_3>
+		<QW_CHILD16_4 type="java.lang.String">Да</QW_CHILD16_4>
+		<QW_CHILD16_5 type="java.lang.String">Да</QW_CHILD16_5>
+		<QW_CHILD16_6 type="java.lang.String">Да</QW_CHILD16_6>
+		<QW_CHILD16_7 type="java.lang.String">Да</QW_CHILD16_7>
+		<QW_CHILD17 type="java.lang.String">Да</QW_CHILD17>
+		<QW_CHILD17_1 type="java.lang.String">Да</QW_CHILD17_1>
+		<QW_CHILD17_2 type="java.lang.String">Да</QW_CHILD17_2>
+		<QW_CHILD17_3 type="java.lang.String">Да</QW_CHILD17_3>
+		<QW_CHILD17_4 type="java.lang.String">Да</QW_CHILD17_4>
+		<QW_CHILD17_5 type="java.lang.String">Да</QW_CHILD17_5>
+		<QW_CHILD17_6 type="java.lang.String">Да</QW_CHILD17_6>
+		<QW_CHILD17_7 type="java.lang.String">Да</QW_CHILD17_7>
+		<QW_CHILD18 type="java.lang.String">Да</QW_CHILD18>
+		<QW_CHILD18_1 type="java.lang.String">Да</QW_CHILD18_1>
+		<QW_CHILD18_2 type="java.lang.String">Да</QW_CHILD18_2>
+		<QW_CHILD18_3 type="java.lang.String">Да</QW_CHILD18_3>
+		<QW_CHILD18_4 type="java.lang.String">Да</QW_CHILD18_4>
+		<QW_CHILD18_5 type="java.lang.String">Да</QW_CHILD18_5>
+		<QW_CHILD18_6 type="java.lang.String">Да</QW_CHILD18_6>
+		<QW_CHILD18_7 type="java.lang.String">Да</QW_CHILD18_7>
+		<QW_CHILD19 type="java.lang.String">Да</QW_CHILD19>
+		<QW_CHILD19_1 type="java.lang.String">Да</QW_CHILD19_1>
+		<QW_CHILD19_2 type="java.lang.String">Да</QW_CHILD19_2>
+		<QW_CHILD19_3 type="java.lang.String">Да</QW_CHILD19_3>
+		<QW_CHILD20 type="java.lang.String">Да</QW_CHILD20>
+		<QW_CHILD20_1 type="java.lang.String">Да</QW_CHILD20_1>
+		<QW_CHILD20_2 type="java.lang.String">Да</QW_CHILD20_2>
+		<QW_CHILD20_3 type="java.lang.String">Да</QW_CHILD20_3>
+		<QW_CHILD21 type="java.lang.String">Да</QW_CHILD21>
+		<QW_CHILD22 type="java.lang.String">Да</QW_CHILD22>
+		<QW_CHILD23 type="java.lang.String">Да</QW_CHILD23>
+		<QW_CHILD23_1 type="java.lang.String">Да</QW_CHILD23_1>
+		<QW_CHILD23_2 type="java.lang.String">Да</QW_CHILD23_2>
+		<QW_CHILD23_3 type="java.lang.String">Да</QW_CHILD23_3>
+		<QW_CHILD24 type="java.lang.String">Да</QW_CHILD24>
+		<QW_CHILD25 type="java.lang.String">Да</QW_CHILD25>
+		<QW_CHILD26 type="java.lang.String">Да</QW_CHILD26>
+		<QW_CHILD26_1 type="java.lang.String">Да</QW_CHILD26_1>
+		<QW_CHILD27 type="java.lang.String">Да</QW_CHILD27>
+		<QW_CHILD27_1 type="java.lang.String">Да</QW_CHILD27_1>
+		<QW_CHILD27_2 type="java.lang.String">Да</QW_CHILD27_2>
+		<QW_CHILD27_3 type="java.lang.String">Да</QW_CHILD27_3>
+		<QW_CHILD27_4 type="java.lang.String">Да</QW_CHILD27_4>
+		<QW_CHILD27_5 type="java.lang.String">Да</QW_CHILD27_5>
+		<QW_CHILD27_6 type="java.lang.String">Да</QW_CHILD27_6>
+		<QW_CHILD27_7 type="java.lang.String">Да</QW_CHILD27_7>
+		<QW_CHILD27_8 type="java.lang.String">Да</QW_CHILD27_8>
+		<QW_CHILD27_9 type="java.lang.String">Да</QW_CHILD27_9>		
+	</DECLFULLMAP>			
+	
+	<DECLCHILDMAP type="java.util.Map">		
+		<APPLNUM type="java.lang.String">4</APPLNUM>
+		<SUMOVERLIMIT type="java.lang.String">FALSE</SUMOVERLIMIT>
+		<SPORTSTR type="java.lang.String">гребибля, гребубля, смотрибля</SPORTSTR>
+		<QW1 type="java.lang.String">Да</QW1>
+		<QW1_1 type="java.lang.String">Да</QW1_1>
+		<QW1_2 type="java.lang.String">Да</QW1_2>
+		<QW1_3 type="java.lang.String">Да</QW1_3>
+		<QW2 type="java.lang.String">Да</QW2>
+		<QW2_1 type="java.lang.String">Да</QW2_1>
+		<QW3 type="java.lang.String">Да</QW3>
+		<QW3_1 type="java.lang.String">Да</QW3_1>
+		<QW3_2 type="java.lang.String">Да</QW3_2>
+		<QW3_3 type="java.lang.String">Да</QW3_3>
+		<QW3_4 type="java.lang.String">Да</QW3_4>
+		<QW3_5 type="java.lang.String">Да</QW3_5>
+		<QW3_6 type="java.lang.String">Да</QW3_6>
+		<QW4 type="java.lang.String">Да</QW4>
+		<QW4_1 type="java.lang.String">Да</QW4_1>
+		<QW4_2 type="java.lang.String">Да</QW4_2>
+		<QW4_3 type="java.lang.String">Да</QW4_3>
+		<QW4_4 type="java.lang.String">Да</QW4_4>
+		<QW5 type="java.lang.String">Да</QW5>
+		<QW5_1 type="java.lang.String">Да</QW5_1>
+		<QW5_2 type="java.lang.String">Да</QW5_2>
+		<QW6 type="java.lang.String">Да</QW6>
+		<QW6_1 type="java.lang.String">Да</QW6_1>
+		<QW6_2 type="java.lang.String">Да</QW6_2>
+		<QW6_3 type="java.lang.String">Да</QW6_3>
+		<QW6_4 type="java.lang.String">Да</QW6_4>
+		<QW6_5 type="java.lang.String">Да</QW6_5>
+		<QW7 type="java.lang.String">Да</QW7>
+		<QW7_1 type="java.lang.String">Да</QW7_1>
+		<QW7_2 type="java.lang.String">Да</QW7_2>
+		<QW7_3 type="java.lang.String">Да</QW7_3>
+		<QW7_4 type="java.lang.String">Да</QW7_4>
+		<QW7_5 type="java.lang.String">Да</QW7_5>
+		<QW8 type="java.lang.String">Да</QW8>
+		<QW8_1 type="java.lang.String">Да</QW8_1>
+		<QW8_2 type="java.lang.String">Да</QW8_2>
+		<QW8_3 type="java.lang.String">Да</QW8_3>
+		<QW8_4 type="java.lang.String">Да</QW8_4>
+		<QW8_5 type="java.lang.String">Да</QW8_5>
+		<QW9 type="java.lang.String">Да</QW9>
+		<QW9_1 type="java.lang.String">Да</QW9_1>
+		<QW9_2 type="java.lang.String">Да</QW9_2>
+		<QW9_3 type="java.lang.String">Да</QW9_3>
+		<QW9_4 type="java.lang.String">Да</QW9_4>
+		<QW9_5 type="java.lang.String">Да</QW9_5>
+		<QW10 type="java.lang.String">Да</QW10>
+		<QW10_1 type="java.lang.String">Да</QW10_1>
+		<QW10_2 type="java.lang.String">Да</QW10_2>
+		<QW10_3 type="java.lang.String">Да</QW10_3>
+		<QW10_4 type="java.lang.String">Да</QW10_4>
+		<QW10_5 type="java.lang.String">Да</QW10_5>
+		<QW11 type="java.lang.String">Да</QW11>
+		<QW11_1 type="java.lang.String">Да</QW11_1>
+		<QW11_2 type="java.lang.String">Да</QW11_2>
+		<QW11_3 type="java.lang.String">Да</QW11_3>
+		<QW11_4 type="java.lang.String">Да</QW11_4>
+		<QW11_5 type="java.lang.String">Да</QW11_5>
+		<QW12 type="java.lang.String">Да</QW12>
+		<QW12_1 type="java.lang.String">Да</QW12_1>
+		<QW12_2 type="java.lang.String">Да</QW12_2>
+		<QW12_3 type="java.lang.String">Да</QW12_3>
+		<QW12_4 type="java.lang.String">Да</QW12_4>
+		<QW12_5 type="java.lang.String">Да</QW12_5>
+		<QW12_6 type="java.lang.String">Да</QW12_6>
+		<QW13 type="java.lang.String">Да</QW13>		
+	</DECLCHILDMAP>			
+
+	<INSSUMCHGLIST type="java.util.List">
+		<ListItems>
+			<Item type="java.util.Map">
+				<PERIODSTARTDATESTR type="java.lang.String">01.01.2018</PERIODSTARTDATESTR>
+				<PERIODFINISHDATESTR type="java.lang.String">01.01.2019</PERIODFINISHDATESTR>
+				<CHGINSAMVALUESTR type="java.lang.String">111 111,00</CHGINSAMVALUESTR>
+			</Item>
+			<Item type="java.util.Map">
+				<PERIODSTARTDATESTR type="java.lang.String">01.01.2019</PERIODSTARTDATESTR>
+				<PERIODFINISHDATESTR type="java.lang.String">01.01.2020</PERIODFINISHDATESTR>
+				<CHGINSAMVALUESTR type="java.lang.String">222 222,00</CHGINSAMVALUESTR>
+			</Item>			
+			<Item type="java.util.Map">
+				<PERIODSTARTDATESTR type="java.lang.String">01.01.2020</PERIODSTARTDATESTR>
+				<PERIODFINISHDATESTR type="java.lang.String">01.01.2021</PERIODFINISHDATESTR>
+				<CHGINSAMVALUESTR type="java.lang.String">333 333,00</CHGINSAMVALUESTR>
+			</Item>			
+		</ListItems>
+	</INSSUMCHGLIST>
+	
+	<PREMCHGLIST type="java.util.List">
+		<ListItems>
+			<Item type="java.util.Map">
+				<PAYBEFOREDATESTR type="java.lang.String">01.01.2018</PAYBEFOREDATESTR>
+				<INSTARIFVALUESTR type="java.lang.String">1.01</INSTARIFVALUESTR>
+				<CHGPREMVALUESTR type="java.lang.String">111 111,00</CHGPREMVALUESTR>
+			</Item>
+			<Item type="java.util.Map">
+				<PAYBEFOREDATESTR type="java.lang.String">01.01.2019</PAYBEFOREDATESTR>
+				<INSTARIFVALUESTR type="java.lang.String">2.02</INSTARIFVALUESTR>
+				<CHGPREMVALUESTR type="java.lang.String">222 222,00</CHGPREMVALUESTR>
+			</Item>			
+			<Item type="java.util.Map">
+				<PAYBEFOREDATESTR type="java.lang.String">01.01.2020</PAYBEFOREDATESTR>
+				<INSTARIFVALUESTR type="java.lang.String">3.03</INSTARIFVALUESTR>
+				<CHGPREMVALUESTR type="java.lang.String">333 333,00</CHGPREMVALUESTR>
+			</Item>			
+		</ListItems>
+	</PREMCHGLIST>	
+	
+</BODY>	

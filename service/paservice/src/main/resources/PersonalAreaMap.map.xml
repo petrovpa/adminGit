@@ -1,0 +1,2021 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+	<db-entity name="PA_APPEAL">
+		<db-attribute name="APPEALDATE" type="FLOAT"/>
+		<db-attribute name="APPEALID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="APPEALNUMBER" type="VARCHAR" length="255"/>
+		<db-attribute name="APPEALOBJECTID" type="NUMERIC" length="19"/>
+		<db-attribute name="CATEGORYID" type="NUMERIC" length="19"/>
+		<db-attribute name="CONTRID" type="NUMERIC" length="19"/>
+		<db-attribute name="INITIATOREMAIL" type="VARCHAR" length="255"/>
+		<db-attribute name="INITIATORID" type="NUMERIC" length="19"/>
+		<db-attribute name="INITIATORNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="INITIATORPHONE" type="VARCHAR" length="255"/>
+		<db-attribute name="INITIATORSURNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="INITIATORTYPEID" type="NUMERIC" length="19"/>
+		<db-attribute name="SOURCEID" type="NUMERIC" length="19"/>
+		<db-attribute name="STATUSNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="STATUSSYSNAME" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="PA_APPEALHIST">
+		<db-attribute name="APPEALHISTID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="APPEALID" type="NUMERIC" length="19"/>
+		<db-attribute name="ISFAVORITE" type="NUMERIC" length="19"/>
+		<db-attribute name="ISUNREADED" type="NUMERIC" length="19"/>
+		<db-attribute name="MESSAGEDATE" type="FLOAT"/>
+		<db-attribute name="MESSAGETEXT" type="VARCHAR" length="1024"/>
+		<db-attribute name="USERACCOUNTID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="PA_CONTRACT">
+		<db-attribute name="CONTRID" type="NUMERIC" length="19"/>
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="PAOBJECTID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="PAUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="RELIABILITYLEVEL" type="NUMERIC" length="19"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="PA_GROUP">
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="GROUPID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="255"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="PA_USER">
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="EMAIL" type="VARCHAR" length="255"/>
+		<db-attribute name="GROUPID" type="NUMERIC" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="PHONENUMBER" type="VARCHAR" length="255"/>
+		<db-attribute name="SMSCODE" type="VARCHAR" length="255"/>
+		<db-attribute name="SMSCODEDATE" type="FLOAT"/>
+		<db-attribute name="STATUSDATE" type="FLOAT"/>
+		<db-attribute name="STATUSID" type="NUMERIC" length="19"/>
+		<db-attribute name="STATUSSYSNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="SURNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="USERID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+	</db-entity>
+	<obj-entity name="PaAppeal" dbEntityName="PA_APPEAL">
+		<obj-attribute name="appealDate" type="java.math.BigDecimal" db-attribute-path="APPEALDATE" note="Дата обращения"/>
+		<obj-attribute name="appealNumber" type="java.lang.String" db-attribute-path="APPEALNUMBER" note="Номер обращения"/>
+		<obj-attribute name="appealObjectId" type="java.lang.Long" db-attribute-path="APPEALOBJECTID" note="Объект обращения"/>
+		<obj-attribute name="categoryId" type="java.lang.Long" db-attribute-path="CATEGORYID" note="Категория обращения"/>
+		<obj-attribute name="contractId" type="java.lang.Long" db-attribute-path="CONTRID" note="ИД договора"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="APPEALID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД записи"/>
+		<obj-attribute name="initiatorEmail" type="java.lang.String" db-attribute-path="INITIATOREMAIL" note="Адрес электронной почты обратившегося"/>
+		<obj-attribute name="initiatorId" type="java.lang.Long" db-attribute-path="INITIATORID" note="ИД инициатора (либо Пользователь B2B, либо Пользователь личного кабинета)"/>
+		<obj-attribute name="initiatorName" type="java.lang.String" db-attribute-path="INITIATORNAME" note="Фамилия обратившегося"/>
+		<obj-attribute name="initiatorPhone" type="java.lang.String" db-attribute-path="INITIATORPHONE" note="Номер телефона обратившегося"/>
+		<obj-attribute name="initiatorSurname" type="java.lang.String" db-attribute-path="INITIATORSURNAME" note="Фамилия обратившегося"/>
+		<obj-attribute name="initiatorTypeId" type="java.lang.Long" db-attribute-path="INITIATORTYPEID" note="Тип инициатора (1 - Пользователь B2B, 2 - Пользователь личного кабинета, 3 - Отправитель с сайта)"/>
+		<obj-attribute name="sourceId" type="java.lang.Long" db-attribute-path="SOURCEID" note="ИД источника"/>
+		<obj-attribute name="statusName" type="java.lang.String" db-attribute-path="STATUSNAME" note="Статус"/>
+		<obj-attribute name="statusSysName" type="java.lang.String" db-attribute-path="STATUSSYSNAME" note="Системное наименование статуса"/>
+	</obj-entity>
+	<obj-entity name="PaAppealHist" dbEntityName="PA_APPEALHIST">
+		<obj-attribute name="appealId" type="java.lang.Long" db-attribute-path="APPEALID" note="ИД обращения"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="APPEALHISTID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД записи"/>
+		<obj-attribute name="isFavorite" type="java.lang.Long" db-attribute-path="ISFAVORITE" note="Является избранным"/>
+		<obj-attribute name="isUnreaded" type="java.lang.Long" db-attribute-path="ISUNREADED" note="Является не прочтенным"/>
+		<obj-attribute name="messageDate" type="java.math.BigDecimal" db-attribute-path="MESSAGEDATE" note="Дата отправки сообщения"/>
+		<obj-attribute name="messageText" type="java.lang.String" db-attribute-path="MESSAGETEXT" note="Текст сообщения"/>
+		<obj-attribute name="userAccountId" type="java.lang.Long" db-attribute-path="USERACCOUNTID" note="Пользователь B2B, отправитель (НЕ инициатор)"/>
+	</obj-entity>
+	<obj-entity name="PaContract" dbEntityName="PA_CONTRACT">
+		<obj-attribute name="contrid" type="java.lang.Long" db-attribute-path="CONTRID" note="Ид договора"/>
+		<obj-attribute name="createdate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания"/>
+		<obj-attribute name="createuserid" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="Пользователь создавший"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Имя пользователя"/>
+		<obj-attribute name="paobjectid" type="java.lang.Long" db-attribute-path="PAOBJECTID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="Ид объекта"/>
+		<obj-attribute name="pauserid" type="java.lang.Long" db-attribute-path="PAUSERID" note="Ид пользователя"/>
+		<obj-attribute name="reliabilitylevel" type="java.lang.Long" db-attribute-path="RELIABILITYLEVEL" note="Уровень достоверности"/>
+		<obj-attribute name="updatedate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата изменения"/>
+		<obj-attribute name="updateuserid" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="Пользователь изменивший запись"/>
+	</obj-entity>
+	<obj-entity name="PaGroup" dbEntityName="PA_GROUP">
+		<obj-attribute name="createdate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания"/>
+		<obj-attribute name="createuserid" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="Пользователь создавший"/>
+		<obj-attribute name="groupid" type="java.lang.Long" db-attribute-path="GROUPID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="Ид группы"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Имя"/>
+		<obj-attribute name="note" type="java.lang.String" db-attribute-path="NOTE" note="Описание"/>
+		<obj-attribute name="sysname" type="java.lang.String" db-attribute-path="SYSNAME" note="Системное имя"/>
+		<obj-attribute name="updatedate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата обновления"/>
+		<obj-attribute name="updateuserid" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="Пользователь обновивший запись"/>
+	</obj-entity>
+	<obj-entity name="PaUser" dbEntityName="PA_USER">
+		<obj-attribute name="createdate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания"/>
+		<obj-attribute name="createuserid" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="Пользователь создавший"/>
+		<obj-attribute name="email" type="java.lang.String" db-attribute-path="EMAIL" note="Емайл"/>
+		<obj-attribute name="groupid" type="java.lang.Long" db-attribute-path="GROUPID" note="Ид группы"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Имя пользователя"/>
+		<obj-attribute name="phoneNumber" type="java.lang.String" db-attribute-path="PHONENUMBER" note="Номер телефона"/>
+		<obj-attribute name="smsCode" type="java.lang.String" db-attribute-path="SMSCODE" note="Код смс"/>
+		<obj-attribute name="smsCodeDate" type="java.math.BigDecimal" db-attribute-path="SMSCODEDATE" note="Дата отправки смс кода"/>
+		<obj-attribute name="statusDate" type="java.math.BigDecimal" db-attribute-path="STATUSDATE" note="Дата перевода статуса"/>
+		<obj-attribute name="statusId" type="java.lang.Long" db-attribute-path="STATUSID" note="ИД статуса"/>
+		<obj-attribute name="statusSysName" type="java.lang.String" db-attribute-path="STATUSSYSNAME" note="Системное наименование статуса"/>
+		<obj-attribute name="surname" type="java.lang.String" db-attribute-path="SURNAME" note="Фамилия"/>
+		<obj-attribute name="updatedate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата изменения"/>
+		<obj-attribute name="updateuserid" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="Пользователь изменивший"/>
+		<obj-attribute name="userid" type="java.lang.Long" db-attribute-path="USERID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="Ид пользователя"/>
+	</obj-entity>
+<query name="dsPaAppealBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PersonalAreaMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.APPEALDATE', 'java.math.BigDecimal', 'APPEALDATE'),
+        #result('T.APPEALNUMBER', 'java.lang.String', 'APPEALNUMBER'),
+        #result('T.APPEALOBJECTID', 'java.lang.Long', 'APPEALOBJECTID'),
+        #result('T.CATEGORYID', 'java.lang.Long', 'CATEGORYID'),
+        #result('T.CONTRID', 'java.lang.Long', 'CONTRID'),
+        #result('T.APPEALID', 'java.lang.Long', 'APPEALID'),
+        #result('T.INITIATOREMAIL', 'java.lang.String', 'INITIATOREMAIL'),
+        #result('T.INITIATORID', 'java.lang.Long', 'INITIATORID'),
+        #result('T.INITIATORNAME', 'java.lang.String', 'INITIATORNAME'),
+        #result('T.INITIATORPHONE', 'java.lang.String', 'INITIATORPHONE'),
+        #result('T.INITIATORSURNAME', 'java.lang.String', 'INITIATORSURNAME'),
+        #result('T.INITIATORTYPEID', 'java.lang.Long', 'INITIATORTYPEID'),
+        #result('T.SOURCEID', 'java.lang.Long', 'SOURCEID'),
+        #result('T.STATUSNAME', 'java.lang.String', 'STATUSNAME'),
+        #result('T.STATUSSYSNAME', 'java.lang.String', 'STATUSSYSNAME') 
+       $ASPECTFIELDS 
+FROM 
+      PA_APPEAL T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($APPEALDATE) T.APPEALDATE = #bind($APPEALDATE 'FLOAT') #end 
+       #chunk($APPEALID) T.APPEALID = #bind($APPEALID 'NUMERIC') #end 
+       #chunk($APPEALNUMBER) T.APPEALNUMBER = #bind($APPEALNUMBER 'VARCHAR') #end 
+       #chunk($APPEALOBJECTID) T.APPEALOBJECTID = #bind($APPEALOBJECTID 'NUMERIC') #end 
+       #chunk($CATEGORYID) T.CATEGORYID = #bind($CATEGORYID 'NUMERIC') #end 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($INITIATOREMAIL) T.INITIATOREMAIL = #bind($INITIATOREMAIL 'VARCHAR') #end 
+       #chunk($INITIATORID) T.INITIATORID = #bind($INITIATORID 'NUMERIC') #end 
+       #chunk($INITIATORNAME) T.INITIATORNAME = #bind($INITIATORNAME 'VARCHAR') #end 
+       #chunk($INITIATORPHONE) T.INITIATORPHONE = #bind($INITIATORPHONE 'VARCHAR') #end 
+       #chunk($INITIATORSURNAME) T.INITIATORSURNAME = #bind($INITIATORSURNAME 'VARCHAR') #end 
+       #chunk($INITIATORTYPEID) T.INITIATORTYPEID = #bind($INITIATORTYPEID 'NUMERIC') #end 
+       #chunk($SOURCEID) T.SOURCEID = #bind($SOURCEID 'NUMERIC') #end 
+       #chunk($STATUSNAME) T.STATUSNAME = #bind($STATUSNAME 'VARCHAR') #end 
+       #chunk($STATUSSYSNAME) T.STATUSSYSNAME = #bind($STATUSSYSNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsPaAppealBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PersonalAreaMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.APPEALID)', 'java.lang.Long', 'CNT') 
+FROM 
+      PA_APPEAL T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($APPEALDATE) T.APPEALDATE = #bind($APPEALDATE 'FLOAT') #end 
+       #chunk($APPEALID) T.APPEALID = #bind($APPEALID 'NUMERIC') #end 
+       #chunk($APPEALNUMBER) T.APPEALNUMBER = #bind($APPEALNUMBER 'VARCHAR') #end 
+       #chunk($APPEALOBJECTID) T.APPEALOBJECTID = #bind($APPEALOBJECTID 'NUMERIC') #end 
+       #chunk($CATEGORYID) T.CATEGORYID = #bind($CATEGORYID 'NUMERIC') #end 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($INITIATOREMAIL) T.INITIATOREMAIL = #bind($INITIATOREMAIL 'VARCHAR') #end 
+       #chunk($INITIATORID) T.INITIATORID = #bind($INITIATORID 'NUMERIC') #end 
+       #chunk($INITIATORNAME) T.INITIATORNAME = #bind($INITIATORNAME 'VARCHAR') #end 
+       #chunk($INITIATORPHONE) T.INITIATORPHONE = #bind($INITIATORPHONE 'VARCHAR') #end 
+       #chunk($INITIATORSURNAME) T.INITIATORSURNAME = #bind($INITIATORSURNAME 'VARCHAR') #end 
+       #chunk($INITIATORTYPEID) T.INITIATORTYPEID = #bind($INITIATORTYPEID 'NUMERIC') #end 
+       #chunk($SOURCEID) T.SOURCEID = #bind($SOURCEID 'NUMERIC') #end 
+       #chunk($STATUSNAME) T.STATUSNAME = #bind($STATUSNAME 'VARCHAR') #end 
+       #chunk($STATUSSYSNAME) T.STATUSSYSNAME = #bind($STATUSSYSNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsPaAppealInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PersonalAreaMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO PA_APPEAL (
+APPEALDATE,
+APPEALID,
+APPEALNUMBER,
+APPEALOBJECTID,
+CATEGORYID,
+CONTRID,
+INITIATOREMAIL,
+INITIATORID,
+INITIATORNAME,
+INITIATORPHONE,
+INITIATORSURNAME,
+INITIATORTYPEID,
+SOURCEID,
+STATUSNAME,
+STATUSSYSNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($APPEALDATE 'FLOAT'),
+#bind($APPEALID 'NUMERIC'),
+#bind($APPEALNUMBER 'VARCHAR'),
+#bind($APPEALOBJECTID 'NUMERIC'),
+#bind($CATEGORYID 'NUMERIC'),
+#bind($CONTRID 'NUMERIC'),
+#bind($INITIATOREMAIL 'VARCHAR'),
+#bind($INITIATORID 'NUMERIC'),
+#bind($INITIATORNAME 'VARCHAR'),
+#bind($INITIATORPHONE 'VARCHAR'),
+#bind($INITIATORSURNAME 'VARCHAR'),
+#bind($INITIATORTYPEID 'NUMERIC'),
+#bind($SOURCEID 'NUMERIC'),
+#bind($STATUSNAME 'VARCHAR'),
+#bind($STATUSSYSNAME 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO PA_APPEAL (
+APPEALDATE,
+APPEALID,
+APPEALNUMBER,
+APPEALOBJECTID,
+CATEGORYID,
+CONTRID,
+INITIATOREMAIL,
+INITIATORID,
+INITIATORNAME,
+INITIATORPHONE,
+INITIATORSURNAME,
+INITIATORTYPEID,
+SOURCEID,
+STATUSNAME,
+STATUSSYSNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($APPEALDATE 'FLOAT'),
+#bind($APPEALID 'NUMERIC'),
+#bind($APPEALNUMBER 'VARCHAR'),
+#bind($APPEALOBJECTID 'NUMERIC'),
+#bind($CATEGORYID 'NUMERIC'),
+#bind($CONTRID 'NUMERIC'),
+#bind($INITIATOREMAIL 'VARCHAR'),
+#bind($INITIATORID 'NUMERIC'),
+#bind($INITIATORNAME 'VARCHAR'),
+#bind($INITIATORPHONE 'VARCHAR'),
+#bind($INITIATORSURNAME 'VARCHAR'),
+#bind($INITIATORTYPEID 'NUMERIC'),
+#bind($SOURCEID 'NUMERIC'),
+#bind($STATUSNAME 'VARCHAR'),
+#bind($STATUSSYSNAME 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO PA_APPEAL (
+APPEALDATE,
+APPEALID,
+APPEALNUMBER,
+APPEALOBJECTID,
+CATEGORYID,
+CONTRID,
+INITIATOREMAIL,
+INITIATORID,
+INITIATORNAME,
+INITIATORPHONE,
+INITIATORSURNAME,
+INITIATORTYPEID,
+SOURCEID,
+STATUSNAME,
+STATUSSYSNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($APPEALDATE 'FLOAT'),
+#bind($APPEALID 'NUMERIC'),
+#bind($APPEALNUMBER 'VARCHAR'),
+#bind($APPEALOBJECTID 'NUMERIC'),
+#bind($CATEGORYID 'NUMERIC'),
+#bind($CONTRID 'NUMERIC'),
+#bind($INITIATOREMAIL 'VARCHAR'),
+#bind($INITIATORID 'NUMERIC'),
+#bind($INITIATORNAME 'VARCHAR'),
+#bind($INITIATORPHONE 'VARCHAR'),
+#bind($INITIATORSURNAME 'VARCHAR'),
+#bind($INITIATORTYPEID 'NUMERIC'),
+#bind($SOURCEID 'NUMERIC'),
+#bind($STATUSNAME 'VARCHAR'),
+#bind($STATUSSYSNAME 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsPaAppealUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PersonalAreaMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.APPEALID = #bind($APPEALID 'NUMERIC') 
+#chunk($APPEALDATE) , T.APPEALDATE = #bind($APPEALDATE 'FLOAT') #end 
+#chunk($APPEALNUMBER) , T.APPEALNUMBER = #bind($APPEALNUMBER 'VARCHAR') #end 
+#chunk($APPEALOBJECTID) , T.APPEALOBJECTID = #bind($APPEALOBJECTID 'NUMERIC') #end 
+#chunk($CATEGORYID) , T.CATEGORYID = #bind($CATEGORYID 'NUMERIC') #end 
+#chunk($CONTRID) , T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+#chunk($INITIATOREMAIL) , T.INITIATOREMAIL = #bind($INITIATOREMAIL 'VARCHAR') #end 
+#chunk($INITIATORID) , T.INITIATORID = #bind($INITIATORID 'NUMERIC') #end 
+#chunk($INITIATORNAME) , T.INITIATORNAME = #bind($INITIATORNAME 'VARCHAR') #end 
+#chunk($INITIATORPHONE) , T.INITIATORPHONE = #bind($INITIATORPHONE 'VARCHAR') #end 
+#chunk($INITIATORSURNAME) , T.INITIATORSURNAME = #bind($INITIATORSURNAME 'VARCHAR') #end 
+#chunk($INITIATORTYPEID) , T.INITIATORTYPEID = #bind($INITIATORTYPEID 'NUMERIC') #end 
+#chunk($SOURCEID) , T.SOURCEID = #bind($SOURCEID 'NUMERIC') #end 
+#chunk($STATUSNAME) , T.STATUSNAME = #bind($STATUSNAME 'VARCHAR') #end 
+#chunk($STATUSSYSNAME) , T.STATUSSYSNAME = #bind($STATUSSYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      PA_APPEAL T 
+#chain('AND' 'WHERE') 
+       #chunk($APPEALID) T.APPEALID = #bind($APPEALID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.APPEALID = #bind($APPEALID 'NUMERIC') 
+#chunk($APPEALDATE) , T.APPEALDATE = #bind($APPEALDATE 'FLOAT') #end 
+#chunk($APPEALNUMBER) , T.APPEALNUMBER = #bind($APPEALNUMBER 'VARCHAR') #end 
+#chunk($APPEALOBJECTID) , T.APPEALOBJECTID = #bind($APPEALOBJECTID 'NUMERIC') #end 
+#chunk($CATEGORYID) , T.CATEGORYID = #bind($CATEGORYID 'NUMERIC') #end 
+#chunk($CONTRID) , T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+#chunk($INITIATOREMAIL) , T.INITIATOREMAIL = #bind($INITIATOREMAIL 'VARCHAR') #end 
+#chunk($INITIATORID) , T.INITIATORID = #bind($INITIATORID 'NUMERIC') #end 
+#chunk($INITIATORNAME) , T.INITIATORNAME = #bind($INITIATORNAME 'VARCHAR') #end 
+#chunk($INITIATORPHONE) , T.INITIATORPHONE = #bind($INITIATORPHONE 'VARCHAR') #end 
+#chunk($INITIATORSURNAME) , T.INITIATORSURNAME = #bind($INITIATORSURNAME 'VARCHAR') #end 
+#chunk($INITIATORTYPEID) , T.INITIATORTYPEID = #bind($INITIATORTYPEID 'NUMERIC') #end 
+#chunk($SOURCEID) , T.SOURCEID = #bind($SOURCEID 'NUMERIC') #end 
+#chunk($STATUSNAME) , T.STATUSNAME = #bind($STATUSNAME 'VARCHAR') #end 
+#chunk($STATUSSYSNAME) , T.STATUSSYSNAME = #bind($STATUSSYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      PA_APPEAL T 
+#chain('AND' 'WHERE') 
+       #chunk($APPEALID) T.APPEALID = #bind($APPEALID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       PA_APPEAL T 
+SET 
+    T.APPEALID = #bind($APPEALID 'NUMERIC') 
+#chunk($APPEALDATE) , T.APPEALDATE = #bind($APPEALDATE 'FLOAT') #end 
+#chunk($APPEALNUMBER) , T.APPEALNUMBER = #bind($APPEALNUMBER 'VARCHAR') #end 
+#chunk($APPEALOBJECTID) , T.APPEALOBJECTID = #bind($APPEALOBJECTID 'NUMERIC') #end 
+#chunk($CATEGORYID) , T.CATEGORYID = #bind($CATEGORYID 'NUMERIC') #end 
+#chunk($CONTRID) , T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+#chunk($INITIATOREMAIL) , T.INITIATOREMAIL = #bind($INITIATOREMAIL 'VARCHAR') #end 
+#chunk($INITIATORID) , T.INITIATORID = #bind($INITIATORID 'NUMERIC') #end 
+#chunk($INITIATORNAME) , T.INITIATORNAME = #bind($INITIATORNAME 'VARCHAR') #end 
+#chunk($INITIATORPHONE) , T.INITIATORPHONE = #bind($INITIATORPHONE 'VARCHAR') #end 
+#chunk($INITIATORSURNAME) , T.INITIATORSURNAME = #bind($INITIATORSURNAME 'VARCHAR') #end 
+#chunk($INITIATORTYPEID) , T.INITIATORTYPEID = #bind($INITIATORTYPEID 'NUMERIC') #end 
+#chunk($SOURCEID) , T.SOURCEID = #bind($SOURCEID 'NUMERIC') #end 
+#chunk($STATUSNAME) , T.STATUSNAME = #bind($STATUSNAME 'VARCHAR') #end 
+#chunk($STATUSSYSNAME) , T.STATUSSYSNAME = #bind($STATUSSYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($APPEALID) T.APPEALID = #bind($APPEALID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsPaAppealUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PersonalAreaMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.APPEALID = #bind($APPEALID 'NUMERIC') 
+#chunk($APPEALDATE) , TA.APPEALDATE = #bind($APPEALDATE 'FLOAT') #end 
+#chunk($APPEALNUMBER) , TA.APPEALNUMBER = #bind($APPEALNUMBER 'VARCHAR') #end 
+#chunk($APPEALOBJECTID) , TA.APPEALOBJECTID = #bind($APPEALOBJECTID 'NUMERIC') #end 
+#chunk($CATEGORYID) , TA.CATEGORYID = #bind($CATEGORYID 'NUMERIC') #end 
+#chunk($CONTRID) , TA.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+#chunk($INITIATOREMAIL) , TA.INITIATOREMAIL = #bind($INITIATOREMAIL 'VARCHAR') #end 
+#chunk($INITIATORID) , TA.INITIATORID = #bind($INITIATORID 'NUMERIC') #end 
+#chunk($INITIATORNAME) , TA.INITIATORNAME = #bind($INITIATORNAME 'VARCHAR') #end 
+#chunk($INITIATORPHONE) , TA.INITIATORPHONE = #bind($INITIATORPHONE 'VARCHAR') #end 
+#chunk($INITIATORSURNAME) , TA.INITIATORSURNAME = #bind($INITIATORSURNAME 'VARCHAR') #end 
+#chunk($INITIATORTYPEID) , TA.INITIATORTYPEID = #bind($INITIATORTYPEID 'NUMERIC') #end 
+#chunk($SOURCEID) , TA.SOURCEID = #bind($SOURCEID 'NUMERIC') #end 
+#chunk($STATUSNAME) , TA.STATUSNAME = #bind($STATUSNAME 'VARCHAR') #end 
+#chunk($STATUSSYSNAME) , TA.STATUSSYSNAME = #bind($STATUSSYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      PA_APPEAL TA 
+WHERE 
+     TA.APPEALID in ( 
+       SELECT 
+         T.APPEALID
+       FROM 
+         PA_APPEAL T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($APPEALID) T.APPEALID = #bind($APPEALID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.APPEALID = #bind($APPEALID 'NUMERIC') 
+#chunk($APPEALDATE) , TA.APPEALDATE = #bind($APPEALDATE 'FLOAT') #end 
+#chunk($APPEALNUMBER) , TA.APPEALNUMBER = #bind($APPEALNUMBER 'VARCHAR') #end 
+#chunk($APPEALOBJECTID) , TA.APPEALOBJECTID = #bind($APPEALOBJECTID 'NUMERIC') #end 
+#chunk($CATEGORYID) , TA.CATEGORYID = #bind($CATEGORYID 'NUMERIC') #end 
+#chunk($CONTRID) , TA.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+#chunk($INITIATOREMAIL) , TA.INITIATOREMAIL = #bind($INITIATOREMAIL 'VARCHAR') #end 
+#chunk($INITIATORID) , TA.INITIATORID = #bind($INITIATORID 'NUMERIC') #end 
+#chunk($INITIATORNAME) , TA.INITIATORNAME = #bind($INITIATORNAME 'VARCHAR') #end 
+#chunk($INITIATORPHONE) , TA.INITIATORPHONE = #bind($INITIATORPHONE 'VARCHAR') #end 
+#chunk($INITIATORSURNAME) , TA.INITIATORSURNAME = #bind($INITIATORSURNAME 'VARCHAR') #end 
+#chunk($INITIATORTYPEID) , TA.INITIATORTYPEID = #bind($INITIATORTYPEID 'NUMERIC') #end 
+#chunk($SOURCEID) , TA.SOURCEID = #bind($SOURCEID 'NUMERIC') #end 
+#chunk($STATUSNAME) , TA.STATUSNAME = #bind($STATUSNAME 'VARCHAR') #end 
+#chunk($STATUSSYSNAME) , TA.STATUSSYSNAME = #bind($STATUSSYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      PA_APPEAL TA 
+WHERE 
+     TA.APPEALID in ( 
+       SELECT 
+         T.APPEALID
+       FROM 
+         PA_APPEAL T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($APPEALID) T.APPEALID = #bind($APPEALID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       PA_APPEAL TA 
+SET 
+    TA.APPEALID = #bind($APPEALID 'NUMERIC') 
+#chunk($APPEALDATE) , TA.APPEALDATE = #bind($APPEALDATE 'FLOAT') #end 
+#chunk($APPEALNUMBER) , TA.APPEALNUMBER = #bind($APPEALNUMBER 'VARCHAR') #end 
+#chunk($APPEALOBJECTID) , TA.APPEALOBJECTID = #bind($APPEALOBJECTID 'NUMERIC') #end 
+#chunk($CATEGORYID) , TA.CATEGORYID = #bind($CATEGORYID 'NUMERIC') #end 
+#chunk($CONTRID) , TA.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+#chunk($INITIATOREMAIL) , TA.INITIATOREMAIL = #bind($INITIATOREMAIL 'VARCHAR') #end 
+#chunk($INITIATORID) , TA.INITIATORID = #bind($INITIATORID 'NUMERIC') #end 
+#chunk($INITIATORNAME) , TA.INITIATORNAME = #bind($INITIATORNAME 'VARCHAR') #end 
+#chunk($INITIATORPHONE) , TA.INITIATORPHONE = #bind($INITIATORPHONE 'VARCHAR') #end 
+#chunk($INITIATORSURNAME) , TA.INITIATORSURNAME = #bind($INITIATORSURNAME 'VARCHAR') #end 
+#chunk($INITIATORTYPEID) , TA.INITIATORTYPEID = #bind($INITIATORTYPEID 'NUMERIC') #end 
+#chunk($SOURCEID) , TA.SOURCEID = #bind($SOURCEID 'NUMERIC') #end 
+#chunk($STATUSNAME) , TA.STATUSNAME = #bind($STATUSNAME 'VARCHAR') #end 
+#chunk($STATUSSYSNAME) , TA.STATUSSYSNAME = #bind($STATUSSYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.APPEALID in ( 
+       SELECT 
+         T.APPEALID
+       FROM 
+         PA_APPEAL T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($APPEALID) T.APPEALID = #bind($APPEALID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsPaAppealDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PersonalAreaMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      PA_APPEAL T 
+#chain('AND' 'WHERE') 
+       #chunk($APPEALID) T.APPEALID = #bind($APPEALID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      PA_APPEAL T 
+#chain('AND' 'WHERE') 
+       #chunk($APPEALID) T.APPEALID = #bind($APPEALID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       PA_APPEAL T 
+#chain('AND' 'WHERE') 
+       #chunk($APPEALID) T.APPEALID = #bind($APPEALID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsPaAppealDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PersonalAreaMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      PA_APPEAL TA 
+WHERE 
+     TA.APPEALID in ( 
+       SELECT 
+         T.APPEALID
+       FROM 
+         PA_APPEAL T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($APPEALID) T.APPEALID = #bind($APPEALID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      PA_APPEAL TA 
+WHERE 
+     TA.APPEALID in ( 
+       SELECT 
+         T.APPEALID
+       FROM 
+         PA_APPEAL T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($APPEALID) T.APPEALID = #bind($APPEALID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       PA_APPEAL TA 
+WHERE 
+     TA.APPEALID in ( 
+       SELECT 
+         T.APPEALID
+       FROM 
+         PA_APPEAL T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($APPEALID) T.APPEALID = #bind($APPEALID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsPaAppealHistBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PersonalAreaMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.APPEALID', 'java.lang.Long', 'APPEALID'),
+        #result('T.APPEALHISTID', 'java.lang.Long', 'APPEALHISTID'),
+        #result('T.ISFAVORITE', 'java.lang.Long', 'ISFAVORITE'),
+        #result('T.ISUNREADED', 'java.lang.Long', 'ISUNREADED'),
+        #result('T.MESSAGEDATE', 'java.math.BigDecimal', 'MESSAGEDATE'),
+        #result('T.MESSAGETEXT', 'java.lang.String', 'MESSAGETEXT'),
+        #result('T.USERACCOUNTID', 'java.lang.Long', 'USERACCOUNTID') 
+       $ASPECTFIELDS 
+FROM 
+      PA_APPEALHIST T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($APPEALHISTID) T.APPEALHISTID = #bind($APPEALHISTID 'NUMERIC') #end 
+       #chunk($APPEALID) T.APPEALID = #bind($APPEALID 'NUMERIC') #end 
+       #chunk($ISFAVORITE) T.ISFAVORITE = #bind($ISFAVORITE 'NUMERIC') #end 
+       #chunk($ISUNREADED) T.ISUNREADED = #bind($ISUNREADED 'NUMERIC') #end 
+       #chunk($MESSAGEDATE) T.MESSAGEDATE = #bind($MESSAGEDATE 'FLOAT') #end 
+       #chunk($MESSAGETEXT) T.MESSAGETEXT = #bind($MESSAGETEXT 'VARCHAR') #end 
+       #chunk($USERACCOUNTID) T.USERACCOUNTID = #bind($USERACCOUNTID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsPaAppealHistBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PersonalAreaMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.APPEALHISTID)', 'java.lang.Long', 'CNT') 
+FROM 
+      PA_APPEALHIST T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($APPEALHISTID) T.APPEALHISTID = #bind($APPEALHISTID 'NUMERIC') #end 
+       #chunk($APPEALID) T.APPEALID = #bind($APPEALID 'NUMERIC') #end 
+       #chunk($ISFAVORITE) T.ISFAVORITE = #bind($ISFAVORITE 'NUMERIC') #end 
+       #chunk($ISUNREADED) T.ISUNREADED = #bind($ISUNREADED 'NUMERIC') #end 
+       #chunk($MESSAGEDATE) T.MESSAGEDATE = #bind($MESSAGEDATE 'FLOAT') #end 
+       #chunk($MESSAGETEXT) T.MESSAGETEXT = #bind($MESSAGETEXT 'VARCHAR') #end 
+       #chunk($USERACCOUNTID) T.USERACCOUNTID = #bind($USERACCOUNTID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsPaAppealHistInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PersonalAreaMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO PA_APPEALHIST (
+APPEALHISTID,
+APPEALID,
+ISFAVORITE,
+ISUNREADED,
+MESSAGEDATE,
+MESSAGETEXT,
+USERACCOUNTID 
+$ASPECTFIELDS ) VALUES (
+#bind($APPEALHISTID 'NUMERIC'),
+#bind($APPEALID 'NUMERIC'),
+#bind($ISFAVORITE 'NUMERIC'),
+#bind($ISUNREADED 'NUMERIC'),
+#bind($MESSAGEDATE 'FLOAT'),
+#bind($MESSAGETEXT 'VARCHAR'),
+#bind($USERACCOUNTID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO PA_APPEALHIST (
+APPEALHISTID,
+APPEALID,
+ISFAVORITE,
+ISUNREADED,
+MESSAGEDATE,
+MESSAGETEXT,
+USERACCOUNTID 
+$ASPECTFIELDS ) VALUES (
+#bind($APPEALHISTID 'NUMERIC'),
+#bind($APPEALID 'NUMERIC'),
+#bind($ISFAVORITE 'NUMERIC'),
+#bind($ISUNREADED 'NUMERIC'),
+#bind($MESSAGEDATE 'FLOAT'),
+#bind($MESSAGETEXT 'VARCHAR'),
+#bind($USERACCOUNTID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO PA_APPEALHIST (
+APPEALHISTID,
+APPEALID,
+ISFAVORITE,
+ISUNREADED,
+MESSAGEDATE,
+MESSAGETEXT,
+USERACCOUNTID 
+$ASPECTFIELDS ) VALUES (
+#bind($APPEALHISTID 'NUMERIC'),
+#bind($APPEALID 'NUMERIC'),
+#bind($ISFAVORITE 'NUMERIC'),
+#bind($ISUNREADED 'NUMERIC'),
+#bind($MESSAGEDATE 'FLOAT'),
+#bind($MESSAGETEXT 'VARCHAR'),
+#bind($USERACCOUNTID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsPaAppealHistUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PersonalAreaMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.APPEALHISTID = #bind($APPEALHISTID 'NUMERIC') 
+#chunk($APPEALID) , T.APPEALID = #bind($APPEALID 'NUMERIC') #end 
+#chunk($ISFAVORITE) , T.ISFAVORITE = #bind($ISFAVORITE 'NUMERIC') #end 
+#chunk($ISUNREADED) , T.ISUNREADED = #bind($ISUNREADED 'NUMERIC') #end 
+#chunk($MESSAGEDATE) , T.MESSAGEDATE = #bind($MESSAGEDATE 'FLOAT') #end 
+#chunk($MESSAGETEXT) , T.MESSAGETEXT = #bind($MESSAGETEXT 'VARCHAR') #end 
+#chunk($USERACCOUNTID) , T.USERACCOUNTID = #bind($USERACCOUNTID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      PA_APPEALHIST T 
+#chain('AND' 'WHERE') 
+       #chunk($APPEALHISTID) T.APPEALHISTID = #bind($APPEALHISTID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.APPEALHISTID = #bind($APPEALHISTID 'NUMERIC') 
+#chunk($APPEALID) , T.APPEALID = #bind($APPEALID 'NUMERIC') #end 
+#chunk($ISFAVORITE) , T.ISFAVORITE = #bind($ISFAVORITE 'NUMERIC') #end 
+#chunk($ISUNREADED) , T.ISUNREADED = #bind($ISUNREADED 'NUMERIC') #end 
+#chunk($MESSAGEDATE) , T.MESSAGEDATE = #bind($MESSAGEDATE 'FLOAT') #end 
+#chunk($MESSAGETEXT) , T.MESSAGETEXT = #bind($MESSAGETEXT 'VARCHAR') #end 
+#chunk($USERACCOUNTID) , T.USERACCOUNTID = #bind($USERACCOUNTID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      PA_APPEALHIST T 
+#chain('AND' 'WHERE') 
+       #chunk($APPEALHISTID) T.APPEALHISTID = #bind($APPEALHISTID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       PA_APPEALHIST T 
+SET 
+    T.APPEALHISTID = #bind($APPEALHISTID 'NUMERIC') 
+#chunk($APPEALID) , T.APPEALID = #bind($APPEALID 'NUMERIC') #end 
+#chunk($ISFAVORITE) , T.ISFAVORITE = #bind($ISFAVORITE 'NUMERIC') #end 
+#chunk($ISUNREADED) , T.ISUNREADED = #bind($ISUNREADED 'NUMERIC') #end 
+#chunk($MESSAGEDATE) , T.MESSAGEDATE = #bind($MESSAGEDATE 'FLOAT') #end 
+#chunk($MESSAGETEXT) , T.MESSAGETEXT = #bind($MESSAGETEXT 'VARCHAR') #end 
+#chunk($USERACCOUNTID) , T.USERACCOUNTID = #bind($USERACCOUNTID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($APPEALHISTID) T.APPEALHISTID = #bind($APPEALHISTID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsPaAppealHistUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PersonalAreaMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.APPEALHISTID = #bind($APPEALHISTID 'NUMERIC') 
+#chunk($APPEALID) , TA.APPEALID = #bind($APPEALID 'NUMERIC') #end 
+#chunk($ISFAVORITE) , TA.ISFAVORITE = #bind($ISFAVORITE 'NUMERIC') #end 
+#chunk($ISUNREADED) , TA.ISUNREADED = #bind($ISUNREADED 'NUMERIC') #end 
+#chunk($MESSAGEDATE) , TA.MESSAGEDATE = #bind($MESSAGEDATE 'FLOAT') #end 
+#chunk($MESSAGETEXT) , TA.MESSAGETEXT = #bind($MESSAGETEXT 'VARCHAR') #end 
+#chunk($USERACCOUNTID) , TA.USERACCOUNTID = #bind($USERACCOUNTID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      PA_APPEALHIST TA 
+WHERE 
+     TA.APPEALHISTID in ( 
+       SELECT 
+         T.APPEALHISTID
+       FROM 
+         PA_APPEALHIST T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($APPEALHISTID) T.APPEALHISTID = #bind($APPEALHISTID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.APPEALHISTID = #bind($APPEALHISTID 'NUMERIC') 
+#chunk($APPEALID) , TA.APPEALID = #bind($APPEALID 'NUMERIC') #end 
+#chunk($ISFAVORITE) , TA.ISFAVORITE = #bind($ISFAVORITE 'NUMERIC') #end 
+#chunk($ISUNREADED) , TA.ISUNREADED = #bind($ISUNREADED 'NUMERIC') #end 
+#chunk($MESSAGEDATE) , TA.MESSAGEDATE = #bind($MESSAGEDATE 'FLOAT') #end 
+#chunk($MESSAGETEXT) , TA.MESSAGETEXT = #bind($MESSAGETEXT 'VARCHAR') #end 
+#chunk($USERACCOUNTID) , TA.USERACCOUNTID = #bind($USERACCOUNTID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      PA_APPEALHIST TA 
+WHERE 
+     TA.APPEALHISTID in ( 
+       SELECT 
+         T.APPEALHISTID
+       FROM 
+         PA_APPEALHIST T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($APPEALHISTID) T.APPEALHISTID = #bind($APPEALHISTID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       PA_APPEALHIST TA 
+SET 
+    TA.APPEALHISTID = #bind($APPEALHISTID 'NUMERIC') 
+#chunk($APPEALID) , TA.APPEALID = #bind($APPEALID 'NUMERIC') #end 
+#chunk($ISFAVORITE) , TA.ISFAVORITE = #bind($ISFAVORITE 'NUMERIC') #end 
+#chunk($ISUNREADED) , TA.ISUNREADED = #bind($ISUNREADED 'NUMERIC') #end 
+#chunk($MESSAGEDATE) , TA.MESSAGEDATE = #bind($MESSAGEDATE 'FLOAT') #end 
+#chunk($MESSAGETEXT) , TA.MESSAGETEXT = #bind($MESSAGETEXT 'VARCHAR') #end 
+#chunk($USERACCOUNTID) , TA.USERACCOUNTID = #bind($USERACCOUNTID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.APPEALHISTID in ( 
+       SELECT 
+         T.APPEALHISTID
+       FROM 
+         PA_APPEALHIST T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($APPEALHISTID) T.APPEALHISTID = #bind($APPEALHISTID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsPaAppealHistDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PersonalAreaMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      PA_APPEALHIST T 
+#chain('AND' 'WHERE') 
+       #chunk($APPEALHISTID) T.APPEALHISTID = #bind($APPEALHISTID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      PA_APPEALHIST T 
+#chain('AND' 'WHERE') 
+       #chunk($APPEALHISTID) T.APPEALHISTID = #bind($APPEALHISTID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       PA_APPEALHIST T 
+#chain('AND' 'WHERE') 
+       #chunk($APPEALHISTID) T.APPEALHISTID = #bind($APPEALHISTID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsPaAppealHistDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PersonalAreaMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      PA_APPEALHIST TA 
+WHERE 
+     TA.APPEALHISTID in ( 
+       SELECT 
+         T.APPEALHISTID
+       FROM 
+         PA_APPEALHIST T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($APPEALHISTID) T.APPEALHISTID = #bind($APPEALHISTID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      PA_APPEALHIST TA 
+WHERE 
+     TA.APPEALHISTID in ( 
+       SELECT 
+         T.APPEALHISTID
+       FROM 
+         PA_APPEALHIST T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($APPEALHISTID) T.APPEALHISTID = #bind($APPEALHISTID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       PA_APPEALHIST TA 
+WHERE 
+     TA.APPEALHISTID in ( 
+       SELECT 
+         T.APPEALHISTID
+       FROM 
+         PA_APPEALHIST T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($APPEALHISTID) T.APPEALHISTID = #bind($APPEALHISTID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsPaContractBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PersonalAreaMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.CONTRID', 'java.lang.Long', 'CONTRID'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.PAOBJECTID', 'java.lang.Long', 'PAOBJECTID'),
+        #result('T.PAUSERID', 'java.lang.Long', 'PAUSERID'),
+        #result('T.RELIABILITYLEVEL', 'java.lang.Long', 'RELIABILITYLEVEL') 
+       $ASPECTFIELDS 
+FROM 
+      PA_CONTRACT T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($PAOBJECTID) T.PAOBJECTID = #bind($PAOBJECTID 'NUMERIC') #end 
+       #chunk($PAUSERID) T.PAUSERID = #bind($PAUSERID 'NUMERIC') #end 
+       #chunk($RELIABILITYLEVEL) T.RELIABILITYLEVEL = #bind($RELIABILITYLEVEL 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsPaContractBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PersonalAreaMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.PAOBJECTID)', 'java.lang.Long', 'CNT') 
+FROM 
+      PA_CONTRACT T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($PAOBJECTID) T.PAOBJECTID = #bind($PAOBJECTID 'NUMERIC') #end 
+       #chunk($PAUSERID) T.PAUSERID = #bind($PAUSERID 'NUMERIC') #end 
+       #chunk($RELIABILITYLEVEL) T.RELIABILITYLEVEL = #bind($RELIABILITYLEVEL 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsPaContractInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PersonalAreaMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO PA_CONTRACT (
+CONTRID,
+NAME,
+PAOBJECTID,
+PAUSERID,
+RELIABILITYLEVEL 
+$ASPECTFIELDS ) VALUES (
+#bind($CONTRID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($PAOBJECTID 'NUMERIC'),
+#bind($PAUSERID 'NUMERIC'),
+#bind($RELIABILITYLEVEL 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO PA_CONTRACT (
+CONTRID,
+NAME,
+PAOBJECTID,
+PAUSERID,
+RELIABILITYLEVEL 
+$ASPECTFIELDS ) VALUES (
+#bind($CONTRID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($PAOBJECTID 'NUMERIC'),
+#bind($PAUSERID 'NUMERIC'),
+#bind($RELIABILITYLEVEL 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO PA_CONTRACT (
+CONTRID,
+NAME,
+PAOBJECTID,
+PAUSERID,
+RELIABILITYLEVEL 
+$ASPECTFIELDS ) VALUES (
+#bind($CONTRID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($PAOBJECTID 'NUMERIC'),
+#bind($PAUSERID 'NUMERIC'),
+#bind($RELIABILITYLEVEL 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsPaContractUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PersonalAreaMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.PAOBJECTID = #bind($PAOBJECTID 'NUMERIC') 
+#chunk($CONTRID) , T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($PAUSERID) , T.PAUSERID = #bind($PAUSERID 'NUMERIC') #end 
+#chunk($RELIABILITYLEVEL) , T.RELIABILITYLEVEL = #bind($RELIABILITYLEVEL 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      PA_CONTRACT T 
+#chain('AND' 'WHERE') 
+       #chunk($PAOBJECTID) T.PAOBJECTID = #bind($PAOBJECTID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.PAOBJECTID = #bind($PAOBJECTID 'NUMERIC') 
+#chunk($CONTRID) , T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($PAUSERID) , T.PAUSERID = #bind($PAUSERID 'NUMERIC') #end 
+#chunk($RELIABILITYLEVEL) , T.RELIABILITYLEVEL = #bind($RELIABILITYLEVEL 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      PA_CONTRACT T 
+#chain('AND' 'WHERE') 
+       #chunk($PAOBJECTID) T.PAOBJECTID = #bind($PAOBJECTID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       PA_CONTRACT T 
+SET 
+    T.PAOBJECTID = #bind($PAOBJECTID 'NUMERIC') 
+#chunk($CONTRID) , T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($PAUSERID) , T.PAUSERID = #bind($PAUSERID 'NUMERIC') #end 
+#chunk($RELIABILITYLEVEL) , T.RELIABILITYLEVEL = #bind($RELIABILITYLEVEL 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($PAOBJECTID) T.PAOBJECTID = #bind($PAOBJECTID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsPaContractUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PersonalAreaMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.PAOBJECTID = #bind($PAOBJECTID 'NUMERIC') 
+#chunk($CONTRID) , TA.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($PAUSERID) , TA.PAUSERID = #bind($PAUSERID 'NUMERIC') #end 
+#chunk($RELIABILITYLEVEL) , TA.RELIABILITYLEVEL = #bind($RELIABILITYLEVEL 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      PA_CONTRACT TA 
+WHERE 
+     TA.PAOBJECTID in ( 
+       SELECT 
+         T.PAOBJECTID
+       FROM 
+         PA_CONTRACT T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($PAOBJECTID) T.PAOBJECTID = #bind($PAOBJECTID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.PAOBJECTID = #bind($PAOBJECTID 'NUMERIC') 
+#chunk($CONTRID) , TA.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($PAUSERID) , TA.PAUSERID = #bind($PAUSERID 'NUMERIC') #end 
+#chunk($RELIABILITYLEVEL) , TA.RELIABILITYLEVEL = #bind($RELIABILITYLEVEL 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      PA_CONTRACT TA 
+WHERE 
+     TA.PAOBJECTID in ( 
+       SELECT 
+         T.PAOBJECTID
+       FROM 
+         PA_CONTRACT T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($PAOBJECTID) T.PAOBJECTID = #bind($PAOBJECTID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       PA_CONTRACT TA 
+SET 
+    TA.PAOBJECTID = #bind($PAOBJECTID 'NUMERIC') 
+#chunk($CONTRID) , TA.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($PAUSERID) , TA.PAUSERID = #bind($PAUSERID 'NUMERIC') #end 
+#chunk($RELIABILITYLEVEL) , TA.RELIABILITYLEVEL = #bind($RELIABILITYLEVEL 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.PAOBJECTID in ( 
+       SELECT 
+         T.PAOBJECTID
+       FROM 
+         PA_CONTRACT T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($PAOBJECTID) T.PAOBJECTID = #bind($PAOBJECTID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsPaContractDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PersonalAreaMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      PA_CONTRACT T 
+#chain('AND' 'WHERE') 
+       #chunk($PAOBJECTID) T.PAOBJECTID = #bind($PAOBJECTID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      PA_CONTRACT T 
+#chain('AND' 'WHERE') 
+       #chunk($PAOBJECTID) T.PAOBJECTID = #bind($PAOBJECTID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       PA_CONTRACT T 
+#chain('AND' 'WHERE') 
+       #chunk($PAOBJECTID) T.PAOBJECTID = #bind($PAOBJECTID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsPaContractDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PersonalAreaMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      PA_CONTRACT TA 
+WHERE 
+     TA.PAOBJECTID in ( 
+       SELECT 
+         T.PAOBJECTID
+       FROM 
+         PA_CONTRACT T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($PAOBJECTID) T.PAOBJECTID = #bind($PAOBJECTID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      PA_CONTRACT TA 
+WHERE 
+     TA.PAOBJECTID in ( 
+       SELECT 
+         T.PAOBJECTID
+       FROM 
+         PA_CONTRACT T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($PAOBJECTID) T.PAOBJECTID = #bind($PAOBJECTID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       PA_CONTRACT TA 
+WHERE 
+     TA.PAOBJECTID in ( 
+       SELECT 
+         T.PAOBJECTID
+       FROM 
+         PA_CONTRACT T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($PAOBJECTID) T.PAOBJECTID = #bind($PAOBJECTID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsPaGroupBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PersonalAreaMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.GROUPID', 'java.lang.Long', 'GROUPID'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.NOTE', 'java.lang.String', 'NOTE'),
+        #result('T.SYSNAME', 'java.lang.String', 'SYSNAME') 
+       $ASPECTFIELDS 
+FROM 
+      PA_GROUP T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($GROUPID) T.GROUPID = #bind($GROUPID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsPaGroupBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PersonalAreaMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.GROUPID)', 'java.lang.Long', 'CNT') 
+FROM 
+      PA_GROUP T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($GROUPID) T.GROUPID = #bind($GROUPID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsPaGroupInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PersonalAreaMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO PA_GROUP (
+GROUPID,
+NAME,
+NOTE,
+SYSNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($GROUPID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($NOTE 'VARCHAR'),
+#bind($SYSNAME 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO PA_GROUP (
+GROUPID,
+NAME,
+NOTE,
+SYSNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($GROUPID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($NOTE 'VARCHAR'),
+#bind($SYSNAME 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO PA_GROUP (
+GROUPID,
+NAME,
+NOTE,
+SYSNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($GROUPID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($NOTE 'VARCHAR'),
+#bind($SYSNAME 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsPaGroupUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PersonalAreaMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.GROUPID = #bind($GROUPID 'NUMERIC') 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($NOTE) , T.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($SYSNAME) , T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      PA_GROUP T 
+#chain('AND' 'WHERE') 
+       #chunk($GROUPID) T.GROUPID = #bind($GROUPID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.GROUPID = #bind($GROUPID 'NUMERIC') 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($NOTE) , T.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($SYSNAME) , T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      PA_GROUP T 
+#chain('AND' 'WHERE') 
+       #chunk($GROUPID) T.GROUPID = #bind($GROUPID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       PA_GROUP T 
+SET 
+    T.GROUPID = #bind($GROUPID 'NUMERIC') 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($NOTE) , T.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($SYSNAME) , T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($GROUPID) T.GROUPID = #bind($GROUPID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsPaGroupUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PersonalAreaMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.GROUPID = #bind($GROUPID 'NUMERIC') 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($NOTE) , TA.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($SYSNAME) , TA.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      PA_GROUP TA 
+WHERE 
+     TA.GROUPID in ( 
+       SELECT 
+         T.GROUPID
+       FROM 
+         PA_GROUP T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($GROUPID) T.GROUPID = #bind($GROUPID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.GROUPID = #bind($GROUPID 'NUMERIC') 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($NOTE) , TA.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($SYSNAME) , TA.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      PA_GROUP TA 
+WHERE 
+     TA.GROUPID in ( 
+       SELECT 
+         T.GROUPID
+       FROM 
+         PA_GROUP T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($GROUPID) T.GROUPID = #bind($GROUPID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       PA_GROUP TA 
+SET 
+    TA.GROUPID = #bind($GROUPID 'NUMERIC') 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($NOTE) , TA.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($SYSNAME) , TA.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.GROUPID in ( 
+       SELECT 
+         T.GROUPID
+       FROM 
+         PA_GROUP T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($GROUPID) T.GROUPID = #bind($GROUPID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsPaGroupDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PersonalAreaMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      PA_GROUP T 
+#chain('AND' 'WHERE') 
+       #chunk($GROUPID) T.GROUPID = #bind($GROUPID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      PA_GROUP T 
+#chain('AND' 'WHERE') 
+       #chunk($GROUPID) T.GROUPID = #bind($GROUPID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       PA_GROUP T 
+#chain('AND' 'WHERE') 
+       #chunk($GROUPID) T.GROUPID = #bind($GROUPID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsPaGroupDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PersonalAreaMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      PA_GROUP TA 
+WHERE 
+     TA.GROUPID in ( 
+       SELECT 
+         T.GROUPID
+       FROM 
+         PA_GROUP T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($GROUPID) T.GROUPID = #bind($GROUPID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      PA_GROUP TA 
+WHERE 
+     TA.GROUPID in ( 
+       SELECT 
+         T.GROUPID
+       FROM 
+         PA_GROUP T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($GROUPID) T.GROUPID = #bind($GROUPID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       PA_GROUP TA 
+WHERE 
+     TA.GROUPID in ( 
+       SELECT 
+         T.GROUPID
+       FROM 
+         PA_GROUP T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($GROUPID) T.GROUPID = #bind($GROUPID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsPaUserBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PersonalAreaMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.EMAIL', 'java.lang.String', 'EMAIL'),
+        #result('T.GROUPID', 'java.lang.Long', 'GROUPID'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.PHONENUMBER', 'java.lang.String', 'PHONENUMBER'),
+        #result('T.SMSCODE', 'java.lang.String', 'SMSCODE'),
+        #result('T.SMSCODEDATE', 'java.math.BigDecimal', 'SMSCODEDATE'),
+        #result('T.STATUSDATE', 'java.math.BigDecimal', 'STATUSDATE'),
+        #result('T.STATUSID', 'java.lang.Long', 'STATUSID'),
+        #result('T.STATUSSYSNAME', 'java.lang.String', 'STATUSSYSNAME'),
+        #result('T.SURNAME', 'java.lang.String', 'SURNAME'),
+        #result('T.USERID', 'java.lang.Long', 'USERID') 
+       $ASPECTFIELDS 
+FROM 
+      PA_USER T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($EMAIL) T.EMAIL = #bind($EMAIL 'VARCHAR') #end 
+       #chunk($GROUPID) T.GROUPID = #bind($GROUPID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($PHONENUMBER) T.PHONENUMBER = #bind($PHONENUMBER 'VARCHAR') #end 
+       #chunk($SMSCODE) T.SMSCODE = #bind($SMSCODE 'VARCHAR') #end 
+       #chunk($SMSCODEDATE) T.SMSCODEDATE = #bind($SMSCODEDATE 'FLOAT') #end 
+       #chunk($STATUSDATE) T.STATUSDATE = #bind($STATUSDATE 'FLOAT') #end 
+       #chunk($STATUSID) T.STATUSID = #bind($STATUSID 'NUMERIC') #end 
+       #chunk($STATUSSYSNAME) T.STATUSSYSNAME = #bind($STATUSSYSNAME 'VARCHAR') #end 
+       #chunk($SURNAME) T.SURNAME = #bind($SURNAME 'VARCHAR') #end 
+       #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsPaUserBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PersonalAreaMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.USERID)', 'java.lang.Long', 'CNT') 
+FROM 
+      PA_USER T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($EMAIL) T.EMAIL = #bind($EMAIL 'VARCHAR') #end 
+       #chunk($GROUPID) T.GROUPID = #bind($GROUPID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($PHONENUMBER) T.PHONENUMBER = #bind($PHONENUMBER 'VARCHAR') #end 
+       #chunk($SMSCODE) T.SMSCODE = #bind($SMSCODE 'VARCHAR') #end 
+       #chunk($SMSCODEDATE) T.SMSCODEDATE = #bind($SMSCODEDATE 'FLOAT') #end 
+       #chunk($STATUSDATE) T.STATUSDATE = #bind($STATUSDATE 'FLOAT') #end 
+       #chunk($STATUSID) T.STATUSID = #bind($STATUSID 'NUMERIC') #end 
+       #chunk($STATUSSYSNAME) T.STATUSSYSNAME = #bind($STATUSSYSNAME 'VARCHAR') #end 
+       #chunk($SURNAME) T.SURNAME = #bind($SURNAME 'VARCHAR') #end 
+       #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsPaUserInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PersonalAreaMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO PA_USER (
+EMAIL,
+GROUPID,
+NAME,
+PHONENUMBER,
+SMSCODE,
+SMSCODEDATE,
+STATUSDATE,
+STATUSID,
+STATUSSYSNAME,
+SURNAME,
+USERID 
+$ASPECTFIELDS ) VALUES (
+#bind($EMAIL 'VARCHAR'),
+#bind($GROUPID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($PHONENUMBER 'VARCHAR'),
+#bind($SMSCODE 'VARCHAR'),
+#bind($SMSCODEDATE 'FLOAT'),
+#bind($STATUSDATE 'FLOAT'),
+#bind($STATUSID 'NUMERIC'),
+#bind($STATUSSYSNAME 'VARCHAR'),
+#bind($SURNAME 'VARCHAR'),
+#bind($USERID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO PA_USER (
+EMAIL,
+GROUPID,
+NAME,
+PHONENUMBER,
+SMSCODE,
+SMSCODEDATE,
+STATUSDATE,
+STATUSID,
+STATUSSYSNAME,
+SURNAME,
+USERID 
+$ASPECTFIELDS ) VALUES (
+#bind($EMAIL 'VARCHAR'),
+#bind($GROUPID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($PHONENUMBER 'VARCHAR'),
+#bind($SMSCODE 'VARCHAR'),
+#bind($SMSCODEDATE 'FLOAT'),
+#bind($STATUSDATE 'FLOAT'),
+#bind($STATUSID 'NUMERIC'),
+#bind($STATUSSYSNAME 'VARCHAR'),
+#bind($SURNAME 'VARCHAR'),
+#bind($USERID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO PA_USER (
+EMAIL,
+GROUPID,
+NAME,
+PHONENUMBER,
+SMSCODE,
+SMSCODEDATE,
+STATUSDATE,
+STATUSID,
+STATUSSYSNAME,
+SURNAME,
+USERID 
+$ASPECTFIELDS ) VALUES (
+#bind($EMAIL 'VARCHAR'),
+#bind($GROUPID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($PHONENUMBER 'VARCHAR'),
+#bind($SMSCODE 'VARCHAR'),
+#bind($SMSCODEDATE 'FLOAT'),
+#bind($STATUSDATE 'FLOAT'),
+#bind($STATUSID 'NUMERIC'),
+#bind($STATUSSYSNAME 'VARCHAR'),
+#bind($SURNAME 'VARCHAR'),
+#bind($USERID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsPaUserUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PersonalAreaMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.USERID = #bind($USERID 'NUMERIC') 
+#chunk($EMAIL) , T.EMAIL = #bind($EMAIL 'VARCHAR') #end 
+#chunk($GROUPID) , T.GROUPID = #bind($GROUPID 'NUMERIC') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($PHONENUMBER) , T.PHONENUMBER = #bind($PHONENUMBER 'VARCHAR') #end 
+#chunk($SMSCODE) , T.SMSCODE = #bind($SMSCODE 'VARCHAR') #end 
+#chunk($SMSCODEDATE) , T.SMSCODEDATE = #bind($SMSCODEDATE 'FLOAT') #end 
+#chunk($STATUSDATE) , T.STATUSDATE = #bind($STATUSDATE 'FLOAT') #end 
+#chunk($STATUSID) , T.STATUSID = #bind($STATUSID 'NUMERIC') #end 
+#chunk($STATUSSYSNAME) , T.STATUSSYSNAME = #bind($STATUSSYSNAME 'VARCHAR') #end 
+#chunk($SURNAME) , T.SURNAME = #bind($SURNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      PA_USER T 
+#chain('AND' 'WHERE') 
+       #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.USERID = #bind($USERID 'NUMERIC') 
+#chunk($EMAIL) , T.EMAIL = #bind($EMAIL 'VARCHAR') #end 
+#chunk($GROUPID) , T.GROUPID = #bind($GROUPID 'NUMERIC') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($PHONENUMBER) , T.PHONENUMBER = #bind($PHONENUMBER 'VARCHAR') #end 
+#chunk($SMSCODE) , T.SMSCODE = #bind($SMSCODE 'VARCHAR') #end 
+#chunk($SMSCODEDATE) , T.SMSCODEDATE = #bind($SMSCODEDATE 'FLOAT') #end 
+#chunk($STATUSDATE) , T.STATUSDATE = #bind($STATUSDATE 'FLOAT') #end 
+#chunk($STATUSID) , T.STATUSID = #bind($STATUSID 'NUMERIC') #end 
+#chunk($STATUSSYSNAME) , T.STATUSSYSNAME = #bind($STATUSSYSNAME 'VARCHAR') #end 
+#chunk($SURNAME) , T.SURNAME = #bind($SURNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      PA_USER T 
+#chain('AND' 'WHERE') 
+       #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       PA_USER T 
+SET 
+    T.USERID = #bind($USERID 'NUMERIC') 
+#chunk($EMAIL) , T.EMAIL = #bind($EMAIL 'VARCHAR') #end 
+#chunk($GROUPID) , T.GROUPID = #bind($GROUPID 'NUMERIC') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($PHONENUMBER) , T.PHONENUMBER = #bind($PHONENUMBER 'VARCHAR') #end 
+#chunk($SMSCODE) , T.SMSCODE = #bind($SMSCODE 'VARCHAR') #end 
+#chunk($SMSCODEDATE) , T.SMSCODEDATE = #bind($SMSCODEDATE 'FLOAT') #end 
+#chunk($STATUSDATE) , T.STATUSDATE = #bind($STATUSDATE 'FLOAT') #end 
+#chunk($STATUSID) , T.STATUSID = #bind($STATUSID 'NUMERIC') #end 
+#chunk($STATUSSYSNAME) , T.STATUSSYSNAME = #bind($STATUSSYSNAME 'VARCHAR') #end 
+#chunk($SURNAME) , T.SURNAME = #bind($SURNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsPaUserUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PersonalAreaMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.USERID = #bind($USERID 'NUMERIC') 
+#chunk($EMAIL) , TA.EMAIL = #bind($EMAIL 'VARCHAR') #end 
+#chunk($GROUPID) , TA.GROUPID = #bind($GROUPID 'NUMERIC') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($PHONENUMBER) , TA.PHONENUMBER = #bind($PHONENUMBER 'VARCHAR') #end 
+#chunk($SMSCODE) , TA.SMSCODE = #bind($SMSCODE 'VARCHAR') #end 
+#chunk($SMSCODEDATE) , TA.SMSCODEDATE = #bind($SMSCODEDATE 'FLOAT') #end 
+#chunk($STATUSDATE) , TA.STATUSDATE = #bind($STATUSDATE 'FLOAT') #end 
+#chunk($STATUSID) , TA.STATUSID = #bind($STATUSID 'NUMERIC') #end 
+#chunk($STATUSSYSNAME) , TA.STATUSSYSNAME = #bind($STATUSSYSNAME 'VARCHAR') #end 
+#chunk($SURNAME) , TA.SURNAME = #bind($SURNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      PA_USER TA 
+WHERE 
+     TA.USERID in ( 
+       SELECT 
+         T.USERID
+       FROM 
+         PA_USER T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.USERID = #bind($USERID 'NUMERIC') 
+#chunk($EMAIL) , TA.EMAIL = #bind($EMAIL 'VARCHAR') #end 
+#chunk($GROUPID) , TA.GROUPID = #bind($GROUPID 'NUMERIC') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($PHONENUMBER) , TA.PHONENUMBER = #bind($PHONENUMBER 'VARCHAR') #end 
+#chunk($SMSCODE) , TA.SMSCODE = #bind($SMSCODE 'VARCHAR') #end 
+#chunk($SMSCODEDATE) , TA.SMSCODEDATE = #bind($SMSCODEDATE 'FLOAT') #end 
+#chunk($STATUSDATE) , TA.STATUSDATE = #bind($STATUSDATE 'FLOAT') #end 
+#chunk($STATUSID) , TA.STATUSID = #bind($STATUSID 'NUMERIC') #end 
+#chunk($STATUSSYSNAME) , TA.STATUSSYSNAME = #bind($STATUSSYSNAME 'VARCHAR') #end 
+#chunk($SURNAME) , TA.SURNAME = #bind($SURNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      PA_USER TA 
+WHERE 
+     TA.USERID in ( 
+       SELECT 
+         T.USERID
+       FROM 
+         PA_USER T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       PA_USER TA 
+SET 
+    TA.USERID = #bind($USERID 'NUMERIC') 
+#chunk($EMAIL) , TA.EMAIL = #bind($EMAIL 'VARCHAR') #end 
+#chunk($GROUPID) , TA.GROUPID = #bind($GROUPID 'NUMERIC') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($PHONENUMBER) , TA.PHONENUMBER = #bind($PHONENUMBER 'VARCHAR') #end 
+#chunk($SMSCODE) , TA.SMSCODE = #bind($SMSCODE 'VARCHAR') #end 
+#chunk($SMSCODEDATE) , TA.SMSCODEDATE = #bind($SMSCODEDATE 'FLOAT') #end 
+#chunk($STATUSDATE) , TA.STATUSDATE = #bind($STATUSDATE 'FLOAT') #end 
+#chunk($STATUSID) , TA.STATUSID = #bind($STATUSID 'NUMERIC') #end 
+#chunk($STATUSSYSNAME) , TA.STATUSSYSNAME = #bind($STATUSSYSNAME 'VARCHAR') #end 
+#chunk($SURNAME) , TA.SURNAME = #bind($SURNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.USERID in ( 
+       SELECT 
+         T.USERID
+       FROM 
+         PA_USER T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsPaUserDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PersonalAreaMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      PA_USER T 
+#chain('AND' 'WHERE') 
+       #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      PA_USER T 
+#chain('AND' 'WHERE') 
+       #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       PA_USER T 
+#chain('AND' 'WHERE') 
+       #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsPaUserDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PersonalAreaMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      PA_USER TA 
+WHERE 
+     TA.USERID in ( 
+       SELECT 
+         T.USERID
+       FROM 
+         PA_USER T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      PA_USER TA 
+WHERE 
+     TA.USERID in ( 
+       SELECT 
+         T.USERID
+       FROM 
+         PA_USER T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       PA_USER TA 
+WHERE 
+     TA.USERID in ( 
+       SELECT 
+         T.USERID
+       FROM 
+         PA_USER T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+</data-map>

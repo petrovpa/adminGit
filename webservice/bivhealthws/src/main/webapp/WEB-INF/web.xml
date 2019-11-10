@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+    <description>BIVGroup bivhealthws Web Service</description>
+    <display-name>bivhealthws</display-name>
+    <servlet>
+        <description>BIVGroup HealthChecker Web Service</description>
+        <display-name>HealthChecker</display-name>
+        <servlet-name>HealthChecker</servlet-name>
+        <servlet-class>ru.diasoft.services.bivhealthws.HealthChecker</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HealthChecker</servlet-name>
+        <url-pattern>/HealthChecker</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>60</session-timeout>
+    </session-config>
+    <!-- Auto scan REST service -->
+    <!---context-param>
+        <param-name>resteasy.scan</param-name>
+        <param-value>false</param-value>
+    </context-param>
+    <context-param>
+        <param-name>resteasy.resources</param-name>
+        <param-value>ru.diasoft.services.bivhealthws.BoxPropertyGate</param-value>
+    </context-param>
+    <servlet>
+        <servlet-name>resteasy-servlet</servlet-name>
+        <servlet-class>
+            org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher
+        </servlet-class>
+    </servlet-->
+
+    <!--servlet-mapping>
+        <servlet-name>resteasy-servlet</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping-->
+    <!--servlet>
+        <servlet-name>fileServlet</servlet-name>
+        <servlet-class>net.balusc.webapp.FileServlet</servlet-class>
+        <init-param>
+            <param-name>basePath</param-name>
+            <param-value>/home/mvolkov/hg/1/bivsberfront/AngularJS/BIVHABSBER/app</param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <description>BIVGroup fileUpload Web Service</description>
+        <display-name>B2BFILEUPLOAD</display-name>
+        <servlet-name>B2BFILEUPLOAD</servlet-name>
+        <servlet-class>ru.diasoft.services.bivhealthws.B2BFileUpLoadServlet</servlet-class>
+        <init-param>
+            <param-name>servletClassName</param-name>
+            <param-value>ru.diasoft.services.bivhealthws.B2BFileUpLoadServle</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>B2BFILEUPLOAD</servlet-name>
+        <url-pattern>/b2bfileupload</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>fileServlet</servlet-name>
+        <url-pattern>/html/*</url-pattern>
+    </servlet-mapping-->
+</web-app>

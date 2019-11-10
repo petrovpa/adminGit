@@ -1,0 +1,26 @@
+<form [formGroup]="rememberForm" method="post" class="remember-form" novalidate (ngSubmit)="remember()">
+  <h2 class="remember-title">Восстановление доступа</h2>
+
+  <form-control-label [title]="'Введите адрес электронной почты'"
+                      [hint]="'Введите адрес электронной почты, указанный при регистрации аккаунта.'"
+                      [formClass]="'form-control__icon'">
+    <input name="email" type="email" placeholder="" formControlName="email" class="form-control" autocomplete="off">
+    <i class="icon-mail"></i>
+  </form-control-label>
+
+  <form-control-label [title]="'Введите ваш логин'"
+                      [hint]="'Введите логин, указанный при регистрации аккаунта.'"
+                      [formClass]="'form-control__icon'">
+    <input name="login" type="text" placeholder="" formControlName="login" class="form-control" autocomplete="off">
+    <i class="icon-username"></i>
+  </form-control-label>
+
+  <div class="form-group login-buttons">
+    <button type="submit" class="btn btn-primary btn-rounded" [disabled]="isServiceInProgress">Далее</button>
+    <a href="#" class="btn-back" [routerLink]="['/']">Назад</a>
+  </div>
+</form>
+
+<div class="login-error">
+  <div *ngIf="loginService.showError" class="alert alert-danger">{{loginService.showError}}</div>
+</div>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+	version="2.4">
+	<description>Diasoft FA# Front - WebSMS Web Services</description>
+	<display-name>WEBSMSWS</display-name>
+	<!--listener>
+		<listener-class>
+			ru.diasoft.services.bootstrap.BootstrapListener
+		</listener-class>
+	</listener-->
+	<context-param>
+		<param-name>ru.diasoft.services.bootstrap.BootstrapListener.wrappedListeners</param-name>
+		<param-value>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</param-value>
+	</context-param>
+	<context-param>
+		<param-name>ru.diasoft.services.bootstrap.BootstrapClassLoader.load</param-name>
+		<!-- parameter controls which classes should be explicitly loaded by BootstrapClassLoader -->
+		<param-value>.*</param-value>
+		<!-- value: regular expression for class names -->
+	</context-param>
+	<context-param>
+		<param-name>ru.diasoft.services.bootstrap.BootstrapClassLoader.delegate</param-name>
+		<!-- parameter controls which classes loading should be explicitly delegated to other classloaders -->
+		<param-value>java.util.*|java.lang.*|javax.xml.namespace.QName|oracle.*|net.sourceforge.jtds.*|com.ibm.db2.*|sqlj.runtime.*|org.apache.log4j.*|javax.activation.*</param-value>
+		<!-- value: regular expression for class names -->
+	</context-param>
+	<context-param>
+		<param-name>ru.diasoft.services.bootstrap.logLevel</param-name>
+		<param-value>INFO</param-value>
+		<!-- possible values: ALL, FATAL, ERROR, INFO, WARN, DEBUG, TRACE, OFF -->
+	</context-param>	
+	<context-param>
+		<param-name>ru.diasoft.services.bootstrap.logDestination</param-name>
+		<param-value>file</param-value>
+		<!-- possible values: "file", "console" or both separated by comma --> 
+	</context-param>
+	<servlet>
+		<description>
+			Diasoft FA# Front - Web Sms Services (JAX-WS endpoint)
+		</description>
+		<display-name>WEBSMSWS</display-name>
+		<servlet-name>WEBSMSWSPORT</servlet-name>
+		<servlet-class>
+			ru.diasoft.services.bootstrap.BootstrapServlet
+		</servlet-class>
+		<init-param>
+			<param-name>servletClassName</param-name>
+			<param-value>com.sun.xml.ws.transport.http.servlet.WSServlet</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>WEBSMSWSPORT</servlet-name>
+		<url-pattern>/websmsws</url-pattern>
+	</servlet-mapping>
+	<session-config>
+		<session-timeout>60</session-timeout>
+	</session-config>
+
+	<!-- resource-ref>
+		<res-ref-name>jdbc/DataSource</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope>
+	</resource-ref-->
+
+</web-app>

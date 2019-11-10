@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:tns="http://support.diasoft.ru" 
+             xmlns="http://schemas.xmlsoap.org/wsdl/" 
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+             targetNamespace="http://support.diasoft.ru" name="WSWS">
+    <types>
+        <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://support.diasoft.ru" elementFormDefault="qualified">
+            <complexType name="DSCALLRESPONSE">
+                <sequence>
+                    <element type="xsd:string" name="commandresult"></element>
+                </sequence>
+            </complexType>
+            <element type="tns:DSCALLRESPONSE" name="DSCALLRESPONSE"></element>
+
+            <complexType name="DSCALL">
+                <sequence>
+                    <element type="xsd:string" name="commandtext"></element>
+                    <element type="xsd:string" name="commanddata"></element>
+                    <xsd:element name="contextdata" type="tns:ContextData"></xsd:element>
+                </sequence>
+            </complexType>
+            <element type="tns:DSCALL" name="DSCALL"></element>
+
+            <element type="tns:DSCALLFAULT" name="DSCALLFAULT"></element>
+            <complexType name="DSCALLFAULT">
+                <sequence>
+                    <element type="xsd:int" name="faultcode"></element>
+                    <element type="xsd:string" name="faultmessage"></element>                    
+                </sequence>
+            </complexType>
+            <complexType name="DSCALLASYNC">
+                <sequence>
+                    <element type="xsd:string" name="commandtext"></element>
+                    <element type="xsd:string" name="commanddata"></element>
+                    <xsd:element name="contextdata" type="tns:ContextData"></xsd:element>                    
+                </sequence>
+            </complexType>
+            <xsd:complexType name="ContextData">
+                <xsd:sequence>
+                    <xsd:element name="fromSystem" type="xsd:string"></xsd:element>
+                    <xsd:element name="toSystem" type="xsd:string"></xsd:element>
+                    <xsd:element name="sessionId" type="xsd:string"></xsd:element>
+                    <xsd:element name="processId" type="xsd:long"></xsd:element>
+                    <xsd:element name="locale" type="xsd:language"></xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+            <element type="tns:DSCALLASYNC" name="DSCALLASYNC"></element>
+        </xsd:schema>
+    </types>
+    <message name="DSCALL">
+        <part element="tns:DSCALL" name="parameters"></part>
+    </message>
+    <message name="DSCALLRESPONSE">
+        <part element="tns:DSCALLRESPONSE" name="result"></part>
+    </message>
+    <message name="DSCALLFAULT">
+        <part element="tns:DSCALLFAULT" name="DSCALLFAULT"></part>
+    </message>
+    <message name="DSCALLASYNC">
+        <part element="tns:DSCALLASYNC" name="parameters"></part>
+    </message>
+    <portType name="WSWSPORTTYPE">
+        <operation name="DSCALL">
+            <input message="tns:DSCALL" name="DSCALL"></input>
+            <output message="tns:DSCALLRESPONSE" name="DSCALLRESPONSE"></output>
+            <fault message="tns:DSCALLFAULT" name="DSCALLFAULT"></fault>
+        </operation>
+        <operation name="DSCALLASYNC">
+            <input message="tns:DSCALLASYNC" name="DSCALLASYNC"></input>
+        </operation>
+    </portType>
+    <binding type="tns:WSWSPORTTYPE" name="WSWSBINDING">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"></soap:binding>
+        <operation name="DSCALL">
+            <soap:operation soapAction=""></soap:operation>
+            <input>
+                <soap:body use="literal"></soap:body>
+            </input>
+            <output>
+                <soap:body use="literal"></soap:body>
+            </output>
+            <fault name="DSCALLFAULT">
+                <soap:fault use="literal" name="DSCALLFAULT"></soap:fault>
+            </fault>
+        </operation>
+        <operation name="DSCALLASYNC">
+            <soap:operation soapAction=""></soap:operation>
+            <input>
+                <soap:body use="literal"></soap:body>
+            </input>
+        </operation>
+    </binding>
+    <service name="wsws">
+        <port binding="tns:WSWSBINDING" name="WSWSPORT">
+            <soap:address location="wsws" />
+        </port>
+    </service>
+</definitions>

@@ -1,0 +1,5291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+	<db-entity name="SAL_INVALIDPASSPORTS">
+		<db-attribute name="ID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="NODEID" type="NUMERIC" length="19"/>
+		<db-attribute name="SERIESNUMBER" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="SAL_INVALIDPASSPORTSNODE">
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="ID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="4000"/>
+		<db-attribute name="STATEID" type="NUMERIC" length="19"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="VERSION" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="SAL_INVALIDPASSPORTS_LOG">
+		<db-attribute name="ID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="NODEID" type="NUMERIC" length="19"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="4000"/>
+		<db-attribute name="STATEID" type="NUMERIC" length="19"/>
+		<db-attribute name="IMPORTDATE" type="FLOAT" length="38"/>
+	</db-entity>
+	<db-entity name="SAL_INVALIDPASSPORTS_TMP">
+		<db-attribute name="ID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="SERIESNUMBER" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="SAL_JOURNAL">
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="EVENTID" type="NUMERIC" length="19"/>
+		<db-attribute name="ID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="ISRESOLVED" type="NUMERIC" length="19"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="4000"/>
+		<db-attribute name="RESOLVEDUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="SOURCEID" type="NUMERIC" length="19"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="SAL_JOURNAL_CONTEXT">
+		<db-attribute name="ID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="JOURNALID" type="NUMERIC" length="19"/>
+		<db-attribute name="PROPERTYSOURCEID" type="NUMERIC" length="19"/>
+		<db-attribute name="VALUE" type="VARCHAR" length="4000"/>
+	</db-entity>
+	<db-entity name="SAL_JOURNAL_FLAG">
+		<db-attribute name="FLAGEVENTID" type="NUMERIC" length="19"/>
+		<db-attribute name="ID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="JOURNALID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="SAL_KINDCONTEXTSOURCE">
+		<db-attribute name="ID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="4000"/>
+		<db-attribute name="SOURCEID" type="NUMERIC" length="19"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="SAL_KINDEVENT">
+		<db-attribute name="ID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="4000"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="SAL_KINDFLAGEVENT">
+		<db-attribute name="EVENTID" type="NUMERIC" length="19"/>
+		<db-attribute name="ID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="4000"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="SAL_KINDSOURCE">
+		<db-attribute name="ID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="4000"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="SAL_TERRORISTS">
+		<db-attribute name="ADDRESS" type="VARCHAR" length="4000"/>
+		<db-attribute name="ADDRESS2" type="VARCHAR" length="4000"/>
+		<db-attribute name="BIRTHDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CONTRY" type="VARCHAR" length="255"/>
+		<db-attribute name="CONTRY2" type="VARCHAR" length="255"/>
+		<db-attribute name="DOCUMENTAUTHORITY" type="VARCHAR" length="4000"/>
+		<db-attribute name="DOCUMENTNUMBER" type="VARCHAR" length="255"/>
+		<db-attribute name="DOCUMENTSERIES" type="VARCHAR" length="255"/>
+		<db-attribute name="DOCUMENTTYPE" type="VARCHAR" length="255"/>
+		<db-attribute name="ID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="IDROW" type="VARCHAR" length="255"/>
+		<db-attribute name="INN" type="VARCHAR" length="255"/>
+		<db-attribute name="NAME" type="VARCHAR" length="4000"/>
+		<db-attribute name="NAME2" type="VARCHAR" length="4000"/>
+		<db-attribute name="NODEID" type="NUMERIC" length="19"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="4000"/>
+		<db-attribute name="PLACEOFBIRTH" type="VARCHAR" length="4000"/>
+	</db-entity>
+	<db-entity name="SAL_TERRORISTSNODE">
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="ID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="4000"/>
+		<db-attribute name="STATEID" type="NUMERIC" length="19"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="VERSION" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="SAL_TERRORISTS_LOG">
+		<db-attribute name="ID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="NODEID" type="NUMERIC" length="19"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="4000"/>
+		<db-attribute name="STATEID" type="NUMERIC" length="19"/>
+		<db-attribute name="IMPORTDATE" type="FLOAT" length="38"/>
+	</db-entity>
+	<db-entity name="SAL_TERRORISTS_TMP">
+		<db-attribute name="ADDRESS" type="VARCHAR" length="4000"/>
+		<db-attribute name="ADDRESS2" type="VARCHAR" length="4000"/>
+		<db-attribute name="BIRTHDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CONTRY" type="VARCHAR" length="255"/>
+		<db-attribute name="CONTRY2" type="VARCHAR" length="255"/>
+		<db-attribute name="DOCUMENTAUTHORITY" type="VARCHAR" length="4000"/>
+		<db-attribute name="DOCUMENTNUMBER" type="VARCHAR" length="255"/>
+		<db-attribute name="DOCUMENTSERIES" type="VARCHAR" length="255"/>
+		<db-attribute name="DOCUMENTTYPE" type="VARCHAR" length="255"/>
+		<db-attribute name="ID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="IDROW" type="VARCHAR" length="255"/>
+		<db-attribute name="INN" type="VARCHAR" length="255"/>
+		<db-attribute name="NAME" type="VARCHAR" length="4000"/>
+		<db-attribute name="NAME2" type="VARCHAR" length="4000"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="4000"/>
+		<db-attribute name="PLACEOFBIRTH" type="VARCHAR" length="4000"/>
+	</db-entity>
+	<obj-entity name="SAL_InvalidPassports" dbEntityName="SAL_INVALIDPASSPORTS">
+		<obj-attribute name="ID" type="java.lang.Long" db-attribute-path="ID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД объекта"/>
+		<obj-attribute name="NodeID" type="java.math.BigDecimal" db-attribute-path="NODEID" note="ИД ноды"/>
+		<obj-attribute name="SeriesNumber" type="java.lang.String" db-attribute-path="SERIESNUMBER" note="Серия и номер"/>
+	</obj-entity>
+	<obj-entity name="SAL_InvalidPassportsNode" dbEntityName="SAL_INVALIDPASSPORTSNODE">
+		<obj-attribute name="CreateDate" type="java.lang.Float" db-attribute-path="CREATEDATE" note="Дата создания записи"/>
+		<obj-attribute name="CreateUserID" type="java.math.BigDecimal" db-attribute-path="CREATEUSERID" note="ИД пользователя, создавшего запись"/>
+		<obj-attribute name="ID" type="java.lang.Long" db-attribute-path="ID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД объекта"/>
+		<obj-attribute name="Note" type="java.lang.String" db-attribute-path="NOTE" note="Примечание"/>
+		<obj-attribute name="StateID" type="java.math.BigDecimal" db-attribute-path="STATEID" note="ИД состояния"/>
+		<obj-attribute name="UpdateDate" type="java.lang.Float" db-attribute-path="UPDATEDATE" note="Дата изменения записи"/>
+		<obj-attribute name="UpdateUserID" type="java.math.BigDecimal" db-attribute-path="UPDATEUSERID" note="ИД пользователя изменившего запись"/>
+		<obj-attribute name="Version" type="java.math.BigDecimal" db-attribute-path="VERSION" note="Номер версии"/>
+	</obj-entity>
+	<obj-entity name="SAL_InvalidPassports_Log" dbEntityName="SAL_INVALIDPASSPORTS_LOG">
+		<obj-attribute name="ID" type="java.lang.Long" db-attribute-path="ID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД объекта"/>
+		<obj-attribute name="NodeID" type="java.math.BigDecimal" db-attribute-path="NODEID" note="ИД ноды"/>
+		<obj-attribute name="Note" type="java.lang.String" db-attribute-path="NOTE" note="Описание"/>
+		<obj-attribute name="StateID" type="java.lang.Long" db-attribute-path="STATEID" note="Состояние"/>
+		<obj-attribute name="UpdateDate" type="java.lang.Float" db-attribute-path="IMPORTDATE" note="Дата обновления"/>
+	</obj-entity>
+	<obj-entity name="SAL_InvalidPassports_Tmp" dbEntityName="SAL_INVALIDPASSPORTS_TMP">
+		<obj-attribute name="ID" type="java.lang.Long" db-attribute-path="ID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД объекта"/>
+		<obj-attribute name="SeriesNumber" type="java.lang.String" db-attribute-path="SERIESNUMBER" note="Серия и номер"/>
+	</obj-entity>
+	<obj-entity name="SAL_Journal" dbEntityName="SAL_JOURNAL">
+		<obj-attribute name="CreateDate" type="java.lang.Double" db-attribute-path="CREATEDATE" note="Дата создания записи"/>
+		<obj-attribute name="CreateUserID" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="ИД пользователя, создавшего запись"/>
+		<obj-attribute name="EventID" type="java.lang.Long" db-attribute-path="EVENTID" note="Классификатор видов событий журнала аудита безопасности"/>
+		<obj-attribute name="ID" type="java.lang.Long" db-attribute-path="ID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД объекта"/>
+		<obj-attribute name="IsResolved" type="java.lang.Long" db-attribute-path="ISRESOLVED" note="Признак Обработан"/>
+		<obj-attribute name="Note" type="java.lang.String" db-attribute-path="NOTE" note="Описание"/>
+		<obj-attribute name="ResolvedUserID" type="java.lang.Long" db-attribute-path="RESOLVEDUSERID" note="Обработавший"/>
+		<obj-attribute name="SourceID" type="java.lang.Long" db-attribute-path="SOURCEID" note="Классификатор источников событий журнала аудита безопасности"/>
+		<obj-attribute name="UpdateDate" type="java.lang.Double" db-attribute-path="UPDATEDATE" note="Дата изменения записи"/>
+		<obj-attribute name="UpdateUserID" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="ИД пользователя, изменившего запись"/>
+	</obj-entity>
+	<obj-entity name="SAL_Journal_Context" dbEntityName="SAL_JOURNAL_CONTEXT">
+		<obj-attribute name="ID" type="java.lang.Long" db-attribute-path="ID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД объекта"/>
+		<obj-attribute name="JournalID" type="java.lang.Long" db-attribute-path="JOURNALID" note="Журнал"/>
+		<obj-attribute name="PropertySourceID" type="java.lang.Long" db-attribute-path="PROPERTYSOURCEID" note="Признак"/>
+		<obj-attribute name="Value" type="java.lang.String" db-attribute-path="VALUE" note="Значение"/>
+	</obj-entity>
+	<obj-entity name="SAL_Journal_Flag" dbEntityName="SAL_JOURNAL_FLAG">
+		<obj-attribute name="FlagEventID" type="java.lang.Long" db-attribute-path="FLAGEVENTID" note="Классификатор признаков события журнала аудита безопасности"/>
+		<obj-attribute name="ID" type="java.lang.Long" db-attribute-path="ID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД объекта"/>
+		<obj-attribute name="JournalID" type="java.lang.Long" db-attribute-path="JOURNALID" note="Журнал аудита безопасности"/>
+	</obj-entity>
+	<obj-entity name="SAL_KindContextSource" dbEntityName="SAL_KINDCONTEXTSOURCE">
+		<obj-attribute name="ID" type="java.lang.Long" db-attribute-path="ID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД объекта"/>
+		<obj-attribute name="Name" type="java.lang.String" db-attribute-path="NAME" note="Наименование"/>
+		<obj-attribute name="SourceID" type="java.lang.Long" db-attribute-path="SOURCEID" note="Источник"/>
+		<obj-attribute name="SysName" type="java.lang.String" db-attribute-path="SYSNAME" note="Системное имя"/>
+	</obj-entity>
+	<obj-entity name="SAL_KindEvent" dbEntityName="SAL_KINDEVENT">
+		<obj-attribute name="ID" type="java.lang.Long" db-attribute-path="ID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД объекта"/>
+		<obj-attribute name="Name" type="java.lang.String" db-attribute-path="NAME" note="Наименование"/>
+		<obj-attribute name="SysName" type="java.lang.String" db-attribute-path="SYSNAME" note="Системное имя"/>
+	</obj-entity>
+	<obj-entity name="SAL_KindFlagEvent" dbEntityName="SAL_KINDFLAGEVENT">
+		<obj-attribute name="EventID" type="java.lang.Long" db-attribute-path="EVENTID" note="Вид события"/>
+		<obj-attribute name="ID" type="java.lang.Long" db-attribute-path="ID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД объекта"/>
+		<obj-attribute name="Name" type="java.lang.String" db-attribute-path="NAME" note="Наименование"/>
+		<obj-attribute name="SysName" type="java.lang.String" db-attribute-path="SYSNAME" note="Системное имя"/>
+	</obj-entity>
+	<obj-entity name="SAL_KindSource" dbEntityName="SAL_KINDSOURCE">
+		<obj-attribute name="ID" type="java.lang.Long" db-attribute-path="ID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД объекта"/>
+		<obj-attribute name="Name" type="java.lang.String" db-attribute-path="NAME" note="Наименование"/>
+		<obj-attribute name="SysName" type="java.lang.String" db-attribute-path="SYSNAME" note="Системное имя"/>
+	</obj-entity>
+	<obj-entity name="SAL_Terrorists" dbEntityName="SAL_TERRORISTS">
+		<obj-attribute name="Address" type="java.lang.String" db-attribute-path="ADDRESS" note="Адрес регистрации"/>
+		<obj-attribute name="Address2" type="java.lang.String" db-attribute-path="ADDRESS2" note="Адрес местонахождения"/>
+		<obj-attribute name="BirthDate" type="java.lang.Double" db-attribute-path="BIRTHDATE" note="Дата рождения"/>
+		<obj-attribute name="Contry" type="java.lang.String" db-attribute-path="CONTRY" note="Страна регистрации"/>
+		<obj-attribute name="Contry2" type="java.lang.String" db-attribute-path="CONTRY2" note="Страна местонахождения"/>
+		<obj-attribute name="DocumentAuthority" type="java.lang.String" db-attribute-path="DOCUMENTAUTHORITY" note="Кем выдан"/>
+		<obj-attribute name="DocumentNumber" type="java.lang.String" db-attribute-path="DOCUMENTNUMBER" note="Номер документа"/>
+		<obj-attribute name="DocumentSeries" type="java.lang.String" db-attribute-path="DOCUMENTSERIES" note="Серия документа"/>
+		<obj-attribute name="DocumentType" type="java.lang.String" db-attribute-path="DOCUMENTTYPE" note="Код документа"/>
+		<obj-attribute name="ID" type="java.lang.Long" db-attribute-path="ID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД объекта"/>
+		<obj-attribute name="IDRow" type="java.lang.String" db-attribute-path="IDROW" note="Ключ записи"/>
+		<obj-attribute name="INN" type="java.lang.String" db-attribute-path="INN" note="ИНН"/>
+		<obj-attribute name="Name" type="java.lang.String" db-attribute-path="NAME" note="Наименование лица"/>
+		<obj-attribute name="Name2" type="java.lang.String" db-attribute-path="NAME2" note="Дополнительно наименование"/>
+		<obj-attribute name="NodeID" type="java.math.BigDecimal" db-attribute-path="NODEID" note="ИД ноды"/>
+		<obj-attribute name="Note" type="java.lang.String" db-attribute-path="NOTE" note="Описание"/>
+		<obj-attribute name="PlaceOfBirth" type="java.lang.String" db-attribute-path="PLACEOFBIRTH" note="Место рождения"/>
+	</obj-entity>
+	<obj-entity name="SAL_TerroristsNode" dbEntityName="SAL_TERRORISTSNODE">
+		<obj-attribute name="CreateDate" type="java.lang.Float" db-attribute-path="CREATEDATE" note="Дата создания записи"/>
+		<obj-attribute name="CreateUserID" type="java.math.BigDecimal" db-attribute-path="CREATEUSERID" note="ИД пользователя, создавшего запись"/>
+		<obj-attribute name="ID" type="java.lang.Long" db-attribute-path="ID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД объекта"/>
+		<obj-attribute name="Note" type="java.lang.String" db-attribute-path="NOTE" note="Примечание"/>
+		<obj-attribute name="StateID" type="java.math.BigDecimal" db-attribute-path="STATEID" note="ИД состояния"/>
+		<obj-attribute name="UpdateDate" type="java.lang.Float" db-attribute-path="UPDATEDATE" note="Дата изменения записи"/>
+		<obj-attribute name="UpdateUserID" type="java.math.BigDecimal" db-attribute-path="UPDATEUSERID" note="ИД пользователя изменившего запись"/>
+		<obj-attribute name="Version" type="java.math.BigDecimal" db-attribute-path="VERSION" note="Номер версии"/>
+	</obj-entity>
+	<obj-entity name="SAL_Terrorists_Log" dbEntityName="SAL_TERRORISTS_LOG">
+		<obj-attribute name="ID" type="java.lang.Long" db-attribute-path="ID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД объекта"/>
+		<obj-attribute name="NodeID" type="java.math.BigDecimal" db-attribute-path="NODEID" note="ИД ноды"/>
+		<obj-attribute name="Note" type="java.lang.String" db-attribute-path="NOTE" note="Описание"/>
+		<obj-attribute name="StateID" type="java.lang.Long" db-attribute-path="STATEID" note="Состояние"/>
+		<obj-attribute name="UpdateDate" type="java.lang.Float" db-attribute-path="IMPORTDATE" note="Дата обновления"/>
+	</obj-entity>
+	<obj-entity name="SAL_Terrorists_Tmp" dbEntityName="SAL_TERRORISTS_TMP">
+		<obj-attribute name="Address" type="java.lang.String" db-attribute-path="ADDRESS" note="Адрес регистрации"/>
+		<obj-attribute name="Address2" type="java.lang.String" db-attribute-path="ADDRESS2" note="Адрес местонахождения"/>
+		<obj-attribute name="BirthDate" type="java.lang.Double" db-attribute-path="BIRTHDATE" note="Дата рождения"/>
+		<obj-attribute name="Contry" type="java.lang.String" db-attribute-path="CONTRY" note="Страна регистрации"/>
+		<obj-attribute name="Contry2" type="java.lang.String" db-attribute-path="CONTRY2" note="Страна местонахождения"/>
+		<obj-attribute name="DocumentAuthority" type="java.lang.String" db-attribute-path="DOCUMENTAUTHORITY" note="Кем выдан"/>
+		<obj-attribute name="DocumentNumber" type="java.lang.String" db-attribute-path="DOCUMENTNUMBER" note="Номер документа"/>
+		<obj-attribute name="DocumentSeries" type="java.lang.String" db-attribute-path="DOCUMENTSERIES" note="Серия документа"/>
+		<obj-attribute name="DocumentType" type="java.lang.String" db-attribute-path="DOCUMENTTYPE" note="Код документа"/>
+		<obj-attribute name="ID" type="java.lang.Long" db-attribute-path="ID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД объекта"/>
+		<obj-attribute name="IDRow" type="java.lang.String" db-attribute-path="IDROW" note="Ключ записи"/>
+		<obj-attribute name="INN" type="java.lang.String" db-attribute-path="INN" note="ИНН"/>
+		<obj-attribute name="Name" type="java.lang.String" db-attribute-path="NAME" note="Наименование лица"/>
+		<obj-attribute name="Name2" type="java.lang.String" db-attribute-path="NAME2" note="Дополнительно наименование"/>
+		<obj-attribute name="Note" type="java.lang.String" db-attribute-path="NOTE" note="Описание"/>
+		<obj-attribute name="PlaceOfBirth" type="java.lang.String" db-attribute-path="PLACEOFBIRTH" note="Место рождения"/>
+	</obj-entity>
+	<db-relationship name="TO_invalidPassportsNode" source="SAL_INVALIDPASSPORTS" target="SAL_INVALIDPASSPORTSNODE" toMany="false">
+		<db-attribute-pair source="NODEID" target="ID"/>
+	</db-relationship>
+	<db-relationship name="FROM_invalidPassports" source="SAL_INVALIDPASSPORTSNODE" target="SAL_INVALIDPASSPORTS" toMany="true">
+		<db-attribute-pair source="ID" target="NODEID"/>
+	</db-relationship>
+	<db-relationship name="FROM_invalidPassportsLog" source="SAL_INVALIDPASSPORTSNODE" target="SAL_INVALIDPASSPORTS_LOG" toMany="true">
+		<db-attribute-pair source="ID" target="NODEID"/>
+	</db-relationship>
+	<db-relationship name="TO_invalidPassportsNode" source="SAL_INVALIDPASSPORTS_LOG" target="SAL_INVALIDPASSPORTSNODE" toMany="false">
+		<db-attribute-pair source="NODEID" target="ID"/>
+	</db-relationship>
+	<db-relationship name="From_journal_context" source="SAL_JOURNAL" target="SAL_JOURNAL_CONTEXT" toMany="true">
+		<db-attribute-pair source="ID" target="JOURNALID"/>
+	</db-relationship>
+	<db-relationship name="From_journal_flag" source="SAL_JOURNAL" target="SAL_JOURNAL_FLAG" toMany="true">
+		<db-attribute-pair source="ID" target="JOURNALID"/>
+	</db-relationship>
+	<db-relationship name="TO_KindContextSource" source="SAL_JOURNAL_CONTEXT" target="SAL_KINDCONTEXTSOURCE" toMany="false">
+		<db-attribute-pair source="PROPERTYSOURCEID" target="ID"/>
+	</db-relationship>
+	<db-relationship name="TO_journal" source="SAL_JOURNAL_CONTEXT" target="SAL_JOURNAL" toMany="false">
+		<db-attribute-pair source="JOURNALID" target="ID"/>
+	</db-relationship>
+	<db-relationship name="TO_journal" source="SAL_JOURNAL_FLAG" target="SAL_JOURNAL" toMany="false">
+		<db-attribute-pair source="JOURNALID" target="ID"/>
+	</db-relationship>
+	<db-relationship name="TO_kindFlagEvent" source="SAL_JOURNAL_FLAG" target="SAL_KINDFLAGEVENT" toMany="false">
+		<db-attribute-pair source="FLAGEVENTID" target="ID"/>
+	</db-relationship>
+	<db-relationship name="FROM_journal_context" source="SAL_KINDCONTEXTSOURCE" target="SAL_JOURNAL_CONTEXT" toMany="true">
+		<db-attribute-pair source="ID" target="PROPERTYSOURCEID"/>
+	</db-relationship>
+	<db-relationship name="TO_kindSource" source="SAL_KINDCONTEXTSOURCE" target="SAL_KINDSOURCE" toMany="false">
+		<db-attribute-pair source="SOURCEID" target="ID"/>
+	</db-relationship>
+	<db-relationship name="FROM_kindFlagEvent" source="SAL_KINDEVENT" target="SAL_KINDFLAGEVENT" toMany="true">
+		<db-attribute-pair source="ID" target="EVENTID"/>
+	</db-relationship>
+	<db-relationship name="FROM_journalFlag" source="SAL_KINDFLAGEVENT" target="SAL_JOURNAL_FLAG" toMany="true">
+		<db-attribute-pair source="ID" target="FLAGEVENTID"/>
+	</db-relationship>
+	<db-relationship name="TO_kindEvent" source="SAL_KINDFLAGEVENT" target="SAL_KINDEVENT" toMany="false">
+		<db-attribute-pair source="EVENTID" target="ID"/>
+	</db-relationship>
+	<db-relationship name="FROM_kindContextSource" source="SAL_KINDSOURCE" target="SAL_KINDCONTEXTSOURCE" toMany="true">
+		<db-attribute-pair source="ID" target="SOURCEID"/>
+	</db-relationship>
+	<db-relationship name="To_terroristsNode" source="SAL_TERRORISTS" target="SAL_TERRORISTSNODE" toMany="false">
+		<db-attribute-pair source="NODEID" target="ID"/>
+	</db-relationship>
+	<db-relationship name="FROM_terrorists" source="SAL_TERRORISTSNODE" target="SAL_TERRORISTS" toMany="true">
+		<db-attribute-pair source="ID" target="NODEID"/>
+	</db-relationship>
+	<db-relationship name="FROM_terroristsLog" source="SAL_TERRORISTSNODE" target="SAL_TERRORISTS_LOG" toMany="true">
+		<db-attribute-pair source="ID" target="NODEID"/>
+	</db-relationship>
+	<db-relationship name="TO_terroristsNode" source="SAL_TERRORISTS_LOG" target="SAL_TERRORISTSNODE" toMany="false">
+		<db-attribute-pair source="NODEID" target="ID"/>
+	</db-relationship>
+	<obj-relationship name="toInvalidPassportsNode" source="SAL_InvalidPassports" target="SAL_InvalidPassportsNode" db-relationship-path="TO_invalidPassportsNode"/>
+	<obj-relationship name="fromInvalidPassports" source="SAL_InvalidPassportsNode" target="SAL_InvalidPassports" db-relationship-path="FROM_invalidPassports"/>
+	<obj-relationship name="fromInvalidPassportsLog" source="SAL_InvalidPassportsNode" target="SAL_InvalidPassports_Log" db-relationship-path="FROM_invalidPassportsLog"/>
+	<obj-relationship name="toInvalidPassportsNode" source="SAL_InvalidPassports_Log" target="SAL_InvalidPassportsNode" db-relationship-path="TO_invalidPassportsNode"/>
+	<obj-relationship name="fromJournalContext" source="SAL_Journal" target="SAL_Journal_Context" db-relationship-path="From_journal_context"/>
+	<obj-relationship name="fromJournalFlag" source="SAL_Journal" target="SAL_Journal_Flag" db-relationship-path="From_journal_flag"/>
+	<obj-relationship name="toJournal" source="SAL_Journal_Context" target="SAL_Journal" db-relationship-path="TO_journal"/>
+	<obj-relationship name="toKindContextSource" source="SAL_Journal_Context" target="SAL_KindContextSource" db-relationship-path="TO_KindContextSource"/>
+	<obj-relationship name="toJournal" source="SAL_Journal_Flag" target="SAL_Journal" db-relationship-path="TO_journal"/>
+	<obj-relationship name="toKindFlagEvent" source="SAL_Journal_Flag" target="SAL_KindFlagEvent" db-relationship-path="TO_kindFlagEvent"/>
+	<obj-relationship name="fromJournalContext" source="SAL_KindContextSource" target="SAL_Journal_Context" db-relationship-path="FROM_journal_context"/>
+	<obj-relationship name="toKindSource" source="SAL_KindContextSource" target="SAL_KindSource" db-relationship-path="TO_kindSource"/>
+	<obj-relationship name="fromKindFlagEvent" source="SAL_KindEvent" target="SAL_KindFlagEvent" db-relationship-path="FROM_kindFlagEvent"/>
+	<obj-relationship name="fromJournalFlag" source="SAL_KindFlagEvent" target="SAL_Journal_Flag" db-relationship-path="FROM_journalFlag"/>
+	<obj-relationship name="toKindEvent" source="SAL_KindFlagEvent" target="SAL_KindEvent" db-relationship-path="TO_kindEvent"/>
+	<obj-relationship name="fromKindContextSource" source="SAL_KindSource" target="SAL_KindContextSource" db-relationship-path="FROM_kindContextSource"/>
+	<obj-relationship name="fromInvalidPassports" source="SAL_TerroristsNode" target="SAL_InvalidPassports" db-relationship-path="FROM_invalidPassports"/>
+	<obj-relationship name="fromInvalidPassportsLog" source="SAL_TerroristsNode" target="SAL_InvalidPassports_Log" db-relationship-path="FROM_invalidPassportsLog"/>
+<query name="dsSAL_InvalidPassportsBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.ID', 'java.lang.Long', 'ID'),
+        #result('T.NODEID', 'java.math.BigDecimal', 'NODEID'),
+        #result('T.SERIESNUMBER', 'java.lang.String', 'SERIESNUMBER') 
+       $ASPECTFIELDS 
+FROM 
+      SAL_INVALIDPASSPORTS T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($NODEID) T.NODEID = #bind($NODEID 'NUMERIC') #end 
+       #chunk($SERIESNUMBER) T.SERIESNUMBER = #bind($SERIESNUMBER 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_InvalidPassportsBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ID)', 'java.lang.Long', 'CNT') 
+FROM 
+      SAL_INVALIDPASSPORTS T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($NODEID) T.NODEID = #bind($NODEID 'NUMERIC') #end 
+       #chunk($SERIESNUMBER) T.SERIESNUMBER = #bind($SERIESNUMBER 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_InvalidPassportsInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO SAL_INVALIDPASSPORTS (
+ID,
+NODEID,
+SERIESNUMBER 
+$ASPECTFIELDS ) VALUES (
+#bind($ID 'NUMERIC'),
+#bind($NODEID 'NUMERIC'),
+#bind($SERIESNUMBER 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO SAL_INVALIDPASSPORTS (
+ID,
+NODEID,
+SERIESNUMBER 
+$ASPECTFIELDS ) VALUES (
+#bind($ID 'NUMERIC'),
+#bind($NODEID 'NUMERIC'),
+#bind($SERIESNUMBER 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO SAL_INVALIDPASSPORTS (
+ID,
+NODEID,
+SERIESNUMBER 
+$ASPECTFIELDS ) VALUES (
+#bind($ID 'NUMERIC'),
+#bind($NODEID 'NUMERIC'),
+#bind($SERIESNUMBER 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsSAL_InvalidPassportsUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($NODEID) , T.NODEID = #bind($NODEID 'NUMERIC') #end 
+#chunk($SERIESNUMBER) , T.SERIESNUMBER = #bind($SERIESNUMBER 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_INVALIDPASSPORTS T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($NODEID) , T.NODEID = #bind($NODEID 'NUMERIC') #end 
+#chunk($SERIESNUMBER) , T.SERIESNUMBER = #bind($SERIESNUMBER 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_INVALIDPASSPORTS T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       SAL_INVALIDPASSPORTS T 
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($NODEID) , T.NODEID = #bind($NODEID 'NUMERIC') #end 
+#chunk($SERIESNUMBER) , T.SERIESNUMBER = #bind($SERIESNUMBER 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_InvalidPassportsUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($NODEID) , TA.NODEID = #bind($NODEID 'NUMERIC') #end 
+#chunk($SERIESNUMBER) , TA.SERIESNUMBER = #bind($SERIESNUMBER 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_INVALIDPASSPORTS TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_INVALIDPASSPORTS T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($NODEID) , TA.NODEID = #bind($NODEID 'NUMERIC') #end 
+#chunk($SERIESNUMBER) , TA.SERIESNUMBER = #bind($SERIESNUMBER 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_INVALIDPASSPORTS TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_INVALIDPASSPORTS T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       SAL_INVALIDPASSPORTS TA 
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($NODEID) , TA.NODEID = #bind($NODEID 'NUMERIC') #end 
+#chunk($SERIESNUMBER) , TA.SERIESNUMBER = #bind($SERIESNUMBER 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_INVALIDPASSPORTS T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsSAL_InvalidPassportsDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      SAL_INVALIDPASSPORTS T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      SAL_INVALIDPASSPORTS T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       SAL_INVALIDPASSPORTS T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_InvalidPassportsDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      SAL_INVALIDPASSPORTS TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_INVALIDPASSPORTS T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      SAL_INVALIDPASSPORTS TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_INVALIDPASSPORTS T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       SAL_INVALIDPASSPORTS TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_INVALIDPASSPORTS T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsSAL_InvalidPassportsNodeBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.ID', 'java.lang.Long', 'ID'),
+        #result('T.NOTE', 'java.lang.String', 'NOTE'),
+        #result('T.VERSION', 'java.math.BigDecimal', 'VERSION') 
+       $ASPECTFIELDS 
+FROM 
+      SAL_INVALIDPASSPORTSNODE T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($VERSION) T.VERSION = #bind($VERSION 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_InvalidPassportsNodeBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ID)', 'java.lang.Long', 'CNT') 
+FROM 
+      SAL_INVALIDPASSPORTSNODE T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($VERSION) T.VERSION = #bind($VERSION 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_InvalidPassportsNodeInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO SAL_INVALIDPASSPORTSNODE (
+ID,
+NOTE,
+VERSION 
+$ASPECTFIELDS ) VALUES (
+#bind($ID 'NUMERIC'),
+#bind($NOTE 'VARCHAR'),
+#bind($VERSION 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO SAL_INVALIDPASSPORTSNODE (
+ID,
+NOTE,
+VERSION 
+$ASPECTFIELDS ) VALUES (
+#bind($ID 'NUMERIC'),
+#bind($NOTE 'VARCHAR'),
+#bind($VERSION 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO SAL_INVALIDPASSPORTSNODE (
+ID,
+NOTE,
+VERSION 
+$ASPECTFIELDS ) VALUES (
+#bind($ID 'NUMERIC'),
+#bind($NOTE 'VARCHAR'),
+#bind($VERSION 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsSAL_InvalidPassportsNodeUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($NOTE) , T.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($VERSION) , T.VERSION = #bind($VERSION 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_INVALIDPASSPORTSNODE T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($NOTE) , T.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($VERSION) , T.VERSION = #bind($VERSION 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_INVALIDPASSPORTSNODE T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       SAL_INVALIDPASSPORTSNODE T 
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($NOTE) , T.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($VERSION) , T.VERSION = #bind($VERSION 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_InvalidPassportsNodeUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($NOTE) , TA.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($VERSION) , TA.VERSION = #bind($VERSION 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_INVALIDPASSPORTSNODE TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_INVALIDPASSPORTSNODE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($NOTE) , TA.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($VERSION) , TA.VERSION = #bind($VERSION 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_INVALIDPASSPORTSNODE TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_INVALIDPASSPORTSNODE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       SAL_INVALIDPASSPORTSNODE TA 
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($NOTE) , TA.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($VERSION) , TA.VERSION = #bind($VERSION 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_INVALIDPASSPORTSNODE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsSAL_InvalidPassportsNodeDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      SAL_INVALIDPASSPORTSNODE T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      SAL_INVALIDPASSPORTSNODE T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       SAL_INVALIDPASSPORTSNODE T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_InvalidPassportsNodeDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      SAL_INVALIDPASSPORTSNODE TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_INVALIDPASSPORTSNODE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      SAL_INVALIDPASSPORTSNODE TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_INVALIDPASSPORTSNODE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       SAL_INVALIDPASSPORTSNODE TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_INVALIDPASSPORTSNODE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsSAL_InvalidPassports_LogBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.ID', 'java.lang.Long', 'ID'),
+        #result('T.NODEID', 'java.math.BigDecimal', 'NODEID'),
+        #result('T.IMPORTDATE', 'java.math.BigDecimal', 'IMPORTDATE'),
+        #result('T.NOTE', 'java.lang.String', 'NOTE') 
+       $ASPECTFIELDS 
+FROM 
+      SAL_INVALIDPASSPORTS_LOG T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($NODEID) T.NODEID = #bind($NODEID 'NUMERIC') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_InvalidPassports_LogBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ID)', 'java.lang.Long', 'CNT') 
+FROM 
+      SAL_INVALIDPASSPORTS_LOG T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($NODEID) T.NODEID = #bind($NODEID 'NUMERIC') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_InvalidPassports_LogInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO SAL_INVALIDPASSPORTS_LOG (
+ID,
+NODEID,
+IMPORTDATE,
+NOTE 
+$ASPECTFIELDS ) VALUES (
+#bind($ID 'NUMERIC'),
+#bind($NODEID 'NUMERIC'),
+#bind($NOTE 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO SAL_INVALIDPASSPORTS_LOG (
+ID,
+NODEID,
+IMPORTDATE,
+NOTE 
+$ASPECTFIELDS ) VALUES (
+#bind($ID 'NUMERIC'),
+#bind($NODEID 'NUMERIC'),
+#bind($IMPORTDATE, 'FLOAT'),
+#bind($NOTE 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO SAL_INVALIDPASSPORTS_LOG (
+ID,
+NODEID,
+IMPORTDATE,
+NOTE 
+$ASPECTFIELDS ) VALUES (
+#bind($ID 'NUMERIC'),
+#bind($NODEID 'NUMERIC'),
+#bind($IMPORTDATE, 'FLOAT'),
+#bind($NOTE 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsSAL_InvalidPassports_LogUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($NODEID) , T.NODEID = #bind($NODEID 'NUMERIC') #end 
+#chunk($IMPORTDATE) , T.IMPORTDATE = #bind($IMPORTDATE 'FLOAT') #end 
+#chunk($NOTE) , T.NOTE = #bind($NOTE 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_INVALIDPASSPORTS_LOG T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($NODEID) , T.NODEID = #bind($NODEID 'NUMERIC') #end 
+#chunk($IMPORTDATE) , T.IMPORTDATE = #bind($IMPORTDATE 'FLOAT') #end 
+#chunk($NOTE) , T.NOTE = #bind($NOTE 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_INVALIDPASSPORTS_LOG T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       SAL_INVALIDPASSPORTS_LOG T 
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($NODEID) , T.NODEID = #bind($NODEID 'NUMERIC') #end 
+#chunk($IMPORTDATE) , T.IMPORTDATE = #bind($IMPORTDATE 'FLOAT') #end 
+#chunk($NOTE) , T.NOTE = #bind($NOTE 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_InvalidPassports_LogUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($NODEID) , TA.NODEID = #bind($NODEID 'NUMERIC') #end 
+#chunk($IMPORTDATE) , T.IMPORTDATE = #bind($IMPORTDATE 'FLOAT') #end 
+#chunk($NOTE) , TA.NOTE = #bind($NOTE 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_INVALIDPASSPORTS_LOG TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_INVALIDPASSPORTS_LOG T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($NODEID) , TA.NODEID = #bind($NODEID 'NUMERIC') #end 
+#chunk($IMPORTDATE) , T.IMPORTDATE = #bind($IMPORTDATE 'FLOAT') #end 
+#chunk($NOTE) , TA.NOTE = #bind($NOTE 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_INVALIDPASSPORTS_LOG TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_INVALIDPASSPORTS_LOG T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       SAL_INVALIDPASSPORTS_LOG TA 
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($NODEID) , TA.NODEID = #bind($NODEID 'NUMERIC') #end 
+#chunk($IMPORTDATE) , T.IMPORTDATE = #bind($IMPORTDATE 'FLOAT') #end 
+#chunk($NOTE) , TA.NOTE = #bind($NOTE 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_INVALIDPASSPORTS_LOG T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsSAL_InvalidPassports_LogDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      SAL_INVALIDPASSPORTS_LOG T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      SAL_INVALIDPASSPORTS_LOG T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       SAL_INVALIDPASSPORTS_LOG T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_InvalidPassports_LogDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      SAL_INVALIDPASSPORTS_LOG TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_INVALIDPASSPORTS_LOG T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      SAL_INVALIDPASSPORTS_LOG TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_INVALIDPASSPORTS_LOG T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       SAL_INVALIDPASSPORTS_LOG TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_INVALIDPASSPORTS_LOG T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsSAL_InvalidPassports_TmpBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.ID', 'java.lang.Long', 'ID'),
+        #result('T.SERIESNUMBER', 'java.lang.String', 'SERIESNUMBER') 
+       $ASPECTFIELDS 
+FROM 
+      SAL_INVALIDPASSPORTS_TMP T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($SERIESNUMBER) T.SERIESNUMBER = #bind($SERIESNUMBER 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_InvalidPassports_TmpBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ID)', 'java.lang.Long', 'CNT') 
+FROM 
+      SAL_INVALIDPASSPORTS_TMP T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($SERIESNUMBER) T.SERIESNUMBER = #bind($SERIESNUMBER 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_InvalidPassports_TmpInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO SAL_INVALIDPASSPORTS_TMP (
+ID,
+SERIESNUMBER 
+$ASPECTFIELDS ) VALUES (
+#bind($ID 'NUMERIC'),
+#bind($SERIESNUMBER 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO SAL_INVALIDPASSPORTS_TMP (
+ID,
+SERIESNUMBER 
+$ASPECTFIELDS ) VALUES (
+#bind($ID 'NUMERIC'),
+#bind($SERIESNUMBER 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO SAL_INVALIDPASSPORTS_TMP (
+ID,
+SERIESNUMBER 
+$ASPECTFIELDS ) VALUES (
+#bind($ID 'NUMERIC'),
+#bind($SERIESNUMBER 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsSAL_InvalidPassports_TmpUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($SERIESNUMBER) , T.SERIESNUMBER = #bind($SERIESNUMBER 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_INVALIDPASSPORTS_TMP T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($SERIESNUMBER) , T.SERIESNUMBER = #bind($SERIESNUMBER 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_INVALIDPASSPORTS_TMP T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       SAL_INVALIDPASSPORTS_TMP T 
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($SERIESNUMBER) , T.SERIESNUMBER = #bind($SERIESNUMBER 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_InvalidPassports_TmpUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($SERIESNUMBER) , TA.SERIESNUMBER = #bind($SERIESNUMBER 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_INVALIDPASSPORTS_TMP TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_INVALIDPASSPORTS_TMP T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($SERIESNUMBER) , TA.SERIESNUMBER = #bind($SERIESNUMBER 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_INVALIDPASSPORTS_TMP TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_INVALIDPASSPORTS_TMP T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       SAL_INVALIDPASSPORTS_TMP TA 
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($SERIESNUMBER) , TA.SERIESNUMBER = #bind($SERIESNUMBER 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_INVALIDPASSPORTS_TMP T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsSAL_InvalidPassports_TmpDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      SAL_INVALIDPASSPORTS_TMP T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      SAL_INVALIDPASSPORTS_TMP T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       SAL_INVALIDPASSPORTS_TMP T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_InvalidPassports_TmpDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      SAL_INVALIDPASSPORTS_TMP TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_INVALIDPASSPORTS_TMP T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      SAL_INVALIDPASSPORTS_TMP TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_INVALIDPASSPORTS_TMP T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       SAL_INVALIDPASSPORTS_TMP TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_INVALIDPASSPORTS_TMP T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsSAL_JournalBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.EVENTID', 'java.lang.Long', 'EVENTID'),
+        #result('T.ID', 'java.lang.Long', 'ID'),
+        #result('T.ISRESOLVED', 'java.lang.Long', 'ISRESOLVED'),
+        #result('T.NOTE', 'java.lang.String', 'NOTE'),
+        #result('T.RESOLVEDUSERID', 'java.lang.Long', 'RESOLVEDUSERID'),
+        #result('T.SOURCEID', 'java.lang.Long', 'SOURCEID') 
+       $ASPECTFIELDS 
+FROM 
+      SAL_JOURNAL T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($EVENTID) T.EVENTID = #bind($EVENTID 'NUMERIC') #end 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($ISRESOLVED) T.ISRESOLVED = #bind($ISRESOLVED 'NUMERIC') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($RESOLVEDUSERID) T.RESOLVEDUSERID = #bind($RESOLVEDUSERID 'NUMERIC') #end 
+       #chunk($SOURCEID) T.SOURCEID = #bind($SOURCEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_JournalBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ID)', 'java.lang.Long', 'CNT') 
+FROM 
+      SAL_JOURNAL T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($EVENTID) T.EVENTID = #bind($EVENTID 'NUMERIC') #end 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($ISRESOLVED) T.ISRESOLVED = #bind($ISRESOLVED 'NUMERIC') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($RESOLVEDUSERID) T.RESOLVEDUSERID = #bind($RESOLVEDUSERID 'NUMERIC') #end 
+       #chunk($SOURCEID) T.SOURCEID = #bind($SOURCEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_JournalInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO SAL_JOURNAL (
+EVENTID,
+ID,
+ISRESOLVED,
+NOTE,
+RESOLVEDUSERID,
+SOURCEID 
+$ASPECTFIELDS ) VALUES (
+#bind($EVENTID 'NUMERIC'),
+#bind($ID 'NUMERIC'),
+#bind($ISRESOLVED 'NUMERIC'),
+#bind($NOTE 'VARCHAR'),
+#bind($RESOLVEDUSERID 'NUMERIC'),
+#bind($SOURCEID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO SAL_JOURNAL (
+EVENTID,
+ID,
+ISRESOLVED,
+NOTE,
+RESOLVEDUSERID,
+SOURCEID 
+$ASPECTFIELDS ) VALUES (
+#bind($EVENTID 'NUMERIC'),
+#bind($ID 'NUMERIC'),
+#bind($ISRESOLVED 'NUMERIC'),
+#bind($NOTE 'VARCHAR'),
+#bind($RESOLVEDUSERID 'NUMERIC'),
+#bind($SOURCEID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO SAL_JOURNAL (
+EVENTID,
+ID,
+ISRESOLVED,
+NOTE,
+RESOLVEDUSERID,
+SOURCEID 
+$ASPECTFIELDS ) VALUES (
+#bind($EVENTID 'NUMERIC'),
+#bind($ID 'NUMERIC'),
+#bind($ISRESOLVED 'NUMERIC'),
+#bind($NOTE 'VARCHAR'),
+#bind($RESOLVEDUSERID 'NUMERIC'),
+#bind($SOURCEID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsSAL_JournalUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($EVENTID) , T.EVENTID = #bind($EVENTID 'NUMERIC') #end 
+#chunk($ISRESOLVED) , T.ISRESOLVED = #bind($ISRESOLVED 'NUMERIC') #end 
+#chunk($NOTE) , T.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($RESOLVEDUSERID) , T.RESOLVEDUSERID = #bind($RESOLVEDUSERID 'NUMERIC') #end 
+#chunk($SOURCEID) , T.SOURCEID = #bind($SOURCEID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_JOURNAL T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($EVENTID) , T.EVENTID = #bind($EVENTID 'NUMERIC') #end 
+#chunk($ISRESOLVED) , T.ISRESOLVED = #bind($ISRESOLVED 'NUMERIC') #end 
+#chunk($NOTE) , T.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($RESOLVEDUSERID) , T.RESOLVEDUSERID = #bind($RESOLVEDUSERID 'NUMERIC') #end 
+#chunk($SOURCEID) , T.SOURCEID = #bind($SOURCEID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_JOURNAL T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       SAL_JOURNAL T 
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($EVENTID) , T.EVENTID = #bind($EVENTID 'NUMERIC') #end 
+#chunk($ISRESOLVED) , T.ISRESOLVED = #bind($ISRESOLVED 'NUMERIC') #end 
+#chunk($NOTE) , T.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($RESOLVEDUSERID) , T.RESOLVEDUSERID = #bind($RESOLVEDUSERID 'NUMERIC') #end 
+#chunk($SOURCEID) , T.SOURCEID = #bind($SOURCEID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_JournalUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($EVENTID) , TA.EVENTID = #bind($EVENTID 'NUMERIC') #end 
+#chunk($ISRESOLVED) , TA.ISRESOLVED = #bind($ISRESOLVED 'NUMERIC') #end 
+#chunk($NOTE) , TA.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($RESOLVEDUSERID) , TA.RESOLVEDUSERID = #bind($RESOLVEDUSERID 'NUMERIC') #end 
+#chunk($SOURCEID) , TA.SOURCEID = #bind($SOURCEID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_JOURNAL TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_JOURNAL T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($EVENTID) , TA.EVENTID = #bind($EVENTID 'NUMERIC') #end 
+#chunk($ISRESOLVED) , TA.ISRESOLVED = #bind($ISRESOLVED 'NUMERIC') #end 
+#chunk($NOTE) , TA.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($RESOLVEDUSERID) , TA.RESOLVEDUSERID = #bind($RESOLVEDUSERID 'NUMERIC') #end 
+#chunk($SOURCEID) , TA.SOURCEID = #bind($SOURCEID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_JOURNAL TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_JOURNAL T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       SAL_JOURNAL TA 
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($EVENTID) , TA.EVENTID = #bind($EVENTID 'NUMERIC') #end 
+#chunk($ISRESOLVED) , TA.ISRESOLVED = #bind($ISRESOLVED 'NUMERIC') #end 
+#chunk($NOTE) , TA.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($RESOLVEDUSERID) , TA.RESOLVEDUSERID = #bind($RESOLVEDUSERID 'NUMERIC') #end 
+#chunk($SOURCEID) , TA.SOURCEID = #bind($SOURCEID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_JOURNAL T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsSAL_JournalDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      SAL_JOURNAL T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      SAL_JOURNAL T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       SAL_JOURNAL T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_JournalDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      SAL_JOURNAL TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_JOURNAL T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      SAL_JOURNAL TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_JOURNAL T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       SAL_JOURNAL TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_JOURNAL T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsSAL_Journal_ContextBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.ID', 'java.lang.Long', 'ID'),
+        #result('T.JOURNALID', 'java.lang.Long', 'JOURNALID'),
+        #result('T.PROPERTYSOURCEID', 'java.lang.Long', 'PROPERTYSOURCEID'),
+        #result('T.VALUE', 'java.lang.String', 'VALUE') 
+       $ASPECTFIELDS 
+FROM 
+      SAL_JOURNAL_CONTEXT T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($JOURNALID) T.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+       #chunk($PROPERTYSOURCEID) T.PROPERTYSOURCEID = #bind($PROPERTYSOURCEID 'NUMERIC') #end 
+       #chunk($VALUE) T.VALUE = #bind($VALUE 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_Journal_ContextBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ID)', 'java.lang.Long', 'CNT') 
+FROM 
+      SAL_JOURNAL_CONTEXT T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($JOURNALID) T.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+       #chunk($PROPERTYSOURCEID) T.PROPERTYSOURCEID = #bind($PROPERTYSOURCEID 'NUMERIC') #end 
+       #chunk($VALUE) T.VALUE = #bind($VALUE 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_Journal_ContextInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO SAL_JOURNAL_CONTEXT (
+ID,
+JOURNALID,
+PROPERTYSOURCEID,
+VALUE 
+$ASPECTFIELDS ) VALUES (
+#bind($ID 'NUMERIC'),
+#bind($JOURNALID 'NUMERIC'),
+#bind($PROPERTYSOURCEID 'NUMERIC'),
+#bind($VALUE 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO SAL_JOURNAL_CONTEXT (
+ID,
+JOURNALID,
+PROPERTYSOURCEID,
+VALUE 
+$ASPECTFIELDS ) VALUES (
+#bind($ID 'NUMERIC'),
+#bind($JOURNALID 'NUMERIC'),
+#bind($PROPERTYSOURCEID 'NUMERIC'),
+#bind($VALUE 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO SAL_JOURNAL_CONTEXT (
+ID,
+JOURNALID,
+PROPERTYSOURCEID,
+VALUE 
+$ASPECTFIELDS ) VALUES (
+#bind($ID 'NUMERIC'),
+#bind($JOURNALID 'NUMERIC'),
+#bind($PROPERTYSOURCEID 'NUMERIC'),
+#bind($VALUE 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsSAL_Journal_ContextUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($JOURNALID) , T.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+#chunk($PROPERTYSOURCEID) , T.PROPERTYSOURCEID = #bind($PROPERTYSOURCEID 'NUMERIC') #end 
+#chunk($VALUE) , T.VALUE = #bind($VALUE 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_JOURNAL_CONTEXT T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($JOURNALID) , T.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+#chunk($PROPERTYSOURCEID) , T.PROPERTYSOURCEID = #bind($PROPERTYSOURCEID 'NUMERIC') #end 
+#chunk($VALUE) , T.VALUE = #bind($VALUE 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_JOURNAL_CONTEXT T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       SAL_JOURNAL_CONTEXT T 
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($JOURNALID) , T.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+#chunk($PROPERTYSOURCEID) , T.PROPERTYSOURCEID = #bind($PROPERTYSOURCEID 'NUMERIC') #end 
+#chunk($VALUE) , T.VALUE = #bind($VALUE 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_Journal_ContextUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($JOURNALID) , TA.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+#chunk($PROPERTYSOURCEID) , TA.PROPERTYSOURCEID = #bind($PROPERTYSOURCEID 'NUMERIC') #end 
+#chunk($VALUE) , TA.VALUE = #bind($VALUE 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_JOURNAL_CONTEXT TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_JOURNAL_CONTEXT T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($JOURNALID) , TA.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+#chunk($PROPERTYSOURCEID) , TA.PROPERTYSOURCEID = #bind($PROPERTYSOURCEID 'NUMERIC') #end 
+#chunk($VALUE) , TA.VALUE = #bind($VALUE 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_JOURNAL_CONTEXT TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_JOURNAL_CONTEXT T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       SAL_JOURNAL_CONTEXT TA 
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($JOURNALID) , TA.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+#chunk($PROPERTYSOURCEID) , TA.PROPERTYSOURCEID = #bind($PROPERTYSOURCEID 'NUMERIC') #end 
+#chunk($VALUE) , TA.VALUE = #bind($VALUE 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_JOURNAL_CONTEXT T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsSAL_Journal_ContextDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      SAL_JOURNAL_CONTEXT T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      SAL_JOURNAL_CONTEXT T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       SAL_JOURNAL_CONTEXT T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_Journal_ContextDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      SAL_JOURNAL_CONTEXT TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_JOURNAL_CONTEXT T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      SAL_JOURNAL_CONTEXT TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_JOURNAL_CONTEXT T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       SAL_JOURNAL_CONTEXT TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_JOURNAL_CONTEXT T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsSAL_Journal_FlagBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.FLAGEVENTID', 'java.lang.Long', 'FLAGEVENTID'),
+        #result('T.ID', 'java.lang.Long', 'ID'),
+        #result('T.JOURNALID', 'java.lang.Long', 'JOURNALID') 
+       $ASPECTFIELDS 
+FROM 
+      SAL_JOURNAL_FLAG T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($FLAGEVENTID) T.FLAGEVENTID = #bind($FLAGEVENTID 'NUMERIC') #end 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($JOURNALID) T.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_Journal_FlagBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ID)', 'java.lang.Long', 'CNT') 
+FROM 
+      SAL_JOURNAL_FLAG T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($FLAGEVENTID) T.FLAGEVENTID = #bind($FLAGEVENTID 'NUMERIC') #end 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($JOURNALID) T.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_Journal_FlagInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO SAL_JOURNAL_FLAG (
+FLAGEVENTID,
+ID,
+JOURNALID 
+$ASPECTFIELDS ) VALUES (
+#bind($FLAGEVENTID 'NUMERIC'),
+#bind($ID 'NUMERIC'),
+#bind($JOURNALID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO SAL_JOURNAL_FLAG (
+FLAGEVENTID,
+ID,
+JOURNALID 
+$ASPECTFIELDS ) VALUES (
+#bind($FLAGEVENTID 'NUMERIC'),
+#bind($ID 'NUMERIC'),
+#bind($JOURNALID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO SAL_JOURNAL_FLAG (
+FLAGEVENTID,
+ID,
+JOURNALID 
+$ASPECTFIELDS ) VALUES (
+#bind($FLAGEVENTID 'NUMERIC'),
+#bind($ID 'NUMERIC'),
+#bind($JOURNALID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsSAL_Journal_FlagUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($FLAGEVENTID) , T.FLAGEVENTID = #bind($FLAGEVENTID 'NUMERIC') #end 
+#chunk($JOURNALID) , T.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_JOURNAL_FLAG T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($FLAGEVENTID) , T.FLAGEVENTID = #bind($FLAGEVENTID 'NUMERIC') #end 
+#chunk($JOURNALID) , T.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_JOURNAL_FLAG T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       SAL_JOURNAL_FLAG T 
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($FLAGEVENTID) , T.FLAGEVENTID = #bind($FLAGEVENTID 'NUMERIC') #end 
+#chunk($JOURNALID) , T.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_Journal_FlagUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($FLAGEVENTID) , TA.FLAGEVENTID = #bind($FLAGEVENTID 'NUMERIC') #end 
+#chunk($JOURNALID) , TA.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_JOURNAL_FLAG TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_JOURNAL_FLAG T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($FLAGEVENTID) , TA.FLAGEVENTID = #bind($FLAGEVENTID 'NUMERIC') #end 
+#chunk($JOURNALID) , TA.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_JOURNAL_FLAG TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_JOURNAL_FLAG T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       SAL_JOURNAL_FLAG TA 
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($FLAGEVENTID) , TA.FLAGEVENTID = #bind($FLAGEVENTID 'NUMERIC') #end 
+#chunk($JOURNALID) , TA.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_JOURNAL_FLAG T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsSAL_Journal_FlagDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      SAL_JOURNAL_FLAG T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      SAL_JOURNAL_FLAG T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       SAL_JOURNAL_FLAG T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_Journal_FlagDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      SAL_JOURNAL_FLAG TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_JOURNAL_FLAG T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      SAL_JOURNAL_FLAG TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_JOURNAL_FLAG T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       SAL_JOURNAL_FLAG TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_JOURNAL_FLAG T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsSAL_KindContextSourceBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.ID', 'java.lang.Long', 'ID'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.SOURCEID', 'java.lang.Long', 'SOURCEID'),
+        #result('T.SYSNAME', 'java.lang.String', 'SYSNAME') 
+       $ASPECTFIELDS 
+FROM 
+      SAL_KINDCONTEXTSOURCE T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($SOURCEID) T.SOURCEID = #bind($SOURCEID 'NUMERIC') #end 
+       #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_KindContextSourceBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ID)', 'java.lang.Long', 'CNT') 
+FROM 
+      SAL_KINDCONTEXTSOURCE T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($SOURCEID) T.SOURCEID = #bind($SOURCEID 'NUMERIC') #end 
+       #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_KindContextSourceInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO SAL_KINDCONTEXTSOURCE (
+ID,
+NAME,
+SOURCEID,
+SYSNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($ID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($SOURCEID 'NUMERIC'),
+#bind($SYSNAME 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO SAL_KINDCONTEXTSOURCE (
+ID,
+NAME,
+SOURCEID,
+SYSNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($ID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($SOURCEID 'NUMERIC'),
+#bind($SYSNAME 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO SAL_KINDCONTEXTSOURCE (
+ID,
+NAME,
+SOURCEID,
+SYSNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($ID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($SOURCEID 'NUMERIC'),
+#bind($SYSNAME 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsSAL_KindContextSourceUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SOURCEID) , T.SOURCEID = #bind($SOURCEID 'NUMERIC') #end 
+#chunk($SYSNAME) , T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_KINDCONTEXTSOURCE T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SOURCEID) , T.SOURCEID = #bind($SOURCEID 'NUMERIC') #end 
+#chunk($SYSNAME) , T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_KINDCONTEXTSOURCE T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       SAL_KINDCONTEXTSOURCE T 
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SOURCEID) , T.SOURCEID = #bind($SOURCEID 'NUMERIC') #end 
+#chunk($SYSNAME) , T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_KindContextSourceUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SOURCEID) , TA.SOURCEID = #bind($SOURCEID 'NUMERIC') #end 
+#chunk($SYSNAME) , TA.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_KINDCONTEXTSOURCE TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_KINDCONTEXTSOURCE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SOURCEID) , TA.SOURCEID = #bind($SOURCEID 'NUMERIC') #end 
+#chunk($SYSNAME) , TA.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_KINDCONTEXTSOURCE TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_KINDCONTEXTSOURCE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       SAL_KINDCONTEXTSOURCE TA 
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SOURCEID) , TA.SOURCEID = #bind($SOURCEID 'NUMERIC') #end 
+#chunk($SYSNAME) , TA.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_KINDCONTEXTSOURCE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsSAL_KindContextSourceDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      SAL_KINDCONTEXTSOURCE T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      SAL_KINDCONTEXTSOURCE T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       SAL_KINDCONTEXTSOURCE T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_KindContextSourceDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      SAL_KINDCONTEXTSOURCE TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_KINDCONTEXTSOURCE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      SAL_KINDCONTEXTSOURCE TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_KINDCONTEXTSOURCE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       SAL_KINDCONTEXTSOURCE TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_KINDCONTEXTSOURCE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsSAL_KindEventBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.ID', 'java.lang.Long', 'ID'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.SYSNAME', 'java.lang.String', 'SYSNAME') 
+       $ASPECTFIELDS 
+FROM 
+      SAL_KINDEVENT T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_KindEventBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ID)', 'java.lang.Long', 'CNT') 
+FROM 
+      SAL_KINDEVENT T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_KindEventInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO SAL_KINDEVENT (
+ID,
+NAME,
+SYSNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($ID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($SYSNAME 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO SAL_KINDEVENT (
+ID,
+NAME,
+SYSNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($ID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($SYSNAME 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO SAL_KINDEVENT (
+ID,
+NAME,
+SYSNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($ID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($SYSNAME 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsSAL_KindEventUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SYSNAME) , T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_KINDEVENT T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SYSNAME) , T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_KINDEVENT T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       SAL_KINDEVENT T 
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SYSNAME) , T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_KindEventUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SYSNAME) , TA.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_KINDEVENT TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_KINDEVENT T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SYSNAME) , TA.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_KINDEVENT TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_KINDEVENT T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       SAL_KINDEVENT TA 
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SYSNAME) , TA.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_KINDEVENT T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsSAL_KindEventDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      SAL_KINDEVENT T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      SAL_KINDEVENT T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       SAL_KINDEVENT T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_KindEventDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      SAL_KINDEVENT TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_KINDEVENT T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      SAL_KINDEVENT TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_KINDEVENT T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       SAL_KINDEVENT TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_KINDEVENT T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsSAL_KindFlagEventBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.EVENTID', 'java.lang.Long', 'EVENTID'),
+        #result('T.ID', 'java.lang.Long', 'ID'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.SYSNAME', 'java.lang.String', 'SYSNAME') 
+       $ASPECTFIELDS 
+FROM 
+      SAL_KINDFLAGEVENT T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($EVENTID) T.EVENTID = #bind($EVENTID 'NUMERIC') #end 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_KindFlagEventBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ID)', 'java.lang.Long', 'CNT') 
+FROM 
+      SAL_KINDFLAGEVENT T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($EVENTID) T.EVENTID = #bind($EVENTID 'NUMERIC') #end 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_KindFlagEventInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO SAL_KINDFLAGEVENT (
+EVENTID,
+ID,
+NAME,
+SYSNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($EVENTID 'NUMERIC'),
+#bind($ID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($SYSNAME 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO SAL_KINDFLAGEVENT (
+EVENTID,
+ID,
+NAME,
+SYSNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($EVENTID 'NUMERIC'),
+#bind($ID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($SYSNAME 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO SAL_KINDFLAGEVENT (
+EVENTID,
+ID,
+NAME,
+SYSNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($EVENTID 'NUMERIC'),
+#bind($ID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($SYSNAME 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsSAL_KindFlagEventUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($EVENTID) , T.EVENTID = #bind($EVENTID 'NUMERIC') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SYSNAME) , T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_KINDFLAGEVENT T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($EVENTID) , T.EVENTID = #bind($EVENTID 'NUMERIC') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SYSNAME) , T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_KINDFLAGEVENT T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       SAL_KINDFLAGEVENT T 
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($EVENTID) , T.EVENTID = #bind($EVENTID 'NUMERIC') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SYSNAME) , T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_KindFlagEventUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($EVENTID) , TA.EVENTID = #bind($EVENTID 'NUMERIC') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SYSNAME) , TA.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_KINDFLAGEVENT TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_KINDFLAGEVENT T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($EVENTID) , TA.EVENTID = #bind($EVENTID 'NUMERIC') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SYSNAME) , TA.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_KINDFLAGEVENT TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_KINDFLAGEVENT T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       SAL_KINDFLAGEVENT TA 
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($EVENTID) , TA.EVENTID = #bind($EVENTID 'NUMERIC') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SYSNAME) , TA.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_KINDFLAGEVENT T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsSAL_KindFlagEventDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      SAL_KINDFLAGEVENT T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      SAL_KINDFLAGEVENT T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       SAL_KINDFLAGEVENT T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_KindFlagEventDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      SAL_KINDFLAGEVENT TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_KINDFLAGEVENT T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      SAL_KINDFLAGEVENT TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_KINDFLAGEVENT T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       SAL_KINDFLAGEVENT TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_KINDFLAGEVENT T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsSAL_KindSourceBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.ID', 'java.lang.Long', 'ID'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.SYSNAME', 'java.lang.String', 'SYSNAME') 
+       $ASPECTFIELDS 
+FROM 
+      SAL_KINDSOURCE T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_KindSourceBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ID)', 'java.lang.Long', 'CNT') 
+FROM 
+      SAL_KINDSOURCE T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_KindSourceInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO SAL_KINDSOURCE (
+ID,
+NAME,
+SYSNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($ID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($SYSNAME 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO SAL_KINDSOURCE (
+ID,
+NAME,
+SYSNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($ID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($SYSNAME 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO SAL_KINDSOURCE (
+ID,
+NAME,
+SYSNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($ID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($SYSNAME 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsSAL_KindSourceUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SYSNAME) , T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_KINDSOURCE T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SYSNAME) , T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_KINDSOURCE T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       SAL_KINDSOURCE T 
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SYSNAME) , T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_KindSourceUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SYSNAME) , TA.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_KINDSOURCE TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_KINDSOURCE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SYSNAME) , TA.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_KINDSOURCE TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_KINDSOURCE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       SAL_KINDSOURCE TA 
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SYSNAME) , TA.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_KINDSOURCE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsSAL_KindSourceDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      SAL_KINDSOURCE T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      SAL_KINDSOURCE T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       SAL_KINDSOURCE T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_KindSourceDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      SAL_KINDSOURCE TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_KINDSOURCE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      SAL_KINDSOURCE TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_KINDSOURCE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       SAL_KINDSOURCE TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_KINDSOURCE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsSAL_TerroristsBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.ADDRESS', 'java.lang.String', 'ADDRESS'),
+        #result('T.ADDRESS2', 'java.lang.String', 'ADDRESS2'),
+        #result('T.BIRTHDATE', 'java.lang.Double', 'BIRTHDATE'),
+        #result('T.CONTRY', 'java.lang.String', 'CONTRY'),
+        #result('T.CONTRY2', 'java.lang.String', 'CONTRY2'),
+        #result('T.DOCUMENTAUTHORITY', 'java.lang.String', 'DOCUMENTAUTHORITY'),
+        #result('T.DOCUMENTNUMBER', 'java.lang.String', 'DOCUMENTNUMBER'),
+        #result('T.DOCUMENTSERIES', 'java.lang.String', 'DOCUMENTSERIES'),
+        #result('T.DOCUMENTTYPE', 'java.lang.String', 'DOCUMENTTYPE'),
+        #result('T.ID', 'java.lang.Long', 'ID'),
+        #result('T.IDROW', 'java.lang.String', 'IDROW'),
+        #result('T.INN', 'java.lang.String', 'INN'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.NAME2', 'java.lang.String', 'NAME2'),
+        #result('T.NODEID', 'java.math.BigDecimal', 'NODEID'),
+        #result('T.NOTE', 'java.lang.String', 'NOTE'),
+        #result('T.PLACEOFBIRTH', 'java.lang.String', 'PLACEOFBIRTH') 
+       $ASPECTFIELDS 
+FROM 
+      SAL_TERRORISTS T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ADDRESS) T.ADDRESS = #bind($ADDRESS 'VARCHAR') #end 
+       #chunk($ADDRESS2) T.ADDRESS2 = #bind($ADDRESS2 'VARCHAR') #end 
+       #chunk($BIRTHDATE) T.BIRTHDATE = #bind($BIRTHDATE 'FLOAT') #end 
+       #chunk($CONTRY) T.CONTRY = #bind($CONTRY 'VARCHAR') #end 
+       #chunk($CONTRY2) T.CONTRY2 = #bind($CONTRY2 'VARCHAR') #end 
+       #chunk($DOCUMENTAUTHORITY) T.DOCUMENTAUTHORITY = #bind($DOCUMENTAUTHORITY 'VARCHAR') #end 
+       #chunk($DOCUMENTNUMBER) T.DOCUMENTNUMBER = #bind($DOCUMENTNUMBER 'VARCHAR') #end 
+       #chunk($DOCUMENTSERIES) T.DOCUMENTSERIES = #bind($DOCUMENTSERIES 'VARCHAR') #end 
+       #chunk($DOCUMENTTYPE) T.DOCUMENTTYPE = #bind($DOCUMENTTYPE 'VARCHAR') #end 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($IDROW) T.IDROW = #bind($IDROW 'VARCHAR') #end 
+       #chunk($INN) T.INN = #bind($INN 'VARCHAR') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($NAME2) T.NAME2 = #bind($NAME2 'VARCHAR') #end 
+       #chunk($NODEID) T.NODEID = #bind($NODEID 'NUMERIC') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($PLACEOFBIRTH) T.PLACEOFBIRTH = #bind($PLACEOFBIRTH 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_TerroristsBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ID)', 'java.lang.Long', 'CNT') 
+FROM 
+      SAL_TERRORISTS T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ADDRESS) T.ADDRESS = #bind($ADDRESS 'VARCHAR') #end 
+       #chunk($ADDRESS2) T.ADDRESS2 = #bind($ADDRESS2 'VARCHAR') #end 
+       #chunk($BIRTHDATE) T.BIRTHDATE = #bind($BIRTHDATE 'FLOAT') #end 
+       #chunk($CONTRY) T.CONTRY = #bind($CONTRY 'VARCHAR') #end 
+       #chunk($CONTRY2) T.CONTRY2 = #bind($CONTRY2 'VARCHAR') #end 
+       #chunk($DOCUMENTAUTHORITY) T.DOCUMENTAUTHORITY = #bind($DOCUMENTAUTHORITY 'VARCHAR') #end 
+       #chunk($DOCUMENTNUMBER) T.DOCUMENTNUMBER = #bind($DOCUMENTNUMBER 'VARCHAR') #end 
+       #chunk($DOCUMENTSERIES) T.DOCUMENTSERIES = #bind($DOCUMENTSERIES 'VARCHAR') #end 
+       #chunk($DOCUMENTTYPE) T.DOCUMENTTYPE = #bind($DOCUMENTTYPE 'VARCHAR') #end 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($IDROW) T.IDROW = #bind($IDROW 'VARCHAR') #end 
+       #chunk($INN) T.INN = #bind($INN 'VARCHAR') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($NAME2) T.NAME2 = #bind($NAME2 'VARCHAR') #end 
+       #chunk($NODEID) T.NODEID = #bind($NODEID 'NUMERIC') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($PLACEOFBIRTH) T.PLACEOFBIRTH = #bind($PLACEOFBIRTH 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_TerroristsInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO SAL_TERRORISTS (
+ADDRESS,
+ADDRESS2,
+BIRTHDATE,
+CONTRY,
+CONTRY2,
+DOCUMENTAUTHORITY,
+DOCUMENTNUMBER,
+DOCUMENTSERIES,
+DOCUMENTTYPE,
+ID,
+IDROW,
+INN,
+NAME,
+NAME2,
+NODEID,
+NOTE,
+PLACEOFBIRTH 
+$ASPECTFIELDS ) VALUES (
+#bind($ADDRESS 'VARCHAR'),
+#bind($ADDRESS2 'VARCHAR'),
+#bind($BIRTHDATE 'FLOAT'),
+#bind($CONTRY 'VARCHAR'),
+#bind($CONTRY2 'VARCHAR'),
+#bind($DOCUMENTAUTHORITY 'VARCHAR'),
+#bind($DOCUMENTNUMBER 'VARCHAR'),
+#bind($DOCUMENTSERIES 'VARCHAR'),
+#bind($DOCUMENTTYPE 'VARCHAR'),
+#bind($ID 'NUMERIC'),
+#bind($IDROW 'VARCHAR'),
+#bind($INN 'VARCHAR'),
+#bind($NAME 'VARCHAR'),
+#bind($NAME2 'VARCHAR'),
+#bind($NODEID 'NUMERIC'),
+#bind($NOTE 'VARCHAR'),
+#bind($PLACEOFBIRTH 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO SAL_TERRORISTS (
+ADDRESS,
+ADDRESS2,
+BIRTHDATE,
+CONTRY,
+CONTRY2,
+DOCUMENTAUTHORITY,
+DOCUMENTNUMBER,
+DOCUMENTSERIES,
+DOCUMENTTYPE,
+ID,
+IDROW,
+INN,
+NAME,
+NAME2,
+NODEID,
+NOTE,
+PLACEOFBIRTH 
+$ASPECTFIELDS ) VALUES (
+#bind($ADDRESS 'VARCHAR'),
+#bind($ADDRESS2 'VARCHAR'),
+#bind($BIRTHDATE 'FLOAT'),
+#bind($CONTRY 'VARCHAR'),
+#bind($CONTRY2 'VARCHAR'),
+#bind($DOCUMENTAUTHORITY 'VARCHAR'),
+#bind($DOCUMENTNUMBER 'VARCHAR'),
+#bind($DOCUMENTSERIES 'VARCHAR'),
+#bind($DOCUMENTTYPE 'VARCHAR'),
+#bind($ID 'NUMERIC'),
+#bind($IDROW 'VARCHAR'),
+#bind($INN 'VARCHAR'),
+#bind($NAME 'VARCHAR'),
+#bind($NAME2 'VARCHAR'),
+#bind($NODEID 'NUMERIC'),
+#bind($NOTE 'VARCHAR'),
+#bind($PLACEOFBIRTH 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO SAL_TERRORISTS (
+ADDRESS,
+ADDRESS2,
+BIRTHDATE,
+CONTRY,
+CONTRY2,
+DOCUMENTAUTHORITY,
+DOCUMENTNUMBER,
+DOCUMENTSERIES,
+DOCUMENTTYPE,
+ID,
+IDROW,
+INN,
+NAME,
+NAME2,
+NODEID,
+NOTE,
+PLACEOFBIRTH 
+$ASPECTFIELDS ) VALUES (
+#bind($ADDRESS 'VARCHAR'),
+#bind($ADDRESS2 'VARCHAR'),
+#bind($BIRTHDATE 'FLOAT'),
+#bind($CONTRY 'VARCHAR'),
+#bind($CONTRY2 'VARCHAR'),
+#bind($DOCUMENTAUTHORITY 'VARCHAR'),
+#bind($DOCUMENTNUMBER 'VARCHAR'),
+#bind($DOCUMENTSERIES 'VARCHAR'),
+#bind($DOCUMENTTYPE 'VARCHAR'),
+#bind($ID 'NUMERIC'),
+#bind($IDROW 'VARCHAR'),
+#bind($INN 'VARCHAR'),
+#bind($NAME 'VARCHAR'),
+#bind($NAME2 'VARCHAR'),
+#bind($NODEID 'NUMERIC'),
+#bind($NOTE 'VARCHAR'),
+#bind($PLACEOFBIRTH 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsSAL_TerroristsUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($ADDRESS) , T.ADDRESS = #bind($ADDRESS 'VARCHAR') #end 
+#chunk($ADDRESS2) , T.ADDRESS2 = #bind($ADDRESS2 'VARCHAR') #end 
+#chunk($BIRTHDATE) , T.BIRTHDATE = #bind($BIRTHDATE 'FLOAT') #end 
+#chunk($CONTRY) , T.CONTRY = #bind($CONTRY 'VARCHAR') #end 
+#chunk($CONTRY2) , T.CONTRY2 = #bind($CONTRY2 'VARCHAR') #end 
+#chunk($DOCUMENTAUTHORITY) , T.DOCUMENTAUTHORITY = #bind($DOCUMENTAUTHORITY 'VARCHAR') #end 
+#chunk($DOCUMENTNUMBER) , T.DOCUMENTNUMBER = #bind($DOCUMENTNUMBER 'VARCHAR') #end 
+#chunk($DOCUMENTSERIES) , T.DOCUMENTSERIES = #bind($DOCUMENTSERIES 'VARCHAR') #end 
+#chunk($DOCUMENTTYPE) , T.DOCUMENTTYPE = #bind($DOCUMENTTYPE 'VARCHAR') #end 
+#chunk($IDROW) , T.IDROW = #bind($IDROW 'VARCHAR') #end 
+#chunk($INN) , T.INN = #bind($INN 'VARCHAR') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($NAME2) , T.NAME2 = #bind($NAME2 'VARCHAR') #end 
+#chunk($NODEID) , T.NODEID = #bind($NODEID 'NUMERIC') #end 
+#chunk($NOTE) , T.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($PLACEOFBIRTH) , T.PLACEOFBIRTH = #bind($PLACEOFBIRTH 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_TERRORISTS T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($ADDRESS) , T.ADDRESS = #bind($ADDRESS 'VARCHAR') #end 
+#chunk($ADDRESS2) , T.ADDRESS2 = #bind($ADDRESS2 'VARCHAR') #end 
+#chunk($BIRTHDATE) , T.BIRTHDATE = #bind($BIRTHDATE 'FLOAT') #end 
+#chunk($CONTRY) , T.CONTRY = #bind($CONTRY 'VARCHAR') #end 
+#chunk($CONTRY2) , T.CONTRY2 = #bind($CONTRY2 'VARCHAR') #end 
+#chunk($DOCUMENTAUTHORITY) , T.DOCUMENTAUTHORITY = #bind($DOCUMENTAUTHORITY 'VARCHAR') #end 
+#chunk($DOCUMENTNUMBER) , T.DOCUMENTNUMBER = #bind($DOCUMENTNUMBER 'VARCHAR') #end 
+#chunk($DOCUMENTSERIES) , T.DOCUMENTSERIES = #bind($DOCUMENTSERIES 'VARCHAR') #end 
+#chunk($DOCUMENTTYPE) , T.DOCUMENTTYPE = #bind($DOCUMENTTYPE 'VARCHAR') #end 
+#chunk($IDROW) , T.IDROW = #bind($IDROW 'VARCHAR') #end 
+#chunk($INN) , T.INN = #bind($INN 'VARCHAR') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($NAME2) , T.NAME2 = #bind($NAME2 'VARCHAR') #end 
+#chunk($NODEID) , T.NODEID = #bind($NODEID 'NUMERIC') #end 
+#chunk($NOTE) , T.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($PLACEOFBIRTH) , T.PLACEOFBIRTH = #bind($PLACEOFBIRTH 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_TERRORISTS T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       SAL_TERRORISTS T 
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($ADDRESS) , T.ADDRESS = #bind($ADDRESS 'VARCHAR') #end 
+#chunk($ADDRESS2) , T.ADDRESS2 = #bind($ADDRESS2 'VARCHAR') #end 
+#chunk($BIRTHDATE) , T.BIRTHDATE = #bind($BIRTHDATE 'FLOAT') #end 
+#chunk($CONTRY) , T.CONTRY = #bind($CONTRY 'VARCHAR') #end 
+#chunk($CONTRY2) , T.CONTRY2 = #bind($CONTRY2 'VARCHAR') #end 
+#chunk($DOCUMENTAUTHORITY) , T.DOCUMENTAUTHORITY = #bind($DOCUMENTAUTHORITY 'VARCHAR') #end 
+#chunk($DOCUMENTNUMBER) , T.DOCUMENTNUMBER = #bind($DOCUMENTNUMBER 'VARCHAR') #end 
+#chunk($DOCUMENTSERIES) , T.DOCUMENTSERIES = #bind($DOCUMENTSERIES 'VARCHAR') #end 
+#chunk($DOCUMENTTYPE) , T.DOCUMENTTYPE = #bind($DOCUMENTTYPE 'VARCHAR') #end 
+#chunk($IDROW) , T.IDROW = #bind($IDROW 'VARCHAR') #end 
+#chunk($INN) , T.INN = #bind($INN 'VARCHAR') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($NAME2) , T.NAME2 = #bind($NAME2 'VARCHAR') #end 
+#chunk($NODEID) , T.NODEID = #bind($NODEID 'NUMERIC') #end 
+#chunk($NOTE) , T.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($PLACEOFBIRTH) , T.PLACEOFBIRTH = #bind($PLACEOFBIRTH 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_TerroristsUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($ADDRESS) , TA.ADDRESS = #bind($ADDRESS 'VARCHAR') #end 
+#chunk($ADDRESS2) , TA.ADDRESS2 = #bind($ADDRESS2 'VARCHAR') #end 
+#chunk($BIRTHDATE) , TA.BIRTHDATE = #bind($BIRTHDATE 'FLOAT') #end 
+#chunk($CONTRY) , TA.CONTRY = #bind($CONTRY 'VARCHAR') #end 
+#chunk($CONTRY2) , TA.CONTRY2 = #bind($CONTRY2 'VARCHAR') #end 
+#chunk($DOCUMENTAUTHORITY) , TA.DOCUMENTAUTHORITY = #bind($DOCUMENTAUTHORITY 'VARCHAR') #end 
+#chunk($DOCUMENTNUMBER) , TA.DOCUMENTNUMBER = #bind($DOCUMENTNUMBER 'VARCHAR') #end 
+#chunk($DOCUMENTSERIES) , TA.DOCUMENTSERIES = #bind($DOCUMENTSERIES 'VARCHAR') #end 
+#chunk($DOCUMENTTYPE) , TA.DOCUMENTTYPE = #bind($DOCUMENTTYPE 'VARCHAR') #end 
+#chunk($IDROW) , TA.IDROW = #bind($IDROW 'VARCHAR') #end 
+#chunk($INN) , TA.INN = #bind($INN 'VARCHAR') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($NAME2) , TA.NAME2 = #bind($NAME2 'VARCHAR') #end 
+#chunk($NODEID) , TA.NODEID = #bind($NODEID 'NUMERIC') #end 
+#chunk($NOTE) , TA.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($PLACEOFBIRTH) , TA.PLACEOFBIRTH = #bind($PLACEOFBIRTH 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_TERRORISTS TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_TERRORISTS T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($ADDRESS) , TA.ADDRESS = #bind($ADDRESS 'VARCHAR') #end 
+#chunk($ADDRESS2) , TA.ADDRESS2 = #bind($ADDRESS2 'VARCHAR') #end 
+#chunk($BIRTHDATE) , TA.BIRTHDATE = #bind($BIRTHDATE 'FLOAT') #end 
+#chunk($CONTRY) , TA.CONTRY = #bind($CONTRY 'VARCHAR') #end 
+#chunk($CONTRY2) , TA.CONTRY2 = #bind($CONTRY2 'VARCHAR') #end 
+#chunk($DOCUMENTAUTHORITY) , TA.DOCUMENTAUTHORITY = #bind($DOCUMENTAUTHORITY 'VARCHAR') #end 
+#chunk($DOCUMENTNUMBER) , TA.DOCUMENTNUMBER = #bind($DOCUMENTNUMBER 'VARCHAR') #end 
+#chunk($DOCUMENTSERIES) , TA.DOCUMENTSERIES = #bind($DOCUMENTSERIES 'VARCHAR') #end 
+#chunk($DOCUMENTTYPE) , TA.DOCUMENTTYPE = #bind($DOCUMENTTYPE 'VARCHAR') #end 
+#chunk($IDROW) , TA.IDROW = #bind($IDROW 'VARCHAR') #end 
+#chunk($INN) , TA.INN = #bind($INN 'VARCHAR') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($NAME2) , TA.NAME2 = #bind($NAME2 'VARCHAR') #end 
+#chunk($NODEID) , TA.NODEID = #bind($NODEID 'NUMERIC') #end 
+#chunk($NOTE) , TA.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($PLACEOFBIRTH) , TA.PLACEOFBIRTH = #bind($PLACEOFBIRTH 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_TERRORISTS TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_TERRORISTS T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       SAL_TERRORISTS TA 
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($ADDRESS) , TA.ADDRESS = #bind($ADDRESS 'VARCHAR') #end 
+#chunk($ADDRESS2) , TA.ADDRESS2 = #bind($ADDRESS2 'VARCHAR') #end 
+#chunk($BIRTHDATE) , TA.BIRTHDATE = #bind($BIRTHDATE 'FLOAT') #end 
+#chunk($CONTRY) , TA.CONTRY = #bind($CONTRY 'VARCHAR') #end 
+#chunk($CONTRY2) , TA.CONTRY2 = #bind($CONTRY2 'VARCHAR') #end 
+#chunk($DOCUMENTAUTHORITY) , TA.DOCUMENTAUTHORITY = #bind($DOCUMENTAUTHORITY 'VARCHAR') #end 
+#chunk($DOCUMENTNUMBER) , TA.DOCUMENTNUMBER = #bind($DOCUMENTNUMBER 'VARCHAR') #end 
+#chunk($DOCUMENTSERIES) , TA.DOCUMENTSERIES = #bind($DOCUMENTSERIES 'VARCHAR') #end 
+#chunk($DOCUMENTTYPE) , TA.DOCUMENTTYPE = #bind($DOCUMENTTYPE 'VARCHAR') #end 
+#chunk($IDROW) , TA.IDROW = #bind($IDROW 'VARCHAR') #end 
+#chunk($INN) , TA.INN = #bind($INN 'VARCHAR') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($NAME2) , TA.NAME2 = #bind($NAME2 'VARCHAR') #end 
+#chunk($NODEID) , TA.NODEID = #bind($NODEID 'NUMERIC') #end 
+#chunk($NOTE) , TA.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($PLACEOFBIRTH) , TA.PLACEOFBIRTH = #bind($PLACEOFBIRTH 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_TERRORISTS T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsSAL_TerroristsDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      SAL_TERRORISTS T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      SAL_TERRORISTS T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       SAL_TERRORISTS T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_TerroristsDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      SAL_TERRORISTS TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_TERRORISTS T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      SAL_TERRORISTS TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_TERRORISTS T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       SAL_TERRORISTS TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_TERRORISTS T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsSAL_TerroristsNodeBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.ID', 'java.lang.Long', 'ID'),
+        #result('T.NOTE', 'java.lang.String', 'NOTE'),
+        #result('T.VERSION', 'java.math.BigDecimal', 'VERSION') 
+       $ASPECTFIELDS 
+FROM 
+      SAL_TERRORISTSNODE T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($VERSION) T.VERSION = #bind($VERSION 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_TerroristsNodeBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ID)', 'java.lang.Long', 'CNT') 
+FROM 
+      SAL_TERRORISTSNODE T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($VERSION) T.VERSION = #bind($VERSION 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_TerroristsNodeInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO SAL_TERRORISTSNODE (
+ID,
+NOTE,
+VERSION 
+$ASPECTFIELDS ) VALUES (
+#bind($ID 'NUMERIC'),
+#bind($NOTE 'VARCHAR'),
+#bind($VERSION 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO SAL_TERRORISTSNODE (
+ID,
+NOTE,
+VERSION 
+$ASPECTFIELDS ) VALUES (
+#bind($ID 'NUMERIC'),
+#bind($NOTE 'VARCHAR'),
+#bind($VERSION 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO SAL_TERRORISTSNODE (
+ID,
+NOTE,
+VERSION 
+$ASPECTFIELDS ) VALUES (
+#bind($ID 'NUMERIC'),
+#bind($NOTE 'VARCHAR'),
+#bind($VERSION 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsSAL_TerroristsNodeUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($NOTE) , T.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($VERSION) , T.VERSION = #bind($VERSION 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_TERRORISTSNODE T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($NOTE) , T.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($VERSION) , T.VERSION = #bind($VERSION 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_TERRORISTSNODE T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       SAL_TERRORISTSNODE T 
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($NOTE) , T.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($VERSION) , T.VERSION = #bind($VERSION 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_TerroristsNodeUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($NOTE) , TA.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($VERSION) , TA.VERSION = #bind($VERSION 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_TERRORISTSNODE TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_TERRORISTSNODE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($NOTE) , TA.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($VERSION) , TA.VERSION = #bind($VERSION 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_TERRORISTSNODE TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_TERRORISTSNODE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       SAL_TERRORISTSNODE TA 
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($NOTE) , TA.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($VERSION) , TA.VERSION = #bind($VERSION 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_TERRORISTSNODE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsSAL_TerroristsNodeDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      SAL_TERRORISTSNODE T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      SAL_TERRORISTSNODE T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       SAL_TERRORISTSNODE T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_TerroristsNodeDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      SAL_TERRORISTSNODE TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_TERRORISTSNODE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      SAL_TERRORISTSNODE TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_TERRORISTSNODE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       SAL_TERRORISTSNODE TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_TERRORISTSNODE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsSAL_Terrorists_LogBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT S
+        #result('T.ID', 'java.lang.Long', 'ID'),
+        #result('T.NODEID', 'java.math.BigDecimal', 'NODEID'),
+        #result('T.IMPORTDATE', 'java.math.BigDecimal', 'IMPORTDATE'),
+        #result('T.NOTE', 'java.lang.String', 'NOTE') 
+       $ASPECTFIELDS 
+FROM 
+      SAL_TERRORISTS_LOG T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($NODEID) T.NODEID = #bind($NODEID 'NUMERIC') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_Terrorists_LogBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ID)', 'java.lang.Long', 'CNT') 
+FROM 
+      SAL_TERRORISTS_LOG T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($NODEID) T.NODEID = #bind($NODEID 'NUMERIC') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_Terrorists_LogInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO SAL_TERRORISTS_LOG (
+ID,
+NODEID,
+IMPORTDATE,
+NOTE 
+$ASPECTFIELDS ) VALUES (
+#bind($ID 'NUMERIC'),
+#bind($NODEID 'NUMERIC'),
+#bind($IMPORTDATE 'FLOAT'),
+#bind($NOTE 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO SAL_TERRORISTS_LOG (
+ID,
+NODEID,
+IMPORTDATE,
+NOTE 
+$ASPECTFIELDS ) VALUES (
+#bind($ID 'NUMERIC'),
+#bind($NODEID 'NUMERIC'),
+#bind($IMPORTDATE 'FLOAT'),
+#bind($NOTE 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO SAL_TERRORISTS_LOG (
+ID,
+NODEID,
+IMPORTDATE,
+NOTE 
+$ASPECTFIELDS ) VALUES (
+#bind($ID 'NUMERIC'),
+#bind($NODEID 'NUMERIC'),
+#bind($IMPORTDATE 'FLOAT'),
+#bind($NOTE 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsSAL_Terrorists_LogUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($NODEID) , T.NODEID = #bind($NODEID 'NUMERIC') #end 
+#chunk($IMPORTDATE) , T.IMPORTDATE = #bind($IMPORTDATE 'FLOAT') #end 
+#chunk($NOTE) , T.NOTE = #bind($NOTE 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_TERRORISTS_LOG T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($NODEID) , T.NODEID = #bind($NODEID 'NUMERIC') #end 
+#chunk($IMPORTDATE) , T.IMPORTDATE = #bind($IMPORTDATE 'FLOAT') #end 
+#chunk($NOTE) , T.NOTE = #bind($NOTE 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_TERRORISTS_LOG T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       SAL_TERRORISTS_LOG T 
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($NODEID) , T.NODEID = #bind($NODEID 'NUMERIC') #end 
+#chunk($IMPORTDATE) , T.IMPORTDATE = #bind($IMPORTDATE 'FLOAT') #end 
+#chunk($NOTE) , T.NOTE = #bind($NOTE 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_Terrorists_LogUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($NODEID) , TA.NODEID = #bind($NODEID 'NUMERIC') #end 
+#chunk($IMPORTDATE) , T.IMPORTDATE = #bind($IMPORTDATE 'FLOAT') #end 
+#chunk($NOTE) , TA.NOTE = #bind($NOTE 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_TERRORISTS_LOG TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_TERRORISTS_LOG T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($NODEID) , TA.NODEID = #bind($NODEID 'NUMERIC') #end 
+#chunk($IMPORTDATE) , T.IMPORTDATE = #bind($IMPORTDATE 'FLOAT') #end 
+#chunk($NOTE) , TA.NOTE = #bind($NOTE 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_TERRORISTS_LOG TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_TERRORISTS_LOG T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       SAL_TERRORISTS_LOG TA 
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($NODEID) , TA.NODEID = #bind($NODEID 'NUMERIC') #end 
+#chunk($IMPORTDATE) , T.IMPORTDATE = #bind($IMPORTDATE 'FLOAT') #end 
+#chunk($NOTE) , TA.NOTE = #bind($NOTE 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_TERRORISTS_LOG T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsSAL_Terrorists_LogDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      SAL_TERRORISTS_LOG T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      SAL_TERRORISTS_LOG T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       SAL_TERRORISTS_LOG T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_Terrorists_LogDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      SAL_TERRORISTS_LOG TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_TERRORISTS_LOG T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      SAL_TERRORISTS_LOG TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_TERRORISTS_LOG T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       SAL_TERRORISTS_LOG TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_TERRORISTS_LOG T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsSAL_Terrorists_TmpBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.ADDRESS', 'java.lang.String', 'ADDRESS'),
+        #result('T.ADDRESS2', 'java.lang.String', 'ADDRESS2'),
+        #result('T.BIRTHDATE', 'java.lang.Double', 'BIRTHDATE'),
+        #result('T.CONTRY', 'java.lang.String', 'CONTRY'),
+        #result('T.CONTRY2', 'java.lang.String', 'CONTRY2'),
+        #result('T.DOCUMENTAUTHORITY', 'java.lang.String', 'DOCUMENTAUTHORITY'),
+        #result('T.DOCUMENTNUMBER', 'java.lang.String', 'DOCUMENTNUMBER'),
+        #result('T.DOCUMENTSERIES', 'java.lang.String', 'DOCUMENTSERIES'),
+        #result('T.DOCUMENTTYPE', 'java.lang.String', 'DOCUMENTTYPE'),
+        #result('T.ID', 'java.lang.Long', 'ID'),
+        #result('T.IDROW', 'java.lang.String', 'IDROW'),
+        #result('T.INN', 'java.lang.String', 'INN'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.NAME2', 'java.lang.String', 'NAME2'),
+        #result('T.NOTE', 'java.lang.String', 'NOTE'),
+        #result('T.PLACEOFBIRTH', 'java.lang.String', 'PLACEOFBIRTH') 
+       $ASPECTFIELDS 
+FROM 
+      SAL_TERRORISTS_TMP T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ADDRESS) T.ADDRESS = #bind($ADDRESS 'VARCHAR') #end 
+       #chunk($ADDRESS2) T.ADDRESS2 = #bind($ADDRESS2 'VARCHAR') #end 
+       #chunk($BIRTHDATE) T.BIRTHDATE = #bind($BIRTHDATE 'FLOAT') #end 
+       #chunk($CONTRY) T.CONTRY = #bind($CONTRY 'VARCHAR') #end 
+       #chunk($CONTRY2) T.CONTRY2 = #bind($CONTRY2 'VARCHAR') #end 
+       #chunk($DOCUMENTAUTHORITY) T.DOCUMENTAUTHORITY = #bind($DOCUMENTAUTHORITY 'VARCHAR') #end 
+       #chunk($DOCUMENTNUMBER) T.DOCUMENTNUMBER = #bind($DOCUMENTNUMBER 'VARCHAR') #end 
+       #chunk($DOCUMENTSERIES) T.DOCUMENTSERIES = #bind($DOCUMENTSERIES 'VARCHAR') #end 
+       #chunk($DOCUMENTTYPE) T.DOCUMENTTYPE = #bind($DOCUMENTTYPE 'VARCHAR') #end 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($IDROW) T.IDROW = #bind($IDROW 'VARCHAR') #end 
+       #chunk($INN) T.INN = #bind($INN 'VARCHAR') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($NAME2) T.NAME2 = #bind($NAME2 'VARCHAR') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($PLACEOFBIRTH) T.PLACEOFBIRTH = #bind($PLACEOFBIRTH 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_Terrorists_TmpBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ID)', 'java.lang.Long', 'CNT') 
+FROM 
+      SAL_TERRORISTS_TMP T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ADDRESS) T.ADDRESS = #bind($ADDRESS 'VARCHAR') #end 
+       #chunk($ADDRESS2) T.ADDRESS2 = #bind($ADDRESS2 'VARCHAR') #end 
+       #chunk($BIRTHDATE) T.BIRTHDATE = #bind($BIRTHDATE 'FLOAT') #end 
+       #chunk($CONTRY) T.CONTRY = #bind($CONTRY 'VARCHAR') #end 
+       #chunk($CONTRY2) T.CONTRY2 = #bind($CONTRY2 'VARCHAR') #end 
+       #chunk($DOCUMENTAUTHORITY) T.DOCUMENTAUTHORITY = #bind($DOCUMENTAUTHORITY 'VARCHAR') #end 
+       #chunk($DOCUMENTNUMBER) T.DOCUMENTNUMBER = #bind($DOCUMENTNUMBER 'VARCHAR') #end 
+       #chunk($DOCUMENTSERIES) T.DOCUMENTSERIES = #bind($DOCUMENTSERIES 'VARCHAR') #end 
+       #chunk($DOCUMENTTYPE) T.DOCUMENTTYPE = #bind($DOCUMENTTYPE 'VARCHAR') #end 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($IDROW) T.IDROW = #bind($IDROW 'VARCHAR') #end 
+       #chunk($INN) T.INN = #bind($INN 'VARCHAR') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($NAME2) T.NAME2 = #bind($NAME2 'VARCHAR') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($PLACEOFBIRTH) T.PLACEOFBIRTH = #bind($PLACEOFBIRTH 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_Terrorists_TmpInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO SAL_TERRORISTS_TMP (
+ADDRESS,
+ADDRESS2,
+BIRTHDATE,
+CONTRY,
+CONTRY2,
+DOCUMENTAUTHORITY,
+DOCUMENTNUMBER,
+DOCUMENTSERIES,
+DOCUMENTTYPE,
+ID,
+IDROW,
+INN,
+NAME,
+NAME2,
+NOTE,
+PLACEOFBIRTH 
+$ASPECTFIELDS ) VALUES (
+#bind($ADDRESS 'VARCHAR'),
+#bind($ADDRESS2 'VARCHAR'),
+#bind($BIRTHDATE 'FLOAT'),
+#bind($CONTRY 'VARCHAR'),
+#bind($CONTRY2 'VARCHAR'),
+#bind($DOCUMENTAUTHORITY 'VARCHAR'),
+#bind($DOCUMENTNUMBER 'VARCHAR'),
+#bind($DOCUMENTSERIES 'VARCHAR'),
+#bind($DOCUMENTTYPE 'VARCHAR'),
+#bind($ID 'NUMERIC'),
+#bind($IDROW 'VARCHAR'),
+#bind($INN 'VARCHAR'),
+#bind($NAME 'VARCHAR'),
+#bind($NAME2 'VARCHAR'),
+#bind($NOTE 'VARCHAR'),
+#bind($PLACEOFBIRTH 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO SAL_TERRORISTS_TMP (
+ADDRESS,
+ADDRESS2,
+BIRTHDATE,
+CONTRY,
+CONTRY2,
+DOCUMENTAUTHORITY,
+DOCUMENTNUMBER,
+DOCUMENTSERIES,
+DOCUMENTTYPE,
+ID,
+IDROW,
+INN,
+NAME,
+NAME2,
+NOTE,
+PLACEOFBIRTH 
+$ASPECTFIELDS ) VALUES (
+#bind($ADDRESS 'VARCHAR'),
+#bind($ADDRESS2 'VARCHAR'),
+#bind($BIRTHDATE 'FLOAT'),
+#bind($CONTRY 'VARCHAR'),
+#bind($CONTRY2 'VARCHAR'),
+#bind($DOCUMENTAUTHORITY 'VARCHAR'),
+#bind($DOCUMENTNUMBER 'VARCHAR'),
+#bind($DOCUMENTSERIES 'VARCHAR'),
+#bind($DOCUMENTTYPE 'VARCHAR'),
+#bind($ID 'NUMERIC'),
+#bind($IDROW 'VARCHAR'),
+#bind($INN 'VARCHAR'),
+#bind($NAME 'VARCHAR'),
+#bind($NAME2 'VARCHAR'),
+#bind($NOTE 'VARCHAR'),
+#bind($PLACEOFBIRTH 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO SAL_TERRORISTS_TMP (
+ADDRESS,
+ADDRESS2,
+BIRTHDATE,
+CONTRY,
+CONTRY2,
+DOCUMENTAUTHORITY,
+DOCUMENTNUMBER,
+DOCUMENTSERIES,
+DOCUMENTTYPE,
+ID,
+IDROW,
+INN,
+NAME,
+NAME2,
+NOTE,
+PLACEOFBIRTH 
+$ASPECTFIELDS ) VALUES (
+#bind($ADDRESS 'VARCHAR'),
+#bind($ADDRESS2 'VARCHAR'),
+#bind($BIRTHDATE 'FLOAT'),
+#bind($CONTRY 'VARCHAR'),
+#bind($CONTRY2 'VARCHAR'),
+#bind($DOCUMENTAUTHORITY 'VARCHAR'),
+#bind($DOCUMENTNUMBER 'VARCHAR'),
+#bind($DOCUMENTSERIES 'VARCHAR'),
+#bind($DOCUMENTTYPE 'VARCHAR'),
+#bind($ID 'NUMERIC'),
+#bind($IDROW 'VARCHAR'),
+#bind($INN 'VARCHAR'),
+#bind($NAME 'VARCHAR'),
+#bind($NAME2 'VARCHAR'),
+#bind($NOTE 'VARCHAR'),
+#bind($PLACEOFBIRTH 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsSAL_Terrorists_TmpUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($ADDRESS) , T.ADDRESS = #bind($ADDRESS 'VARCHAR') #end 
+#chunk($ADDRESS2) , T.ADDRESS2 = #bind($ADDRESS2 'VARCHAR') #end 
+#chunk($BIRTHDATE) , T.BIRTHDATE = #bind($BIRTHDATE 'FLOAT') #end 
+#chunk($CONTRY) , T.CONTRY = #bind($CONTRY 'VARCHAR') #end 
+#chunk($CONTRY2) , T.CONTRY2 = #bind($CONTRY2 'VARCHAR') #end 
+#chunk($DOCUMENTAUTHORITY) , T.DOCUMENTAUTHORITY = #bind($DOCUMENTAUTHORITY 'VARCHAR') #end 
+#chunk($DOCUMENTNUMBER) , T.DOCUMENTNUMBER = #bind($DOCUMENTNUMBER 'VARCHAR') #end 
+#chunk($DOCUMENTSERIES) , T.DOCUMENTSERIES = #bind($DOCUMENTSERIES 'VARCHAR') #end 
+#chunk($DOCUMENTTYPE) , T.DOCUMENTTYPE = #bind($DOCUMENTTYPE 'VARCHAR') #end 
+#chunk($IDROW) , T.IDROW = #bind($IDROW 'VARCHAR') #end 
+#chunk($INN) , T.INN = #bind($INN 'VARCHAR') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($NAME2) , T.NAME2 = #bind($NAME2 'VARCHAR') #end 
+#chunk($NOTE) , T.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($PLACEOFBIRTH) , T.PLACEOFBIRTH = #bind($PLACEOFBIRTH 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_TERRORISTS_TMP T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($ADDRESS) , T.ADDRESS = #bind($ADDRESS 'VARCHAR') #end 
+#chunk($ADDRESS2) , T.ADDRESS2 = #bind($ADDRESS2 'VARCHAR') #end 
+#chunk($BIRTHDATE) , T.BIRTHDATE = #bind($BIRTHDATE 'FLOAT') #end 
+#chunk($CONTRY) , T.CONTRY = #bind($CONTRY 'VARCHAR') #end 
+#chunk($CONTRY2) , T.CONTRY2 = #bind($CONTRY2 'VARCHAR') #end 
+#chunk($DOCUMENTAUTHORITY) , T.DOCUMENTAUTHORITY = #bind($DOCUMENTAUTHORITY 'VARCHAR') #end 
+#chunk($DOCUMENTNUMBER) , T.DOCUMENTNUMBER = #bind($DOCUMENTNUMBER 'VARCHAR') #end 
+#chunk($DOCUMENTSERIES) , T.DOCUMENTSERIES = #bind($DOCUMENTSERIES 'VARCHAR') #end 
+#chunk($DOCUMENTTYPE) , T.DOCUMENTTYPE = #bind($DOCUMENTTYPE 'VARCHAR') #end 
+#chunk($IDROW) , T.IDROW = #bind($IDROW 'VARCHAR') #end 
+#chunk($INN) , T.INN = #bind($INN 'VARCHAR') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($NAME2) , T.NAME2 = #bind($NAME2 'VARCHAR') #end 
+#chunk($NOTE) , T.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($PLACEOFBIRTH) , T.PLACEOFBIRTH = #bind($PLACEOFBIRTH 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_TERRORISTS_TMP T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       SAL_TERRORISTS_TMP T 
+SET 
+    T.ID = #bind($ID 'NUMERIC') 
+#chunk($ADDRESS) , T.ADDRESS = #bind($ADDRESS 'VARCHAR') #end 
+#chunk($ADDRESS2) , T.ADDRESS2 = #bind($ADDRESS2 'VARCHAR') #end 
+#chunk($BIRTHDATE) , T.BIRTHDATE = #bind($BIRTHDATE 'FLOAT') #end 
+#chunk($CONTRY) , T.CONTRY = #bind($CONTRY 'VARCHAR') #end 
+#chunk($CONTRY2) , T.CONTRY2 = #bind($CONTRY2 'VARCHAR') #end 
+#chunk($DOCUMENTAUTHORITY) , T.DOCUMENTAUTHORITY = #bind($DOCUMENTAUTHORITY 'VARCHAR') #end 
+#chunk($DOCUMENTNUMBER) , T.DOCUMENTNUMBER = #bind($DOCUMENTNUMBER 'VARCHAR') #end 
+#chunk($DOCUMENTSERIES) , T.DOCUMENTSERIES = #bind($DOCUMENTSERIES 'VARCHAR') #end 
+#chunk($DOCUMENTTYPE) , T.DOCUMENTTYPE = #bind($DOCUMENTTYPE 'VARCHAR') #end 
+#chunk($IDROW) , T.IDROW = #bind($IDROW 'VARCHAR') #end 
+#chunk($INN) , T.INN = #bind($INN 'VARCHAR') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($NAME2) , T.NAME2 = #bind($NAME2 'VARCHAR') #end 
+#chunk($NOTE) , T.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($PLACEOFBIRTH) , T.PLACEOFBIRTH = #bind($PLACEOFBIRTH 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_Terrorists_TmpUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($ADDRESS) , TA.ADDRESS = #bind($ADDRESS 'VARCHAR') #end 
+#chunk($ADDRESS2) , TA.ADDRESS2 = #bind($ADDRESS2 'VARCHAR') #end 
+#chunk($BIRTHDATE) , TA.BIRTHDATE = #bind($BIRTHDATE 'FLOAT') #end 
+#chunk($CONTRY) , TA.CONTRY = #bind($CONTRY 'VARCHAR') #end 
+#chunk($CONTRY2) , TA.CONTRY2 = #bind($CONTRY2 'VARCHAR') #end 
+#chunk($DOCUMENTAUTHORITY) , TA.DOCUMENTAUTHORITY = #bind($DOCUMENTAUTHORITY 'VARCHAR') #end 
+#chunk($DOCUMENTNUMBER) , TA.DOCUMENTNUMBER = #bind($DOCUMENTNUMBER 'VARCHAR') #end 
+#chunk($DOCUMENTSERIES) , TA.DOCUMENTSERIES = #bind($DOCUMENTSERIES 'VARCHAR') #end 
+#chunk($DOCUMENTTYPE) , TA.DOCUMENTTYPE = #bind($DOCUMENTTYPE 'VARCHAR') #end 
+#chunk($IDROW) , TA.IDROW = #bind($IDROW 'VARCHAR') #end 
+#chunk($INN) , TA.INN = #bind($INN 'VARCHAR') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($NAME2) , TA.NAME2 = #bind($NAME2 'VARCHAR') #end 
+#chunk($NOTE) , TA.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($PLACEOFBIRTH) , TA.PLACEOFBIRTH = #bind($PLACEOFBIRTH 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_TERRORISTS_TMP TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_TERRORISTS_TMP T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($ADDRESS) , TA.ADDRESS = #bind($ADDRESS 'VARCHAR') #end 
+#chunk($ADDRESS2) , TA.ADDRESS2 = #bind($ADDRESS2 'VARCHAR') #end 
+#chunk($BIRTHDATE) , TA.BIRTHDATE = #bind($BIRTHDATE 'FLOAT') #end 
+#chunk($CONTRY) , TA.CONTRY = #bind($CONTRY 'VARCHAR') #end 
+#chunk($CONTRY2) , TA.CONTRY2 = #bind($CONTRY2 'VARCHAR') #end 
+#chunk($DOCUMENTAUTHORITY) , TA.DOCUMENTAUTHORITY = #bind($DOCUMENTAUTHORITY 'VARCHAR') #end 
+#chunk($DOCUMENTNUMBER) , TA.DOCUMENTNUMBER = #bind($DOCUMENTNUMBER 'VARCHAR') #end 
+#chunk($DOCUMENTSERIES) , TA.DOCUMENTSERIES = #bind($DOCUMENTSERIES 'VARCHAR') #end 
+#chunk($DOCUMENTTYPE) , TA.DOCUMENTTYPE = #bind($DOCUMENTTYPE 'VARCHAR') #end 
+#chunk($IDROW) , TA.IDROW = #bind($IDROW 'VARCHAR') #end 
+#chunk($INN) , TA.INN = #bind($INN 'VARCHAR') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($NAME2) , TA.NAME2 = #bind($NAME2 'VARCHAR') #end 
+#chunk($NOTE) , TA.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($PLACEOFBIRTH) , TA.PLACEOFBIRTH = #bind($PLACEOFBIRTH 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      SAL_TERRORISTS_TMP TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_TERRORISTS_TMP T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       SAL_TERRORISTS_TMP TA 
+SET 
+    TA.ID = #bind($ID 'NUMERIC') 
+#chunk($ADDRESS) , TA.ADDRESS = #bind($ADDRESS 'VARCHAR') #end 
+#chunk($ADDRESS2) , TA.ADDRESS2 = #bind($ADDRESS2 'VARCHAR') #end 
+#chunk($BIRTHDATE) , TA.BIRTHDATE = #bind($BIRTHDATE 'FLOAT') #end 
+#chunk($CONTRY) , TA.CONTRY = #bind($CONTRY 'VARCHAR') #end 
+#chunk($CONTRY2) , TA.CONTRY2 = #bind($CONTRY2 'VARCHAR') #end 
+#chunk($DOCUMENTAUTHORITY) , TA.DOCUMENTAUTHORITY = #bind($DOCUMENTAUTHORITY 'VARCHAR') #end 
+#chunk($DOCUMENTNUMBER) , TA.DOCUMENTNUMBER = #bind($DOCUMENTNUMBER 'VARCHAR') #end 
+#chunk($DOCUMENTSERIES) , TA.DOCUMENTSERIES = #bind($DOCUMENTSERIES 'VARCHAR') #end 
+#chunk($DOCUMENTTYPE) , TA.DOCUMENTTYPE = #bind($DOCUMENTTYPE 'VARCHAR') #end 
+#chunk($IDROW) , TA.IDROW = #bind($IDROW 'VARCHAR') #end 
+#chunk($INN) , TA.INN = #bind($INN 'VARCHAR') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($NAME2) , TA.NAME2 = #bind($NAME2 'VARCHAR') #end 
+#chunk($NOTE) , TA.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($PLACEOFBIRTH) , TA.PLACEOFBIRTH = #bind($PLACEOFBIRTH 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_TERRORISTS_TMP T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsSAL_Terrorists_TmpDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      SAL_TERRORISTS_TMP T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      SAL_TERRORISTS_TMP T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       SAL_TERRORISTS_TMP T 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_Terrorists_TmpDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      SAL_TERRORISTS_TMP TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_TERRORISTS_TMP T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      SAL_TERRORISTS_TMP TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_TERRORISTS_TMP T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       SAL_TERRORISTS_TMP TA 
+WHERE 
+     TA.ID in ( 
+       SELECT 
+         T.ID
+       FROM 
+         SAL_TERRORISTS_TMP T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+</data-map>

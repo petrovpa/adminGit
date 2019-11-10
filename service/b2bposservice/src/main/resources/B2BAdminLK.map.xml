@@ -1,0 +1,835 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+
+    <query name="dsAdminLkBrowseMessageListByParams" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map"
+           root-name="B2BAdminLK">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql> <![CDATA[
+            SELECT $NEEDDISTINCT
+                #result('T_OUT.ID', 'java.lang.Long', 'ID'),
+                #result('T_OUT.NOTE', 'java.lang.String', 'NOTE'),
+                #result('T_OUT.TITLE', 'java.lang.String', 'TITLE'),
+                #result('T_OUT.TITLEHASH', 'java.lang.Long', 'TITLEHASH'),
+                #result('T_OUT.CREATEUSERID', 'java.lang.Long', 'CREATEUSERID'),
+                #result('T_OUT.CREATEDATE', 'java.math.BigDecimal', 'CREATEDATE'),
+                #result('T_OUT.LOSSNOTICEID', 'java.math.BigDecimal', 'LOSSNOTICEID'),
+                #result('T_OUT.CLIENTNAME', 'java.lang.String', 'CLIENTNAME'),
+                #result('T_OUT.DATEOFBIRTH', 'java.lang.Date', 'DATEOFBIRTH'),
+                #result('T_OUT.CLIENTEMAIL', 'java.lang.String', 'CLIENTEMAIL'),
+                #result('T_OUT.CLIENTPHONE', 'java.lang.String', 'CLIENTPHONE'),
+                #result('T_OUT.CLIENTPROFILEID', 'java.lang.Long', 'CLIENTPROFILEID'),
+                #result('T_OUT.ISUNREAD', 'java.lang.String', 'ISUNREAD'),
+                #result('T_OUT.STATEID', 'java.lang.Long', 'STATEID')
+            FROM (
+                SELECT 
+                    sd.ID as ID,
+                    sd.NOTE as NOTE,
+                    sd.TITLE as TITLE,
+                    sd.TITLEHASH as TITLEHASH,
+                    sd.CREATEUSERID as CREATEUSERID,
+                    sd.CREATEDATE as CREATEDATE,
+                    sd.LOSSNOTICEID as LOSSNOTICEID,
+                    CONCAT(T5.SURNAME,CONCAT(' ',CONCAT(T5.NAME,CONCAT(' ',T5.PATRONYMIC)))) as CLIENTNAME,
+                    T6.CLIENTEMAIL as CLIENTEMAIL,
+                    T5.DATEOFBIRTH as DATEOFBIRTH,
+                    T7.CLIENTPHONE as CLIENTPHONE,
+                    T4.CLIENTPROFILEID as CLIENTPROFILEID,
+                    CASE WHEN (sd.ISUNREAD IS NULL) THEN 'Просмотрено' ELSE 'Новое' END as ISUNREAD,
+                    CASE WHEN (sd.ISUNREAD IS NULL) THEN 9201 ELSE 9200 END as STATEID
+                    FROM (
+                        SELECT
+                            T.TITLEHASH,
+                            T2.CLIENTPROFILEID,
+                            T3.CLIENTID,
+                            MAX(T.ID) AS ID
+                        FROM SD_MESSAGE T 
+                        INNER JOIN SD_MESSAGE_CORRESPONDENT T2 ON (T2.ID = T.SENDERID)
+                        INNER JOIN SD_CLIENTPROFILE T3 ON (T3.ID = T2.CLIENTPROFILEID)
+                        GROUP BY T.TITLEHASH, T3.CLIENTID, T2.CLIENTPROFILEID
+                    ) T4
+                    INNER JOIN SD_MESSAGE sd ON (sd.ID = T4.ID)
+                    INNER JOIN CDM_PCLIENT_VER T5 ON (T5.VERID = T4.CLIENTID)
+                    LEFT JOIN (
+                        SELECT CLIENTID, LISTAGG(VALUE, ', ') WITHIN GROUP (ORDER BY CLIENTID) AS CLIENTEMAIL
+                        FROM CDM_CLIENT_CONTACT
+                        LEFT JOIN SD_CONTACT ON (CDM_CLIENT_CONTACT.ID = SD_CONTACT.ID)
+                        WHERE (CDM_CLIENT_CONTACT.ISPRIMARY = 1 AND SD_CONTACT.TYPEID = 1006)
+                        GROUP BY CLIENTID
+                    ) T6 ON (T4.CLIENTID = T6.CLIENTID)
+
+                    LEFT JOIN (
+                        SELECT CLIENTID, LISTAGG(VALUE, ', ') WITHIN GROUP (ORDER BY CLIENTID) AS CLIENTPHONE
+                        FROM CDM_CLIENT_CONTACT
+                        LEFT JOIN SD_CONTACT ON (CDM_CLIENT_CONTACT.ID = SD_CONTACT.ID)
+                        WHERE (CDM_CLIENT_CONTACT.ISPRIMARY = 1 AND SD_CONTACT.TYPEID = 1005)
+                        GROUP BY CLIENTID
+                    ) T7 ON (T4.CLIENTID = T7.CLIENTID)
+               ) T_OUT
+               
+            #chain('AND' 'WHERE')
+                   #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+                   #chunk(1) T_OUT.ID is not null #end
+                   #chunk(1) T_OUT.TITLEHASH is not null #end
+                   #chunk(1) T_OUT.CLIENTPROFILEID is not null #end
+            #end
+        ]]>
+
+        </sql>
+    </query>
+
+    <query name="dsAdminLkBrowseMessageListByParamsCount" factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map" root-name="B2BAdminLK">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            SELECT
+                #result('COUNT($NEEDDISTINCT T_OUT.ID)', 'java.lang.Long', 'CNT')
+          FROM (
+                SELECT 
+                    sd.ID as ID,
+                    sd.NOTE as NOTE,
+                    sd.TITLE as TITLE,
+                    sd.TITLEHASH as TITLEHASH,
+                    sd.CREATEUSERID as CREATEUSERID,
+                    sd.CREATEDATE as CREATEDATE,
+                    sd.LOSSNOTICEID as LOSSNOTICEID,
+                    CONCAT(T5.SURNAME,CONCAT(' ',CONCAT(T5.NAME,CONCAT(' ',T5.PATRONYMIC)))) as CLIENTNAME,
+                    T5.DATEOFBIRTH as DATEOFBIRTH,
+                    T6.CLIENTEMAIL as CLIENTEMAIL,
+                    T7.CLIENTPHONE as CLIENTPHONE,
+                    T4.CLIENTPROFILEID as CLIENTPROFILEID,
+                    CASE WHEN (sd.ISUNREAD IS NULL) THEN 'Просмотрено' ELSE 'Новое' END as ISUNREAD,
+                    CASE WHEN (sd.ISUNREAD IS NULL) THEN 9201 ELSE 9200 END as STATEID
+                    FROM (
+                        SELECT
+                            T.TITLEHASH,
+                            T2.CLIENTPROFILEID,
+                            T3.CLIENTID,
+                            MAX(T.ID) AS ID
+                        FROM SD_MESSAGE T 
+                        INNER JOIN SD_MESSAGE_CORRESPONDENT T2 ON (T2.ID = T.SENDERID)
+                        INNER JOIN SD_CLIENTPROFILE T3 ON (T3.ID = T2.CLIENTPROFILEID)
+                        GROUP BY T.TITLEHASH, T3.CLIENTID, T2.CLIENTPROFILEID
+                    ) T4
+                    INNER JOIN SD_MESSAGE sd ON (sd.ID = T4.ID)
+                    INNER JOIN CDM_PCLIENT_VER T5 ON (T5.VERID = T4.CLIENTID)
+                    LEFT JOIN (
+                        SELECT CLIENTID, LISTAGG(VALUE, ', ') WITHIN GROUP (ORDER BY CLIENTID) AS CLIENTEMAIL
+                        FROM CDM_CLIENT_CONTACT
+                        LEFT JOIN SD_CONTACT ON (CDM_CLIENT_CONTACT.ID = SD_CONTACT.ID)
+                        WHERE (CDM_CLIENT_CONTACT.ISPRIMARY = 1 AND SD_CONTACT.TYPEID = 1006)
+                        GROUP BY CLIENTID
+                    ) T6 ON (T4.CLIENTID = T6.CLIENTID)
+
+                    LEFT JOIN (
+                        SELECT CLIENTID, LISTAGG(VALUE, ', ') WITHIN GROUP (ORDER BY CLIENTID) AS CLIENTPHONE
+                        FROM CDM_CLIENT_CONTACT
+                        LEFT JOIN SD_CONTACT ON (CDM_CLIENT_CONTACT.ID = SD_CONTACT.ID)
+                        WHERE (CDM_CLIENT_CONTACT.ISPRIMARY = 1 AND SD_CONTACT.TYPEID = 1005)
+                        GROUP BY CLIENTID
+                    ) T7 ON (T4.CLIENTID = T7.CLIENTID)
+               ) T_OUT
+               
+            #chain('AND' 'WHERE')
+                   #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+                   #chunk(1) T_OUT.ID is not null #end
+                   #chunk(1) T_OUT.TITLEHASH is not null #end
+                   #chunk(1) T_OUT.CLIENTPROFILEID is not null #end
+            #end 
+                ORDER BY T_OUT.CREATEDATE DESC
+        ]]>
+        </sql>
+    </query>
+
+    <query name="dsAdminLkBrowseAccountListByParams" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map"
+           root-name="B2BAdminLK">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            SELECT DISTINCT
+                #result('T.FULLNAME', 'java.lang.String', 'APLBRIEFNAME'),
+                #result('T.VERID', 'java.lang.Long', 'ID'),
+                #result('T.DATEOFBIRTH', 'java.lang.Date', 'dateOfBirth'),
+                #result('T1.CREATEDATE', 'java.lang.Date', 'CREATEDATE'),
+                #result('T2.PUBLICNAME', 'java.lang.String', 'STATE'),
+                #result('T3.NAME', 'java.lang.String', 'TYPE'),
+                #result('T1.STATEID', 'java.lang.String', 'STATEID'),
+                #result('T1.ID', 'java.lang.String', 'CLIENTPROFILEID'),
+                #result('T1.LOGIN', 'java.lang.String', 'CLIENTLOGIN')
+            FROM SD_CLIENTPROFILE T1
+            JOIN CDM_PCLIENT_VER T ON (T.VERID = T1.CLIENTID)
+            LEFT JOIN CORE_SM_STATE T2 ON (T1.STATEID = T2.ID)
+            LEFT JOIN HB_KINDACCOUNT T3 ON (T1.TYPEID = T3.ID)
+            LEFT JOIN CDM_CLIENT_DOCUMENT T4 ON (T1.CLIENTID = T4.CLIENTID)
+            LEFT JOIN SD_SHARE_CONTRACT T8 ON (T1.CLIENTID = T8.CLIENTID)
+            LEFT JOIN B2B_CONTR T9 ON (T8.CONTRACTID = T9.CONTRID)
+            LEFT JOIN
+                (select *
+                        from SD_DOCUMENT TT
+                        where TT.TYPEID = 1001
+                ) T5 ON T4.ID = T5.ID
+            LEFT JOIN
+                (select C.VALUE AS CLIENTEMAIL, CLIENTID
+                        from CDM_CLIENT_CONTACT CC
+                        inner join SD_CONTACT C on CC.ID = C.ID
+                        where CC.ISPRIMARY = 1 and C.TYPEID = 1006
+
+                ) T6 ON T1.CLIENTID = T6.CLIENTID
+            LEFT JOIN
+                (select C.VALUE AS CLIENTPHONE, CLIENTID
+                        from CDM_CLIENT_CONTACT CC
+                        left join SD_CONTACT C on CC.ID = C.ID
+                        where CC.ISPRIMARY = 1 and C.TYPEID = 1005
+
+                ) T7 ON T1.CLIENTID = T7.CLIENTID
+            $ASPECTTABLES
+          #chain('AND' 'WHERE')
+          #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+          $ASPECTRESTRICTION
+          #end
+        ]]>
+        </sql>
+    </query>
+
+    <query name="dsAdminLkBrowseAccountListByParamsCount" factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map" root-name="B2BAdminLK">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            SELECT
+                #result('COUNT(DISTINCT T1.ID)', 'java.lang.Long', 'CNT')
+            FROM SD_CLIENTPROFILE T1
+            JOIN CDM_PCLIENT_VER T ON (T.VERID = T1.CLIENTID)
+            LEFT JOIN CDM_CLIENT_DOCUMENT T4 ON (T1.CLIENTID = T4.CLIENTID)
+            LEFT JOIN SD_DOCUMENT T5 ON (T4.ID = T5.ID)
+            LEFT JOIN SD_SHARE_CONTRACT T8 ON (T1.CLIENTID = T8.CLIENTID)
+            LEFT JOIN B2B_CONTR T9 ON (T8.CONTRACTID = T9.CONTRID)
+            LEFT JOIN
+                (select C.VALUE AS CLIENTEMAIL, CLIENTID
+                        from CDM_CLIENT_CONTACT CC
+                        inner join SD_CONTACT C on CC.ID = C.ID
+                        where CC.ISPRIMARY = 1 and C.TYPEID = 1006
+
+                ) T6 ON T1.CLIENTID = T6.CLIENTID
+            LEFT JOIN
+                (select C.VALUE AS CLIENTPHONE, CLIENTID
+                        from CDM_CLIENT_CONTACT CC
+                        left join SD_CONTACT C on CC.ID = C.ID
+                        where CC.ISPRIMARY = 1 and C.TYPEID = 1005
+
+                ) T7 ON T1.CLIENTID = T7.CLIENTID
+            $ASPECTTABLES
+            #chain('AND' 'WHERE')
+                #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+                $ASPECTRESTRICTION
+            #end
+
+        ]]>
+        </sql>
+    </query>
+
+    <query name="dsAdminLkBrowseShareContractListByParams" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map"
+           root-name="B2BAdminLK">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            SELECT $NEEDDISTINCT
+                #result('SSC.ID', 'java.lang.Long', 'ID'),
+                #result('SSC.EID', 'java.lang.Long', 'EID'),
+                #result('SSC.TEL', 'java.lang.String', 'TEL'),
+                #result('SSC.CONTRACTID', 'java.lang.Long', 'CONTRACTID'),
+                #result('SSC.SHAREROLEID', 'java.lang.Long', 'SHAREROLEID'),
+                #result('SSC.STATEID', 'java.lang.Long', 'STATEID'),
+                #result('SSC.CLIENTID', 'java.lang.Long', 'CLIENTID')
+            FROM SD_SHARE_CONTRACT SSC
+
+            #chain('AND' 'WHERE')
+                #chunk($CONTRID) SSC.CONTRACTID = #bind($CONTRID 'NUMERIC') #end
+                #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+            #end
+        ]]>
+        </sql>
+    </query>
+
+    <query name="dsAdminLkBrowseShareContractListByParamsCount" factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map" root-name="B2BAdminLK">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            SELECT
+                #result('COUNT(SSC.ID)', 'java.lang.Long', 'CNT')
+            FROM SD_SHARE_CONTRACT SSC
+            #chain('AND' 'WHERE')
+                #chunk($CONTRID) SSC.CONTRACTID = #bind($CONTRID 'NUMERIC') #end
+                #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+            #end
+        ]]>
+        </sql>
+    </query>
+
+    <query name="dsB2BGetClientProfileWithTokenById" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map"
+           root-name="B2BAdminLK">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            SELECT
+                #result('T.ID', 'java.lang.Long', 'clientProfileId'),
+                #result('T.LOGIN', 'java.lang.String', 'userLogin'),
+                #result('T2.HASH', 'java.lang.String', 'userPassword')
+            FROM
+                SD_CLIENTPROFILE T
+                LEFT JOIN SD_CLIENTPROFILE_TOKEN T2 ON T2.CLIENTPROFILEID=T.ID
+               $ASPECTTABLES
+            #chain('AND' 'WHERE')
+                   #chunk($clientProfileId) T.ID= #bind($clientProfileId 'NUMERIC') #end
+                   #chunk($discriminator) T2.discriminator= #bind($discriminator 'VARCHAR') #end
+            #end
+        ]]>
+        </sql>
+    </query>
+
+    <query name="dsB2BGetClientProfileWithTokenByIdCount" factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map" root-name="B2BAdminLK">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            SELECT
+                #result('COUNT(T_OUT.ID)', 'java.lang.Long', 'CNT')
+             FROM
+                SD_CLIENTPROFILE T
+                LEFT JOIN SD_CLIENTPROFILE_TOKEN T2 ON T2.CLIENTPROFILEID=T.ID
+               $ASPECTTABLES
+            #chain('AND' 'WHERE')
+                   #chunk($clientProfileId) T.ID= #bind($clientProfileId 'NUMERIC') #end
+                   #chunk($discriminator) T2.discriminator= #bind($discriminator 'VARCHAR') #end
+            #end
+        ]]>
+        </sql>
+    </query>
+
+    <query name="dsAdminLkBrowseContractListByParams" factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map" root-name="B2BAdminLK">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            SELECT $NEEDDISTINCT
+
+                #result('S.ID', 'java.lang.Long', 'SHAREID'),
+                #result('C.VERID', 'java.lang.Long', 'VERID'),
+                #result('T4.PRODCONFID', 'java.lang.Long', 'PRODCONFID'),
+                #result('T6.FULLNAME', 'java.lang.String', 'CLIENTBRIEFNAME'),
+                #result('T6.DATEOFBIRTH', 'java.util.Date', 'dateOfBirth'),
+                #result('T1.CLIENTEMAIL', 'java.lang.String', 'CLIENTEMAIL'),
+                #result('T3.CLIENTPHONE', 'java.lang.String', 'CLIENTPHONE'),
+                #result('C.EXTERNALID', 'java.lang.String', 'CLIENTEXTRNALID'),
+                #result('T.CONTRID', 'java.lang.Long', 'CONTRID'),
+                #result('T.CONTRNUMBER', 'java.lang.String', 'CONTRNUMBER'),
+                #result('T.EXTERNALID', 'java.lang.String', 'CONTREXTERNALID'),
+                #result('T.STARTDATE', 'java.math.BigDecimal', 'STARTDATE'),
+                #result('T.FINISHDATE', 'java.math.BigDecimal', 'FINISHDATE'),
+                #result('T5.PRODPROGID', 'java.lang.Long', 'PRODPROGID'),
+                #result('T5.NAME', 'java.lang.String', 'PRODPROGNAME'),
+                #result('T5.NOTE', 'java.lang.String', 'PRODPROGNOTE'),
+                #result('T5.SYSNAME', 'java.lang.String', 'PRODPROGSYSNAME'),
+                #result('T2.PUBLICNAME', 'java.lang.String', 'PUBLICNAME'),
+                #result('T7.PRODVERID', 'java.lang.Long', 'PRODVERID'),
+                #result("CONCAT(T7.NAME,CONCAT(' ', T7.NOTE))", 'java.lang.String', 'PRODVERNAME')
+                $ASPECTFIELDS
+        FROM B2B_CONTR T
+              LEFT JOIN SD_SHARE_CONTRACT S ON (T.CONTRID = S.CONTRACTID)
+              LEFT JOIN CDM_PCLIENT_VER C ON (S.CLIENTID = C.VERID)
+              LEFT JOIN CORE_SM_STATE T2 ON (T.STATEID = T2.ID)
+              LEFT JOIN B2B_PRODPROG T5 ON (T.PRODPROGID = T5.PRODPROGID)
+              LEFT JOIN B2B_PRODCONF T4 ON (T.PRODVERID = T4.PRODVERID)
+              LEFT JOIN CDM_PCLIENT_VER T6 ON (S.CLIENTID = T6.VERID)
+              LEFT JOIN B2B_PRODVER T7 ON (T.PRODVERID = T7.PRODVERID)
+              LEFT JOIN
+                (select
+                    CLIENTID,
+                    LISTAGG(VALUE, ', ') WITHIN GROUP (ORDER BY CLIENTID) AS CLIENTEMAIL
+                    from CDM_CLIENT_CONTACT
+                    LEFT join SD_CONTACT ON (CDM_CLIENT_CONTACT.ID = SD_CONTACT.ID)
+                    where (CDM_CLIENT_CONTACT.ISPRIMARY = 1 and SD_CONTACT.TYPEID = 1006)
+                    GROUP BY CLIENTID
+                     ) T1 ON S.CLIENTID = T1.CLIENTID
+              LEFT JOIN
+                (select
+                    CLIENTID,
+                    LISTAGG(VALUE, ', ') WITHIN GROUP (ORDER BY CLIENTID) AS CLIENTPHONE
+                    from CDM_CLIENT_CONTACT
+                    LEFT join SD_CONTACT ON (CDM_CLIENT_CONTACT.ID = SD_CONTACT.ID)
+                    where (CDM_CLIENT_CONTACT.ISPRIMARY = 1 and SD_CONTACT.TYPEID = 1005)
+                    GROUP BY CLIENTID
+                 ) T3 ON S.CLIENTID = T3.CLIENTID
+             $ASPECTTABLES
+
+        #chain('AND' 'WHERE')
+              #chunk($CHECKEXISTPROFRULE) EXISTS
+                  (SELECT *
+                  FROM B2B_CONTRORGSTRUCT COS
+                  INNER JOIN INS_DEPLVL DEPLVL
+                  ON (COS.ORGSTRUCTID  = DEPLVL.OBJECTID)
+                  WHERE (T.CONTRID     = COS.CONTRID)
+                  ) #end
+              #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end
+              #chunk($PRODUCTLIST) T5.SYSNAME IN ($PRODUCTLIST) #end
+              #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+              #chunk($LKVISIBLE) T7.LKVISIBLE = #bind($LKVISIBLE 'NUMERIC') #end
+              $ASPECTRESTRICTION
+        #end
+
+        ]]>
+        </sql>
+    </query>
+
+    <query name="dsAdminLkBrowseContractListByParamsCount" factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map" root-name="B2BAdminLK">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            SELECT
+                #result('COUNT($NEEDDISTINCT T.CONTRID)', 'java.lang.Long', 'CNT')
+            FROM B2B_CONTR T
+              LEFT JOIN SD_SHARE_CONTRACT S ON (T.CONTRID = S.CONTRACTID)
+              LEFT JOIN CDM_PCLIENT_VER C ON (S.CLIENTID = C.VERID)
+              LEFT JOIN CORE_SM_STATE T2 ON (T.STATEID = T2.ID)
+              LEFT JOIN B2B_PRODPROG T5 ON (T.PRODPROGID = T5.PRODPROGID)
+              LEFT JOIN B2B_PRODCONF T4 ON (T.PRODVERID = T4.PRODVERID)
+              LEFT JOIN CDM_PCLIENT_VER T6 ON (S.CLIENTID = T6.VERID)
+              LEFT JOIN B2B_PRODVER T7 ON (T.PRODVERID = T7.PRODVERID)
+              LEFT JOIN
+                (select
+                    CLIENTID,
+                    LISTAGG(VALUE, ', ') WITHIN GROUP (ORDER BY CLIENTID) AS CLIENTEMAIL
+                    from CDM_CLIENT_CONTACT
+                    LEFT join SD_CONTACT ON (CDM_CLIENT_CONTACT.ID = SD_CONTACT.ID)
+                    where (CDM_CLIENT_CONTACT.ISPRIMARY = 1 and SD_CONTACT.TYPEID = 1006)
+                    GROUP BY CLIENTID
+                     ) T1 ON S.CLIENTID = T1.CLIENTID
+              LEFT JOIN
+                (select
+                    CLIENTID,
+                    LISTAGG(VALUE, ', ') WITHIN GROUP (ORDER BY CLIENTID) AS CLIENTPHONE
+                    from CDM_CLIENT_CONTACT
+                    LEFT join SD_CONTACT ON (CDM_CLIENT_CONTACT.ID = SD_CONTACT.ID)
+                    where (CDM_CLIENT_CONTACT.ISPRIMARY = 1 and SD_CONTACT.TYPEID = 1005)
+                    GROUP BY CLIENTID
+                 ) T3 ON S.CLIENTID = T3.CLIENTID
+                 $ASPECTTABLES
+            #chain('AND' 'WHERE')
+                   #chunk($CHECKEXISTPROFRULE) EXISTS
+                      (SELECT *
+                      FROM B2B_CONTRORGSTRUCT COS
+                      LEFT JOIN INS_DEPLVL DEPLVL
+                      ON (COS.ORGSTRUCTID  = DEPLVL.OBJECTID)
+                      WHERE (T.CONTRID     = COS.CONTRID)
+                      ) #end
+                   #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end
+                   #chunk($PRODUCTLIST) T5.SYSNAME IN ($PRODUCTLIST) #end
+                   #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+                   #chunk($LKVISIBLE) T7.LKVISIBLE = #bind($LKVISIBLE 'NUMERIC') #end
+                   $ASPECTRESTRICTION
+            #end
+        ]]>
+        </sql>
+    </query>
+
+    <query name="dsAdminLKBrowseStateListByParams" factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map" root-name="B2BAdminLK">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            SELECT
+                #result('T2.ID', 'java.lang.Long', 'STATEID'),
+                #result('T2.SYSNAME', 'java.lang.String', 'SYSNAME'),
+                #result('T2.PUBLICNAME', 'java.lang.String', 'PUBLICNAME')
+            FROM
+                CORE_SM_STATE T2
+               $ASPECTTABLES
+            #chain('AND' 'WHERE')
+                   #chunk($TYPEID) T2.TYPEID = #bind($TYPEID 'NUMERIC') #end
+                   #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+                   $ASPECTRESTRICTION
+            #end
+        ]]>
+        </sql>
+    </query>
+
+    <query name="dsAdminLKBrowseStateListByParamsCount" factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map" root-name="B2BAdminLK">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            SELECT
+                #result('COUNT($NEEDDISTINCT T2.ID)', 'java.lang.Long', 'CNT')
+            FROM
+                CORE_SM_STATE T2
+               $ASPECTTABLES
+            #chain('AND' 'WHERE')
+                   #chunk($TYPEID) T2.TYPEID = #bind($TYPEID 'NUMERIC') #end
+                   #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+                   $ASPECTRESTRICTION
+            #end
+        ]]>
+        </sql>
+    </query>
+    
+    <query name="dsAdminLKBrowseProductListByParams" factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map" root-name="B2BAdminLK">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            SELECT
+                #result('T5.PRODPROGID', 'java.lang.Long', 'PRODPROGID'),
+                #result('T5.SYSNAME', 'java.lang.String', 'PRODPROGSYSNAME'),
+                #result("CONCAT(T7.NAME,CONCAT(' ', T7.NOTE))", 'java.lang.String', 'PRODVERNAME')
+            FROM
+                B2B_PRODPROG T5
+                INNER JOIN B2B_PRODVER T7 ON (T5.PRODVERID = T7.PRODVERID)
+               $ASPECTTABLES
+            #chain('AND' 'WHERE')
+                   #chunk($PRODUCTLIST) T5.SYSNAME IN ($PRODUCTLIST) #end
+                   #chunk($LKVISIBLE) T7.LKVISIBLE = #bind($LKVISIBLE 'NUMERIC') #end
+                   #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+                   $ASPECTRESTRICTION
+            #end
+        ]]>
+        </sql>
+    </query>
+
+    <query name="dsAdminLKBrowseProductListByParamsCount" factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map" root-name="B2BAdminLK">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            SELECT
+               #result('COUNT($NEEDDISTINCT T5.PRODPROGID)', 'java.lang.Long', 'CNT')
+            FROM
+               B2B_PRODPROG T5
+               INNER JOIN B2B_PRODVER T7 ON (T5.PRODVERID = T7.PRODVERID)
+               $ASPECTTABLES
+            #chain('AND' 'WHERE')
+                   #chunk($PRODUCTLIST) T5.SYSNAME IN ($PRODUCTLIST) #end
+                   #chunk($LKVISIBLE) T7.LKVISIBLE = #bind($LKVISIBLE 'NUMERIC') #end
+                   #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+                   $ASPECTRESTRICTION
+            #end
+        ]]>
+        </sql>
+    </query>
+
+    <query name="dsAdminLkBrowseInsEventListByParams" factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map" root-name="B2BAdminLK">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            SELECT $NEEDDISTINCT
+                #result('T.LOSSNOTICEID', 'java.lang.Long', 'LOSSNOTICEID'),
+                #result('T.DAMAGECATID', 'java.lang.Long', 'DAMAGECATID'),
+                #result('T.INSEVENTID', 'java.lang.Long', 'INSEVENTID'),
+                #result('T.INSUREDID', 'java.lang.Long', 'EVENTINSUREDID'),
+                #result('T.APPLICANTID', 'java.lang.Long', 'APPLICANTID'),
+                #result('T.EVENTDATE', 'java.util.Date', 'EVENTDATE'),
+                #result('T.CREATEDATE', 'java.util.Date', 'CREATEDATE'),
+                #result('T.EVENTCODE', 'java.lang.String', 'EVENTCODE'),
+                #result('T.LOSSNOTICEID', 'java.lang.Long', 'APPLNUMBER'),
+                #result('T.STATEID', 'java.lang.Long', 'EVENTSTATEID'),
+                #result('T.EXTERNALID', 'java.lang.String', 'EXTERNALID'),
+                #result('T.REGDATE', 'java.util.Date', 'REGDATE'),
+                #result('T.THIRDPARTYID', 'java.lang.Long', 'THIRDPARTYID'),
+                #result('T.CLAUSE', 'java.lang.String', 'CLAUSE'),
+                #result('T.RISKCATEGORY', 'java.lang.String', 'RISKCATEGORY'),
+                #result('T.INSUREDNAME', 'java.lang.String', 'INSUREDNAME'),
+                #result('T.INSUREDSURNAME', 'java.lang.String', 'INSUREDSURNAME'),
+                #result('T.INSUREDMIDDLENAME', 'java.lang.String', 'INSUREDMIDDLENAME'),
+                #result('T.INSUREDBIRTHDATE', 'java.util.Date', 'INSUREDBIRTHDATE'),
+                #result('T.ADDRESS', 'java.lang.String', 'ADDRESS'),
+                #result('T.APPLICANTEMAIL', 'java.lang.String', 'APPLICANTEMAIL'),
+                #result('T.APPLICANTNAME', 'java.lang.String', 'APPLICANTNAME'),
+                #result('T.CONTRID', 'java.lang.Long', 'CONTRID'),
+                #result('T.DOCFOLDER1C', 'java.lang.String', 'DOCFOLDER1C'),
+                #result('T.APPLICANTSURNAME', 'java.lang.String', 'APPLICANTSURNAME'),
+                #result('T.APPLICANTMIDDLENAME', 'java.lang.String', 'APPLICANTMIDDLENAME'),
+                #result('T.APPLICANTPHONE', 'java.lang.String', 'APPLICANTPHONE'),
+                #result('T5.FULLNAME', 'java.lang.String', 'APLBRIEFNAME'),
+                #result('T2.CONTRNUMBER', 'java.lang.String', 'CONTRNUMBER'),
+                #result('T3.NAME', 'java.lang.String', 'EVENTSTATENAME'),
+                #result('T3.SYSNAME', 'java.lang.String', 'EVENTSTATESYSNAME'),
+                #result('T6.NAME', 'java.lang.String', 'INSEVENTNAME')
+            FROM
+                B2B_LOSSNOTICE T
+                LEFT JOIN B2B_CONTR T2 on (T2.CONTRID = T.CONTRID)
+                LEFT JOIN HB_KINDSTATUS T3 ON T3.ID = T.STATEID
+                LEFT JOIN SD_CLIENTPROFILE T4 ON T4.ID = T.APPLICANTID
+                LEFT JOIN CDM_PCLIENT_VER T5 ON T5.VERID = T4.CLIENTID
+                LEFT JOIN B2B_INSEVENT T6 ON T6.INSEVENTID = T.INSEVENTID
+            #chain('AND' 'WHERE')
+                #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end
+                #chunk($LOSSNOTICEID) T.LOSSNOTICEID = #bind($LOSSNOTICEID 'NUMERIC') #end                   
+                #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+                $ASPECTRESTRICTION
+            #end
+            ]]>
+        </sql>
+    </query>
+
+    <query name="dsAdminLkBrowseInsEventListByParamsCount" factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map" root-name="B2BAdminLK">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            SELECT
+                #result('COUNT($NEEDDISTINCT T.LOSSNOTICEID)', 'java.lang.Long', 'CNT')
+            FROM
+                B2B_LOSSNOTICE T
+                LEFT JOIN B2B_CONTR T2 on (T2.CONTRID = T.CONTRID)
+                LEFT JOIN HB_KINDSTATUS T3 ON T3.ID = T.STATEID
+                LEFT JOIN SD_CLIENTPROFILE T4 ON T4.ID = T.APPLICANTID
+                LEFT JOIN CDM_PCLIENT_VER T5 ON T5.VERID = T4.CLIENTID
+                LEFT JOIN B2B_INSEVENT T6 ON T6.INSEVENTID = T.INSEVENTID
+            #chain('AND' 'WHERE')
+                #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end
+                #chunk($LOSSNOTICEID) T.LOSSNOTICEID = #bind($LOSSNOTICEID 'NUMERIC') #end
+                #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+                $ASPECTRESTRICTION
+            #end
+            ]]>
+        </sql>
+    </query>
+
+    <query name="dsAdminLkBrowseInsEventMsgListByParams" factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map" root-name="B2BAdminLK">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql> <![CDATA[
+            SELECT $NEEDDISTINCT
+            
+                #result('T.ID', 'java.lang.Long', 'ID'),
+                #result('T.ISUNREAD', 'java.lang.Long', 'ISUNREAD'),
+                #result('T.NOTE', 'java.lang.String', 'NOTE'),
+                #result('T.TITLE', 'java.lang.String', 'TITLE'),
+                #result('T.CREATEUSERID', 'java.lang.Long', 'CREATEUSERID'),
+                #result('T.LOSSNOTICEID', 'java.lang.Long', 'LOSSNOTICEID'),
+                #result("CONCAT(T5.SURNAME,CONCAT(' ',CONCAT(T5.NAME,CONCAT(' ',T5.PATRONYMIC))))", 'java.lang.String', 'CLIENTNAME'),
+                #result('T6.CLIENTEMAIL', 'java.lang.String', 'CLIENTEMAIL'),
+                #result('T7.CLIENTPHONE', 'java.lang.String', 'CLIENTPHONE'),
+                #result('T4.CLIENTPROFILEID', 'java.lang.Long', 'CLIENTPROFILEID'),
+                #result("CASE WHEN (T.SENDERID IS NULL) THEN 'Сотрудник' ELSE 'Сообщение от клиента' END", 'java.lang.String', 'SENDERTYPE'),
+                #result("CASE WHEN (T.ISUNREAD IS NULL) THEN 'Просмотрено' ELSE 'Новое' END", 'java.lang.String', 'MSGSTATE')
+            $ASPECTFIELDS
+            FROM (
+                SELECT sd.ID, T2.CLIENTPROFILEID,  T3.CLIENTID,
+                    count(*) OVER (PARTITION BY sd.TITLEHASH, T3.CLIENTID, T2.CLIENTPROFILEID)
+                FROM SD_MESSAGE sd
+                INNER JOIN SD_MESSAGE_CORRESPONDENT T2 ON (T2.ID = sd.SENDERID)
+                INNER JOIN SD_CLIENTPROFILE T3 ON (T3.ID = T2.CLIENTPROFILEID)
+                ) T4
+                INNER JOIN SD_MESSAGE T ON (T.ID = t4.ID)
+                INNER JOIN CDM_PCLIENT_VER T5 ON (T5.VERID = T4.CLIENTID)
+                LEFT JOIN (
+                    SELECT CLIENTID, LISTAGG(VALUE, ', ') WITHIN GROUP (ORDER BY CLIENTID) AS CLIENTEMAIL
+                    FROM CDM_CLIENT_CONTACT
+                    LEFT JOIN SD_CONTACT ON (CDM_CLIENT_CONTACT.ID = SD_CONTACT.ID)
+                    WHERE (CDM_CLIENT_CONTACT.ISPRIMARY = 1 AND SD_CONTACT.TYPEID = 1006)
+                    GROUP BY CLIENTID
+                ) T6 ON (T4.CLIENTID = T6.CLIENTID)
+
+                LEFT JOIN (
+                    SELECT CLIENTID, LISTAGG(VALUE, ', ') WITHIN GROUP (ORDER BY CLIENTID) AS CLIENTPHONE
+                    FROM CDM_CLIENT_CONTACT
+                    LEFT JOIN SD_CONTACT ON (CDM_CLIENT_CONTACT.ID = SD_CONTACT.ID)
+                    WHERE (CDM_CLIENT_CONTACT.ISPRIMARY = 1 AND SD_CONTACT.TYPEID = 1005)
+                    GROUP BY CLIENTID
+                ) T7 ON (T4.CLIENTID = T7.CLIENTID)
+            $ASPECTTABLES
+            #chain('AND' 'WHERE')
+                   #chunk($LOSSNOTICEID) T.LOSSNOTICEID = #bind($LOSSNOTICEID 'NUMERIC') #end
+                   #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+                   #chunk(1) T.ID is not null #end
+                   #chunk(1) T.TITLEHASH is not null #end
+                   #chunk(1) T4.CLIENTPROFILEID is not null #end
+            #end
+            ORDER BY T.CREATEDATE DESC
+        ]]>
+        </sql>
+    </query>
+
+    <query name="dsAdminLkBrowseInsEventMsgListByParamsCount" factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map" root-name="B2BAdminLK">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            SELECT
+                #result('COUNT($NEEDDISTINCT T.ID)', 'java.lang.Long', 'CNT')
+            FROM (
+                SELECT sd.ID, T2.CLIENTPROFILEID,  T3.CLIENTID,
+                    count(*) OVER (PARTITION BY sd.TITLEHASH, T3.CLIENTID, T2.CLIENTPROFILEID)
+                FROM SD_MESSAGE sd
+                INNER JOIN SD_MESSAGE_CORRESPONDENT T2 ON (T2.ID = sd.SENDERID)
+                INNER JOIN SD_CLIENTPROFILE T3 ON (T3.ID = T2.CLIENTPROFILEID)
+                ) T4
+                INNER JOIN SD_MESSAGE T ON (T.ID = t4.ID)
+                INNER JOIN CDM_PCLIENT_VER T5 ON (T5.VERID = T4.CLIENTID)
+                LEFT JOIN (
+                    SELECT CLIENTID, LISTAGG(VALUE, ', ') WITHIN GROUP (ORDER BY CLIENTID) AS CLIENTEMAIL
+                    FROM CDM_CLIENT_CONTACT
+                    LEFT JOIN SD_CONTACT ON (CDM_CLIENT_CONTACT.ID = SD_CONTACT.ID)
+                    WHERE (CDM_CLIENT_CONTACT.ISPRIMARY = 1 AND SD_CONTACT.TYPEID = 1006)
+                    GROUP BY CLIENTID
+                ) T6 ON (T4.CLIENTID = T6.CLIENTID)
+
+                LEFT JOIN (
+                    SELECT CLIENTID, LISTAGG(VALUE, ', ') WITHIN GROUP (ORDER BY CLIENTID) AS CLIENTPHONE
+                    FROM CDM_CLIENT_CONTACT
+                    LEFT JOIN SD_CONTACT ON (CDM_CLIENT_CONTACT.ID = SD_CONTACT.ID)
+                    WHERE (CDM_CLIENT_CONTACT.ISPRIMARY = 1 AND SD_CONTACT.TYPEID = 1005)
+                    GROUP BY CLIENTID
+                ) T7 ON (T4.CLIENTID = T7.CLIENTID)
+            $ASPECTTABLES
+            #chain('AND' 'WHERE')
+                   #chunk($LOSSNOTICEID) T.LOSSNOTICEID = #bind($LOSSNOTICEID 'NUMERIC') #end
+                   #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+                   #chunk(1) T.ID is not null #end
+                   #chunk(1) T.TITLEHASH is not null #end
+                   #chunk(1) T4.CLIENTPROFILEID is not null #end
+            #end
+            ORDER BY T.CREATEDATE DESC
+        ]]>
+        </sql>
+    </query>
+
+    <query name="dsAdminLkBrowseChatMessageListByParams" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map"
+           root-name="B2BAdminLK">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql> <![CDATA[
+            SELECT $NEEDDISTINCT
+                #result('CHAT.LASTMESSAGEID', 'java.lang.Long', 'ID'),
+                #result('CHAT.ID ', 'java.lang.Long', 'CHATID'),
+                #result('SDM.NOTE', 'java.lang.String', 'NOTE'),
+                #result('CHAT.TITLE', 'java.lang.String', 'TITLE'),
+                #result('SDM.TITLEHASH', 'java.lang.Long', 'TITLEHASH'),
+                #result('SDM.CREATEUSERID', 'java.lang.Long', 'CREATEUSERID'),
+                #result('SDM.CREATEDATE', 'java.lang.Date', 'createDate'),
+                #result('SDM.LOSSNOTICEID', 'java.math.BigDecimal', 'LOSSNOTICEID'),
+                #result('PCLIENT.FULLNAME', 'java.lang.String', 'CLIENTNAME'),
+                #result('PCLIENT.DATEOFBIRTH', 'java.lang.Date', 'dateOfBirth'),
+                #result('T6.CLIENTEMAIL', 'java.lang.String', 'CLIENTEMAIL'),
+                #result('T7.CLIENTPHONE', 'java.lang.String', 'CLIENTPHONE'),
+                #result('ST.ID', 'java.lang.Long', 'STATEID'),
+                #result("ST.PUBLICNAME", 'java.lang.String', 'ISUNREAD'),
+                #result("CHAT.APPLICANTID", 'java.lang.String', 'APPLICANTID')
+                
+            FROM 
+                SD_CHAT CHAT
+                LEFT JOIN CORE_SM_STATE ST
+                ON ST.ID = CHAT.STATEID
+                LEFT JOIN SD_MESSAGE SDM
+                ON SDM.ID = CHAT.LASTMESSAGEID
+                INNER JOIN CDM_PCLIENT_VER PCLIENT
+                ON PCLIENT.VERID = CHAT.APPLICANTID
+                LEFT JOIN
+                    (SELECT CLIENTID,
+                    LISTAGG(VALUE, ', ') WITHIN GROUP (
+                    ORDER BY CLIENTID) AS CLIENTEMAIL
+                    FROM CDM_CLIENT_CONTACT
+                LEFT JOIN SD_CONTACT
+                ON (CDM_CLIENT_CONTACT.ID           = SD_CONTACT.ID)
+                WHERE (CDM_CLIENT_CONTACT.ISPRIMARY = 1
+                AND SD_CONTACT.TYPEID               = 1006)
+                GROUP BY CLIENTID
+                ) T6 ON (CHAT.APPLICANTID = T6.CLIENTID)
+                LEFT JOIN
+                (SELECT CLIENTID,
+                    LISTAGG(VALUE, ', ') WITHIN GROUP (
+                    ORDER BY CLIENTID) AS CLIENTPHONE
+                    FROM CDM_CLIENT_CONTACT
+                    LEFT JOIN SD_CONTACT
+                    ON (CDM_CLIENT_CONTACT.ID           = SD_CONTACT.ID)
+                    WHERE (CDM_CLIENT_CONTACT.ISPRIMARY = 1
+                    AND SD_CONTACT.TYPEID               = 1005)
+                    GROUP BY CLIENTID
+                ) T7 ON (CHAT.APPLICANTID = T7.CLIENTID)
+               $ASPECTTABLES
+            #chain('AND' 'WHERE')
+                   #chunk($CHATID) CHAT.ID = #bind($CHATID 'NUMERIC') #end
+                   #chunk($APPLICANTID) CHAT.APPLICANTID = #bind($APPLICANTID 'NUMERIC') #end
+                   #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+                   #chunk(1) CHAT.LASTMESSAGEID is not null #end
+                   $ASPECTRESTRICTION
+            #end
+        ]]>
+
+        </sql>
+    </query>
+
+    <query name="dsAdminLkBrowseChatMessageListByParamsCount" factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map" root-name="B2BAdminLK">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            SELECT
+                #result('COUNT($NEEDDISTINCT CHAT.ID)', 'java.lang.Long', 'CNT')
+          FROM 
+                SD_CHAT CHAT
+                LEFT JOIN CORE_SM_STATE ST
+                ON ST.ID = CHAT.STATEID
+                LEFT JOIN SD_MESSAGE SDM
+                ON SDM.ID = CHAT.LASTMESSAGEID
+                INNER JOIN CDM_PCLIENT_VER PCLIENT
+                ON PCLIENT.VERID = CHAT.APPLICANTID
+                LEFT JOIN
+                    (SELECT CLIENTID,
+                    LISTAGG(VALUE, ', ') WITHIN GROUP (
+                    ORDER BY CLIENTID) AS CLIENTEMAIL
+                    FROM CDM_CLIENT_CONTACT
+                LEFT JOIN SD_CONTACT
+                ON (CDM_CLIENT_CONTACT.ID           = SD_CONTACT.ID)
+                WHERE (CDM_CLIENT_CONTACT.ISPRIMARY = 1
+                AND SD_CONTACT.TYPEID               = 1006)
+                GROUP BY CLIENTID
+                ) T6 ON (CHAT.APPLICANTID = T6.CLIENTID)
+                LEFT JOIN
+                (SELECT CLIENTID,
+                    LISTAGG(VALUE, ', ') WITHIN GROUP (
+                    ORDER BY CLIENTID) AS CLIENTPHONE
+                    FROM CDM_CLIENT_CONTACT
+                    LEFT JOIN SD_CONTACT
+                    ON (CDM_CLIENT_CONTACT.ID           = SD_CONTACT.ID)
+                    WHERE (CDM_CLIENT_CONTACT.ISPRIMARY = 1
+                    AND SD_CONTACT.TYPEID               = 1005)
+                    GROUP BY CLIENTID
+                ) T7 ON (CHAT.APPLICANTID = T7.CLIENTID)
+                $ASPECTTABLES
+            #chain('AND' 'WHERE')
+                   #chunk($CHATID) CHAT.ID = #bind($CHATID 'NUMERIC') #end
+                   #chunk($APPLICANTID) CHAT.APPLICANTID = #bind($APPLICANTID 'NUMERIC') #end
+                   #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+                   #chunk(1) CHAT.LASTMESSAGEID is not null #end
+                   $ASPECTRESTRICTION
+            #end
+        ]]>
+        </sql>
+    </query>
+    <query name="dsB2BAccountListGetStateList" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map"
+           root-name="B2BAdminLK">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            SELECT $NEEDDISTINCT
+                #result('T_OUT.SYSNAME', 'java.lang.String', 'SYSNAME'),
+                #result('T_OUT.ID', 'java.lang.Long', 'ID'),
+                #result('T_OUT.PUBLICNAME', 'java.lang.String', 'PUBLICNAME')
+            FROM (
+            SELECT
+            T.SYSNAME AS SYSNAME,
+            T.ID AS ID,
+            T.PUBLICNAME AS PUBLICNAME
+            FROM CORE_SM_STATE T
+            WHERE T.TYPEID = 9100
+          ) T_OUT
+          #chain('AND' 'WHERE')
+          #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+          #end
+        ]]>
+        </sql>
+    </query>
+</data-map>

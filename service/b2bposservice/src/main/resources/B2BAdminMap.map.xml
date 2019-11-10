@@ -1,0 +1,1666 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+    <query name="dsAdminGetDepProfileRightsList" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('RD.RIGHTDEPTID', 'java.math.Long', 'ID'),
+        #result('R.RIGHTID', 'java.math.Long', 'RIGHTID'),
+        #result('RD.DEPARTMENTID', 'java.math.Long', 'OBJECTID'),
+        #result('RD.STARTDATE', 'java.math.BigDecimal', 'STARTDATE'),
+        #result('RD.ENDDATE', 'java.math.BigDecimal', 'ENDDATE'),
+        #result('R.RIGHTNAME', 'java.lang.String', 'NAME'),
+        #result('R.RIGHTSYSNAME', 'java.lang.String', 'SYSNAME')
+       $ASPECTFIELDS 
+FROM CORE_RIGHTDEPT RD 
+     INNER JOIN CORE_RIGHT R ON (R.RIGHTID=RD.RIGHTID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($DEPARTMENTID) RD.DEPARTMENTID = #bind($DEPARTMENTID 'VARCHAR') #end        
+       #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+$ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsAdminGetDepProfileRightsListCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('COUNT(*)', 'java.lang.Long', 'CNT') 
+       $ASPECTFIELDS 
+FROM CORE_RIGHTDEPT RD 
+     INNER JOIN CORE_RIGHT R ON (R.RIGHTID=RD.RIGHTID)     
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($DEPARTMENTID) RD.DEPARTMENTID = #bind($DEPARTMENTID 'VARCHAR') #end               
+       #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+$ASPECTRESTRICTION 
+#end 
+]]>        </sql>
+    </query>
+    <query name="dsAdminGetUserProfileRightsList" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('RA.RIGHTACCOUNTID', 'java.math.Long', 'ID'),
+        #result('R.RIGHTID', 'java.math.Long', 'RIGHTID'),
+        #result('RA.USERACCOUNTID', 'java.math.Long', 'OBJECTID'),
+        #result('RA.STARTDATE', 'java.math.BigDecimal', 'STARTDATE'),
+        #result('RA.ENDDATE', 'java.math.BigDecimal', 'ENDDATE'),
+        #result('R.RIGHTNAME', 'java.lang.String', 'NAME'),
+        #result('R.RIGHTSYSNAME', 'java.lang.String', 'SYSNAME')
+       $ASPECTFIELDS 
+FROM CORE_RIGHTACCOUNT RA 
+     INNER JOIN CORE_RIGHT R ON (R.RIGHTID=RA.RIGHTID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($USERACCOUNTID) RA.USERACCOUNTID = #bind($USERACCOUNTID 'VARCHAR') #end        
+       #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+$ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsAdminGetUserProfileRightsListCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('COUNT(*)', 'java.lang.Long', 'CNT') 
+       $ASPECTFIELDS 
+FROM CORE_RIGHTACCOUNT RA  
+     INNER JOIN CORE_RIGHT R ON (R.RIGHTID=RA.RIGHTID)     
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($USERACCOUNTID) RA.USERACCOUNTID = #bind($USERACCOUNTID 'VARCHAR') #end               
+       #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+$ASPECTRESTRICTION 
+#end 
+]]>        </sql>
+    </query>
+
+    <query name="dsAdminGetAvailableDepRightsList" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('R.RIGHTID', 'java.math.Long', 'hid'),
+        #result('R.RIGHTNAME', 'java.lang.String', 'name')
+       $ASPECTFIELDS 
+FROM CORE_RIGHT R
+WHERE R.RIGHTTYPE = 2 AND 
+      R.RIGHTID NOT IN (SELECT CORE_RIGHT.RIGHTID
+                        FROM CORE_RIGHT
+                             inner join CORE_RIGHTDEPT on (CORE_RIGHT.RIGHTID = CORE_RIGHTDEPT.RIGHTID)
+                        #chain('AND' 'WHERE') 
+                             #chunk($DEPARTMENTID) CORE_RIGHTDEPT.DEPARTMENTID = #bind($DEPARTMENTID 'VARCHAR') #end
+                             #chunk($CURRENTDATE) CORE_RIGHTDEPT.STARTDATE < #bind($CURRENTDATE 'VARCHAR') #end
+                             #chunk($CURRENTDATE) CORE_RIGHTDEPT.ENDDATE > #bind($CURRENTDATE 'VARCHAR') #end
+                             #chunk($RIGHTID) CORE_RIGHT.RIGHTID <> #bind($RIGHTID 'VARCHAR') #end
+                        #end
+                       )                              
+]]>
+        </sql>
+    </query>
+    <query name="dsAdminGetAvailableDepRightsListCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('COUNT(*)', 'java.lang.Long', 'CNT') 
+       $ASPECTFIELDS   
+FROM CORE_RIGHT R
+WHERE R.RIGHTTYPE = 2 AND 
+      R.RIGHTID NOT IN (SELECT CORE_RIGHT.RIGHTID
+                        FROM CORE_RIGHT
+                             inner join CORE_RIGHTDEPT on (CORE_RIGHT.RIGHTID = CORE_RIGHTDEPT.RIGHTID)
+                        #chain('AND' 'WHERE') 
+                             #chunk($DEPARTMENTID) CORE_RIGHTDEPT.DEPARTMENTID = #bind($DEPARTMENTID 'VARCHAR') #end
+                             #chunk($CURRENTDATE) CORE_RIGHTDEPT.STARTDATE < #bind($CURRENTDATE 'VARCHAR') #end
+                             #chunk($CURRENTDATE) CORE_RIGHTDEPT.ENDDATE > #bind($CURRENTDATE 'VARCHAR') #end
+                             #chunk($RIGHTID) CORE_RIGHT.RIGHTID <> #bind($RIGHTID 'VARCHAR') #end
+                        #end
+                       )
+]]>            
+        </sql>
+    </query>
+    
+    <query name="dsAdminGetAvailableUserRightsList" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('R.RIGHTID', 'java.math.Long', 'hid'),
+        #result('R.RIGHTNAME', 'java.lang.String', 'name')
+       $ASPECTFIELDS 
+FROM CORE_RIGHT R
+WHERE R.RIGHTTYPE = 2 AND 
+      R.RIGHTID NOT IN (SELECT CORE_RIGHT.RIGHTID
+                        FROM CORE_RIGHT
+                             inner join CORE_RIGHTACCOUNT on (CORE_RIGHT.RIGHTID = CORE_RIGHTACCOUNT.RIGHTID)
+                        #chain('AND' 'WHERE') 
+                             #chunk($USERACCOUNTID) CORE_RIGHTACCOUNT.USERACCOUNTID = #bind($USERACCOUNTID 'VARCHAR') #end
+                             #chunk($CURRENTDATE) CORE_RIGHTACCOUNT.STARTDATE < #bind($CURRENTDATE 'VARCHAR') #end
+                             #chunk($CURRENTDATE) CORE_RIGHTACCOUNT.ENDDATE > #bind($CURRENTDATE 'VARCHAR') #end
+                             #chunk($RIGHTID) CORE_RIGHT.RIGHTID <> #bind($RIGHTID 'VARCHAR') #end
+                        #end
+                       )                              
+]]>
+        </sql>
+    </query>
+    <query name="dsAdminGetAvailableUserRightsListCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('COUNT(*)', 'java.lang.Long', 'CNT') 
+       $ASPECTFIELDS   
+FROM CORE_RIGHT R
+WHERE R.RIGHTTYPE = 2 AND 
+      R.RIGHTID NOT IN (SELECT CORE_RIGHT.RIGHTID
+                        FROM CORE_RIGHT
+                             inner join CORE_RIGHTACCOUNT on (CORE_RIGHT.RIGHTID = CORE_RIGHTACCOUNT.RIGHTID)
+                        #chain('AND' 'WHERE') 
+                             #chunk($USERACCOUNTID) CORE_RIGHTACCOUNT.USERACCOUNTID = #bind($USERACCOUNTID 'VARCHAR') #end
+                             #chunk($CURRENTDATE) CORE_RIGHTACCOUNT.STARTDATE < #bind($CURRENTDATE 'VARCHAR') #end
+                             #chunk($CURRENTDATE) CORE_RIGHTACCOUNT.ENDDATE > #bind($CURRENTDATE 'VARCHAR') #end
+                             #chunk($RIGHTID) CORE_RIGHT.RIGHTID <> #bind($RIGHTID 'VARCHAR') #end
+                        #end
+                       )
+]]>            
+        </sql>
+    </query>
+        
+    <query name="dsAdminDepParameterListOnRight" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>            
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('RMD.RFMETADATAID', 'java.lang.Long', 'PARAMID'),
+        #result('RMD.SYSNAME', 'java.lang.String', 'PARAMSYSNAME'),
+        #result('RMD.NAME', 'java.lang.String', 'PARAMNAME'),        
+        #result('RF.OPERATION', 'java.lang.String', 'OPERATION'),
+        #result('RF.RIGHTFILTERID', 'java.lang.Long', 'RIGHTFILTERID'),
+        #result('RFV.VALUE', 'java.lang.String', 'VALUESTR'),
+        #result('RFV.VKEY', 'java.lang.Long', 'VALUEID')
+       $ASPECTFIELDS 
+FROM CORE_RIGHT R       
+     inner join CORE_RFMETADATA RMD on (RMD.RIGHTID=R.RIGHTID) 
+     left join CORE_RIGHTDEPT RD on ((RD.RIGHTID=R.RIGHTID)and(RD.DEPARTMENTID=#bind($DEPARTMENTID 'VARCHAR')))
+     left join CORE_RIGHTFILTER RF on (RF.RELATIONID=RD.RIGHTDEPTID)and(RF.SYSNAME=RMD.SYSNAME)
+     left join CORE_RFVALUE RFV on (RFV.RIGHTFILTERID=RF.RIGHTFILTERID)
+#chain('AND' 'WHERE') 
+        #chunk($RIGHTID) R.RIGHTID = #bind($RIGHTID 'VARCHAR') #end
+#end 
+ORDER BY RMD.SYSNAME
+]]>
+        </sql>
+    </query>
+
+    <query name="dsAdminDepParameterListOnRightCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('COUNT(*)', 'java.lang.Long', 'CNT') 
+       $ASPECTFIELDS 
+FROM CORE_RIGHT R       
+     inner join CORE_RFMETADATA RMD on (RMD.RIGHTID=R.RIGHTID) 
+     left join CORE_RIGHTDEPT RD on ((RD.RIGHTID=R.RIGHTID)and(RD.DEPARTMENTID=#bind($DEPARTMENTID 'VARCHAR')))
+     left join CORE_RIGHTFILTER RF on (RF.RELATIONID=RD.RIGHTDEPTID)and(RF.SYSNAME=RMD.SYSNAME)
+     left join CORE_RFVALUE RFV on (RFV.RIGHTFILTERID=RF.RIGHTFILTERID)
+#chain('AND' 'WHERE') 
+        #chunk($RIGHTID) R.RIGHTID = #bind($RIGHTID 'VARCHAR') #end
+#end 
+]]>
+        </sql>
+    </query>
+    
+    <query name="dsAdminUserParameterListOnRight" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>            
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('RMD.RFMETADATAID', 'java.lang.Long', 'PARAMID'),
+        #result('RMD.SYSNAME', 'java.lang.String', 'PARAMSYSNAME'),
+        #result('RMD.NAME', 'java.lang.String', 'PARAMNAME'),        
+        #result('RF.OPERATION', 'java.lang.String', 'OPERATION'),
+        #result('RF.RIGHTFILTERID', 'java.lang.Long', 'RIGHTFILTERID'),
+        #result('RFV.VALUE', 'java.lang.String', 'VALUESTR'),
+        #result('RFV.VKEY', 'java.lang.Long', 'VALUEID')
+       $ASPECTFIELDS 
+FROM CORE_RIGHT R       
+     inner join CORE_RFMETADATA RMD on (RMD.RIGHTID=R.RIGHTID) 
+     left join CORE_RIGHTACCOUNT RA on ((RA.RIGHTID=R.RIGHTID)and(RA.USERACCOUNTID=#bind($USERACCOUNTID 'VARCHAR')))
+     left join CORE_RIGHTFILTER RF on (RF.RELATIONID=RA.RIGHTACCOUNTID)and(RF.SYSNAME=RMD.SYSNAME)
+     left join CORE_RFVALUE RFV on (RFV.RIGHTFILTERID=RF.RIGHTFILTERID)
+#chain('AND' 'WHERE') 
+        #chunk($RIGHTID) R.RIGHTID = #bind($RIGHTID 'VARCHAR') #end
+#end 
+ORDER BY RMD.SYSNAME
+]]>
+        </sql>
+    </query>
+
+    <query name="dsAdminUserParameterListOnRightCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('COUNT(*)', 'java.lang.Long', 'CNT') 
+       $ASPECTFIELDS 
+FROM CORE_RIGHT R       
+     inner join CORE_RFMETADATA RMD on (RMD.RIGHTID=R.RIGHTID) 
+     left join CORE_RIGHTACCOUNT RA on ((RD.RIGHTID=R.RIGHTID)and(RA.USERACCOUNTID=#bind($USERACCOUNTID 'VARCHAR')))
+     left join CORE_RIGHTFILTER RF on (RF.RELATIONID=RA.RIGHTACCOUNTID)and(RF.SYSNAME=RMD.SYSNAME)
+     left join CORE_RFVALUE RFV on (RFV.RIGHTFILTERID=RF.RIGHTFILTERID)
+#chain('AND' 'WHERE') 
+        #chunk($RIGHTID) R.RIGHTID = #bind($RIGHTID 'VARCHAR') #end
+#end 
+]]>
+        </sql>
+    </query>    
+    
+    <query name="dsAdminGetMenuRightsList" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT
+        #result('MO.ORGSTRUCTID', 'java.math.Long', 'ORGSTRUCTID'),
+        #result('MO.MENUORGSTRUCTID', 'java.math.Long', 'MENUORGSTRUCTID'),
+        #result('MO.MENUID', 'java.math.Long', 'MENUID'),
+        #result('DD.DEPTSHORTNAME', 'java.lang.String', 'DEPARTMENT')
+       $ASPECTFIELDS 
+FROM 
+      B2B_MENU M
+         left join B2B_MENUORGSTRUCT MO on M.MENUID = MO.MENUID
+         left join DEP_DEPARTMENT DD on MO.ORGSTRUCTID = DD.DEPARTMENTID
+          #chain('AND' 'WHERE') 
+                     #chunk($MENUORGSTRUCTID) MO.MENUORGSTRUCTID = #bind($MENUORGSTRUCTID 'VARCHAR') #end 
+                     #chunk($DEPRIGHT) DD.DEPARTMENTID in (SELECT DEPARTMENTID FROM DEP_DEPARTMENT CONNECT BY PRIOR DEPARTMENTID = PARENTDEPARTMENT START WITH DEPARTMENTID = #bind($DEPRIGHT)) #end
+                     #chunk($MENUID) MO.MENUID = #bind($MENUID 'VARCHAR') #end 
+                     #chunk($DEPARTMENT) DD.DEPTSHORTNAME = #bind($DEPARTMENT 'VARCHAR') #end 
+                     #chunk($CUSTOMWHERE) $CUSTOMWHERE #end 
+          #end 
+$ASPECTTABLES 
+]]>
+        </sql>
+    </query>
+
+    <query name="dsAdminGetMenuRightsListCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('COUNT(*)', 'java.lang.Long', 'CNT') 
+FROM 
+     B2B_MENU M
+          left JOIN B2B_MENUORGSTRUCT MO ON M.MENUID = MO.MENUID
+          left JOIN DEP_DEPARTMENT DD ON MO.ORGSTRUCTID = DD.DEPARTMENTID
+            #chain('AND' 'WHERE') 
+                     #chunk($MENUORGSTRUCTID) MO.MENUORGSTRUCTID = #bind($MENUORGSTRUCTID 'VARCHAR') #end 
+                     #chunk($MENUID) MO.MENUID = #bind($MENUID 'VARCHAR') #end 
+                     #chunk($DEPRIGHT) DD.DEPARTMENTID in (SELECT DEPARTMENTID FROM DEP_DEPARTMENT CONNECT BY PRIOR DEPARTMENTID = PARENTDEPARTMENT START WITH DEPARTMENTID = #bind($DEPRIGHT)) #end
+                     #chunk($DEPARTMENT) DD.DEPTSHORTNAME = #bind($DEPARTMENT 'VARCHAR') #end 
+                     #chunk($CUSTOMWHERE) $CUSTOMWHERE #end 
+          #end 
+$ASPECTTABLES 
+]]>
+        </sql>
+    </query>
+    
+    <query name="dsAdminGetMenuRightsCheckList" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+    <![CDATA[
+        SELECT $NEEDDISTINCT
+            #result('BMO.MENUID', 'java.math.Long', 'MENUID'),
+            #result('BMO.ORGSTRUCTID', 'java.lang.String', 'ORGSTRUCTID')
+       $ASPECTFIELDS 
+        FROM 
+            B2B_MENUORGSTRUCT BMO
+            #chain('AND' 'WHERE') 
+                     #chunk($MENUID) BMO.MENUID = #bind($MENUID 'VARCHAR') #end 
+                     #chunk($ORGSTRUCTID) BMO.ORGSTRUCTID = #bind($ORGSTRUCTID 'VARCHAR') #end 
+            #end 
+        $ASPECTTABLES 
+    ]]>
+        </sql>
+    </query>
+    
+    <query name="dsAdminGetMenuRightsCheckListCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+    <![CDATA[
+        SELECT $NEEDDISTINCT 
+                #result('COUNT(*)', 'java.lang.Long', 'CNT') 
+        FROM 
+                B2B_MENUORGSTRUCT BMO
+                #chain('AND' 'WHERE') 
+                     #chunk($MENUID) BMO.MENUID = #bind($MENUID 'VARCHAR') #end 
+                     #chunk($ORGSTRUCTID) BMO.ORGSTRUCTID = #bind($ORGSTRUCTID 'VARCHAR') #end 
+                #end 
+         $ASPECTTABLES 
+    ]]>
+        </sql>
+    </query>
+    
+    <query name="dsAdminGetMenuList" 
+           factory="org.apache.cayenne.map.SQLTemplateBuilder" 
+           root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+        <![CDATA[
+                SELECT $NEEDDISTINCT 
+                    #result('T.MENUID', 'java.lang.Long', 'MENUID'),
+                    #result('T.NAME', 'java.lang.String', 'ITEMNAME'),
+                    #result('T.SYSNAME', 'java.lang.String', 'ITEMSYSNAME'),
+                    #result('T.ACTIONURL', 'java.lang.String', 'ACTIONURL'),
+                    #result('T.PICTUREURL', 'java.lang.String', 'PICTUREURL'),
+                    #result('T.MENUTYPEID', 'java.lang.String', 'MENUTYPEID'),
+                    #result('T3.NAME', 'java.lang.String', 'MENUTYPENAME'),
+                    #result('T.PARENTMENUID', 'java.lang.String', 'PARENTMENUID'),
+                    #result('IT.NAME', 'java.lang.String', 'PARENTMENUNAME'),
+                    #result('T.POSITION', 'java.lang.Long', 'POSITION')
+                FROM
+                    B2B_MENU T
+                        INNER JOIN B2B_MENUTYPE T3 ON (T.MENUTYPEID = T3.MENUTYPEID)
+                        LEFT JOIN B2B_MENU IT ON (T.PARENTMENUID = IT.MENUID)
+                #chain('AND' 'WHERE') 
+                    #chunk($MENUID) T.MENUID = #bind($MENUID 'VARCHAR') #end 
+                    #chunk($ITEMNAME) T.NAME = #bind($ITEMNAME 'VARCHAR') #end 
+                    #chunk($ITEMSYSNAME) T.SYSNAME = #bind($ITEMSYSNAME 'VARCHAR') #end 
+                    #chunk($ACTIONURL) T.ACTIONURL = #bind($ACTIONURL 'VARCHAR') #end 
+                    #chunk($PICTUREURL) T.PICTUREURL = #bind($PICTUREURL 'VARCHAR') #end
+                    #chunk($MENUTYPEID) T.MENUTYPEID = #bind($MENUTYPEID 'VARCHAR') #end  
+                    #chunk($MENUTYPENAME) T3.NAME = #bind($MENUTYPENAME 'VARCHAR') #end 
+                    #chunk($PARENTMENUID) T.PARENTMENUID = #bind($PARENTMENUID 'VARCHAR') #end 
+                    #chunk($PARENTMENUNAME) IT.NAME = #bind($PARENTMENUNAME 'VARCHAR') #end 
+                    #chunk($POSITION) T.POSITION = #bind($POSITION 'VARCHAR') #end 
+                    #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+                $ASPECTTABLES 
+                #end   
+        ]]>
+        </sql>
+    </query>
+ 
+    <query name="dsAdminGetMenuListCount" 
+           factory="org.apache.cayenne.map.SQLTemplateBuilder" 
+           root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+        <![CDATA[
+                SELECT $NEEDDISTINCT 
+                    #result('COUNT(*)', 'java.lang.Long', 'CNT') 
+                $ASPECTFIELDS 
+                FROM 
+                    B2B_MENU T
+                         INNER JOIN B2B_MENUTYPE T3 ON (T.MENUTYPEID = T3.MENUTYPEID)
+                         LEFT JOIN B2B_MENU IT ON (T.PARENTMENUID = IT.MENUID)
+                   #chain('AND' 'WHERE') 
+                    #chunk($MENUID) T.MENUID = #bind($MENUID 'VARCHAR') #end 
+                    #chunk($ITEMNAME) T.NAME = #bind($ITEMNAME 'VARCHAR') #end 
+                    #chunk($ITEMSYSNAME) T.SYSNAME = #bind($ITEMSYSNAME 'VARCHAR') #end 
+                    #chunk($ACTIONURL) T.ACTIONURL = #bind($ACTIONURL 'VARCHAR') #end 
+                    #chunk($PICTUREURL) T.PICTUREURL = #bind($PICTUREURL 'VARCHAR') #end
+                    #chunk($MENUTYPEID) T.MENUTYPEID = #bind($MENUTYPEID 'VARCHAR') #end  
+                    #chunk($MENUTYPENAME) T3.NAME = #bind($MENUTYPENAME 'VARCHAR') #end 
+                    #chunk($PARENTMENUID) T.PARENTMENUID = #bind($PARENTMENUID 'VARCHAR') #end 
+                    #chunk($PARENTMENUNAME) IT.NAME = #bind($PARENTMENUNAME 'VARCHAR') #end 
+                    #chunk($POSITION) T.POSITION = #bind($POSITION 'VARCHAR') #end 
+                    #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+                $ASPECTTABLES 
+                #end   
+        ]]>
+        </sql>
+    </query>
+    
+    <query name="dsGetParentMenuList" 
+           factory="org.apache.cayenne.map.SQLTemplateBuilder" 
+           root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+        <![CDATA[
+                SELECT $NEEDDISTINCT 
+                    #result('T.MENUID', 'java.lang.Long', 'hid'),
+                    #result('T.NAME', 'java.lang.String', 'name')
+                FROM
+                    B2B_MENU T
+                #chain('AND' 'WHERE') 
+                 #chunk($MENUID) T.MENUID <> #bind($MENUID 'VARCHAR') #end 
+                 #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+                $ASPECTTABLES 
+                #end   
+        ]]>
+        </sql>
+    </query>
+    
+    <query name="dsGetParentMenuListCount" 
+           factory="org.apache.cayenne.map.SQLTemplateBuilder" 
+           root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+        <![CDATA[
+                SELECT $NEEDDISTINCT 
+                    #result('COUNT(*)', 'java.lang.Long', 'CNT') 
+                FROM
+                    B2B_MENU T
+                   #chain('AND' 'WHERE') 
+                    #chunk($MENUID) T.MENUID = #bind($MENUID 'VARCHAR') #end 
+                    #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+                $ASPECTTABLES 
+                #end   
+        ]]>
+        </sql>
+    </query>
+    
+    <query name="dsB2BMenuorgstructDeleteByMenuID" 
+           factory="org.apache.cayenne.map.SQLTemplateBuilder" 
+           root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+        <![CDATA[
+            DELETE
+                FROM B2B_MENUORGSTRUCT T 
+                    #chain('AND' 'WHERE') 
+                    #chunk($MENUID) T.MENUID = #bind($MENUID 'NUMERIC') #end 
+                    #chunk($MENUORGSTRUCTID) T.MENUORGSTRUCTID = #bind($MENUORGSTRUCTID 'NUMERIC') #end 
+            $ASPECTRESTRICTION 
+            #end 
+        ]]>
+        </sql>
+    </query>
+    
+
+    <query name="dsAdminUsersList" 
+           factory="org.apache.cayenne.map.SQLTemplateBuilder" 
+           root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT $NEEDDISTINCT 
+                    #result('T1.USERID', 'java.math.Long', 'USERID'),
+                    #result('T3.DEPARTMENTID', 'java.math.Long', 'DEPARTMENT'),
+                    #result('T.USERACCOUNTID', 'java.math.Long', 'USERACCOUNTID'),
+                    #result('T2.EMPLOYEEID', 'java.math.Long', 'EMPLOYEEID'),
+                    #result('T.STATUS', 'java.lang.String', 'STATUS'),
+                    #result('T.LOGIN', 'java.lang.String', 'LOGIN'),
+                    #result('T2.USERNAME', 'java.lang.String', 'USERNAME'),
+                    #result('T3.DEPTSHORTNAME', 'java.lang.String', 'DEPARTMENTSHORTNAME'),
+                    #result('T.CREATIONDATE', 'java.math.BigDecimal', 'CREATIONDATE'),
+                    #result('T.PWDEXPDATE', 'java.math.BigDecimal', 'PWDEXPDATE'),
+                    #result('T2.EMAIL', 'java.lang.String', 'EMAIL'),
+                    #result('T2.PHONE1', 'java.lang.String', 'PHONE1'),
+                    #result('T2.POSITION', 'java.lang.String', 'POSITION'),
+                    #result('T.ADUSERLOGIN', 'java.lang.String', 'ADUSERLOGIN'),
+                    #result('T.ADUSERLOGIN', 'java.lang.String', 'ADUSERLOGIN')
+                    $ASPECTFIELDS 
+                FROM (select USERACCOUNTID,
+                         STATUS,
+                         LOGIN,
+                         CREATIONDATE,
+                         PWDEXPDATE,
+                         ADUSERLOGIN,
+                         USERID,
+                         case
+                           when STATUS = 'ACTIVE' or STATUS = 'BLOCKED'
+                                   then '0'
+                           else '1'
+                         end as ISNEEDSHOWDELETEDUSERS
+                      FROM CORE_USERACCOUNT) T
+                    inner join CORE_USER T1 ON T.USERID = T1.USERID
+                    inner join (SELECT EMPLOYEEID,
+                                  LASTNAME,
+                                  FIRSTNAME,
+                                  MIDDLENAME,
+                                  EMAIL,
+                                  PHONE1,
+                                  POSITION,
+                                  DEPARTMENTID,
+                                  CONCAT(LASTNAME, CONCAT(' ', CONCAT(FIRSTNAME, CONCAT(' ', MIDDLENAME)))) AS USERNAME
+                                FROM DEP_EMPLOYEE) T2 on (T1.OBJECTID = T2.EMPLOYEEID)
+                    inner join DEP_DEPARTMENT T3 on (T2.DEPARTMENTID = T3.DEPARTMENTID)
+                $ASPECTTABLES 
+                #chain('AND' 'WHERE')                      
+                    #chunk($CREATIONDATE) T.CREATIONDATE = #bind($CREATIONDATE 'FLOAT') #end 
+                    #chunk($PWDEXPDATE) T.PWDEXPDATE = #bind($PWDEXPDATE 'FLOAT') #end
+                    #chunk($DEPRIGHT) T3.DEPARTMENTID in (SELECT DEPARTMENTID FROM DEP_DEPARTMENT CONNECT BY PRIOR DEPARTMENTID = PARENTDEPARTMENT START WITH DEPARTMENTID = #bind($DEPRIGHT)) #end 
+                    #chunk($DEPARTMENTID) T2.DEPARTMENTID = #bind($DEPARTMENTID 'NUMERIC') #end
+                    #chunk($GETACTIVEUSERS) T.STATUS <> 'DELETED' #end
+					#chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+                    #chunk($CUSTOMROOTDEPARTMENTID) $CUSTOMROOTDEPARTMENTID #end
+                    $ASPECTRESTRICTION 
+                #end 
+            ]]>
+        </sql>
+    </query>
+    
+    <query name="dsAdminGetUsersCount" 
+           factory="org.apache.cayenne.map.SQLTemplateBuilder" 
+           root="data-map" root-name="B2BLossMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT $NEEDDISTINCT 
+                    #result('COUNT(*)', 'java.lang.Long', 'CNT') 
+                FROM (select USERACCOUNTID,
+                         STATUS,
+                         LOGIN,
+                         CREATIONDATE,
+                         PWDEXPDATE,
+                         ADUSERLOGIN,
+                         USERID,
+                         case
+                           when STATUS = 'ACTIVE' or STATUS = 'BLOCKED'
+                                   then '0'
+                           else '1'
+                         end as ISNEEDSHOWDELETEDUSERS
+                      FROM CORE_USERACCOUNT) T
+                    inner join CORE_USER T1 ON T.USERID = T1.USERID
+                    inner join (SELECT EMPLOYEEID,
+                                  LASTNAME,
+                                  FIRSTNAME,
+                                  MIDDLENAME,
+                                  EMAIL,
+                                  PHONE1,
+                                  POSITION,
+                                  DEPARTMENTID,
+                                  CONCAT(LASTNAME, CONCAT(' ', CONCAT(FIRSTNAME, CONCAT(' ', MIDDLENAME)))) AS USERNAME
+                                FROM DEP_EMPLOYEE) T2 on (T1.OBJECTID = T2.EMPLOYEEID)
+                    inner join DEP_DEPARTMENT T3 on (T2.DEPARTMENTID = T3.DEPARTMENTID)
+                $ASPECTTABLES 
+                #chain('AND' 'WHERE') 
+                    #chunk($CREATIONDATE) T.CREATIONDATE = #bind($CREATIONDATE 'FLOAT') #end 
+                    #chunk($PWDEXPDATE) T.PWDEXPDATE = #bind($PWDEXPDATE 'FLOAT') #end
+                    #chunk($DEPRIGHT) T3.DEPARTMENTID in (SELECT DEPARTMENTID FROM DEP_DEPARTMENT CONNECT BY PRIOR DEPARTMENTID = PARENTDEPARTMENT START WITH DEPARTMENTID = #bind($DEPRIGHT)) #end 
+                    #chunk($GETACTIVEUSERS) T.STATUS <> 'DELETED' #end
+                    #chunk($DEPARTMENTID) T2.DEPARTMENTID = #bind($DEPARTMENTID 'NUMERIC') #end
+					#chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+                    #chunk($CUSTOMROOTDEPARTMENTID) $CUSTOMROOTDEPARTMENTID #end
+                $ASPECTRESTRICTION 
+                #end
+            ]]>
+        </sql>
+    </query>
+    
+    <query name="dsAdminAccountChangePassWithoutOldPass"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map" root-name="B2BAdminMap">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                UPDATE
+                    CORE_USERACCOUNT
+                SET
+                    CORE_USERACCOUNT.PASSWORD = '$NEWPASS',
+                    CORE_USERACCOUNT.PWDEXPDATE = $PWDEXPDATE
+                WHERE
+                    CORE_USERACCOUNT.USERACCOUNTID = $ACCID
+            ]]>
+        </sql>
+    </query>
+    
+    <query 
+        name="dsAdminAccountChangePass" 
+        factory="org.apache.cayenne.map.SQLTemplateBuilder" 
+        root="data-map" root-name="B2BAdminMap">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                DECLARE @EQ varchar(255)
+                    SELECT
+                    @EQ= CASE WHEN CORE_USERACCOUNT.PASSWORD = '$OLDPASS' THEN 'TRUE' ELSE 'FALSE'
+                        END FROM CORE_USERACCOUNT WHERE CORE_USERACCOUNT.USERACCOUNTID = $ACCID
+                    IF @EQ='TRUE'
+                    BEGIN
+                        UPDATE CORE_USERACCOUNT
+                        SET
+                            CORE_USERACCOUNT.PASSWORD = '$NEWPASS'
+                            WHERE CORE_USERACCOUNT.USERACCOUNTID = $ACCID
+                        END
+
+                SELECT @EQ as RESULT
+            ]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+            <![CDATA[
+                DECLARE EQ varchar(255);
+                BEGIN
+                    SELECT
+                    CASE WHEN CORE_USERACCOUNT.PASSWORD = '$OLDPASS' THEN 'TRUE' ELSE 'FALSE'
+                    END INTO EQ 
+                    FROM CORE_USERACCOUNT
+                    WHERE CORE_USERACCOUNT.USERACCOUNTID = $ACCID;
+                    IF EQ='TRUE'
+                    THEN
+                        UPDATE CORE_USERACCOUNT
+                        SET
+                            CORE_USERACCOUNT.PASSWORD = '$NEWPASS'
+                            WHERE CORE_USERACCOUNT.USERACCOUNTID = $ACCID;
+                    END IF;
+
+                END;
+            ]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.db2.DB2Adapter">
+            <![CDATA[
+                DECLARE EQ varchar(255);
+                BEGIN
+                    SELECT
+                    CASE WHEN CORE_USERACCOUNT.PASSWORD = '$OLDPASS' THEN 'TRUE' ELSE 'FALSE'
+                    END INTO EQ
+                    FROM CORE_USERACCOUNT
+                    WHERE CORE_USERACCOUNT.USERACCOUNTID = $ACCID;
+                    IF EQ='TRUE'
+                    THEN
+                        UPDATE CORE_USERACCOUNT
+                        SET
+                            CORE_USERACCOUNT.PASSWORD = '$NEWPASS'
+                            WHERE CORE_USERACCOUNT.USERACCOUNTID = $ACCID;
+                        END IF;
+
+                    END;
+            ]]>
+        </sql>
+    </query>
+
+    <query name="findUserByLoginAndEmail" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" >
+    <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+      <sql>
+        <![CDATA[
+          SELECT T.USERID, T.LOGIN, T3.EMAIL, T.USERACCOUNTID
+          FROM CORE_USERACCOUNT T
+            LEFT JOIN CORE_USER T2 ON (T.USERID = T2.USERID)
+            LEFT JOIN DEP_EMPLOYEE T3 ON (T3.EMPLOYEEID = T2.OBJECTID)
+            $ASPECTTABLES
+          #chain('AND' 'WHERE')
+            #chunk($LOGIN) UPPER(T.LOGIN) = UPPER(#bind($LOGIN 'VARCHAR') #end )
+            #chunk($EMAIL) UPPER(T3.EMAIL) = UPPER(#bind($EMAIL 'VARCHAR') #end)
+            $ASPECTRESTRICTION
+          #end
+        ]]>
+      </sql>
+    </query>
+    <query name="dsGetEmployeeIdByParam"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map" root-name="B2BAdminMap">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT $NEEDDISTINCT
+                    #result('T.USERACCOUNTID', 'java.math.Long', 'USERACCOUNTID'),
+                    #result('T2.EMPLOYEEID', 'java.math.Long', 'EMPLOYEEID')
+                    $ASPECTFIELDS
+                FROM CORE_USERACCOUNT T
+                    inner join CORE_USER T1 ON T.USERID = T1.USERID
+                    inner join DEP_EMPLOYEE T2 on (T1.OBJECTID = T2.EMPLOYEEID)
+                $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                    #chunk($USERACCOUNTID) T.USERACCOUNTID = #bind($USERACCOUNTID 'NUMERIC') #end
+                    #chunk($LOGIN) T.LOGIN = #bind($LOGIN 'VARCHAR') #end
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+
+    <query 
+        name="dsGetRoleListByUserAndUserAccountId" 
+        factory="org.apache.cayenne.map.SQLTemplateBuilder" 
+        root="data-map" root-name="B2BAdminMap">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT $NEEDDISTINCT 
+                    #result('T.ROLEID', 'java.math.Long', 'ROLEID'),
+                    #result('T.ROLENAME', 'java.lang.String', 'ROLENAME'),   
+                    #result('T.DESCRIPTION', 'java.lang.String', 'DESCRIPTION'),
+                    #result('T.ROLESYSNAME', 'java.lang.String', 'ROLESYSNAME')
+                $ASPECTFIELDS 
+                FROM CORE_USERROLE T
+                LEFT JOIN CORE_ROLEACCOUNT T2 ON T2.ROLEID = T.ROLEID                     
+                LEFT JOIN CORE_USERACCOUNT T1 ON T1.USERACCOUNTID = T2.USERACCOUNTID
+                $ASPECTTABLES                 
+                #chain('AND' 'WHERE') 
+                    #chunk($USERACCOUNTID) T1.USERACCOUNTID = #bind($USERACCOUNTID 'NUMERIC') #end 
+                    #chunk($USERID) T1.USERID = #bind($USERID 'NUMERIC') #end
+                    #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+                $ASPECTRESTRICTION    
+                #end 
+            ]]>
+        </sql>
+    </query>
+    <query name="dsGetRoleListByUserAndUserAccountIdCount" 
+           factory="org.apache.cayenne.map.SQLTemplateBuilder" 
+           root="data-map" root-name="B2BLossMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT $NEEDDISTINCT 
+                    #result('COUNT(*)', 'java.lang.Long', 'CNT') 
+                $ASPECTFIELDS 
+                FROM CORE_USERROLE T
+                LEFT JOIN CORE_ROLEACCOUNT T2 ON T2.ROLEID = T.ROLEID                     
+                LEFT JOIN CORE_USERACCOUNT T1 ON T1.USERACCOUNTID = T2.USERACCOUNTID
+                $ASPECTTABLES                 
+                #chain('AND' 'WHERE') 
+                    #chunk($USERACCOUNTID) T1.USERACCOUNTID = #bind($USERACCOUNTID 'NUMERIC') #end 
+                    #chunk($USERID) T1.USERID = #bind($USERID 'NUMERIC') #end
+                    #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+                $ASPECTRESTRICTION    
+                #end 
+            ]]>
+        </sql>
+    </query>
+    
+    <query name="dsGetDepartmentList" 
+           factory="org.apache.cayenne.map.SQLTemplateBuilder" 
+           root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT $NEEDDISTINCT 
+                    #result('T.DEPARTMENTID', 'java.math.Long', 'hid'),
+                    #result('T.DEPTFULLNAME', 'java.lang.String', 'name')                    
+                    $ASPECTFIELDS 
+                FROM DEP_DEPARTMENT T
+                $ASPECTTABLES 
+                #chain('AND' 'WHERE') 
+                    #chunk($DEPRIGHT) T.DEPARTMENTID in (SELECT DEPARTMENTID FROM DEP_DEPARTMENT CONNECT BY PRIOR DEPARTMENTID = PARENTDEPARTMENT START WITH DEPARTMENTID = #bind($DEPRIGHT)) #end
+                $ASPECTRESTRICTION 
+                #end 
+            ]]>
+        </sql>
+    </query>
+    
+    <query name="dsGetDepartmentCount" 
+           factory="org.apache.cayenne.map.SQLTemplateBuilder" 
+           root="data-map" root-name="B2BLossMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT $NEEDDISTINCT 
+                    #result('COUNT(*)', 'java.lang.Long', 'CNT') 
+                FROM DEP_DEPARTMENT T
+                $ASPECTTABLES 
+                #chain('AND' 'WHERE') 
+                    #chunk($DEPRIGHT) T.DEPARTMENTID in (SELECT DEPARTMENTID FROM DEP_DEPARTMENT CONNECT BY PRIOR DEPARTMENTID = PARENTDEPARTMENT START WITH DEPARTMENTID = #bind($DEPRIGHT)) #end
+                
+                $ASPECTRESTRICTION 
+                #end 
+            ]]>
+        </sql>
+    </query>
+   
+    <query name="dsGetAdminDepartmentListFromRoot" 
+           factory="org.apache.cayenne.map.SQLTemplateBuilder" 
+           root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT $NEEDDISTINCT 
+                    #result('T.DEPARTMENTID', 'java.math.Long', 'hid'),
+                    #result('T.DEPTFULLNAME', 'java.lang.String', 'name')                    
+                    $ASPECTFIELDS 
+                FROM DEP_DEPARTMENT T
+                $ASPECTTABLES 
+                #chain('AND' 'WHERE') 
+                    #chunk($DEPRIGHT) T.DEPARTMENTID in (SELECT DEPARTMENTID FROM DEP_DEPARTMENT CONNECT BY PRIOR DEPARTMENTID = PARENTDEPARTMENT START WITH DEPARTMENTID = #bind($DEPRIGHT)) #end
+                $ASPECTRESTRICTION 
+                #end
+                START WITH T.DEPARTMENTID = $ROOTDEPARTMENTID
+                CONNECT BY PRIOR T.DEPARTMENTID =  T.PARENTDEPARTMENT 
+            ]]>
+        </sql>
+    </query>
+    
+    <query name="dsGetAdminDepartmentListFromRootCount" 
+           factory="org.apache.cayenne.map.SQLTemplateBuilder" 
+           root="data-map" root-name="B2BLossMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT $NEEDDISTINCT 
+                    #result('COUNT(*)', 'java.lang.Long', 'CNT') 
+                FROM DEP_DEPARTMENT T
+                $ASPECTTABLES 
+                #chain('AND' 'WHERE') 
+                    #chunk($DEPRIGHT) T.DEPARTMENTID in (SELECT DEPARTMENTID FROM DEP_DEPARTMENT CONNECT BY PRIOR DEPARTMENTID = PARENTDEPARTMENT START WITH DEPARTMENTID = #bind($DEPRIGHT)) #end
+                $ASPECTRESTRICTION 
+                #end 
+                START WITH T.DEPARTMENTID = $ROOTDEPARTMENTID
+                CONNECT BY PRIOR T.DEPARTMENTID =  T.PARENTDEPARTMENT 
+            ]]>
+        </sql>
+    </query>
+      
+    <query name="dsGetRoleList" 
+           factory="org.apache.cayenne.map.SQLTemplateBuilder" 
+           root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT $NEEDDISTINCT 
+                    #result('T.ROLEID', 'java.math.Long', 'hid'),
+                    #result('T.ROLENAME', 'java.lang.String', 'name')                    
+                    $ASPECTFIELDS 
+                FROM CORE_USERROLE T
+                $ASPECTTABLES 
+                #chain('AND' 'WHERE') 
+                     
+                $ASPECTRESTRICTION 
+                #end 
+            ]]>
+        </sql>
+    </query>
+    
+    <query name="dsGetRoleListCount" 
+           factory="org.apache.cayenne.map.SQLTemplateBuilder" 
+           root="data-map" root-name="B2BLossMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT $NEEDDISTINCT 
+                    #result('COUNT(*)', 'java.lang.Long', 'CNT') 
+                FROM CORE_USERROLE T
+                $ASPECTTABLES 
+                #chain('AND' 'WHERE') 
+                
+                $ASPECTRESTRICTION 
+                #end 
+            ]]>
+        </sql>
+    </query>
+    <query name="dsAdminGetDepartmentList" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[    
+                SELECT
+                    #result('LEVEL', 'java.lang.Long', 'LEVEL'),
+                    #result('DD.DEPARTMENTID', 'java.lang.Long', 'DEPARTMENTID'),
+                    #result('DD.PARENTDEPARTMENT', 'java.lang.Long', 'PARENTDEPARTMENT'),
+                    #result('DL.LEVELWEIGHT', 'java.lang.Long', 'LEVELWEIGHT'),
+                    #result('DL.LEVELNAME', 'java.lang.String', 'LEVELNAME'),
+                    #result('DD.DEPTLEVEL', 'java.lang.Long', 'DEPTLEVEL'),
+                    #result('DD.DEPTSHORTNAME', 'java.lang.String', 'DEPTSHORTNAME'),
+                    #result('DD.DEPTSHORTNAME', 'java.lang.String', 'ITEMNAME'),
+                    #result('DD.DEPTFULLNAME', 'java.lang.String', 'DEPTFULLNAME'),
+                    #result('DD.DEPTCODE', 'java.lang.String', 'DEPTCODE'),
+                    #result('DD.MANAGER', 'java.lang.Long', 'MANAGER'),
+                    #result('DD.DEPPHONE', 'java.lang.String', 'DEPPHONE'),
+                    #result('DD.PARAM1', 'java.lang.String', 'PARAM1'),
+                    #result('DD.PARAM2', 'java.lang.String', 'PARAM2'),
+                    #result('DD.PARAM3', 'java.lang.String', 'PARAM3'),
+                    #result('DD.DEPMAIL', 'java.lang.String', 'DEPMAIL'),
+                    #result('DD.DEPPARENTTZ', 'java.lang.Long', 'DEPPARENTTZ'),
+                    #result('DD.DEPUSELINK', 'java.lang.Long', 'DEPUSELINK'),
+                    #result('DD.DEPTZNAME', 'java.lang.String', 'DEPTZNAME'),
+                    #result('DD.DEPTZDIFF', 'java.lang.Long', 'DEPTZDIFF'),
+                    #result("nvl(DE.LASTNAME,'') || ' ' || nvl(DE.FIRSTNAME,'') || ' ' || nvl(DE.MIDDLENAME,'')", 'java.lang.String', 'MANAGERNAME'),
+                    #result("'DEP_' || CAST(DD.DEPARTMENTID AS VARCHAR2(255))", 'java.lang.String', 'ITEMKEY'),
+                    #result("'DEPARTAMENT'" , 'java.lang.String', 'ITEMTYPE')
+                FROM DEP_DEPARTMENT DD
+                    LEFT JOIN DEP_DEPTLEVEL DL ON DD.DEPTLEVEL = DL.DEPTLEVELID
+                    LEFT JOIN DEP_DEPARTMENT DP ON DD.PARENTDEPARTMENT = DP.DEPARTMENTID
+                    LEFT JOIN DEP_EMPLOYEE DE ON DE.EMPLOYEEID = DD.MANAGER
+                $ASPECTTABLES 
+                #chain('AND' 'WHERE') 
+                    #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+                    #chunk($DEPRIGHT) DD.DEPARTMENTID in (SELECT DEPARTMENTID FROM DEP_DEPARTMENT CONNECT BY PRIOR DEPARTMENTID = PARENTDEPARTMENT START WITH DEPARTMENTID = #bind($DEPRIGHT)) #end 
+                    #chunk($LEVEL) $LEVEL #end
+                $ASPECTRESTRICTION 
+                 #end 
+                CONNECT BY PRIOR DD.DEPARTMENTID = DD.PARENTDEPARTMENT
+                START WITH DD.DEPARTMENTID = $ROOTID
+]]>
+        </sql>
+    </query>
+    <query name="dsAdminGetDepartmentListCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BJournals" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[    
+                SELECT
+                    #result('COUNT(*)', 'java.lang.Long', 'CNT')
+                FROM DEP_DEPARTMENT DD
+                    LEFT JOIN DEP_DEPTLEVEL DL ON DD.DEPTLEVEL = DL.DEPTLEVELID
+                    LEFT JOIN DEP_DEPARTMENT DP ON DD.PARENTDEPARTMENT = DP.DEPARTMENTID
+                    LEFT JOIN DEP_EMPLOYEE DE ON DE.EMPLOYEEID = DD.MANAGER
+                $ASPECTTABLES 
+                #chain('AND' 'WHERE') 
+                    #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+                    #chunk($DEPRIGHT) DD.DEPARTMENTID in (SELECT DEPARTMENTID FROM DEP_DEPARTMENT CONNECT BY PRIOR DEPARTMENTID = PARENTDEPARTMENT START WITH DEPARTMENTID = #bind($DEPRIGHT)) #end 
+                    
+                $ASPECTRESTRICTION 
+                 #end 
+                
+                CONNECT BY PRIOR DD.DEPARTMENTID = DD.PARENTDEPARTMENT
+                START WITH DD.DEPARTMENTID = $ROOTID
+]]>
+        </sql>
+    </query>
+    <query name="dsGetUserByDepartment" 
+           factory="org.apache.cayenne.map.SQLTemplateBuilder" 
+           root="data-map" root-name="B2BOther" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            SELECT
+                #result('CUA.USERACCOUNTID', 'java.math.Long', 'USERACCOUNTID'),
+                #result('CUA.STATUS', 'java.lang.String', 'STATUS'),
+                #result('CUA.LOGIN', 'java.lang.String', 'LOGIN'),
+                #result('CUA.CREATIONDATE', 'java.math.BigDecimal', 'CREATIONDATE'),
+                #result('CUA.PWDEXPDATE', 'java.math.BigDecimal', 'PWDEXPDATE'),
+                #result('DE.EMPLOYEEID', 'java.lang.Long','EMPLOYEEID'),
+                #result('DE.DEPARTMENTID', 'java.lang.Long','DEPARTMENTID'),
+                #result('DE.POSITION', 'java.lang.String','POSITION'),
+                #result("nvl(DE.LASTNAME,'') || ' ' || nvl(DE.FIRSTNAME,'') || ' ' || nvl(DE.MIDDLENAME,'')", 'java.lang.String' ,'ITEMNAME'),
+                #result("nvl(DE.LASTNAME,'') || ' ' || nvl(DE.FIRSTNAME,'') || ' ' || nvl(DE.MIDDLENAME,'')", 'java.lang.String' ,'USERFIO'),
+                #result('DE.LASTNAME' 'java.lang.String', 'LASTNAME'),
+                #result('DE.FIRSTNAME', 'java.lang.String', 'FIRSTNAME'),
+                #result('DE.MIDDLENAME', 'java.lang.String', 'MIDDLENAME'),
+                #result('DE.PHONE1', 'java.lang.String', 'PHONE1'), 
+                #result('DE.PHONE2', 'java.lang.String', 'PHONE2'),
+                #result('DE.EMAIL', 'java.lang.String', 'EMAIL'),
+                #result('CU.STATUS', 'java.lang.String', 'STATUS'),
+                #result("'EMP_' || CAST(DE.EMPLOYEEID AS VARCHAR2(255))", 'java.lang.String', 'ITEMKEY'),
+                #result("'USER'" , 'java.lang.String', 'ITEMTYPE')
+                FROM CORE_USERACCOUNT CUA
+                $ASPECTTABLES    
+                    inner join CORE_USER CU ON CUA.USERID = CU.USERID
+                    inner join DEP_EMPLOYEE DE on (CU.OBJECTID = DE.EMPLOYEEID AND CU.OBJECTTYPE = 1)
+                    inner join DEP_DEPARTMENT DD on (DE.DEPARTMENTID = DD.DEPARTMENTID)
+            #chain('AND' 'WHERE') 
+                #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+                #chunk($DEPARTMENTID) DE.DEPARTMENTID = #bind($DEPARTMENTID)#end  
+                #chunk($DEPRIGHT) DD.DEPARTMENTID in (SELECT DEPARTMENTID FROM DEP_DEPARTMENT CONNECT BY PRIOR DEPARTMENTID = PARENTDEPARTMENT START WITH DEPARTMENTID = #bind($DEPRIGHT)) #end 
+                
+            $ASPECTRESTRICTION 
+            #end 
+            ]]>
+        </sql>
+    </query>
+    <query name="dsGetUserByDepartmentCount" 
+           factory="org.apache.cayenne.map.SQLTemplateBuilder" 
+           root="data-map" root-name="B2BOther" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            SELECT
+                    #result('COUNT(*)', 'java.lang.Long', 'CNT') 
+              FROM CORE_USERACCOUNT CUA
+              $ASPECTTABLES    
+                  inner join CORE_USER CU ON CUA.USERID = CU.USERID
+                  inner join DEP_EMPLOYEE DE on (CU.OBJECTID = DE.EMPLOYEEID AND CU.OBJECTTYPE = 1)
+                    inner join DEP_DEPARTMENT DD on (DE.DEPARTMENTID = DD.DEPARTMENTID)
+            #chain('AND' 'WHERE') 
+                #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+                #chunk($DEPARTMENTID) DE.DEPARTMENTID = #bind($DEPARTMENTID)#end  
+                #chunk($DEPRIGHT) DD.DEPARTMENTID in (SELECT DEPARTMENTID FROM DEP_DEPARTMENT CONNECT BY PRIOR DEPARTMENTID = PARENTDEPARTMENT START WITH DEPARTMENTID = #bind($DEPRIGHT)) #end 
+            $ASPECTRESTRICTION 
+            #end 
+            ]]>
+        </sql>
+    </query>   
+    
+    <query name="dsAdminUsersPartnerList" 
+           factory="org.apache.cayenne.map.SQLTemplateBuilder" 
+           root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT $NEEDDISTINCT 
+                    #result('T1.USERID', 'java.math.Long', 'USERID'),
+                    #result('T3.DEPARTMENTID', 'java.math.Long', 'DEPARTMENT'),
+                    #result('T.USERACCOUNTID', 'java.math.Long', 'USERACCOUNTID'),
+                    #result('T2.EMPLOYEEID', 'java.math.Long', 'EMPLOYEEID'),
+                    #result('T.STATUS', 'java.lang.String', 'STATUS'),
+                    #result('T.LOGIN', 'java.lang.String', 'LOGIN'),
+                    #result("CONCAT(T2.LASTNAME, CONCAT(' ', CONCAT(T2.FIRSTNAME, CONCAT(' ', T2.MIDDLENAME))))", 'java.lang.String', 'USERNAME'),
+                    #result('T4.ROLEID', 'java.lang.String', 'ROLEID'),
+                    #result('T5.ROLENAME', 'java.lang.String', 'ROLENAME'),
+                    #result('T3.DEPTSHORTNAME', 'java.lang.String', 'DEPARTMENTSHORTNAME'),
+                    #result('T.CREATIONDATE', 'java.math.BigDecimal', 'CREATIONDATE'),
+                    #result('T.PWDEXPDATE', 'java.math.BigDecimal', 'PWDEXPDATE'),
+                    #result('T2.EMAIL', 'java.lang.String', 'EMAIL'),
+                    #result('T2.PHONE1', 'java.lang.String', 'PHONE1'),
+                    #result('T2.POSITION', 'java.lang.String', 'POSITION')
+                    $ASPECTFIELDS 
+                FROM CORE_USERACCOUNT T                   
+                    inner join CORE_USER T1 ON T.USERID = T1.USERID
+                    inner join DEP_EMPLOYEE T2 on (T1.OBJECTID = T2.EMPLOYEEID)
+                    inner join DEP_DEPARTMENT T3 on (T2.DEPARTMENTID = T3.DEPARTMENTID)
+                    inner join  CORE_ROLEACCOUNT T4 ON (T.USERACCOUNTID = T4.USERACCOUNTID)
+                    inner join  CORE_USERROLE T5 ON (T4.ROLEID = T5.ROLEID)
+                $ASPECTTABLES 
+                #chain('AND' 'WHERE')                      
+                    #chunk($CREATIONDATE) T.CREATIONDATE = #bind($CREATIONDATE 'FLOAT') #end 
+                    #chunk($PWDEXPDATE) T.PWDEXPDATE = #bind($PWDEXPDATE 'FLOAT') #end
+                    #chunk($DEPARTMENTID) T2.DEPARTMENTID = #bind($DEPARTMENTID 'NUMERIC') #end
+                    #chunk($GETACTIVEUSERS) T.STATUS <> 'DELETED' #end
+                    #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+                    #chunk($CUSTOMROOTDEPARTMENTID) $CUSTOMROOTDEPARTMENTID #end
+                    $ASPECTRESTRICTION 
+                #end 
+            ]]>
+        </sql>
+    </query>
+    
+    <query name="dsAdminUsersPartnerCount" 
+           factory="org.apache.cayenne.map.SQLTemplateBuilder" 
+           root="data-map" root-name="B2BLossMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT $NEEDDISTINCT 
+                    #result('COUNT(*)', 'java.lang.Long', 'CNT') 
+                FROM CORE_USERACCOUNT T
+                    inner join CORE_USER T1 ON T.USERID = T1.USERID
+                    inner join DEP_EMPLOYEE T2 on (T1.OBJECTID = T2.EMPLOYEEID)
+                    inner join DEP_DEPARTMENT T3 on (T2.DEPARTMENTID = T3.DEPARTMENTID)
+                $ASPECTTABLES 
+                #chain('AND' 'WHERE') 
+                    #chunk($CREATIONDATE) T.CREATIONDATE = #bind($CREATIONDATE 'FLOAT') #end 
+                    #chunk($PWDEXPDATE) T.PWDEXPDATE = #bind($PWDEXPDATE 'FLOAT') #end
+                    #chunk($GETACTIVEUSERS) T.STATUS <> 'DELETED' #end
+                    #chunk($DEPARTMENTID) T2.DEPARTMENTID = #bind($DEPARTMENTID 'NUMERIC') #end
+                    #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+                    #chunk($CUSTOMROOTDEPARTMENTID) $CUSTOMROOTDEPARTMENTID #end
+                $ASPECTRESTRICTION 
+                #end
+            ]]>
+        </sql>
+    </query>
+    
+    
+    <query name="dsCheckAdminRights" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="Right">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql><![CDATA[
+                select #result('1', 'java.lang.Long', 'checkResult') 
+                from dual
+                    where exists(
+                        select * from CORE_USERROLE CU
+                                left join CORE_ROLEACCOUNT CRA ON CRA.ROLEID = CU.ROLEID #chunk($TODATE) AND (CRA.TODATE = 0 OR CRA.TODATE IS NULL OR CRA.TODATE > #bind($TODATE)) #end
+                                left join CORE_USERACCOUNT UA ON UA.USERACCOUNTID = CRA.USERACCOUNTID
+                        where CU.ROLESYSNAME in ($ROLELIST) AND UA.LOGIN = #bind($LOGIN))]]>
+        </sql>
+    </query>
+    <query name="dsCheckAdminRightsCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="Right">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql><![CDATA[
+                select #result('COUNT(1)', 'java.lang.Long', 'CNT') 
+                from dual   
+                    where exists(
+                        select * from CORE_USERROLE CU
+                                left join CORE_ROLEACCOUNT CRA ON CRA.ROLEID = CU.ROLEID #chunk($TODATE) AND (CRA.TODATE = 0 OR CRA.TODATE IS NULL OR CRA.TODATE > #bind($TODATE)) #end
+                                left join CORE_USERACCOUNT UA ON UA.USERACCOUNTID = CRA.USERACCOUNTID
+                        where CU.ROLESYSNAME in ($ROLELIST) AND UA.LOGIN = #bind($LOGIN)
+                        )]]></sql>
+    </query>
+    <query name="dsDepartmentProfileRightsList" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('RD.RIGHTDEPTID', 'java.math.Long', 'RIGHTDEPTID'),
+        #result('R.RIGHTID', 'java.math.Long', 'RIGHTID'),
+        #result('RD.DEPARTMENTID', 'java.math.Long', 'DEPARTMENTID'),
+        #result('RD.STARTDATE', 'java.math.BigDecimal', 'STARTDATE'),
+        #result('RD.ENDDATE', 'java.math.BigDecimal', 'ENDDATE'),
+        #result('R.RIGHTNAME', 'java.lang.String', 'NAME'),
+        #result('R.RIGHTNAME', 'java.lang.String', 'ITEMNAME'),
+        #result('R.RIGHTSYSNAME', 'java.lang.String', 'SYSNAME'),
+        #result("'CDR_' || CAST(RD.RIGHTDEPTID AS VARCHAR2(255))", 'java.lang.String', 'ITEMKEY'),
+        #result("'DEP_RIGHT'" , 'java.lang.String', 'ITEMTYPE')
+       $ASPECTFIELDS 
+FROM CORE_RIGHTDEPT RD 
+     INNER JOIN CORE_RIGHT R ON (R.RIGHTID=RD.RIGHTID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($DEPARTMENTID) RD.DEPARTMENTID = #bind($DEPARTMENTID 'VARCHAR') #end        
+$ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsDepartmentProfileRightsListCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('COUNT(*)', 'java.lang.Long', 'CNT') 
+       $ASPECTFIELDS 
+FROM CORE_RIGHTDEPT RD 
+     INNER JOIN CORE_RIGHT R ON (R.RIGHTID=RD.RIGHTID)     
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($DEPARTMENTID) RD.DEPARTMENTID = #bind($DEPARTMENTID 'VARCHAR') #end               
+$ASPECTRESTRICTION 
+#end 
+]]>        </sql>
+    </query>
+    
+    <query name="dsDepartmentLevelBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="Department">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql><![CDATA[SELECT 
+                    #result('T.DEPTLEVELID', 'java.math.Long', 'DEPTLEVELID'),
+                    #result('T.LEVELNAME', 'java.lang.String', 'LEVELNAME'),
+                    #result('T.DESCRIPTION', 'java.lang.String', 'DESCRIPTION'),
+                    #result('T.LEVELSYSNAME', 'java.lang.String', 'LEVELSYSNAME'),
+                    #result('T.LEVELWEIGHT', 'java.math.Long', 'LEVELWEIGHT'),
+                    #result('T.ISSYSTEM', 'java.math.Long', 'ISSYSTEM')
+
+                FROM
+                DEP_DEPTLEVEL T
+                #chain('AND' 'WHERE')
+                    #chunk($LEVELNAME) T.LEVELNAME = #bind($LEVELNAME) #end 
+                    #chunk($DEPTLEVELID) T.DEPTLEVELID = #bind($DEPTLEVELID) #end  
+                    #chunk($DROPLEVELSYSNAME) T.LEVELSYSNAME  NOT IN ( $DROPLEVELSYSNAME)) #end  
+            agencyNetwork
+                #end  
+                #chunk($ORDERBY) ORDER BY $ORDERBY #end 
+                #chunk($SORTTYPE) $SORTTYPE #end]]>
+        </sql>        
+    </query>
+    <query name="dsDepartmentLevelBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="Department">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql><![CDATA[SELECT 
+                          #result('COUNT(*)', 'java.lang.Long', 'CNT') 
+                      FROM DEP_DEPTLEVEL T
+                      #chain('AND' 'WHERE')
+                          #chunk($LEVELNAME) T.LEVELNAME = #bind($LEVELNAME) #end 
+                          #chunk($DEPTLEVELID) T.DEPTLEVELID = #bind($DEPTLEVELID) #end  
+                      #end  ]]>
+        </sql>
+    </query>  
+    <query name="dsDepartmentBrowseListByParamEx" 
+           factory="org.apache.cayenne.map.SQLTemplateBuilder" 
+           root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT $NEEDDISTINCT 
+                    #result('DD.DEPARTMENTID', 'java.lang.Long', 'DEPARTMENTID'),
+                    #result('DD.PARENTDEPARTMENT', 'java.lang.Long', 'PARENTDEPARTMENT'),
+                    #result('DD.DEPTSHORTNAME', 'java.lang.String', 'DEPTSHORTNAME'),
+                    #result('DD.DEPTSHORTNAME', 'java.lang.String', 'ITEMNAME'),
+                    #result('DD.DEPTFULLNAME', 'java.lang.String', 'DEPTFULLNAME'),
+                    #result('DD.DEPTCODE', 'java.lang.String', 'DEPTCODE'),
+                    #result('DD.MANAGER', 'java.lang.Long', 'MANAGER'),
+                    #result('DD.DEPPHONE', 'java.lang.String', 'DEPPHONE'),
+                    #result('DD.PARAM1', 'java.lang.String', 'PARAM1'),
+                    #result('DD.PARAM2', 'java.lang.String', 'PARAM2'),
+                    #result('DD.PARAM3', 'java.lang.String', 'PARAM3'),
+                    #result('DD.DEPMAIL', 'java.lang.String', 'DEPMAIL'),
+                    #result('DD.DEPPARENTTZ', 'java.lang.Long', 'DEPPARENTTZ'),
+                    #result('DD.DEPUSELINK', 'java.lang.Long', 'DEPUSELINK'),
+                    #result('DD.DEPTZNAME', 'java.lang.String', 'DEPTZNAME'),
+                    #result('DL.LEVELWEIGHT', 'java.lang.Long', 'LEVELWEIGHT'),
+                    #result('DD.DEPTZDIFF', 'java.lang.Long', 'DEPTZDIFF')
+                    $ASPECTFIELDS 
+                FROM DEP_DEPARTMENT DD
+                    LEFT JOIN DEP_DEPTLEVEL DL ON DD.DEPTLEVEL = DL.DEPTLEVELID
+                $ASPECTTABLES 
+                #chain('AND' 'WHERE') 
+                    #chunk($EXLUDEDEPARTAMENTID) DD.DEPARTMENTID <> #bind($EXLUDEDEPARTAMENTID) #end 
+                    #chunk($DEPARTMENTID) DD.DEPARTMENTID = #bind($DEPARTMENTID) #end 
+                    #chunk($DEPRIGHT) DD.DEPARTMENTID in (SELECT DEPARTMENTID FROM DEP_DEPARTMENT CONNECT BY PRIOR DEPARTMENTID = PARENTDEPARTMENT START WITH DEPARTMENTID = #bind($DEPRIGHT)) #end 
+                    #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+                    #chunk($EXLUDEDEPARTAMENTID) DD.DEPARTMENTID <> #bind($EXLUDEDEPARTAMENTID) #end 
+                    #chunk($PARENTDEPARTMENT) DD.PARENTDEPARTMENT = #bind($PARENTDEPARTMENT) #end  
+                    #chunk($DEPTLEVEL) DD.DEPTLEVEL = #bind($DEPTLEVEL) #end  
+                    #chunk($DEPTCODE) DD.DEPTCODE = #bind($DEPTCODE) #end  
+                    #chunk($DEPTSHORTNAME) DD.DEPTSHORTNAME = #bind($DEPTSHORTNAME) #end  
+                    #chunk($DEPTFULLNAME) DD.DEPTFULLNAME = #bind($DEPTFULLNAME) #end  
+                    #chunk($MANAGER) DD.MANAGER = #bind($MANAGER) #end  
+                    #chunk($PARAM1) DD.PARAM1 = #bind($PARAM1) #end  
+                    #chunk($PARAM2) DD.PARAM2 = #bind($PARAM2) #end  
+                    #chunk($PARAM3) DD.PARAM2 = #bind($PARAM3) #end  
+                    
+                $ASPECTRESTRICTION 
+                #end 
+            ]]>
+        </sql>
+    </query>
+    <query name="dsDepartmentBrowseListByParamExCount" 
+           factory="org.apache.cayenne.map.SQLTemplateBuilder" 
+           root="data-map" root-name="B2BLossMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT $NEEDDISTINCT 
+                    #result('COUNT(*)', 'java.lang.Long', 'CNT') 
+                FROM DEP_DEPARTMENT T
+                    LEFT JOIN DEP_DEPTLEVEL DL ON DD.DEPTLEVEL = DL.DEPTLEVELID
+                $ASPECTTABLES 
+                #chain('AND' 'WHERE') 
+                    #chunk($EXLUDEDEPARTAMENTID) DD.DEPARTMENTID <> #bind($EXLUDEDEPARTAMENTID) #end 
+                    #chunk($DEPRIGHT) DD.DEPARTMENTID in (SELECT DEPARTMENTID FROM DEP_DEPARTMENT CONNECT BY PRIOR DEPARTMENTID = PARENTDEPARTMENT START WITH DEPARTMENTID = #bind($DEPRIGHT)) #end 
+                    #chunk($DEPARTMENTID) DD.DEPARTMENTID = #bind($DEPARTMENTID) #end 
+                    #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+                    #chunk($PARENTDEPARTMENT) DD.PARENTDEPARTMENT = #bind($PARENTDEPARTMENT) #end  
+                    #chunk($DEPTLEVEL) DD.DEPTLEVEL = #bind($DEPTLEVEL) #end  
+                    #chunk($DEPTCODE) DD.DEPTCODE = #bind($DEPTCODE) #end  
+                    #chunk($DEPTSHORTNAME) DD.DEPTSHORTNAME = #bind($DEPTSHORTNAME) #end  
+                    #chunk($DEPTFULLNAME) DD.DEPTFULLNAME = #bind($DEPTFULLNAME) #end  
+                    #chunk($MANAGER) DD.MANAGER = #bind($MANAGER) #end  
+                    #chunk($PARAM1) DD.PARAM1 = #bind($PARAM1) #end  
+                    #chunk($PARAM2) DD.PARAM2 = #bind($PARAM2) #end  
+                    #chunk($PARAM3) DD.PARAM2 = #bind($PARAM3) #end  
+                
+                $ASPECTRESTRICTION 
+                #end 
+            ]]>
+        </sql>
+    </query>
+    <query  name="dsUserRoleBrowseListByParamEx"  factory="org.apache.cayenne.map.SQLTemplateBuilder"  root="data-map" root-name="B2BAdminMap">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT $NEEDDISTINCT 
+                    #result('T.ROLEID', 'java.math.Long', 'ROLEID'),
+                    #result('T.ROLESYSNAME', 'java.lang.String', 'ROLESYSNAME'),   
+                    #result('T.PROJECTID', 'java.math.Long', 'PROJECTID'),
+                    #result('T.ROLENAME', 'java.lang.String', 'ROLENAME'),   
+                    #result('T.FROMDATE', 'java.math.BigDecimal', 'FROMDATE'),
+                    #result('T.TODATE', 'java.math.BigDecimal', 'TODATE'),
+                    #result('T.DESCRIPTION', 'java.lang.String', 'DESCRIPTION') 
+                $ASPECTFIELDS 
+                FROM CORE_USERROLE T
+                $ASPECTTABLES                 
+                #chain('AND' 'WHERE') 
+                    #chunk($PROJECTID) T1.PROJECTID = #bind($PROJECTID 'NUMERIC') #end 
+                    #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+                $ASPECTRESTRICTION    
+                #end 
+            ]]>
+        </sql>
+    </query>
+    <query name="dsUserRoleBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder"  root="data-map" root-name="B2BLossMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT $NEEDDISTINCT 
+                    #result('COUNT(*)', 'java.lang.Long', 'CNT') 
+                $ASPECTFIELDS 
+                FROM CORE_USERROLE T
+                $ASPECTTABLES                 
+                #chain('AND' 'WHERE') 
+                    #chunk($PROJECTID) T1.PROJECTID = #bind($PROJECTID 'NUMERIC') #end 
+                    #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+                $ASPECTRESTRICTION    
+                #end 
+            ]]>
+        </sql>
+    </query>
+    <query name="admRoleAdd" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="AdminMap">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql><![CDATA[INSERT into CORE_USERROLE(ROLEID, PROJECTID, ROLENAME, ROLESYSNAME, DESCRIPTION)
+                VALUES($ID, $PROJECTID, '$ROLENAME', '$ROLESYSNAME', '$DESCRIPTION')]]></sql>
+        <sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+            <![CDATA[INSERT into CORE_USERROLE(ROLEID, PROJECTID, ROLENAME, ROLESYSNAME, DESCRIPTION) 
+                VALUES($ID, $PROJECTID, '$ROLENAME', '$ROLESYSNAME', '$DESCRIPTION')]]></sql>
+        <sql adapter-class="org.apache.cayenne.dba.db2.DB2Adapter">
+            <![CDATA[INSERT into CORE_USERROLE(ROLEID, PROJECTID, ROLENAME, ROLESYSNAME, DESCRIPTION) 
+                VALUES($ID, $PROJECTID, '$ROLENAME', '$ROLESYSNAME', '$DESCRIPTION')]]></sql>
+    </query>
+    <query name="admRoleUnique" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="AdminMap">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql><![CDATA[        
+		SELECT  CORE_USERROLE.ROLENAME FROM CORE_USERROLE WHERE CORE_USERROLE.PROJECTID = $PROJECTID and CORE_USERROLE.ROLENAME = '$ROLENAME'
+		]]></sql>
+    </query>
+    <query name="depLevelByID" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="Department">
+        <property name="cayenne.GenericSelvectQuery.fetchingDataRows" value="true"/>
+        <sql><![CDATA[SELECT 
+  DEP_DEPTLEVEL.DEPTLEVELID,
+  DEP_DEPTLEVEL.LEVELNAME,
+  DEP_DEPTLEVEL.LEVELSYSNAME,
+  DEP_DEPTLEVEL.LEVELWEIGHT,
+  DEP_DEPTLEVEL.DESCRIPTION
+FROM
+  DEP_DEPTLEVEL
+WHERE
+  DEP_DEPTLEVEL.DEPTLEVELID = $DEPTLEVELID]]></sql>
+    </query>          
+    <query name="dsClearDepartmentFields" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="InsPOSMap" >
+        <sql>
+        <![CDATA[
+        UPDATE  DEP_DEPARTMENT
+            SET 
+                MANAGER = null
+                , DEPTZDIFF = null
+                $ASPECTFIELDS 
+
+        #chain('AND' 'WHERE') 
+        #chunk($DEPARTMENTID) DEPARTMENTID = #bind($DEPARTMENTID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+        #end 
+        ]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+        <![CDATA[
+        UPDATE  DEP_DEPARTMENT
+            SET 
+                MANAGER = null
+                , DEPTZDIFF = null
+                $ASPECTFIELDS 
+
+        #chain('AND' 'WHERE') 
+        #chunk($DEPARTMENTID) DEPARTMENTID = #bind($DEPARTMENTID 'NUMERIC') #end 
+            $ASPECTRESTRICTION 
+        #end 
+        ]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+        <![CDATA[
+        UPDATE  DEP_DEPARTMENT
+            SET 
+                MANAGER = null
+                , DEPTZDIFF = null
+                $ASPECTFIELDS 
+
+        #chain('AND' 'WHERE') 
+        #chunk($DEPARTMENTID) DEPARTMENTID = #bind($DEPARTMENTID 'NUMERIC') #end 
+        $ASPECTRESTRICTION 
+        #end 
+        ]]>
+        </sql>
+    </query>
+
+    <query name="dsUserTempPasswordInsert"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+INSERT INTO CORE_USERTEMPPASSWORD (
+USERTEMPPASSWORDID,
+USERACCOUNTID,
+TRYCOUNT,
+LASTENTEREDEMAIL,
+TEMPPASSWORD,
+PWDEXPDATE
+$ASPECTFIELDS ) VALUES (
+#bind($USERTEMPPASSWORDID 'NUMERIC'),
+#bind($USERACCOUNTID 'NUMERIC'),
+#bind($TRYCOUNT 'NUMERIC'),
+#bind($LASTENTEREDEMAIL 'VARCHAR'),
+#bind($TEMPPASSWORD 'VARCHAR'),
+#bind($PWDEXPDATE 'FLOAT')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO CORE_USERTEMPPASSWORD (
+USERTEMPPASSWORDID,
+USERACCOUNTID,
+TRYCOUNT,
+LASTENTEREDEMAIL,
+TEMPPASSWORD,
+PWDEXPDATE
+$ASPECTFIELDS ) VALUES (
+#bind($USERTEMPPASSWORDID 'NUMERIC'),
+#bind($USERACCOUNTID 'NUMERIC'),
+#bind($TRYCOUNT 'NUMERIC'),
+#bind($LASTENTEREDEMAIL 'VARCHAR'),
+#bind($TEMPPASSWORD 'VARCHAR'),
+#bind($PWDEXPDATE 'FLOAT')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO CORE_USERTEMPPASSWORD (
+USERTEMPPASSWORDID,
+USERACCOUNTID,
+TRYCOUNT,
+LASTENTEREDEMAIL,
+TEMPPASSWORD,
+PWDEXPDATE
+$ASPECTFIELDS ) VALUES (
+#bind($USERTEMPPASSWORDID 'NUMERIC'),
+#bind($USERACCOUNTID 'NUMERIC'),
+#bind($TRYCOUNT 'NUMERIC'),
+#bind($LASTENTEREDEMAIL 'VARCHAR'),
+#bind($TEMPPASSWORD 'VARCHAR'),
+#bind($PWDEXPDATE 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+        </sql>
+    </query>
+
+    <query name="dsUserTempPasswordUpdate"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+UPDATE  T
+SET
+    T.USERTEMPPASSWORDID = #bind($USERTEMPPASSWORDID 'NUMERIC')
+#chunk($USERACCOUNTID) , T.USERACCOUNTID = #bind($USERACCOUNTID 'NUMERIC') #end
+#chunk($TRYCOUNT) , T.TRYCOUNT = #bind($TRYCOUNT 'NUMERIC') #end
+#chunk($LASTENTEREDEMAIL) , T.LASTENTEREDEMAIL = #bind($LASTENTEREDEMAIL 'VARCHAR') #end
+#chunk($TEMPPASSWORD) , T.TEMPPASSWORD = #bind($TEMPPASSWORD 'VARCHAR') #end
+#chunk($PWDEXPDATE) , T.PWDEXPDATE = #bind($PWDEXPDATE 'FLOAT') #end
+       $ASPECTFIELDS
+FROM
+      CORE_USERTEMPPASSWORD T
+#chain('AND' 'WHERE')
+       #chunk($USERTEMPPASSWORDID) T.USERTEMPPASSWORDID = #bind($USERTEMPPASSWORDID 'NUMERIC') #end
+      $ASPECTRESTRICTION
+#end
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET
+    T.USERTEMPPASSWORDID = #bind($USERTEMPPASSWORDID 'NUMERIC')
+#chunk($USERACCOUNTID) , T.USERACCOUNTID = #bind($USERACCOUNTID 'NUMERIC') #end
+#chunk($TRYCOUNT) , T.TRYCOUNT = #bind($TRYCOUNT 'NUMERIC') #end
+#chunk($LASTENTEREDEMAIL) , T.LASTENTEREDEMAIL = #bind($LASTENTEREDEMAIL 'VARCHAR') #end
+#chunk($TEMPPASSWORD) , T.TEMPPASSWORD = #bind($TEMPPASSWORD 'VARCHAR') #end
+#chunk($PWDEXPDATE) , T.PWDEXPDATE = #bind($PWDEXPDATE 'FLOAT') #end
+       $ASPECTFIELDS
+FROM
+      CORE_USERTEMPPASSWORD T
+#chain('AND' 'WHERE')
+       #chunk($USERTEMPPASSWORDID) T.USERTEMPPASSWORDID = #bind($USERTEMPPASSWORDID 'NUMERIC') #end
+      $ASPECTRESTRICTION
+#end
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE CORE_USERTEMPPASSWORD T
+SET
+    T.USERTEMPPASSWORDID = #bind($USERTEMPPASSWORDID 'NUMERIC')
+#chunk($USERACCOUNTID) , T.USERACCOUNTID = #bind($USERACCOUNTID 'NUMERIC') #end
+#chunk($TRYCOUNT) , T.TRYCOUNT = #bind($TRYCOUNT 'NUMERIC') #end
+#chunk($LASTENTEREDEMAIL) , T.LASTENTEREDEMAIL = #bind($LASTENTEREDEMAIL 'VARCHAR') #end
+#chunk($TEMPPASSWORD) , T.TEMPPASSWORD = #bind($TEMPPASSWORD 'VARCHAR') #end
+#chunk($PWDEXPDATE) , T.PWDEXPDATE = #bind($PWDEXPDATE 'FLOAT') #end
+       $ASPECTFIELDS
+#chain('AND' 'WHERE')
+       #chunk($USERTEMPPASSWORDID) T.USERTEMPPASSWORDID = #bind($USERTEMPPASSWORDID 'NUMERIC') #end
+      $ASPECTRESTRICTION
+#end
+]]>
+        </sql>
+    </query>
+
+    <query name="dsUserTempPasswordDelete"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                DELETE FROM
+                    CORE_USERTEMPPASSWORD
+                WHERE
+                    CORE_USERTEMPPASSWORD.USERTEMPPASSWORDID = $USERTEMPPASSWORDID
+            ]]>
+        </sql>
+    </query>
+
+    <query name="dsUserTempPasswordBrowseListByParam"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT $NEEDDISTINCT
+                        #result('T.USERTEMPPASSWORDID', 'java.lang.Long', 'USERTEMPPASSWORDID'),
+                        #result('T.USERACCOUNTID', 'java.lang.Long', 'USERACCOUNTID'),
+                        #result('T.TRYCOUNT', 'java.lang.Long', 'TRYCOUNT'),
+                        #result('T.LASTENTEREDEMAIL', 'java.lang.String', 'LASTENTEREDEMAIL'),
+                        #result('T.TEMPPASSWORD', 'java.lang.String', 'TEMPPASSWORD'),
+                        #result('T.PWDEXPDATE', 'java.math.BigDecimal', 'PWDEXPDATE')
+                       $ASPECTFIELDS
+                FROM
+                    CORE_USERTEMPPASSWORD T
+                $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                       #chunk($USERTEMPPASSWORDID) T.USERTEMPPASSWORDID = #bind($USERTEMPPASSWORDID 'NUMERIC') #end
+                       #chunk($USERACCOUNTID) T.USERACCOUNTID = #bind($USERACCOUNTID 'NUMERIC') #end
+                       #chunk($TRYCOUNT) T.TRYCOUNT = #bind($TRYCOUNT 'NUMERIC') #end
+                       #chunk($LASTENTEREDEMAIL) T.LASTENTEREDEMAIL = #bind($LASTENTEREDEMAIL 'VARCHAR') #end
+                       #chunk($TEMPPASSWORD) T.TEMPPASSWORD = #bind($TEMPPASSWORD 'VARCHAR') #end
+                       #chunk($PWDEXPDATE) T.PWDEXPDATE = #bind($PWDEXPDATE 'FLOAT') #end
+                      $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+
+    <query name="dsUserTempPasswordBrowseListByParamCount"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT
+                        #result('COUNT($NEEDDISTINCT T.USERTEMPPASSWORDID)', 'java.lang.Long', 'CNT')
+                FROM
+                      CORE_USERTEMPPASSWORD T
+                $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                       #chunk($USERTEMPPASSWORDID) T.USERTEMPPASSWORDID = #bind($USERTEMPPASSWORDID 'NUMERIC') #end
+                       #chunk($USERACCOUNTID) T.USERACCOUNTID = #bind($USERACCOUNTID 'NUMERIC') #end
+                       #chunk($TRYCOUNT) T.TRYCOUNT = #bind($TRYCOUNT 'NUMERIC') #end
+                       #chunk($LASTENTEREDEMAIL) T.LASTENTEREDEMAIL = #bind($LASTENTEREDEMAIL 'VARCHAR') #end
+                       #chunk($TEMPPASSWORD) T.TEMPPASSWORD = #bind($TEMPPASSWORD 'VARCHAR') #end
+                       #chunk($PWDEXPDATE) T.PWDEXPDATE = #bind($PWDEXPDATE 'FLOAT') #end
+                      $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+
+    <query name="dsAdminAccountChangePasswordExpDate"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map"
+           root-name="B2BAdminMap">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                UPDATE CORE_USERACCOUNT T
+                SET
+                    #chunk() T.PWDEXPDATE = #bind($PWDEXPDATE 'FLOAT') #end
+                    $ASPECTFIELDS
+                #chain('AND' 'WHERE')
+                    #chunk() T.USERACCOUNTID = #bind($USERACCOUNTID 'NUMERIC') #end
+        $ASPECTRESTRICTION 
+        #end 
+        ]]>
+        </sql>
+    </query>
+
+    <query name="dsUserAccountCreationDateByLogin"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT
+                    #result('T.LOGIN', 'java.lang.String', 'LOGIN'),
+                    #result('T.CREATIONDATE', 'java.math.BigDecimal', 'CREATIONDATE')
+                FROM CORE_USERACCOUNT T
+                #chain('AND' 'WHERE')
+                    #chunk($LOGIN) T.LOGIN = #bind($LOGIN 'VARCHAR') #end
+                #end
+            ]]>
+        </sql>
+    </query>
+
+    <query name="searchUserAccountByActiveDirectoryLinkFields"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT
+                    #result('T.USERACCOUNTID', 'java.lang.Long', 'USERACCOUNTID'),
+                    #result('T.LOGIN', 'java.lang.String', 'LOGIN'),
+                    #result('T.ADUSERPRINCIPALNAME', 'java.lang.String', 'ADUSERPRINCIPALNAME'),
+                    #result('T.ADUSERLOGIN', 'java.lang.String', 'ADUSERLOGIN')
+                FROM CORE_USERACCOUNT T
+                #chain('AND' 'WHERE')
+                    #chunk($LOGIN) T.LOGIN = #bind($LOGIN 'VARCHAR') #end
+                    #chunk($ADUSERPRINCIPALNAME) T.ADUSERPRINCIPALNAME = #bind($ADUSERPRINCIPALNAME 'VARCHAR') #end
+                    #chunk($ADUSERLOGIN) T.ADUSERLOGIN = #bind($ADUSERLOGIN 'VARCHAR') #end
+                #end
+            ]]>
+        </sql>
+    </query>
+
+    <query  name="dsUserRightBrowseListByParamEx"  factory="org.apache.cayenne.map.SQLTemplateBuilder"  root="data-map" root-name="B2BAdminMap">
+      <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+          <![CDATA[
+            SELECT $NEEDDISTINCT
+              #result('T.RIGHTID', 'java.math.Long', 'RIGHTID'),
+              #result('T.RIGHTNAME', 'java.lang.String', 'RIGHTNAME'),
+              #result('T.RIGHTSYSNAME', 'java.lang.String', 'RIGHTSYSNAME'),
+              #result('T.RIGHTTYPE', 'java.math.Long', 'RIGHTTYPE'),
+              #result("CASE WHEN T.RIGHTTYPE = 1 THEN 'Простое' ELSE 'Профильное' END", 'java.lang.String', 'RIGHTTYPESTR')
+              $ASPECTFIELDS
+            FROM CORE_RIGHT T
+              $RELATION_TABLE
+              $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                #chunk($RESTRICTION_FIELD) $RESTRICTION_FIELD = #bind($OBJECTID 'NUMERIC') #end
+                #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+                $ASPECTRESTRICTION
+              #end
+          ]]>
+        </sql>
+    </query>
+    <query name="dsUserRightBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder"  root="data-map" root-name="B2BLossMap" >
+      <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+      <sql>
+        <![CDATA[
+          SELECT $NEEDDISTINCT
+            #result('COUNT(*)', 'java.lang.Long', 'CNT')
+            $ASPECTFIELDS
+          FROM CORE_RIGHT T
+            $RELATION_TABLE
+            $ASPECTTABLES
+              #chain('AND' 'WHERE')
+              #chunk($RESTRICTION_FIELD) $RESTRICTION_FIELD = #bind($OBJECTID 'NUMERIC') #end
+              #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+            $ASPECTRESTRICTION
+          #end
+        ]]>
+      </sql>
+    </query>
+</data-map>

@@ -1,0 +1,31 @@
+<modal-dialog #dialog [modal-dialog-config]="{
+  clickOutsideToClose: true,
+  styles:{'width': '600px', 'height': '300px', 'text-align': 'left'},
+  isModal:true,
+  enterTransitionDuration: 400,
+  leaveTransitionDuration: 400}">
+
+  <h3 class="modal-dialog__title">{{options?.modalDialogTitle}}</h3>
+
+  <div class="modal-dialog__content modal-dialog__no-overflow">
+    <form-control-label [title]="options?.labelTitle" [required]="true">
+      <select2 name="addModalInputSelect"
+               [items]="options?.inputSelectItems"
+               [(ngModel)]="selectedItemModel"
+               [required]="true"
+               [bindLabel]="options?.inputSelectNameField"
+               [bindValue]="options?.inputSelectSysnameField"></select2>
+    </form-control-label>
+  </div>
+
+  <div class="modal-dialog__actions row">
+    <div class="col-6 text-center">
+      <button class="btn btn-primary btn-rounded btn-modal" (click)="options?.onClickAddButton(selectedItemModel)">
+        Добавить
+      </button>
+    </div>
+    <div class="col-6 text-center">
+      <button class="btn btn-link btn-rounded btn-modal" (click)="dialog?.close()">Отмена</button>
+    </div>
+  </div>
+</modal-dialog>

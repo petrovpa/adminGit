@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <RollingFile fileName="logs/adminfile.log" filepattern="logs/$${date:yyyy-MM}/adminfile-%d{MM-dd-yyyy}-%i.log.gz" name="adminfile">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy compressionLevel="1" max="3"/>
+        </RollingFile>
+        <RollingFile fileName="logs/corefile.log" filepattern="logs/$${date:yyyy-MM}/corefile-%d{MM-dd-yyyy}-%i.log.gz" name="corefile">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy compressionLevel="1" max="3"/>
+        </RollingFile>
+        <RollingFile fileName="logs/reffile.log" filepattern="logs/$${date:yyyy-MM}/reffile-%d{MM-dd-yyyy}-%i.log.gz" name="reffile">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy compressionLevel="1" max="3"/>
+        </RollingFile>
+        <RollingFile fileName="logs/processfile.log" filepattern="logs/$${date:yyyy-MM}/processfile-%d{MM-dd-yyyy}-%i.log.gz" name="processfile">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy compressionLevel="1" max="3"/>
+        </RollingFile>
+        <RollingFile fileName="logs/cayennefile.log" filepattern="logs/$${date:yyyy-MM}/cayennefile-%d{MM-dd-yyyy}-%i.log.gz" name="cayennefile">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy compressionLevel="1" max="3"/>
+        </RollingFile>
+        <RollingFile fileName="logs/reportfile.log" filepattern="logs/$${date:yyyy-MM}/reportfile-%d{MM-dd-yyyy}-%i.log.gz" name="reportfile">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy compressionLevel="1" max="3"/>
+        </RollingFile>
+        <RollingFile fileName="logs/auditfile.log" filepattern="logs/$${date:yyyy-MM}/auditfile-%d{MM-dd-yyyy}-%i.log.gz" name="auditfile">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy compressionLevel="1" max="3"/>
+        </RollingFile>
+        <RollingFile fileName="logs/webclientfile.log" filepattern="logs/$${date:yyyy-MM}/webclientfile-%d{MM-dd-yyyy}-%i.log.gz" name="webclientfile">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy compressionLevel="1" max="3"/>
+        </RollingFile>
+        <RollingFile fileName="logs/websmsfile.log" filepattern="logs/$${date:yyyy-MM}/websmsfile-%d{MM-dd-yyyy}-%i.log.gz" name="websmsfile">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy compressionLevel="1" max="3"/>
+        </RollingFile>
+        <RollingFile fileName="logs/smfile.log" filepattern="logs/$${date:yyyy-MM}/smfile-%d{MM-dd-yyyy}-%i.log.gz" name="smfile">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy compressionLevel="1" max="3"/>
+        </RollingFile>
+        <RollingFile fileName="logs/app.log" filepattern="logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz" name="RollingFile">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy compressionLevel="1" max="3"/>
+        </RollingFile>
+        <RollingFile fileName="logs/xmlutilfile.log" filepattern="logs/$${date:yyyy-MM}/xmlutilfile-%d{MM-dd-yyyy}-%i.log.gz" name="xmlutilfile">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy compressionLevel="1" max="3"/>
+        </RollingFile>
+        <RollingFile fileName="logs/instravelfile.log" filepattern="logs/$${date:yyyy-MM}/instravelfile-%d{MM-dd-yyyy}-%i.log.gz" name="instravelfile">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy compressionLevel="1" max="3"/>
+        </RollingFile>
+        <RollingFile fileName="logs/inscorefile.log" filepattern="logs/$${date:yyyy-MM}/inscorefile-%d{MM-dd-yyyy}-%i.log.gz" name="inscorefile">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy compressionLevel="1" max="3"/>
+        </RollingFile>
+        <RollingFile fileName="logs/inscommonfile.log" filepattern="logs/$${date:yyyy-MM}/inscommonfile-%d{MM-dd-yyyy}-%i.log.gz" name="inscommonfile">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy compressionLevel="1" max="3"/>
+        </RollingFile>
+        <RollingFile fileName="logs/insautocommonfile.log" filepattern="logs/$${date:yyyy-MM}/insautocommonfile-%d{MM-dd-yyyy}-%i.log.gz" name="insautocommonfile">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy compressionLevel="1" max="3"/>
+        </RollingFile>
+        <RollingFile fileName="logs/insosagofile.log" filepattern="logs/$${date:yyyy-MM}/insosagofile-%d{MM-dd-yyyy}-%i.log.gz" name="insosagofile">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy compressionLevel="1" max="3"/>
+        </RollingFile>
+        <RollingFile fileName="logs/instarificatorfile.log" filepattern="logs/$${date:yyyy-MM}/instarificatorfile-%d{MM-dd-yyyy}-%i.log.gz" name="instarificatorfile">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy compressionLevel="1" max="3"/>
+        </RollingFile>
+        <RollingFile fileName="logs/insaccidentfile.log" filepattern="logs/$${date:yyyy-MM}/insaccidentfile-%d{MM-dd-yyyy}-%i.log.gz" name="insaccidentfile">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy compressionLevel="1" max="3"/>
+        </RollingFile>
+        <RollingFile fileName="logs/insposfile.log" filepattern="logs/$${date:yyyy-MM}/insposfile-%d{MM-dd-yyyy}-%i.log.gz" name="insposfile">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy compressionLevel="1" max="3"/>
+        </RollingFile>
+        <RollingFile fileName="logs/bivposfile.log" filepattern="logs/$${date:yyyy-MM}/bivposfile-%d{MM-dd-yyyy}-%i.log.gz" name="bivposfile">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy compressionLevel="1" max="3"/>
+        </RollingFile>
+        <RollingFile fileName="logs/bivsberposfile.log" filepattern="logs/$${date:yyyy-MM}/bivsberposfile-%d{MM-dd-yyyy}-%i.log.gz" name="bivsberposfile">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy compressionLevel="1" max="3"/>
+        </RollingFile>
+        <RollingFile fileName="logs/bividsfile.log" filepattern="logs/$${date:yyyy-MM}/bividsfile-%d{MM-dd-yyyy}-%i.log.gz" name="bividsfile">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy compressionLevel="1" max="3"/>
+        </RollingFile>
+        <RollingFile fileName="logs/monfile.log" filepattern="logs/$${date:yyyy-MM}/monfile-%d{MM-dd-yyyy}-%i.log.gz" name="monfile">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy compressionLevel="1" max="3"/>
+        </RollingFile>
+        <RollingFile fileName="logs/insproductfile.log" filepattern="logs/$${date:yyyy-MM}/insproductfile-%d{MM-dd-yyyy}-%i.log.gz" name="insproductfile">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy compressionLevel="1" max="3"/>
+        </RollingFile>
+        <RollingFile fileName="logs/rsagatewayfile.log" filepattern="logs/$${date:yyyy-MM}/rsagatewayfile-%d{MM-dd-yyyy}-%i.log.gz" name="rsagatewayfile">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy compressionLevel="1" max="3"/>
+        </RollingFile>
+        <RollingFile fileName="logs/excelimportfile.log" filepattern="logs/$${date:yyyy-MM}/excelimportfile-%d{MM-dd-yyyy}-%i.log.gz" name="excelimportfile">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy compressionLevel="1" max="3"/>
+        </RollingFile>
+        <RollingFile fileName="logs/libreofficereportsfile.log" filepattern="logs/$${date:yyyy-MM}/libreofficereportsfile-%d{MM-dd-yyyy}-%i.log.gz" name="libreofficereportsfile">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy compressionLevel="1" max="3"/>
+        </RollingFile>
+        <RollingFile fileName="logs/bivsberlossfile.log" filepattern="logs/$${date:yyyy-MM}/bivsberlossfile-%d{MM-dd-yyyy}-%i.log.gz" name="bivsberlossfile">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy compressionLevel="1" max="3"/>
+        </RollingFile>
+        <RollingFile fileName="logs/sbersbolfile.log" filepattern="logs/$${date:yyyy-MM}/sbersbolfile-%d{MM-dd-yyyy}-%i.log.gz" name="sbersbolfile">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy compressionLevel="1" max="3"/>
+        </RollingFile>
+        <RollingFile fileName="logs/b2bposfile.log" filepattern="logs/$${date:yyyy-MM}/b2bposfile-%d{MM-dd-yyyy}-%i.log.gz" name="b2bposfile">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy compressionLevel="1" max="3"/>
+        </RollingFile>
+        <RollingFile fileName="logs/adminrestfile.log" filePattern="logs/$${date:yyyy-MM}/adminrestfile-%d{MM-dd-yyyy}-%i.log.gz" name="adminrest">
+            <PatternLayout>
+                <pattern>%d{HH:mm:sss} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy compressionLevel="1" max="3"/>
+        </RollingFile>   
+        <Socket name="auditElastic" host="10.2.55.39" port="5044">
+            <PatternLayout>
+                <pattern>%msg%n</pattern>
+            <charset>UTF-8</charset>
+            </PatternLayout>
+            <MarkerFilter marker="Audit" onMatch="ACCEPT" onMismatch="DENY" />
+        </Socket>
+        <Async name="auditElasticAsync" bufferSize="204800">
+            <AppenderRef ref="auditElastic" />
+        </Async>
+        <RollingRandomAccessFile fileName="logs/audit.log" filePattern="logs/$${date:yyyy-MM}/auditfile-%d{MM-dd-yyyy}-%i.log.gz" name="auditFile">
+            <PatternLayout>
+                <pattern>%d{HH:mm:ss.SSS} [%t] %marker - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="24" modulate="true"/>
+                <SizeBasedTriggeringPolicy/>
+            </Policies>
+            <DefaultRolloverStrategy compressionLevel="9" max="30"/>
+            <MarkerFilter marker="Audit" onMatch="ACCEPT" onMismatch="DENY" />
+        </RollingRandomAccessFile>
+        <Async name="auditFileAsync" bufferSize="204800">
+            <AppenderRef ref="auditFile" />
+        </Async>
+    </Appenders>
+    <Loggers>
+        <logger level="info" name="com.bivgroup.core.audit">
+            <AppenderRef ref="auditElasticAsync"/>
+            <AppenderRef ref="auditFileAsync"/>
+        </logger>
+        <logger level="info" name="com.bivgroup.rest.admrestws">
+            <AppenderRef ref="adminrest"/>
+        </logger>
+        <logger level="info" name="com.bivgroup.service">
+            <AppenderRef ref="adminrest"/>
+        </logger>
+        <logger level="info" name="com.bivgroup.rest.loginservice">
+            <AppenderRef ref="adminrest"/>
+        </logger>  
+        <logger level="debug" name="ru.diasoft.services.adminws">
+            <AppenderRef ref="adminfile"/>
+        </logger>
+        <logger level="debug" name="ru.diasoft.services.corews">
+            <AppenderRef ref="corefile"/>
+        </logger>
+        <logger level="debug" name="ru.diasoft.services.refws">
+            <AppenderRef ref="reffile"/>
+        </logger>
+        <logger level="debug" name="ru.diasoft.services.corews.ProcessFlowController">
+            <AppenderRef ref="processfile"/>
+        </logger>
+        <logger level="debug" name="org.apache.cayenne.access.QueryLogger">
+            <AppenderRef ref="cayennefile"/>
+        </logger>
+        <logger level="debug" name="org.apache.cayenne">
+            <AppenderRef ref="cayennefile"/>
+        </logger>
+        <logger level="debug" name="ru.diasoft.services.reportws">
+            <AppenderRef ref="reportfile"/>
+        </logger>
+        <logger level="debug" name="ru.diasoft.services.auditws">
+            <AppenderRef ref="auditfile"/>
+        </logger>
+        <logger level="debug" name="ru.diasoft.webclient">
+            <AppenderRef ref="webclientfile"/>
+        </logger>
+        <logger level="debug" name="org.apache.wicket">
+            <AppenderRef ref="webclientfile"/>
+        </logger>
+        <logger level="debug" name="ru.diasoft.pageflow">
+            <AppenderRef ref="pageflowfile"/>
+        </logger>
+        <logger level="debug" name="ru.diasoft.services.websmsws">
+            <AppenderRef ref="websmsfile"/>
+        </logger>
+        <logger level="debug" name="ru.diasoft.utils">
+            <AppenderRef ref="xmlutilfile"/>
+        </logger>
+        <logger level="debug" name="ru.diasoft.services.instravelws">
+            <AppenderRef ref="instravelfile"/>
+        </logger>
+        <logger level="debug" name="ru.diasoft.services.inscore">
+            <AppenderRef ref="inscorefile"/>
+        </logger>
+        <logger level="debug" name="ru.diasoft.services.inscommonws">
+            <AppenderRef ref="inscommonfile"/>
+        </logger>
+        <logger level="debug" name="ru.diasoft.services.insautocommonws">
+            <AppenderRef ref="insautocommonfile"/>
+        </logger>
+        <logger level="debug" name="ru.diasoft.services.insosagows">
+            <AppenderRef ref="insosagofile"/>
+        </logger>
+        <logger level="debug" name="ru.diasoft.services.instarificatorws">
+            <AppenderRef ref="instarificatorfile"/>
+        </logger>
+        <logger level="debug" name="ru.diasoft.services.insaccidentws">
+            <AppenderRef ref="insaccidentfile"/>
+        </logger>
+        <logger level="debug" name="ru.diasoft.services.insposws">
+            <AppenderRef ref="insposfile"/>
+        </logger>
+        <logger level="debug" name="com.bivgroup.services.bivposws">
+            <AppenderRef ref="bivposfile"/>
+        </logger>
+        <logger level="debug" name="com.bivgroup.services.sberpayservice">
+            <AppenderRef ref="bivsberposfile"/>
+        </logger>
+        <logger level="debug" name="com.bivgroup.services.bividsws">
+            <AppenderRef ref="bividsfile"/>
+        </logger>
+        <logger level="debug" name="com.bivgroup.service.monservice">
+            <AppenderRef ref="monfile"/>
+        </logger>
+        <logger level="debug" name="ru.diasoft.services.insproductws">
+            <AppenderRef ref="insproductfile"/>
+        </logger>
+        <logger level="debug" name="ru.diasoft.services.rsa">
+            <AppenderRef ref="rsagatewayfile"/>
+        </logger>
+        <logger level="debug" name="ru.diasoft.services.excelimport">
+            <AppenderRef ref="excelimportfile"/>
+        </logger>
+        <logger level="debug" name="ru.diasoft.services.libreofficereports">
+            <AppenderRef ref="libreofficereportsfile"/>
+        </logger>
+        <logger level="debug" name="net.sf.jooreports">
+            <AppenderRef ref="libreofficereportsfile"/>
+        </logger>
+        <logger level="debug" name="com.artofsolving">
+            <AppenderRef ref="libreofficereportsfile"/>
+        </logger>
+        <logger level="debug" name="com.bivgroup.services.bivsberlossws">
+            <AppenderRef ref="bivsberlossfile"/>
+        </logger>
+        <logger level="debug" name="com.bivgroup.services.bivsberposws">
+            <AppenderRef ref="bivsberposfile"/>
+        </logger>
+        <logger level="debug" name="com.bivgroup.ws.sbersbolws">
+            <AppenderRef ref="sbersbolfile"/>
+        </logger>
+        <logger level="debug" name="com.bivgroup.services.b2bposws">
+            <AppenderRef ref="b2bposfile"/>
+        </logger>
+    </Loggers>
+</Configuration>

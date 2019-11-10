@@ -1,0 +1,15 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <!-- ldap -->
+    <include file="admin/ldap/main.xml" relativeToChangelogFile="false"/>
+    <!-- Журнал пользователей -->
+    <include file="admin/user-account/main.xml" relativeToChangelogFile="false"/>
+    <!-- Меню системы -->
+    <include file="admin/menu/main.xml" relativeToChangelogFile="false"/>
+    <!-- Модуль Роли -->
+    <include file="admin/roles/main.xml" relativeToChangelogFile="false"/>
+
+</databaseChangeLog>

@@ -1,0 +1,806 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+    <query name="dsLossesRequestBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="LossesPosMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT  
+        #result('T.BENEFICIARID', 'java.lang.Long', 'BENEFICIARID'),
+        #result('T.BIC', 'java.lang.String', 'BIC'),
+        #result('T.BANKNAME', 'java.lang.String', 'BANKNAME'),
+        #result('T.BKNUM', 'java.lang.String', 'BKNUM'),
+        #result('T.CALCAMOUNT', 'java.lang.Double', 'CALCAMOUNT'),
+        #result('T.CANCELCOMMENT', 'java.lang.String', 'CANCELCOMMENT'),
+        #result('T.CANCELREASON', 'java.lang.String', 'CANCELREASON'),
+        #result('T.CANCELREASONID', 'java.lang.Long', 'CANCELREASONID'),
+        #result('T.CAUSES', 'java.lang.String', 'CAUSES'),
+        #result('T.CONFIRMDOCS', 'java.lang.String', 'CONFIRMDOCS'),
+        #result('T.CONTRID', 'java.lang.Long', 'CONTRID'),
+        #result('T.CREATEUSERROLE', 'java.lang.String', 'CREATEUSERROLE'),
+        #result('T.CULPRIT', 'java.lang.String', 'CULPRIT'),
+        #result('T.CURACCOUNT', 'java.lang.String', 'CURACCOUNT'),
+        #result('T.DECISIONCSKO', 'java.lang.Long', 'DECISIONCSKO'),
+        #result('T.DECISIONSK', 'java.lang.Long', 'DECISIONSK'),
+        #result('T.DECLARERID', 'java.lang.Long', 'DECLARERID'),
+        #result('T.EVENTDATE', 'java.math.BigDecimal', 'EVENTDATE'),
+        #result('T.FACEACCOUNT', 'java.lang.String', 'FACEACCOUNT'),
+        #result('T.REQUESTID', 'java.lang.Long', 'REQUESTID'),
+        #result('T.INN', 'java.lang.String', 'INN'),
+        #result('T.INSOBJADDRESS', 'java.lang.String', 'INSOBJADDRESS'),
+        #result('T.INSOBJNAME', 'java.lang.String', 'INSOBJNAME'),
+        #result('T.INSOBJTYPE', 'java.lang.Long', 'INSOBJTYPE'),
+        #result('T.INSURERID', 'java.lang.Long', 'INSURERID'),
+        #result('T.ISOTHERINS', 'java.lang.Integer', 'ISOTHERINS'),
+        #result('T.ISTHIRDPART', 'java.lang.Integer', 'ISTHIRDPART'),
+        #result('T.ISNEEDINSPECT', 'java.lang.Integer', 'ISNEEDINSPECT'),
+        #result('T.ISEMPTYDOCEXIST', 'java.lang.Integer', 'ISEMPTYDOCEXIST'),
+        #result('T.KORACCOUNT', 'java.lang.String', 'KORACCOUNT'),
+        #result('T.KPP', 'java.lang.String', 'KPP'),
+        #result('T.LOSSES', 'java.lang.String', 'LOSSES'),
+        #result('T.LOSSESAMOUNT', 'java.lang.Long', 'LOSSESAMOUNT'),
+        #result('T.NAMEOTHERINS', 'java.lang.String', 'NAMEOTHERINS'),
+        #result('T.REQUESTDATE', 'java.math.BigDecimal', 'REQUESTDATE'),
+        #result('T.REQUESTNODEID', 'java.lang.Long', 'REQUESTNODEID'),
+        #result('T.REQUESTNUM', 'java.lang.String', 'REQUESTNUM'),
+        #result('T.TOTALAMOUNT', 'java.lang.Double', 'TOTALAMOUNT'),
+        #result('T.VERNUMBER', 'java.math.BigDecimal', 'VERNUMBER'),
+        #result('T.USERCOMMENT', 'java.lang.String', 'USERCOMMENT'),
+        #result('T.USERCOMMENT2', 'java.lang.String', 'USERCOMMENT2'),
+        #result('T.WHENWHOCLAIM', 'java.lang.String', 'WHENWHOCLAIM'), 
+        #result('T.STATEID', 'java.lang.Long', 'STATEID'),
+        #result('STATE.PUBLICNAME', 'java.lang.String', 'STATENAME'), 
+        #result('STATE.SYSNAME', 'java.lang.String', 'STATESYSNAME'), 
+        #result('CONTR.CONTRNUM', 'java.lang.String', 'CONTRNUM'),
+        #result('PERSON.NAME', 'java.lang.String', 'NAME'),
+        #result('PERSON.MIDDLENAME', 'java.lang.String', 'MIDDLENAME'),
+        #result('PERSON.SURNAME', 'java.lang.String', 'SURNAME') 
+       $ASPECTFIELDS 
+FROM 
+      LOSS_REQUEST T
+      INNER JOIN CORE_SM_STATE STATE ON (STATE.ID = T.STATEID)
+      LEFT JOIN LOSS_CONTR CONTR ON (CONTR.CONTRID = T.CONTRID)
+      LEFT JOIN LOSS_PERSON PERSON ON (PERSON.LOSSPERSONID = T.DECLARERID)       
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($BENEFICIARID) T.BENEFICIARID = #bind($BENEFICIARID 'NUMERIC') #end 
+       #chunk($BIC) T.BIC = #bind($BIC 'VARCHAR') #end 
+       #chunk($BANKNAME) T.BANKNAME = #bind($BANKNAME 'VARCHAR') #end 
+       #chunk($BKNUM) T.BKNUM = #bind($BKNUM 'VARCHAR') #end 
+       #chunk($CALCAMOUNT) T.CALCAMOUNT = #bind($CALCAMOUNT 'NUMERIC') #end 
+       #chunk($CANCELCOMMENT) T.CANCELCOMMENT = #bind($CANCELCOMMENT 'VARCHAR') #end 
+       #chunk($CANCELREASON) T.CANCELREASON = #bind($CANCELREASON 'VARCHAR') #end 
+       #chunk($CANCELREASONID) T.CANCELREASONID = #bind($CANCELREASONID 'NUMERIC') #end 
+       #chunk($CAUSES) T.CAUSES = #bind($CAUSES 'VARCHAR') #end 
+       #chunk($CONFIRMDOCS) T.CONFIRMDOCS = #bind($CONFIRMDOCS 'VARCHAR') #end 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($CREATEUSERROLE) T.CREATEUSERROLE = #bind($CREATEUSERROLE 'VARCHAR') #end 
+       #chunk($CULPRIT) T.CULPRIT = #bind($CULPRIT 'VARCHAR') #end 
+       #chunk($CURACCOUNT) T.CURACCOUNT = #bind($CURACCOUNT 'VARCHAR') #end 
+       #chunk($DECISIONCSKO) T.DECISIONCSKO = #bind($DECISIONCSKO 'NUMERIC') #end 
+       #chunk($DECISIONSK) T.DECISIONSK = #bind($DECISIONSK 'NUMERIC') #end 
+       #chunk($DECLARERID) T.DECLARERID = #bind($DECLARERID 'NUMERIC') #end 
+       #chunk($EVENTDATE) T.EVENTDATE = #bind($EVENTDATE 'FLOAT') #end 
+       #chunk($FACEACCOUNT) T.FACEACCOUNT = #bind($FACEACCOUNT 'VARCHAR') #end 
+       #chunk($INN) T.INN = #bind($INN 'VARCHAR') #end 
+       #chunk($INSOBJADDRESS) T.INSOBJADDRESS = #bind($INSOBJADDRESS 'VARCHAR') #end 
+       #chunk($INSOBJNAME) T.INSOBJNAME = #bind($INSOBJNAME 'VARCHAR') #end 
+       #chunk($INSOBJTYPE) T.INSOBJTYPE = #bind($INSOBJTYPE 'NUMERIC') #end 
+       #chunk($INSURERID) T.INSURERID = #bind($INSURERID 'NUMERIC') #end 
+       #chunk($ISOTHERINS) T.ISOTHERINS = #bind($ISOTHERINS 'INTEGER') #end 
+       #chunk($ISTHIRDPART) T.ISTHIRDPART = #bind($ISTHIRDPART 'INTEGER') #end 
+       #chunk($ISNEEDINSPECT) T.ISNEEDINSPECT = #bind($ISNEEDINSPECT 'INTEGER') #end 
+       #chunk($ISEMPTYDOCEXIST) T.ISEMPTYDOCEXIST = #bind($ISEMPTYDOCEXIST 'INTEGER') #end 
+       #chunk($KORACCOUNT) T.KORACCOUNT = #bind($KORACCOUNT 'VARCHAR') #end 
+       #chunk($KPP) T.KPP = #bind($KPP 'VARCHAR') #end 
+       #chunk($LOSSES) T.LOSSES = #bind($LOSSES 'VARCHAR') #end 
+       #chunk($LOSSESAMOUNT) T.LOSSESAMOUNT = #bind($LOSSESAMOUNT 'NUMERIC') #end 
+       #chunk($NAMEOTHERINS) T.NAMEOTHERINS = #bind($NAMEOTHERINS 'VARCHAR') #end 
+       #chunk($REQUESTDATE) T.REQUESTDATE = #bind($REQUESTDATE 'FLOAT') #end 
+       #chunk($REQUESTID) T.REQUESTID = #bind($REQUESTID 'NUMERIC') #end 
+       #chunk($REQUESTNODEID) T.REQUESTNODEID = #bind($REQUESTNODEID 'NUMERIC') #end 
+       #chunk($REQUESTNUM) T.REQUESTNUM = #bind($REQUESTNUM 'VARCHAR') #end 
+       #chunk($TOTALAMOUNT) T.TOTALAMOUNT = #bind($TOTALAMOUNT 'NUMERIC') #end 
+       #chunk($USERCOMMENT) T.USERCOMMENT = #bind($USERCOMMENT 'CLOB') #end 
+       #chunk($USERCOMMENT2) T.USERCOMMENT2 = #bind($USERCOMMENT2 'CLOB') #end 
+       #chunk($VERNUMBER) T.VERNUMBER = #bind($VERNUMBER 'NUMERIC') #end 
+       #chunk($WHENWHOCLAIM) T.WHENWHOCLAIM = #bind($WHENWHOCLAIM 'VARCHAR') #end
+       #chunk($CONTRNUM) UPPER(CONTR.CONTRNUM) LIKE UPPER('%$CONTRNUM%') #end
+       #chunk($NAME) UPPER(PERSON.NAME) LIKE UPPER('%$NAME%') #end
+       #chunk($MIDDLENAME) UPPER(PERSON.MIDDLENAME) LIKE UPPER('%$MIDDLENAME%') #end
+       #chunk($SURNAME) UPPER(PERSON.SURNAME) LIKE UPPER('%$SURNAME%') #end
+    #chunk($STARTREQUESTDATE) T.REQUESTDATE >= #bind($STARTREQUESTDATE 'FLOAT') #end
+    #chunk($FINISHREQUESTDATE) T.REQUESTDATE <= #bind($FINISHREQUESTDATE 'FLOAT') #end
+       
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsLossesRequestBrowseListByParamCountEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="LossesPosMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.REQUESTID)', 'java.lang.Long', 'CNT') 
+FROM 
+      LOSS_REQUEST T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($BENEFICIARID) T.BENEFICIARID = #bind($BENEFICIARID 'NUMERIC') #end 
+       #chunk($BIC) T.BIC = #bind($BIC 'VARCHAR') #end 
+       #chunk($BANKNAME) T.BANKNAME = #bind($BANKNAME 'VARCHAR') #end 
+       #chunk($BKNUM) T.BKNUM = #bind($BKNUM 'VARCHAR') #end 
+       #chunk($CALCAMOUNT) T.CALCAMOUNT = #bind($CALCAMOUNT 'NUMERIC') #end 
+       #chunk($CANCELCOMMENT) T.CANCELCOMMENT = #bind($CANCELCOMMENT 'VARCHAR') #end 
+       #chunk($CANCELREASON) T.CANCELREASON = #bind($CANCELREASON 'VARCHAR') #end 
+       #chunk($CANCELREASONID) T.CANCELREASONID = #bind($CANCELREASONID 'NUMERIC') #end 
+       #chunk($CAUSES) T.CAUSES = #bind($CAUSES 'VARCHAR') #end 
+       #chunk($CONFIRMDOCS) T.CONFIRMDOCS = #bind($CONFIRMDOCS 'VARCHAR') #end 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($CREATEUSERROLE) T.CREATEUSERROLE = #bind($CREATEUSERROLE 'VARCHAR') #end 
+       #chunk($CULPRIT) T.CULPRIT = #bind($CULPRIT 'VARCHAR') #end 
+       #chunk($CURACCOUNT) T.CURACCOUNT = #bind($CURACCOUNT 'VARCHAR') #end 
+       #chunk($DECISIONCSKO) T.DECISIONCSKO = #bind($DECISIONCSKO 'NUMERIC') #end 
+       #chunk($DECISIONSK) T.DECISIONSK = #bind($DECISIONSK 'NUMERIC') #end 
+       #chunk($DECLARERID) T.DECLARERID = #bind($DECLARERID 'NUMERIC') #end 
+       #chunk($EVENTDATE) T.EVENTDATE = #bind($EVENTDATE 'FLOAT') #end 
+       #chunk($FACEACCOUNT) T.FACEACCOUNT = #bind($FACEACCOUNT 'VARCHAR') #end 
+       #chunk($INN) T.INN = #bind($INN 'VARCHAR') #end 
+       #chunk($INSOBJADDRESS) T.INSOBJADDRESS = #bind($INSOBJADDRESS 'VARCHAR') #end 
+       #chunk($INSOBJNAME) T.INSOBJNAME = #bind($INSOBJNAME 'VARCHAR') #end 
+       #chunk($INSOBJTYPE) T.INSOBJTYPE = #bind($INSOBJTYPE 'NUMERIC') #end 
+       #chunk($INSURERID) T.INSURERID = #bind($INSURERID 'NUMERIC') #end 
+       #chunk($ISOTHERINS) T.ISOTHERINS = #bind($ISOTHERINS 'INTEGER') #end 
+       #chunk($ISTHIRDPART) T.ISTHIRDPART = #bind($ISTHIRDPART 'INTEGER') #end 
+       #chunk($ISNEEDINSPECT) T.ISNEEDINSPECT = #bind($ISNEEDINSPECT 'INTEGER') #end 
+       #chunk($ISEMPTYDOCEXIST) T.ISEMPTYDOCEXIST = #bind($ISEMPTYDOCEXIST 'INTEGER') #end 
+       #chunk($KORACCOUNT) T.KORACCOUNT = #bind($KORACCOUNT 'VARCHAR') #end 
+       #chunk($KPP) T.KPP = #bind($KPP 'VARCHAR') #end 
+       #chunk($LOSSES) T.LOSSES = #bind($LOSSES 'VARCHAR') #end 
+       #chunk($LOSSESAMOUNT) T.LOSSESAMOUNT = #bind($LOSSESAMOUNT 'NUMERIC') #end 
+       #chunk($NAMEOTHERINS) T.NAMEOTHERINS = #bind($NAMEOTHERINS 'VARCHAR') #end 
+       #chunk($REQUESTDATE) T.REQUESTDATE = #bind($REQUESTDATE 'FLOAT') #end 
+       #chunk($REQUESTID) T.REQUESTID = #bind($REQUESTID 'NUMERIC') #end 
+       #chunk($REQUESTNODEID) T.REQUESTNODEID = #bind($REQUESTNODEID 'NUMERIC') #end 
+       #chunk($REQUESTNUM) T.REQUESTNUM = #bind($REQUESTNUM 'VARCHAR') #end 
+       #chunk($TOTALAMOUNT) T.TOTALAMOUNT = #bind($TOTALAMOUNT 'NUMERIC') #end 
+       #chunk($USERCOMMENT) T.USERCOMMENT = #bind($USERCOMMENT 'CLOB') #end 
+       #chunk($USERCOMMENT2) T.USERCOMMENT2 = #bind($USERCOMMENT2 'CLOB') #end 
+       #chunk($VERNUMBER) T.VERNUMBER = #bind($VERNUMBER 'NUMERIC') #end 
+       #chunk($WHENWHOCLAIM) T.WHENWHOCLAIM = #bind($WHENWHOCLAIM 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsLossesRequestDocBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="LossesPosMapCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.BINDOCID', 'java.lang.Long', 'BINDOCID'),
+        #result('T.REQUESTDOCID', 'java.lang.Long', 'REQUESTDOCID'),
+        #result('T.ISDOCCHECKING', 'java.lang.Integer', 'ISDOCCHECKING'),
+        #result('T.ISORIGINALRECEIVED', 'java.lang.Integer', 'ISORIGINALRECEIVED'),
+        #result('T.REQUESTID', 'java.lang.Long', 'REQUESTID'),
+        #result('T2.NAME', 'java.lang.String', 'NAME'),
+        #result('T2.NOTE', 'java.lang.String', 'NOTE'),
+        #result('T3.FILENAME', 'java.lang.String', 'FILENAME'),
+        #result('T3.BINFILEID', 'java.lang.Long', 'BINFILEID')
+       $ASPECTFIELDS 
+FROM 
+      LOSS_REQUESTDOC T 
+      LEFT JOIN LOSS_BINDOC T2 ON (T.BINDOCID = T2.BINDOCID)
+      LEFT JOIN INS_BINFILE T3 ON (T3.OBJID = T.REQUESTDOCID) AND (T3.OBJTABLENAME = 'LOSS_REQUESTDOC')
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($BINDOCID) T.BINDOCID = #bind($BINDOCID 'NUMERIC') #end 
+       #chunk($ISDOCCHECKING) T.ISDOCCHECKING = #bind($ISDOCCHECKING 'INTEGER') #end 
+       #chunk($ISORIGINALRECEIVED) T.ISORIGINALRECEIVED = #bind($ISORIGINALRECEIVED 'INTEGER') #end 
+       #chunk($REQUESTDOCID) T.REQUESTDOCID = #bind($REQUESTDOCID 'NUMERIC') #end 
+       #chunk($REQUESTID) T.REQUESTID = #bind($REQUESTID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsLossRequestDocBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="LossesPosMapCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.REQUESTDOCID)', 'java.lang.Long', 'CNT') 
+FROM 
+      LOSS_REQUESTDOC T 
+      LEFT JOIN LOSS_BINDOC T2 ON (T.BINDOCID = T2.BINDOCID)
+      LEFT JOIN INS_BINFILE T3 ON (T3.OBJID = T.REQUESTDOCID) AND (T3.OBJTABLENAME = 'LOSS_REQUESTDOC')
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($BINDOCID) T.BINDOCID = #bind($BINDOCID 'NUMERIC') #end 
+       #chunk($ISDOCCHECKING) T.ISDOCCHECKING = #bind($ISDOCCHECKING 'INTEGER') #end 
+       #chunk($ISORIGINALRECEIVED) T.ISORIGINALRECEIVED = #bind($ISORIGINALRECEIVED 'INTEGER') #end 
+       #chunk($REQUESTDOCID) T.REQUESTDOCID = #bind($REQUESTDOCID 'NUMERIC') #end 
+       #chunk($REQUESTID) T.REQUESTID = #bind($REQUESTID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsLossesProductBinaryDocumentBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="LossesPosMapCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.BINDOCID', 'java.lang.String', 'BINDOCID'),
+        #result('T.BINDOCTYPE', 'java.lang.Long', 'BINDOCTYPE'),
+        #result('T.REFUNDTYPEID', 'java.lang.Long', 'REFUNDTYPEID'),
+        #result('T.CHECKNAME', 'java.lang.String', 'CHECKNAME'),
+        #result('T.PRODBINDOCID', 'java.lang.Long', 'PRODBINDOCID'),
+        #result('T.PRODID', 'java.lang.Long', 'PRODID'),
+        #result('T.PRODKINDID', 'java.lang.Long', 'PRODKINDID'),
+        #result('T.REQUIRED', 'java.lang.Boolean', 'REQUIRED'),
+        #result('T2.NAME', 'java.lang.String', 'NAME'),
+        #result('T2.NOTE', 'java.lang.String', 'NOTE')
+       $ASPECTFIELDS 
+FROM 
+      LOSS_PRODBINDOC T 
+      LEFT JOIN LOSS_BINDOC T2 ON (T.BINDOCID = T2.BINDOCID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($BINDOCID) T.BINDOCID = #bind($BINDOCID 'NUMERIC') #end 
+       #chunk($BINDOCTYPE) T.BINDOCTYPE = #bind($BINDOCTYPE 'NUMERIC') #end 
+       #chunk($REFUNDTYPEID) T.REFUNDTYPEID = #bind($REFUNDTYPEID 'NUMERIC') #end 
+       #chunk($CHECKNAME) T.CHECKNAME = #bind($CHECKNAME 'VARCHAR') #end 
+       #chunk($PRODBINDOCID) T.PRODBINDOCID = #bind($PRODBINDOCID 'NUMERIC') #end 
+       #chunk($PRODID) T.PRODID = #bind($PRODID 'NUMERIC') #end 
+       #chunk($PRODKINDID) T.PRODKINDID = #bind($PRODKINDID 'NUMERIC') #end 
+       #chunk($REQUIRED) T.REQUIRED = #bind($REQUIRED 'BOOLEAN') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsLossesProductBinaryDocumentBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="LossesPosMapCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.PRODBINDOCID)', 'java.lang.Long', 'CNT') 
+FROM 
+      LOSS_PRODBINDOC T 
+      LEFT JOIN LOSS_BINDOC T2 ON (T.BINDOCID = T2.BINDOCID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($BINDOCID) T.BINDOCID = #bind($BINDOCID 'NUMERIC') #end 
+       #chunk($BINDOCTYPE) T.BINDOCTYPE = #bind($BINDOCTYPE 'NUMERIC') #end 
+       #chunk($REFUNDTYPEID) T.REFUNDTYPEID = #bind($REFUNDTYPEID 'NUMERIC') #end 
+       #chunk($CHECKNAME) T.CHECKNAME = #bind($CHECKNAME 'VARCHAR') #end 
+       #chunk($PRODBINDOCID) T.PRODBINDOCID = #bind($PRODBINDOCID 'NUMERIC') #end 
+       #chunk($PRODID) T.PRODID = #bind($PRODID 'NUMERIC') #end 
+       #chunk($PRODKINDID) T.PRODKINDID = #bind($PRODKINDID 'NUMERIC') #end 
+       #chunk($REQUIRED) T.REQUIRED = #bind($REQUIRED 'BOOLEAN') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsLossesProductReportBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="LossesPosMapCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.PRODREPID', 'java.lang.Long', 'PRODREPID'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.NOTE', 'java.lang.String', 'NOTE'),
+        #result('T.POSTN', 'java.lang.Long', 'POSTN'),
+        #result('T.PRODID', 'java.lang.Long', 'PRODID'),
+        #result('T.PRODKINDID', 'java.lang.Long', 'PRODKINDID'),
+        #result('T.CHECKID', 'java.lang.Long', 'CHECKID'),
+        #result('T.REPID', 'java.lang.Long', 'REPID'),
+        #result('T.REPTYPE', 'java.lang.Long', 'REPTYPE'),
+        #result('T.RETURNPARTID', 'java.lang.Long', 'RETURNPARTID'),
+        #result('T.RETURNREASONID', 'java.lang.Long', 'RETURNREASONID'),
+        #result('T.EXPIRIED', 'java.lang.Long', 'EXPIRIED'),
+        #result('T.EARLYREPAYMENT', 'java.lang.Long', 'EARLYREPAYMENT'),
+        #result('T.RETURNTYPEID', 'java.lang.Long', 'RETURNTYPEID'),
+        #result('T.CPNUM', 'java.lang.Long', 'CPNUM'),
+        #result('T2.PAGEFLOWNAME', 'java.lang.String', 'PAGEFLOWNAME'),
+        #result('T2.NAME', 'java.lang.String', 'REPNAME')
+       $ASPECTFIELDS 
+FROM 
+      LOSS_PRODREP T 
+      LEFT JOIN LOSS_REP T2 ON (T.REPID = T2.REPID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CHECKID) T.CHECKID = #bind($CHECKID 'NUMERIC') #end 
+       #chunk($CPNUM) T.CPNUM = #bind($CPNUM 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($POSTN) T.POSTN = #bind($POSTN 'NUMERIC') #end 
+       #chunk($PRODID) T.PRODID = #bind($PRODID 'NUMERIC') #end 
+       #chunk($PRODKINDID) T.PRODKINDID = #bind($PRODKINDID 'NUMERIC') #end 
+       #chunk($PRODREPID) T.PRODREPID = #bind($PRODREPID 'NUMERIC') #end 
+       #chunk($REPID) T.REPID = #bind($REPID 'NUMERIC') #end 
+       #chunk($REPTYPE) T.REPTYPE = #bind($REPTYPE 'NUMERIC') #end 
+       #chunk($RETURNPARTID) T.RETURNPARTID = #bind($RETURNPARTID 'NUMERIC') #end 
+       #chunk($RETURNREASONID) T.RETURNREASONID = #bind($RETURNREASONID 'NUMERIC') #end 
+       #chunk($EARLYREPAYMENT) T.EARLYREPAYMENT = #bind($EARLYREPAYMENT 'NUMERIC') #end 
+       #chunk($EXPIRIED) T.EXPIRIED = #bind($EXPIRIED 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsLossesProductReportBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="LossesPosMapCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.PRODREPID)', 'java.lang.Long', 'CNT') 
+FROM 
+      LOSS_PRODREP T 
+      LEFT JOIN LOSS_REP T2 ON (T.REPID = T2.REPID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CHECKID) T.CHECKID = #bind($CHECKID 'NUMERIC') #end 
+       #chunk($CPNUM) T.CPNUM = #bind($CPNUM 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($POSTN) T.POSTN = #bind($POSTN 'NUMERIC') #end 
+       #chunk($PRODID) T.PRODID = #bind($PRODID 'NUMERIC') #end 
+       #chunk($PRODKINDID) T.PRODKINDID = #bind($PRODKINDID 'NUMERIC') #end 
+       #chunk($PRODREPID) T.PRODREPID = #bind($PRODREPID 'NUMERIC') #end 
+       #chunk($REPID) T.REPID = #bind($REPID 'NUMERIC') #end 
+       #chunk($REPTYPE) T.REPTYPE = #bind($REPTYPE 'NUMERIC') #end 
+       #chunk($RETURNPARTID) T.RETURNPARTID = #bind($RETURNPARTID 'NUMERIC') #end 
+       #chunk($RETURNREASONID) T.RETURNREASONID = #bind($RETURNREASONID 'NUMERIC') #end 
+       #chunk($EARLYREPAYMENT) T.EARLYREPAYMENT = #bind($EARLYREPAYMENT 'NUMERIC') #end 
+       #chunk($EXPIRIED) T.EXPIRIED = #bind($EXPIRIED 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsLossesRequestNACreateUserReset" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="LossesPosMapCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.REQUESTID = #bind($REQUESTID 'NUMERIC'),
+    T.CREATEUSERID = NULL
+FROM 
+      LOSS_REQUEST T 
+#chain('AND' 'WHERE') 
+       #chunk($REQUESTID) T.REQUESTID = #bind($REQUESTID 'NUMERIC') #end 
+#end 
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.REQUESTID = #bind($REQUESTID 'NUMERIC'),
+    T.CREATEUSERID = NULL
+FROM 
+      LOSS_REQUEST T 
+#chain('AND' 'WHERE') 
+       #chunk($REQUESTID) T.REQUESTID = #bind($REQUESTID 'NUMERIC') #end 
+#end 
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       LOSS_REQUEST T 
+SET 
+    T.REQUESTID = #bind($REQUESTID 'NUMERIC'),
+    T.CREATEUSERID = NULL
+#chain('AND' 'WHERE') 
+       #chunk($REQUESTID) T.REQUESTID = #bind($REQUESTID 'NUMERIC') #end 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsLossesRequestNodeNACreateUserReset" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="LossesPosMapCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.REQUESTNODEID = #bind($REQUESTNODEID 'NUMERIC'),
+    T.CREATEUSERID = NULL
+FROM 
+      LOSS_REQUESTNODE T 
+#chain('AND' 'WHERE') 
+       #chunk($REQUESTNODEID) T.REQUESTNODEID = #bind($REQUESTNODEID 'NUMERIC') #end 
+#end 
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.REQUESTNODEID = #bind($REQUESTNODEID 'NUMERIC'),
+    T.CREATEUSERID = NULL
+FROM 
+      LOSS_REQUESTNODE T 
+#chain('AND' 'WHERE') 
+       #chunk($REQUESTNODEID) T.REQUESTNODEID = #bind($REQUESTNODEID 'NUMERIC') #end 
+#end 
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       LOSS_REQUESTNODE T 
+SET 
+    T.REQUESTNODEID = #bind($REQUESTNODEID 'NUMERIC'),
+    T.CREATEUSERID = NULL
+#chain('AND' 'WHERE') 
+       #chunk($REQUESTNODEID) T.REQUESTNODEID = #bind($REQUESTNODEID 'NUMERIC') #end 
+#end 
+]]>
+        </sql>
+    </query> 
+<query name="dsLossesAddressBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="LossesPosMapCustom" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.ADDRESSSYSNAME', 'java.lang.String', 'ADDRESSSYSNAME'),
+        #result('T.ADDRESSTEXT1', 'java.lang.String', 'ADDRESSTEXT1'),
+        #result('T.ADDRESSTEXT2', 'java.lang.String', 'ADDRESSTEXT2'),
+        #result('T.ADDRESSTEXT3', 'java.lang.String', 'ADDRESSTEXT3'),
+        #result('T.BUILDING', 'java.lang.String', 'BUILDING'),
+        #result('T.CITY', 'java.lang.String', 'CITY'),
+        #result('T.CITYKLADR', 'java.lang.String', 'CITYKLADR'),
+        #result('T.CITYTYPE', 'java.lang.Long', 'CITYTYPE'),
+        #result('T.COUNTRY', 'java.lang.String', 'COUNTRY'),
+        #result('T.DISTRICT', 'java.lang.String', 'DISTRICT'),
+        #result('T.DISTRICTKLADR', 'java.lang.String', 'DISTRICTKLADR'),
+        #result('T.DISTRICTTYPE', 'java.lang.Long', 'DISTRICTTYPE'),
+        #result('T.FLAT', 'java.lang.String', 'FLAT'),
+        #result('T.FLATTYPE', 'java.lang.String', 'FLATTYPE'),
+        #result('T.HOUSE', 'java.lang.String', 'HOUSE'),
+        #result('T.HOUSING', 'java.lang.String', 'HOUSING'),
+        #result('T.ADDRESSID', 'java.lang.Long', 'ADDRESSID'),
+        #result('T.ISINVALID', 'java.lang.Integer', 'ISINVALID'),
+        #result('T.OBJID', 'java.lang.Long', 'OBJID'),
+        #result('T.OBJSYSNAME', 'java.lang.String', 'OBJSYSNAME'),
+        #result('T.PERMANENTLOCATIONFLAG', 'java.lang.Integer', 'PERMANENTLOCATIONFLAG'),
+        #result('T.POSTALCODE', 'java.lang.String', 'POSTALCODE'),
+        #result('T.PRIORITY', 'java.lang.Long', 'PRIORITY'),
+        #result('T.REGION', 'java.lang.String', 'REGION'),
+        #result('T.REGIONKLADR', 'java.lang.String', 'REGIONKLADR'),
+        #result('T.REGIONTYPE', 'java.lang.Long', 'REGIONTYPE'),
+        #result('T.REGISTRDATE', 'java.math.BigDecimal', 'REGISTRDATE'),
+        #result('T.REGISTRTODATE', 'java.math.BigDecimal', 'REGISTRTODATE'),
+        #result('T.STREET', 'java.lang.String', 'STREET'),
+        #result('T.STREETKLADR', 'java.lang.String', 'STREETKLADR'),
+        #result('T.STREETTYPE', 'java.lang.Long', 'STREETTYPE'),
+        #result('T.USEKLADR', 'java.lang.Integer', 'USEKLADR'),
+        #result('T.VILLAGE', 'java.lang.String', 'VILLAGE'),
+        #result('T.VILLAGEKLADR', 'java.lang.String', 'VILLAGEKLADR'),
+        #result('T3.FULLNAME', 'java.lang.String', 'STREETTYPE_FULL'), 
+        #result('T.VILLAGETYPE', 'java.lang.Long', 'VILLAGETYPE') 
+       $ASPECTFIELDS 
+FROM 
+      LOSS_ADDRESS T 
+      LEFT JOIN CORE_KLADRSOCR T3 ON (T3.TYPECODE = T.STREETTYPE)      
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ADDRESSID) T.ADDRESSID = #bind($ADDRESSID 'NUMERIC') #end 
+       #chunk($ADDRESSSYSNAME) T.ADDRESSSYSNAME = #bind($ADDRESSSYSNAME 'VARCHAR') #end 
+       #chunk($ADDRESSTEXT1) T.ADDRESSTEXT1 = #bind($ADDRESSTEXT1 'VARCHAR') #end 
+       #chunk($ADDRESSTEXT2) T.ADDRESSTEXT2 = #bind($ADDRESSTEXT2 'VARCHAR') #end 
+       #chunk($ADDRESSTEXT3) T.ADDRESSTEXT3 = #bind($ADDRESSTEXT3 'VARCHAR') #end 
+       #chunk($BUILDING) T.BUILDING = #bind($BUILDING 'VARCHAR') #end 
+       #chunk($CITY) T.CITY = #bind($CITY 'VARCHAR') #end 
+       #chunk($CITYKLADR) T.CITYKLADR = #bind($CITYKLADR 'VARCHAR') #end 
+       #chunk($CITYTYPE) T.CITYTYPE = #bind($CITYTYPE 'NUMERIC') #end 
+       #chunk($COUNTRY) T.COUNTRY = #bind($COUNTRY 'VARCHAR') #end 
+       #chunk($DISTRICT) T.DISTRICT = #bind($DISTRICT 'VARCHAR') #end 
+       #chunk($DISTRICTKLADR) T.DISTRICTKLADR = #bind($DISTRICTKLADR 'VARCHAR') #end 
+       #chunk($DISTRICTTYPE) T.DISTRICTTYPE = #bind($DISTRICTTYPE 'NUMERIC') #end 
+       #chunk($FLAT) T.FLAT = #bind($FLAT 'VARCHAR') #end 
+       #chunk($FLATTYPE) T.FLATTYPE = #bind($FLATTYPE 'VARCHAR') #end 
+       #chunk($HOUSE) T.HOUSE = #bind($HOUSE 'VARCHAR') #end 
+       #chunk($HOUSING) T.HOUSING = #bind($HOUSING 'VARCHAR') #end 
+       #chunk($ISINVALID) T.ISINVALID = #bind($ISINVALID 'INTEGER') #end 
+       #chunk($OBJID) T.OBJID = #bind($OBJID 'NUMERIC') #end 
+       #chunk($OBJSYSNAME) T.OBJSYSNAME = #bind($OBJSYSNAME 'VARCHAR') #end 
+       #chunk($PERMANENTLOCATIONFLAG) T.PERMANENTLOCATIONFLAG = #bind($PERMANENTLOCATIONFLAG 'INTEGER') #end 
+       #chunk($POSTALCODE) T.POSTALCODE = #bind($POSTALCODE 'VARCHAR') #end 
+       #chunk($PRIORITY) T.PRIORITY = #bind($PRIORITY 'NUMERIC') #end 
+       #chunk($REGION) T.REGION = #bind($REGION 'VARCHAR') #end 
+       #chunk($REGIONKLADR) T.REGIONKLADR = #bind($REGIONKLADR 'VARCHAR') #end 
+       #chunk($REGIONTYPE) T.REGIONTYPE = #bind($REGIONTYPE 'NUMERIC') #end 
+       #chunk($REGISTRDATE) T.REGISTRDATE = #bind($REGISTRDATE 'FLOAT') #end 
+       #chunk($REGISTRTODATE) T.REGISTRTODATE = #bind($REGISTRTODATE 'FLOAT') #end 
+       #chunk($STREET) T.STREET = #bind($STREET 'VARCHAR') #end 
+       #chunk($STREETKLADR) T.STREETKLADR = #bind($STREETKLADR 'VARCHAR') #end 
+       #chunk($STREETTYPE) T.STREETTYPE = #bind($STREETTYPE 'NUMERIC') #end 
+       #chunk($USEKLADR) T.USEKLADR = #bind($USEKLADR 'INTEGER') #end 
+       #chunk($VILLAGE) T.VILLAGE = #bind($VILLAGE 'VARCHAR') #end 
+       #chunk($VILLAGEKLADR) T.VILLAGEKLADR = #bind($VILLAGEKLADR 'VARCHAR') #end 
+       #chunk($VILLAGETYPE) T.VILLAGETYPE = #bind($VILLAGETYPE 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsLossesAddressBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="LossesPosMapCustom" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ADDRESSID)', 'java.lang.Long', 'CNT') 
+FROM 
+      LOSS_ADDRESS T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ADDRESSID) T.ADDRESSID = #bind($ADDRESSID 'NUMERIC') #end 
+       #chunk($ADDRESSSYSNAME) T.ADDRESSSYSNAME = #bind($ADDRESSSYSNAME 'VARCHAR') #end 
+       #chunk($ADDRESSTEXT1) T.ADDRESSTEXT1 = #bind($ADDRESSTEXT1 'VARCHAR') #end 
+       #chunk($ADDRESSTEXT2) T.ADDRESSTEXT2 = #bind($ADDRESSTEXT2 'VARCHAR') #end 
+       #chunk($ADDRESSTEXT3) T.ADDRESSTEXT3 = #bind($ADDRESSTEXT3 'VARCHAR') #end 
+       #chunk($BUILDING) T.BUILDING = #bind($BUILDING 'VARCHAR') #end 
+       #chunk($CITY) T.CITY = #bind($CITY 'VARCHAR') #end 
+       #chunk($CITYKLADR) T.CITYKLADR = #bind($CITYKLADR 'VARCHAR') #end 
+       #chunk($CITYTYPE) T.CITYTYPE = #bind($CITYTYPE 'NUMERIC') #end 
+       #chunk($COUNTRY) T.COUNTRY = #bind($COUNTRY 'VARCHAR') #end 
+       #chunk($DISTRICT) T.DISTRICT = #bind($DISTRICT 'VARCHAR') #end 
+       #chunk($DISTRICTKLADR) T.DISTRICTKLADR = #bind($DISTRICTKLADR 'VARCHAR') #end 
+       #chunk($DISTRICTTYPE) T.DISTRICTTYPE = #bind($DISTRICTTYPE 'NUMERIC') #end 
+       #chunk($FLAT) T.FLAT = #bind($FLAT 'VARCHAR') #end 
+       #chunk($FLATTYPE) T.FLATTYPE = #bind($FLATTYPE 'VARCHAR') #end 
+       #chunk($HOUSE) T.HOUSE = #bind($HOUSE 'VARCHAR') #end 
+       #chunk($HOUSING) T.HOUSING = #bind($HOUSING 'VARCHAR') #end 
+       #chunk($ISINVALID) T.ISINVALID = #bind($ISINVALID 'INTEGER') #end 
+       #chunk($OBJID) T.OBJID = #bind($OBJID 'NUMERIC') #end 
+       #chunk($OBJSYSNAME) T.OBJSYSNAME = #bind($OBJSYSNAME 'VARCHAR') #end 
+       #chunk($PERMANENTLOCATIONFLAG) T.PERMANENTLOCATIONFLAG = #bind($PERMANENTLOCATIONFLAG 'INTEGER') #end 
+       #chunk($POSTALCODE) T.POSTALCODE = #bind($POSTALCODE 'VARCHAR') #end 
+       #chunk($PRIORITY) T.PRIORITY = #bind($PRIORITY 'NUMERIC') #end 
+       #chunk($REGION) T.REGION = #bind($REGION 'VARCHAR') #end 
+       #chunk($REGIONKLADR) T.REGIONKLADR = #bind($REGIONKLADR 'VARCHAR') #end 
+       #chunk($REGIONTYPE) T.REGIONTYPE = #bind($REGIONTYPE 'NUMERIC') #end 
+       #chunk($REGISTRDATE) T.REGISTRDATE = #bind($REGISTRDATE 'FLOAT') #end 
+       #chunk($REGISTRTODATE) T.REGISTRTODATE = #bind($REGISTRTODATE 'FLOAT') #end 
+       #chunk($STREET) T.STREET = #bind($STREET 'VARCHAR') #end 
+       #chunk($STREETKLADR) T.STREETKLADR = #bind($STREETKLADR 'VARCHAR') #end 
+       #chunk($STREETTYPE) T.STREETTYPE = #bind($STREETTYPE 'NUMERIC') #end 
+       #chunk($USEKLADR) T.USEKLADR = #bind($USEKLADR 'INTEGER') #end 
+       #chunk($VILLAGE) T.VILLAGE = #bind($VILLAGE 'VARCHAR') #end 
+       #chunk($VILLAGEKLADR) T.VILLAGEKLADR = #bind($VILLAGEKLADR 'VARCHAR') #end 
+       #chunk($VILLAGETYPE) T.VILLAGETYPE = #bind($VILLAGETYPE 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>    
+    <query name="dsContractBrowseListForBorderoByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="InsPOSCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql><![CDATA[
+SELECT * FROM (
+SELECT
+        #result('T.CONTRID', 'java.lang.Long', 'CONTRID'),
+        #result('T.CONTRNUMBER', 'java.lang.String', 'CONTRNUMBER'),
+        #result('T.DOCUMENTDATE', 'java.math.BigDecimal', 'DOCUMENTDATE'),
+        #result('T2.SYSNAME', 'java.lang.String', 'STATESYSNAME'),
+        #result('T2.PUBLICNAME', 'java.lang.String', 'STATENAME'),
+        #result('T5.SELLERID', 'java.lang.Long', 'SELLERID'),
+        #result('T5.NAME', 'java.lang.String', 'SELLERNAME'),
+        #result('T4.DEPTSHORTNAME', 'java.lang.String', 'DEPTSHORTNAME')
+FROM
+  INS_CONTR T
+  INNER JOIN INS_CONTRNODE T3 ON (T3.CONTRID = T.CONTRID)
+  INNER JOIN CORE_SM_STATE T2 ON (T.STATEID = T2.ID)
+  LEFT JOIN DEP_DEPARTMENT T4 ON (T.ORGSTRUCTID = T4.DEPARTMENTID)
+  LEFT JOIN INS_SELLER T5 ON (T.SELLERID = T5.SELLERID)
+  LEFT JOIN INS_PRODVER T6 ON (T.PRODVERID = T6.PRODVERID)
+  LEFT JOIN INS_PROD T7 ON (T6.PRODID = T7.PRODID)
+  INNER JOIN INS_PAYFACT T8 ON (T8.CONTRNODEID = T.CONTRNODEID)
+            
+#chain('AND' 'WHERE')
+       #chunk($ISNOTINBORDERO) NOT EXISTS(SELECT * FROM INS_BORDEROCNT T6 WHERE T6.CONTRID = T.CONTRID) #end
+       #chunk($DEPARTMENTID) T.ORGSTRUCTID = #bind($DEPARTMENTID 'NUMERIC') #end
+       #chunk($CONTRNUMBER) UPPER(T.CONTRNUMBER) LIKE UPPER('%$CONTRNUMBER%') #end
+       #chunk($SIGNSTARTDATE) TRUNC(T.SIGNDATE) >= #bind($SIGNSTARTDATE 'FLOAT') #end
+       #chunk($SIGNFINISHDATE) TRUNC(T.SIGNDATE) <= #bind($SIGNFINISHDATE 'FLOAT') #end
+       #chunk($DOCSTARTDATE) TRUNC(T.DOCUMENTDATE) >= #bind($DOCSTARTDATE 'FLOAT') #end
+       #chunk($DOCFINISHDATE) TRUNC(T.DOCUMENTDATE) <= #bind($DOCFINISHDATE 'FLOAT') #end
+       #chunk($PAYSTARTDATE) TRUNC(T8.PAYFACTDATE) >= #bind($PAYSTARTDATE 'FLOAT') #end
+       #chunk($PAYFINISHDATE) TRUNC(T8.PAYFACTDATE) < #bind($PAYFINISHDATE 'FLOAT') and T8.payfactnumber != '111111111111' #end
+       #chunk($PRODVERLIST) T.PRODVERID in (#bind($PRODVERLIST 'VARCHAR'))   #end
+            
+       #chunk($CONTRSTARTDATE) TRUNC(T.STARTDATE) >= #bind($CONTRSTARTDATE 'FLOAT') #end
+       #chunk($CONTRFINISHDATE) TRUNC(T.STARTDATE) <= #bind($CONTRFINISHDATE 'FLOAT') #end            
+       #chunk($SELLERNAME) UPPER(T5.NAME) LIKE UPPER('%$SELLERNAME%') #end
+       #chunk($PRODNAME) UPPER(T7.NAME) LIKE UPPER('$PRODNAME') #end
+       #chunk($PRODID) T6.PRODID = #bind($PRODID 'NUMERIC') #end
+       #chunk($PRODVERID) T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end
+       #chunk($STATERESTRICT) T2.SYSNAME in ('INS_CONTRACT_SG', 'INS_CONTRACT_REJECT', 'INS_CONTRACT_ISSUED') #end
+       #chunk($STATELIST) T2.SYSNAME in ($STATELIST) #end
+       #chunk($STATESYSNAME) T2.SYSNAME = #bind($STATESYSNAME 'VARCHAR')  #end
+#end
+order by T.CONTRID)
+#chain('AND' 'WHERE')
+    #chunk($CONTRCOUNT)  ROWNUM <= #bind($CONTRCOUNT 'NUMERIC') #end
+#end            
+]]>
+        </sql>
+    </query>
+    
+    <query name="dsContractBrowseListForBorderoByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="InsPOSCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql><![CDATA[
+SELECT
+      #result('COUNT(T.CONTRID)', 'java.lang.Long', 'CNT')
+FROM
+  INS_CONTR T
+  INNER JOIN INS_CONTRNODE T3 ON (T3.CONTRID = T.CONTRID)
+  INNER JOIN CORE_SM_STATE T2 ON (T.STATEID = T2.ID)
+  LEFT JOIN DEP_DEPARTMENT T4 ON (T.ORGSTRUCTID = T4.DEPARTMENTID)
+  LEFT JOIN INS_SELLER T5 ON (T.SELLERID = T5.SELLERID)
+  LEFT JOIN INS_PRODVER T6 ON (T.PRODVERID = T6.PRODVERID)
+  LEFT JOIN INS_PROD T7 ON (T6.PRODID = T7.PRODID)
+  INNER JOIN INS_PAYFACT T8 ON (T8.CONTRNODEID = T.CONTRNODEID)
+            
+#chain('AND' 'WHERE')
+       #chunk($ISNOTINBORDERO) NOT EXISTS(SELECT * FROM INS_BORDEROCNT T6 WHERE T6.CONTRID = T.CONTRID) #end
+       #chunk($DEPARTMENTID) T.ORGSTRUCTID = #bind($DEPARTMENTID 'NUMERIC') #end
+       #chunk($CONTRNUMBER) UPPER(T.CONTRNUMBER) LIKE UPPER('%$CONTRNUMBER%') #end
+       #chunk($SIGNSTARTDATE) TRUNC(T.SIGNDATE) >= #bind($SIGNSTARTDATE 'FLOAT') #end
+       #chunk($SIGNFINISHDATE) TRUNC(T.SIGNDATE) <= #bind($SIGNFINISHDATE 'FLOAT') #end
+       #chunk($DOCSTARTDATE) TRUNC(T.DOCUMENTDATE) >= #bind($DOCSTARTDATE 'FLOAT') #end
+       #chunk($DOCFINISHDATE) TRUNC(T.DOCUMENTDATE) <= #bind($DOCFINISHDATE 'FLOAT') #end
+       #chunk($PAYSTARTDATE) TRUNC(T8.PAYFACTDATE) >= #bind($PAYSTARTDATE 'FLOAT') #end
+       #chunk($PAYFINISHDATE) TRUNC(T8.PAYFACTDATE) < #bind($PAYFINISHDATE 'FLOAT') and T8.payfactnumber != '111111111111' #end
+       #chunk($PRODVERLIST) T.PRODVERID in (#bind($PRODVERLIST 'VARCHAR'))   #end
+            
+       #chunk($CONTRSTARTDATE) TRUNC(T.STARTDATE) >= #bind($CONTRSTARTDATE 'FLOAT') #end
+       #chunk($CONTRFINISHDATE) TRUNC(T.STARTDATE) <= #bind($CONTRFINISHDATE 'FLOAT') #end            
+       #chunk($SELLERNAME) UPPER(T5.NAME) LIKE UPPER('%$SELLERNAME%') #end
+       #chunk($PRODNAME) UPPER(T7.NAME) LIKE UPPER('$PRODNAME') #end
+       #chunk($PRODID) T6.PRODID = #bind($PRODID 'NUMERIC') #end
+       #chunk($PRODVERID) T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end
+       #chunk($STATERESTRICT) T2.SYSNAME in ('INS_CONTRACT_SG', 'INS_CONTRACT_REJECT', 'INS_CONTRACT_ISSUED') #end
+       #chunk($STATELIST) T2.SYSNAME in ($STATELIST) #end
+       #chunk($STATESYSNAME) T2.SYSNAME = #bind($STATESYSNAME 'VARCHAR')  #end
+#end
+]]>
+        </sql>
+    </query>
+<query name="dsInsClientActionLogBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="BivSberPosMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.ACTION', 'java.lang.String', 'ACTION'),
+        #result('T.CLIENTACTLOGID', 'java.lang.Long', 'CLIENTACTLOGID'),
+        #result('T.CLIENTACTLOGTYPEID', 'java.lang.Long', 'CLIENTACTLOGTYPEID'),
+        #result('T.NOTE', 'java.lang.String', 'NOTE'),
+        #result('T.PARAM1', 'java.lang.String', 'PARAM1'),
+        #result('T.PARAM2', 'java.lang.String', 'PARAM2'),
+        #result('T.PARAM3', 'java.lang.String', 'PARAM3'),
+        #result('T.PARAM4', 'java.lang.String', 'PARAM4'),
+        #result('T.PARAM5', 'java.lang.String', 'PARAM5'),
+        #result('T.RAWDATA', 'java.lang.String', 'RAWDATA'),
+        #result('T.TABLENAME', 'java.lang.String', 'TABLENAME'),
+        #result('T.SESSIONID', 'java.lang.String', 'SESSIONID'),
+        #result('T.CREATEDATE', 'java.math.BigDecimal', 'CREATEDATE'),
+        #result('T2.CONTRNUMBER', 'java.lang.String', 'CONTRNUMBER'),
+        #result('T6.NAME', 'java.lang.String', 'ACTIONNAME'),
+        #result('T.VALUE', 'java.lang.String', 'VALUE') 
+       $ASPECTFIELDS 
+FROM 
+      INS_CLIENTACTLOG T
+      LEFT JOIN INS_CONTREXT T1 ON (T.SESSIONID = T1.STRINGFIELD05)
+      LEFT JOIN INS_CONTR T2 ON (T1.CONTRID = T2.CONTRID)
+      LEFT JOIN INS_PRODCONF T3 ON ((T2.PRODVERID = T3.PRODVERID) AND (T3.SYSNAME = 'POS'))            
+      LEFT JOIN INS_PRODVER T4 ON (T4.PRODVERID = T2.PRODVERID)
+      LEFT JOIN INS_PROD T5 ON (T4.PRODID = T5.PRODID)
+      LEFT JOIN INS_CLIENTACTLOGTYPE T6 ON (T6.SYSNAME = T.ACTION)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CONTRNUMBER) UPPER(T2.CONTRNUMBER) LIKE UPPER('%$CONTRNUMBER%')  #end
+       #chunk($ACTION) T.ACTION = #bind($ACTION 'VARCHAR') #end 
+       #chunk($CLIENTACTLOGID) T.CLIENTACTLOGID = #bind($CLIENTACTLOGID 'NUMERIC') #end 
+       #chunk($CLIENTACTLOGTYPEID) T.CLIENTACTLOGTYPEID = #bind($CLIENTACTLOGTYPEID 'NUMERIC') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($PARAM1) T.PARAM1 = #bind($PARAM1 'VARCHAR') #end 
+       #chunk($PARAM2) T.PARAM2 = #bind($PARAM2 'VARCHAR') #end 
+       #chunk($PARAM3) T.PARAM3 = #bind($PARAM3 'VARCHAR') #end 
+       #chunk($PARAM4) T.PARAM4 = #bind($PARAM4 'VARCHAR') #end 
+       #chunk($PARAM5) T.PARAM5 = #bind($PARAM5 'VARCHAR') #end 
+       #chunk($TABLENAME) T.TABLENAME = #bind($TABLENAME 'VARCHAR') #end 
+       #chunk($SESSIONID) T.SESSIONID = #bind($SESSIONID 'VARCHAR') #end 
+       #chunk($VALUE) T.VALUE = #bind($VALUE 'VARCHAR') #end 
+       #chunk($CONTRID) T2.CONTRID = #bind($CONTRID 'VARCHAR') #end 
+       #chunk($PRODVERID) T2.PRODVERID = #bind($PRODVERID 'VARCHAR') #end 
+       #chunk($PRODCONFID) T3.PRODCONFID = #bind($PRODCONFID 'VARCHAR') #end 
+       #chunk($PRODID) T5.PRODID = #bind($PRODID 'NUMERIC') #end
+       #chunk($CREATESTARTDATE) T.CREATEDATE >= #bind($CREATESTARTDATE 'FLOAT') #end
+       #chunk($CREATEFINISHDATE) T.CREATEDATE <= #bind($CREATEFINISHDATE 'FLOAT') #end
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsInsClientActionLogBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="BivSberPosMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.CLIENTACTLOGID)', 'java.lang.Long', 'CNT') 
+FROM 
+      INS_CLIENTACTLOG T
+      LEFT JOIN INS_CONTREXT T1 ON (T.SESSIONID = T1.STRINGFIELD05)
+      LEFT JOIN INS_CONTR T2 ON (T1.CONTRID = T2.CONTRID)
+      LEFT JOIN INS_PRODCONF T3 ON ((T2.PRODVERID = T3.PRODVERID) AND (T3.SYSNAME = 'POS'))            
+      LEFT JOIN INS_PRODVER T4 ON (T4.PRODVERID = T2.PRODVERID)
+      LEFT JOIN INS_PROD T5 ON (T4.PRODID = T5.PRODID)
+      LEFT JOIN INS_CLIENTACTLOGTYPE T6 ON (T6.SYSNAME = T.ACTION)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CONTRNUMBER) UPPER(T2.CONTRNUMBER) LIKE UPPER('%$CONTRNUMBER%')  #end
+       #chunk($ACTION) T.ACTION = #bind($ACTION 'VARCHAR') #end 
+       #chunk($CLIENTACTLOGID) T.CLIENTACTLOGID = #bind($CLIENTACTLOGID 'NUMERIC') #end 
+       #chunk($CLIENTACTLOGTYPEID) T.CLIENTACTLOGTYPEID = #bind($CLIENTACTLOGTYPEID 'NUMERIC') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($PARAM1) T.PARAM1 = #bind($PARAM1 'VARCHAR') #end 
+       #chunk($PARAM2) T.PARAM2 = #bind($PARAM2 'VARCHAR') #end 
+       #chunk($PARAM3) T.PARAM3 = #bind($PARAM3 'VARCHAR') #end 
+       #chunk($PARAM4) T.PARAM4 = #bind($PARAM4 'VARCHAR') #end 
+       #chunk($PARAM5) T.PARAM5 = #bind($PARAM5 'VARCHAR') #end 
+       #chunk($TABLENAME) T.TABLENAME = #bind($TABLENAME 'VARCHAR') #end 
+       #chunk($SESSIONID) T.SESSIONID = #bind($SESSIONID 'VARCHAR') #end 
+       #chunk($VALUE) T.VALUE = #bind($VALUE 'VARCHAR') #end 
+       #chunk($CONTRID) T2.CONTRID = #bind($CONTRID 'VARCHAR') #end 
+       #chunk($PRODVERID) T2.PRODVERID = #bind($PRODVERID 'VARCHAR') #end 
+       #chunk($PRODCONFID) T3.PRODCONFID = #bind($PRODCONFID 'VARCHAR') #end 
+       #chunk($PRODID) T5.PRODID = #bind($PRODID 'NUMERIC') #end
+       #chunk($CREATESTARTDATE) T.CREATEDATE >= #bind($CREATESTARTDATE 'FLOAT') #end
+       #chunk($CREATEFINISHDATE) T.CREATEDATE <= #bind($CREATEFINISHDATE 'FLOAT') #end
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+
+    
+<query name="dsInsClientActionLogTypeBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="BivSberPosMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.CLIENTACTLOGTYPEID', 'java.lang.Long', 'CLIENTACTLOGTYPEID'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.SYSNAME', 'java.lang.String', 'SYSNAME')
+       $ASPECTFIELDS 
+FROM 
+      INS_CLIENTACTLOGTYPE T
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CLIENTACTLOGTYPEID) T.CLIENTACTLOGTYPEID = #bind($CLIENTACTLOGTYPEID 'VARCHAR') #end 
+       #chunk($NAME) T.NAME = #bind($PARAM2 'VARCHAR') #end 
+       #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsInsClientActionLogTypeBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="BivSberPosMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.CLIENTACTLOGTYPEID)', 'java.lang.Long', 'CNT') 
+FROM 
+      INS_CLIENTACTLOGTYPE T
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CLIENTACTLOGTYPEID) T.CLIENTACTLOGTYPEID = #bind($CLIENTACTLOGTYPEID 'VARCHAR') #end 
+       #chunk($NAME) T.NAME = #bind($PARAM2 'VARCHAR') #end 
+       #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+            
+</data-map>

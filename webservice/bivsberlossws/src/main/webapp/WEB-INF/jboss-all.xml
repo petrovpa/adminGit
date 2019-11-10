@@ -1,0 +1,7 @@
+<jboss xmlns="urn:jboss:1.0">
+    <jboss-deployment-dependencies xmlns="urn:jboss:deployment-dependencies:1.0">
+        <!--<dependency name="insposws-4.01.01.war" />-->
+        <dependency name="corews-6.03.17-HF5-12051502.war" />
+        <dependency name="b2bposws-2.01.01.war" />
+    </jboss-deployment-dependencies>
+</jboss>

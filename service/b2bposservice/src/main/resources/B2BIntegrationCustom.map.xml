@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+
+    <query name="dsB2BIntegrationContractBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BIntegrationCustom" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+SELECT $NEEDDISTINCT
+        #result('T.CANCELDATE', 'java.math.BigDecimal', 'CANCELDATE'),
+        #result('T.CONTRNODEID', 'java.lang.Long', 'CONTRNODEID'),
+        #result('T.CONTRNDNUMBER', 'java.lang.String', 'CONTRNDNUMBER'),
+        #result('T.CONTRNUMBER', 'java.lang.String', 'CONTRNUMBER'),
+        #result('T.CONTRPOLNUM', 'java.lang.String', 'CONTRPOLNUM'),
+        #result('T.CONTRPOLSER', 'java.lang.String', 'CONTRPOLSER'),
+        #result('T.CURRENCYRATE', 'java.lang.Float', 'CURRENCYRATE'),
+        #result('T.DOCUMENTDATE', 'java.math.BigDecimal', 'DOCUMENTDATE'),
+        #result('T.DURATION', 'java.lang.Long', 'DURATION'),
+        #result('T.EXTERNALID', 'java.lang.String', 'EXTERNALID'),
+        #result('T.FILLPROGRESS', 'java.lang.String', 'FILLPROGRESS'),
+        #result('T.FINISHDATE', 'java.math.BigDecimal', 'FINISHDATE'),
+        #result('T.CONTRID', 'java.lang.Long', 'CONTRID'),
+        #result('T.INSAMCURRENCYID', 'java.lang.Long', 'INSAMCURRENCYID'),
+        #result('T.INSAMVALUE', 'java.lang.Double', 'INSAMVALUE'),
+        #result('T.INSREGIONCODE', 'java.lang.String', 'INSREGIONCODE'),
+        #result('T.INSURERID', 'java.lang.Long', 'INSURERID'),
+        #result('T.INSURERREPID', 'java.lang.Long', 'INSURERREPID'),
+        #result('T.LINK', 'java.lang.String', 'LINK'),
+        #result('T.NOTE', 'java.lang.String', 'NOTE'),
+        #result('T.NUMMETHODID', 'java.lang.Long', 'NUMMETHODID'),
+        #result('T.PAYVARID', 'java.lang.Long', 'PAYVARID'),
+        #result('T.PREMCURRENCYID', 'java.lang.Long', 'PREMCURRENCYID'),
+        #result('T.PREMDELTA', 'java.lang.Double', 'PREMDELTA'),
+        #result('T.PREMVALUE', 'java.lang.Double', 'PREMVALUE'),
+        #result('T.PRINTDOCEMAILSEND', 'java.lang.Long', 'PRINTDOCEMAILSEND'),
+        #result('T.PRINTDOCFORMED', 'java.lang.Long', 'PRINTDOCFORMED'),
+        #result('T.PRODPROGID', 'java.lang.Long', 'PRODPROGID'),
+        #result('T.PRODVERID', 'java.lang.Long', 'PRODVERID'),
+        #result('T.REFERRAL', 'java.lang.String', 'REFERRAL'),
+        #result('T.REFERRALBACK', 'java.lang.String', 'REFERRALBACK'),
+        #result('T.REQUESTQUEUEID', 'java.lang.Long', 'REQUESTQUEUEID'),
+        #result('T.SALESOFFICE', 'java.lang.String', 'SALESOFFICE'),
+        #result('T.SELLERID', 'java.lang.Long', 'SELLERID'),
+        #result('T.SESSIONID', 'java.lang.String', 'SESSIONID'),
+        #result('T.SIGNDATE', 'java.math.BigDecimal', 'SIGNDATE'),
+        #result('T.SMSCODE', 'java.lang.String', 'SMSCODE'),
+        #result('T.STARTDATE', 'java.math.BigDecimal', 'STARTDATE'),
+        #result('T.TERMID', 'java.lang.Long', 'TERMID'),
+        #result('T.VERNUMBER', 'java.lang.Long', 'VERNUMBER')
+FROM
+      B2B_CONTR T
+#chain('AND' 'WHERE')
+       #chunk($CANCELDATE) T.CANCELDATE = #bind($CANCELDATE 'FLOAT') #end
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end
+       #chunk($CONTRNDNUMBER) T.CONTRNDNUMBER = #bind($CONTRNDNUMBER 'VARCHAR') #end
+       #chunk($CONTRNODEID) T.CONTRNODEID = #bind($CONTRNODEID 'NUMERIC') #end
+       #chunk($CONTRNUMBER) T.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end
+       #chunk($CONTRPOLNUM) T.CONTRPOLNUM = #bind($CONTRPOLNUM 'VARCHAR') #end
+       #chunk($CONTRPOLSER) T.CONTRPOLSER = #bind($CONTRPOLSER 'VARCHAR') #end
+       #chunk($CURRENCYRATE) T.CURRENCYRATE = #bind($CURRENCYRATE 'FLOAT') #end
+       #chunk($DOCUMENTDATE) T.DOCUMENTDATE = #bind($DOCUMENTDATE 'FLOAT') #end
+       #chunk($DURATION) T.DURATION = #bind($DURATION 'NUMERIC') #end
+       #chunk($EXTERNALID) T.EXTERNALID = #bind($EXTERNALID 'VARCHAR') #end
+       #chunk($FILLPROGRESS) T.FILLPROGRESS = #bind($FILLPROGRESS 'VARCHAR') #end
+       #chunk($FINISHDATE) T.FINISHDATE = #bind($FINISHDATE 'FLOAT') #end
+       #chunk($INSAMCURRENCYID) T.INSAMCURRENCYID = #bind($INSAMCURRENCYID 'NUMERIC') #end
+       #chunk($INSAMVALUE) T.INSAMVALUE = #bind($INSAMVALUE 'NUMERIC') #end
+       #chunk($INSREGIONCODE) T.INSREGIONCODE = #bind($INSREGIONCODE 'VARCHAR') #end
+       #chunk($INSURERID) T.INSURERID = #bind($INSURERID 'NUMERIC') #end
+       #chunk($INSURERREPID) T.INSURERREPID = #bind($INSURERREPID 'NUMERIC') #end
+       #chunk($LINK) T.LINK = #bind($LINK 'VARCHAR') #end
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end
+       #chunk($NUMMETHODID) T.NUMMETHODID = #bind($NUMMETHODID 'NUMERIC') #end
+       #chunk($PAYVARID) T.PAYVARID = #bind($PAYVARID 'NUMERIC') #end
+       #chunk($PREMCURRENCYID) T.PREMCURRENCYID = #bind($PREMCURRENCYID 'NUMERIC') #end
+       #chunk($PREMDELTA) T.PREMDELTA = #bind($PREMDELTA 'NUMERIC') #end
+       #chunk($PREMVALUE) T.PREMVALUE = #bind($PREMVALUE 'NUMERIC') #end
+       #chunk($PRINTDOCEMAILSEND) T.PRINTDOCEMAILSEND = #bind($PRINTDOCEMAILSEND 'NUMERIC') #end
+       #chunk($PRINTDOCFORMED) T.PRINTDOCFORMED = #bind($PRINTDOCFORMED 'NUMERIC') #end
+       #chunk($PRODPROGID) T.PRODPROGID = #bind($PRODPROGID 'NUMERIC') #end
+       #chunk($PRODVERID) T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end
+       #chunk($REFERRAL) T.REFERRAL = #bind($REFERRAL 'VARCHAR') #end
+       #chunk($REFERRALBACK) T.REFERRALBACK = #bind($REFERRALBACK 'VARCHAR') #end
+       #chunk($REQUESTQUEUEID) T.REQUESTQUEUEID = #bind($REQUESTQUEUEID 'NUMERIC') #end
+       #chunk($SALESOFFICE) T.SALESOFFICE = #bind($SALESOFFICE 'VARCHAR') #end
+       #chunk($SELLERID) T.SELLERID = #bind($SELLERID 'NUMERIC') #end
+       #chunk($SESSIONID) T.SESSIONID = #bind($SESSIONID 'VARCHAR') #end
+       #chunk($SIGNDATE) T.SIGNDATE = #bind($SIGNDATE 'FLOAT') #end
+       #chunk($SMSCODE) T.SMSCODE = #bind($SMSCODE 'VARCHAR') #end
+       #chunk($STARTDATE) T.STARTDATE = #bind($STARTDATE 'FLOAT') #end
+       #chunk($TERMID) T.TERMID = #bind($TERMID 'NUMERIC') #end
+       #chunk($VERNUMBER) T.VERNUMBER = #bind($VERNUMBER 'NUMERIC') #end
+#end
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BIntegrationContractBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BIntegrationCustom" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+SELECT
+        #result('COUNT($NEEDDISTINCT T.CONTRID)', 'java.lang.Long', 'CNT')
+FROM
+      B2B_CONTR T
+#chain('AND' 'WHERE')
+       #chunk($CANCELDATE) T.CANCELDATE = #bind($CANCELDATE 'FLOAT') #end
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end
+       #chunk($CONTRNDNUMBER) T.CONTRNDNUMBER = #bind($CONTRNDNUMBER 'VARCHAR') #end
+       #chunk($CONTRNODEID) T.CONTRNODEID = #bind($CONTRNODEID 'NUMERIC') #end
+       #chunk($CONTRNUMBER) T.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end
+       #chunk($CONTRPOLNUM) T.CONTRPOLNUM = #bind($CONTRPOLNUM 'VARCHAR') #end
+       #chunk($CONTRPOLSER) T.CONTRPOLSER = #bind($CONTRPOLSER 'VARCHAR') #end
+       #chunk($CURRENCYRATE) T.CURRENCYRATE = #bind($CURRENCYRATE 'FLOAT') #end
+       #chunk($DOCUMENTDATE) T.DOCUMENTDATE = #bind($DOCUMENTDATE 'FLOAT') #end
+       #chunk($DURATION) T.DURATION = #bind($DURATION 'NUMERIC') #end
+       #chunk($EXTERNALID) T.EXTERNALID = #bind($EXTERNALID 'VARCHAR') #end
+       #chunk($FILLPROGRESS) T.FILLPROGRESS = #bind($FILLPROGRESS 'VARCHAR') #end
+       #chunk($FINISHDATE) T.FINISHDATE = #bind($FINISHDATE 'FLOAT') #end
+       #chunk($INSAMCURRENCYID) T.INSAMCURRENCYID = #bind($INSAMCURRENCYID 'NUMERIC') #end
+       #chunk($INSAMVALUE) T.INSAMVALUE = #bind($INSAMVALUE 'NUMERIC') #end
+       #chunk($INSREGIONCODE) T.INSREGIONCODE = #bind($INSREGIONCODE 'VARCHAR') #end
+       #chunk($INSURERID) T.INSURERID = #bind($INSURERID 'NUMERIC') #end
+       #chunk($INSURERREPID) T.INSURERREPID = #bind($INSURERREPID 'NUMERIC') #end
+       #chunk($LINK) T.LINK = #bind($LINK 'VARCHAR') #end
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end
+       #chunk($NUMMETHODID) T.NUMMETHODID = #bind($NUMMETHODID 'NUMERIC') #end
+       #chunk($PAYVARID) T.PAYVARID = #bind($PAYVARID 'NUMERIC') #end
+       #chunk($PREMCURRENCYID) T.PREMCURRENCYID = #bind($PREMCURRENCYID 'NUMERIC') #end
+       #chunk($PREMDELTA) T.PREMDELTA = #bind($PREMDELTA 'NUMERIC') #end
+       #chunk($PREMVALUE) T.PREMVALUE = #bind($PREMVALUE 'NUMERIC') #end
+       #chunk($PRINTDOCEMAILSEND) T.PRINTDOCEMAILSEND = #bind($PRINTDOCEMAILSEND 'NUMERIC') #end
+       #chunk($PRINTDOCFORMED) T.PRINTDOCFORMED = #bind($PRINTDOCFORMED 'NUMERIC') #end
+       #chunk($PRODPROGID) T.PRODPROGID = #bind($PRODPROGID 'NUMERIC') #end
+       #chunk($PRODVERID) T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end
+       #chunk($REFERRAL) T.REFERRAL = #bind($REFERRAL 'VARCHAR') #end
+       #chunk($REFERRALBACK) T.REFERRALBACK = #bind($REFERRALBACK 'VARCHAR') #end
+       #chunk($REQUESTQUEUEID) T.REQUESTQUEUEID = #bind($REQUESTQUEUEID 'NUMERIC') #end
+       #chunk($SALESOFFICE) T.SALESOFFICE = #bind($SALESOFFICE 'VARCHAR') #end
+       #chunk($SELLERID) T.SELLERID = #bind($SELLERID 'NUMERIC') #end
+       #chunk($SESSIONID) T.SESSIONID = #bind($SESSIONID 'VARCHAR') #end
+       #chunk($SIGNDATE) T.SIGNDATE = #bind($SIGNDATE 'FLOAT') #end
+       #chunk($SMSCODE) T.SMSCODE = #bind($SMSCODE 'VARCHAR') #end
+       #chunk($STARTDATE) T.STARTDATE = #bind($STARTDATE 'FLOAT') #end
+       #chunk($TERMID) T.TERMID = #bind($TERMID 'NUMERIC') #end
+       #chunk($VERNUMBER) T.VERNUMBER = #bind($VERNUMBER 'NUMERIC') #end
+#end
+]]>
+        </sql>
+    </query>
+
+    <query name="dsB2BFastRequestQueueBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BContractMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+SELECT $NEEDDISTINCT
+        #result('T.REQUESTQUEUEID', 'java.lang.Long', 'REQUESTQUEUEID'),
+        #result('T.PARENTREQUESTID', 'java.lang.Long', 'PARENTREQUESTID'),
+        #result('T.PROCESSDATE', 'java.math.BigDecimal', 'PROCESSDATE'),
+        #result('T.RVERSION', 'java.lang.Long', 'RVERSION'),
+        #result('T.REQUESTDATE', 'java.math.BigDecimal', 'REQUESTDATE'),
+        #result('T.REQUESTSTATEID', 'java.lang.Long', 'REQUESTSTATEID'),
+        #result('T.REQUESTTYPEID', 'java.lang.Long', 'REQUESTTYPEID'),
+        #result('T.TRYCOUNT', 'java.lang.Long', 'TRYCOUNT'),
+        #result('T.CONTRID', 'java.lang.Long', 'CONTRID'),
+        #result('T.OBJID', 'java.lang.Long', 'OBJID'),
+        #result('T.USERID', 'java.lang.Long', 'USERID')
+FROM
+      B2B_REQUESTQUEUE T
+#chain('AND' 'WHERE')
+       #chunk($PARENTREQUESTID) T.PARENTREQUESTID = #bind($PARENTREQUESTID 'NUMERIC') #end
+       #chunk($PROCESSDATE) T.PROCESSDATE = #bind($PROCESSDATE 'FLOAT') #end
+       #chunk($REQUESTDATE) T.REQUESTDATE = #bind($REQUESTDATE 'FLOAT') #end
+       #chunk($REQUESTQUEUEID) T.REQUESTQUEUEID = #bind($REQUESTQUEUEID 'NUMERIC') #end
+       #chunk($REQUESTSTATEID) T.REQUESTSTATEID = #bind($REQUESTSTATEID 'NUMERIC') #end
+       #chunk($REQUESTTYPEID) T.REQUESTTYPEID = #bind($REQUESTTYPEID 'NUMERIC') #end
+       #chunk($TRYCOUNT) T.TRYCOUNT = #bind($TRYCOUNT 'NUMERIC') #end
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end
+       #chunk($OBJID) T.OBJID = #bind($OBJID 'NUMERIC') #end
+       #chunk($RVERSION) T.RVERSION = #bind($RVERSION 'NUMERIC') #end
+       #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end
+#end
+]]>
+        </sql>
+    </query>
+
+</data-map>

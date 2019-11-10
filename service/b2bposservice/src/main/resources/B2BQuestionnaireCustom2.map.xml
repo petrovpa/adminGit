@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+    <query name="dsB2BFilledQuestionnaireList" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map"
+           root-name="B2BQuestionnaireCustom2">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql><![CDATA[
+SELECT $NEEDDISTINCT
+     #result('T.ID', 'java.lang.Long', 'FILLEDQUESTIONNAIREID')
+    ,#result('T.DECLARATIONNUMBER', 'java.lang.String', 'DECLARATIONNUMBER')
+    ,#result('T.STATUS', 'java.lang.String', 'STATUS')
+    ,#result("CONCAT(T.LASTNAME, CONCAT(' ', CONCAT(T.FIRSTNAME, CONCAT(' ', T.PATRONYMIC))))", 'java.lang.String', 'FIO')
+    ,#result('T.FILLDATE', 'java.lang.String', 'FILLDATE')
+    ,#result('date_of_birth_comp.STRINGVALUE', 'java.lang.String', 'DATEOFBIRTH')
+    ,#result('sex_answer_comp.STRINGVALUE', 'java.lang.String', 'SEX')
+    ,#result('prog.NAME', 'java.lang.String', 'PRODUCTNAME')
+    $ASPECTFIELDS
+FROM
+  UW_FILLEDQUESTIONNAIRE T
+  LEFT JOIN UW_ANSWER date_of_birth_answer ON T.ID = date_of_birth_answer.FILLEDQUESTIONNAIREID AND date_of_birth_answer.QUESTIONID = 2
+  LEFT JOIN UW_ANSWERCOMPONENT date_of_birth_comp ON date_of_birth_answer.ID = date_of_birth_comp.ANSWERID
+  LEFT JOIN UW_ANSWER sex_answer ON T.ID = sex_answer.FILLEDQUESTIONNAIREID AND sex_answer.QUESTIONID = 3
+  LEFT JOIN UW_ANSWERCOMPONENT sex_answer_comp on sex_answer.ID = sex_answer_comp.ANSWERID
+  LEFT JOIN UW_QUESTIONNAIREBYPRODUCTS qv2prod ON qv2prod.ID = T.QUESTIONNAIREBYPRODUCTID
+  LEFT JOIN B2B_PRODPROG prog on qv2prod.PRODPROGID = prog.PRODPROGID
+    $ASPECTTABLES
+#chain('AND' 'WHERE')
+    #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+    #chunk($fromDate) T.FILLDATE >= #bind($fromDate, 'TIMESTAMP') #end
+    #chunk($toDate) T.FILLDATE <= #bind($toDate, 'TIMESTAMP') #end
+    $ASPECTRESTRICTION
+#end
+
+]]></sql>
+
+    </query>
+    <query name="dsB2BFilledQuestionnaireListCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map"
+           root-name="B2BQuestionnaireCustom2">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql><![CDATA[
+SELECT #result('COUNT($NEEDDISTINCT T.ID)', 'java.lang.Long', 'CNT')
+FROM
+    UW_FILLEDQUESTIONNAIRE T
+  LEFT JOIN UW_ANSWER date_of_birth_answer ON T.ID = date_of_birth_answer.FILLEDQUESTIONNAIREID AND date_of_birth_answer.QUESTIONID = 2
+  LEFT JOIN UW_ANSWERCOMPONENT date_of_birth_comp ON date_of_birth_answer.ID = date_of_birth_comp.ANSWERID
+  LEFT JOIN UW_ANSWER sex_answer ON T.ID = sex_answer.FILLEDQUESTIONNAIREID AND sex_answer.QUESTIONID = 3
+  LEFT JOIN UW_ANSWERCOMPONENT sex_answer_comp on sex_answer.ID = sex_answer_comp.ANSWERID
+  LEFT JOIN UW_QUESTIONNAIREBYPRODUCTS qv2prod ON qv2prod.ID = T.QUESTIONNAIREBYPRODUCTID
+  LEFT JOIN B2B_PRODPROG prog on qv2prod.PRODPROGID = prog.PRODPROGID
+    $ASPECTTABLES
+#chain('AND' 'WHERE')
+    #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+    #chunk($fromDate) T.FILLDATE >= #bind($fromDate, 'TIMESTAMP') #end
+    #chunk($toDate) T.FILLDATE <= #bind($toDate, 'TIMESTAMP') #end
+    $ASPECTRESTRICTION
+#end
+]]>
+        </sql>
+    </query>
+
+    <query name="dsB2BQuestionnaireProducts" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map"
+           root-name="B2BQuestionnaireCustom2">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql><![CDATA[
+
+        select distinct
+        #result('prog.PRODPROGID', 'Long', 'PRODPROGID'),
+        #result('prog.SYSNAME', 'String', 'SYSNAME'),
+        #result('prog.NAME', 'String', 'NAME')
+        FROM UW_QUESTIONNAIREBYPRODUCTS q2p
+        JOIN B2B_PRODPROG prog on q2p.PRODPROGID = prog.PRODPROGID
+
+]]>
+        </sql>
+    </query>
+</data-map>

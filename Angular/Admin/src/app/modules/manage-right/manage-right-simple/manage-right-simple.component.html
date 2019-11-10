@@ -1,0 +1,38 @@
+<form #f="ngForm"
+      [ngClass]="{'was-validated': wasValidated}"
+      class="page-form-edit role-manage-edit-form" novalidate autocomplete="off"
+      (submit)="submit(f)">
+
+  <div class="page-title">Простое право</div>
+
+  <!-- Форма -->
+  <select2 name="roleSysName"
+           [(ngModel)]="rightId"
+           [items]="rightList$ | async"
+           bindLabel="RIGHTNAME"
+           bindValue="RIGHTID"
+           placeholder="Выберите право"
+           [required]="true"
+           [disabled]="isEdit || isFormDisabled"></select2>
+
+    <!-- Кнопки -->
+    <div class="page__btn">
+      <div class="row">
+        <div class="col-sm-6 col-12">
+          <button type="button"
+                  class="btn btn-link btn-rounded btn-block"
+                  [disabled]="isServiceInProgress"
+                  (click)="cancel(f)">
+            Отмена
+          </button>
+        </div>
+        <div class="col-sm-6 col-12">
+          <button type="submit"
+                  class="btn btn-primary btn-rounded btn-block"
+                  [disabled]="isServiceInProgress || isFormDisabled">
+            Сохранить
+          </button>
+        </div>
+      </div>
+    </div>
+</form>

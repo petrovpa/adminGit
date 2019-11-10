@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+        
+    <preConditions>
+        <or>
+            <dbms type="oracle"/>
+            <dbms type="mssql"/>
+            <dbms type="h2"/>
+            <dbms type="sybase"/>
+        </or>
+        
+    </preConditions>     
+		<!-- пробуем создать версию 1.00.001 -->
+		<!-- precondition: БД должна быть создана отдельно -->   
+		<!-- загружаем общие скрипты - common -->
+    <include file="common/rootChangeLog.xml" />	
+		 
+                <!-- загружаем общие скрипты - product
+		<include file="product/rootChangeLog.xml" />
+                 -->
+                <!-- загружаем общие скрипты - bso
+		<include file="bso/rootChangeLog.xml" />	
+                 -->
+		<!-- загружаем общие скрипты - autocommon -->
+    <include file="autocommon/rootChangeLog.xml" />	
+		<!-- загружаем общие скрипты - osago -->
+    <include file="osago/rootChangeLog.xml" />	
+    <changeSet author="dbm_version" id="1.00.001"/>
+        
+</databaseChangeLog>

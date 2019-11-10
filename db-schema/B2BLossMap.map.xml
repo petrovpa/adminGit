@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+	<db-entity name="B2B_LOSS">
+		<db-attribute name="CLOSEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="LOSSCOMPREQCNTID" type="NUMERIC" length="19"/>
+		<db-attribute name="LOSSID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="LOSSINSEVENTID" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODELEMRISKID" type="NUMERIC" length="19"/>
+		<db-attribute name="STATEID" type="NUMERIC" length="19"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_LOSSCOMPREQ">
+		<db-attribute name="ADDRESSID" type="NUMERIC" length="19"/>
+		<db-attribute name="APPLICANTID" type="NUMERIC" length="19"/>
+		<db-attribute name="BANKDETAILID" type="NUMERIC" length="19"/>
+		<db-attribute name="CONTRID" type="NUMERIC" length="19"/>
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="CULPRIT" type="VARCHAR" length="255"/>
+		<db-attribute name="INCOMPAUTHORITY" type="VARCHAR" length="1024"/>
+		<db-attribute name="LOSSCOMPREQID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="LOSSDATE" type="FLOAT" length="38"/>
+		<db-attribute name="LOSSDESCR" type="VARCHAR" length="1024"/>
+		<db-attribute name="PRODVERID" type="NUMERIC" length="19"/>
+		<db-attribute name="RECEIPTDATE" type="FLOAT" length="38"/>
+		<db-attribute name="RECIPIENTID" type="NUMERIC" length="19"/>
+		<db-attribute name="REQUESTDATE" type="FLOAT"/>
+		<db-attribute name="STATEID" type="NUMERIC" length="19"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="VICTIMID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_LOSSCOMPREQCNT">
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="INSEVENTID" type="NUMERIC" length="19"/>
+		<db-attribute name="ISOTHERSK" type="NUMERIC" length="19"/>
+		<db-attribute name="KINDID" type="NUMERIC" length="19"/>
+		<db-attribute name="LOSSCOMPREQCNTID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="LOSSCOMPREQID" type="NUMERIC" length="19"/>
+		<db-attribute name="LOSSID" type="NUMERIC" length="19"/>
+		<db-attribute name="OTHERSK" type="VARCHAR" length="255"/>
+		<db-attribute name="PENDINGLOSSID" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODDAMAGECATID" type="NUMERIC" length="19"/>
+		<db-attribute name="SUMVALUE" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_LOSSCOMPREQDOC">
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="LOSSCOMPREQDOCID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="LOSSCOMPREQID" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODBINDOCID" type="NUMERIC" length="19"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_LOSSCOMPREQVAL">
+		<db-attribute name="DOUBLEFIELD00" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD01" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD02" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD03" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD04" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD05" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD06" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD07" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD08" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD09" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD10" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD11" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD12" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD13" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD14" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD15" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD16" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD17" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD18" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD19" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD20" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD21" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD22" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD23" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD24" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD25" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD26" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD27" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD28" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD29" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD30" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD31" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD32" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD33" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD34" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD35" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD36" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD37" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD38" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD39" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="DOUBLEFIELD40" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="HBDATAVERID" type="NUMERIC" length="19"/>
+		<db-attribute name="ISEDITABLE" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="LONGFIELD00" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD01" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD02" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD03" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD04" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD05" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD06" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD07" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD08" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD09" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD10" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD11" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD12" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD13" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD14" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD15" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD16" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD17" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD18" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD19" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD20" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD21" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD22" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD23" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD24" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD25" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD26" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD27" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD28" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD29" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD30" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD31" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD32" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD33" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD34" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD35" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD36" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD37" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD38" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD39" type="NUMERIC" length="19"/>
+		<db-attribute name="LONGFIELD40" type="NUMERIC" length="19"/>
+		<db-attribute name="LOSSCOMPREQCNTID" type="NUMERIC" length="19"/>
+		<db-attribute name="LOSSCOMPREQVALID" type="NUMERIC" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="STRINGFIELD00" type="VARCHAR" length="1024"/>
+		<db-attribute name="STRINGFIELD01" type="VARCHAR" length="1024"/>
+		<db-attribute name="STRINGFIELD02" type="VARCHAR" length="1024"/>
+		<db-attribute name="STRINGFIELD03" type="VARCHAR" length="1024"/>
+		<db-attribute name="STRINGFIELD04" type="VARCHAR" length="1024"/>
+		<db-attribute name="STRINGFIELD05" type="VARCHAR" length="1024"/>
+		<db-attribute name="STRINGFIELD06" type="VARCHAR" length="1024"/>
+		<db-attribute name="STRINGFIELD07" type="VARCHAR" length="1024"/>
+		<db-attribute name="STRINGFIELD08" type="VARCHAR" length="1024"/>
+		<db-attribute name="STRINGFIELD09" type="VARCHAR" length="1024"/>
+		<db-attribute name="STRINGFIELD10" type="VARCHAR" length="1024"/>
+		<db-attribute name="STRINGFIELD11" type="VARCHAR" length="1024"/>
+		<db-attribute name="STRINGFIELD12" type="VARCHAR" length="1024"/>
+		<db-attribute name="STRINGFIELD13" type="VARCHAR" length="1024"/>
+		<db-attribute name="STRINGFIELD14" type="VARCHAR" length="1024"/>
+		<db-attribute name="STRINGFIELD15" type="VARCHAR" length="1024"/>
+		<db-attribute name="STRINGFIELD16" type="VARCHAR" length="1024"/>
+		<db-attribute name="STRINGFIELD17" type="VARCHAR" length="1024"/>
+		<db-attribute name="STRINGFIELD18" type="VARCHAR" length="1024"/>
+		<db-attribute name="STRINGFIELD19" type="VARCHAR" length="1024"/>
+		<db-attribute name="STRINGFIELD20" type="VARCHAR" length="1024"/>
+	</db-entity>
+	<db-entity name="B2B_LOSSHIST">
+		<db-attribute name="CHANGEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CHANGEDID" type="NUMERIC" length="19"/>
+		<db-attribute name="FPSHISTORYDATE" type="FLOAT" length="38"/>
+		<db-attribute name="FPSSUMVALUE" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="LOSSHISTID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="LOSSID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_LOSSINSEVENT">
+		<db-attribute name="ADDRESSID" type="NUMERIC" length="19"/>
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="EVENTDATE" type="FLOAT" length="38"/>
+		<db-attribute name="INSEVENTID" type="NUMERIC" length="19"/>
+		<db-attribute name="LOSSINSEVENTID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_LOSSINSEVENTMEM">
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="LOSSINSEVENTID" type="NUMERIC" length="19"/>
+		<db-attribute name="LOSSINSEVENTMEMID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="LOSSMEMBERID" type="NUMERIC" length="19"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_LOSSMEMBER">
+		<db-attribute name="BIRTHDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="FIO" type="VARCHAR" length="255"/>
+		<db-attribute name="FIO_ENG" type="VARCHAR" length="255"/>
+		<db-attribute name="LOSSMEMBERID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="MIDDLENAME" type="VARCHAR" length="255"/>
+		<db-attribute name="MIDDLENAME_ENG" type="VARCHAR" length="255"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="NAME_ENG" type="VARCHAR" length="255"/>
+		<db-attribute name="OBJID" type="NUMERIC" length="19"/>
+		<db-attribute name="PARTICIPANTID" type="NUMERIC" length="19"/>
+		<db-attribute name="SURNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="SURNAME_ENG" type="VARCHAR" length="255"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_LOSSNOTICEDOC">
+		<db-attribute name="LOSSNOTICEDOCID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="LOSSNOTICEID" type="NUMERIC" length="19"/>
+		<db-attribute name="STATEID" type="NUMERIC" length="19"/>
+		<db-attribute name="BINDOCTYPE" type="NUMERIC" length="19"/>
+		<db-attribute name="EXTERNALID" type="NUMERIC" length="19"/>
+		<db-attribute name="PATHINPARTNER" type="VARCHAR" length="1024"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="1024"/>
+		<db-attribute name="NAME" type="VARCHAR" length="1024"/>
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<obj-entity name="B2BLoss" dbEntityName="B2B_LOSS">
+		<obj-attribute name="closeDate" type="java.math.BigDecimal" db-attribute-path="CLOSEDATE" note="Дата закрытия убытка"/>
+		<obj-attribute name="createDate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания записи"/>
+		<obj-attribute name="createUserId" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="ид пользователя создавшего запись"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="LOSSID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД убытка"/>
+		<obj-attribute name="lossCompReqCntId" type="java.lang.Long" db-attribute-path="LOSSCOMPREQCNTID" note="ИД содержимого заявления о возмещении"/>
+		<obj-attribute name="lossInsEventId" type="java.lang.Long" db-attribute-path="LOSSINSEVENTID" note="ИД страхового события"/>
+		<obj-attribute name="prodStructRiskId" type="java.lang.Long" db-attribute-path="PRODELEMRISKID" note="ИД риска в структуре продукта"/>
+		<obj-attribute name="stateId" type="java.lang.Long" db-attribute-path="STATEID" note="Состояние убытка"/>
+		<obj-attribute name="updateDate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата изменения убытка"/>
+		<obj-attribute name="updateUserId" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="ИД пользователя изменившего запись"/>
+	</obj-entity>
+	<obj-entity name="B2BLossCompReq" dbEntityName="B2B_LOSSCOMPREQ">
+		<obj-attribute name="addressId" type="java.lang.Long" db-attribute-path="ADDRESSID" note="Ссылка на адрес события"/>
+		<obj-attribute name="applicantId" type="java.lang.Long" db-attribute-path="APPLICANTID" note="ИД заявителя"/>
+		<obj-attribute name="bankDetailId" type="java.lang.Long" db-attribute-path="BANKDETAILID" note="Банковские реквизиты получателя"/>
+		<obj-attribute name="contrId" type="java.lang.Long" db-attribute-path="CONTRID" note="ИД договора"/>
+		<obj-attribute name="createDate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания заявления"/>
+		<obj-attribute name="createUserId" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="Пользователь создавший заявление"/>
+		<obj-attribute name="culprit" type="java.lang.String" db-attribute-path="CULPRIT" note="Виновник"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="LOSSCOMPREQID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД заявления"/>
+		<obj-attribute name="inCompAuthority" type="java.lang.String" db-attribute-path="INCOMPAUTHORITY" note="Заявлено в компетентные органы"/>
+		<obj-attribute name="lossDate" type="java.math.BigDecimal" db-attribute-path="LOSSDATE" note="Дата события"/>
+		<obj-attribute name="lossDescr" type="java.lang.String" db-attribute-path="LOSSDESCR" note="Описание события"/>
+		<obj-attribute name="prodverid" type="java.lang.Long" db-attribute-path="PRODVERID" note="ИД версии продукта"/>
+		<obj-attribute name="receiptDate" type="java.math.BigDecimal" db-attribute-path="RECEIPTDATE" note="Дата принятия заявления"/>
+		<obj-attribute name="recipientId" type="java.lang.Long" db-attribute-path="RECIPIENTID" note="ИД получателя"/>
+		<obj-attribute name="requestDate" type="java.math.BigDecimal" db-attribute-path="REQUESTDATE" note="Дата подачи заявления"/>
+		<obj-attribute name="stateId" type="java.lang.Long" db-attribute-path="STATEID" note="ИД состояния заявления"/>
+		<obj-attribute name="updateDate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата изменения заявления"/>
+		<obj-attribute name="updateUserId" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="ИД пользователя изменившего заявление"/>
+		<obj-attribute name="victimId" type="java.lang.Long" db-attribute-path="VICTIMID" note="Потерпевший по заявлению"/>
+	</obj-entity>
+	<obj-entity name="B2BLossCompReqCnt" dbEntityName="B2B_LOSSCOMPREQCNT">
+		<obj-attribute name="createDate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания содержимого заявления"/>
+		<obj-attribute name="createUserId" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="ИД пользователя создавшего запись"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="LOSSCOMPREQCNTID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД содержимого заявления"/>
+		<obj-attribute name="inseventid" type="java.lang.Long" db-attribute-path="INSEVENTID" note="Вид страхового события"/>
+		<obj-attribute name="isothersk" type="java.lang.Long" db-attribute-path="ISOTHERSK" note="Признак о наличии страховки от другой СК"/>
+		<obj-attribute name="kindId" type="java.lang.Long" db-attribute-path="KINDID" note="ИД вида страхового события"/>
+		<obj-attribute name="lossCompReqId" type="java.lang.Long" db-attribute-path="LOSSCOMPREQID" note="ИД заявления о убытке"/>
+		<obj-attribute name="lossId" type="java.lang.Long" db-attribute-path="LOSSID" note="ИД убытка"/>
+		<obj-attribute name="othersk" type="java.lang.String" db-attribute-path="OTHERSK" note="Указание другой СК"/>
+		<obj-attribute name="pendingLossId" type="java.lang.Long" db-attribute-path="PENDINGLOSSID" note="ИД связанного убытка"/>
+		<obj-attribute name="prodDamageCatId" type="java.lang.Long" db-attribute-path="PRODDAMAGECATID" note="ИД категории ущерба"/>
+		<obj-attribute name="sumValue" type="java.lang.Double" db-attribute-path="SUMVALUE" note="Заявленная сумма ущерба"/>
+		<obj-attribute name="updateDate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата обновления записи"/>
+		<obj-attribute name="updateUserId" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="ИД пользователя обновившего запись"/>
+	</obj-entity>
+	<obj-entity name="B2BLossCompReqDoc" dbEntityName="B2B_LOSSCOMPREQDOC">
+		<obj-attribute name="createdate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания"/>
+		<obj-attribute name="createuserid" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="Пользователь создавший запись"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="LOSSCOMPREQDOCID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="Ид"/>
+		<obj-attribute name="lossCompReqId" type="java.lang.Long" db-attribute-path="LOSSCOMPREQID" note="Ид заявки"/>
+		<obj-attribute name="prodbindocid" type="java.lang.Long" db-attribute-path="PRODBINDOCID" note="Ид типа документа"/>
+		<obj-attribute name="updatedate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата изменения"/>
+		<obj-attribute name="updateuserid" type="java.math.Long" db-attribute-path="UPDATEUSERID" note="Пользователь изменивший запись"/>
+	</obj-entity>
+	<obj-entity name="B2BLossCompReqVal" dbEntityName="B2B_LOSSCOMPREQVAL">
+		<obj-attribute name="doublefield00" type="java.lang.Double" db-attribute-path="DOUBLEFIELD00"/>
+		<obj-attribute name="doublefield01" type="java.lang.Double" db-attribute-path="DOUBLEFIELD01"/>
+		<obj-attribute name="doublefield02" type="java.lang.Double" db-attribute-path="DOUBLEFIELD02"/>
+		<obj-attribute name="doublefield03" type="java.lang.Double" db-attribute-path="DOUBLEFIELD03"/>
+		<obj-attribute name="doublefield04" type="java.lang.Double" db-attribute-path="DOUBLEFIELD04"/>
+		<obj-attribute name="doublefield05" type="java.lang.Double" db-attribute-path="DOUBLEFIELD05"/>
+		<obj-attribute name="doublefield06" type="java.lang.Double" db-attribute-path="DOUBLEFIELD06"/>
+		<obj-attribute name="doublefield07" type="java.lang.Double" db-attribute-path="DOUBLEFIELD07"/>
+		<obj-attribute name="doublefield08" type="java.lang.Double" db-attribute-path="DOUBLEFIELD08"/>
+		<obj-attribute name="doublefield09" type="java.lang.Double" db-attribute-path="DOUBLEFIELD09"/>
+		<obj-attribute name="doublefield10" type="java.lang.Double" db-attribute-path="DOUBLEFIELD10"/>
+		<obj-attribute name="doublefield11" type="java.lang.Double" db-attribute-path="DOUBLEFIELD11"/>
+		<obj-attribute name="doublefield12" type="java.lang.Double" db-attribute-path="DOUBLEFIELD12"/>
+		<obj-attribute name="doublefield13" type="java.lang.Double" db-attribute-path="DOUBLEFIELD13"/>
+		<obj-attribute name="doublefield14" type="java.lang.Double" db-attribute-path="DOUBLEFIELD14"/>
+		<obj-attribute name="doublefield15" type="java.lang.Double" db-attribute-path="DOUBLEFIELD15"/>
+		<obj-attribute name="doublefield16" type="java.lang.Double" db-attribute-path="DOUBLEFIELD16"/>
+		<obj-attribute name="doublefield17" type="java.lang.Double" db-attribute-path="DOUBLEFIELD17"/>
+		<obj-attribute name="doublefield18" type="java.lang.Double" db-attribute-path="DOUBLEFIELD18"/>
+		<obj-attribute name="doublefield19" type="java.lang.Double" db-attribute-path="DOUBLEFIELD19"/>
+		<obj-attribute name="doublefield20" type="java.lang.Double" db-attribute-path="DOUBLEFIELD20"/>
+		<obj-attribute name="doublefield21" type="java.lang.Double" db-attribute-path="DOUBLEFIELD21"/>
+		<obj-attribute name="doublefield22" type="java.lang.Double" db-attribute-path="DOUBLEFIELD22"/>
+		<obj-attribute name="doublefield23" type="java.lang.Double" db-attribute-path="DOUBLEFIELD23"/>
+		<obj-attribute name="doublefield24" type="java.lang.Double" db-attribute-path="DOUBLEFIELD24"/>
+		<obj-attribute name="doublefield25" type="java.lang.Double" db-attribute-path="DOUBLEFIELD25"/>
+		<obj-attribute name="doublefield26" type="java.lang.Double" db-attribute-path="DOUBLEFIELD26"/>
+		<obj-attribute name="doublefield27" type="java.lang.Double" db-attribute-path="DOUBLEFIELD27"/>
+		<obj-attribute name="doublefield28" type="java.lang.Double" db-attribute-path="DOUBLEFIELD28"/>
+		<obj-attribute name="doublefield29" type="java.lang.Double" db-attribute-path="DOUBLEFIELD29"/>
+		<obj-attribute name="doublefield30" type="java.lang.Double" db-attribute-path="DOUBLEFIELD30"/>
+		<obj-attribute name="doublefield31" type="java.lang.Double" db-attribute-path="DOUBLEFIELD31"/>
+		<obj-attribute name="doublefield32" type="java.lang.Double" db-attribute-path="DOUBLEFIELD32"/>
+		<obj-attribute name="doublefield33" type="java.lang.Double" db-attribute-path="DOUBLEFIELD33"/>
+		<obj-attribute name="doublefield34" type="java.lang.Double" db-attribute-path="DOUBLEFIELD34"/>
+		<obj-attribute name="doublefield35" type="java.lang.Double" db-attribute-path="DOUBLEFIELD35"/>
+		<obj-attribute name="doublefield36" type="java.lang.Double" db-attribute-path="DOUBLEFIELD36"/>
+		<obj-attribute name="doublefield37" type="java.lang.Double" db-attribute-path="DOUBLEFIELD37"/>
+		<obj-attribute name="doublefield38" type="java.lang.Double" db-attribute-path="DOUBLEFIELD38"/>
+		<obj-attribute name="doublefield39" type="java.lang.Double" db-attribute-path="DOUBLEFIELD39"/>
+		<obj-attribute name="doublefield40" type="java.lang.Double" db-attribute-path="DOUBLEFIELD40"/>
+		<obj-attribute name="hbdataverid" type="java.lang.Long" db-attribute-path="HBDATAVERID" note="ИД версии справочника"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="LOSSCOMPREQVALID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД записи с показателями"/>
+		<obj-attribute name="isEditable" type="java.lang.Long" db-attribute-path="ISEDITABLE" note="признак ручного ввода"/>
+		<obj-attribute name="longfield00" type="java.lang.Long" db-attribute-path="LONGFIELD00"/>
+		<obj-attribute name="longfield01" type="java.lang.Long" db-attribute-path="LONGFIELD01"/>
+		<obj-attribute name="longfield02" type="java.lang.Long" db-attribute-path="LONGFIELD02"/>
+		<obj-attribute name="longfield03" type="java.lang.Long" db-attribute-path="LONGFIELD03"/>
+		<obj-attribute name="longfield04" type="java.lang.Long" db-attribute-path="LONGFIELD04"/>
+		<obj-attribute name="longfield05" type="java.lang.Long" db-attribute-path="LONGFIELD05"/>
+		<obj-attribute name="longfield06" type="java.lang.Long" db-attribute-path="LONGFIELD06"/>
+		<obj-attribute name="longfield07" type="java.lang.Long" db-attribute-path="LONGFIELD07"/>
+		<obj-attribute name="longfield08" type="java.lang.Long" db-attribute-path="LONGFIELD08"/>
+		<obj-attribute name="longfield09" type="java.lang.Long" db-attribute-path="LONGFIELD09"/>
+		<obj-attribute name="longfield10" type="java.lang.Long" db-attribute-path="LONGFIELD10"/>
+		<obj-attribute name="longfield11" type="java.lang.Long" db-attribute-path="LONGFIELD11"/>
+		<obj-attribute name="longfield12" type="java.lang.Long" db-attribute-path="LONGFIELD12"/>
+		<obj-attribute name="longfield13" type="java.lang.Long" db-attribute-path="LONGFIELD13"/>
+		<obj-attribute name="longfield14" type="java.lang.Long" db-attribute-path="LONGFIELD14"/>
+		<obj-attribute name="longfield15" type="java.lang.Long" db-attribute-path="LONGFIELD15"/>
+		<obj-attribute name="longfield16" type="java.lang.Long" db-attribute-path="LONGFIELD16"/>
+		<obj-attribute name="longfield17" type="java.lang.Long" db-attribute-path="LONGFIELD17"/>
+		<obj-attribute name="longfield18" type="java.lang.Long" db-attribute-path="LONGFIELD18"/>
+		<obj-attribute name="longfield19" type="java.lang.Long" db-attribute-path="LONGFIELD19"/>
+		<obj-attribute name="longfield20" type="java.lang.Long" db-attribute-path="LONGFIELD20"/>
+		<obj-attribute name="longfield21" type="java.lang.Long" db-attribute-path="LONGFIELD21"/>
+		<obj-attribute name="longfield22" type="java.lang.Long" db-attribute-path="LONGFIELD22"/>
+		<obj-attribute name="longfield23" type="java.lang.Long" db-attribute-path="LONGFIELD23"/>
+		<obj-attribute name="longfield24" type="java.lang.Long" db-attribute-path="LONGFIELD24"/>
+		<obj-attribute name="longfield25" type="java.lang.Long" db-attribute-path="LONGFIELD25"/>
+		<obj-attribute name="longfield26" type="java.lang.Long" db-attribute-path="LONGFIELD26"/>
+		<obj-attribute name="longfield27" type="java.lang.Long" db-attribute-path="LONGFIELD27"/>
+		<obj-attribute name="longfield28" type="java.lang.Long" db-attribute-path="LONGFIELD28"/>
+		<obj-attribute name="longfield29" type="java.lang.Long" db-attribute-path="LONGFIELD29"/>
+		<obj-attribute name="longfield30" type="java.lang.Long" db-attribute-path="LONGFIELD30"/>
+		<obj-attribute name="longfield31" type="java.lang.Long" db-attribute-path="LONGFIELD31"/>
+		<obj-attribute name="longfield32" type="java.lang.Long" db-attribute-path="LONGFIELD32"/>
+		<obj-attribute name="longfield33" type="java.lang.Long" db-attribute-path="LONGFIELD33"/>
+		<obj-attribute name="longfield34" type="java.lang.Long" db-attribute-path="LONGFIELD34"/>
+		<obj-attribute name="longfield35" type="java.lang.Long" db-attribute-path="LONGFIELD35"/>
+		<obj-attribute name="longfield36" type="java.lang.Long" db-attribute-path="LONGFIELD36"/>
+		<obj-attribute name="longfield37" type="java.lang.Long" db-attribute-path="LONGFIELD37"/>
+		<obj-attribute name="longfield38" type="java.lang.Long" db-attribute-path="LONGFIELD38"/>
+		<obj-attribute name="longfield39" type="java.lang.Long" db-attribute-path="LONGFIELD39"/>
+		<obj-attribute name="longfield40" type="java.lang.Long" db-attribute-path="LONGFIELD40"/>
+		<obj-attribute name="losscompreqcntid" type="java.lang.Long" db-attribute-path="LOSSCOMPREQCNTID" note="ИД содержимого заявления о убытке"/>
+		<obj-attribute name="stringfield00" type="java.lang.String" db-attribute-path="STRINGFIELD00"/>
+		<obj-attribute name="stringfield01" type="java.lang.String" db-attribute-path="STRINGFIELD01"/>
+		<obj-attribute name="stringfield02" type="java.lang.String" db-attribute-path="STRINGFIELD02"/>
+		<obj-attribute name="stringfield03" type="java.lang.String" db-attribute-path="STRINGFIELD03"/>
+		<obj-attribute name="stringfield04" type="java.lang.String" db-attribute-path="STRINGFIELD04"/>
+		<obj-attribute name="stringfield05" type="java.lang.String" db-attribute-path="STRINGFIELD05"/>
+		<obj-attribute name="stringfield06" type="java.lang.String" db-attribute-path="STRINGFIELD06"/>
+		<obj-attribute name="stringfield07" type="java.lang.String" db-attribute-path="STRINGFIELD07"/>
+		<obj-attribute name="stringfield08" type="java.lang.String" db-attribute-path="STRINGFIELD08"/>
+		<obj-attribute name="stringfield09" type="java.lang.String" db-attribute-path="STRINGFIELD09"/>
+		<obj-attribute name="stringfield10" type="java.lang.String" db-attribute-path="STRINGFIELD10"/>
+		<obj-attribute name="stringfield11" type="java.lang.String" db-attribute-path="STRINGFIELD11"/>
+		<obj-attribute name="stringfield12" type="java.lang.String" db-attribute-path="STRINGFIELD12"/>
+		<obj-attribute name="stringfield13" type="java.lang.String" db-attribute-path="STRINGFIELD13"/>
+		<obj-attribute name="stringfield14" type="java.lang.String" db-attribute-path="STRINGFIELD14"/>
+		<obj-attribute name="stringfield15" type="java.lang.String" db-attribute-path="STRINGFIELD15"/>
+		<obj-attribute name="stringfield16" type="java.lang.String" db-attribute-path="STRINGFIELD16"/>
+		<obj-attribute name="stringfield17" type="java.lang.String" db-attribute-path="STRINGFIELD17"/>
+		<obj-attribute name="stringfield18" type="java.lang.String" db-attribute-path="STRINGFIELD18"/>
+		<obj-attribute name="stringfield19" type="java.lang.String" db-attribute-path="STRINGFIELD19"/>
+		<obj-attribute name="stringfield20" type="java.lang.String" db-attribute-path="STRINGFIELD20"/>
+	</obj-entity>
+	<obj-entity name="B2BLossHist" dbEntityName="B2B_LOSSHIST">
+		<obj-attribute name="changeDate" type="java.math.BigDecimal" db-attribute-path="CHANGEDATE" note="Дата изменения"/>
+		<obj-attribute name="changedId" type="java.lang.Long" db-attribute-path="CHANGEDID" note="ИД пльзователя B2B"/>
+		<obj-attribute name="fpsHistoryDate" type="java.math.BigDecimal" db-attribute-path="FPSHISTORYDATE" note="Дата истории РЗУ"/>
+		<obj-attribute name="fpsSumValue" type="java.lang.Double" db-attribute-path="FPSSUMVALUE" note="Сумма РЗУ"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="LOSSHISTID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД истории убытка"/>
+		<obj-attribute name="lossId" type="java.lang.Long" db-attribute-path="LOSSID" note="ИД убытка"/>
+	</obj-entity>
+	<obj-entity name="B2BLossInsEvent" dbEntityName="B2B_LOSSINSEVENT">
+		<obj-attribute name="addressId" type="java.lang.Long" db-attribute-path="ADDRESSID" note="ИД адреса события"/>
+		<obj-attribute name="createDate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания"/>
+		<obj-attribute name="createUserId" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="ИД создавшего пользователя"/>
+		<obj-attribute name="eventDate" type="java.math.BigDecimal" db-attribute-path="EVENTDATE" note="Дата события"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="LOSSINSEVENTID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД события"/>
+		<obj-attribute name="prodInsEventId" type="java.lang.Long" db-attribute-path="INSEVENTID" note="Вид события"/>
+		<obj-attribute name="updateDate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата изменения события"/>
+		<obj-attribute name="updateUserId" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="ИД пользователя изменившего"/>
+	</obj-entity>
+	<obj-entity name="B2BLossInsEventMem" dbEntityName="B2B_LOSSINSEVENTMEM">
+		<obj-attribute name="createDate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания"/>
+		<obj-attribute name="createUserId" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="ИД пользователя создавшего"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="LOSSINSEVENTMEMID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД участника события"/>
+		<obj-attribute name="lossInsEventId" type="java.lang.Long" db-attribute-path="LOSSINSEVENTID" note="ИД страхового события"/>
+		<obj-attribute name="lossMemberId" type="java.lang.Long" db-attribute-path="LOSSMEMBERID" note="ИД участника страхового события"/>
+		<obj-attribute name="updateDate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата изменения"/>
+		<obj-attribute name="updateUserId" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="ИД изменившего пользователя"/>
+	</obj-entity>
+	<obj-entity name="B2BLossMember" dbEntityName="B2B_LOSSMEMBER">
+		<obj-attribute name="birthDate" type="java.math.BigDecimal" db-attribute-path="BIRTHDATE" note="Дата рождения"/>
+		<obj-attribute name="createDate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания"/>
+		<obj-attribute name="createUserId" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="ИД создавшего пользователя"/>
+		<obj-attribute name="fio" type="java.lang.String" db-attribute-path="FIO" note="ФИО"/>
+		<obj-attribute name="fioEng" type="java.lang.String" db-attribute-path="FIO_ENG" note="ФИО англ"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="LOSSMEMBERID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД участника"/>
+		<obj-attribute name="middleName" type="java.lang.String" db-attribute-path="MIDDLENAME" note="Отчество"/>
+		<obj-attribute name="middleNameEng" type="java.lang.String" db-attribute-path="MIDDLENAME_ENG" note="Отчество Англ"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Имя"/>
+		<obj-attribute name="nameEng" type="java.lang.String" db-attribute-path="NAME_ENG" note="Имя Англ"/>
+		<obj-attribute name="objId" type="java.lang.Long" db-attribute-path="OBJID" note="ИД связанного объекта"/>
+		<obj-attribute name="participantId" type="java.lang.Long" db-attribute-path="PARTICIPANTID" note="ИД партиципанта"/>
+		<obj-attribute name="surname" type="java.lang.String" db-attribute-path="SURNAME" note="Фамилия"/>
+		<obj-attribute name="surnameEng" type="java.lang.String" db-attribute-path="SURNAME_ENG" note="Фамилия англ"/>
+		<obj-attribute name="updateDate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="дата изменения"/>
+		<obj-attribute name="updateUserId" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="ид изменившего пользователя"/>
+	</obj-entity>
+	<obj-entity name="B2B_LOSSNOTICEDOC" dbEntityName="B2B_LOSSNOTICEDOC">
+		<obj-attribute name="LOSSNOTICEDOCID" type="java.lang.Long" db-attribute-path="LOSSNOTICEDOCID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note=""/>
+		<obj-attribute name="LOSSNOTICEID" type="java.lang.Long" db-attribute-path="LOSSNOTICEID" note=""/>
+		<obj-attribute name="STATEID" type="java.lang.Long" db-attribute-path="STATEID" note=""/>
+		<obj-attribute name="BINDOCTYPE" type="java.lang.Long" db-attribute-path="BINDOCTYPE" note=""/>
+		<obj-attribute name="EXTERNALID" type="java.lang.Long" db-attribute-path="EXTERNALID" note=""/>
+		<obj-attribute name="PATHINPARTNER" type="java.lang.String" db-attribute-path="PATHINPARTNER" note=""/>
+		<obj-attribute name="NOTE" type="java.lang.String" db-attribute-path="NOTE" note=""/>
+		<obj-attribute name="NAME" type="java.lang.String" db-attribute-path="NAME" note=""/>
+		<obj-attribute name="CREATEDATE" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note=""/>
+		<obj-attribute name="CREATEUSERID" type="java.lang.Long" db-attribute-path="CREATEUSERID" note=""/>
+		<obj-attribute name="UPDATEDATE" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note=""/>
+		<obj-attribute name="UPDATEUSERID" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note=""/>
+	</obj-entity>
+</data-map>

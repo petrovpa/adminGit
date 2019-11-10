@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<domains project-version="2.0">
+    <domain name="WSDomain">
+        <property name="cayenne.DataDomain.usingExternalTransactions" value="false"/>
+        <map name="B2BAdmin" location="B2BAdminMap.map.xml"/>
+        <map name="B2BAdminLK" location="B2BAdminLK.map.xml"/>
+        <map name="B2BProduct" location="B2BProductMap.map.xml"/>
+        <map name="B2BProductCustom" location="B2BProductMapCustom.map.xml"/>
+        <map name="B2BContract" location="B2BContractMap.map.xml"/>
+        <map name="B2BContractCustom" location="B2BContractMapCustom.map.xml"/>
+        <map name="B2BLoss" location="B2BLossMap.map.xml"/>
+        <map name="B2BLossCustom" location="B2BLossMapCustom.map.xml"/>
+        <map name="B2BPosMapCustom" location="B2BPosMapCustom.map.xml"/>
+        <map name="B2BAdditionalAgreements" location="B2BAdditionalAgreementsMap.map.xml"/>
+        <map name="B2BAdditionalAgreementsCustom" location="B2BAdditionalAgreementsMapCustom.map.xml"/>
+        <map name="B2BOther" location="B2BOther.map.xml"/>
+        <map name="Sal" location="SALMap.map.xml"/>
+        <map name="B2bSubSystemCustom" location="B2bSubSystemCustom.map.xml"/>
+        <map name="SalCustom" location="SALMapCustom.map.xml"/>
+        <map name="B2BOtherCustom" location="B2BOtherCustom.map.xml"/>
+        <map name="B2BMort900Custom" location="B2BMort900Custom.map.xml"/>
+        <map name="B2BKLADRCustom" location="B2BKLADRCustom.map.xml"/>
+        <map name="B2BPrimaryActivityCustom" location="B2BPrimaryActivityCustom.map.xml"/>
+        <map name="B2BJournals" location="B2BJournals.map.xml"/>
+        <map name="B2BJournalsCustom" location="B2BJournalsCustom.map.xml"/>
+        <map name="B2BInvest" location="B2BInvest.map.xml"/>
+        <map name="B2BInvestCustom" location="B2BInvestCustom.map.xml"/>
+        <map name="B2BKm" location="B2BKm.map.xml"/>
+        <map name="B2BQuestionnaireCustom2" location="B2BQuestionnaireCustom2.map.xml" />
+        <map name="B2BContractMass" location="B2BContractMass.map.xml"/>
+        <map name="B2BIntegrationCustom" location="B2BIntegrationCustom.map.xml"/>
+        <map name="B2BClientManagerSb1" location="B2BClientManagerSb1.map.xml"/>
+        <map name="B2BImportSessionCustom" location="B2BImportSessionMapCustom.map.xml"/>
+        <map name="VitrinaPin2" location="VitrinaPin2.map.xml"/>
+        <node name="MapNode" datasource="MapNode.driver.xml" factory="org.apache.cayenne.conf.DriverDataSourceFactory">
+            <map-ref name="B2BAdmin"/>
+            <map-ref name="B2BAdminLK"/>
+            <map-ref name="B2BProduct"/>      
+            <map-ref name="B2BProductCustom"/>      
+            <map-ref name="B2BContract"/>      
+            <map-ref name="B2BContractCustom"/>      
+            <map-ref name="B2BLoss"/>      
+            <map-ref name="B2BLossCustom"/>      
+            <map-ref name="B2BPosMapCustom"/>      
+            <map-ref name="B2BAdditionalAgreements"/>      
+            <map-ref name="B2BAdditionalAgreementsCustom"/>      
+            <map-ref name="B2BOther"/>      
+            <map-ref name="Sal"/>      
+            <map-ref name="SalCustom"/>      
+            <map-ref name="B2BOtherCustom"/>      
+            <map-ref name="B2BMort900Custom"/>      
+            <map-ref name="B2BPrimaryActivityCustom"/>      
+            <map-ref name="B2BKLADRCustom"/>      
+            <map-ref name="B2BJournals"/>      
+            <map-ref name="B2BJournalsCustom"/>      
+            <map-ref name="B2BInvest"/>      
+            <map-ref name="B2BKm"/>  
+            <map-ref name="B2BInvestCustom"/>      
+            <map-ref name="B2BQuestionnaireCustom2"/>
+            <map-ref name="B2BContractMass"/>
+            <map-ref name="B2BIntegrationCustom"/>      
+            <map-ref name="B2BClientManagerSb1"/>
+            <map-ref name="B2BImportSessionCustom"/>
+            <map-ref name="VitrinaPin2"/>
+            <map-ref name="B2bSubSystemCustom"/>
+        </node>
+    </domain>
+</domains>

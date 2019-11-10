@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+    <!-- Generate by core-dictionary-plugin for module ${className} -->
+    <persistence-unit name="Imports" transaction-type="JTA">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+                <jta-data-source>java:/DataSourceEx</jta-data-source>
+                <!-- Configuring class Entity -->
+                        <class>com.bivgroup.crm.SMType</class>
+                        <class>com.bivgroup.crm.SMState</class>
+                        <class>com.bivgroup.crm.SMTransition</class>
+                        <class>com.bivgroup.crm.BinaryFile</class>
+                <class>com.bivgroup.imports.ImportSessionContent</class>
+                <class>com.bivgroup.imports.ImportSessionEventManagerToContractCreated</class>
+                <class>com.bivgroup.imports.KindImportSessionDepartmentLevel</class>
+                <class>com.bivgroup.imports.ImportSessionManagerDepartment</class>
+                <class>com.bivgroup.imports.ImportSessionEventUnknownError</class>
+                <class>com.bivgroup.imports.ImportSessionEventDepartmentBlocked</class>
+                <class>com.bivgroup.imports.KindImportSessionManagerRole</class>
+                <class>com.bivgroup.imports.ImportSessionEventContractNotFound</class>
+                <class>com.bivgroup.imports.ImportSessionContentDepartment</class>
+                <class>com.bivgroup.imports.ImportSessionEventNoChanges</class>
+                <class>com.bivgroup.imports.ImportSessionEventManagerNotFound</class>
+                <class>com.bivgroup.imports.ImportSessionEventManagerBlocked</class>
+                <class>com.bivgroup.imports.KindImportSessionDepartmentSegment</class>
+                <class>com.bivgroup.imports.ImportSessionEventDepartmentNotFound</class>
+                <class>com.bivgroup.imports.ImportSessionEventToProcessing</class>
+                <class>com.bivgroup.imports.KindImportSessionFileExceptionRule</class>
+                <class>com.bivgroup.imports.ImportSessionManagerContract</class>
+                <class>com.bivgroup.imports.ImportSessionEventManagerToDepartmentChanged</class>
+                <class>com.bivgroup.imports.ImportSession</class>
+                <class>com.bivgroup.imports.ImportSessionEventGroupToContractCreated</class>
+                <class>com.bivgroup.imports.KindImportSessionManagerPosition</class>
+                <class>com.bivgroup.imports.ImportSessionDepartment</class>
+                <class>com.bivgroup.imports.ImportSessionContentProcessLogEntry</class>
+                <class>com.bivgroup.imports.KindImportSessionDepartmentFileExceptionRule</class>
+                <class>com.bivgroup.imports.KindImportSessionDepartmentType</class>
+                <class>com.bivgroup.imports.ImportSessionEventManagerCreated</class>
+                <class>com.bivgroup.imports.ImportSessionEventManagerToDepartmentCreated</class>
+                <class>com.bivgroup.imports.ImportSessionEventManagerToContractChanged</class>
+                <class>com.bivgroup.imports.ImportSessionContentManagerDepartment</class>
+                <class>com.bivgroup.imports.ImportSessionDepartmentSegment</class>
+                <class>com.bivgroup.imports.ImportSessionEventDepartmentToDepartmentCreated</class>
+                <class>com.bivgroup.imports.ImportSessionContentManagerContract</class>
+                <class>com.bivgroup.imports.KindImportSessionContentProcessLogEvent</class>
+                <class>com.bivgroup.imports.ImportSessionEventDepartmentToContractCreated</class>
+                <class>com.bivgroup.imports.ImportSessionEventDepartmentToContractChanged</class>
+                <class>com.bivgroup.imports.ImportSessionEventDepartmentCreated</class>
+                        <properties>
+            <!-- Hibernate properties -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.use_sql_comments" value="true"/>
+            <!-- <property name="hibernate.hbm2ddl.auto" value="update"/>-->
+            <!-- Configuring inner hbm.xml-->
+                        <property name="jboss.as.jpa.providerModule" value="org.hibernate:5.2.4.Final"/>
+        </properties>
+    </persistence-unit>
+
+</persistence>

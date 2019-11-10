@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+    
+    <query name="dsInsPromocodesDeleteEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="BivSberPosMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+DELETE  T
+FROM 
+      INS_PROMOCODES T 
+#chain('AND' 'WHERE') 
+       #chunk($PROMOCODEID) T.PROMOCODEID = #bind($PROMOCODEID 'NUMERIC') #end 
+       #chunk($SHAREID) T.SHAREID = #bind($SHAREID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      INS_PROMOCODES T 
+#chain('AND' 'WHERE') 
+       #chunk($PROMOCODEID) T.PROMOCODEID = #bind($PROMOCODEID 'NUMERIC') #end 
+       #chunk($SHAREID) T.SHAREID = #bind($SHAREID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       INS_PROMOCODES T 
+#chain('AND' 'WHERE') 
+       #chunk($PROMOCODEID) T.PROMOCODEID = #bind($PROMOCODEID 'NUMERIC') #end 
+       #chunk($SHAREID) T.SHAREID = #bind($SHAREID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>    
+    <query name="dsInsPromocodesBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="BivSberPosMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.PROMOCODEID', 'java.lang.Long', 'PROMOCODEID'),
+        #result('T.PROMOCODE', 'java.lang.String', 'PROMOCODE'),
+        #result('T1.NAME', 'java.lang.String', 'PROMOCODE'),
+        #result('T1.SYSNAME', 'java.lang.String', 'PROMOCODE'),
+        #result('T1.TYPESYSNAME', 'java.lang.String', 'PROMOCODE'),
+        #result('T1.VALUE', 'java.lang.Double', 'VALUE'),
+        #result('T1.STARTDATE', 'java.math.BigDecimal', 'STARTDATE'),
+        #result('T1.FINISHDATE', 'java.math.BigDecimal', 'FINISHDATE'),
+        #result('T1.PRODVERID', 'java.lang.Long', 'PRODVERID'), 
+        #result('T.SHAREID', 'java.lang.Long', 'SHAREID')         
+       $ASPECTFIELDS 
+FROM 
+      INS_PROMOCODES T 
+      LEFT JOIN INS_SHARES T1 ON (T.SHAREID = T1.SHAREID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($PROMOCODE) T.PROMOCODE = #bind($PROMOCODE 'VARCHAR') #end 
+       #chunk($NOWDATE) T1.STARTDATE <= #bind($NOWDATE 'FLOAT') #end
+       #chunk($NOWDATE) T1.FINISHDATE >= #bind($NOWDATE 'FLOAT') #end
+       #chunk($PRODVERID) T1.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+       #chunk($PROMOCODEID) T.PROMOCODEID = #bind($PROMOCODEID 'NUMERIC') #end 
+       #chunk($SHAREID) T.SHAREID = #bind($SHAREID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsInsPromocodesBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="BivSberPosMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.PROMOCODEID)', 'java.lang.Long', 'CNT') 
+FROM 
+      INS_PROMOCODES T 
+      LEFT JOIN INS_SHARES T1 ON (T.SHAREID = T1.SHAREID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($PROMOCODE) T.PROMOCODE = #bind($PROMOCODE 'VARCHAR') #end 
+       #chunk($NOWDATE) T1.STARTDATE <= #bind($NOWDATE 'FLOAT') #end
+       #chunk($NOWDATE) T1.FINISHDATE >= #bind($NOWDATE 'FLOAT') #end
+       #chunk($PRODVERID) T1.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+       #chunk($PROMOCODEID) T.PROMOCODEID = #bind($PROMOCODEID 'NUMERIC') #end 
+       #chunk($SHAREID) T.SHAREID = #bind($SHAREID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>    
+    <query name="dsInsSharesBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="BivSberPosMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.FINISHDATE', 'java.lang.Double', 'FINISHDATE'),
+        #result('T.SHAREID', 'java.lang.Long', 'SHAREID'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.PRODVERID', 'java.lang.Long', 'PRODVERID'),
+        #result('T.STARTDATE', 'java.lang.Double', 'STARTDATE'),
+        #result('T.SYSNAME', 'java.lang.String', 'SYSNAME'),
+        #result('T.TYPESYSNAME', 'java.lang.String', 'TYPESYSNAME'),
+        #result('T1.NAME', 'java.lang.String', 'PRODVERNAME'),
+        #result('T2.NAME', 'java.lang.String', 'PRODNAME'),
+        #result('T2.SYSNAME', 'java.lang.String', 'PRODSYSNAME'),
+        #result('T2.PRODID', 'java.lang.Long', 'PRODID'),        
+        #result('T.VALUE', 'java.math.BigDecimal', 'VALUE') 
+       $ASPECTFIELDS 
+FROM 
+      INS_SHARES T 
+      LEFT JOIN INS_PRODVER T1 ON (T.PRODVERID = T1.PRODVERID) 
+      LEFT JOIN INS_PROD T2 ON (T2.PRODID = T1.PRODID) 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($NAME) UPPER(T.NAME) LIKE UPPER('%$NAME%')  #end
+       #chunk($SYSNAME) UPPER(T.SYSNAME) LIKE UPPER('%$SYSNAME%')  #end
+       #chunk($TYPESYSNAME) UPPER(T.SYSNAME) LIKE UPPER('%$SYSNAME%')  #end
+       #chunk($PRODID) T1.PRODID = #bind($PRODID 'NUMERIC') #end 
+       #chunk($PRODVERID) T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+       #chunk($SHAREID) T.SHAREID = #bind($SHAREID 'NUMERIC') #end 
+       #chunk($STARTDATE) T.STARTDATE = #bind($STARTDATE 'FLOAT') #end 
+       #chunk($FINISHDATE) T.FINISHDATE = #bind($FINISHDATE 'FLOAT') #end 
+       #chunk($STRICTNAME) T.NAME = #bind($STRICTNAME 'VARCHAR') #end 
+       #chunk($STRICTSYSNAME) T.SYSNAME = #bind($STRICTSYSNAME 'VARCHAR') #end 
+       #chunk($STRICTTYPESYSNAME) T.TYPESYSNAME = #bind($STRICTTYPESYSNAME 'VARCHAR') #end 
+       #chunk($VALUE) T.VALUE = #bind($VALUE 'NUMERIC') #end 
+       #chunk($WORKDATE) T.STARTDATE <= #bind($WORKDATE 'FLOAT') #end
+       #chunk($WORKDATE) T.FINISHDATE >= #bind($WORKDATE 'FLOAT') #end            
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsInsSharesBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="BivSberPosMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.SHAREID)', 'java.lang.Long', 'CNT') 
+FROM 
+      INS_SHARES T 
+      LEFT JOIN INS_PRODVER T1 ON (T.PRODVERID = T1.PRODVERID) 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($NAME) UPPER(T.NAME) LIKE UPPER('%$NAME%')  #end
+       #chunk($SYSNAME) UPPER(T.SYSNAME) LIKE UPPER('%$SYSNAME%')  #end
+       #chunk($TYPESYSNAME) UPPER(T.SYSNAME) LIKE UPPER('%$SYSNAME%')  #end
+       #chunk($PRODID) T1.PRODID = #bind($PRODID 'NUMERIC') #end 
+       #chunk($PRODVERID) T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+       #chunk($SHAREID) T.SHAREID = #bind($SHAREID 'NUMERIC') #end 
+       #chunk($STARTDATE) T.STARTDATE = #bind($STARTDATE 'FLOAT') #end 
+       #chunk($FINISHDATE) T.FINISHDATE = #bind($FINISHDATE 'FLOAT') #end 
+       #chunk($STRICTNAME) T.NAME = #bind($STRICTNAME 'VARCHAR') #end 
+       #chunk($STRICTSYSNAME) T.SYSNAME = #bind($STRICTSYSNAME 'VARCHAR') #end 
+       #chunk($STRICTTYPESYSNAME) T.TYPESYSNAME = #bind($STRICTTYPESYSNAME 'VARCHAR') #end 
+       #chunk($VALUE) T.VALUE = #bind($VALUE 'NUMERIC') #end 
+       #chunk($WORKDATE) T.STARTDATE <= #bind($WORKDATE 'FLOAT') #end
+       #chunk($WORKDATE) T.FINISHDATE >= #bind($WORKDATE 'FLOAT') #end            
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsGetContractsStateDate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="InsPOSCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT 
+                    #result('DEPARTMENT.DEPARTMENTID', 'java.lang.Long','DEPARTMENTID'),
+                    #result('CONTRACT.CONTRID', 'java.lang.Long','CONTRID'),
+                    #result('CONTRACT.SELLERID', 'java.lang.Long','SELLERID'),
+                    #result('DEPEMPLOYEE.EMAIL', 'java.lang.String','EMAIL'),
+                    #result('CONTRACTSTATENAME.SYSNAME', 'java.lang.String','CONTRACTSYSNAME'),
+                    #result('CONTRACTSTATENAME.PUBLICNAME', 'java.lang.String','CONTRACTSTATEPUBLICNAME'),
+                    #result('CONTRACTSTATE.STARTDATE', 'java.math.BigDecimal','CONTRACTDATE'), 
+                    #result('CONTRACT.STARTDATE', 'java.math.BigDecimal','CONTRACTSTARTDATE'),
+                    #result('CONTRACT.CONTRNUMBER', 'java.lang.String','CONTRNUMBER')
+                    $ASPECTFIELDS 
+                FROM INS_CONTR CONTRACT
+                    LEFT JOIN INS_OBJSTATE CONTRACTSTATE ON CONTRACTSTATE.STATEID = CONTRACT.STATEID AND CONTRACTSTATE.OBJID = CONTRACT.CONTRID
+                    LEFT JOIN CORE_SM_STATE CONTRACTSTATENAME ON CONTRACTSTATENAME.ID = CONTRACT.STATEID 
+                    INNER JOIN INS_EMPSELLER EMPSELLER ON EMPSELLER.SELLERID = CONTRACT.SELLERID
+                    INNER JOIN DEP_EMPLOYEE DEPEMPLOYEE ON DEPEMPLOYEE.EMPLOYEEID = EMPSELLER.EMPLOYEEID
+                    INNER JOIN DEP_DEPARTMENT DEPARTMENT ON DEPEMPLOYEE.DEPARTMENTID = DEPARTMENT.DEPARTMENTID
+                    $ASPECTTABLES 
+                #chain('AND' 'WHERE') 
+                    #chunk($CONTRACTSYSNAME) CONTRACTSTATENAME.SYSNAME in (#bind($CONTRACTSYSNAME 'VARCHAR')) #end 
+                    #chunk($CONTRACTDATE) CONTRACTSTATE.STARTDATE < #bind($CONTRACTDATE 'FLOAT') #end 
+                    #chunk($STATEDATEBEGIN) CONTRACTSTATE.STARTDATE >= #bind($STATEDATEBEGIN 'FLOAT') #end 
+                    #chunk($STATEDATEEND) CONTRACTSTATE.STARTDATE <= #bind($STATEDATEEND 'FLOAT') #end 
+                    #chunk($PRODVERID) CONTRACT.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+                    #chunk($CONTRACTID) CONTRACT.CONTRID = #bind($CONTRACTID 'NUMERIC') #end 
+                    $ASPECTRESTRICTION 
+                #end
+            ]]>
+        </sql>
+    </query>
+    <query name="dsGetContractsStateDateCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="InsPOSCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT 
+                    #result('COUNT(CONTRACT.CONTRID)', 'java.lang.Long', 'CNT') 
+                FROM INS_CONTR CONTRACT
+                    LEFT JOIN INS_OBJSTATE CONTRACTSTATE ON CONTRACTSTATE.STATEID = CONTRACT.STATEID AND CONTRACTSTATE.OBJID = CONTRACT.CONTRID
+                    LEFT JOIN CORE_SM_STATE CONTRACTSTATENAME ON CONTRACTSTATENAME.ID = CONTRACT.STATEID 
+                    INNER JOIN INS_EMPSELLER EMPSELLER ON EMPSELLER.SELLERID = CONTRACT.SELLERID
+                    INNER JOIN DEP_EMPLOYEE DEPEMPLOYEE ON DEPEMPLOYEE.EMPLOYEEID = EMPSELLER.EMPLOYEEID
+                    INNER JOIN DEP_DEPARTMENT DEPARTMENT ON DEPEMPLOYEE.DEPARTMENTID = DEPARTMENT.DEPARTMENTID
+                    $ASPECTTABLES 
+                #chain('AND' 'WHERE') 
+                    #chunk($CONTRACTSYSNAME) CONTRACTSTATENAME.SYSNAME in (#bind($CONTRACTSYSNAME 'VARCHAR')) #end 
+                    #chunk($CONTRACTDATE) CONTRACTSTATE.STARTDATE < #bind($CONTRACTDATE 'FLOAT') #end 
+                    #chunk($STATEDATEBEGIN) CONTRACTSTATE.STARTDATE >= #bind($STATEDATEBEGIN 'FLOAT') #end 
+                    #chunk($STATEDATEEND) CONTRACTSTATE.STARTDATE <= #bind($STATEDATEEND 'FLOAT') #end 
+                    #chunk($PRODVERID) CONTRACT.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+                    #chunk($CONTRACTID) CONTRACT.CONTRID = #bind($CONTRACTID 'NUMERIC') #end 
+                    $ASPECTRESTRICTION 
+                #end
+            ]]>
+        </sql>
+    </query>
+    <query name="dsGetProdConfAndVerIDsByProdSysNameAndVerCode" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="InsPOSCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT
+                    #result('PRODCONFID', 'java.lang.Long', 'PRODCONFID'),
+                    #result('PV.PRODVERID', 'java.lang.Long', 'PRODVERID')
+                FROM B2B_PRODCONF PC
+                    INNER JOIN B2B_PRODVER PV ON (PV.PRODVERID = PC.PRODVERID)
+                    INNER JOIN B2B_PROD PR ON (PR.PRODID = PV.PRODID)
+                    $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                    #chunk($SYSNAME) PR.SYSNAME = #bind($SYSNAME 'VARCHAR') #end
+                    #chunk($PRODCODE) PV.PRODCODE = #bind($PRODCODE 'FLOAT') #end
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+    <query name="dsGetProdConfAndVerIDsByProdSysNameAndVerCodeCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="InsPOSCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT
+                    #result('COUNT(PRODCONFID)', 'java.lang.Long', 'CNT')
+                FROM B2B_PRODCONF PC
+                    INNER JOIN B2B_PRODVER PV ON (PV.PRODVERID = PC.PRODVERID)
+                    INNER JOIN B2B_PROD PR ON (PR.PRODID = PV.PRODID)
+                    $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                    #chunk($SYSNAME) PR.SYSNAME = #bind($SYSNAME 'VARCHAR') #end
+                    #chunk($PRODCODE) PV.PRODCODE = #bind($PRODCODE 'FLOAT') #end
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+
+    <query name="dsContractBrowseListByParamForReprintAndResend" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="InsPOSMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.CONTRID', 'java.lang.Long', 'CONTRID')
+FROM 
+      INS_CONTR T       
+      LEFT JOIN INS_BINFILE T2 ON ((T.CONTRID = T2.OBJID) AND (T2.OBJTABLENAME = 'INS_CONTR'))
+      LEFT JOIN CORE_SM_STATE T3 ON (T.STATEID = T3.ID)
+      LEFT JOIN INS_PRODVER T4 ON (T4.PRODVERID = T.PRODVERID)
+      LEFT JOIN INS_PROD T5 ON (T5.PRODID = T4.PRODID)
+WHERE
+    T2.BINFILEID is null and
+    (T3.sysname in ('INS_CONTRACT_TO_PAYMENT') and (T5.sysname in ('HIB', 'CIB', 'SIS')) or (T3.sysname in ('INS_CONTRACT_PAID','INS_CONTRACT_UPLOADED_SUCCESFULLY')))    
+]]>
+        </sql>
+    </query>
+    <query name="dsContractBrowseListByParamForReprintAndResendCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="InsPOSMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.CONTRID)', 'java.lang.Long', 'CNT') 
+FROM 
+      INS_CONTR T       
+      LEFT JOIN INS_BINFILE T2 ON ((T.CONTRID = T2.OBJID) AND (T2.OBJTABLENAME = 'INS_CONTR'))
+      LEFT JOIN CORE_SM_STATE T3 ON (T.STATEID = T3.ID)
+      LEFT JOIN INS_PRODVER T4 ON (T4.PRODVERID = T.PRODVERID)
+      LEFT JOIN INS_PROD T5 ON (T5.PRODID = T4.PRODID)
+WHERE
+    T2.BINFILEID is null and
+    (T3.sysname in ('INS_CONTRACT_TO_PAYMENT') and (T5.sysname in ('HIB', 'CIB', 'SIS')) or (T3.sysname in ('INS_CONTRACT_PAID','INS_CONTRACT_UPLOADED_SUCCESFULLY')))    
+]]>
+        </sql>
+    </query>
+
+    <query name="dsContractBrowseListByParamSenderTest" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="InsPOSMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.CONTRID', 'java.lang.Long', 'CONTRID')
+FROM 
+      INS_CONTR T       
+      LEFT JOIN INS_BINFILE T2 ON ((T.CONTRID = T2.OBJID) AND (T2.OBJTABLENAME = 'INS_CONTR'))
+      LEFT JOIN CORE_SM_STATE T3 ON (T.STATEID = T3.ID)
+      LEFT JOIN INS_PRODVER T4 ON (T4.PRODVERID = T.PRODVERID)
+      LEFT JOIN INS_PROD T5 ON (T5.PRODID = T4.PRODID)
+      
+left join crm_person t41 on (t.insuredid = t41.PARTICIPANTID)
+left join CRM_CONTACTPERSON tcp on (tcp.PARTICIPANTID = t.insuredid)
+left join crm_contact tc on (tc.CONTACTPERSONID = tcp.CONTACTPERSONID and tc.contacttypeid = 1005)
+left join crm_contact tc1 on (tc1.CONTACTPERSONID = tcp.CONTACTPERSONID and tc1.contacttypeid = 1006)
+                #chain('AND' 'WHERE')
+                    #chunk($EMAIL) tc1.value = #bind($EMAIL 'VARCHAR') #end
+                    $ASPECTRESTRICTION
+                #end
+
+    
+]]>
+        </sql>
+    </query>
+    <query name="dsContractBrowseListByParamSenderTestCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="InsPOSMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.CONTRID)', 'java.lang.Long', 'CNT') 
+FROM 
+      INS_CONTR T       
+      LEFT JOIN INS_BINFILE T2 ON ((T.CONTRID = T2.OBJID) AND (T2.OBJTABLENAME = 'INS_CONTR'))
+      LEFT JOIN CORE_SM_STATE T3 ON (T.STATEID = T3.ID)
+      LEFT JOIN INS_PRODVER T4 ON (T4.PRODVERID = T.PRODVERID)
+      LEFT JOIN INS_PROD T5 ON (T5.PRODID = T4.PRODID)
+              
+left join crm_person t41 on (t.insuredid = t41.PARTICIPANTID)
+left join CRM_CONTACTPERSON tcp on (tcp.PARTICIPANTID = t.insuredid)
+left join crm_contact tc on (tc.CONTACTPERSONID = tcp.CONTACTPERSONID and tc.contacttypeid = 1005)
+left join crm_contact tc1 on (tc1.CONTACTPERSONID = tcp.CONTACTPERSONID and tc1.contacttypeid = 1006)
+                #chain('AND' 'WHERE')
+                    #chunk($EMAIL) tc1.value = #bind($EMAIL 'VARCHAR') #end
+                    $ASPECTRESTRICTION
+                #end
+]]>
+        </sql>
+    </query>
+
+    <query name="dsContractBrowseListByParamForSendCopy" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="InsPOSMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.CONTRID', 'java.lang.Long', 'CONTRID'),
+        #result('T.CONTRNUMBER', 'java.lang.String', 'CONTRNUMBER'),
+        #result('T.PRODVERID', 'java.lang.Long', 'PRODVERID'),
+        #result('T2.PUBLICNAME', 'java.lang.String', 'STATENAME'),
+        #result('T2.SYSNAME', 'java.lang.String', 'STATESYSNAME'),
+        #result('T3.FILENAME', 'java.lang.String', 'FILENAME'),
+        #result('T3.FILEPATH', 'java.lang.String', 'FILEPATH')
+FROM 
+      INS_CONTR T       
+left join core_sm_state t2 on (t2.id = t.stateid)
+left join ins_binfile t3 on (t3.objid = t.contrid) and t3.OBJTABLENAME = 'INS_CONTR'
+left join ins_clientactlog t4 on (t4.contrid = t.contrid) and ((t4.tablename is null) OR (t4.tablename = 'INS_CONTR'))
+left join CRM_CONTACTPERSON tcp on (tcp.PARTICIPANTID = t.insuredid)
+left join crm_contact tc on (tc.CONTACTPERSONID = tcp.CONTACTPERSONID and tc.contacttypeid = 1005)
+left join crm_contact tc1 on (tc1.CONTACTPERSONID = tcp.CONTACTPERSONID and tc1.contacttypeid = 1006)
+                #chain('AND' 'WHERE')
+                    #chunk($EMAIL) tc1.value = #bind($EMAIL 'VARCHAR') #end
+                    $ASPECTRESTRICTION
+                #end
+
+    
+]]>
+        </sql>
+    </query>
+    <query name="dsContractBrowseListByParamForSendCopyCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="InsPOSMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.CONTRID)', 'java.lang.Long', 'CNT') 
+FROM 
+      INS_CONTR T       
+      LEFT JOIN INS_BINFILE T2 ON ((T.CONTRID = T2.OBJID) AND (T2.OBJTABLENAME = 'INS_CONTR'))
+      LEFT JOIN CORE_SM_STATE T3 ON (T.STATEID = T3.ID)
+      LEFT JOIN INS_PRODVER T4 ON (T4.PRODVERID = T.PRODVERID)
+      LEFT JOIN INS_PROD T5 ON (T5.PRODID = T4.PRODID)
+              
+left join crm_person t41 on (t.insuredid = t41.PARTICIPANTID)
+left join CRM_CONTACTPERSON tcp on (tcp.PARTICIPANTID = t.insuredid)
+left join crm_contact tc on (tc.CONTACTPERSONID = tcp.CONTACTPERSONID and tc.contacttypeid = 1005)
+left join crm_contact tc1 on (tc1.CONTACTPERSONID = tcp.CONTACTPERSONID and tc1.contacttypeid = 1006)
+                #chain('AND' 'WHERE')
+                    #chunk($EMAIL) tc1.value = #bind($EMAIL 'VARCHAR') #end
+                    $ASPECTRESTRICTION
+                #end
+]]>
+        </sql>
+    </query>   
+         
+</data-map>

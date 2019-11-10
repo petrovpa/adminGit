@@ -1,0 +1,40 @@
+<form #f="ngForm" novalidate class="page-form-edit">
+  <add-modal-dialog #addDialog [options]="addModalDialogOptions"></add-modal-dialog>
+
+  <user-short-info [user]="user"></user-short-info>
+
+  <div class="page-title">Роли</div>
+
+  <custom-button-group [buttons]="roleTableButtons"
+                       [selected]="roleTable.selected"></custom-button-group>
+
+  <datatable #roleTable class="bootstrap"
+             [rows]="roleList"
+             columnMode="force"
+             selectionType="single"
+             [rowHeight]="30"
+             [virtualization]="'false'"
+             [reorderable]="true"
+             [swapColumns]="true"
+             [messages]="{ emptyMessage: isRoleLoading ? 'Подождите. Идет загрузка...' : 'Не найдено ни одной роли' }">
+    <datatable-column name="№" [maxWidth]="50">
+      <ng-template let-rowIndex="rowIndex" let-row="row" datatable-cell-template>
+        <ng-container>{{rowIndex + 1}}</ng-container>
+      </ng-template>
+    </datatable-column>
+    <datatable-column [canAutoResize]="true" name="Имя роли" [prop]="'ROLENAME'"></datatable-column>
+    <datatable-column [canAutoResize]="true" name="Описание" [prop]="'DESCRIPTION'"></datatable-column>
+    <datatable-column [canAutoResize]="true" name="Системное имя" [prop]="'ROLESYSNAME'"></datatable-column>
+  </datatable>
+
+  <div class="page__btn">
+    <div class="row">
+      <div class="col-sm-6 col-12">
+        <button class="btn btn-link btn-rounded btn-block" (click)="back($event, f)">Вернуться</button>
+      </div>
+      <div class="col-sm-6 col-12">
+        <button class="btn btn-primary btn-rounded btn-block" (click)="next($event, f)">Продолжить</button>
+      </div>
+    </div>
+  </div>
+</form>

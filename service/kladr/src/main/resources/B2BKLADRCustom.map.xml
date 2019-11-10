@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+    <query name="getSysSettingBySysName" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BKLADRCustom">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT
+                        #result('T.SETTINGID', 'java.lang.Long', 'SETTINGID'),
+                        #result('T.SETTINGSYSNAME', 'java.lang.String', 'SETTINGSYSNAME'),
+                        #result('T.SETTINGNAME', 'java.lang.String', 'SETTINGNAME'),
+                        #result('T.SETTINGVALUE', 'java.lang.String', 'SETTINGVALUE')
+                FROM
+                      CORE_SETTING T 
+                #chain('AND' 'WHERE')
+                       #chunk($SETTINGSYSNAME) T.SETTINGSYSNAME = #bind($SETTINGSYSNAME 'VARCHAR') #end 
+                       #chunk($SETTINGSYSNAMESLIST) T.SETTINGSYSNAME IN ($SETTINGSYSNAMESLIST) #end 
+                #end
+            ]]>
+        </sql>
+    </query>
+    <query name="deleteKladrAltNamesTmp" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BKLADRCustom">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                DELETE CORE_KLADRALTNAMETMP
+            ]]>
+        </sql>
+    </query>
+    <query name="deleteKladrHouseTmp" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BKLADRCustom">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                DELETE CORE_KLADRHOUSETMP
+            ]]>
+        </sql>
+    </query>
+    <query name="deleteKladrObjTmp" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BKLADRCustom">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                DELETE CORE_KLADROBJTMP
+            ]]>
+        </sql>
+    </query>
+    <query name="deleteKladrObjTmpCnd" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BKLADRCustom">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                DELETE CORE_KLADROBJTMP WHERE CODECUSTOM IS NULL
+            ]]>
+        </sql>
+    </query>
+    <query name="deleteKladrSocrBaseTmp" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BKLADRCustom">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                DELETE CORE_KLADRSOCRTMP
+            ]]>
+        </sql>
+    </query>
+    <query name="deleteKladrSocrStreetTmp" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BKLADRCustom">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                DELETE CORE_KLADRSTREETTMP
+            ]]>
+        </sql>
+    </query>
+    <query name="deleteKladrSocrStreetTmpCnd" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BKLADRCustom">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                DELETE CORE_KLADRSTREETTMP WHERE CODECUSTOM IS NULL
+            ]]>
+        </sql>
+    </query>
+    <query name="getCustomObjectsTmp" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BKLADRCustom">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT KLADROBJID, CODE, CODECUSTOM, FULLNAME, SHORTNAME  FROM CORE_KLADROBJTMP WHERE CODECUSTOM IS NOT NULL
+            ]]>
+        </sql>
+    </query>
+    <query name="getCustomStreetsTmp" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BKLADRCustom">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT KLADRSTREETID, CODE, CODECUSTOM, FULLNAME, SHORTNAME  FROM CORE_KLADRSTREETTMP WHERE CODECUSTOM IS NOT NULL
+            ]]>
+        </sql>
+    </query>
+    <query name="getCustomHousesTmp" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BKLADRCustom">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT KLADRHOUSEID, CODE, CODECUSTOM, HOUSENUMBER AS FULLNAME, SHORTNAME  FROM CORE_KLADRHOUSETMP WHERE CODECUSTOM IS NOT NULL
+            ]]>
+        </sql>
+    </query>
+    <query name="fixKladrInfo" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BKLADRCustom">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                DELETE CORE_KLADRINFO WHERE STATUS = 'PROCESSING' 
+            ]]>
+        </sql>
+    </query>
+    <query name="insertKladrInfo" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BKLADRCustom">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                INSERT INTO CORE_KLADRINFO (KLADRINFOID, LOADDATE, LOADERROR, STATUS, RECORDS) VALUES
+                ($KLADRINFOID, $LOADDATE, $LOADERROR, #bind($STATUS), #bind($RECORDS))  
+            ]]>
+        </sql>
+    </query>  
+</data-map>

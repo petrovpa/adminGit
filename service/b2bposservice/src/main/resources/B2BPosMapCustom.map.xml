@@ -1,0 +1,786 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+    <query name="dsCheckLogin" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BPosMapCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[ 
+select
+ ua.*,
+ ua.AUTHMETHOD, 
+ e.firstname,
+ e.middlename,
+ e.lastname,
+ e.DEPARTMENTID,
+ e.PHONE1,
+ e.EMAIL,
+ u.OBJECTTYPE
+from CORE_USERACCOUNT ua 	
+left join CORE_USER u on (ua.userid = u.userid)			 					
+left join DEP_EMPLOYEE e on (e.employeeid = u.objectid)			 					
+where ua.login=#bind($username) 
+and (1=2
+#chunk($passwordSha) or (ua.password = #bind($passwordSha)) #end
+#chunk($passwordSha512) or (ua.password = #bind($passwordSha512)) #end
+#chunk($passwordSha512salt) or (ua.password = #bind($passwordSha512salt)) #end
+)
+and ua.STATUS='ACTIVE'
+            ]]> 
+        </sql>
+    </query>
+    <query name="dsUserAccountGetInfoById" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BPosMapCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[ 
+select
+ ua.*,
+ ua.AUTHMETHOD, 
+ e.FIRSTNAME,
+ e.MIDDLENAME,
+ e.LASTNAME,
+ e.DEPARTMENTID,
+ e.POSITION,
+ e.PHONE1,
+ e.EMAIL,
+ d.DEPTSHORTNAME,
+ d.DEPTFULLNAME,
+ d.DEPTCODE,
+ u.OBJECTTYPE
+from CORE_USERACCOUNT ua 	
+left join CORE_USER u on (ua.userid = u.userid)			 					
+left join DEP_EMPLOYEE e on (e.employeeid = u.objectid)			 					
+left join DEP_DEPARTMENT d on (e.DEPARTMENTID = d.DEPARTMENTID)
+where ua.useraccountid=#bind($useraccountid) 
+            ]]> 
+        </sql>
+    </query>
+    <query name="dsUserAccountGetInfoByLogin" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BPosMapCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+select
+ ua.*,
+ ua.AUTHMETHOD,
+ ua.USERACCOUNTID,
+ e.FIRSTNAME,
+ e.MIDDLENAME,
+ e.LASTNAME,
+ e.DEPARTMENTID,
+ e.POSITION,
+ e.PHONE1,
+ e.EMAIL,
+ d.DEPTSHORTNAME,
+ d.DEPTFULLNAME,
+ d.DEPTCODE,
+ u.OBJECTTYPE
+from CORE_USERACCOUNT ua
+left join CORE_USER u on (ua.userid = u.userid)
+left join DEP_EMPLOYEE e on (e.employeeid = u.objectid)
+left join DEP_DEPARTMENT d on (e.DEPARTMENTID = d.DEPARTMENTID)
+where ua.login=#bind($login)
+            ]]>
+        </sql>
+    </query>
+<query name="dsMenuBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+  #result('T.MENUID', 'java.lang.Long', 'MENUID'),
+  #result('T.NAME', 'java.lang.String', 'ITEMNAME'),
+  #result('T.SYSNAME', 'java.lang.String', 'ITEMSYSNAME'),
+  #result('T.ACTIONURL', 'java.lang.String', 'URL'),
+  #result('T.PICTUREURL', 'java.lang.String', 'IMG'),
+  #result('T.PRODCONFIGID', 'java.lang.Long', 'PRODCONFIGID'),
+  #result('T.MENUTYPEID', 'java.lang.String', 'MENUTYPEID'),
+  #result('T.PARENTMENUID', 'java.lang.Long', 'PARENTMENUID'),
+  #result('T3.NAME', 'java.lang.String', 'TYPENAME'),
+  #result('T3.SYSNAME', 'java.lang.String', 'TYPESYSNAME'),
+  #result('T.POSITION', 'java.lang.Long', 'POSITION'),
+  #result('T.JOURNALID', 'java.lang.Long', 'JOURNALID'),
+  #result('LEVEL', 'java.lang.Long', 'LEVEL')
+  $ASPECTFIELDS 
+FROM
+  B2B_MENU T
+  INNER JOIN B2B_MENUTYPE T3 ON (T.MENUTYPEID = T3.MENUTYPEID)
+  $ASPECTTABLES 
+  #chain('AND' 'WHERE') 
+  #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+  #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+  #chunk($PRODCONFIGID) T.PRODCONFIGID = #bind($PRODCONFIGID 'NUMERIC') #end 
+  $ASPECTRESTRICTION 
+   #end   
+  START WITH T.PARENTMENUID IS NULL
+  CONNECT BY PRIOR T.MENUID = T.PARENTMENUID
+  ORDER SIBLINGS BY
+  T.POSITION
+]]>
+</sql>
+</query>
+<query name="dsMenuBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT  
+  #result('COUNT($NEEDDISTINCT T.MENUID)', 'java.lang.Long', 'CNT') 
+  $ASPECTFIELDS 
+FROM
+  B2B_MENU T
+  INNER JOIN B2B_MENUORGSTRUCT T2 ON (T.MENUID = T2.MENUID)
+  INNER JOIN B2B_MENUTYPE T3 ON (T.MENUTYPEID = T3.MENUTYPEID)
+  $ASPECTTABLES 
+  #chain('AND' 'WHERE') 
+  #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+  #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+  #chunk($PRODCONFIGID) T.PRODCONFIGID = #bind($PRODCONFIGID 'NUMERIC') #end 
+  $ASPECTRESTRICTION 
+#end   
+]]>
+</sql>
+</query>
+<query name="dsGetContractsStateDate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="InsPOSCustom" >
+    <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+    <sql>
+            <![CDATA[
+                SELECT 
+                    #result('DEPARTMENT.DEPARTMENTID', 'java.lang.Long','DEPARTMENTID'),
+                    #result('CONTRACT.CONTRID', 'java.lang.Long','CONTRID'),
+                    #result('CONTRACT.SELLERID', 'java.lang.Long','SELLERID'),
+                    #result('DEPEMPLOYEE.EMAIL', 'java.lang.String','EMAIL'),
+                    #result('CONTRACTSTATENAME.SYSNAME', 'java.lang.String','CONTRACTSYSNAME'),
+                    #result('CONTRACTSTATENAME.PUBLICNAME', 'java.lang.String','CONTRACTSTATEPUBLICNAME'),
+                    #result('CONTRACTSTATE.STARTDATE', 'java.math.BigDecimal','CONTRACTDATE'), 
+                    #result('CONTRACT.STARTDATE', 'java.math.BigDecimal','CONTRACTSTARTDATE'),
+                    #result('CONTRACT.CONTRNUMBER', 'java.lang.String','CONTRNUMBER')
+                    $ASPECTFIELDS 
+                FROM INS_CONTR CONTRACT
+                    LEFT JOIN INS_OBJSTATE CONTRACTSTATE ON CONTRACTSTATE.STATEID = CONTRACT.STATEID AND CONTRACTSTATE.OBJID = CONTRACT.CONTRID
+                    LEFT JOIN CORE_SM_STATE CONTRACTSTATENAME ON CONTRACTSTATENAME.ID = CONTRACT.STATEID 
+                    INNER JOIN INS_EMPSELLER EMPSELLER ON EMPSELLER.SELLERID = CONTRACT.SELLERID
+                    INNER JOIN DEP_EMPLOYEE DEPEMPLOYEE ON DEPEMPLOYEE.EMPLOYEEID = EMPSELLER.EMPLOYEEID
+                    INNER JOIN DEP_DEPARTMENT DEPARTMENT ON DEPEMPLOYEE.DEPARTMENTID = DEPARTMENT.DEPARTMENTID
+                    $ASPECTTABLES 
+                #chain('AND' 'WHERE') 
+                    #chunk($CONTRACTSYSNAME) CONTRACTSTATENAME.SYSNAME in (#bind($CONTRACTSYSNAME 'VARCHAR')) #end 
+                    #chunk($CONTRACTDATE) CONTRACTSTATE.STARTDATE < #bind($CONTRACTDATE 'FLOAT') #end 
+                    #chunk($STATEDATEBEGIN) CONTRACTSTATE.STARTDATE >= #bind($STATEDATEBEGIN 'FLOAT') #end 
+                    #chunk($STATEDATEEND) CONTRACTSTATE.STARTDATE <= #bind($STATEDATEEND 'FLOAT') #end 
+                    #chunk($PRODVERID) CONTRACT.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+                    #chunk($CONTRACTID) CONTRACT.CONTRID = #bind($CONTRACTID 'NUMERIC') #end 
+                    $ASPECTRESTRICTION 
+                #end
+            ]]>
+    </sql>
+</query>
+<query name="dsGetContractsStateDateCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="InsPOSCustom" >
+    <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+    <sql>
+            <![CDATA[
+                SELECT 
+                    #result('COUNT(CONTRACT.CONTRID)', 'java.lang.Long', 'CNT') 
+                FROM INS_CONTR CONTRACT
+                    LEFT JOIN INS_OBJSTATE CONTRACTSTATE ON CONTRACTSTATE.STATEID = CONTRACT.STATEID AND CONTRACTSTATE.OBJID = CONTRACT.CONTRID
+                    LEFT JOIN CORE_SM_STATE CONTRACTSTATENAME ON CONTRACTSTATENAME.ID = CONTRACT.STATEID 
+                    INNER JOIN INS_EMPSELLER EMPSELLER ON EMPSELLER.SELLERID = CONTRACT.SELLERID
+                    INNER JOIN DEP_EMPLOYEE DEPEMPLOYEE ON DEPEMPLOYEE.EMPLOYEEID = EMPSELLER.EMPLOYEEID
+                    INNER JOIN DEP_DEPARTMENT DEPARTMENT ON DEPEMPLOYEE.DEPARTMENTID = DEPARTMENT.DEPARTMENTID
+                    $ASPECTTABLES 
+                #chain('AND' 'WHERE') 
+                    #chunk($CONTRACTSYSNAME) CONTRACTSTATENAME.SYSNAME in (#bind($CONTRACTSYSNAME 'VARCHAR')) #end 
+                    #chunk($CONTRACTDATE) CONTRACTSTATE.STARTDATE < #bind($CONTRACTDATE 'FLOAT') #end 
+                    #chunk($STATEDATEBEGIN) CONTRACTSTATE.STARTDATE >= #bind($STATEDATEBEGIN 'FLOAT') #end 
+                    #chunk($STATEDATEEND) CONTRACTSTATE.STARTDATE <= #bind($STATEDATEEND 'FLOAT') #end 
+                    #chunk($PRODVERID) CONTRACT.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+                    #chunk($CONTRACTID) CONTRACT.CONTRID = #bind($CONTRACTID 'NUMERIC') #end 
+                    $ASPECTRESTRICTION 
+                #end
+            ]]>
+    </sql>
+</query>
+
+<query name="dsB2BGetContractsState" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="InsPOSCustom" >
+    <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+    <sql>
+            <![CDATA[
+                SELECT 
+                    #result('CONTRACT.CONTRID', 'java.lang.Long','CONTRID'),
+                    #result('CONTRACTSTATENAME.SYSNAME', 'java.lang.String','STATESYSNAME'),
+                    #result('CONTRACTSTATENAME.PUBLICNAME', 'java.lang.String','STATENAME'),
+                    #result('CONTRACTSTATE.STARTDATE', 'java.math.BigDecimal','STATEDATE'), 
+                    #result('CONTRACT.SIGNDATE', 'java.math.BigDecimal','SIGNDATE'),
+                    #result('CONTRACT.CONTRNUMBER', 'java.lang.String','CONTRNUMBER')
+                FROM B2B_CONTR CONTRACT
+                    LEFT JOIN INS_OBJSTATE CONTRACTSTATE ON CONTRACTSTATE.STATEID = CONTRACT.STATEID AND CONTRACTSTATE.OBJID = CONTRACT.CONTRID
+                    #chunk($CONTRID) AND CONTRACT.CONTRID = #bind($CONTRID 'NUMERIC') #end
+                    LEFT JOIN CORE_SM_STATE CONTRACTSTATENAME ON CONTRACTSTATENAME.ID = CONTRACT.STATEID 
+                #chain('AND' 'WHERE') 
+                    #chunk($CONTRID) CONTRACT.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+                #end
+            ]]>
+    </sql>
+</query>
+<query name="dsB2BGetContractsStateCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="InsPOSCustom" >
+    <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+    <sql>
+            <![CDATA[
+                SELECT 
+                    #result('COUNT(CONTRACT.CONTRID)', 'java.lang.Long', 'CNT') 
+                FROM B2B_CONTR CONTRACT
+                    LEFT JOIN INS_OBJSTATE CONTRACTSTATE ON CONTRACTSTATE.STATEID = CONTRACT.STATEID AND CONTRACTSTATE.OBJID = CONTRACT.CONTRID
+                    LEFT JOIN CORE_SM_STATE CONTRACTSTATENAME ON CONTRACTSTATENAME.ID = CONTRACT.STATEID 
+                #chain('AND' 'WHERE') 
+                    #chunk($CONTRID) CONTRACT.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+                #end
+            ]]>
+    </sql>
+</query>
+
+
+<!-- НАЧАЛО - скопировано из \front6\service\insposservice\src\main\resources\InsPOSCustom.map.xml для поддержки KladrCustomFacade - НАЧАЛО -->
+
+<!--query name="dsKladrBrowseListByParamBackup" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BPosMapCustom">
+  <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true" /> 
+  <sql>
+  <![CDATA[ 
+select
+  T.KLADROBJID KLADROBJID,
+  T2.CODE REGIONCODE,
+  T2.FULLNAME REGIONNAME,
+  T2.FULLNAME || ' ' || T2.SHORTNAME REGIONFULLNAME,
+  T2.SHORTNAME REGIONTYPE,
+  T6.TYPECODE REGIONTYPECODE,
+  (case when substr(T3.CODE, 3, 3) = '000' then '' else T3.CODE end) ZONECODE,
+  (case when substr(T3.CODE, 3, 3) = '000' then '' else T3.FULLNAME end) ZONENAME,
+  (case when substr(T3.CODE, 3, 3) = '000' then '' else T3.FULLNAME || ' ' || T3.SHORTNAME end) ZONEFULLNAME,
+  T3.SHORTNAME ZONETYPE,
+  T7.TYPECODE ZONETYPECODE,
+  (case when substr(T4.CODE, 6, 3) = '000' then '' else T4.CODE end) CITYCODE,
+  (case when substr(T4.CODE, 6, 3) = '000' then '' else T4.FULLNAME end) CITYNAME,
+  (case when substr(T4.CODE, 6, 3) = '000' then '' else T4.FULLNAME || ' ' || T4.SHORTNAME end) CITYFULLNAME,
+  T4.SHORTNAME CITYTYPE,
+  T8.TYPECODE CITYTYPECODE,
+  (case when substr(T5.CODE, 9, 3) = '000' then '' else T5.CODE end) PLACECODE,
+  (case when substr(T5.CODE, 9, 3) = '000' then '' else T5.FULLNAME end) PLACENAME,
+  (case when substr(T5.CODE, 9, 3) = '000' then '' else T5.FULLNAME || ' ' || T5.SHORTNAME end) PLACEFULLNAME,
+  T5.SHORTNAME PLACETYPE,
+  T9.TYPECODE PLACETYPECODE,
+  T.CODE,
+  T.POSTALCODE,          
+  T.FULLNAME NAME,
+  T.FULLNAME || ' ' || T.SHORTNAME FULLNAME,
+  T.SHORTNAME TYPE,
+  T.ISFEDERALCITY ISFEDERALCITY,
+  T.ISNOSTREET ISNOSTREET,
+  T.CONTEXTNAME CONTEXTNAME
+from
+  core_kladrobj T
+  left join core_kladrobj T2 on (substr(T.CODE, 1, 2) || '00000000000' = T2.CODE)
+  left join core_kladrsocr T6 on (T2.SHORTNAME = T6.SHORTNAME) and (T6.OBJLEVEL=1)
+  left join core_kladrobj T3 on (substr(T.CODE, 1, 5) || '00000000' = T3.CODE)
+  left join core_kladrsocr T7 on (T3.SHORTNAME = T7.SHORTNAME) and (T7.OBJLEVEL=2)
+  left join core_kladrobj T4 on (substr(T.CODE, 1, 8) || '00000' = T4.CODE)
+  left join core_kladrsocr T8 on (T4.SHORTNAME = T8.SHORTNAME) and (T8.OBJLEVEL=3)
+  left join core_kladrobj T5 on (substr(T.CODE, 1, 11) || '00' = T5.CODE)
+  left join core_kladrsocr T9 on (T5.SHORTNAME = T9.SHORTNAME) and (T9.OBJLEVEL=4)
+where
+  ((T.CODE like '77%') or (T.CODE like '78%') or (T.CODE like '99%') or (T.CODE like '92%') or (substr(T.CODE, 6, 3) <> '000') or (substr(T.CODE, 9, 3) <> '000'))
+  and (substr(T.CODE, 12, 2) = '00')
+  #chunk($NAME) and (UPPER(T.FULLNAME || ' ' || T.SHORTNAME) like UPPER(#bind($NAME 'VARCHAR') || '%'))  #end
+  #chunk($REGIONNAME) and (UPPER(T2.FULLNAME || ' ' || T2.SHORTNAME) like UPPER(#bind($REGIONNAME 'VARCHAR') || '%'))  #end
+  #chunk($ZONENAME) and (UPPER(T3.FULLNAME || ' ' || T3.SHORTNAME) like UPPER(#bind($ZONENAME 'VARCHAR') || '%'))  #end
+  #chunk($CITYNAME) and (UPPER(T4.FULLNAME || ' ' || T4.SHORTNAME) like UPPER(#bind($CITYNAME 'VARCHAR') || '%'))  #end
+  #chunk($PLACENAME) and (UPPER(T5.FULLNAME || ' ' || T5.SHORTNAME) like UPPER(#bind($PLACENAME 'VARCHAR') || '%'))  #end
+  #chunk($CODE) and (T.CODE= #bind($CODE 'VARCHAR'))  #end
+  #chunk($KLADROBJID) and (T.KLADROBJID= #bind($KLADROBJID 'NUMERIC'))  #end
+  #chunk($POSTALCODE) and (T.POSTALCODE= #bind($POSTALCODE 'VARCHAR'))  #end
+  #chunk($REGIONCODE) and (T.CODE like UPPER(#bind($REGIONCODE 'VARCHAR')))  #end
+
+
+  ]]> 
+  </sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+  <![CDATA[ 
+select
+  T.KLADROBJID KLADROBJID,
+  T2.CODE REGIONCODE,
+  T2.FULLNAME REGIONNAME,
+  T2.FULLNAME + ' ' + T2.SHORTNAME REGIONFULLNAME,
+  T2.SHORTNAME REGIONTYPE,
+  T6.TYPECODE REGIONTYPECODE,
+  (case when SubString(T3.CODE, 3, 3) = '000' then null else T3.CODE end) ZONECODE,
+  (case when SubString(T3.CODE, 3, 3) = '000' then null else T3.FULLNAME end) ZONENAME,
+  (case when SubString(T3.CODE, 3, 3) = '000' then null else T3.FULLNAME + ' ' + T3.SHORTNAME end) ZONEFULLNAME,
+  T3.SHORTNAME ZONETYPE,
+  T7.TYPECODE ZONETYPECODE,
+  (case when SubString(T4.CODE, 6, 3) = '000' then null else T4.CODE end) CITYCODE,
+  (case when SubString(T4.CODE, 6, 3) = '000' then null else T4.FULLNAME end) CITYNAME,
+  (case when SubString(T4.CODE, 6, 3) = '000' then null else T4.FULLNAME + ' ' + T4.SHORTNAME end) CITYFULLNAME,
+  T4.SHORTNAME CITYTYPE,
+  T8.TYPECODE CITYTYPECODE,
+  (case when SubString(T5.CODE, 9, 3) = '000' then null else T5.CODE end) PLACECODE,
+  (case when SubString(T5.CODE, 9, 3) = '000' then null else T5.FULLNAME end) PLACENAME,
+  (case when SubString(T5.CODE, 9, 3) = '000' then null else T5.FULLNAME + ' ' + T5.SHORTNAME end) PLACEFULLNAME,
+  T5.SHORTNAME PLACETYPE,
+  T9.TYPECODE PLACETYPECODE,
+  T.CODE,
+  T.FULLNAME NAME,
+  T.FULLNAME + ' ' + T.SHORTNAME FULLNAME,
+  T.SHORTNAME TYPE,
+  T.ISFEDERALCITY ISFEDERALCITY,
+  T.ISNOSTREET ISNOSTREET,
+  T.CONTEXTNAME CONTEXTNAME
+from
+  core_kladrobj T
+  left join core_kladrobj T2 on (SubString(T.CODE, 1, 2) + '00000000000' = T2.CODE)
+  left join core_kladrsocr T6 on (T2.SHORTNAME = T6.SHORTNAME) and (T6.OBJLEVEL=1)
+  left join core_kladrobj T3 on (SubString(T.CODE, 1, 5) + '00000000' = T3.CODE)
+  left join core_kladrsocr T7 on (T3.SHORTNAME = T7.SHORTNAME) and (T7.OBJLEVEL=2)
+  left join core_kladrobj T4 on (SubString(T.CODE, 1, 8) + '00000' = T4.CODE)
+  left join core_kladrsocr T8 on (T4.SHORTNAME = T8.SHORTNAME) and (T8.OBJLEVEL=3)
+  left join core_kladrobj T5 on (SubString(T.CODE, 1, 11) + '00' = T5.CODE)
+  left join core_kladrsocr T9 on (T5.SHORTNAME = T9.SHORTNAME) and (T9.OBJLEVEL=4)
+where
+  ((T.CODE like '77%') or (T.CODE like '78%') or (T.CODE like '99%') or (T.CODE like '92%') or (SubString(T.CODE, 6, 3) <> '000') or (SubString(T.CODE, 9, 3) <> '000'))
+  and (SubString(T.CODE, 12, 2) = '00')
+  #chunk($NAME) and (UPPER(T.FULLNAME + ' ' + T.SHORTNAME) like UPPER(#bind($NAME 'VARCHAR') + '%'))  #end
+  #chunk($REGIONNAME) and (UPPER(T2.FULLNAME + ' ' + T2.SHORTNAME) like UPPER(#bind($REGIONNAME 'VARCHAR') + '%'))  #end
+  #chunk($ZONENAME) and (UPPER(T3.FULLNAME + ' ' + T3.SHORTNAME) like UPPER(#bind($ZONENAME 'VARCHAR') + '%'))  #end
+  #chunk($CITYNAME) and (UPPER(T4.FULLNAME + ' ' + T4.SHORTNAME) like UPPER(#bind($CITYNAME 'VARCHAR') + '%'))  #end
+  #chunk($PLACENAME) and (UPPER(T5.FULLNAME + ' ' + T5.SHORTNAME) like UPPER(#bind($PLACENAME 'VARCHAR') + '%'))  #end
+  #chunk($CODE) and (T.CODE= #bind($CODE 'VARCHAR'))  #end
+  #chunk($KLADROBJID) and (T.KLADROBJID= #bind($KLADROBJID 'NUMERIC'))  #end
+  #chunk($POSTALCODE) and (T.POSTALCODE= #bind($POSTALCODE 'VARCHAR'))  #end
+  #chunk($REGIONCODE) and (T.CODE like UPPER(#bind($REGIONCODE 'VARCHAR')))  #end
+
+
+  ]]> 
+  </sql>
+  </query-->
+<query name="dsKladrBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BPosMapCustom">
+  <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true" /> 
+  <sql>
+  <![CDATA[ 
+select distinct
+  T.KLADROBJID KLADROBJID,
+  T2.CODE REGIONCODE,
+  T2.FULLNAME REGIONNAME,
+  T2.FULLNAME || ' ' || T2.SHORTNAME REGIONFULLNAME,
+  T2.SHORTNAME REGIONTYPE,
+  T6.TYPECODE REGIONTYPECODE,
+  (case when substr(T3.CODE, 3, 3) = '000' then '' else T3.CODE end) ZONECODE,
+  (case when substr(T3.CODE, 3, 3) = '000' then '' else T3.FULLNAME end) ZONENAME,
+  (case when substr(T3.CODE, 3, 3) = '000' then '' else T3.FULLNAME || ' ' || T3.SHORTNAME end) ZONEFULLNAME,
+  T3.SHORTNAME ZONETYPE,
+  T7.TYPECODE ZONETYPECODE,
+  (case when substr(T4.CODE, 6, 3) = '000' then '' else T4.CODE end) CITYCODE,
+  (case when substr(T4.CODE, 6, 3) = '000' then '' else T4.FULLNAME end) CITYNAME,
+  (case when substr(T4.CODE, 6, 3) = '000' then '' else T4.FULLNAME || ' ' || T4.SHORTNAME end) CITYFULLNAME,
+  T4.SHORTNAME CITYTYPE,
+  T8.TYPECODE CITYTYPECODE,
+  (case when substr(T5.CODE, 9, 3) = '000' then '' else T5.CODE end) PLACECODE,
+  (case when substr(T5.CODE, 9, 3) = '000' then '' else T5.FULLNAME end) PLACENAME,
+  (case when substr(T5.CODE, 9, 3) = '000' then '' else T5.FULLNAME || ' ' || T5.SHORTNAME end) PLACEFULLNAME,
+  (case when substr(T5.CODE, 9, 3) = '000' then 'ААА' else T5.FULLNAME || ' ' || T5.SHORTNAME end) PLACEORDERNAME,
+  T5.SHORTNAME PLACETYPE,
+  T9.TYPECODE PLACETYPECODE,
+  T.CODE,
+  T.POSTALCODE,          
+  T.FULLNAME NAME,
+  T.FULLNAME || ' ' || T.SHORTNAME FULLNAME,
+  T.SHORTNAME TYPE,
+  T.ISFEDERALCITY ISFEDERALCITY,
+  T.ISNOSTREET ISNOSTREET,
+  T.CONTEXTNAME CONTEXTNAME,
+  TBO.searchfield searchfield,
+  TBO.TBICODE TBICODE  
+from
+  core_kladrobj T
+  left join core_kladrobj T2 on (substr(T.CODE, 1, 2) || '00000000000' = T2.CODE)
+  left join core_kladrsocr T6 on (T2.SHORTNAME = T6.SHORTNAME) and (T6.OBJLEVEL=1)
+  left join core_kladrobj T3 on (substr(T.CODE, 1, 5) || '00000000' = T3.CODE)
+  left join core_kladrsocr T7 on (T3.SHORTNAME = T7.SHORTNAME) and (T7.OBJLEVEL=2)
+  left join core_kladrobj T4 on (substr(T.CODE, 1, 8) || '00000' = T4.CODE)
+  left join core_kladrsocr T8 on (T4.SHORTNAME = T8.SHORTNAME) and (T8.OBJLEVEL=3)
+  left join core_kladrobj T5 on (substr(T.CODE, 1, 11) || '00' = T5.CODE)
+  left join core_kladrsocr T9 on (T5.SHORTNAME = T9.SHORTNAME) and (T9.OBJLEVEL=4),
+(select   SUBSTR(TBI.CODE, 1, 8) || '00000' as codebegin,
+  SUBSTR(TBI.CODE, 1, 8) || '99900' as codeend,
+  UPPER(TBI.FULLNAME
+    || ' '
+    || TBI.SHORTNAME) as searchfield,
+    TBI.CODE as TBICODE
+from core_kladrobj TBI    
+where((TBI.CODE like '77%') or (TBI.CODE like '78%') or (TBI.CODE like '99%') or (TBI.CODE like '92%') or (substr(TBI.CODE, 6, 3) <> '000') or (substr(TBI.CODE, 9, 3) <> '000'))
+  and (substr(TBI.CODE, 12, 2) = '00')
+  #chunk($NAME) and (UPPER(TBI.FULLNAME || ' ' || TBI.SHORTNAME) like UPPER(#bind($NAME 'VARCHAR') || '%'))  #end
+  #chunk($CODE) and (TBI.CODE= #bind($CODE 'VARCHAR'))  #end
+  #chunk($KLADROBJID) and (TBI.KLADROBJID= #bind($KLADROBJID 'NUMERIC'))  #end
+  #chunk($POSTALCODE) and (TBI.POSTALCODE= #bind($POSTALCODE 'VARCHAR'))  #end
+  #chunk($REGIONCODE) and (TBI.CODE like UPPER(#bind($REGIONCODE 'VARCHAR')))  #end
+  ) TBO  
+where
+  (((T.code             >= TBO.codebegin) AND (T.code <= TBO.codeend) and (SUBSTR(TBO.TBICODE, 9, 3) = '000'))
+    or (T.code = TBO.TBICODE))
+AND (SUBSTR(T.CODE, 12, 2) = '00')
+  #chunk($REGIONNAME) and (UPPER(T2.FULLNAME + ' ' + T2.SHORTNAME) like UPPER(#bind($REGIONNAME 'VARCHAR') + '%'))  #end
+  #chunk($ZONENAME) and (UPPER(T3.FULLNAME + ' ' + T3.SHORTNAME) like UPPER(#bind($ZONENAME 'VARCHAR') + '%'))  #end
+  #chunk($CITYNAME) and (UPPER(T4.FULLNAME + ' ' + T4.SHORTNAME) like UPPER(#bind($CITYNAME 'VARCHAR') + '%'))  #end
+  #chunk($PLACENAME) and (UPPER(T5.FULLNAME + ' ' + T5.SHORTNAME) like UPPER(#bind($PLACENAME 'VARCHAR') + '%'))  #end
+
+  ]]> 
+  </sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+  <![CDATA[ 
+select
+  T.KLADROBJID KLADROBJID,
+  T2.CODE REGIONCODE,
+  T2.FULLNAME REGIONNAME,
+  T2.FULLNAME + ' ' + T2.SHORTNAME REGIONFULLNAME,
+  T2.SHORTNAME REGIONTYPE,
+  T6.TYPECODE REGIONTYPECODE,
+  (case when SubString(T3.CODE, 3, 3) = '000' then null else T3.CODE end) ZONECODE,
+  (case when SubString(T3.CODE, 3, 3) = '000' then null else T3.FULLNAME end) ZONENAME,
+  (case when SubString(T3.CODE, 3, 3) = '000' then null else T3.FULLNAME + ' ' + T3.SHORTNAME end) ZONEFULLNAME,
+  T3.SHORTNAME ZONETYPE,
+  T7.TYPECODE ZONETYPECODE,
+  (case when SubString(T4.CODE, 6, 3) = '000' then null else T4.CODE end) CITYCODE,
+  (case when SubString(T4.CODE, 6, 3) = '000' then null else T4.FULLNAME end) CITYNAME,
+  (case when SubString(T4.CODE, 6, 3) = '000' then null else T4.FULLNAME + ' ' + T4.SHORTNAME end) CITYFULLNAME,
+  T4.SHORTNAME CITYTYPE,
+  T8.TYPECODE CITYTYPECODE,
+  (case when SubString(T5.CODE, 9, 3) = '000' then null else T5.CODE end) PLACECODE,
+  (case when SubString(T5.CODE, 9, 3) = '000' then null else T5.FULLNAME end) PLACENAME,
+  (case when SubString(T5.CODE, 9, 3) = '000' then null else T5.FULLNAME + ' ' + T5.SHORTNAME end) PLACEFULLNAME,
+  T5.SHORTNAME PLACETYPE,
+  T9.TYPECODE PLACETYPECODE,
+  T.CODE,
+  T.FULLNAME NAME,
+  T.FULLNAME + ' ' + T.SHORTNAME FULLNAME,
+  T.SHORTNAME TYPE,
+  T.ISFEDERALCITY ISFEDERALCITY,
+  T.ISNOSTREET ISNOSTREET,
+  T.CONTEXTNAME CONTEXTNAME
+from
+  core_kladrobj T
+  left join core_kladrobj T2 on (SubString(T.CODE, 1, 2) + '00000000000' = T2.CODE)
+  left join core_kladrsocr T6 on (T2.SHORTNAME = T6.SHORTNAME) and (T6.OBJLEVEL=1)
+  left join core_kladrobj T3 on (SubString(T.CODE, 1, 5) + '00000000' = T3.CODE)
+  left join core_kladrsocr T7 on (T3.SHORTNAME = T7.SHORTNAME) and (T7.OBJLEVEL=2)
+  left join core_kladrobj T4 on (SubString(T.CODE, 1, 8) + '00000' = T4.CODE)
+  left join core_kladrsocr T8 on (T4.SHORTNAME = T8.SHORTNAME) and (T8.OBJLEVEL=3)
+  left join core_kladrobj T5 on (SubString(T.CODE, 1, 11) + '00' = T5.CODE)
+  left join core_kladrsocr T9 on (T5.SHORTNAME = T9.SHORTNAME) and (T9.OBJLEVEL=4)
+where
+  ((T.CODE like '77%') or (T.CODE like '78%') or (T.CODE like '99%') or (T.CODE like '92%') or (SubString(T.CODE, 6, 3) <> '000') or (SubString(T.CODE, 9, 3) <> '000'))
+  and (SubString(T.CODE, 12, 2) = '00')
+  #chunk($NAME) and (UPPER(T.FULLNAME + ' ' + T.SHORTNAME) like UPPER(#bind($NAME 'VARCHAR') + '%'))  #end
+  #chunk($REGIONNAME) and (UPPER(T2.FULLNAME + ' ' + T2.SHORTNAME) like UPPER(#bind($REGIONNAME 'VARCHAR') + '%'))  #end
+  #chunk($ZONENAME) and (UPPER(T3.FULLNAME + ' ' + T3.SHORTNAME) like UPPER(#bind($ZONENAME 'VARCHAR') + '%'))  #end
+  #chunk($CITYNAME) and (UPPER(T4.FULLNAME + ' ' + T4.SHORTNAME) like UPPER(#bind($CITYNAME 'VARCHAR') + '%'))  #end
+  #chunk($PLACENAME) and (UPPER(T5.FULLNAME + ' ' + T5.SHORTNAME) like UPPER(#bind($PLACENAME 'VARCHAR') + '%'))  #end
+  #chunk($CODE) and (T.CODE= #bind($CODE 'VARCHAR'))  #end
+  #chunk($KLADROBJID) and (T.KLADROBJID= #bind($KLADROBJID 'NUMERIC'))  #end
+  #chunk($POSTALCODE) and (T.POSTALCODE= #bind($POSTALCODE 'VARCHAR'))  #end
+  #chunk($REGIONCODE) and (T.CODE like UPPER(#bind($REGIONCODE 'VARCHAR')))  #end
+
+
+  ]]> 
+  </sql>
+  </query>
+<query name="dsKladrBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BPosMapCustom">
+  <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true" /> 
+  <sql>
+  <![CDATA[ 
+select
+  #result('count(T.KLADROBJID)', 'java.lang.Long', 'CNT')
+from
+  core_kladrobj T
+  left join core_kladrobj T2 on (substr(T.CODE, 1, 2) || '00000000000' = T2.CODE)
+  left join core_kladrobj T3 on (substr(T.CODE, 1, 5) || '00000000' = T3.CODE)
+  left join core_kladrobj T4 on (substr(T.CODE, 1, 8) || '00000' = T4.CODE)
+  left join core_kladrobj T5 on (substr(T.CODE, 1, 11) || '00' = T5.CODE)
+where
+  ((T.CODE like '77%') or (T.CODE like '78%') or (T.CODE like '99%') or (T.CODE like '92%') or (substr(T.CODE, 6, 3) <> '000') or (substr(T.CODE, 9, 3) <> '000'))
+  and (substr(T.CODE, 12, 2) = '00')
+  #chunk($NAME) and (UPPER(T.FULLNAME || ' ' || T.SHORTNAME) like UPPER(#bind($NAME 'VARCHAR') || '%'))  #end
+  #chunk($REGIONNAME) and (UPPER(T2.FULLNAME || ' ' || T2.SHORTNAME) like UPPER(#bind($REGIONNAME 'VARCHAR') || '%'))  #end
+  #chunk($ZONENAME) and (UPPER(T3.FULLNAME || ' ' || T3.SHORTNAME) like UPPER(#bind($ZONENAME 'VARCHAR') || '%'))  #end
+  #chunk($CITYNAME) and (UPPER(T4.FULLNAME || ' ' || T4.SHORTNAME) like UPPER(#bind($CITYNAME 'VARCHAR') || '%'))  #end
+  #chunk($PLACENAME) and (UPPER(T5.FULLNAME || ' ' || T5.SHORTNAME) like UPPER(#bind($PLACENAME 'VARCHAR') || '%'))  #end
+  #chunk($CODE) and (T.CODE= #bind($CODE 'VARCHAR'))  #end
+  #chunk($KLADROBJID) and (T.KLADROBJID= #bind($KLADROBJID 'NUMERIC'))  #end
+  #chunk($POSTALCODE) and (T.POSTALCODE= #bind($POSTALCODE 'VARCHAR')) #end
+  #chunk($REGIONCODE) and (T.CODE like UPPER(#bind($REGIONCODE 'VARCHAR')))  #end
+
+
+  ]]> 
+  </sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+  <![CDATA[ 
+select
+  #result('count(T.KLADROBJID)', 'java.lang.Long', 'CNT')
+from
+  core_kladrobj T
+  left join core_kladrobj T2 on (SubString(T.CODE, 1, 2) + '00000000000' = T2.CODE)
+  left join core_kladrobj T3 on (SubString(T.CODE, 1, 5) + '00000000' = T3.CODE)
+  left join core_kladrobj T4 on (SubString(T.CODE, 1, 8) + '00000' = T4.CODE)
+  left join core_kladrobj T5 on (SubString(T.CODE, 1, 11) + '00' = T5.CODE)
+where
+  ((T.CODE like '77%') or (T.CODE like '78%') or (T.CODE like '99%') or (T.CODE like '92%') or (SubString(T.CODE, 6, 3) <> '000') or (SubString(T.CODE, 9, 3) <> '000'))
+  and (SubString(T.CODE, 12, 2) = '00')
+  #chunk($NAME) and (UPPER(T.FULLNAME + ' ' + T.SHORTNAME) like UPPER(#bind($NAME 'VARCHAR') + '%'))  #end
+  #chunk($REGIONNAME) and (UPPER(T2.FULLNAME + ' ' + T2.SHORTNAME) like UPPER(#bind($REGIONNAME 'VARCHAR') + '%'))  #end
+  #chunk($ZONENAME) and (UPPER(T3.FULLNAME + ' ' + T3.SHORTNAME) like UPPER(#bind($ZONENAME 'VARCHAR') + '%'))  #end
+  #chunk($CITYNAME) and (UPPER(T4.FULLNAME + ' ' + T4.SHORTNAME) like UPPER(#bind($CITYNAME 'VARCHAR') + '%'))  #end
+  #chunk($PLACENAME) and (UPPER(T5.FULLNAME + ' ' + T5.SHORTNAME) like UPPER(#bind($PLACENAME 'VARCHAR') + '%'))  #end
+  #chunk($CODE) and (T.CODE= #bind($CODE 'VARCHAR'))  #end
+  #chunk($KLADROBJID) and (T.KLADROBJID= #bind($KLADROBJID 'NUMERIC'))  #end
+  #chunk($POSTALCODE) and (T.POSTALCODE= #bind($POSTALCODE 'VARCHAR')) #end
+  #chunk($REGIONCODE) and (T.CODE like UPPER(#bind($REGIONCODE 'VARCHAR')))  #end
+        
+
+  ]]> 
+  </sql>
+  </query>
+<query name="dsKladrRegionBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BPosMapCustom">
+  <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true" /> 
+  <sql>
+  <![CDATA[ 
+select
+  T.KLADROBJID,
+  T.CODE,
+  T.FULLNAME NAME,
+  T.FULLNAME || ' ' || T.SHORTNAME FULLNAME,
+  T.SHORTNAME TYPE,
+  T.ISFEDERALCITY ISFEDERALCITY,
+  T.ISNOSTREET ISNOSTREET,
+  T.CONTEXTNAME CONTEXTNAME
+from
+  core_kladrobj T
+where
+  (T.CODE like '__00000000000')
+  #chunk($NAME) and (UPPER(T.FULLNAME || ' ' || T.SHORTNAME) like UPPER(#bind($NAME 'VARCHAR') || '%'))  #end
+  #chunk($CODE) and (T.CODE= #bind($CODE 'VARCHAR'))  #end
+  #chunk($KLADROBJID) and (T.KLADROBJID= #bind($KLADROBJID 'NUMERIC'))  #end
+order by 4
+
+  ]]> 
+  </sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+  <![CDATA[ 
+select
+  T.KLADROBJID,
+  T.CODE,
+  T.FULLNAME NAME,
+  T.FULLNAME + ' ' + T.SHORTNAME FULLNAME,
+  T.SHORTNAME TYPE,
+  T.ISFEDERALCITY ISFEDERALCITY,
+  T.ISNOSTREET ISNOSTREET,
+  T.CONTEXTNAME CONTEXTNAME
+from
+  core_kladrobj T
+where
+  (T.CODE like '__00000000000')
+  #chunk($NAME) and (UPPER(T.FULLNAME + ' ' + T.SHORTNAME) like UPPER(#bind($NAME 'VARCHAR') + '%'))  #end
+  #chunk($CODE) and (T.CODE= #bind($CODE 'VARCHAR'))  #end
+  #chunk($KLADROBJID) and (T.KLADROBJID= #bind($KLADROBJID 'NUMERIC'))  #end
+order by 4
+
+  ]]> 
+  </sql>
+  </query>
+<query name="dsKladrRegionBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BPosMapCustom">
+  <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true" /> 
+  <sql>
+  <![CDATA[ 
+select
+  #result('count(T.KLADROBJID)', 'java.lang.Long', 'CNT')
+from
+  core_kladrobj T
+where
+  (T.CODE like '__00000000000')
+  #chunk($NAME) and (UPPER(T.FULLNAME || ' ' || T.SHORTNAME) like UPPER(#bind($NAME 'VARCHAR') || '%'))  #end
+  #chunk($CODE) and (T.CODE= #bind($CODE 'VARCHAR'))  #end
+  #chunk($KLADROBJID) and (T.KLADROBJID= #bind($KLADROBJID 'NUMERIC'))  #end
+
+
+  ]]> 
+  </sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+  <![CDATA[ 
+select
+  #result('count(T.KLADROBJID)', 'java.lang.Long', 'CNT')
+from
+  core_kladrobj T
+where
+  (T.CODE like '__00000000000')
+  #chunk($NAME) and (UPPER(T.FULLNAME + ' ' + T.SHORTNAME) like UPPER(#bind($NAME 'VARCHAR') + '%'))  #end
+  #chunk($CODE) and (T.CODE= #bind($CODE 'VARCHAR'))  #end
+  #chunk($KLADROBJID) and (T.KLADROBJID= #bind($KLADROBJID 'NUMERIC'))  #end
+        
+
+  ]]> 
+  </sql>
+  </query>
+<query name="dsKladrStreetBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BPosMapCustom">
+  <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true" /> 
+  <sql>
+  <![CDATA[ 
+select
+  T.KLADRSTREETID,
+  T.CODE,
+  T.FULLNAME NAME,
+  T.FULLNAME || ' ' || T.SHORTNAME FULLNAME,
+  T.SHORTNAME TYPE,
+  T.POSTALCODE POSTALCODE,
+  T2.TYPECODE TYPECODE,
+  T2.FULLNAME TYPEFULLNAME
+from
+  core_kladrstreet T
+  inner join core_kladrsocr T2 on (T.shortname=T2.shortname and t2.objlevel = 5)
+#chain('AND' 'WHERE')
+  #chunk($NAME) (UPPER(T.FULLNAME || ' ' || T.SHORTNAME) like UPPER(#bind($NAME 'VARCHAR') || '%'))  #end
+  #chunk($CODE) (T.CODE= #bind($CODE 'VARCHAR'))  #end
+  #chunk($KLADRCODE) (T.CODE like #bind($KLADRCODE 'VARCHAR') || '%')  #end
+  #chunk($KLADRSTREETID) (T.KLADRSTREETID= #bind($KLADRSTREETID 'NUMERIC'))  #end
+#end
+
+
+  ]]> 
+  </sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+  <![CDATA[ 
+select
+  T.KLADRSTREETID,
+  T.CODE,
+  T.FULLNAME NAME,
+  T.FULLNAME + ' ' + T.SHORTNAME FULLNAME,
+  T.SHORTNAME TYPE,
+  T.POSTALCODE POSTALCODE,
+  T2.TYPECODE TYPECODE,
+  T2.FULLNAME TYPEFULLNAME
+from
+  core_kladrstreet T
+  inner join core_kladrsocr T2 on (T.shortname=T2.shortname)
+#chain('AND' 'WHERE')
+  #chunk($NAME) (UPPER(T.FULLNAME + ' ' + T.SHORTNAME) like UPPER(#bind($NAME 'VARCHAR') + '%'))  #end
+  #chunk($CODE) (T.CODE= #bind($CODE 'VARCHAR'))  #end
+  #chunk($KLADRCODE) (T.CODE like #bind($KLADRCODE 'VARCHAR') + '%')  #end
+  #chunk($KLADRSTREETID) (T.KLADRSTREETID = #bind($KLADRSTREETID 'NUMERIC'))  #end
+#end
+
+
+  ]]> 
+  </sql>
+  </query>
+<query name="dsKladrStreetBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BPosMapCustom">
+  <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true" /> 
+  <sql>
+  <![CDATA[ 
+select
+  #result('count(T.KLADRSTREETID)', 'java.lang.Long', 'CNT')
+from
+  core_kladrstreet T
+  inner join core_kladrsocr T2 on (T.shortname=T2.shortname)
+#chain('AND' 'WHERE')
+  #chunk($NAME) (UPPER(T.FULLNAME || ' ' || T.SHORTNAME) like UPPER(#bind($NAME 'VARCHAR') || '%'))  #end
+  #chunk($CODE) (T.CODE= #bind($CODE 'VARCHAR'))  #end
+  #chunk($KLADRCODE) (T.CODE like #bind($KLADRCODE 'VARCHAR') || '%')  #end
+  #chunk($KLADRSTREETID) (T.KLADRSTREETID = #bind($KLADRSTREETID 'NUMERIC'))  #end
+#end
+
+
+  ]]> 
+  </sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+  <![CDATA[ 
+select
+  #result('count(T.KLADRSTREETID)', 'java.lang.Long', 'CNT')
+from
+  core_kladrstreet T
+  inner join core_kladrsocr T2 on (T.shortname=T2.shortname)
+#chain('AND' 'WHERE')
+  #chunk($NAME) (UPPER(T.FULLNAME + ' ' + T.SHORTNAME) like UPPER(#bind($NAME 'VARCHAR') + '%'))  #end
+  #chunk($CODE) (T.CODE= #bind($CODE 'VARCHAR'))  #end
+  #chunk($KLADRCODE) (T.CODE like #bind($KLADRCODE 'VARCHAR') + '%')  #end
+  #chunk($KLADRSTREETID) (T.KLADRSTREETID= #bind($KLADRSTREETID 'NUMERIC'))  #end
+#end
+        
+
+  ]]> 
+  </sql>
+  </query>
+<query name="dsKladrHouseBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BPosMapCustom">
+  <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true" /> 
+  <sql>
+  <![CDATA[ 
+select * from (
+select
+  T.KLADRHOUSEID,
+  T.CODE,
+  T.HOUSENUMBER,
+  T.POSTALCODE POSTALCODE
+from
+  core_kladrhouse T
+#chain('AND' 'WHERE')
+  #chunk($CODE) (T.CODE= #bind($CODE 'VARCHAR'))  #end
+  #chunk($KLADRCODE) (T.CODE like #bind($KLADRCODE 'VARCHAR') || '%')  #end
+  #chunk($KLADRHOUSEID) (T.KLADRHOUSEID= #bind($KLADRSTREETID 'NUMERIC'))  #end
+#end
+)
+where rownum <= 10
+
+  ]]> 
+  </sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+  <![CDATA[ 
+select top 10
+  T.KLADRHOUSEID,
+  T.CODE,
+  T.HOUSENUMBER,
+  T.POSTALCODE POSTALCODE
+from
+  core_kladrhouse T
+#chain('AND' 'WHERE')
+  #chunk($CODE) (T.CODE= #bind($CODE 'VARCHAR'))  #end
+  #chunk($KLADRCODE) (T.CODE like #bind($KLADRCODE 'VARCHAR') + '%')  #end
+  #chunk($KLADRSTREETID) (T.KLADRSTREETID = #bind($KLADRSTREETID 'NUMERIC'))  #end
+#end
+
+  ]]> 
+  </sql>
+  </query>
+<query name="dsKladrFindByCodeOrName" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BPosMapCustom">
+  <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true" /> 
+  <sql>
+  <![CDATA[ 
+ 
+            SELECT t1.CODE as CODE, t1.FULLNAME as NAME, t1.SHORTNAME as TYPE, t2.FULLNAME as TYPENAME, t2.TYPECODE as TYPECODE
+            FROM CORE_KLADROBJ t1
+            Left JOIN CORE_KLADRSOCR t2 on (t2.SHORTNAME = t1.SHORTNAME) and (t2.OBJLEVEL='$LEVEL')
+            #chain('AND' 'WHERE') 
+            #chunk($CODE) t1.CODE LIKE (#bind($CODE 'VARCHAR') || '%') #end 
+            #chunk($FULLNAME) t1.FULLNAME = #bind($FULLNAME 'VARCHAR') #end 
+            #chunk($SHORTNAME) t1.SHORTNAME = #bind($SHORTNAME 'VARCHAR') #end 
+            #end
+  
+
+  ]]> 
+  </sql>
+  </query>
+<query name="dsGetKladrByCode" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BPosMapCustom">
+  <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true" /> 
+  <sql>
+  <![CDATA[ 
+ 
+            SELECT t1.CODE, t1.FULLNAME as NAME, t1.SHORTNAME as TYPE, t2.FULLNAME as TYPENAME, t2.TYPECODE as TYPECODE
+            FROM CORE_KLADROBJ t1
+            Left JOIN CORE_KLADRSOCR t2 on (t2.SHORTNAME = t1.SHORTNAME) and (t2.OBJLEVEL='$LEVEL')
+            WHERE CODE = '$CODE'
+
+  
+
+  ]]> 
+  </sql>
+  </query>
+
+<!-- КОНЕЦ - скопировано из \front6\service\insposservice\src\main\resources\InsPOSCustom.map.xml для поддержки KladrCustomFacade - КОНЕЦ  -->
+            
+</data-map>

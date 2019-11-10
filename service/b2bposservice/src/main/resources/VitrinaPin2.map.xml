@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+
+    <query name="vitrinaPinClientContractBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PA2ContractMapCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT $NEEDDISTINCT
+                    #result('T.CONTRID', 'java.lang.Long', 'CONTRID'),
+                    #result('T.CONTRNUMBER', 'java.lang.String', 'CONTRNUMBER'),
+                    #result('T.INSAMVALUE', 'java.lang.Double', 'INSAMVALUE'),
+                    #result('T.INSAMCURRENCYID', 'java.lang.Long', 'INSAMCURRENCYID'),
+                    #result('T.PREMVALUE', 'java.lang.Double', 'PREMVALUE'),
+                    #result('T.PREMCURRENCYID', 'java.lang.Long', 'PREMCURRENCYID'),
+                    #result('T.CURRENCYRATE', 'java.lang.BigDecimal', 'CURRENCYRATE'),
+                    #result('T.PAYVARID', 'java.lang.Long', 'PAYVARID'),
+                    #result('T.STARTDATE', 'java.math.BigDecimal', 'STARTDATE'),
+                    #result('T.FINISHDATE', 'java.math.BigDecimal', 'FINISHDATE'),
+
+                    #result('pvr.SYSNAME', 'java.lang.String', 'PAYVARSYSNAME'),
+
+                    #result('iacur.ALPHACODE', 'java.lang.String', 'INSAMCURRENCYALPHACODE'),
+                    #result('prcur.ALPHACODE', 'java.lang.String', 'PREMCURRENCYALPHACODE'),
+
+                    #result('p.EXTERNALCODE', 'java.lang.String', 'PRODEXTERNALCODE'),
+                    #result('p.NAME', 'java.lang.String', 'PRODNAME'),
+                    #result('p.SYSNAME', 'java.lang.String', 'PRODSYSNAME'),
+
+                    #result('pc.HBDATAVERID', 'java.lang.Long', 'PRODCONFHBDATAVERID'),
+
+                    #result('pk.SYSNAME', 'java.lang.String', 'PRODKINDSYSNAME'),
+                    #result('pk.NAME', 'java.lang.String', 'PRODKINDNAME'),
+
+                    #result('prg.NAME', 'java.lang.String', 'PRODPROGNAME'),
+                    #result('prg.SYSNAME', 'java.lang.String', 'PRODPROGSYSNAME'),
+
+                    #result('didisj.INVVALUE', 'java.lang.Double', 'INVAMINVVALUE'),
+                    #result('didnsj.DIDCONTRVALUE', 'java.lang.Double', 'INVAMDIDCONTRVALUE')
+
+                    $ASPECTFIELDS
+                FROM
+                    B2B_CONTR T
+                    INNER JOIN SD_SHARE_CONTRACT shc ON (shc.CONTRACTID = T.CONTRID)
+                    INNER JOIN B2B_PRODVER pv ON (T.PRODVERID = pv.PRODVERID)
+                    INNER JOIN B2B_PROD p ON (pv.PRODID = p.PRODID)
+                    INNER JOIN CORE_SM_STATE T2 ON (T.STATEID = T2.ID)
+                    LEFT JOIN B2B_PRODCONF pc ON (pc.PRODVERID = pv.PRODVERID)
+                    LEFT JOIN REF_CURRENCY iacur ON (iacur.CURRENCYID = T.INSAMCURRENCYID)
+                    LEFT JOIN REF_CURRENCY prcur ON (prcur.CURRENCYID = T.PREMCURRENCYID)
+                    LEFT JOIN B2B_PAYVAR pvr ON (pvr.PAYVARID = T.PAYVARID)
+                    LEFT JOIN B2B_PRODKIND pk ON (pk.PRODKINDID = p.PRODKINDID)
+                    LEFT JOIN B2B_PRODPROG prg ON (T.PRODPROGID = prg.PRODPROGID)
+                    LEFT JOIN B2B_INVAM didisj ON (((didisj.CONTRNUMBER = T.CONTRNUMBER) ) AND didisj.DISCRIMINATOR = 1 AND didisj.CALCDATE IS NOT NULL)
+                    LEFT JOIN B2B_INVAM didnsj ON (((didnsj.CONTRNUMBER = T.CONTRNUMBER) ) AND didnsj.DISCRIMINATOR = 3 AND didnsj.DIDYEAR  IS NOT NULL)
+                    $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                    #chunk($HIDDENSTATEIDS) T2.ID NOT IN ($HIDDENSTATEIDS) #end
+                    #chunk($STATESYSNAMELIST) T2.SYSNAME in ($STATESYSNAMELIST) #end
+                    #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end
+                    #chunk($CLIENTID) shc.CLIENTID = #bind($CLIENTID 'NUMERIC') #end
+                    #chunk($PRODKINDSYSNAMELIST) pk.SYSNAME in ($PRODKINDSYSNAMELIST) #end
+                    #chunk() ((didisj.INVAMID IS NULL) OR (didisj.CALCDATE = (SELECT MAX(m.CALCDATE) FROM B2B_INVAM m WHERE ((m.CONTRNUMBER = T.CONTRNUMBER)) AND m.DISCRIMINATOR = 1))) #end
+                    #chunk() ((didnsj.INVAMID IS NULL) OR (didnsj.DIDYEAR  = (SELECT MAX(m.DIDYEAR)  FROM B2B_INVAM m WHERE ((m.CONTRNUMBER = T.CONTRNUMBER)) AND m.DISCRIMINATOR = 3))) #end
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+
+</data-map>

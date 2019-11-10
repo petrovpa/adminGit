@@ -1,0 +1,74 @@
+<!-- Профильное право -->
+<form #f="ngForm"
+      [ngClass]="{'was-validated': wasValidated}"
+      class="page-form-edit role-manage-edit-form" novalidate autocomplete="off"
+      (submit)="submit(f)">
+  <div class="page-title">Профильное право</div>
+
+  <!-- Форма -->
+  <form-control-label title="Укажите профильное право" [required]="true">
+    <select2 name="roleSysName"
+                  [(ngModel)]="rightId"
+                  [items]="rightList$ | async"
+                  bindLabel="RIGHTNAME"
+                  bindValue="RIGHTID"
+                  placeholder="Выберите право"
+                  (onChange)="onRightSelect($event)"
+                  [required]="true"
+                  [disabled]="isEdit || isFormDisabled || rightParamsList.length"></select2>
+  </form-control-label>
+
+  <form-control-label title="Параметры профильного права" [required]="true">
+    <custom-button-group [buttons]="rightParamsTableButtons"
+                         [selected]="rightParamsTable.selected"></custom-button-group>
+
+    <datatable #rightParamsTable class="bootstrap"
+               [rows]="rightParamsList"
+               [columnMode]="'force'"
+               [selectionType]="'single'"
+               [rowHeight]="30"
+               [messages]="{
+                    emptyMessage: isRightParamsLoading ? 'Подождите. Идет загрузка...' : 'Не найдено ни одного параметра'
+                 }"
+               (select)="onSelectParam($event)">
+      <datatable-column name="Наименование параметра" [flexGrow]="1" [prop]="'VALUE'"></datatable-column>
+      <datatable-column name="Значение" [flexGrow]="1" [prop]="'VKEY'"></datatable-column>
+    </datatable>
+  </form-control-label>
+
+  <!-- Кнопки -->
+  <div class="page__btn">
+    <div class="row">
+      <div class="col-sm-6 col-12">
+        <button type="button"
+                class="btn btn-link btn-rounded btn-block"
+                [disabled]="isServiceInProgress"
+                (click)="cancel(f)">
+          Отмена
+        </button>
+      </div>
+      <div class="col-sm-6 col-12">
+        <button type="submit"
+                class="btn btn-primary btn-rounded btn-block"
+                [disabled]="isServiceInProgress || isFormDisabled">
+          Сохранить
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
+
+<!-- Добавление параметра -->
+<modal-dialog #addDialog [modal-dialog-config]="modalConfig">
+  <div class="modal-dialog__content modal-dialog__add">
+    <ng-container *ngFor="let metadata of rightMetadata">
+      <right-params-departament *ngIf="metadata.DATASOURCEURL == 'right-params-departament'"
+                                (onComplete)="appendParam($event)"
+                                (onClose)="closeModal()"></right-params-departament>
+
+      <right-params-menu *ngIf="metadata.DATASOURCEURL=== 'right-params-menu'"
+                         (onComplete)="appendParam($event)"
+                         (onClose)="closeModal()"></right-params-menu>
+    </ng-container>
+  </div>
+</modal-dialog>

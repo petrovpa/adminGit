@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+    <!-- Generate by core-dictionary-plugin for module ${className} -->
+    <persistence-unit name="Termination" transaction-type="JTA">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+                <jta-data-source>java:/DataSourceEx</jta-data-source>
+                <!-- Configuring class Entity -->
+                        <class>com.bivgroup.crm.ShareContractIns</class>
+                <class>com.bivgroup.crm.Address</class>
+                <class>com.bivgroup.crm.ClientProfile</class>
+                <class>com.bivgroup.crm.EClient_VER</class>
+                <class>com.bivgroup.crm.SMState</class>
+                <class>com.bivgroup.crm.SalesCampaignOffer</class>
+                <class>com.bivgroup.crm.Document</class>
+                <class>com.bivgroup.crm.KindCountry</class>
+                <class>com.bivgroup.crm.ClientDocument</class>
+                <class>com.bivgroup.crm.KindEventClientProfile</class>
+                <class>com.bivgroup.crm.Client</class>
+                <class>com.bivgroup.crm.SalesCampaign</class>
+                <class>com.bivgroup.crm.KindContact</class>
+                <class>com.bivgroup.crm.SMTransition</class>
+                <class>com.bivgroup.crm.PersonAddress</class>
+                <class>com.bivgroup.crm.BankDetails</class>
+                <class>com.bivgroup.crm.ContractDriver</class>
+                <class>com.bivgroup.crm.PPersonChild</class>
+                <class>com.bivgroup.crm.EPerson</class>
+                <class>com.bivgroup.crm.JClient</class>
+                <class>com.bivgroup.crm.SMType</class>
+                <class>com.bivgroup.crm.ClientProfileAgreement</class>
+                <class>com.bivgroup.crm.KindDocument</class>
+                <class>com.bivgroup.crm.ClientManager</class>
+                <class>com.bivgroup.crm.Person</class>
+                <class>com.bivgroup.crm.KindStatus</class>
+                <class>com.bivgroup.crm.ClientProfileNotification</class>
+                <class>com.bivgroup.crm.ContractPMember</class>
+                <class>com.bivgroup.crm.LegalFormsOfBusiness</class>
+                <class>com.bivgroup.crm.ClientProperty</class>
+                <class>com.bivgroup.crm.ClientProfileEvent</class>
+                <class>com.bivgroup.crm.ClientAddress</class>
+                <class>com.bivgroup.crm.KindAccount</class>
+                <class>com.bivgroup.crm.ClientBankDetails</class>
+                <class>com.bivgroup.crm.PersonContact</class>
+                <class>com.bivgroup.crm.PClient</class>
+                <class>com.bivgroup.crm.JClient_VER</class>
+                <class>com.bivgroup.crm.ClientProfileToken</class>
+                <class>com.bivgroup.crm.ClientContact</class>
+                <class>com.bivgroup.crm.JPerson</class>
+                <class>com.bivgroup.crm.KindAddress</class>
+                <class>com.bivgroup.crm.KindContractMember</class>
+                <class>com.bivgroup.crm.Contact</class>
+                <class>com.bivgroup.crm.EClient</class>
+                <class>com.bivgroup.crm.KindAgreementClientProfile</class>
+                <class>com.bivgroup.crm.KindShareRole</class>
+                <class>com.bivgroup.crm.KindClientProperty</class>
+                <class>com.bivgroup.crm.PClient_VER</class>
+                <class>com.bivgroup.crm.PPerson</class>
+                <class>com.bivgroup.crm.PersonDocument</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_Indexing</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_BChangePassport</class>
+                <class>com.bivgroup.termination.ProdKindDeclaration</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_LaChangeSurname</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_OnRegistration</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_Cancellation</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_FinancialVacation</class>
+                <class>com.bivgroup.termination.KindChangeReason</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_LaChangePassport</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_BenChange</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_HolderChange</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_HChangeSurname</class>
+                <class>com.bivgroup.termination.KindInvIncomeFixType</class>
+                <class>com.bivgroup.termination.ProdKindChangeReason</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_DecreaseInsSum</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_Activation</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_Options</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_BChangePersData</class>
+                <class>com.bivgroup.termination.KindDeclarationDiscriminator</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_ExtraRoi</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_LaChangeAddress</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_Claim</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_Project</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_TransferToPaid</class>
+                <class>com.bivgroup.termination.KindInvBaseActive</class>
+                <class>com.bivgroup.termination.DeclarationForContract</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_ExitFinancialVacation</class>
+                <class>com.bivgroup.termination.ReasonChange_PPOOnlineActivation</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_ChangeAsset</class>
+                <class>com.bivgroup.termination.ValueReasonChangeForContract</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_Instalments</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_ClaimOpen</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_FixIncome</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_ChangeBorker</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_ExcludePrograms</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_ExtraPremium</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_HChangePersData</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_Recalculation</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_Underwriting</class>
+                <class>com.bivgroup.termination.ReceivingChannel</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_Option</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_IncludePrograms</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_WithdrawIncome</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_HChangeContInfo</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_LaChangeContInfo</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_BChangeContInfo</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_Freeze</class>
+                <class>com.bivgroup.termination.KindDeclaration</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_Refusal</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_IncreaseInsSum</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_DuplicateDocument</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_LaChangePersData</class>
+                <class>com.bivgroup.termination.UserPost</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_ExtPremPay</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_HChangePassport</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_BChangeAddress</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_ChangeFund</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_Annulment</class>
+                <class>com.bivgroup.termination.DeclarationOfAvoidanceForContract</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_IncreasePeriod</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_BChangeSurname</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_LaChange</class>
+                <class>com.bivgroup.termination.TerminationReason</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_DecreasePeriod</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_ChangeCreditData</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_Active</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_FixationRoi</class>
+                <class>com.bivgroup.termination.DeclarationOfChangeForContract</class>
+                <class>com.bivgroup.termination.ReasonChangeForContract_HChangeAddress</class>
+                        <properties>
+            <!-- Hibernate properties -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.use_sql_comments" value="true"/>
+            <!-- <property name="hibernate.hbm2ddl.auto" value="update"/>-->
+            <!-- Configuring inner hbm.xml-->
+                        <property name="jboss.as.jpa.providerModule" value="org.hibernate:5.2.4.Final"/>
+        </properties>
+    </persistence-unit>
+
+</persistence>

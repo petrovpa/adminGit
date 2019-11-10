@@ -1,0 +1,49 @@
+package com.bivgroup.underwriting;
+import com.bivgroup.common.orm.OrmProviderImpl;
+import com.bivgroup.common.orm.interfaces.OrmProvider;
+import com.bivgroup.core.dictionary.dao.hierarchy.HierarchyDAO;
+import com.bivgroup.core.aspect.proxy.AspectProxy;
+import com.bivgroup.core.aspect.exceptions.AspectException;
+import com.bivgroup.core.dictionary.dao.hierarchy.ExtendGenericDAO;
+import org.hibernate.Session;
+import java.util.Map;
+
+import javax.sql.DataSource;
+
+/**
+ * Generate by core-dictionary-plugin for module Underwriting
+ */
+public class Underwriting extends HierarchyDAO implements ExtendGenericDAO {
+
+    @Override
+    public String getModuleName() {
+    return "com.bivgroup.underwriting";
+    }
+
+    public Underwriting(OrmProvider provider) {
+        super(provider);
+    }
+
+    public Underwriting(DataSource dataSource){
+        super(new OrmProviderImpl(dataSource, "Underwriting"));
+    }
+    public Underwriting(Session session){
+        super(session);
+    }
+
+    public static ExtendGenericDAO newInstance(OrmProvider provider) throws AspectException {
+            Underwriting tmp = new Underwriting(provider);
+            return ( ExtendGenericDAO) AspectProxy.newInstance(tmp, new Class[]{Underwriting.class});
+    }
+
+    public static ExtendGenericDAO newInstance(DataSource dataSource) throws AspectException {
+            Underwriting tmp = new Underwriting(dataSource);
+            return (ExtendGenericDAO) AspectProxy.newInstance(tmp, new Class[]{Underwriting.class});
+    }
+
+    public static ExtendGenericDAO newInstance(Session session) throws AspectException {
+            Underwriting tmp = new Underwriting(session);
+            return ( ExtendGenericDAO) AspectProxy.newInstance(tmp, new Class[]{Underwriting.class});
+    }
+
+}

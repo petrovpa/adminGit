@@ -1,0 +1,91 @@
+<form #f="ngForm"
+      [ngClass]="{'was-validated': wasValidated}"
+      class="page-form-edit role-manage-edit-form" novalidate autocomplete="off"
+      (submit)="submit(f)">
+
+  <!-- Форма -->
+  <div class="row">
+    <div class="col-sm-6 col-12">
+      <form-control-label title="Системное имя" [required]="true">
+        <input-field name="roleSysName"
+                     [(ngModel)]="role.ROLESYSNAME"
+                     [required]="true"
+                     [filter]="filterSysName"
+                     [disabled]="isEdit || isFormDisabled"></input-field>
+      </form-control-label>
+    </div>
+    <div class="col-sm-6 col-12">
+      <form-control-label title="Наименование" [required]="true">
+        <input-field name="roleName"
+                     [(ngModel)]="role.ROLENAME"
+                     [required]="true"
+                     [disabled]="isFormDisabled"></input-field>
+      </form-control-label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <form-control-label title="Описание" [required]="true">
+        <text-area name="description"
+                   [(ngModel)]="role.DESCRIPTION"
+                   [required]="true"
+                   [autoSize]="true"
+                   [disabled]="isFormDisabled"></text-area>
+      </form-control-label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6 col-12">
+      <form-control-label title="Дата с">
+        <input-datepicker name="roleDateStart"
+                          [(ngModel)]="role.ROLEDATESTART"
+                          [maxDate]="role.ROLEDATEEND"
+                          [disabled]="isFormDisabled"></input-datepicker>
+      </form-control-label>
+    </div>
+    <div class="col-sm-6 col-12">
+      <form-control-label title="Дата по">
+        <input-datepicker name="roleDateEnd"
+                          [(ngModel)]="role.ROLEDATEEND"
+                          [minDate]="role.ROLEDATESTART"
+                          [disabled]="isFormDisabled"></input-datepicker>
+      </form-control-label>
+    </div>
+  </div>
+
+  <!-- Кнопки -->
+  <div class="page__btn">
+    <div class="row">
+      <div class="col-sm-6 col-12">
+
+      </div>
+      <div class="col-sm-6 col-12">
+        <button type="submit"
+                class="btn btn-primary btn-rounded btn-block"
+                [disabled]="isServiceInProgress || isFormDisabled">
+          Сохранить
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-12">
+        <button type="button"
+                class="btn btn-link btn-rounded btn-block"
+                [disabled]="isServiceInProgress"
+                (click)="cancel(f)">Отмена
+        </button>
+      </div>
+      <div class="col-sm-6 col-12">
+        <button type="submit"
+                class="btn btn-primary btn-rounded btn-block"
+                [disabled]="isServiceInProgress || !role.ROLEID"
+                (click)="next(f)">Продолжить
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <debug-form name="form" [form]="f"></debug-form>
+</form>

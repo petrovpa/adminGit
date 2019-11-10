@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="bldall" name="websmsws">
+
+	<property environment="env" />
+	<property file="build.properties" />
+	<property file="websphere.properties" />
+	<property name="build.home" value="${basedir}/build" />
+	<property name="lib.home" value="${basedir}/lib" />
+	<property name="build.classes.home" value="${build.home}/classes" />
+	<property name="build.war.home" value="${build.home}/war" />
+	<property name="build.ear.home" value="${build.home}/ear" />
+	<property name="deploy.home" value="${build.home}/deploy" />
+
+	<path id="jaxws.classpath">
+		<pathelement location="${java.home}/../lib/tools.jar" />
+		<fileset dir="${lib.home}">
+			<include name="*.jar" />
+			<exclude name="j2ee.jar" />
+		</fileset>
+		<fileset dir="${lib}">
+			<include name="*.jar" />
+			<exclude name="j2ee.jar" />
+		</fileset>
+	</path>
+
+	<taskdef name="wsgen" classname="com.sun.tools.ws.ant.WsGen">
+		<classpath refid="jaxws.classpath" />
+	</taskdef>
+
+	<taskdef name="wsimport" classname="com.sun.tools.ws.ant.WsImport">
+		<classpath refid="jaxws.classpath" />
+	</taskdef>
+
+	<target name="setup">
+		<mkdir dir="${build.home}" />
+		<mkdir dir="${build.classes.home}" />
+		<mkdir dir="${build.war.home}" />
+		<mkdir dir="${build.ear.home}" />
+	</target>
+
+	<target name="clean">
+		<delete dir="${build.home}" includeEmptyDirs="true" />
+	</target>
+
+
+	<target name="build-wsdl" depends="setup">
+		<wsimport debug="${debug}" wsdlLocation="/WEB-INF/wsdl/websmsws.wsdl" sourcedestdir="${basedir}/src" verbose="${verbose}" keep="${keep}" destdir="${build.classes.home}" package="${server.package}" wsdl="${server.wsdl}"/> <!--  binding="${basedir}/etc/custom-server.xml"/-->
+
+
+		<javac fork="true" srcdir="${basedir}/src" destdir="${build.classes.home}" includes="**/**,**/common/**" debug="on">
+			<classpath refid="jaxws.classpath" />
+		</javac>
+		<copy todir="${build.classes.home}" file="${basedir}/etc/handler-chain.xml"></copy>
+	</target>
+
+	<target name="compile">
+		<javac fork="true" srcdir="${basedir}/src" destdir="${build.classes.home}" includes="**/**,**/common/**" debug="on">
+			<classpath refid="jaxws.classpath" />
+		</javac>
+	</target>
+
+	<target name="create-war">
+		<war warfile="${build.war.home}/${ant.project.name}.war" webxml="etc/web.xml">
+			<webinf dir="${basedir}/etc" includes="handler-chain.xml, sun-jaxws.xml,geronimo-web.xml,weblogic.xml" />
+			<zipfileset dir="${basedir}/etc" includes="*.wsdl, *.xsd" prefix="WEB-INF/wsdl" />
+			<zipfileset dir="${basedir}/src" includes="*.xml, *properties" prefix="WEB-INF/classes" />
+			<classes dir="${build.classes.home}"  />
+			<lib dir="${lib.home}" />
+			<lib dir="${lib}" includes="*.jar"/> 
+		</war>
+	</target>
+
+
+	<target name="create-ear">
+		<echo message="Creating EAR" />
+		<copy todir="${build.war.home}/META-INF">
+			<fileset dir="${basedir}/etc/META-INF" includes="**/*.xml" />
+		</copy>
+		<delete file="${build.ear.home}/${ant.project.name}.ear" />
+		<jar jarfile="${build.ear.home}/${ant.project.name}.ear" basedir="${build.war.home}" includes="**/*.*" />
+	</target>
+
+
+
+	<target name="deploy">
+		<!--copy file="${build.ear.home}/${ant.project.name}.ear" todir="${deploy.home}" /-->
+		<java jar="${WASCE_HOME}/bin/deployer.jar" fork="true">
+			<arg value="--user" />
+			<arg value="${geronimo.user}" />
+			<arg value="--password" />
+			<arg value="${geronimo.password}" />
+			<arg value="undeploy" />
+			<arg value="${service.name}" />
+		</java>
+		<java jar="${WASCE_HOME}/bin/deployer.jar" fork="true">
+			<arg value="--user" />
+			<arg value="${geronimo.user}" />
+			<arg value="--password" />
+			<arg value="${geronimo.password}" />
+			<arg value="deploy" />
+			<arg value="${build.ear.home}/${ant.project.name}.ear" />
+		</java>
+		<!--delete dir="${build.war.home}" includeEmptyDirs="true" />
+		<delete dir="${build.ear.home}" includeEmptyDirs="true" /-->
+	</target>
+
+	<target name="websphere.deploy.module">
+		<mkdir dir="${build.ear.home}/scripts" />
+
+		<loadfile property="deploy.jacl" srcfile="deploy.jacl.template">
+			<filterchain>
+				<expandproperties />
+			</filterchain>
+		</loadfile>
+		<echo file="${build.ear.home}/scripts/deploy.jacl">${deploy.jacl}</echo>
+		<echo>${wsas.home}</echo>
+		<echo>${wsas.home}\profiles\${domain.name}\bin\wsadmin.bat</echo>
+		<exec dir="${build.ear.home}/scripts" executable="cmd" os="Windows XP, Windows 2000, Windows Vista, Windows 2003" vmlauncher="false">
+			<arg line="/C ${wsas.home}\profiles\${domain.name}\bin\wsadmin.bat -user ${wsas.deployer.name} -password ${wsas.deployer.password} -f deploy.jacl" />
+		</exec>
+	</target>
+
+	<target name="bldall" depends="setup">
+		<antcall target="clean" />
+		<antcall target="build-wsdl" />
+		<antcall target="create-war" />
+		<antcall target="create-ear" />
+	</target>
+
+	<target name="bldall+deploy" depends="setup">
+		<antcall target="clean" />
+		<antcall target="build-wsdl" />
+		<antcall target="create-war" />
+		<antcall target="create-ear" />
+		<antcall target="deploy" />
+	</target>
+
+	<target name="bldall_sphere" depends="setup">
+		<antcall target="clean" />
+		<antcall target="build-wsdl" />
+		<antcall target="create-war" />
+		<antcall target="create-ear" />
+		<antcall target="websphere.deploy.module" />
+	</target>
+
+</project>

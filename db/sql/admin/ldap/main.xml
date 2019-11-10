@@ -1,0 +1,42 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+	<changeSet author="ivashin_aleksey" context="update" id="admin-ldap-1">
+		<preConditions onFail="MARK_RAN">
+		    <and>
+                <tableExists tableName="CORE_USERACCOUNT"/>
+                <not>
+                    <columnExists columnName="ADUSERPRINCIPALNAME" tableName="CORE_USERACCOUNT"/>
+                </not>
+            </and>
+		</preConditions>
+		<addColumn tableName="CORE_USERACCOUNT">
+            <column name="ADUSERPRINCIPALNAME" type="VARCHAR(1024)">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+		<addColumn tableName="CORE_USERACCOUNT">
+            <column name="ADUSERLOGIN" type="VARCHAR(1024)">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+		<comment>Update CORE_USERACCOUNT table. Add fields for link with Active Directory</comment>
+	</changeSet>
+	
+    <changeSet author="ivashin_aleksey" context="update" id="admin-ldap-2">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <sqlCheck expectedResult="0">
+                    SELECT COUNT(*) FROM B2B_JOURNALPARAM WHERE (SYSNAME = 'ADUSERLOGIN');
+                </sqlCheck>
+            </and>
+        </preConditions>
+        <sql>
+            INSERT INTO B2B_JOURNALPARAM (ID, JOURNALID, NAME, SYSNAME, NOTE, SEQUENCE, ISCOMPLEX, DATATYPEID, HANDBOOKID, URLCOMPONENT, ISREQUIRED, PARENTID, MAINPARAMID, PARAMSHOWEXPR, CREATEDATE, CREATEUSERID, UPDATEDATE, UPDATEUSERID, DATAPROVIDERID, KEYFIELD, NAMEFIELD, NAMESPACE, TABLEALIAS) VALUES ((SELECT MAX(ID) + 1 FROM B2B_JOURNALPARAM), (SELECT ID FROM B2B_JOURNAL WHERE SYSNAME='ADMINUSERSLIST'), 'Пользователь AD', 'ADUSERLOGIN', 'Пользователь AD', 1, 0, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, 'ADUSERLOGIN', 'T');
+        </sql>
+        <comment>registered new param in B2B_JOURNALPARAM for ADMINUSERSLIST journal</comment>
+    </changeSet>
+</databaseChangeLog>
+

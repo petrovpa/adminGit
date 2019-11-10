@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>Sevice</groupId>
+    <parent>
+        <groupId>Sevice</groupId>
+        <artifactId>sberdocker</artifactId>
+        <version>${global.version}</version> 
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+	
+    <artifactId>sberfrontdocker</artifactId>
+    <version>${global.version}</version>
+    <description>Generated docker</description>
+    <packaging>pom</packaging>
+	
+    <properties>
+        <!-- wildfly images -->
+        <wildfly.version>192.168.1.46:5000/biv-wildfly:10.1.1</wildfly.version>
+        <!-- platform -->
+        <adminws.version>6.03.18-HF5-12051518</adminws.version>
+        <corews.version>${platform.version}</corews.version>
+        <refws.version>6.03.17-HF5-12051501</refws.version>
+        <smws.version>6.03.17-HF5-12051501</smws.version>
+        <websmsws.version>6.03.17-HF5-12051504</websmsws.version>
+        <webclient.version>6.03.17-HF5-12051501</webclient.version>
+        <timerws.version>6.03.17-HF5-12051501</timerws.version>
+        <crmws.version>4.1.1</crmws.version>
+        <!-- product -->
+        <libreofficereportsws.version>2.02.02-SNAPSHOT</libreofficereportsws.version>
+        <validatorsws.version>2.01.01</validatorsws.version>
+        <instarificatorws.version>2.01.05-SNAPSHOT</instarificatorws.version>
+        <insproductws.version>2.01.01</insproductws.version>
+        <insposws.version>4.01.01</insposws.version>
+        <!-- b2b -->
+        <bivhealthws.version>2.01.01</bivhealthws.version>
+        <b2bposws.version>2.01.01</b2bposws.version>
+        <bivsberlossws.version>2.01.01</bivsberlossws.version>
+        <bivsberposws.version>2.01.01</bivsberposws.version>
+        <bivposws.version>1.00.01</bivposws.version>
+        <emailws.version>2.01.01</emailws.version>
+        <paws.version>2.01.01</paws.version>
+        <pa2ws.version>2.01.01</pa2ws.version>
+        <signws.version>2.01.01</signws.version>
+        <timer.version>6.03.17-HF5-12051501</timer.version>
+        <sbersbolws.version>1.01.02</sbersbolws.version>
+        <lifesbolws.version>1.01.02</lifesbolws.version>
+        <restsbolws.version>2.01.01</restsbolws.version>
+        <wsws.version>1.01.01</wsws.version>  
+        <mobilerestws.version>1.2</mobilerestws.version>
+        <uniopenapiws.version>1.01.02</uniopenapiws.version>
+        <pa2sbolws.version>1.0-SNAPSHOT</pa2sbolws.version>
+        <admrestws.version>1.07.04</admrestws.version>
+    </properties>
+    <profiles>
+        <profile>
+            <id>test</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>			
+            </activation>
+            <properties>
+                <configdir>config_test</configdir>
+            </properties>		
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <configdir>config_prod</configdir>
+            </properties>
+        </profile>
+    </profiles>
+    <modules>
+        <module>platform+front</module>
+        <module>sberfront</module>
+        <module>metadatafront</module>
+        <module>crypto</module>
+        <module>sign+crypto</module>
+	<module>sbol</module>
+        <module>metadatasign</module>
+        <module>wsimage</module>
+        <module>metadatatasks</module>
+        <module>tasks</module>
+        <module>uniopenapiws</module>
+    </modules>
+</project>

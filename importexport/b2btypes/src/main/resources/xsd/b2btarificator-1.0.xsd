@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:b2btarificator="http://bivgroup.com/schema/b2btarificator10" targetNamespace="http://bivgroup.com/schema/b2btarificator10" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xs:complexType name="HandbookDescriptorType">
+        <xs:annotation>
+            <xs:documentation>Описание справочника</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="IsMultiHandbookTable" type="xs:boolean" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Справочник является мультиверсионным</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Name" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Note" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Примечание</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="TableName" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование таблицы</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="HandbookDataVersions" type="b2btarificator:HandbookDataVersionsType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Версии справочника</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="HandbookPropertyDescriptors" type="b2btarificator:HandbookPropertyDescriptorsType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Описание полей справочника</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="HandbookDataVersionType">
+        <xs:annotation>
+            <xs:documentation>Версия справочника</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Note" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Примечание</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="HandbookStoreData" type="b2btarificator:HandbookStoreDataType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Описание данных версии справочника</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="HandbookDataVersionsType">
+        <xs:annotation>
+            <xs:documentation>Тип данных для описания списка версий справочника</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="HandbookDataVersion" type="b2btarificator:HandbookDataVersionType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Версия справочника</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="HandbookPropertyDescriptorType">
+        <xs:annotation>
+            <xs:documentation>Описание полей справочника</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Caption" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Заголовок</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="IsPK" type="xs:boolean" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Признак первичного ключа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Name" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Note" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Примечание</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="PropJavaType" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Тип</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="StorePropName" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование поля в таблице</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="HandbookPropertyDescriptorsType">
+        <xs:annotation>
+            <xs:documentation>Тип данных для описания списка полей справочника</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="HandbookPropertyDescriptor" type="b2btarificator:HandbookPropertyDescriptorType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Описание полей справочника</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="HandbookStoreFieldValueType">
+        <xs:annotation>
+            <xs:documentation>Поле из строки данных справочника</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="PropertyName" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование поля</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Value" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Значение</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="HandbookStoreRowValueType">
+        <xs:annotation>
+            <xs:documentation>Тип данных для описания строчки данных справочника</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="HandbookStoreFieldValue" type="b2btarificator:HandbookStoreFieldValueType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Поля с данными</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="HandbookStoreDataType">
+        <xs:annotation>
+            <xs:documentation>Тип данных для описания данных источника</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="HandbookStoreRowValue" type="b2btarificator:HandbookStoreRowValueType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Строчки с данными</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CalculatorType">
+        <xs:annotation>
+            <xs:documentation>Калькулятор</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="CurrentVersionName" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование текущей версии калькулятора</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Name" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Note" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Примечание</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="CalculatorVersions" type="b2btarificator:CalculatorVersionsType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Версии калькулятора</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CalculatorVersionType">
+        <xs:annotation>
+            <xs:documentation>Версия калькулятора</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Note" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Примечание</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="CalculatorFormulas" type="b2btarificator:CalculatorFormulasType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Список формул</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="CalculatorConsts" type="b2btarificator:CalculatorConstsType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Список констант</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="CalculatorInputParams" type="b2btarificator:CalculatorInputParamsType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Список входных параметров</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="CalculatorHandbooks" type="b2btarificator:CalculatorHandbooksType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Список справочников калькулятора</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CalculatorVersionsType">
+        <xs:annotation>
+            <xs:documentation>Тип данных для описания списка версий калькулятора</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="CalculatorVersion" type="b2btarificator:CalculatorVersionType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Версия калькулятора</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CalculatorFormulaType">
+        <xs:annotation>
+            <xs:documentation>Формула</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Formula" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Формула</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="IsCached" type="xs:boolean" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Кэшировать результат</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="IsStored" type="xs:boolean" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Сохранять результат</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Name" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Note" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Примечание</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ReturnJavaType" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Тип результата вычислений</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ReturnParamName" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование параметра</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CalculatorFormulasType">
+        <xs:annotation>
+            <xs:documentation>Тип данных для описания списка формул</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="CalculatorFormula" type="b2btarificator:CalculatorFormulaType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Формула</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CalculatorConstType">
+        <xs:annotation>
+            <xs:documentation>Константа</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="ConstJavaType" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Тип константы</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DoubleValue" type="xs:decimal" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Дробное значение</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="IsStored" type="xs:boolean" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Признак сохранения значения</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="LongValue" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Целое значение</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Name" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Note" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Примечание</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="StringValue" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Строковое значение</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CalculatorConstsType">
+        <xs:annotation>
+            <xs:documentation>Тип данных для описания списка констант</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="CalculatorConstType" type="b2btarificator:CalculatorConstType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Константа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CalculatorInputParamType">
+        <xs:annotation>
+            <xs:documentation>Входной параметр</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="DbgDoubleValue" type="xs:decimal" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Дробное значение</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DbgLongValue" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Целое значение</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DbgStringValue" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Строковое значение</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="IpJavaType" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Тип параметра</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CalculatorInputParamsType">
+        <xs:annotation>
+            <xs:documentation>Тип данных для описания списка входных параметров</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="CalculatorInputParam" type="b2btarificator:CalculatorInputParamType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Входной параметр</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CalculatorHandbookType">
+        <xs:annotation>
+            <xs:documentation>Справочник калькулятора</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Handbook" type="b2btarificator:HandbookDescriptorType" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Справочник (содержит только подключенную к калькулятору версию)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Note" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Примечание</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CalculatorHandbooksType">
+        <xs:annotation>
+            <xs:documentation>Тип данных для описания списка справочников калькулятора</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="CalculatorHandbook" type="b2btarificator:CalculatorHandbookType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Справочник калькулятора</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

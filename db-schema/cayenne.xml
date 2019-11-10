@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<domains project-version="2.0">
+<domain name="bivgroup">
+	<map name="B2BAdditionalAgreementsMap" location="B2BAdditionalAgreementsMap.map.xml"/>
+	<map name="B2BContractMap" location="B2BContractMap.map.xml"/>
+	<map name="B2BJournals" location="B2BJournals.map.xml"/>
+	<map name="B2BLossMap" location="B2BLossMap.map.xml"/>
+	<map name="B2BOther" location="B2BOther.map.xml"/>
+	<map name="B2BProductMap" location="B2BProductMap.map.xml"/>
+	<map name="BivSberPosMap" location="BivSberPosMap.map.xml"/>
+	<map name="LossesPosMap" location="LossesPosMap.map.xml"/>
+	<map name="PersonalAreaMap" location="PersonalAreaMap.map.xml"/>
+	<map name="SALMap" location="SALMap.map.xml"/>
+	<map name="WSMap" location="WSMap.map.xml"/>
+
+	<node name="B2BAdditionalAgreementsNode"
+		 datasource="B2BAdditionalAgreementsNode.driver.xml"
+		 factory="org.apache.cayenne.conf.DriverDataSourceFactory">
+			<map-ref name="B2BAdditionalAgreementsMap"/>
+	 </node>
+	<node name="B2BContractNode"
+		 datasource="B2BContractNode.driver.xml"
+		 factory="org.apache.cayenne.conf.DriverDataSourceFactory">
+			<map-ref name="B2BContractMap"/>
+	 </node>
+	<node name="B2BJournals"
+		 datasource="B2BJournals.driver.xml"
+		 factory="org.apache.cayenne.conf.DriverDataSourceFactory">
+			<map-ref name="B2BJournals"/>
+	 </node>
+	<node name="B2BLossNode"
+		 datasource="B2BLossNode.driver.xml"
+		 factory="org.apache.cayenne.conf.DriverDataSourceFactory">
+			<map-ref name="B2BLossMap"/>
+	 </node>
+	<node name="B2BOther"
+		 datasource="B2BOther.driver.xml"
+		 factory="org.apache.cayenne.conf.DriverDataSourceFactory">
+			<map-ref name="B2BOther"/>
+	 </node>
+	<node name="B2BProductNode"
+		 datasource="B2BProductNode.driver.xml"
+		 factory="org.apache.cayenne.conf.DriverDataSourceFactory">
+			<map-ref name="B2BProductMap"/>
+	 </node>
+	<node name="PersonalAreaNode"
+		 datasource="PersonalAreaNode.driver.xml"
+		 factory="org.apache.cayenne.conf.DriverDataSourceFactory">
+			<map-ref name="PersonalAreaMap"/>
+	 </node>
+	<node name="SALNode"
+		 datasource="SALNode.driver.xml"
+		 factory="org.apache.cayenne.conf.DriverDataSourceFactory">
+			<map-ref name="SALMap"/>
+	 </node>
+	<node name="WSNode"
+		 datasource="WSNode.driver.xml"
+		 factory="org.apache.cayenne.conf.DriverDataSourceFactory">
+			<map-ref name="WSMap"/>
+	 </node>
+	<node name="bivSber_posNode"
+		 datasource="bivSber_posNode.driver.xml"
+		 factory="org.apache.cayenne.conf.DriverDataSourceFactory">
+			<map-ref name="BivSberPosMap"/>
+	 </node>
+	<node name="losses_posNode"
+		 datasource="losses_posNode.driver.xml"
+		 factory="org.apache.cayenne.conf.DriverDataSourceFactory">
+			<map-ref name="LossesPosMap"/>
+	 </node>
+</domain>
+</domains>

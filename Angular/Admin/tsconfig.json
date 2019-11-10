@@ -1,0 +1,86 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "declaration": false,
+    "noEmit": true,
+    "noEmitHelpers": true,
+    "importHelpers": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "suppressImplicitAnyIndexErrors": true,
+    "plugins": [
+      {
+        "name": "@angular/language-service"
+      }
+    ],
+    "lib": [
+      "es2015",
+      "dom"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@app/*": [
+        "src/app/*"
+      ],
+      "@core/*": [
+        "../core/*"
+      ],
+      "@assets/*": [
+        "../sbslife/*"
+      ],
+      "environments/*": [
+        "src/environments/*"
+      ],
+      "@angular/*": [
+        "../node_modules/@angular/*"
+      ],
+      "@node/*": [
+        "../node_modules/*"
+      ],
+      "@frontend/*": [
+        "../node_modules/@frontend/*"
+      ]
+    },
+    "typeRoots": [
+      "../node_modules/@types"
+    ],
+    "types": [
+      "node",
+      "hammerjs",
+      "jasmine",
+      "uglify-js",
+      "webpack"
+    ]
+  },
+  "include": [
+    "src/**/*.ts",
+    "core/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "source-map",
+    "src/**/*.e2e.ts",
+    "src/**/*.spec.ts",
+    "core/**/*.e2e.ts",
+    "core/**/*.spec.ts"
+  ],
+  "angularCompilerOptions": {
+    "skipMetadataEmit": true
+  },
+  "awesomeTypescriptLoaderOptions": {
+    "forkChecker": true,
+    "useWebpackText": true
+  },
+  "compileOnSave": false,
+  "buildOnSave": false,
+  "atom": {
+    "rewriteTsconfig": false
+  }
+}

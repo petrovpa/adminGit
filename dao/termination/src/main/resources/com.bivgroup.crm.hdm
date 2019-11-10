@@ -1,0 +1,3831 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!-- Generated 03.08.2017 22:59:20 unknow unknow -->
+<hibernate-mapping
+            package="com.bivgroup.crm"
+            default-lazy="false"
+>
+
+<class
+entity-name="Person"
+table="CDM_Person"
+>
+
+<id
+        name="ID"
+        type="long"
+        >
+
+<column name="ID" />
+        <generator class="enhanced-sequence">
+                <param name="optimizer">pooled</param>
+                <param name="prefer_sequence_per_entity">true</param>
+                <param name="jpa_entity_name">CDM_Person</param>
+                <param name="increment_size">10</param>
+                <param name="sequence_per_entity_suffix">_SEQ</param>
+        </generator>
+</id>
+
+<discriminator type="string">
+        <column
+        name="DISCRIMINATOR" />
+</discriminator>
+
+
+
+<property
+        name="EID"
+        type="long"
+        >
+        <column
+        name="EID" />
+</property>
+
+<many-to-one
+        name="StateID_EN"
+			entity-name="KindStatus"
+        >
+        <column
+        name="StateID" />
+</many-to-one>
+<property
+        name="StateID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+<many-to-one
+        name="CountryID_EN"
+			entity-name="KindCountry"
+        >
+        <column
+        name="CountryID" />
+</many-to-one>
+<property
+        name="CountryID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+<many-to-one
+        name="BankDetailsID_EN"
+			entity-name="BankDetails"
+        >
+        <column
+        name="BankDetailsID" />
+</many-to-one>
+<property
+        name="BankDetailsID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+<many-to-one
+        name="ClientID_EN"
+			entity-name="Client"
+        >
+        <column
+        name="ClientID" />
+</many-to-one>
+<property
+        name="ClientID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+
+<bag name="Documents"
+table="CDM_Person_Document"
+     inverse="true"
+     lazy="false"
+     cascade="delete"
+>
+<key
+>
+        <column
+        name="PersonID" />
+</key>
+<one-to-many class="com.bivgroup.crm.PersonDocument"
+             entity-name="PersonDocument"
+/>
+</bag>
+<bag name="Addresses"
+table="CDM_Person_Address"
+     inverse="true"
+     lazy="false"
+     cascade="delete"
+>
+<key
+>
+        <column
+        name="PersonID" />
+</key>
+<one-to-many class="com.bivgroup.crm.PersonAddress"
+             entity-name="PersonAddress"
+/>
+</bag>
+<bag name="Contacts"
+table="CDM_Person_Contact"
+     inverse="true"
+     lazy="false"
+     cascade="delete"
+>
+<key
+>
+        <column
+        name="PersonID" />
+</key>
+<one-to-many class="com.bivgroup.crm.PersonContact"
+             entity-name="PersonContact"
+/>
+</bag>
+</class>
+<class
+entity-name="KindStatus"
+table="HB_KindStatus"
+>
+
+<id
+        name="ID"
+        type="long"
+        >
+
+<column name="ID" />
+        <generator class="enhanced-sequence">
+                <param name="optimizer">pooled</param>
+                <param name="prefer_sequence_per_entity">true</param>
+                <param name="jpa_entity_name">HB_KindStatus</param>
+                <param name="increment_size">10</param>
+                <param name="sequence_per_entity_suffix">_SEQ</param>
+        </generator>
+</id>
+
+
+
+
+<property
+        name="Sysname"
+        type="string"
+        >
+        <column
+        name="Sysname" />
+</property>
+
+<property
+        name="Name"
+        type="string"
+        >
+        <column
+        name="Name" />
+</property>
+
+
+</class>
+<class
+entity-name="KindCountry"
+table="B2B_COUNTRY"
+>
+
+<id
+        name="COUNTRYID"
+        type="long"
+        >
+
+<column name="COUNTRYID" />
+        <generator class="enhanced-sequence">
+                <param name="optimizer">pooled</param>
+                <param name="prefer_sequence_per_entity">true</param>
+                <param name="jpa_entity_name">B2B_COUNTRY</param>
+                <param name="increment_size">10</param>
+                <param name="sequence_per_entity_suffix">_SEQ</param>
+        </generator>
+</id>
+
+
+
+
+<property
+        name="PHONECODE"
+        type="string"
+        >
+        <column
+        name="PHONECODE" />
+</property>
+
+<property
+        name="NATIVENAME"
+        type="string"
+        >
+        <column
+        name="NATIVENAME" />
+</property>
+
+<property
+        name="ISNOTUSE"
+        type="long"
+        >
+        <column
+        name="ISNOTUSE" />
+</property>
+
+<property
+        name="FLAG"
+        type="string"
+        >
+        <column
+        name="FLAG" />
+</property>
+
+<property
+        name="ENGNAME"
+        type="string"
+        >
+        <column
+        name="ENGNAME" />
+</property>
+
+<property
+        name="DIGITCODE"
+        type="string"
+        >
+        <column
+        name="DIGITCODE" />
+</property>
+
+<property
+        name="COUNTRYNAME"
+        type="string"
+        >
+        <column
+        name="COUNTRYNAME" />
+</property>
+
+<property
+        name="BRIEFNAME"
+        type="string"
+        >
+        <column
+        name="BRIEFNAME" />
+</property>
+
+<property
+        name="ALPHACODE3"
+        type="string"
+        >
+        <column
+        name="ALPHACODE3" />
+</property>
+
+<property
+        name="ALPHACODE2"
+        type="string"
+        >
+        <column
+        name="ALPHACODE2" />
+</property>
+
+
+</class>
+<class
+entity-name="BankDetails"
+table="SD_BankDetails"
+>
+
+<id
+        name="ID"
+        type="long"
+        >
+
+<column name="ID" />
+        <generator class="enhanced-sequence">
+                <param name="optimizer">pooled</param>
+                <param name="prefer_sequence_per_entity">true</param>
+                <param name="jpa_entity_name">SD_BankDetails</param>
+                <param name="increment_size">10</param>
+                <param name="sequence_per_entity_suffix">_SEQ</param>
+        </generator>
+</id>
+
+<discriminator type="string">
+        <column
+        name="DISCRIMINATOR" />
+</discriminator>
+
+
+
+<property
+        name="PurposeOfPayment"
+        type="string"
+        >
+        <column
+        name="PurposeOfPayment" />
+</property>
+
+<property
+        name="Account"
+        type="string"
+        >
+        <column
+        name="Account" />
+</property>
+
+<property
+        name="BankAccount"
+        type="string"
+        >
+        <column
+        name="BankAccount" />
+</property>
+
+<property
+        name="BankINN"
+        type="string"
+        >
+        <column
+        name="BankINN" />
+</property>
+
+<property
+        name="BankBIK"
+        type="string"
+        >
+        <column
+        name="BankBIK" />
+</property>
+
+<property
+        name="BankName"
+        type="string"
+        >
+        <column
+        name="BankName" />
+</property>
+
+<property
+        name="EID"
+        type="long"
+        >
+        <column
+        name="EID" />
+</property>
+
+
+</class>
+<class
+entity-name="Client"
+table="CDM_Client"
+>
+
+<id
+        name="ID"
+        type="long"
+        >
+
+<column name="ID" />
+        <generator class="enhanced-sequence">
+                <param name="optimizer">pooled</param>
+                <param name="prefer_sequence_per_entity">true</param>
+                <param name="jpa_entity_name">CDM_Client</param>
+                <param name="increment_size">10</param>
+                <param name="sequence_per_entity_suffix">_SEQ</param>
+        </generator>
+</id>
+
+<discriminator type="string">
+        <column
+        name="DISCRIMINATOR" />
+</discriminator>
+
+
+
+<property
+        name="EID"
+        type="long"
+        >
+        <column
+        name="EID" />
+</property>
+
+
+<bag name="BankDetails"
+table="CDM_CLIENT_BANKDETAILS"
+     inverse="true"
+     lazy="false"
+     cascade="delete"
+>
+<key
+>
+        <column
+        name="ClientID" />
+</key>
+<one-to-many class="com.bivgroup.crm.ClientBankDetails"
+             entity-name="ClientBankDetails"
+/>
+</bag>
+<bag name="Addresses"
+table="CDM_Client_Address"
+     inverse="true"
+     lazy="false"
+     cascade="delete"
+>
+<key
+>
+        <column
+        name="ClientID" />
+</key>
+<one-to-many class="com.bivgroup.crm.ClientAddress"
+             entity-name="ClientAddress"
+/>
+</bag>
+<bag name="Documents"
+table="CDM_Client_Document"
+     inverse="true"
+     lazy="false"
+     cascade="delete"
+>
+<key
+>
+        <column
+        name="ClientID" />
+</key>
+<one-to-many class="com.bivgroup.crm.ClientDocument"
+             entity-name="ClientDocument"
+/>
+</bag>
+<bag name="Contacts"
+table="CDM_Client_Contact"
+     inverse="true"
+     lazy="false"
+     cascade="delete"
+>
+<key
+>
+        <column
+        name="ClientID" />
+</key>
+<one-to-many class="com.bivgroup.crm.ClientContact"
+             entity-name="ClientContact"
+/>
+</bag>
+<bag name="Persons"
+table="CDM_Person"
+     inverse="true"
+     lazy="false"
+     cascade="delete"
+>
+<key
+>
+        <column
+        name="ClientID" />
+</key>
+<one-to-many class="com.bivgroup.crm.Person"
+             entity-name="Person"
+/>
+</bag>
+</class>
+<joined-subclass
+entity-name="ClientBankDetails"
+extends="BankDetails"
+table="CDM_CLIENT_BANKDETAILS"
+>
+
+<key>
+        <column
+        name="ID" not-null="true" />
+</key>
+
+
+
+
+<property
+        name="Alias"
+        type="string"
+        >
+        <column
+        name="Alias" />
+</property>
+
+<property
+        name="IsPrimary"
+        type="integer"
+        >
+        <column
+        name="IsPrimary" />
+</property>
+
+<many-to-one
+        name="StateID_EN"
+			entity-name="KindStatus"
+        >
+        <column
+        name="StateID" />
+</many-to-one>
+<property
+        name="StateID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+<many-to-one
+        name="ClientID_EN"
+			entity-name="Client"
+        >
+        <column
+        name="ClientID" />
+</many-to-one>
+<property
+        name="ClientID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+
+</joined-subclass>
+<class
+entity-name="Address"
+table="SD_Address"
+>
+
+<id
+        name="ID"
+        type="long"
+        >
+
+<column name="ID" />
+        <generator class="enhanced-sequence">
+                <param name="optimizer">pooled</param>
+                <param name="prefer_sequence_per_entity">true</param>
+                <param name="jpa_entity_name">SD_Address</param>
+                <param name="increment_size">10</param>
+                <param name="sequence_per_entity_suffix">_SEQ</param>
+        </generator>
+</id>
+
+<discriminator type="string">
+        <column
+        name="DISCRIMINATOR" />
+</discriminator>
+
+
+
+<property
+        name="Address2"
+        type="string"
+        >
+        <column
+        name="Address2" />
+</property>
+
+<property
+        name="Address"
+        type="string"
+        >
+        <column
+        name="Address" />
+</property>
+
+<property
+        name="Postcode"
+        type="string"
+        >
+        <column
+        name="Postcode" />
+</property>
+
+<property
+        name="Flat"
+        type="string"
+        >
+        <column
+        name="Flat" />
+</property>
+
+<property
+        name="House"
+        type="string"
+        >
+        <column
+        name="House" />
+</property>
+
+<property
+        name="IsEmptyStreet"
+        type="string"
+        >
+        <column
+        name="IsEmptyStreet" />
+</property>
+
+<property
+        name="StreetCode"
+        type="string"
+        >
+        <column
+        name="StreetCode" />
+</property>
+
+<property
+        name="Street"
+        type="string"
+        >
+        <column
+        name="Street" />
+</property>
+
+<property
+        name="VillageCode"
+        type="string"
+        >
+        <column
+        name="VillageCode" />
+</property>
+
+<property
+        name="Village"
+        type="string"
+        >
+        <column
+        name="Village" />
+</property>
+
+<property
+        name="CityCode"
+        type="string"
+        >
+        <column
+        name="CityCode" />
+</property>
+
+<property
+        name="City"
+        type="string"
+        >
+        <column
+        name="City" />
+</property>
+
+<property
+        name="DistrictCode"
+        type="string"
+        >
+        <column
+        name="DistrictCode" />
+</property>
+
+<property
+        name="District"
+        type="string"
+        >
+        <column
+        name="District" />
+</property>
+
+<property
+        name="RegionCode"
+        type="string"
+        >
+        <column
+        name="RegionCode" />
+</property>
+
+<property
+        name="Region"
+        type="string"
+        >
+        <column
+        name="Region" />
+</property>
+
+<property
+        name="FillMethod"
+        type="integer"
+        >
+        <column
+        name="FillMethod" />
+</property>
+
+<property
+        name="EID"
+        type="long"
+        >
+        <column
+        name="EID" />
+</property>
+
+<many-to-one
+        name="CountryID_EN"
+			entity-name="KindCountry"
+        >
+        <column
+        name="CountryID" />
+</many-to-one>
+<property
+        name="CountryID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+<many-to-one
+        name="TypeID_EN"
+			entity-name="KindAddress"
+        >
+        <column
+        name="TypeID" />
+</many-to-one>
+<property
+        name="TypeID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+
+</class>
+<class
+entity-name="KindAddress"
+table="HB_KindAddress"
+>
+
+<id
+        name="ID"
+        type="long"
+        >
+
+<column name="ID" />
+        <generator class="enhanced-sequence">
+                <param name="optimizer">pooled</param>
+                <param name="prefer_sequence_per_entity">true</param>
+                <param name="jpa_entity_name">HB_KindAddress</param>
+                <param name="increment_size">10</param>
+                <param name="sequence_per_entity_suffix">_SEQ</param>
+        </generator>
+</id>
+
+
+
+
+<property
+        name="Sysname"
+        type="string"
+        >
+        <column
+        name="Sysname" />
+</property>
+
+<property
+        name="Name"
+        type="string"
+        >
+        <column
+        name="Name" />
+</property>
+
+<property
+        name="EID"
+        type="long"
+        >
+        <column
+        name="EID" />
+</property>
+
+
+</class>
+<joined-subclass
+entity-name="ClientAddress"
+extends="Address"
+table="CDM_Client_Address"
+>
+
+<key>
+        <column
+        name="ID" not-null="true" />
+</key>
+
+
+
+
+<property
+        name="IsPrimary"
+        type="integer"
+        >
+        <column
+        name="IsPrimary" />
+</property>
+
+<many-to-one
+        name="StateID_EN"
+			entity-name="KindStatus"
+        >
+        <column
+        name="StateID" />
+</many-to-one>
+<property
+        name="StateID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+<many-to-one
+        name="ClientID_EN"
+			entity-name="Client"
+        >
+        <column
+        name="ClientID" />
+</many-to-one>
+<property
+        name="ClientID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+
+</joined-subclass>
+<class
+entity-name="Document"
+table="SD_Document"
+>
+
+<id
+        name="ID"
+        type="long"
+        >
+
+<column name="ID" />
+        <generator class="enhanced-sequence">
+                <param name="optimizer">pooled</param>
+                <param name="prefer_sequence_per_entity">true</param>
+                <param name="jpa_entity_name">SD_Document</param>
+                <param name="increment_size">10</param>
+                <param name="sequence_per_entity_suffix">_SEQ</param>
+        </generator>
+</id>
+
+<discriminator type="string">
+        <column
+        name="DISCRIMINATOR" />
+</discriminator>
+
+
+
+<property
+        name="DateOfExpiry"
+        type="date"
+        >
+        <column
+        name="DateOfExpiry" />
+</property>
+
+<property
+        name="IssuerCode"
+        type="string"
+        >
+        <column
+        name="IssuerCode" />
+</property>
+
+<property
+        name="Authority"
+        type="string"
+        >
+        <column
+        name="Authority" />
+</property>
+
+<property
+        name="DateOfIssue"
+        type="date"
+        >
+        <column
+        name="DateOfIssue" />
+</property>
+
+<property
+        name="No"
+        type="string"
+        >
+        <column
+        name="No" />
+</property>
+
+<property
+        name="Series"
+        type="string"
+        >
+        <column
+        name="Series" />
+</property>
+
+<property
+        name="EID"
+        type="long"
+        >
+        <column
+        name="EID" />
+</property>
+
+<many-to-one
+        name="TypeID_EN"
+			entity-name="KindDocument"
+        >
+        <column
+        name="TypeID" />
+</many-to-one>
+<property
+        name="TypeID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+
+</class>
+<class
+entity-name="KindDocument"
+table="HB_KindDocument"
+>
+
+<id
+        name="ID"
+        type="long"
+        >
+
+<column name="ID" />
+        <generator class="enhanced-sequence">
+                <param name="optimizer">pooled</param>
+                <param name="prefer_sequence_per_entity">true</param>
+                <param name="jpa_entity_name">HB_KindDocument</param>
+                <param name="increment_size">10</param>
+                <param name="sequence_per_entity_suffix">_SEQ</param>
+        </generator>
+</id>
+
+
+
+
+<property
+        name="Sysname"
+        type="string"
+        >
+        <column
+        name="Sysname" />
+</property>
+
+<property
+        name="Name"
+        type="string"
+        >
+        <column
+        name="Name" />
+</property>
+
+<property
+        name="EID"
+        type="long"
+        >
+        <column
+        name="EID" />
+</property>
+
+
+</class>
+<joined-subclass
+entity-name="ClientDocument"
+extends="Document"
+table="CDM_Client_Document"
+>
+
+<key>
+        <column
+        name="ID" not-null="true" />
+</key>
+
+
+
+
+<property
+        name="IsPrimary"
+        type="integer"
+        >
+        <column
+        name="IsPrimary" />
+</property>
+
+<many-to-one
+        name="StateID_EN"
+			entity-name="KindStatus"
+        >
+        <column
+        name="StateID" />
+</many-to-one>
+<property
+        name="StateID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+<many-to-one
+        name="ClientID_EN"
+			entity-name="Client"
+        >
+        <column
+        name="ClientID" />
+</many-to-one>
+<property
+        name="ClientID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+
+</joined-subclass>
+<class
+entity-name="Contact"
+table="SD_Contact"
+>
+
+<id
+        name="ID"
+        type="long"
+        >
+
+<column name="ID" />
+        <generator class="enhanced-sequence">
+                <param name="optimizer">pooled</param>
+                <param name="prefer_sequence_per_entity">true</param>
+                <param name="jpa_entity_name">SD_Contact</param>
+                <param name="increment_size">10</param>
+                <param name="sequence_per_entity_suffix">_SEQ</param>
+        </generator>
+</id>
+
+<discriminator type="string">
+        <column
+        name="DISCRIMINATOR" />
+</discriminator>
+
+
+
+<property
+        name="Value"
+        type="string"
+        >
+        <column
+        name="Value" />
+</property>
+
+<property
+        name="EID"
+        type="long"
+        >
+        <column
+        name="EID" />
+</property>
+
+<many-to-one
+        name="TypeID_EN"
+			entity-name="KindContact"
+        >
+        <column
+        name="TypeID" />
+</many-to-one>
+<property
+        name="TypeID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+
+</class>
+<class
+entity-name="KindContact"
+table="HB_KindContact"
+>
+
+<id
+        name="ID"
+        type="long"
+        >
+
+<column name="ID" />
+        <generator class="enhanced-sequence">
+                <param name="optimizer">pooled</param>
+                <param name="prefer_sequence_per_entity">true</param>
+                <param name="jpa_entity_name">HB_KindContact</param>
+                <param name="increment_size">10</param>
+                <param name="sequence_per_entity_suffix">_SEQ</param>
+        </generator>
+</id>
+
+
+
+
+<property
+        name="Sysname"
+        type="string"
+        >
+        <column
+        name="Sysname" />
+</property>
+
+<property
+        name="Name"
+        type="string"
+        >
+        <column
+        name="Name" />
+</property>
+
+<property
+        name="EID"
+        type="long"
+        >
+        <column
+        name="EID" />
+</property>
+
+
+</class>
+<joined-subclass
+entity-name="ClientContact"
+extends="Contact"
+table="CDM_Client_Contact"
+>
+
+<key>
+        <column
+        name="ID" not-null="true" />
+</key>
+
+
+
+
+<property
+        name="IsPrimary"
+        type="integer"
+        >
+        <column
+        name="IsPrimary" />
+</property>
+
+<many-to-one
+        name="StateID_EN"
+			entity-name="KindStatus"
+        >
+        <column
+        name="StateID" />
+</many-to-one>
+<property
+        name="StateID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+<many-to-one
+        name="ClientID_EN"
+			entity-name="Client"
+        >
+        <column
+        name="ClientID" />
+</many-to-one>
+<property
+        name="ClientID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+
+</joined-subclass>
+<joined-subclass
+entity-name="PersonDocument"
+extends="Document"
+table="CDM_Person_Document"
+>
+
+<key>
+        <column
+        name="ID" not-null="true" />
+</key>
+
+
+
+
+<many-to-one
+        name="StateID_EN"
+			entity-name="KindStatus"
+        >
+        <column
+        name="StateID" />
+</many-to-one>
+<property
+        name="StateID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+<many-to-one
+        name="PersonID_EN"
+			entity-name="Person"
+        >
+        <column
+        name="PersonID" />
+</many-to-one>
+<property
+        name="PersonID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+
+</joined-subclass>
+<joined-subclass
+entity-name="PersonAddress"
+extends="Address"
+table="CDM_Person_Address"
+>
+
+<key>
+        <column
+        name="ID" not-null="true" />
+</key>
+
+
+
+
+<property
+        name="IsPrimary"
+        type="integer"
+        >
+        <column
+        name="IsPrimary" />
+</property>
+
+<many-to-one
+        name="StateID_EN"
+			entity-name="KindStatus"
+        >
+        <column
+        name="StateID" />
+</many-to-one>
+<property
+        name="StateID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+<many-to-one
+        name="PersonID_EN"
+			entity-name="Person"
+        >
+        <column
+        name="PersonID" />
+</many-to-one>
+<property
+        name="PersonID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+
+</joined-subclass>
+<joined-subclass
+entity-name="PersonContact"
+extends="Contact"
+table="CDM_Person_Contact"
+>
+
+<key>
+        <column
+        name="ID" not-null="true" />
+</key>
+
+
+
+
+<many-to-one
+        name="StateID_EN"
+			entity-name="KindStatus"
+        >
+        <column
+        name="StateID" />
+</many-to-one>
+<property
+        name="StateID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+<many-to-one
+        name="PersonID_EN"
+			entity-name="Person"
+        >
+        <column
+        name="PersonID" />
+</many-to-one>
+<property
+        name="PersonID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+
+</joined-subclass>
+<joined-subclass
+entity-name="PPerson"
+extends="Person"
+table="CDM_PPerson"
+>
+
+<key>
+        <column
+        name="ID" not-null="true" />
+</key>
+
+
+
+
+<property
+        name="IsMarried"
+        type="integer"
+        >
+        <column
+        name="IsMarried" />
+</property>
+
+<property
+        name="INN"
+        type="string"
+        >
+        <column
+        name="INN" />
+</property>
+
+<property
+        name="Sex"
+        type="integer"
+        >
+        <column
+        name="Sex" />
+</property>
+
+<property
+        name="PlaceOfBirth"
+        type="string"
+        >
+        <column
+        name="PlaceOfBirth" />
+</property>
+
+<property
+        name="DateOfBirth"
+        type="date"
+        >
+        <column
+        name="DateOfBirth" />
+</property>
+
+<property
+        name="IsEmptyPatronymic"
+        type="integer"
+        >
+        <column
+        name="IsEmptyPatronymic" />
+</property>
+
+<property
+        name="Patronymic2"
+        type="string"
+        >
+        <column
+        name="Patronymic2" />
+</property>
+
+<property
+        name="Patronymic"
+        type="string"
+        >
+        <column
+        name="Patronymic" />
+</property>
+
+<property
+        name="Name2"
+        type="string"
+        >
+        <column
+        name="Name2" />
+</property>
+
+<property
+        name="Name"
+        type="string"
+        >
+        <column
+        name="Name" />
+</property>
+
+<property
+        name="Surname2"
+        type="string"
+        >
+        <column
+        name="Surname2" />
+</property>
+
+<property
+        name="Surname"
+        type="string"
+        >
+        <column
+        name="Surname" />
+</property>
+
+
+<bag name="Childs"
+table="CDM_PPerson_Child"
+     inverse="true"
+     lazy="false"
+     cascade="delete"
+>
+<key
+>
+        <column
+        name="PersonID" />
+</key>
+<one-to-many class="com.bivgroup.crm.PPersonChild"
+             entity-name="PPersonChild"
+/>
+</bag>
+</joined-subclass>
+<class
+entity-name="PPersonChild"
+table="CDM_PPerson_Child"
+>
+
+<id
+        name="ID"
+        type="long"
+        >
+
+<column name="ID" />
+        <generator class="enhanced-sequence">
+                <param name="optimizer">pooled</param>
+                <param name="prefer_sequence_per_entity">true</param>
+                <param name="jpa_entity_name">CDM_PPerson_Child</param>
+                <param name="increment_size">10</param>
+                <param name="sequence_per_entity_suffix">_SEQ</param>
+        </generator>
+</id>
+
+
+
+
+<property
+        name="DateOfBirth"
+        type="date"
+        >
+        <column
+        name="DateOfBirth" />
+</property>
+
+<property
+        name="Name"
+        type="string"
+        >
+        <column
+        name="Name" />
+</property>
+
+<property
+        name="EID"
+        type="long"
+        >
+        <column
+        name="EID" />
+</property>
+
+<many-to-one
+        name="PersonID_EN"
+			entity-name="PPerson"
+        >
+        <column
+        name="PersonID" />
+</many-to-one>
+<property
+        name="PersonID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+
+</class>
+<class
+entity-name="SalesCampaign"
+table="SD_SalesCampaign"
+>
+
+<id
+        name="ID"
+        type="long"
+        >
+
+<column name="ID" />
+        <generator class="enhanced-sequence">
+                <param name="optimizer">pooled</param>
+                <param name="prefer_sequence_per_entity">true</param>
+                <param name="jpa_entity_name">SD_SalesCampaign</param>
+                <param name="increment_size">10</param>
+                <param name="sequence_per_entity_suffix">_SEQ</param>
+        </generator>
+</id>
+
+
+
+
+<property
+        name="DateEnd"
+        type="timestamp"
+        >
+        <column
+        name="DateEnd" />
+</property>
+
+<property
+        name="DateBegin"
+        type="timestamp"
+        >
+        <column
+        name="DateBegin" />
+</property>
+
+<property
+        name="Note"
+        type="string"
+        >
+        <column
+        name="Note" />
+</property>
+
+<property
+        name="Name"
+        type="string"
+        >
+        <column
+        name="Name" />
+</property>
+
+<property
+        name="InsProductID"
+        type="long"
+        >
+        <column
+        name="InsProductID" />
+</property>
+
+<property
+        name="EID"
+        type="long"
+        >
+        <column
+        name="EID" />
+</property>
+
+
+<bag name="Offers"
+table="SD_SalesCampaign_Offer"
+     inverse="true"
+     lazy="false"
+     cascade="delete"
+>
+<key
+>
+        <column
+        name="SalesCampaignID" />
+</key>
+<one-to-many class="com.bivgroup.crm.SalesCampaignOffer"
+             entity-name="SalesCampaignOffer"
+/>
+</bag>
+</class>
+<class
+entity-name="SalesCampaignOffer"
+table="SD_SalesCampaign_Offer"
+>
+
+<id
+        name="ID"
+        type="long"
+        >
+
+<column name="ID" />
+        <generator class="enhanced-sequence">
+                <param name="optimizer">pooled</param>
+                <param name="prefer_sequence_per_entity">true</param>
+                <param name="jpa_entity_name">SD_SalesCampaign_Offer</param>
+                <param name="increment_size">10</param>
+                <param name="sequence_per_entity_suffix">_SEQ</param>
+        </generator>
+</id>
+
+
+
+
+<property
+        name="Email"
+        type="string"
+        >
+        <column
+        name="Email" />
+</property>
+
+<property
+        name="Tel"
+        type="string"
+        >
+        <column
+        name="Tel" />
+</property>
+
+<property
+        name="IsClose"
+        type="long"
+        >
+        <column
+        name="IsClose" />
+</property>
+
+<property
+        name="EID"
+        type="long"
+        >
+        <column
+        name="EID" />
+</property>
+
+<many-to-one
+        name="SalesCampaignID_EN"
+			entity-name="SalesCampaign"
+        >
+        <column
+        name="SalesCampaignID" />
+</many-to-one>
+<property
+        name="SalesCampaignID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+<many-to-one
+        name="ClientProfileID_EN"
+			entity-name="ClientProfile"
+        >
+        <column
+        name="ClientProfileID" />
+</many-to-one>
+<property
+        name="ClientProfileID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+
+</class>
+<class
+entity-name="ClientProfile"
+table="SD_ClientProfile"
+>
+
+<id
+        name="ID"
+        type="long"
+        >
+
+<column name="ID" />
+        <generator class="enhanced-sequence">
+                <param name="optimizer">pooled</param>
+                <param name="prefer_sequence_per_entity">true</param>
+                <param name="jpa_entity_name">SD_ClientProfile</param>
+                <param name="increment_size">10</param>
+                <param name="sequence_per_entity_suffix">_SEQ</param>
+        </generator>
+</id>
+
+
+
+
+<property
+        name="Tel"
+        type="string"
+        >
+        <column
+        name="Tel" />
+</property>
+
+<property
+        name="EID"
+        type="long"
+        >
+        <column
+        name="EID" />
+</property>
+
+<many-to-one
+        name="ClientID_EN"
+			entity-name="Client"
+        >
+        <column
+        name="ClientID" />
+</many-to-one>
+<property
+        name="ClientID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+
+<bag name="Tokens"
+table="SD_ClientProfile_Token"
+     inverse="true"
+     lazy="false"
+     cascade="delete"
+>
+<key
+>
+        <column
+        name="ClientProfileID" />
+</key>
+<one-to-many class="com.bivgroup.crm.ClientProfileToken"
+             entity-name="ClientProfileToken"
+/>
+</bag>
+<bag name="Events"
+table="SD_ClientProfile_Event"
+     inverse="true"
+     lazy="false"
+     cascade="delete"
+>
+<key
+>
+        <column
+        name="ClientProfileID" />
+</key>
+<one-to-many class="com.bivgroup.crm.ClientProfileEvent"
+             entity-name="ClientProfileEvent"
+/>
+</bag>
+</class>
+<class
+entity-name="ClientProfileToken"
+table="SD_ClientProfile_Token"
+>
+
+<id
+        name="ID"
+        type="long"
+        >
+
+<column name="ID" />
+        <generator class="enhanced-sequence">
+                <param name="optimizer">pooled</param>
+                <param name="prefer_sequence_per_entity">true</param>
+                <param name="jpa_entity_name">SD_ClientProfile_Token</param>
+                <param name="increment_size">10</param>
+                <param name="sequence_per_entity_suffix">_SEQ</param>
+        </generator>
+</id>
+
+
+
+
+<property
+        name="IsNotUsed"
+        type="integer"
+        >
+        <column
+        name="IsNotUsed" />
+</property>
+
+<property
+        name="IDDevice"
+        type="string"
+        >
+        <column
+        name="IDDevice" />
+</property>
+
+<property
+        name="Hash"
+        type="string"
+        >
+        <column
+        name="Hash" />
+</property>
+
+<property
+        name="CreateDate"
+        type="timestamp"
+        >
+        <column
+        name="CreateDate" />
+</property>
+
+<property
+        name="DateOfExpiry"
+        type="timestamp"
+        >
+        <column
+        name="DateOfExpiry" />
+</property>
+
+<property
+        name="EID"
+        type="long"
+        >
+        <column
+        name="EID" />
+</property>
+
+<many-to-one
+        name="ClientProfileID_EN"
+			entity-name="ClientProfile"
+        >
+        <column
+        name="ClientProfileID" />
+</many-to-one>
+<property
+        name="ClientProfileID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+
+</class>
+<class
+entity-name="ClientProfileEvent"
+table="SD_ClientProfile_Event"
+>
+
+<id
+        name="ID"
+        type="long"
+        >
+
+<column name="ID" />
+        <generator class="enhanced-sequence">
+                <param name="optimizer">pooled</param>
+                <param name="prefer_sequence_per_entity">true</param>
+                <param name="jpa_entity_name">SD_ClientProfile_Event</param>
+                <param name="increment_size">10</param>
+                <param name="sequence_per_entity_suffix">_SEQ</param>
+        </generator>
+</id>
+
+
+
+
+<property
+        name="RefObjectID"
+        type="long"
+        >
+        <column
+        name="RefObjectID" />
+</property>
+
+<property
+        name="ParamDate10"
+        type="integer"
+        >
+        <column
+        name="ParamDate10" />
+</property>
+
+<property
+        name="ParamDate9"
+        type="integer"
+        >
+        <column
+        name="ParamDate9" />
+</property>
+
+<property
+        name="ParamDate8"
+        type="integer"
+        >
+        <column
+        name="ParamDate8" />
+</property>
+
+<property
+        name="ParamDate7"
+        type="integer"
+        >
+        <column
+        name="ParamDate7" />
+</property>
+
+<property
+        name="ParamDate6"
+        type="integer"
+        >
+        <column
+        name="ParamDate6" />
+</property>
+
+<property
+        name="ParamDate5"
+        type="integer"
+        >
+        <column
+        name="ParamDate5" />
+</property>
+
+<property
+        name="ParamDate4"
+        type="integer"
+        >
+        <column
+        name="ParamDate4" />
+</property>
+
+<property
+        name="ParamDate3"
+        type="integer"
+        >
+        <column
+        name="ParamDate3" />
+</property>
+
+<property
+        name="ParamDate2"
+        type="integer"
+        >
+        <column
+        name="ParamDate2" />
+</property>
+
+<property
+        name="ParamDate1"
+        type="integer"
+        >
+        <column
+        name="ParamDate1" />
+</property>
+
+<property
+        name="ParamBoolean10"
+        type="integer"
+        >
+        <column
+        name="ParamBoolean10" />
+</property>
+
+<property
+        name="ParamBoolean9"
+        type="integer"
+        >
+        <column
+        name="ParamBoolean9" />
+</property>
+
+<property
+        name="ParamBoolean8"
+        type="integer"
+        >
+        <column
+        name="ParamBoolean8" />
+</property>
+
+<property
+        name="ParamBoolean7"
+        type="integer"
+        >
+        <column
+        name="ParamBoolean7" />
+</property>
+
+<property
+        name="ParamBoolean6"
+        type="integer"
+        >
+        <column
+        name="ParamBoolean6" />
+</property>
+
+<property
+        name="ParamBoolean5"
+        type="integer"
+        >
+        <column
+        name="ParamBoolean5" />
+</property>
+
+<property
+        name="ParamBoolean4"
+        type="integer"
+        >
+        <column
+        name="ParamBoolean4" />
+</property>
+
+<property
+        name="ParamBoolean3"
+        type="integer"
+        >
+        <column
+        name="ParamBoolean3" />
+</property>
+
+<property
+        name="ParamBoolean2"
+        type="integer"
+        >
+        <column
+        name="ParamBoolean2" />
+</property>
+
+<property
+        name="ParamBoolean1"
+        type="integer"
+        >
+        <column
+        name="ParamBoolean1" />
+</property>
+
+<property
+        name="ParamFloat10"
+        type="float"
+        >
+        <column
+        name="ParamFloat10" />
+</property>
+
+<property
+        name="ParamFloat9"
+        type="float"
+        >
+        <column
+        name="ParamFloat9" />
+</property>
+
+<property
+        name="ParamFloat8"
+        type="float"
+        >
+        <column
+        name="ParamFloat8" />
+</property>
+
+<property
+        name="ParamFloat7"
+        type="float"
+        >
+        <column
+        name="ParamFloat7" />
+</property>
+
+<property
+        name="ParamFloat6"
+        type="float"
+        >
+        <column
+        name="ParamFloat6" />
+</property>
+
+<property
+        name="ParamFloat5"
+        type="float"
+        >
+        <column
+        name="ParamFloat5" />
+</property>
+
+<property
+        name="ParamFloat4"
+        type="float"
+        >
+        <column
+        name="ParamFloat4" />
+</property>
+
+<property
+        name="ParamFloat3"
+        type="float"
+        >
+        <column
+        name="ParamFloat3" />
+</property>
+
+<property
+        name="ParamFloat2"
+        type="float"
+        >
+        <column
+        name="ParamFloat2" />
+</property>
+
+<property
+        name="ParamFloat1"
+        type="float"
+        >
+        <column
+        name="ParamFloat1" />
+</property>
+
+<property
+        name="ParamInt10"
+        type="long"
+        >
+        <column
+        name="ParamInt10" />
+</property>
+
+<property
+        name="ParamInt9"
+        type="long"
+        >
+        <column
+        name="ParamInt9" />
+</property>
+
+<property
+        name="ParamInt8"
+        type="long"
+        >
+        <column
+        name="ParamInt8" />
+</property>
+
+<property
+        name="ParamInt7"
+        type="long"
+        >
+        <column
+        name="ParamInt7" />
+</property>
+
+<property
+        name="ParamInt6"
+        type="long"
+        >
+        <column
+        name="ParamInt6" />
+</property>
+
+<property
+        name="ParamInt5"
+        type="long"
+        >
+        <column
+        name="ParamInt5" />
+</property>
+
+<property
+        name="ParamInt4"
+        type="long"
+        >
+        <column
+        name="ParamInt4" />
+</property>
+
+<property
+        name="ParamInt3"
+        type="long"
+        >
+        <column
+        name="ParamInt3" />
+</property>
+
+<property
+        name="ParamInt2"
+        type="long"
+        >
+        <column
+        name="ParamInt2" />
+</property>
+
+<property
+        name="ParamInt1"
+        type="long"
+        >
+        <column
+        name="ParamInt1" />
+</property>
+
+<property
+        name="ParamStr10"
+        type="string"
+        >
+        <column
+        name="ParamStr10" />
+</property>
+
+<property
+        name="ParamStr9"
+        type="string"
+        >
+        <column
+        name="ParamStr9" />
+</property>
+
+<property
+        name="ParamStr8"
+        type="string"
+        >
+        <column
+        name="ParamStr8" />
+</property>
+
+<property
+        name="ParamStr7"
+        type="string"
+        >
+        <column
+        name="ParamStr7" />
+</property>
+
+<property
+        name="ParamStr6"
+        type="string"
+        >
+        <column
+        name="ParamStr6" />
+</property>
+
+<property
+        name="ParamStr5"
+        type="string"
+        >
+        <column
+        name="ParamStr5" />
+</property>
+
+<property
+        name="ParamStr4"
+        type="string"
+        >
+        <column
+        name="ParamStr4" />
+</property>
+
+<property
+        name="ParamStr3"
+        type="string"
+        >
+        <column
+        name="ParamStr3" />
+</property>
+
+<property
+        name="ParamStr2"
+        type="string"
+        >
+        <column
+        name="ParamStr2" />
+</property>
+
+<property
+        name="ParamStr1"
+        type="string"
+        >
+        <column
+        name="ParamStr1" />
+</property>
+
+<property
+        name="ErrorTest"
+        type="string"
+        >
+        <column
+        name="ErrorTest" />
+</property>
+
+<property
+        name="ErrorCode"
+        type="string"
+        >
+        <column
+        name="ErrorCode" />
+</property>
+
+<property
+        name="Signature"
+        type="string"
+        >
+        <column
+        name="Signature" />
+</property>
+
+<property
+        name="ModeApp"
+        type="long"
+        >
+        <column
+        name="ModeApp" />
+</property>
+
+<property
+        name="EventDate"
+        type="timestamp"
+        >
+        <column
+        name="EventDate" />
+</property>
+
+<property
+        name="EID"
+        type="long"
+        >
+        <column
+        name="EID" />
+</property>
+
+<property
+        name="EventSource"
+        type="string"
+        >
+        <column
+        name="EventSource" />
+</property>
+
+<many-to-one
+        name="EventTypeID_EN"
+			entity-name="KindEventClientProfile"
+        >
+        <column
+        name="EventTypeID" />
+</many-to-one>
+<property
+        name="EventTypeID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+<many-to-one
+        name="ClientProfileID_EN"
+			entity-name="ClientProfile"
+        >
+        <column
+        name="ClientProfileID" />
+</many-to-one>
+<property
+        name="ClientProfileID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+<many-to-one
+        name="TokenID_EN"
+			entity-name="ClientProfileToken"
+        >
+        <column
+        name="TokenID" />
+</many-to-one>
+<property
+        name="TokenID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+
+</class>
+<class
+entity-name="KindEventClientProfile"
+table="HB_KindEventClientProfile"
+>
+
+<id
+        name="ID"
+        type="long"
+        >
+
+<column name="ID" />
+        <generator class="enhanced-sequence">
+                <param name="optimizer">pooled</param>
+                <param name="prefer_sequence_per_entity">true</param>
+                <param name="jpa_entity_name">HB_KindEventClientProfile</param>
+                <param name="increment_size">10</param>
+                <param name="sequence_per_entity_suffix">_SEQ</param>
+        </generator>
+</id>
+
+
+
+
+<property
+        name="Sysname"
+        type="string"
+        >
+        <column
+        name="Sysname" />
+</property>
+
+<property
+        name="Name"
+        type="string"
+        >
+        <column
+        name="Name" />
+</property>
+
+<property
+        name="EID"
+        type="long"
+        >
+        <column
+        name="EID" />
+</property>
+
+
+</class>
+<class
+entity-name="KindAgreementClientProfile"
+table="HB_KINDAGREEMCLIENTPROFILE"
+>
+
+<id
+        name="id"
+        type="long"
+        >
+
+<column name="id" />
+        <generator class="enhanced-sequence">
+                <param name="optimizer">pooled</param>
+                <param name="prefer_sequence_per_entity">true</param>
+                <param name="jpa_entity_name">HB_KINDAGREEMCLIENTPROFILE</param>
+                <param name="increment_size">10</param>
+                <param name="sequence_per_entity_suffix">_SEQ</param>
+        </generator>
+</id>
+
+
+
+
+<property
+        name="sysname"
+        type="string"
+        >
+        <column
+        name="sysname" />
+</property>
+
+<property
+        name="name"
+        type="string"
+        >
+        <column
+        name="name" />
+</property>
+
+
+</class>
+<class
+entity-name="ClientProfileAgreement"
+table="SD_CLIENTPROFILE_AGREEMENT"
+>
+
+<id
+        name="id"
+        type="long"
+        >
+
+<column name="id" />
+        <generator class="enhanced-sequence">
+                <param name="optimizer">pooled</param>
+                <param name="prefer_sequence_per_entity">true</param>
+                <param name="jpa_entity_name">SD_CLIENTPROFILE_AGREEMENT</param>
+                <param name="increment_size">10</param>
+                <param name="sequence_per_entity_suffix">_SEQ</param>
+        </generator>
+</id>
+
+
+
+
+<property
+        name="agreementDate"
+        type="timestamp"
+        >
+        <column
+        name="agreementDate" />
+</property>
+
+<property
+        name="agreementNumber"
+        type="string"
+        >
+        <column
+        name="agreementNumber" />
+</property>
+
+<many-to-one
+        name="typeAgreementId_EN"
+			entity-name="KindAgreementClientProfile"
+        >
+        <column
+        name="typeAgreementId" />
+</many-to-one>
+<property
+        name="typeAgreementId"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+<many-to-one
+        name="stateId_EN"
+			entity-name="KindStatus"
+        >
+        <column
+        name="stateId" />
+</many-to-one>
+<property
+        name="stateId"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+<many-to-one
+        name="clientProfileId_EN"
+			entity-name="ClientProfile"
+        >
+        <column
+        name="clientProfileId" />
+</many-to-one>
+<property
+        name="clientProfileId"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+
+</class>
+<class
+entity-name="KindContractMember"
+table="PD_KindContractMember"
+>
+
+<id
+        name="ID"
+        type="long"
+        >
+
+<column name="ID" />
+        <generator class="enhanced-sequence">
+                <param name="optimizer">pooled</param>
+                <param name="prefer_sequence_per_entity">true</param>
+                <param name="jpa_entity_name">PD_KindContractMember</param>
+                <param name="increment_size">10</param>
+                <param name="sequence_per_entity_suffix">_SEQ</param>
+        </generator>
+</id>
+
+
+
+
+<property
+        name="Sysname"
+        type="string"
+        >
+        <column
+        name="Sysname" />
+</property>
+
+<property
+        name="Name"
+        type="string"
+        >
+        <column
+        name="Name" />
+</property>
+
+<property
+        name="EID"
+        type="long"
+        >
+        <column
+        name="EID" />
+</property>
+
+
+</class>
+<class
+entity-name="LegalFormsOfBusiness"
+table="HB_LegalFormsOfBusiness"
+>
+
+<id
+        name="ID"
+        type="long"
+        >
+
+<column name="ID" />
+        <generator class="enhanced-sequence">
+                <param name="optimizer">pooled</param>
+                <param name="prefer_sequence_per_entity">true</param>
+                <param name="jpa_entity_name">HB_LegalFormsOfBusiness</param>
+                <param name="increment_size">10</param>
+                <param name="sequence_per_entity_suffix">_SEQ</param>
+        </generator>
+</id>
+
+
+
+
+<property
+        name="Sysname"
+        type="string"
+        >
+        <column
+        name="Sysname" />
+</property>
+
+<property
+        name="PersonType"
+        type="integer"
+        >
+        <column
+        name="PersonType" />
+</property>
+
+<property
+        name="Name"
+        type="string"
+        >
+        <column
+        name="Name" />
+</property>
+
+<property
+        name="EID"
+        type="long"
+        >
+        <column
+        name="EID" />
+</property>
+
+
+</class>
+<class
+entity-name="KindShareRole"
+table="HD_KindShareRole"
+>
+
+<id
+        name="ID"
+        type="long"
+        >
+
+<column name="ID" />
+        <generator class="enhanced-sequence">
+                <param name="optimizer">pooled</param>
+                <param name="prefer_sequence_per_entity">true</param>
+                <param name="jpa_entity_name">HD_KindShareRole</param>
+                <param name="increment_size">10</param>
+                <param name="sequence_per_entity_suffix">_SEQ</param>
+        </generator>
+</id>
+
+
+
+
+<property
+        name="Sysname"
+        type="string"
+        >
+        <column
+        name="Sysname" />
+</property>
+
+<property
+        name="Name"
+        type="string"
+        >
+        <column
+        name="Name" />
+</property>
+
+<property
+        name="EID"
+        type="long"
+        >
+        <column
+        name="EID" />
+</property>
+
+
+</class>
+<class
+entity-name="KindClientProperty"
+table="HB_KindClientProperty"
+>
+
+<id
+        name="ID"
+        type="long"
+        >
+
+<column name="ID" />
+        <generator class="enhanced-sequence">
+                <param name="optimizer">pooled</param>
+                <param name="prefer_sequence_per_entity">true</param>
+                <param name="jpa_entity_name">HB_KindClientProperty</param>
+                <param name="increment_size">10</param>
+                <param name="sequence_per_entity_suffix">_SEQ</param>
+        </generator>
+</id>
+
+
+
+
+<property
+        name="DataType"
+        type="string"
+        >
+        <column
+        name="DataType" />
+</property>
+
+<property
+        name="Sysname"
+        type="string"
+        >
+        <column
+        name="Sysname" />
+</property>
+
+<property
+        name="Name"
+        type="string"
+        >
+        <column
+        name="Name" />
+</property>
+
+<property
+        name="EID"
+        type="long"
+        >
+        <column
+        name="EID" />
+</property>
+
+
+</class>
+<class
+entity-name="ShareContractIns"
+table="SD_Share_Contract"
+>
+
+<id
+        name="ID"
+        type="long"
+        >
+
+<column name="ID" />
+        <generator class="enhanced-sequence">
+                <param name="optimizer">pooled</param>
+                <param name="prefer_sequence_per_entity">true</param>
+                <param name="jpa_entity_name">SD_Share_Contract</param>
+                <param name="increment_size">10</param>
+                <param name="sequence_per_entity_suffix">_SEQ</param>
+        </generator>
+</id>
+
+
+
+
+<property
+        name="ContractID"
+        type="long"
+        >
+        <column
+        name="ContractID" />
+</property>
+
+<property
+        name="Tel"
+        type="string"
+        >
+        <column
+        name="Tel" />
+</property>
+
+<property
+        name="EID"
+        type="long"
+        >
+        <column
+        name="EID" />
+</property>
+
+<many-to-one
+        name="StateID_EN"
+			entity-name="KindStatus"
+        >
+        <column
+        name="StateID" />
+</many-to-one>
+<property
+        name="StateID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+<many-to-one
+        name="ShareRoleID_EN"
+			entity-name="KindShareRole"
+        >
+        <column
+        name="ShareRoleID" />
+</many-to-one>
+<property
+        name="ShareRoleID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+<many-to-one
+        name="ClientID_EN"
+			entity-name="Client"
+        >
+        <column
+        name="ClientID" />
+</many-to-one>
+<property
+        name="ClientID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+
+</class>
+<class
+entity-name="ClientProperty"
+table="CDM_Client_Property"
+>
+
+<id
+        name="ID"
+        type="long"
+        >
+
+<column name="ID" />
+        <generator class="enhanced-sequence">
+                <param name="optimizer">pooled</param>
+                <param name="prefer_sequence_per_entity">true</param>
+                <param name="jpa_entity_name">CDM_Client_Property</param>
+                <param name="increment_size">10</param>
+                <param name="sequence_per_entity_suffix">_SEQ</param>
+        </generator>
+</id>
+
+
+
+
+<property
+        name="ValueDate"
+        type="timestamp"
+        >
+        <column
+        name="ValueDate" />
+</property>
+
+<property
+        name="ValueBoolean"
+        type="integer"
+        >
+        <column
+        name="ValueBoolean" />
+</property>
+
+<property
+        name="ValueFloat"
+        type="float"
+        >
+        <column
+        name="ValueFloat" />
+</property>
+
+<property
+        name="ValueInt"
+        type="long"
+        >
+        <column
+        name="ValueInt" />
+</property>
+
+<property
+        name="ValueStr"
+        type="string"
+        >
+        <column
+        name="ValueStr" />
+</property>
+
+<property
+        name="EID"
+        type="long"
+        >
+        <column
+        name="EID" />
+</property>
+
+<many-to-one
+        name="StateID_EN"
+			entity-name="KindStatus"
+        >
+        <column
+        name="StateID" />
+</many-to-one>
+<property
+        name="StateID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+<many-to-one
+        name="PropertyTypeID_EN"
+			entity-name="KindClientProperty"
+        >
+        <column
+        name="PropertyTypeID" />
+</many-to-one>
+<property
+        name="PropertyTypeID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+<many-to-one
+        name="ClientID_EN"
+			entity-name="Client"
+        >
+        <column
+        name="ClientID" />
+</many-to-one>
+<property
+        name="ClientID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+
+</class>
+<joined-subclass
+entity-name="PClient"
+extends="Client"
+table="CDM_PClient"
+>
+
+<key>
+        <column
+        name="ID" not-null="true" />
+</key>
+
+
+
+
+<property
+        name="VerLock"
+        type="long"
+        >
+        <column
+        name="VerLock" />
+</property>
+
+<many-to-one
+        name="VerLastID_EN"
+			entity-name="PClient_VER"
+        >
+        <column
+        name="VerLastID" />
+</many-to-one>
+<property
+        name="VerLastID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+
+</joined-subclass>
+<joined-subclass
+entity-name="PClient_VER"
+extends="PClient"
+table="CDM_PClient_VER"
+>
+
+<key>
+        <column
+        name="VerID" not-null="true" />
+</key>
+
+
+
+
+<property
+        name="IsMarried"
+        type="integer"
+        >
+        <column
+        name="IsMarried" />
+</property>
+
+<property
+        name="INN"
+        type="string"
+        >
+        <column
+        name="INN" />
+</property>
+
+<property
+        name="Sex"
+        type="integer"
+        >
+        <column
+        name="Sex" />
+</property>
+
+<property
+        name="PlaceOfBirth"
+        type="string"
+        >
+        <column
+        name="PlaceOfBirth" />
+</property>
+
+<property
+        name="DateOfBirth"
+        type="date"
+        >
+        <column
+        name="DateOfBirth" />
+</property>
+
+<property
+        name="IsEmptyPatronymic"
+        type="integer"
+        >
+        <column
+        name="IsEmptyPatronymic" />
+</property>
+
+<property
+        name="Patronymic2"
+        type="string"
+        >
+        <column
+        name="Patronymic2" />
+</property>
+
+<property
+        name="Patronymic"
+        type="string"
+        >
+        <column
+        name="Patronymic" />
+</property>
+
+<property
+        name="Name2"
+        type="string"
+        >
+        <column
+        name="Name2" />
+</property>
+
+<property
+        name="Name"
+        type="string"
+        >
+        <column
+        name="Name" />
+</property>
+
+<property
+        name="Surname2"
+        type="string"
+        >
+        <column
+        name="Surname2" />
+</property>
+
+<property
+        name="Surname"
+        type="string"
+        >
+        <column
+        name="Surname" />
+</property>
+
+<property
+        name="VerDate"
+        type="timestamp"
+        >
+        <column
+        name="VerDate" />
+</property>
+
+<property
+        name="VerNumber"
+        type="long"
+        >
+        <column
+        name="VerNumber" />
+</property>
+
+<many-to-one
+        name="CountryID_EN"
+			entity-name="KindCountry"
+        >
+        <column
+        name="CountryID" />
+</many-to-one>
+<property
+        name="CountryID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+
+</joined-subclass>
+<joined-subclass
+entity-name="JClient"
+extends="Client"
+table="CDM_JClient"
+>
+
+<key>
+        <column
+        name="ID" not-null="true" />
+</key>
+
+
+
+
+<property
+        name="VerLock"
+        type="long"
+        >
+        <column
+        name="VerLock" />
+</property>
+
+<many-to-one
+        name="VerLastID_EN"
+			entity-name="JClient_VER"
+        >
+        <column
+        name="VerLastID" />
+</many-to-one>
+<property
+        name="VerLastID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+
+</joined-subclass>
+<joined-subclass
+entity-name="JClient_VER"
+extends="JClient"
+table="CDM_JClient_VER"
+>
+
+<key>
+        <column
+        name="VerID" not-null="true" />
+</key>
+
+
+
+
+<property
+        name="OGRN"
+        type="string"
+        >
+        <column
+        name="OGRN" />
+</property>
+
+<property
+        name="KPP"
+        type="string"
+        >
+        <column
+        name="KPP" />
+</property>
+
+<property
+        name="INN"
+        type="string"
+        >
+        <column
+        name="INN" />
+</property>
+
+<property
+        name="Name2"
+        type="string"
+        >
+        <column
+        name="Name2" />
+</property>
+
+<property
+        name="Name"
+        type="string"
+        >
+        <column
+        name="Name" />
+</property>
+
+<property
+        name="VerDate"
+        type="timestamp"
+        >
+        <column
+        name="VerDate" />
+</property>
+
+<property
+        name="VerNumber"
+        type="long"
+        >
+        <column
+        name="VerNumber" />
+</property>
+
+<many-to-one
+        name="FirstPersonID_EN"
+			entity-name="PPerson"
+        >
+        <column
+        name="FirstPersonID" />
+</many-to-one>
+<property
+        name="FirstPersonID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+<many-to-one
+        name="CountryID_EN"
+			entity-name="KindCountry"
+        >
+        <column
+        name="CountryID" />
+</many-to-one>
+<property
+        name="CountryID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+<many-to-one
+        name="LegalFormsOfBusinessID_EN"
+			entity-name="LegalFormsOfBusiness"
+        >
+        <column
+        name="LegalFormsOfBusinessID" />
+</many-to-one>
+<property
+        name="LegalFormsOfBusinessID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+
+</joined-subclass>
+<joined-subclass
+entity-name="EClient"
+extends="Client"
+table="CDM_EClient"
+>
+
+<key>
+        <column
+        name="ID" not-null="true" />
+</key>
+
+
+
+
+<property
+        name="VerLock"
+        type="long"
+        >
+        <column
+        name="VerLock" />
+</property>
+
+<many-to-one
+        name="VerLastID_EN"
+			entity-name="EClient_VER"
+        >
+        <column
+        name="VerLastID" />
+</many-to-one>
+<property
+        name="VerLastID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+
+</joined-subclass>
+<joined-subclass
+entity-name="EClient_VER"
+extends="EClient"
+table="CDM_EClient_VER"
+>
+
+<key>
+        <column
+        name="VerID" not-null="true" />
+</key>
+
+
+
+
+<property
+        name="OGRNIP"
+        type="string"
+        >
+        <column
+        name="OGRNIP" />
+</property>
+
+<property
+        name="INN"
+        type="string"
+        >
+        <column
+        name="INN" />
+</property>
+
+<property
+        name="Sex"
+        type="long"
+        >
+        <column
+        name="Sex" />
+</property>
+
+<property
+        name="PlaceOfBirth"
+        type="string"
+        >
+        <column
+        name="PlaceOfBirth" />
+</property>
+
+<property
+        name="DateOfBirth"
+        type="date"
+        >
+        <column
+        name="DateOfBirth" />
+</property>
+
+<property
+        name="IsEmptyPatronymic"
+        type="integer"
+        >
+        <column
+        name="IsEmptyPatronymic" />
+</property>
+
+<property
+        name="Patronymic"
+        type="string"
+        >
+        <column
+        name="Patronymic" />
+</property>
+
+<property
+        name="Name"
+        type="string"
+        >
+        <column
+        name="Name" />
+</property>
+
+<property
+        name="Surname"
+        type="string"
+        >
+        <column
+        name="Surname" />
+</property>
+
+<property
+        name="VerDate"
+        type="timestamp"
+        >
+        <column
+        name="VerDate" />
+</property>
+
+<property
+        name="VerNumber"
+        type="long"
+        >
+        <column
+        name="VerNumber" />
+</property>
+
+<many-to-one
+        name="CountryID_EN"
+			entity-name="KindCountry"
+        >
+        <column
+        name="CountryID" />
+</many-to-one>
+<property
+        name="CountryID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+<many-to-one
+        name="LegalFormsOfBusinessID_EN"
+			entity-name="LegalFormsOfBusiness"
+        >
+        <column
+        name="LegalFormsOfBusinessID" />
+</many-to-one>
+<property
+        name="LegalFormsOfBusinessID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+
+</joined-subclass>
+<joined-subclass
+entity-name="EPerson"
+extends="Person"
+table="CDM_EPerson"
+>
+
+<key>
+        <column
+        name="ID" not-null="true" />
+</key>
+
+
+
+
+<property
+        name="OGRNIP"
+        type="string"
+        >
+        <column
+        name="OGRNIP" />
+</property>
+
+<property
+        name="INN"
+        type="string"
+        >
+        <column
+        name="INN" />
+</property>
+
+<property
+        name="Sex"
+        type="long"
+        >
+        <column
+        name="Sex" />
+</property>
+
+<property
+        name="PlaceOfBirth"
+        type="date"
+        >
+        <column
+        name="PlaceOfBirth" />
+</property>
+
+<property
+        name="DateOfBirth"
+        type="date"
+        >
+        <column
+        name="DateOfBirth" />
+</property>
+
+<property
+        name="IsEmptyPatronymic"
+        type="integer"
+        >
+        <column
+        name="IsEmptyPatronymic" />
+</property>
+
+<property
+        name="Patronymic"
+        type="string"
+        >
+        <column
+        name="Patronymic" />
+</property>
+
+<property
+        name="Name"
+        type="string"
+        >
+        <column
+        name="Name" />
+</property>
+
+<property
+        name="Surname"
+        type="string"
+        >
+        <column
+        name="Surname" />
+</property>
+
+<many-to-one
+        name="LegalFormsOfBusinessID_EN"
+			entity-name="LegalFormsOfBusiness"
+        >
+        <column
+        name="LegalFormsOfBusinessID" />
+</many-to-one>
+<property
+        name="LegalFormsOfBusinessID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+
+</joined-subclass>
+<joined-subclass
+entity-name="JPerson"
+extends="Person"
+table="CDM_JPerson"
+>
+
+<key>
+        <column
+        name="ID" not-null="true" />
+</key>
+
+
+
+
+<property
+        name="OGRN"
+        type="string"
+        >
+        <column
+        name="OGRN" />
+</property>
+
+<property
+        name="KPP"
+        type="string"
+        >
+        <column
+        name="KPP" />
+</property>
+
+<property
+        name="INN"
+        type="string"
+        >
+        <column
+        name="INN" />
+</property>
+
+<property
+        name="Name2"
+        type="string"
+        >
+        <column
+        name="Name2" />
+</property>
+
+<property
+        name="Name"
+        type="string"
+        >
+        <column
+        name="Name" />
+</property>
+
+<many-to-one
+        name="FirstPersonID_EN"
+			entity-name="PPerson"
+        >
+        <column
+        name="FirstPersonID" />
+</many-to-one>
+<property
+        name="FirstPersonID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+<many-to-one
+        name="LegalFormsOfBusinessID_EN"
+			entity-name="LegalFormsOfBusiness"
+        >
+        <column
+        name="LegalFormsOfBusinessID" />
+</many-to-one>
+<property
+        name="LegalFormsOfBusinessID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+
+</joined-subclass>
+<joined-subclass
+entity-name="ContractPMember"
+extends="PPerson"
+table="PD_Contract_PMember"
+>
+
+<key>
+        <column
+        name="ID" not-null="true" />
+</key>
+
+
+
+
+<property
+        name="EndDate"
+        type="timestamp"
+        >
+        <column
+        name="EndDate" />
+</property>
+
+<property
+        name="StartDate"
+        type="timestamp"
+        >
+        <column
+        name="StartDate" />
+</property>
+
+<property
+        name="ContractID"
+        type="long"
+        >
+        <column
+        name="ContractID" />
+</property>
+
+<many-to-one
+        name="TypeID_EN"
+			entity-name="KindContractMember"
+        >
+        <column
+        name="TypeID" />
+</many-to-one>
+<property
+        name="TypeID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+
+</joined-subclass>
+<joined-subclass
+entity-name="ContractDriver"
+extends="ContractPMember"
+table="PD_Contract_Driver"
+>
+
+<key>
+        <column
+        name="ID" not-null="true" />
+</key>
+
+
+
+
+<property
+        name="DateOfExp"
+        type="date"
+        >
+        <column
+        name="DateOfExp" />
+</property>
+
+
+</joined-subclass>
+
+</hibernate-mapping>

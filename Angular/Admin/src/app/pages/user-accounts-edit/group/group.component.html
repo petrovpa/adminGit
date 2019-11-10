@@ -1,0 +1,45 @@
+<form #f="ngForm" novalidate class="page-form-edit">
+  <add-modal-dialog-group #addDialog [options]="groupModalDialogOptions"></add-modal-dialog-group>
+
+  <user-short-info [user]="user"></user-short-info>
+
+  <div class="page-title">Группы</div>
+
+  <custom-button-group [buttons]="groupTableButtons"
+                       [selected]="groupTable.selected"></custom-button-group>
+  <datatable #groupTable class="bootstrap"
+             [rows]="groupList"
+             columnMode="force"
+             selectionType="single"
+             [rowHeight]="30"
+             [messages]="{ emptyMessage: isGroupLoading ? 'Подождите. Идет загрузка...' : 'Не найдено ни одной группы' }"
+             (select)="onGroupSelect($event)">
+    <datatable-column name="№" [maxWidth]="50">
+      <ng-template let-rowIndex="rowIndex" let-row="row" datatable-cell-template>
+        <ng-container>{{rowIndex + 1}}</ng-container>
+      </ng-template>
+    </datatable-column>
+    <datatable-column name="Имя группы" [flexGrow]="1" [prop]="'GROUPNAME'"></datatable-column>
+  </datatable>
+
+  <div class="page__btn">
+    <div class="row">
+      <div class="col-sm-6 col-12">
+        <button type="button"
+                class="btn btn-link btn-rounded btn-block"
+                (click)="back($event, f)">Вернуться</button>
+      </div>
+      <div class="col-sm-6 col-12">
+        <button *ngIf="isNextSubMenu"
+                type="button"
+                class="btn btn-primary btn-rounded btn-block"
+                (click)="next($event, f)">Продолжить</button>
+
+        <button *ngIf="!isNextSubMenu"
+                type="button"
+                class="btn btn-primary btn-rounded btn-block"
+                (click)="navigateCancel()">Закрыть</button>
+      </div>
+    </div>
+  </div>
+</form>

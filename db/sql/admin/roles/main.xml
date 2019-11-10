@@ -1,0 +1,77 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet author="pzabaluev" context="update" id="admin-roles-addJournal">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <sqlCheck expectedResult="0">
+                    SELECT COUNT(*) FROM B2B_JOURNAL WHERE ID=1100;
+                </sqlCheck>
+            </and>
+        </preConditions>
+        <sqlFile path="admin/roles/data/addJournal.sql" encoding="UTF-8" />
+        <comment>add Admin Roles journal</comment>
+    </changeSet>
+
+    <changeSet author="pzabaluev" context="update" id="admin-roles-addProviderRoles">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <sqlCheck expectedResult="0">
+                    SELECT COUNT(*) FROM INS_DATAPROV WHERE DATAPROVID=20900;
+                </sqlCheck>
+            </and>
+        </preConditions>
+        <sql>INSERT INTO INS_DATAPROV (DATAPROVID, DISCRIMINATOR, METHODNAME, NAME, SERVICENAME) VALUES (20900, 20, 'dsUserRoleBrowseListByParamEx', 'Список ролей', 'b2bposws');</sql>
+        <comment>add Admin Roles data provider</comment>
+    </changeSet>
+
+    <changeSet author="pzabaluev" context="update" id="admin-roles-updateJournalRight">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <sqlCheck expectedResult="0">
+                    SELECT COUNT(*) FROM B2B_JOURNAL WHERE ID=1300 AND UPDATEDATE=43378;
+                </sqlCheck>
+            </and>
+        </preConditions>
+        <sqlFile path="admin/roles/data/updateJournalRight.sql" encoding="UTF-8" />
+        <comment>add Admin Roles update Right</comment>
+    </changeSet>
+
+    <changeSet author="pzabaluev" context="update" id="admin-roles-metadata">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <sqlCheck expectedResult="0">
+                    SELECT COUNT(*) FROM CORE_RFMETADATA WHERE RFMETADATAID=2030;
+                </sqlCheck>
+            </and>
+        </preConditions>
+        <sqlFile path="admin/roles/data/metadata.sql" encoding="UTF-8" />
+        <comment>add metadata right</comment>
+    </changeSet>
+
+    <changeSet author="pzabaluev" context="update" id="admin-roles-update-metadata">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <sqlCheck expectedResult="0">
+                    SELECT COUNT(*) FROM CORE_RFMETADATA WHERE RFMETADATAID=2014;
+                </sqlCheck>
+            </and>
+        </preConditions>
+        <sqlFile path="admin/roles/data/update-metadata.sql" encoding="UTF-8" />
+        <comment>update metadata right</comment>
+    </changeSet>
+
+    <changeSet author="pzabaluev" context="update" id="admin-right-for-package">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <sqlCheck expectedResult="0">
+                    SELECT COUNT(*) FROM CORE_PACKAGERIGHT WHERE PACKAGERIGHTID=2030;
+                </sqlCheck>
+            </and>
+        </preConditions>
+        <sqlFile path="admin/roles/data/right-for-package.sql" encoding="UTF-8" />
+        <comment>update right-for-package</comment>
+    </changeSet>
+</databaseChangeLog>

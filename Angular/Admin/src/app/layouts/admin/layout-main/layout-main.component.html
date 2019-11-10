@@ -1,0 +1,14 @@
+<app-loader></app-loader>
+<div class="wrapper">
+  <app-header></app-header>
+  <modal-alert #alert (confirmed)="onAlertConfirmed()"></modal-alert>
+  <main>
+    <section class="main-container">
+      <sidebar-menu [serviceName]="'menu/dsB2BMenuBrowseEx'" class="sidebar"></sidebar-menu>
+      <div class="page-container">
+        <router-outlet></router-outlet>
+      </div>
+    </section>
+  </main>
+</div>
+<dialog-outlet></dialog-outlet>

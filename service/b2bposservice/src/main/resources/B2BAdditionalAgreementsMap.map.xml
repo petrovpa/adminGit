@@ -1,0 +1,1741 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+	<db-entity name="B2B_ADDAGR">
+		<db-attribute name="ADDAGRID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="AGRNUMBER" type="VARCHAR" length="19"/>
+		<db-attribute name="CONTRID" type="NUMERIC" length="19"/>
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="INITIATOR" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODCONFIGID" type="NUMERIC" length="19"/>
+		<db-attribute name="SIGNDATE" type="FLOAT"/>
+		<db-attribute name="STARTDATE" type="FLOAT"/>
+		<db-attribute name="STATEID" type="NUMERIC" length="19"/>
+		<db-attribute name="TYPEID" type="NUMERIC" length="19"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_ADDAGRCAUSE">
+		<db-attribute name="ADDAGRCAUSEID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="CHECKID" type="NUMERIC" length="19"/>
+		<db-attribute name="FIELDMAPPING" type="VARCHAR" length="2048"/>
+		<db-attribute name="HBDATAVERID" type="NUMERIC" length="19"/>
+		<db-attribute name="ISNEEDATTACH" type="NUMERIC" length="1"/>
+		<db-attribute name="ISNEEDCALC" type="NUMERIC" length="1"/>
+		<db-attribute name="ISNEEDINNERAGR" type="NUMERIC" length="1"/>
+		<db-attribute name="ISNEEDMANUALCHECK" type="NUMERIC" length="1"/>
+		<db-attribute name="ISNEEDORIGINAL" type="NUMERIC" length="1"/>
+		<db-attribute name="ISNEEDPARTNER" type="NUMERIC" length="1"/>
+		<db-attribute name="ISNEEDUW" type="NUMERIC" length="1"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="255"/>
+		<db-attribute name="PAGECONTENT" type="VARCHAR" length="2048"/>
+		<db-attribute name="PRODVERID" type="NUMERIC" length="19"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="B2B_ADDAGRCNT">
+		<db-attribute name="ADDAGRCAUSEID" type="NUMERIC" length="19"/>
+		<db-attribute name="ADDAGRCNTID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="ADDAGRID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_ADDAGRDOC">
+		<db-attribute name="ADDAGRDOCID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="ADDAGRID" type="NUMERIC" length="19"/>
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODBINDOCID" type="NUMERIC" length="19"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<obj-entity name="B2BAddAgr" dbEntityName="B2B_ADDAGR">
+		<obj-attribute name="addagrid" type="java.lang.Long" db-attribute-path="ADDAGRID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД"/>
+		<obj-attribute name="agrnumber" type="java.lang.String" db-attribute-path="AGRNUMBER" note="Номер"/>
+		<obj-attribute name="contrId" type="java.lang.Long" db-attribute-path="CONTRID" note="ИД договора"/>
+		<obj-attribute name="createdate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания"/>
+		<obj-attribute name="createuserid" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="Пользователь создавший запись"/>
+		<obj-attribute name="initiator" type="java.lang.Long" db-attribute-path="INITIATOR" note="Ид инициатора"/>
+		<obj-attribute name="prodconfigid" type="java.lang.Long" db-attribute-path="PRODCONFIGID" note="Ид продукта"/>
+		<obj-attribute name="signdate" type="java.lang.Long" db-attribute-path="SIGNDATE" note="Дата принятия"/>
+		<obj-attribute name="startdate" type="java.math.BigDecimal" db-attribute-path="STARTDATE" note="Дата создания заявки"/>
+		<obj-attribute name="stateid" type="java.lang.Long" db-attribute-path="STATEID" note="Состояние"/>
+		<obj-attribute name="typeid" type="java.lang.Long" db-attribute-path="TYPEID" note="Тип допса"/>
+		<obj-attribute name="updatedate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата изменения записи"/>
+		<obj-attribute name="updateuserid" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="Пользователь изменивший запись"/>
+	</obj-entity>
+	<obj-entity name="B2BAddAgrDoc" dbEntityName="B2B_ADDAGRDOC">
+		<obj-attribute name="addagrdocsid" type="java.lang.Long" db-attribute-path="ADDAGRDOCID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="Ид"/>
+		<obj-attribute name="addagrid" type="java.lang.Long" db-attribute-path="ADDAGRID" note="Ид допса"/>
+		<obj-attribute name="createdate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания"/>
+		<obj-attribute name="createuserid" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="Пользователь создавший запись"/>
+		<obj-attribute name="prodbindocid" type="java.lang.Long" db-attribute-path="PRODBINDOCID" note="Ид типа документа"/>
+		<obj-attribute name="updatedate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата изменения"/>
+		<obj-attribute name="updateuserid" type="java.math.Long" db-attribute-path="UPDATEUSERID" note="Пользователь изменивший запись"/>
+	</obj-entity>
+	<obj-entity name="B2BAddAgrCause" dbEntityName="B2B_ADDAGRCAUSE">
+		<obj-attribute name="addagrcauseid" type="java.lang.Long" db-attribute-path="ADDAGRCAUSEID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="Ид"/>
+		<obj-attribute name="checkid" type="java.lang.Long" db-attribute-path="CHECKID" note="Ид проверки"/>
+		<obj-attribute name="fieldmapping" type="java.lang.String" db-attribute-path="FIELDMAPPING" note="Маппинг полей"/>
+		<obj-attribute name="hbdataverid" type="java.lang.Long" db-attribute-path="HBDATAVERID" note="Ид версии справочника"/>
+		<obj-attribute name="isNeedCalc" type="java.lang.Long" db-attribute-path="ISNEEDCALC" note="Требуется перерасчет"/>
+		<obj-attribute name="isneedattach" type="java.lang.Long" db-attribute-path="ISNEEDATTACH" note="Признак требуется оригинал заявления"/>
+		<obj-attribute name="isneedinneragr" type="java.lang.Long" db-attribute-path="ISNEEDINNERAGR" note="настройка процесса согласования с внутренними подразделениям компании (Юридический отдел, Безопасность и т.д.)"/>
+		<obj-attribute name="isneedmanualcheck" type="java.lang.Long" db-attribute-path="ISNEEDMANUALCHECK" note="Признак для ручного контроля прикрепленных документов"/>
+		<obj-attribute name="isneedoriginal" type="java.lang.Long" db-attribute-path="ISNEEDORIGINAL" note="Признак требуется оригинал заявления"/>
+		<obj-attribute name="isneedpartner" type="java.lang.Long" db-attribute-path="ISNEEDPARTNER" note="Признак о необходимости выполнить запрос согласования внесения изменений с Партнером"/>
+		<obj-attribute name="isneeduw" type="java.lang.Long" db-attribute-path="ISNEEDUW" note="Признак вызова модуля «online Андеррайтинг»"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Название причины"/>
+		<obj-attribute name="note" type="java.lang.String" db-attribute-path="NOTE" note="Посказка"/>
+		<obj-attribute name="pagecontent" type="java.lang.String" db-attribute-path="PAGECONTENT" note="Страница содержимого причины"/>
+		<obj-attribute name="prodVerId" type="java.lang.Long" db-attribute-path="PRODVERID" note="ИД версии продукта"/>
+		<obj-attribute name="sysname" type="java.lang.String" db-attribute-path="SYSNAME" note="Системное наименование"/>
+	</obj-entity>
+	<obj-entity name="B2bAddAgrCnt" dbEntityName="B2B_ADDAGRCNT">
+		<obj-attribute name="addAgrCauseId" type="java.lang.Long" db-attribute-path="ADDAGRCAUSEID" note="ИД причины изменения"/>
+		<obj-attribute name="addAgrCntId" type="java.lang.Long" db-attribute-path="ADDAGRCNTID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД"/>
+		<obj-attribute name="addAgrId" type="java.lang.Long" db-attribute-path="ADDAGRID" note="ИД заголовка заявки на допс"/>
+	</obj-entity>
+<query name="dsB2BAddAgrBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdditionalAgreementsMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.ADDAGRID', 'java.lang.Long', 'ADDAGRID'),
+        #result('T.AGRNUMBER', 'java.lang.String', 'AGRNUMBER'),
+        #result('T.CONTRID', 'java.lang.Long', 'CONTRID'),
+        #result('T.INITIATOR', 'java.lang.Long', 'INITIATOR'),
+        #result('T.PRODCONFIGID', 'java.lang.Long', 'PRODCONFIGID'),
+        #result('T.SIGNDATE', 'java.lang.Long', 'SIGNDATE'),
+        #result('T.STARTDATE', 'java.math.BigDecimal', 'STARTDATE'),
+        #result('T.TYPEID', 'java.lang.Long', 'TYPEID') 
+       $ASPECTFIELDS 
+FROM 
+      B2B_ADDAGR T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRID) T.ADDAGRID = #bind($ADDAGRID 'NUMERIC') #end 
+       #chunk($AGRNUMBER) T.AGRNUMBER = #bind($AGRNUMBER 'VARCHAR') #end 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($INITIATOR) T.INITIATOR = #bind($INITIATOR 'NUMERIC') #end 
+       #chunk($PRODCONFIGID) T.PRODCONFIGID = #bind($PRODCONFIGID 'NUMERIC') #end 
+       #chunk($SIGNDATE) T.SIGNDATE = #bind($SIGNDATE 'FLOAT') #end 
+       #chunk($STARTDATE) T.STARTDATE = #bind($STARTDATE 'FLOAT') #end 
+       #chunk($TYPEID) T.TYPEID = #bind($TYPEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2BAddAgrBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdditionalAgreementsMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ADDAGRID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_ADDAGR T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRID) T.ADDAGRID = #bind($ADDAGRID 'NUMERIC') #end 
+       #chunk($AGRNUMBER) T.AGRNUMBER = #bind($AGRNUMBER 'VARCHAR') #end 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($INITIATOR) T.INITIATOR = #bind($INITIATOR 'NUMERIC') #end 
+       #chunk($PRODCONFIGID) T.PRODCONFIGID = #bind($PRODCONFIGID 'NUMERIC') #end 
+       #chunk($SIGNDATE) T.SIGNDATE = #bind($SIGNDATE 'FLOAT') #end 
+       #chunk($STARTDATE) T.STARTDATE = #bind($STARTDATE 'FLOAT') #end 
+       #chunk($TYPEID) T.TYPEID = #bind($TYPEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2BAddAgrInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdditionalAgreementsMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO B2B_ADDAGR (
+ADDAGRID,
+AGRNUMBER,
+CONTRID,
+INITIATOR,
+PRODCONFIGID,
+SIGNDATE,
+STARTDATE,
+TYPEID 
+$ASPECTFIELDS ) VALUES (
+#bind($ADDAGRID 'NUMERIC'),
+#bind($AGRNUMBER 'VARCHAR'),
+#bind($CONTRID 'NUMERIC'),
+#bind($INITIATOR 'NUMERIC'),
+#bind($PRODCONFIGID 'NUMERIC'),
+#bind($SIGNDATE 'FLOAT'),
+#bind($STARTDATE 'FLOAT'),
+#bind($TYPEID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO B2B_ADDAGR (
+ADDAGRID,
+AGRNUMBER,
+CONTRID,
+INITIATOR,
+PRODCONFIGID,
+SIGNDATE,
+STARTDATE,
+TYPEID 
+$ASPECTFIELDS ) VALUES (
+#bind($ADDAGRID 'NUMERIC'),
+#bind($AGRNUMBER 'VARCHAR'),
+#bind($CONTRID 'NUMERIC'),
+#bind($INITIATOR 'NUMERIC'),
+#bind($PRODCONFIGID 'NUMERIC'),
+#bind($SIGNDATE 'FLOAT'),
+#bind($STARTDATE 'FLOAT'),
+#bind($TYPEID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO B2B_ADDAGR (
+ADDAGRID,
+AGRNUMBER,
+CONTRID,
+INITIATOR,
+PRODCONFIGID,
+SIGNDATE,
+STARTDATE,
+TYPEID 
+$ASPECTFIELDS ) VALUES (
+#bind($ADDAGRID 'NUMERIC'),
+#bind($AGRNUMBER 'VARCHAR'),
+#bind($CONTRID 'NUMERIC'),
+#bind($INITIATOR 'NUMERIC'),
+#bind($PRODCONFIGID 'NUMERIC'),
+#bind($SIGNDATE 'FLOAT'),
+#bind($STARTDATE 'FLOAT'),
+#bind($TYPEID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsB2BAddAgrUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdditionalAgreementsMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.ADDAGRID = #bind($ADDAGRID 'NUMERIC') 
+#chunk($AGRNUMBER) , T.AGRNUMBER = #bind($AGRNUMBER 'VARCHAR') #end 
+#chunk($CONTRID) , T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+#chunk($INITIATOR) , T.INITIATOR = #bind($INITIATOR 'NUMERIC') #end 
+#chunk($PRODCONFIGID) , T.PRODCONFIGID = #bind($PRODCONFIGID 'NUMERIC') #end 
+#chunk($SIGNDATE) , T.SIGNDATE = #bind($SIGNDATE 'FLOAT') #end 
+#chunk($STARTDATE) , T.STARTDATE = #bind($STARTDATE 'FLOAT') #end 
+#chunk($TYPEID) , T.TYPEID = #bind($TYPEID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_ADDAGR T 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRID) T.ADDAGRID = #bind($ADDAGRID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.ADDAGRID = #bind($ADDAGRID 'NUMERIC') 
+#chunk($AGRNUMBER) , T.AGRNUMBER = #bind($AGRNUMBER 'VARCHAR') #end 
+#chunk($CONTRID) , T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+#chunk($INITIATOR) , T.INITIATOR = #bind($INITIATOR 'NUMERIC') #end 
+#chunk($PRODCONFIGID) , T.PRODCONFIGID = #bind($PRODCONFIGID 'NUMERIC') #end 
+#chunk($SIGNDATE) , T.SIGNDATE = #bind($SIGNDATE 'FLOAT') #end 
+#chunk($STARTDATE) , T.STARTDATE = #bind($STARTDATE 'FLOAT') #end 
+#chunk($TYPEID) , T.TYPEID = #bind($TYPEID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_ADDAGR T 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRID) T.ADDAGRID = #bind($ADDAGRID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       B2B_ADDAGR T 
+SET 
+    T.ADDAGRID = #bind($ADDAGRID 'NUMERIC') 
+#chunk($AGRNUMBER) , T.AGRNUMBER = #bind($AGRNUMBER 'VARCHAR') #end 
+#chunk($CONTRID) , T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+#chunk($INITIATOR) , T.INITIATOR = #bind($INITIATOR 'NUMERIC') #end 
+#chunk($PRODCONFIGID) , T.PRODCONFIGID = #bind($PRODCONFIGID 'NUMERIC') #end 
+#chunk($SIGNDATE) , T.SIGNDATE = #bind($SIGNDATE 'FLOAT') #end 
+#chunk($STARTDATE) , T.STARTDATE = #bind($STARTDATE 'FLOAT') #end 
+#chunk($TYPEID) , T.TYPEID = #bind($TYPEID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRID) T.ADDAGRID = #bind($ADDAGRID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2BAddAgrUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdditionalAgreementsMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ADDAGRID = #bind($ADDAGRID 'NUMERIC') 
+#chunk($AGRNUMBER) , TA.AGRNUMBER = #bind($AGRNUMBER 'VARCHAR') #end 
+#chunk($CONTRID) , TA.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+#chunk($INITIATOR) , TA.INITIATOR = #bind($INITIATOR 'NUMERIC') #end 
+#chunk($PRODCONFIGID) , TA.PRODCONFIGID = #bind($PRODCONFIGID 'NUMERIC') #end 
+#chunk($SIGNDATE) , TA.SIGNDATE = #bind($SIGNDATE 'FLOAT') #end 
+#chunk($STARTDATE) , TA.STARTDATE = #bind($STARTDATE 'FLOAT') #end 
+#chunk($TYPEID) , TA.TYPEID = #bind($TYPEID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_ADDAGR TA 
+WHERE 
+     TA.ADDAGRID in ( 
+       SELECT 
+         T.ADDAGRID
+       FROM 
+         B2B_ADDAGR T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ADDAGRID) T.ADDAGRID = #bind($ADDAGRID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ADDAGRID = #bind($ADDAGRID 'NUMERIC') 
+#chunk($AGRNUMBER) , TA.AGRNUMBER = #bind($AGRNUMBER 'VARCHAR') #end 
+#chunk($CONTRID) , TA.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+#chunk($INITIATOR) , TA.INITIATOR = #bind($INITIATOR 'NUMERIC') #end 
+#chunk($PRODCONFIGID) , TA.PRODCONFIGID = #bind($PRODCONFIGID 'NUMERIC') #end 
+#chunk($SIGNDATE) , TA.SIGNDATE = #bind($SIGNDATE 'FLOAT') #end 
+#chunk($STARTDATE) , TA.STARTDATE = #bind($STARTDATE 'FLOAT') #end 
+#chunk($TYPEID) , TA.TYPEID = #bind($TYPEID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_ADDAGR TA 
+WHERE 
+     TA.ADDAGRID in ( 
+       SELECT 
+         T.ADDAGRID
+       FROM 
+         B2B_ADDAGR T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ADDAGRID) T.ADDAGRID = #bind($ADDAGRID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       B2B_ADDAGR TA 
+SET 
+    TA.ADDAGRID = #bind($ADDAGRID 'NUMERIC') 
+#chunk($AGRNUMBER) , TA.AGRNUMBER = #bind($AGRNUMBER 'VARCHAR') #end 
+#chunk($CONTRID) , TA.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+#chunk($INITIATOR) , TA.INITIATOR = #bind($INITIATOR 'NUMERIC') #end 
+#chunk($PRODCONFIGID) , TA.PRODCONFIGID = #bind($PRODCONFIGID 'NUMERIC') #end 
+#chunk($SIGNDATE) , TA.SIGNDATE = #bind($SIGNDATE 'FLOAT') #end 
+#chunk($STARTDATE) , TA.STARTDATE = #bind($STARTDATE 'FLOAT') #end 
+#chunk($TYPEID) , TA.TYPEID = #bind($TYPEID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.ADDAGRID in ( 
+       SELECT 
+         T.ADDAGRID
+       FROM 
+         B2B_ADDAGR T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ADDAGRID) T.ADDAGRID = #bind($ADDAGRID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsB2BAddAgrDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdditionalAgreementsMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      B2B_ADDAGR T 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRID) T.ADDAGRID = #bind($ADDAGRID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      B2B_ADDAGR T 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRID) T.ADDAGRID = #bind($ADDAGRID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       B2B_ADDAGR T 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRID) T.ADDAGRID = #bind($ADDAGRID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2BAddAgrDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdditionalAgreementsMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      B2B_ADDAGR TA 
+WHERE 
+     TA.ADDAGRID in ( 
+       SELECT 
+         T.ADDAGRID
+       FROM 
+         B2B_ADDAGR T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ADDAGRID) T.ADDAGRID = #bind($ADDAGRID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      B2B_ADDAGR TA 
+WHERE 
+     TA.ADDAGRID in ( 
+       SELECT 
+         T.ADDAGRID
+       FROM 
+         B2B_ADDAGR T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ADDAGRID) T.ADDAGRID = #bind($ADDAGRID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       B2B_ADDAGR TA 
+WHERE 
+     TA.ADDAGRID in ( 
+       SELECT 
+         T.ADDAGRID
+       FROM 
+         B2B_ADDAGR T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ADDAGRID) T.ADDAGRID = #bind($ADDAGRID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsB2BAddAgrDocBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdditionalAgreementsMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.ADDAGRDOCID', 'java.lang.Long', 'ADDAGRDOCID'),
+        #result('T.ADDAGRID', 'java.lang.Long', 'ADDAGRID'),
+        #result('T.PRODBINDOCID', 'java.lang.Long', 'PRODBINDOCID') 
+       $ASPECTFIELDS 
+FROM 
+      B2B_ADDAGRDOC T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRDOCID) T.ADDAGRDOCID = #bind($ADDAGRDOCID 'NUMERIC') #end 
+       #chunk($ADDAGRID) T.ADDAGRID = #bind($ADDAGRID 'NUMERIC') #end 
+       #chunk($PRODBINDOCID) T.PRODBINDOCID = #bind($PRODBINDOCID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2BAddAgrDocBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdditionalAgreementsMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ADDAGRDOCID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_ADDAGRDOC T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRDOCID) T.ADDAGRDOCID = #bind($ADDAGRDOCID 'NUMERIC') #end 
+       #chunk($ADDAGRID) T.ADDAGRID = #bind($ADDAGRID 'NUMERIC') #end 
+       #chunk($PRODBINDOCID) T.PRODBINDOCID = #bind($PRODBINDOCID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2BAddAgrDocInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdditionalAgreementsMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO B2B_ADDAGRDOC (
+ADDAGRDOCID,
+ADDAGRID,
+PRODBINDOCID 
+$ASPECTFIELDS ) VALUES (
+#bind($ADDAGRDOCID 'NUMERIC'),
+#bind($ADDAGRID 'NUMERIC'),
+#bind($PRODBINDOCID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO B2B_ADDAGRDOC (
+ADDAGRDOCID,
+ADDAGRID,
+PRODBINDOCID 
+$ASPECTFIELDS ) VALUES (
+#bind($ADDAGRDOCID 'NUMERIC'),
+#bind($ADDAGRID 'NUMERIC'),
+#bind($PRODBINDOCID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO B2B_ADDAGRDOC (
+ADDAGRDOCID,
+ADDAGRID,
+PRODBINDOCID 
+$ASPECTFIELDS ) VALUES (
+#bind($ADDAGRDOCID 'NUMERIC'),
+#bind($ADDAGRID 'NUMERIC'),
+#bind($PRODBINDOCID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsB2BAddAgrDocUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdditionalAgreementsMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.ADDAGRDOCID = #bind($ADDAGRDOCID 'NUMERIC') 
+#chunk($ADDAGRID) , T.ADDAGRID = #bind($ADDAGRID 'NUMERIC') #end 
+#chunk($PRODBINDOCID) , T.PRODBINDOCID = #bind($PRODBINDOCID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_ADDAGRDOC T 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRDOCID) T.ADDAGRDOCID = #bind($ADDAGRDOCID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.ADDAGRDOCID = #bind($ADDAGRDOCID 'NUMERIC') 
+#chunk($ADDAGRID) , T.ADDAGRID = #bind($ADDAGRID 'NUMERIC') #end 
+#chunk($PRODBINDOCID) , T.PRODBINDOCID = #bind($PRODBINDOCID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_ADDAGRDOC T 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRDOCID) T.ADDAGRDOCID = #bind($ADDAGRDOCID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       B2B_ADDAGRDOC T 
+SET 
+    T.ADDAGRDOCID = #bind($ADDAGRDOCID 'NUMERIC') 
+#chunk($ADDAGRID) , T.ADDAGRID = #bind($ADDAGRID 'NUMERIC') #end 
+#chunk($PRODBINDOCID) , T.PRODBINDOCID = #bind($PRODBINDOCID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRDOCID) T.ADDAGRDOCID = #bind($ADDAGRDOCID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2BAddAgrDocUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdditionalAgreementsMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ADDAGRDOCID = #bind($ADDAGRDOCID 'NUMERIC') 
+#chunk($ADDAGRID) , TA.ADDAGRID = #bind($ADDAGRID 'NUMERIC') #end 
+#chunk($PRODBINDOCID) , TA.PRODBINDOCID = #bind($PRODBINDOCID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_ADDAGRDOC TA 
+WHERE 
+     TA.ADDAGRDOCID in ( 
+       SELECT 
+         T.ADDAGRDOCID
+       FROM 
+         B2B_ADDAGRDOC T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ADDAGRDOCID) T.ADDAGRDOCID = #bind($ADDAGRDOCID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ADDAGRDOCID = #bind($ADDAGRDOCID 'NUMERIC') 
+#chunk($ADDAGRID) , TA.ADDAGRID = #bind($ADDAGRID 'NUMERIC') #end 
+#chunk($PRODBINDOCID) , TA.PRODBINDOCID = #bind($PRODBINDOCID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_ADDAGRDOC TA 
+WHERE 
+     TA.ADDAGRDOCID in ( 
+       SELECT 
+         T.ADDAGRDOCID
+       FROM 
+         B2B_ADDAGRDOC T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ADDAGRDOCID) T.ADDAGRDOCID = #bind($ADDAGRDOCID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       B2B_ADDAGRDOC TA 
+SET 
+    TA.ADDAGRDOCID = #bind($ADDAGRDOCID 'NUMERIC') 
+#chunk($ADDAGRID) , TA.ADDAGRID = #bind($ADDAGRID 'NUMERIC') #end 
+#chunk($PRODBINDOCID) , TA.PRODBINDOCID = #bind($PRODBINDOCID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.ADDAGRDOCID in ( 
+       SELECT 
+         T.ADDAGRDOCID
+       FROM 
+         B2B_ADDAGRDOC T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ADDAGRDOCID) T.ADDAGRDOCID = #bind($ADDAGRDOCID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsB2BAddAgrDocDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdditionalAgreementsMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      B2B_ADDAGRDOC T 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRDOCID) T.ADDAGRDOCID = #bind($ADDAGRDOCID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      B2B_ADDAGRDOC T 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRDOCID) T.ADDAGRDOCID = #bind($ADDAGRDOCID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       B2B_ADDAGRDOC T 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRDOCID) T.ADDAGRDOCID = #bind($ADDAGRDOCID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2BAddAgrDocDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdditionalAgreementsMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      B2B_ADDAGRDOC TA 
+WHERE 
+     TA.ADDAGRDOCID in ( 
+       SELECT 
+         T.ADDAGRDOCID
+       FROM 
+         B2B_ADDAGRDOC T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ADDAGRDOCID) T.ADDAGRDOCID = #bind($ADDAGRDOCID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      B2B_ADDAGRDOC TA 
+WHERE 
+     TA.ADDAGRDOCID in ( 
+       SELECT 
+         T.ADDAGRDOCID
+       FROM 
+         B2B_ADDAGRDOC T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ADDAGRDOCID) T.ADDAGRDOCID = #bind($ADDAGRDOCID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       B2B_ADDAGRDOC TA 
+WHERE 
+     TA.ADDAGRDOCID in ( 
+       SELECT 
+         T.ADDAGRDOCID
+       FROM 
+         B2B_ADDAGRDOC T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ADDAGRDOCID) T.ADDAGRDOCID = #bind($ADDAGRDOCID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsB2BAddAgrCauseBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdditionalAgreementsMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.ADDAGRCAUSEID', 'java.lang.Long', 'ADDAGRCAUSEID'),
+        #result('T.CHECKID', 'java.lang.Long', 'CHECKID'),
+        #result('T.FIELDMAPPING', 'java.lang.String', 'FIELDMAPPING'),
+        #result('T.HBDATAVERID', 'java.lang.Long', 'HBDATAVERID'),
+        #result('T.ISNEEDCALC', 'java.lang.Long', 'ISNEEDCALC'),
+        #result('T.ISNEEDATTACH', 'java.lang.Long', 'ISNEEDATTACH'),
+        #result('T.ISNEEDINNERAGR', 'java.lang.Long', 'ISNEEDINNERAGR'),
+        #result('T.ISNEEDMANUALCHECK', 'java.lang.Long', 'ISNEEDMANUALCHECK'),
+        #result('T.ISNEEDORIGINAL', 'java.lang.Long', 'ISNEEDORIGINAL'),
+        #result('T.ISNEEDPARTNER', 'java.lang.Long', 'ISNEEDPARTNER'),
+        #result('T.ISNEEDUW', 'java.lang.Long', 'ISNEEDUW'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.NOTE', 'java.lang.String', 'NOTE'),
+        #result('T.PAGECONTENT', 'java.lang.String', 'PAGECONTENT'),
+        #result('T.PRODVERID', 'java.lang.Long', 'PRODVERID'),
+        #result('T.SYSNAME', 'java.lang.String', 'SYSNAME') 
+       $ASPECTFIELDS 
+FROM 
+      B2B_ADDAGRCAUSE T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRCAUSEID) T.ADDAGRCAUSEID = #bind($ADDAGRCAUSEID 'NUMERIC') #end 
+       #chunk($CHECKID) T.CHECKID = #bind($CHECKID 'NUMERIC') #end 
+       #chunk($FIELDMAPPING) T.FIELDMAPPING = #bind($FIELDMAPPING 'VARCHAR') #end 
+       #chunk($HBDATAVERID) T.HBDATAVERID = #bind($HBDATAVERID 'NUMERIC') #end 
+       #chunk($ISNEEDATTACH) T.ISNEEDATTACH = #bind($ISNEEDATTACH 'NUMERIC') #end 
+       #chunk($ISNEEDCALC) T.ISNEEDCALC = #bind($ISNEEDCALC 'NUMERIC') #end 
+       #chunk($ISNEEDINNERAGR) T.ISNEEDINNERAGR = #bind($ISNEEDINNERAGR 'NUMERIC') #end 
+       #chunk($ISNEEDMANUALCHECK) T.ISNEEDMANUALCHECK = #bind($ISNEEDMANUALCHECK 'NUMERIC') #end 
+       #chunk($ISNEEDORIGINAL) T.ISNEEDORIGINAL = #bind($ISNEEDORIGINAL 'NUMERIC') #end 
+       #chunk($ISNEEDPARTNER) T.ISNEEDPARTNER = #bind($ISNEEDPARTNER 'NUMERIC') #end 
+       #chunk($ISNEEDUW) T.ISNEEDUW = #bind($ISNEEDUW 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($PAGECONTENT) T.PAGECONTENT = #bind($PAGECONTENT 'VARCHAR') #end 
+       #chunk($PRODVERID) T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+       #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2BAddAgrCauseBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdditionalAgreementsMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ADDAGRCAUSEID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_ADDAGRCAUSE T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRCAUSEID) T.ADDAGRCAUSEID = #bind($ADDAGRCAUSEID 'NUMERIC') #end 
+       #chunk($CHECKID) T.CHECKID = #bind($CHECKID 'NUMERIC') #end 
+       #chunk($FIELDMAPPING) T.FIELDMAPPING = #bind($FIELDMAPPING 'VARCHAR') #end 
+       #chunk($HBDATAVERID) T.HBDATAVERID = #bind($HBDATAVERID 'NUMERIC') #end 
+       #chunk($ISNEEDATTACH) T.ISNEEDATTACH = #bind($ISNEEDATTACH 'NUMERIC') #end 
+       #chunk($ISNEEDCALC) T.ISNEEDCALC = #bind($ISNEEDCALC 'NUMERIC') #end 
+       #chunk($ISNEEDINNERAGR) T.ISNEEDINNERAGR = #bind($ISNEEDINNERAGR 'NUMERIC') #end 
+       #chunk($ISNEEDMANUALCHECK) T.ISNEEDMANUALCHECK = #bind($ISNEEDMANUALCHECK 'NUMERIC') #end 
+       #chunk($ISNEEDORIGINAL) T.ISNEEDORIGINAL = #bind($ISNEEDORIGINAL 'NUMERIC') #end 
+       #chunk($ISNEEDPARTNER) T.ISNEEDPARTNER = #bind($ISNEEDPARTNER 'NUMERIC') #end 
+       #chunk($ISNEEDUW) T.ISNEEDUW = #bind($ISNEEDUW 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($PAGECONTENT) T.PAGECONTENT = #bind($PAGECONTENT 'VARCHAR') #end 
+       #chunk($PRODVERID) T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+       #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2BAddAgrCauseInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdditionalAgreementsMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO B2B_ADDAGRCAUSE (
+ADDAGRCAUSEID,
+CHECKID,
+FIELDMAPPING,
+HBDATAVERID,
+ISNEEDATTACH,
+ISNEEDCALC,
+ISNEEDINNERAGR,
+ISNEEDMANUALCHECK,
+ISNEEDORIGINAL,
+ISNEEDPARTNER,
+ISNEEDUW,
+NAME,
+NOTE,
+PAGECONTENT,
+PRODVERID,
+SYSNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($ADDAGRCAUSEID 'NUMERIC'),
+#bind($CHECKID 'NUMERIC'),
+#bind($FIELDMAPPING 'VARCHAR'),
+#bind($HBDATAVERID 'NUMERIC'),
+#bind($ISNEEDATTACH 'NUMERIC'),
+#bind($ISNEEDCALC 'NUMERIC'),
+#bind($ISNEEDINNERAGR 'NUMERIC'),
+#bind($ISNEEDMANUALCHECK 'NUMERIC'),
+#bind($ISNEEDORIGINAL 'NUMERIC'),
+#bind($ISNEEDPARTNER 'NUMERIC'),
+#bind($ISNEEDUW 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($NOTE 'VARCHAR'),
+#bind($PAGECONTENT 'VARCHAR'),
+#bind($PRODVERID 'NUMERIC'),
+#bind($SYSNAME 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO B2B_ADDAGRCAUSE (
+ADDAGRCAUSEID,
+CHECKID,
+FIELDMAPPING,
+HBDATAVERID,
+ISNEEDATTACH,
+ISNEEDCALC,
+ISNEEDINNERAGR,
+ISNEEDMANUALCHECK,
+ISNEEDORIGINAL,
+ISNEEDPARTNER,
+ISNEEDUW,
+NAME,
+NOTE,
+PAGECONTENT,
+PRODVERID,
+SYSNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($ADDAGRCAUSEID 'NUMERIC'),
+#bind($CHECKID 'NUMERIC'),
+#bind($FIELDMAPPING 'VARCHAR'),
+#bind($HBDATAVERID 'NUMERIC'),
+#bind($ISNEEDATTACH 'NUMERIC'),
+#bind($ISNEEDCALC 'NUMERIC'),
+#bind($ISNEEDINNERAGR 'NUMERIC'),
+#bind($ISNEEDMANUALCHECK 'NUMERIC'),
+#bind($ISNEEDORIGINAL 'NUMERIC'),
+#bind($ISNEEDPARTNER 'NUMERIC'),
+#bind($ISNEEDUW 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($NOTE 'VARCHAR'),
+#bind($PAGECONTENT 'VARCHAR'),
+#bind($PRODVERID 'NUMERIC'),
+#bind($SYSNAME 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO B2B_ADDAGRCAUSE (
+ADDAGRCAUSEID,
+CHECKID,
+FIELDMAPPING,
+HBDATAVERID,
+ISNEEDATTACH,
+ISNEEDCALC,
+ISNEEDINNERAGR,
+ISNEEDMANUALCHECK,
+ISNEEDORIGINAL,
+ISNEEDPARTNER,
+ISNEEDUW,
+NAME,
+NOTE,
+PAGECONTENT,
+PRODVERID,
+SYSNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($ADDAGRCAUSEID 'NUMERIC'),
+#bind($CHECKID 'NUMERIC'),
+#bind($FIELDMAPPING 'VARCHAR'),
+#bind($HBDATAVERID 'NUMERIC'),
+#bind($ISNEEDATTACH 'NUMERIC'),
+#bind($ISNEEDCALC 'NUMERIC'),
+#bind($ISNEEDINNERAGR 'NUMERIC'),
+#bind($ISNEEDMANUALCHECK 'NUMERIC'),
+#bind($ISNEEDORIGINAL 'NUMERIC'),
+#bind($ISNEEDPARTNER 'NUMERIC'),
+#bind($ISNEEDUW 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($NOTE 'VARCHAR'),
+#bind($PAGECONTENT 'VARCHAR'),
+#bind($PRODVERID 'NUMERIC'),
+#bind($SYSNAME 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsB2BAddAgrCauseUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdditionalAgreementsMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.ADDAGRCAUSEID = #bind($ADDAGRCAUSEID 'NUMERIC') 
+#chunk($CHECKID) , T.CHECKID = #bind($CHECKID 'NUMERIC') #end 
+#chunk($FIELDMAPPING) , T.FIELDMAPPING = #bind($FIELDMAPPING 'VARCHAR') #end 
+#chunk($HBDATAVERID) , T.HBDATAVERID = #bind($HBDATAVERID 'NUMERIC') #end 
+#chunk($ISNEEDCALC) , T.ISNEEDCALC = #bind($ISNEEDCALC 'NUMERIC') #end 
+#chunk($ISNEEDATTACH) , T.ISNEEDATTACH = #bind($ISNEEDATTACH 'NUMERIC') #end 
+#chunk($ISNEEDINNERAGR) , T.ISNEEDINNERAGR = #bind($ISNEEDINNERAGR 'NUMERIC') #end 
+#chunk($ISNEEDMANUALCHECK) , T.ISNEEDMANUALCHECK = #bind($ISNEEDMANUALCHECK 'NUMERIC') #end 
+#chunk($ISNEEDORIGINAL) , T.ISNEEDORIGINAL = #bind($ISNEEDORIGINAL 'NUMERIC') #end 
+#chunk($ISNEEDPARTNER) , T.ISNEEDPARTNER = #bind($ISNEEDPARTNER 'NUMERIC') #end 
+#chunk($ISNEEDUW) , T.ISNEEDUW = #bind($ISNEEDUW 'NUMERIC') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($NOTE) , T.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($PAGECONTENT) , T.PAGECONTENT = #bind($PAGECONTENT 'VARCHAR') #end 
+#chunk($PRODVERID) , T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+#chunk($SYSNAME) , T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_ADDAGRCAUSE T 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRCAUSEID) T.ADDAGRCAUSEID = #bind($ADDAGRCAUSEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.ADDAGRCAUSEID = #bind($ADDAGRCAUSEID 'NUMERIC') 
+#chunk($CHECKID) , T.CHECKID = #bind($CHECKID 'NUMERIC') #end 
+#chunk($FIELDMAPPING) , T.FIELDMAPPING = #bind($FIELDMAPPING 'VARCHAR') #end 
+#chunk($HBDATAVERID) , T.HBDATAVERID = #bind($HBDATAVERID 'NUMERIC') #end 
+#chunk($ISNEEDCALC) , T.ISNEEDCALC = #bind($ISNEEDCALC 'NUMERIC') #end 
+#chunk($ISNEEDATTACH) , T.ISNEEDATTACH = #bind($ISNEEDATTACH 'NUMERIC') #end 
+#chunk($ISNEEDINNERAGR) , T.ISNEEDINNERAGR = #bind($ISNEEDINNERAGR 'NUMERIC') #end 
+#chunk($ISNEEDMANUALCHECK) , T.ISNEEDMANUALCHECK = #bind($ISNEEDMANUALCHECK 'NUMERIC') #end 
+#chunk($ISNEEDORIGINAL) , T.ISNEEDORIGINAL = #bind($ISNEEDORIGINAL 'NUMERIC') #end 
+#chunk($ISNEEDPARTNER) , T.ISNEEDPARTNER = #bind($ISNEEDPARTNER 'NUMERIC') #end 
+#chunk($ISNEEDUW) , T.ISNEEDUW = #bind($ISNEEDUW 'NUMERIC') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($NOTE) , T.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($PAGECONTENT) , T.PAGECONTENT = #bind($PAGECONTENT 'VARCHAR') #end 
+#chunk($PRODVERID) , T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+#chunk($SYSNAME) , T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_ADDAGRCAUSE T 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRCAUSEID) T.ADDAGRCAUSEID = #bind($ADDAGRCAUSEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       B2B_ADDAGRCAUSE T 
+SET 
+    T.ADDAGRCAUSEID = #bind($ADDAGRCAUSEID 'NUMERIC') 
+#chunk($CHECKID) , T.CHECKID = #bind($CHECKID 'NUMERIC') #end 
+#chunk($FIELDMAPPING) , T.FIELDMAPPING = #bind($FIELDMAPPING 'VARCHAR') #end 
+#chunk($HBDATAVERID) , T.HBDATAVERID = #bind($HBDATAVERID 'NUMERIC') #end 
+#chunk($ISNEEDCALC) , T.ISNEEDCALC = #bind($ISNEEDCALC 'NUMERIC') #end 
+#chunk($ISNEEDATTACH) , T.ISNEEDATTACH = #bind($ISNEEDATTACH 'NUMERIC') #end 
+#chunk($ISNEEDINNERAGR) , T.ISNEEDINNERAGR = #bind($ISNEEDINNERAGR 'NUMERIC') #end 
+#chunk($ISNEEDMANUALCHECK) , T.ISNEEDMANUALCHECK = #bind($ISNEEDMANUALCHECK 'NUMERIC') #end 
+#chunk($ISNEEDORIGINAL) , T.ISNEEDORIGINAL = #bind($ISNEEDORIGINAL 'NUMERIC') #end 
+#chunk($ISNEEDPARTNER) , T.ISNEEDPARTNER = #bind($ISNEEDPARTNER 'NUMERIC') #end 
+#chunk($ISNEEDUW) , T.ISNEEDUW = #bind($ISNEEDUW 'NUMERIC') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($NOTE) , T.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($PAGECONTENT) , T.PAGECONTENT = #bind($PAGECONTENT 'VARCHAR') #end 
+#chunk($PRODVERID) , T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+#chunk($SYSNAME) , T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRCAUSEID) T.ADDAGRCAUSEID = #bind($ADDAGRCAUSEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2BAddAgrCauseUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdditionalAgreementsMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ADDAGRCAUSEID = #bind($ADDAGRCAUSEID 'NUMERIC') 
+#chunk($CHECKID) , TA.CHECKID = #bind($CHECKID 'NUMERIC') #end 
+#chunk($FIELDMAPPING) , TA.FIELDMAPPING = #bind($FIELDMAPPING 'VARCHAR') #end 
+#chunk($HBDATAVERID) , TA.HBDATAVERID = #bind($HBDATAVERID 'NUMERIC') #end 
+#chunk($ISNEEDCALC) , TA.ISNEEDCALC = #bind($ISNEEDCALC 'NUMERIC') #end 
+#chunk($ISNEEDATTACH) , TA.ISNEEDATTACH = #bind($ISNEEDATTACH 'NUMERIC') #end 
+#chunk($ISNEEDINNERAGR) , TA.ISNEEDINNERAGR = #bind($ISNEEDINNERAGR 'NUMERIC') #end 
+#chunk($ISNEEDMANUALCHECK) , TA.ISNEEDMANUALCHECK = #bind($ISNEEDMANUALCHECK 'NUMERIC') #end 
+#chunk($ISNEEDORIGINAL) , TA.ISNEEDORIGINAL = #bind($ISNEEDORIGINAL 'NUMERIC') #end 
+#chunk($ISNEEDPARTNER) , TA.ISNEEDPARTNER = #bind($ISNEEDPARTNER 'NUMERIC') #end 
+#chunk($ISNEEDUW) , TA.ISNEEDUW = #bind($ISNEEDUW 'NUMERIC') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($NOTE) , TA.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($PAGECONTENT) , TA.PAGECONTENT = #bind($PAGECONTENT 'VARCHAR') #end 
+#chunk($PRODVERID) , TA.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+#chunk($SYSNAME) , TA.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_ADDAGRCAUSE TA 
+WHERE 
+     TA.ADDAGRCAUSEID in ( 
+       SELECT 
+         T.ADDAGRCAUSEID
+       FROM 
+         B2B_ADDAGRCAUSE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ADDAGRCAUSEID) T.ADDAGRCAUSEID = #bind($ADDAGRCAUSEID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ADDAGRCAUSEID = #bind($ADDAGRCAUSEID 'NUMERIC') 
+#chunk($CHECKID) , TA.CHECKID = #bind($CHECKID 'NUMERIC') #end 
+#chunk($FIELDMAPPING) , TA.FIELDMAPPING = #bind($FIELDMAPPING 'VARCHAR') #end 
+#chunk($HBDATAVERID) , TA.HBDATAVERID = #bind($HBDATAVERID 'NUMERIC') #end 
+#chunk($ISNEEDCALC) , TA.ISNEEDCALC = #bind($ISNEEDCALC 'NUMERIC') #end 
+#chunk($ISNEEDATTACH) , TA.ISNEEDATTACH = #bind($ISNEEDATTACH 'NUMERIC') #end 
+#chunk($ISNEEDINNERAGR) , TA.ISNEEDINNERAGR = #bind($ISNEEDINNERAGR 'NUMERIC') #end 
+#chunk($ISNEEDMANUALCHECK) , TA.ISNEEDMANUALCHECK = #bind($ISNEEDMANUALCHECK 'NUMERIC') #end 
+#chunk($ISNEEDORIGINAL) , TA.ISNEEDORIGINAL = #bind($ISNEEDORIGINAL 'NUMERIC') #end 
+#chunk($ISNEEDPARTNER) , TA.ISNEEDPARTNER = #bind($ISNEEDPARTNER 'NUMERIC') #end 
+#chunk($ISNEEDUW) , TA.ISNEEDUW = #bind($ISNEEDUW 'NUMERIC') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($NOTE) , TA.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($PAGECONTENT) , TA.PAGECONTENT = #bind($PAGECONTENT 'VARCHAR') #end 
+#chunk($PRODVERID) , TA.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+#chunk($SYSNAME) , TA.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_ADDAGRCAUSE TA 
+WHERE 
+     TA.ADDAGRCAUSEID in ( 
+       SELECT 
+         T.ADDAGRCAUSEID
+       FROM 
+         B2B_ADDAGRCAUSE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ADDAGRCAUSEID) T.ADDAGRCAUSEID = #bind($ADDAGRCAUSEID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       B2B_ADDAGRCAUSE TA 
+SET 
+    TA.ADDAGRCAUSEID = #bind($ADDAGRCAUSEID 'NUMERIC') 
+#chunk($CHECKID) , TA.CHECKID = #bind($CHECKID 'NUMERIC') #end 
+#chunk($FIELDMAPPING) , TA.FIELDMAPPING = #bind($FIELDMAPPING 'VARCHAR') #end 
+#chunk($HBDATAVERID) , TA.HBDATAVERID = #bind($HBDATAVERID 'NUMERIC') #end 
+#chunk($ISNEEDCALC) , TA.ISNEEDCALC = #bind($ISNEEDCALC 'NUMERIC') #end 
+#chunk($ISNEEDATTACH) , TA.ISNEEDATTACH = #bind($ISNEEDATTACH 'NUMERIC') #end 
+#chunk($ISNEEDINNERAGR) , TA.ISNEEDINNERAGR = #bind($ISNEEDINNERAGR 'NUMERIC') #end 
+#chunk($ISNEEDMANUALCHECK) , TA.ISNEEDMANUALCHECK = #bind($ISNEEDMANUALCHECK 'NUMERIC') #end 
+#chunk($ISNEEDORIGINAL) , TA.ISNEEDORIGINAL = #bind($ISNEEDORIGINAL 'NUMERIC') #end 
+#chunk($ISNEEDPARTNER) , TA.ISNEEDPARTNER = #bind($ISNEEDPARTNER 'NUMERIC') #end 
+#chunk($ISNEEDUW) , TA.ISNEEDUW = #bind($ISNEEDUW 'NUMERIC') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($NOTE) , TA.NOTE = #bind($NOTE 'VARCHAR') #end 
+#chunk($PAGECONTENT) , TA.PAGECONTENT = #bind($PAGECONTENT 'VARCHAR') #end 
+#chunk($PRODVERID) , TA.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+#chunk($SYSNAME) , TA.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.ADDAGRCAUSEID in ( 
+       SELECT 
+         T.ADDAGRCAUSEID
+       FROM 
+         B2B_ADDAGRCAUSE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ADDAGRCAUSEID) T.ADDAGRCAUSEID = #bind($ADDAGRCAUSEID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsB2BAddAgrCauseDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdditionalAgreementsMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      B2B_ADDAGRCAUSE T 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRCAUSEID) T.ADDAGRCAUSEID = #bind($ADDAGRCAUSEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      B2B_ADDAGRCAUSE T 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRCAUSEID) T.ADDAGRCAUSEID = #bind($ADDAGRCAUSEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       B2B_ADDAGRCAUSE T 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRCAUSEID) T.ADDAGRCAUSEID = #bind($ADDAGRCAUSEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2BAddAgrCauseDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdditionalAgreementsMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      B2B_ADDAGRCAUSE TA 
+WHERE 
+     TA.ADDAGRCAUSEID in ( 
+       SELECT 
+         T.ADDAGRCAUSEID
+       FROM 
+         B2B_ADDAGRCAUSE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ADDAGRCAUSEID) T.ADDAGRCAUSEID = #bind($ADDAGRCAUSEID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      B2B_ADDAGRCAUSE TA 
+WHERE 
+     TA.ADDAGRCAUSEID in ( 
+       SELECT 
+         T.ADDAGRCAUSEID
+       FROM 
+         B2B_ADDAGRCAUSE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ADDAGRCAUSEID) T.ADDAGRCAUSEID = #bind($ADDAGRCAUSEID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       B2B_ADDAGRCAUSE TA 
+WHERE 
+     TA.ADDAGRCAUSEID in ( 
+       SELECT 
+         T.ADDAGRCAUSEID
+       FROM 
+         B2B_ADDAGRCAUSE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ADDAGRCAUSEID) T.ADDAGRCAUSEID = #bind($ADDAGRCAUSEID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsB2bAddAgrCntBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdditionalAgreementsMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.ADDAGRCAUSEID', 'java.lang.Long', 'ADDAGRCAUSEID'),
+        #result('T.ADDAGRCNTID', 'java.lang.Long', 'ADDAGRCNTID'),
+        #result('T.ADDAGRID', 'java.lang.Long', 'ADDAGRID') 
+       $ASPECTFIELDS 
+FROM 
+      B2B_ADDAGRCNT T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRCAUSEID) T.ADDAGRCAUSEID = #bind($ADDAGRCAUSEID 'NUMERIC') #end 
+       #chunk($ADDAGRCNTID) T.ADDAGRCNTID = #bind($ADDAGRCNTID 'NUMERIC') #end 
+       #chunk($ADDAGRID) T.ADDAGRID = #bind($ADDAGRID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2bAddAgrCntBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdditionalAgreementsMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ADDAGRCNTID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_ADDAGRCNT T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRCAUSEID) T.ADDAGRCAUSEID = #bind($ADDAGRCAUSEID 'NUMERIC') #end 
+       #chunk($ADDAGRCNTID) T.ADDAGRCNTID = #bind($ADDAGRCNTID 'NUMERIC') #end 
+       #chunk($ADDAGRID) T.ADDAGRID = #bind($ADDAGRID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2bAddAgrCntInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdditionalAgreementsMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO B2B_ADDAGRCNT (
+ADDAGRCAUSEID,
+ADDAGRCNTID,
+ADDAGRID 
+$ASPECTFIELDS ) VALUES (
+#bind($ADDAGRCAUSEID 'NUMERIC'),
+#bind($ADDAGRCNTID 'NUMERIC'),
+#bind($ADDAGRID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO B2B_ADDAGRCNT (
+ADDAGRCAUSEID,
+ADDAGRCNTID,
+ADDAGRID 
+$ASPECTFIELDS ) VALUES (
+#bind($ADDAGRCAUSEID 'NUMERIC'),
+#bind($ADDAGRCNTID 'NUMERIC'),
+#bind($ADDAGRID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO B2B_ADDAGRCNT (
+ADDAGRCAUSEID,
+ADDAGRCNTID,
+ADDAGRID 
+$ASPECTFIELDS ) VALUES (
+#bind($ADDAGRCAUSEID 'NUMERIC'),
+#bind($ADDAGRCNTID 'NUMERIC'),
+#bind($ADDAGRID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsB2bAddAgrCntUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdditionalAgreementsMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.ADDAGRCNTID = #bind($ADDAGRCNTID 'NUMERIC') 
+#chunk($ADDAGRCAUSEID) , T.ADDAGRCAUSEID = #bind($ADDAGRCAUSEID 'NUMERIC') #end 
+#chunk($ADDAGRID) , T.ADDAGRID = #bind($ADDAGRID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_ADDAGRCNT T 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRCNTID) T.ADDAGRCNTID = #bind($ADDAGRCNTID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.ADDAGRCNTID = #bind($ADDAGRCNTID 'NUMERIC') 
+#chunk($ADDAGRCAUSEID) , T.ADDAGRCAUSEID = #bind($ADDAGRCAUSEID 'NUMERIC') #end 
+#chunk($ADDAGRID) , T.ADDAGRID = #bind($ADDAGRID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_ADDAGRCNT T 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRCNTID) T.ADDAGRCNTID = #bind($ADDAGRCNTID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       B2B_ADDAGRCNT T 
+SET 
+    T.ADDAGRCNTID = #bind($ADDAGRCNTID 'NUMERIC') 
+#chunk($ADDAGRCAUSEID) , T.ADDAGRCAUSEID = #bind($ADDAGRCAUSEID 'NUMERIC') #end 
+#chunk($ADDAGRID) , T.ADDAGRID = #bind($ADDAGRID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRCNTID) T.ADDAGRCNTID = #bind($ADDAGRCNTID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2bAddAgrCntUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdditionalAgreementsMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ADDAGRCNTID = #bind($ADDAGRCNTID 'NUMERIC') 
+#chunk($ADDAGRCAUSEID) , TA.ADDAGRCAUSEID = #bind($ADDAGRCAUSEID 'NUMERIC') #end 
+#chunk($ADDAGRID) , TA.ADDAGRID = #bind($ADDAGRID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_ADDAGRCNT TA 
+WHERE 
+     TA.ADDAGRCNTID in ( 
+       SELECT 
+         T.ADDAGRCNTID
+       FROM 
+         B2B_ADDAGRCNT T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ADDAGRCNTID) T.ADDAGRCNTID = #bind($ADDAGRCNTID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.ADDAGRCNTID = #bind($ADDAGRCNTID 'NUMERIC') 
+#chunk($ADDAGRCAUSEID) , TA.ADDAGRCAUSEID = #bind($ADDAGRCAUSEID 'NUMERIC') #end 
+#chunk($ADDAGRID) , TA.ADDAGRID = #bind($ADDAGRID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      B2B_ADDAGRCNT TA 
+WHERE 
+     TA.ADDAGRCNTID in ( 
+       SELECT 
+         T.ADDAGRCNTID
+       FROM 
+         B2B_ADDAGRCNT T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ADDAGRCNTID) T.ADDAGRCNTID = #bind($ADDAGRCNTID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       B2B_ADDAGRCNT TA 
+SET 
+    TA.ADDAGRCNTID = #bind($ADDAGRCNTID 'NUMERIC') 
+#chunk($ADDAGRCAUSEID) , TA.ADDAGRCAUSEID = #bind($ADDAGRCAUSEID 'NUMERIC') #end 
+#chunk($ADDAGRID) , TA.ADDAGRID = #bind($ADDAGRID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.ADDAGRCNTID in ( 
+       SELECT 
+         T.ADDAGRCNTID
+       FROM 
+         B2B_ADDAGRCNT T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ADDAGRCNTID) T.ADDAGRCNTID = #bind($ADDAGRCNTID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsB2bAddAgrCntDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdditionalAgreementsMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      B2B_ADDAGRCNT T 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRCNTID) T.ADDAGRCNTID = #bind($ADDAGRCNTID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      B2B_ADDAGRCNT T 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRCNTID) T.ADDAGRCNTID = #bind($ADDAGRCNTID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       B2B_ADDAGRCNT T 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRCNTID) T.ADDAGRCNTID = #bind($ADDAGRCNTID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2bAddAgrCntDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdditionalAgreementsMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      B2B_ADDAGRCNT TA 
+WHERE 
+     TA.ADDAGRCNTID in ( 
+       SELECT 
+         T.ADDAGRCNTID
+       FROM 
+         B2B_ADDAGRCNT T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ADDAGRCNTID) T.ADDAGRCNTID = #bind($ADDAGRCNTID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      B2B_ADDAGRCNT TA 
+WHERE 
+     TA.ADDAGRCNTID in ( 
+       SELECT 
+         T.ADDAGRCNTID
+       FROM 
+         B2B_ADDAGRCNT T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ADDAGRCNTID) T.ADDAGRCNTID = #bind($ADDAGRCNTID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       B2B_ADDAGRCNT TA 
+WHERE 
+     TA.ADDAGRCNTID in ( 
+       SELECT 
+         T.ADDAGRCNTID
+       FROM 
+         B2B_ADDAGRCNT T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($ADDAGRCNTID) T.ADDAGRCNTID = #bind($ADDAGRCNTID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+	<query name="dsPDDeclarationDocInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BLossMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+		<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+			<![CDATA[
+            INSERT INTO PD_DECLARATIONDOC (
+                DECLARATIONDOCID,
+                BINDOCTYPE,
+                DECLARATIONID,
+                EXTERNALID,
+                PATHINPARTNER,
+                NAME,
+                NOTE
+                $ASPECTFIELDS )
+            VALUES (
+                #bind($DECLARATIONDOCID 'NUMERIC'),
+                #bind($BINDOCTYPE 'NUMERIC'),
+                #bind($DECLARATIONID 'NUMERIC'),
+                #bind($EXTERNALID 'NUMERIC'),
+                #bind($PATHINPARTNER 'VARCHAR'),
+                #bind($NAME 'VARCHAR'),
+                #bind($NOTE 'VARCHAR')
+                $ASPECTVALUESBINDINGS
+            )
+        ]]>
+		</sql>
+	</query>
+	<query name="dsPDDeclarationDocDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BLossMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+		<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+			<![CDATA[
+            DELETE PD_DECLARATIONDOC T
+            #chain('AND' 'WHERE')
+                #chunk($DECLARATIONDOCID) T.DECLARATIONDOCID = #bind($DECLARATIONDOCID 'NUMERIC') #end
+                $ASPECTRESTRICTION
+            #end
+        ]]>
+		</sql>
+	</query>
+	<query name="dsPDDeclarationDocUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BLossMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+		<sql>
+			<![CDATA[
+UPDATE  T
+SET
+                    T.DECLARATIONDOCID = #bind($DECLARATIONDOCID 'NUMERIC')
+                    #chunk($BINDOCTYPE) , T.BINDOCTYPE = #bind($BINDOCTYPE 'NUMERIC') #end
+                    #chunk($DECLARATIONID) , T.DECLARATIONID = #bind($DECLARATIONID 'NUMERIC') #end
+                    #chunk($EXTERNALID) , T.EXTERNALID = #bind($EXTERNALID 'NUMERIC') #end
+                    #chunk($PATHINPARTNER) , T.PATHINPARTNER = #bind($PATHINPARTNER 'VARCHAR') #end
+                    #chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end
+                    #chunk($NOTE) , T.NOTE = #bind($NOTE 'VARCHAR') #end
+
+       $ASPECTFIELDS
+FROM
+      PD_DECLARATIONDOC T
+#chain('AND' 'WHERE')
+       #chunk($DECLARATIONDOCID) T.DECLARATIONDOCID = #bind($DECLARATIONDOCID 'NUMERIC') #end
+      $ASPECTRESTRICTION
+#end
+]]>
+		</sql>
+		<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+			<![CDATA[
+UPDATE  T
+SET
+                    T.DECLARATIONDOCID = #bind($DECLARATIONDOCID 'NUMERIC')
+                    #chunk($BINDOCTYPE) , T.BINDOCTYPE = #bind($BINDOCTYPE 'NUMERIC') #end
+                    #chunk($DECLARATIONID) , T.DECLARATIONID = #bind($DECLARATIONID 'NUMERIC') #end
+                    #chunk($EXTERNALID) , T.EXTERNALID = #bind($EXTERNALID 'NUMERIC') #end
+                    #chunk($PATHINPARTNER) , T.PATHINPARTNER = #bind($PATHINPARTNER 'VARCHAR') #end
+                    #chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end
+                    #chunk($NOTE) , T.NOTE = #bind($NOTE 'VARCHAR') #end
+
+       $ASPECTFIELDS
+FROM
+      PD_DECLARATIONDOC T
+#chain('AND' 'WHERE')
+       #chunk($DECLARATIONDOCID) T.DECLARATIONDOCID = #bind($DECLARATIONDOCID 'NUMERIC') #end
+      $ASPECTRESTRICTION
+#end
+]]>
+		</sql>
+		<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+			<![CDATA[
+UPDATE       PD_DECLARATIONDOC T
+SET
+                    T.DECLARATIONDOCID = #bind($DECLARATIONDOCID 'NUMERIC')
+                    #chunk($BINDOCTYPE) , T.BINDOCTYPE = #bind($BINDOCTYPE 'NUMERIC') #end
+                    #chunk($DECLARATIONID) , T.DECLARATIONID = #bind($DECLARATIONID 'NUMERIC') #end
+                    #chunk($EXTERNALID) , T.EXTERNALID = #bind($EXTERNALID 'NUMERIC') #end
+                    #chunk($PATHINPARTNER) , T.PATHINPARTNER = #bind($PATHINPARTNER 'VARCHAR') #end
+                    #chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end
+                    #chunk($NOTE) , T.NOTE = #bind($NOTE 'VARCHAR') #end
+
+       $ASPECTFIELDS
+#chain('AND' 'WHERE')
+       #chunk($DECLARATIONDOCID) T.DECLARATIONDOCID = #bind($DECLARATIONDOCID 'NUMERIC') #end
+      $ASPECTRESTRICTION
+#end
+]]>
+		</sql>
+	</query>
+	<query name="dsPDDeclarationDocUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BLossMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+		<sql>
+			<![CDATA[
+UPDATE  TA
+SET
+                    TA.DECLARATIONDOCID = #bind($DECLARATIONDOCID 'NUMERIC')
+                    #chunk($BINDOCTYPE) , TA.BINDOCTYPE = #bind($BINDOCTYPE 'NUMERIC') #end
+                    #chunk($DECLARATIONID) , TA.DECLARATIONID = #bind($DECLARATIONID 'NUMERIC') #end
+                    #chunk($EXTERNALID) , TA.EXTERNALID = #bind($EXTERNALID 'NUMERIC') #end
+                    #chunk($PATHINPARTNER) , TA.PATHINPARTNER = #bind($PATHINPARTNER 'VARCHAR') #end
+                    #chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end
+                    #chunk($NOTE) , TA.NOTE = #bind($NOTE 'VARCHAR') #end
+
+       $ASPECTFIELDS
+FROM
+      PD_DECLARATIONDOC TA
+WHERE
+     TA.DECLARATIONDOCID in (
+       SELECT
+         T.DECLARATIONDOCID
+       FROM
+         PD_DECLARATIONDOC T
+       $ASPECTTABLES
+       #chain('AND' 'WHERE')
+              #chunk($DECLARATIONDOCID) T.DECLARATIONDOCID = #bind($DECLARATIONDOCID 'NUMERIC') #end
+             $ASPECTRESTRICTION
+       #end
+     )
+]]>
+		</sql>
+		<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+			<![CDATA[
+UPDATE  TA
+SET
+                    TA.DECLARATIONDOCID = #bind($DECLARATIONDOCID 'NUMERIC')
+                    #chunk($BINDOCTYPE) , TA.BINDOCTYPE = #bind($BINDOCTYPE 'NUMERIC') #end
+                    #chunk($DECLARATIONID) , TA.DECLARATIONID = #bind($DECLARATIONID 'NUMERIC') #end
+                    #chunk($EXTERNALID) , TA.EXTERNALID = #bind($EXTERNALID 'NUMERIC') #end
+                    #chunk($PATHINPARTNER) , TA.PATHINPARTNER = #bind($PATHINPARTNER 'VARCHAR') #end
+                    #chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end
+                    #chunk($NOTE) , TA.NOTE = #bind($NOTE 'VARCHAR') #end
+
+       $ASPECTFIELDS
+FROM
+      PD_DECLARATIONDOC TA
+WHERE
+     TA.DECLARATIONDOCID in (
+       SELECT
+         T.DECLARATIONDOCID
+       FROM
+         PD_DECLARATIONDOC T
+       $ASPECTTABLES
+       #chain('AND' 'WHERE')
+              #chunk($DECLARATIONDOCID) T.DECLARATIONDOCID = #bind($DECLARATIONDOCID 'NUMERIC') #end
+             $ASPECTRESTRICTION
+       #end
+     )
+]]>
+		</sql>
+		<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+			<![CDATA[
+UPDATE       PD_DECLARATIONDOC TA
+SET
+                    TA.DECLARATIONDOCID = #bind($DECLARATIONDOCID 'NUMERIC')
+                    #chunk($BINDOCTYPE) , TA.BINDOCTYPE = #bind($BINDOCTYPE 'NUMERIC') #end
+                    #chunk($DECLARATIONID) , TA.DECLARATIONID = #bind($DECLARATIONID 'NUMERIC') #end
+                    #chunk($EXTERNALID) , TA.EXTERNALID = #bind($EXTERNALID 'NUMERIC') #end
+                    #chunk($PATHINPARTNER) , TA.PATHINPARTNER = #bind($PATHINPARTNER 'VARCHAR') #end
+                    #chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end
+                    #chunk($NOTE) , TA.NOTE = #bind($NOTE 'VARCHAR') #end
+
+       $ASPECTFIELDS
+WHERE
+     TA.DECLARATIONDOCID in (
+       SELECT
+         T.DECLARATIONDOCID
+       FROM
+         PD_DECLARATIONDOC T
+       $ASPECTTABLES
+       #chain('AND' 'WHERE')
+              #chunk($DECLARATIONDOCID) T.DECLARATIONDOCID = #bind($DECLARATIONDOCID 'NUMERIC') #end
+             $ASPECTRESTRICTION
+       #end
+     )
+]]>
+		</sql>
+	</query>
+</data-map>

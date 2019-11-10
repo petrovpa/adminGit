@@ -1,0 +1,751 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+    <query name="dsB2BPrimaryActivityContractBrowseListByParamCustomWhereEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BPrimaryActivityCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.CONTRNUMBER', 'java.lang.String', 'CONTRNUMBER'),
+        #result('T.MAINACTCONTRNODEID', 'java.lang.Long', 'MAINACTCONTRNODEID'),
+        #result('T.CONTRNDNUMBER', 'java.lang.String', 'CONTRNDNUMBER'),
+        #result('T.DISCRIMINATOR', 'java.lang.Long', 'DISCRIMINATOR'),
+        #result('T.DOCUMENTDATE', 'java.math.BigDecimal', 'DOCUMENTDATE'),
+        #result('T.FINISHDATE', 'java.math.BigDecimal', 'FINISHDATE'),
+        #result('T.MAINACTCONTRID', 'java.lang.Long', 'MAINACTCONTRID'),
+        #result('T.ORGSTRUCTID', 'java.lang.Long', 'ORGSTRUCTID'),
+        #result('T.STARTDATE', 'java.math.BigDecimal', 'STARTDATE'),
+        #result('T.VERNUMBER', 'java.lang.Long', 'VERNUMBER'), 
+        #result('T2.DEPTSHORTNAME', 'java.lang.String', 'DEPTSHORTNAME')
+       $ASPECTFIELDS 
+FROM 
+      B2B_MAINACTCONTR T 
+      LEFT JOIN DEP_DEPARTMENT T2 ON (T.ORGSTRUCTID = T2.DEPARTMENTID) 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CONTRNDNUMBER) T.CONTRNDNUMBER = #bind($CONTRNDNUMBER 'VARCHAR') #end 
+       #chunk($CONTRNUMBER) T.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+       #chunk($DISCRIMINATOR) T.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+       #chunk($DOCUMENTDATE) T.DOCUMENTDATE = #bind($DOCUMENTDATE 'FLOAT') #end 
+       #chunk($FINISHDATE) T.FINISHDATE = #bind($FINISHDATE 'FLOAT') #end 
+       #chunk($MAINACTCONTRID) T.MAINACTCONTRID = #bind($MAINACTCONTRID 'NUMERIC') #end 
+       #chunk($MAINACTCONTRNODEID) T.MAINACTCONTRNODEID = #bind($MAINACTCONTRNODEID 'NUMERIC') #end 
+       #chunk($ORGSTRUCTID) T.ORGSTRUCTID = #bind($ORGSTRUCTID 'NUMERIC') #end 
+       #chunk($STARTDATE) T.STARTDATE = #bind($STARTDATE 'FLOAT') #end 
+       #chunk($VERNUMBER) T.VERNUMBER = #bind($VERNUMBER 'NUMERIC') #end 
+       #chunk($CUSTOMWHERE) $CUSTOMWHERE #end 
+       $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BPrimaryActivityContractBrowseListByParamCustomWhereExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BPrimaryActivityCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.MAINACTCONTRID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_MAINACTCONTR T 
+      LEFT JOIN DEP_DEPARTMENT T2 ON (T.ORGSTRUCTID = T2.DEPARTMENTID) 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CONTRNDNUMBER) T.CONTRNDNUMBER = #bind($CONTRNDNUMBER 'VARCHAR') #end 
+       #chunk($CONTRNUMBER) T.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+       #chunk($DISCRIMINATOR) T.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+       #chunk($DOCUMENTDATE) T.DOCUMENTDATE = #bind($DOCUMENTDATE 'FLOAT') #end 
+       #chunk($FINISHDATE) T.FINISHDATE = #bind($FINISHDATE 'FLOAT') #end 
+       #chunk($MAINACTCONTRID) T.MAINACTCONTRID = #bind($MAINACTCONTRID 'NUMERIC') #end 
+       #chunk($MAINACTCONTRNODEID) T.MAINACTCONTRNODEID = #bind($MAINACTCONTRNODEID 'NUMERIC') #end 
+       #chunk($ORGSTRUCTID) T.ORGSTRUCTID = #bind($ORGSTRUCTID 'NUMERIC') #end 
+       #chunk($STARTDATE) T.STARTDATE = #bind($STARTDATE 'FLOAT') #end 
+       #chunk($VERNUMBER) T.VERNUMBER = #bind($VERNUMBER 'NUMERIC') #end 
+       #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+       $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BPrimaryActivityContragentsListBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BPrimaryActivityCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.DEPARTMENTID', 'java.lang.Long', 'DEPARTMENTID'),
+        #result('T.PARENTDEPARTMENT', 'java.lang.Long', 'PARENTDEPARTMENT'),
+        #result('T.DEPTSHORTNAME', 'java.lang.String', 'DEPTSHORTNAME'),
+        #result('T.DEPTFULLNAME', 'java.lang.String', 'DEPTFULLNAME')
+        $ASPECTFIELDS 
+FROM 
+      DEP_DEPARTMENT T 
+      $ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($DEPARTMENTID) T.DEPARTMENTID = #bind($DEPARTMENTID 'NUMERIC') #end 
+       #chunk($DEPTSHORTNAME) T.DEPTSHORTNAME = #bind($DEPTSHORTNAME 'VARCHAR') #end 
+       #chunk($DEPTFULLNAME) T.DEPTFULLNAME = #bind($DEPTFULLNAME 'VARCHAR') #end 
+       #chunk($PARENTDEPARTMENTCODELIKE) PARENTDEPARTMENT IN (SELECT DEPARTMENTID FROM DEP_DEPARTMENT WHERE DEPTCODE LIKE '%$PARENTDEPARTMENTCODELIKE%') #end 
+       #chunk($ONLY_WITH_MACS) (EXISTS(SELECT * FROM B2B_MAINACTCONTR mac WHERE mac.ORGSTRUCTID = T.DEPARTMENTID)) #end 
+       #chunk($USERACCOUNTID) (EXISTS(SELECT * FROM B2B_MACMEMBER mbr WHERE (mbr.USERID = #bind($USERACCOUNTID 'NUMERIC')) AND (EXISTS(SELECT * FROM B2B_MAINACTCONTR mac WHERE ((mac.ORGSTRUCTID = T.DEPARTMENTID) AND (mbr.MAINACTCONTRID = mac.MAINACTCONTRID)))))) #end 
+       $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BPrimaryActivityContragentsListBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BPrimaryActivityCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('COUNT($NEEDDISTINCT T.DEPARTMENTID)', 'java.lang.Long', 'CNT') 
+FROM 
+      DEP_DEPARTMENT T 
+      $ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($DEPARTMENTID) T.DEPARTMENTID = #bind($DEPARTMENTID 'NUMERIC') #end 
+       #chunk($DEPTSHORTNAME) T.DEPTSHORTNAME = #bind($DEPTSHORTNAME 'VARCHAR') #end 
+       #chunk($DEPTFULLNAME) T.DEPTFULLNAME = #bind($DEPTFULLNAME 'VARCHAR') #end 
+       #chunk($PARENTDEPARTMENTCODELIKE) PARENTDEPARTMENT IN (SELECT DEPARTMENTID FROM DEP_DEPARTMENT WHERE DEPTCODE LIKE '%$PARENTDEPARTMENTCODELIKE%') #end 
+       #chunk($ONLY_WITH_MACS) (EXISTS(SELECT * FROM B2B_MAINACTCONTR mac WHERE mac.ORGSTRUCTID = T.DEPARTMENTID)) #end 
+       #chunk($USERACCOUNTID) (EXISTS(SELECT * FROM B2B_MACMEMBER mbr WHERE (mbr.USERID = #bind($USERACCOUNTID 'NUMERIC')) AND (EXISTS(SELECT * FROM B2B_MAINACTCONTR mac WHERE ((mac.ORGSTRUCTID = T.DEPARTMENTID) AND (mbr.MAINACTCONTRID = mac.MAINACTCONTRID)))))) #end 
+       $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BPrimaryActivityContractAgentReportBrowseListByParamCustomWhereEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BPrimaryActivityCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.AGENTID', 'java.lang.Long', 'AGENTID'),
+        #result('T.CREATEDATE', 'java.math.BigDecimal', 'CREATEDATE'),
+        #result('T.ENDDATE', 'java.math.BigDecimal', 'ENDDATE'),
+        #result('T.MACAGENTREPORTID', 'java.lang.Long', 'MACAGENTREPORTID'),
+        #result('T.MAINACTCONTRID', 'java.lang.Long', 'MAINACTCONTRID'),
+        #result('T.PRODID', 'java.lang.Long', 'PRODID'),
+        #result('T.PRODVERID', 'java.lang.Long', 'PRODVERID'),
+        #result('T.REPORTNUMBER', 'java.lang.String', 'REPORTNUMBER'),
+        #result('T.STATEID', 'java.lang.Long', 'STATEID'),
+        #result('T2.SYSNAME', 'java.lang.String', 'STATESYSNAME'),
+        #result('T2.PUBLICNAME', 'java.lang.String', 'STATENAME'),
+        #result('T3.DEPTFULLNAME', 'java.lang.String', 'AGENTNAME'),
+        #result('T4.NAME', 'java.lang.String', 'PRODNAME'),
+        #result('T5.CONTRNUMBER', 'java.lang.String', 'MAINACTCONTRNUMBER'),
+        #result('(SELECT COUNT(RCNT.MACAGENTREPORTCNTID) FROM B2B_MACAGENTREPORTCNT RCNT WHERE ((RCNT.MACAGENTREPORTID = T.MACAGENTREPORTID) AND (RCNT.ISREMOVED <> 1)))', 'java.lang.Long', 'CONTRCNT')        
+        $ASPECTFIELDS 
+FROM 
+      B2B_MACAGENTREPORT T 
+      INNER JOIN CORE_SM_STATE T2 ON (T.STATEID = T2.ID)
+      LEFT JOIN DEP_DEPARTMENT T3 ON (T.AGENTID = T3.DEPARTMENTID) 
+      LEFT JOIN B2B_PROD T4 ON (T.PRODID = T4.PRODID) 
+      LEFT JOIN B2B_MAINACTCONTR T5 ON (T.MAINACTCONTRID = T5.MAINACTCONTRID)
+      $ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($AGENTID) T.AGENTID = #bind($AGENTID 'NUMERIC') #end 
+       #chunk($CREATEDATE) T.CREATEDATE = #bind($CREATEDATE 'FLOAT') #end 
+       #chunk($ENDDATE) T.ENDDATE = #bind($ENDDATE 'FLOAT') #end 
+       #chunk($MACAGENTREPORTID) T.MACAGENTREPORTID = #bind($MACAGENTREPORTID 'NUMERIC') #end 
+       #chunk($EXCLUDEDMACAGENTREPORTID) T.MACAGENTREPORTID <> #bind($EXCLUDEDMACAGENTREPORTID 'NUMERIC') #end 
+       #chunk($MAINACTCONTRID) T.MAINACTCONTRID = #bind($MAINACTCONTRID 'NUMERIC') #end 
+       #chunk($PRODID) T.PRODID = #bind($PRODID 'NUMERIC') #end 
+       #chunk($PRODVERID) T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+       #chunk($REPORTNUMBER) T.REPORTNUMBER = #bind($REPORTNUMBER 'VARCHAR') #end 
+       #chunk($STATEID) T.STATEID = #bind($STATEID 'NUMERIC') #end 
+       #chunk($STATESYSNAME) T2.SYSNAME = #bind($STATESYSNAME 'VARCHAR') #end 
+       #chunk($EXCLUDEDSTATESYSNAME) T2.SYSNAME <> #bind($EXCLUDEDSTATESYSNAME 'VARCHAR') #end 
+       #chunk($STATENAME) T2.PUBLICNAME = #bind($STATENAME 'VARCHAR') #end 
+       #chunk($AGENTNAME) T3.DEPTFULLNAME = #bind($AGENTNAME 'VARCHAR') #end 
+       #chunk($PRODNAME) T4.NAME = #bind($PRODNAME 'VARCHAR') #end 
+       #chunk($MAINACTCONTRNUMBER) T5.CONTRNUMBER = #bind($MAINACTCONTRNUMBER 'VARCHAR') #end 
+       #chunk($CUSTOMWHERE) $CUSTOMWHERE #end 
+       $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BPrimaryActivityContractAgentReportBrowseListByParamCustomWhereExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BPrimaryActivityCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.MACAGENTREPORTID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_MACAGENTREPORT T 
+      INNER JOIN CORE_SM_STATE T2 ON (T.STATEID = T2.ID)
+      LEFT JOIN DEP_DEPARTMENT T3 ON (T.AGENTID = T3.DEPARTMENTID) 
+      LEFT JOIN B2B_PROD T4 ON (T.PRODID = T4.PRODID) 
+      LEFT JOIN B2B_MAINACTCONTR T5 ON (T.MAINACTCONTRID = T5.MAINACTCONTRID)
+      $ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($AGENTID) T.AGENTID = #bind($AGENTID 'NUMERIC') #end 
+       #chunk($CREATEDATE) T.CREATEDATE = #bind($CREATEDATE 'FLOAT') #end 
+       #chunk($ENDDATE) T.ENDDATE = #bind($ENDDATE 'FLOAT') #end 
+       #chunk($MACAGENTREPORTID) T.MACAGENTREPORTID = #bind($MACAGENTREPORTID 'NUMERIC') #end 
+       #chunk($EXCLUDEDMACAGENTREPORTID) T.MACAGENTREPORTID <> #bind($EXCLUDEDMACAGENTREPORTID 'NUMERIC') #end 
+       #chunk($MAINACTCONTRID) T.MAINACTCONTRID = #bind($MAINACTCONTRID 'NUMERIC') #end 
+       #chunk($PRODID) T.PRODID = #bind($PRODID 'NUMERIC') #end 
+       #chunk($PRODVERID) T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+       #chunk($REPORTNUMBER) T.REPORTNUMBER = #bind($REPORTNUMBER 'VARCHAR') #end 
+       #chunk($STATEID) T.STATEID = #bind($STATEID 'NUMERIC') #end 
+       #chunk($STATESYSNAME) T2.SYSNAME = #bind($STATESYSNAME 'VARCHAR') #end 
+       #chunk($EXCLUDEDSTATESYSNAME) T2.SYSNAME <> #bind($EXCLUDEDSTATESYSNAME 'VARCHAR') #end 
+       #chunk($STATENAME) T2.PUBLICNAME = #bind($STATENAME 'VARCHAR') #end 
+       #chunk($AGENTNAME) T3.DEPTFULLNAME = #bind($AGENTNAME 'VARCHAR') #end 
+       #chunk($PRODNAME) T4.NAME = #bind($PRODNAME 'VARCHAR') #end 
+       #chunk($MAINACTCONTRNUMBER) T5.CONTRNUMBER = #bind($MAINACTCONTRNUMBER 'VARCHAR') #end 
+       #chunk($CUSTOMWHERE) $CUSTOMWHERE #end 
+       $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    
+    <query name="dsB2BMainActivityContractProductBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BContractMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.DEFAULTCOMMISSION', 'java.lang.Double', 'DEFAULTCOMMISSION'),
+        #result('T.MACAGENTCNTID', 'java.lang.Long', 'MACAGENTCNTID'),
+        #result('T.MAINACTCONTRID', 'java.lang.Long', 'MAINACTCONTRID'),
+        #result('T.MAXCOMMISSION', 'java.lang.Double', 'MAXCOMMISSION'),
+        #result('T.MINCOMMISSION', 'java.lang.Double', 'MINCOMMISSION'),
+        #result('T.CURRENCYID', 'java.lang.Long', 'CURRENCYID'),
+        #result('T.PRODVERID', 'java.lang.Long', 'PRODVERID'),
+        #result('T.CALCVERID', 'java.lang.Long', 'CALCVERID'),
+        #result('T3.PRODID', 'java.lang.Long', 'PRODID'),
+        #result('T3.NAME', 'java.lang.String', 'PRODNAME') 
+        $ASPECTFIELDS 
+FROM 
+      B2B_MACAGENTCNT T 
+      INNER JOIN B2B_PRODVER T2 ON (T2.PRODVERID = T.PRODVERID)
+      INNER JOIN B2B_PROD T3 ON (T3.PRODID = T2.PRODID)
+      $ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($DEFAULTCOMMISSION) T.DEFAULTCOMMISSION = #bind($DEFAULTCOMMISSION 'NUMERIC') #end 
+       #chunk($MACAGENTCNTID) T.MACAGENTCNTID = #bind($MACAGENTCNTID 'NUMERIC') #end 
+       #chunk($MAINACTCONTRID) T.MAINACTCONTRID = #bind($MAINACTCONTRID 'NUMERIC') #end 
+       #chunk($MAXCOMMISSION) T.MAXCOMMISSION = #bind($MAXCOMMISSION 'NUMERIC') #end 
+       #chunk($MINCOMMISSION) T.MINCOMMISSION = #bind($MINCOMMISSION 'NUMERIC') #end 
+       #chunk($CURRENCYID) T.CURRENCYID = #bind($CURRENCYID 'NUMERIC') #end 
+       #chunk($PRODVERID) T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+       $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BMainActivityContractProductBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BContractMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.MACAGENTCNTID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_MACAGENTCNT T 
+      INNER JOIN B2B_PRODVER T2 ON (T2.PRODVERID = T.PRODVERID)
+      INNER JOIN B2B_PROD T3 ON (T3.PRODID = T2.PRODID)
+      $ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($DEFAULTCOMMISSION) T.DEFAULTCOMMISSION = #bind($DEFAULTCOMMISSION 'NUMERIC') #end 
+       #chunk($MACAGENTCNTID) T.MACAGENTCNTID = #bind($MACAGENTCNTID 'NUMERIC') #end 
+       #chunk($MAINACTCONTRID) T.MAINACTCONTRID = #bind($MAINACTCONTRID 'NUMERIC') #end 
+       #chunk($MAXCOMMISSION) T.MAXCOMMISSION = #bind($MAXCOMMISSION 'NUMERIC') #end 
+       #chunk($MINCOMMISSION) T.MINCOMMISSION = #bind($MINCOMMISSION 'NUMERIC') #end 
+       #chunk($CURRENCYID) T.CURRENCYID = #bind($CURRENCYID 'NUMERIC') #end 
+       #chunk($PRODVERID) T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+       $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>    
+
+    <query name="dsB2BMainActivityContractAgentReportContentBrowseListByParamCustomWhereEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BPrimaryActivityCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.CONTRID', 'java.lang.Long', 'CONTRID'),
+        #result('T.MACAGENTREPORTCNTID', 'java.lang.Long', 'MACAGENTREPORTCNTID'),
+        #result('T.ISREMOVED', 'java.lang.Long', 'ISREMOVED'),
+        #result('T.MACAGENTREPORTID', 'java.lang.Long', 'MACAGENTREPORTID'),
+        #result('T8.REPORTNUMBER', 'java.lang.String', 'MACAGENTREPORTNUMBER'),
+        #result("CONCAT(CONCAT(T7.FULLNAME,' '),T7.SHORTNAME)", 'java.lang.String', 'CONTRINSREGIONNAME'),
+        #result('T2.CONTRNUMBER', 'java.lang.String', 'CONTRNUMBER'),
+        #result("CONCAT(CONCAT(CONCAT(CONCAT(T43.LASTNAME,' '),T43.FIRSTNAME),' '),T43.MIDDLENAME)", 'java.lang.String', 'SELLERFULLNAME'),
+        #result('T2.DOCUMENTDATE', 'java.math.BigDecimal', 'CONTRDOCUMENTDATE'),
+        #result('T2.SIGNDATE', 'java.math.BigDecimal', 'CONTRSIGNDATE'),
+        #result('T2.STARTDATE', 'java.math.BigDecimal', 'CONTRSTARTDATE'),
+        #result('T2.FINISHDATE', 'java.math.BigDecimal', 'CONTRFINISHDATE'),
+        #result('T2.PREMVALUE', 'java.lang.Double', 'CONTRPREMVALUE'),
+        #result("CASE WHEN T3.PARTICIPANTID IS NULL THEN T6.BRIEFNAME ELSE CONCAT(CONCAT(CONCAT(CONCAT(T3.LASTNAME,' '),T3.FIRSTNAME),' '),T3.MIDDLENAME) END", 'java.lang.String', 'CONTRINSURERNAME'),
+        #result('T.UPDATEDATE', 'java.math.BigDecimal', 'UPDATEDATE'),
+        #result("CONCAT(CONCAT(CONCAT(CONCAT(T53.LASTNAME,' '),T53.FIRSTNAME),' '),T53.MIDDLENAME)", 'java.lang.String', 'UPDATEUSERFULLNAME')
+        $ASPECTFIELDS 
+FROM 
+      B2B_MACAGENTREPORTCNT T 
+      INNER JOIN B2B_CONTR T2 ON (T2.CONTRID = T.CONTRID) 
+      LEFT JOIN CRM_PERSON T3 on (T3.PARTICIPANTID = T2.INSURERID) 
+      LEFT JOIN CORE_USERACCOUNT T41 on (T41.USERACCOUNTID = T2.CREATEUSERID) 
+      LEFT JOIN CORE_USER T42 on (T42.USERID = T41.USERID) 
+      LEFT JOIN DEP_EMPLOYEE T43 on (T43.EMPLOYEEID = T42.OBJECTID) 
+      LEFT JOIN CORE_USERACCOUNT T51 on (T51.USERACCOUNTID = T.UPDATEUSERID) 
+      LEFT JOIN CORE_USER T52 on (T52.USERID = T51.USERID) 
+      LEFT JOIN DEP_EMPLOYEE T53 on (T53.EMPLOYEEID = T52.OBJECTID) 
+      LEFT JOIN CRM_PARTICIPANT T6 on (T6.PARTICIPANTID = T2.INSURERID) 
+      LEFT JOIN CORE_KLADROBJ T7 on (T7.CODE = T2.INSREGIONCODE) 
+      LEFT JOIN B2B_MACAGENTREPORT T8 on (T8.MACAGENTREPORTID = T.MACAGENTREPORTID) 
+      $ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($ISREMOVED) T.ISREMOVED = #bind($ISREMOVED 'NUMERIC') #end 
+       #chunk($MACAGENTREPORTCNTID) T.MACAGENTREPORTCNTID = #bind($MACAGENTREPORTCNTID 'NUMERIC') #end 
+       #chunk($EXCLUDEDMACAGENTREPORTCNTID) T.MACAGENTREPORTCNTID <> #bind($EXCLUDEDMACAGENTREPORTCNTID 'NUMERIC') #end 
+       #chunk($MACAGENTREPORTID) T.MACAGENTREPORTID = #bind($MACAGENTREPORTID 'NUMERIC') #end 
+       #chunk($CUSTOMWHERE) $CUSTOMWHERE #end 
+       $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BMainActivityContractAgentReportContentBrowseListByParamCustomWhereExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BPrimaryActivityCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.MACAGENTREPORTCNTID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_MACAGENTREPORTCNT T 
+      INNER JOIN B2B_CONTR T2 ON (T2.CONTRID = T.CONTRID) 
+      LEFT JOIN CRM_PERSON T3 on (T3.PARTICIPANTID = T2.INSURERID) 
+      LEFT JOIN CORE_USERACCOUNT T41 on (T41.USERACCOUNTID = T2.CREATEUSERID) 
+      LEFT JOIN CORE_USER T42 on (T42.USERID = T41.USERID) 
+      LEFT JOIN DEP_EMPLOYEE T43 on (T43.EMPLOYEEID = T42.OBJECTID) 
+      LEFT JOIN CORE_USERACCOUNT T51 on (T51.USERACCOUNTID = T.UPDATEUSERID) 
+      LEFT JOIN CORE_USER T52 on (T52.USERID = T51.USERID) 
+      LEFT JOIN DEP_EMPLOYEE T53 on (T53.EMPLOYEEID = T52.OBJECTID) 
+      LEFT JOIN CRM_PARTICIPANT T6 on (T6.PARTICIPANTID = T2.INSURERID) 
+      LEFT JOIN CORE_KLADROBJ T7 on (T7.CODE = T2.INSREGIONCODE) 
+      LEFT JOIN B2B_MACAGENTREPORT T8 on (T8.MACAGENTREPORTID = T.MACAGENTREPORTID) 
+      $ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($ISREMOVED) T.ISREMOVED = #bind($ISREMOVED 'NUMERIC') #end 
+       #chunk($MACAGENTREPORTCNTID) T.MACAGENTREPORTCNTID = #bind($MACAGENTREPORTCNTID 'NUMERIC') #end 
+       #chunk($EXCLUDEDMACAGENTREPORTCNTID) T.MACAGENTREPORTCNTID <> #bind($EXCLUDEDMACAGENTREPORTCNTID 'NUMERIC') #end 
+       #chunk($MACAGENTREPORTID) T.MACAGENTREPORTID = #bind($MACAGENTREPORTID 'NUMERIC') #end 
+       #chunk($CUSTOMWHERE) $CUSTOMWHERE #end 
+       $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+
+    <query name="dsB2BMainActivityContractAgentReportIncludedContractsBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BPrimaryActivityCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.CONTRID', 'java.lang.Long', 'CONTRID')
+        $ASPECTFIELDS 
+FROM 
+      B2B_CONTR T 
+      INNER JOIN CORE_SM_STATE st ON (st.ID = T.STATEID) 
+      INNER JOIN CORE_USERACCOUNT uac ON (uac.USERACCOUNTID = T.CREATEUSERID) 
+      INNER JOIN CORE_USER u ON (u.USERID = uac.USERID) 
+      INNER JOIN DEP_EMPLOYEE empl ON (empl.EMPLOYEEID = u.OBJECTID) 
+      INNER JOIN B2B_MAINACTCONTR mac ON (mac.ORGSTRUCTID = empl.DEPARTMENTID) 
+      INNER JOIN B2B_MACAGENTCNT maccnt ON (maccnt.MAINACTCONTRID = mac.MAINACTCONTRID AND maccnt.PRODVERID = T.PRODVERID) 
+      $ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk() (T.SIGNDATE is not null) #end 
+       #chunk($CONTRACTSTATESYSNAMELIST) (st.SYSNAME in ($CONTRACTSTATESYSNAMELIST)) #end 
+       #chunk($AGENTID) (empl.DEPARTMENTID = #bind($AGENTID 'NUMERIC')) #end 
+       #chunk($MAINACTCONTRID) (mac.MAINACTCONTRID = #bind($MAINACTCONTRID 'NUMERIC')) #end 
+       #chunk($PRODVERID) (T.PRODVERID = #bind($PRODVERID 'NUMERIC')) #end 
+       #chunk() (TRUNC(T.SIGNDATE + (0.125)) BETWEEN mac.STARTDATE AND mac.FINISHDATE) #end 
+       #chunk($ENDDATE) TRUNC(T.SIGNDATE + (0.125)) <= TRUNC(#bind($ENDDATE 'FLOAT')) #end 
+       #chunk() (NOT EXISTS (SELECT NULL FROM B2B_MACAGENTREPORTCNT arcnt WHERE arcnt.CONTRID = T.CONTRID AND arcnt.ISREMOVED = 0)) #end 
+       $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BMainActivityContractAgentReportIncludedContractsBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BPrimaryActivityCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.CONTRID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_CONTR T 
+      INNER JOIN CORE_SM_STATE st ON (st.ID = T.STATEID) 
+      INNER JOIN CORE_USERACCOUNT uac ON (uac.USERACCOUNTID = T.CREATEUSERID) 
+      INNER JOIN CORE_USER u ON (u.USERID = uac.USERID) 
+      INNER JOIN DEP_EMPLOYEE empl ON (empl.EMPLOYEEID = u.OBJECTID) 
+      INNER JOIN B2B_MAINACTCONTR mac ON (mac.ORGSTRUCTID = empl.DEPARTMENTID) 
+      INNER JOIN B2B_MACAGENTCNT maccnt ON (maccnt.MAINACTCONTRID = mac.MAINACTCONTRID AND maccnt.PRODVERID = T.PRODVERID) 
+      $ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk() (T.SIGNDATE is not null) #end 
+       #chunk($CONTRACTSTATESYSNAMELIST) (st.SYSNAME in ($CONTRACTSTATESYSNAMELIST)) #end 
+       #chunk($AGENTID) (empl.DEPARTMENTID = #bind($AGENTID 'NUMERIC')) #end 
+       #chunk($MAINACTCONTRID) (mac.MAINACTCONTRID = #bind($MAINACTCONTRID 'NUMERIC')) #end 
+       #chunk($PRODVERID) (T.PRODVERID = #bind($PRODVERID 'NUMERIC')) #end 
+       #chunk() (TRUNC(T.SIGNDATE + (0.125)) BETWEEN mac.STARTDATE AND mac.FINISHDATE) #end 
+       #chunk($ENDDATE) TRUNC(T.SIGNDATE + (0.125)) <= TRUNC(#bind($ENDDATE 'FLOAT')) #end 
+       #chunk() (NOT EXISTS (SELECT NULL FROM B2B_MACAGENTREPORTCNT arcnt WHERE arcnt.CONTRID = T.CONTRID AND arcnt.ISREMOVED = 0)) #end 
+       $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BMainActContrBrowseByContr" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BPrimaryActivityCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.CONTRID', 'java.lang.Long', 'CONTRID'),
+        #result('maccnt.CALCVERID', 'java.lang.Long', 'CALCVERID'),
+        #result('maccnt.PRODVERID', 'java.lang.Long', 'PRODVERID'),
+        #result('maccnt.MAINACTCONTRID', 'java.lang.Long', 'MAINACTCONTRID')        
+        $ASPECTFIELDS 
+FROM 
+      B2B_CONTR T 
+      INNER JOIN CORE_SM_STATE st ON (st.ID = T.STATEID) 
+      INNER JOIN CORE_USERACCOUNT uac ON (uac.USERACCOUNTID = T.CREATEUSERID) 
+      INNER JOIN CORE_USER u ON (u.USERID = uac.USERID) 
+      INNER JOIN DEP_EMPLOYEE empl ON (empl.EMPLOYEEID = u.OBJECTID)
+      inner join ins_deplvl dlvl on (dlvl.objectid = empl.departmentid) 
+      INNER JOIN B2B_MAINACTCONTR mac ON (mac.ORGSTRUCTID = dlvl.parentid)  
+      INNER JOIN B2B_MACAGENTCNT maccnt ON (maccnt.MAINACTCONTRID = mac.MAINACTCONTRID AND maccnt.PRODVERID = T.PRODVERID) 
+      $ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($SIGNDATE) (TRUNC($SIGNDATE + (0.125)) BETWEEN mac.STARTDATE AND mac.FINISHDATE) #end 
+       $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>    
+
+    <query name="dsB2BMainActivityContractAgentReportContentMassCreate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BOtherCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                INSERT INTO B2B_MACAGENTREPORTCNT (
+                MACAGENTREPORTCNTID,
+                CONTRID,
+                MACAGENTREPORTID,
+                ISREMOVED 
+                $ASPECTFIELDS)
+                #foreach($row in $rows)
+                  SELECT
+                  #bind($row.MACAGENTREPORTCNTID 'NUMERIC'),
+                  #bind($row.CONTRID 'NUMERIC'),
+                  #bind($MACAGENTREPORTID 'NUMERIC'),
+                  #bind($ISREMOVED 'NUMERIC')
+                  $ASPECTVALUESBINDINGS
+                  FROM dual
+                  #if($velocityCount < $totalCount)
+                    UNION ALL
+                  #end
+                #end
+            ]]>
+        </sql>
+    </query>
+    
+    <query name="dsB2BPrimaryActivityContractAgentReportMemberBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BPrimaryActivityCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.MACAGENTREPORTID', 'java.lang.Long', 'MACAGENTREPORTID'),
+        #result('T.STATEID', 'java.lang.Long', 'STATEID'),
+        #result('st.SYSNAME', 'java.lang.String', 'STATESYSNAME'),
+        #result('mbr.MACMEMBERID', 'java.lang.Long', 'MACMEMBERID'),
+        #result('mbr.USERID', 'java.lang.Long', 'MACMEMBERUSERID'),
+        #result('mbrt.MACMEMBERTYPEID', 'java.lang.Long', 'MACMEMBERTYPEID'),
+        #result('mbrt.SYSNAME', 'java.lang.String', 'MACMEMBERTYPESYSNAME'),
+        #result('mbrt.NAME', 'java.lang.String', 'MACMEMBERTYPENAME') 
+        $ASPECTFIELDS 
+FROM 
+      B2B_MACAGENTREPORT T 
+      INNER JOIN CORE_SM_STATE st on (st.ID = T.STATEID) 
+      INNER JOIN B2B_MACMEMBER mbr on (mbr.MAINACTCONTRID = T.MAINACTCONTRID) 
+      INNER JOIN B2B_MACMEMBERTYPE mbrt on (mbrt.MACMEMBERTYPEID = mbr.MACMEMBERTYPEID) 
+      $ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($MACAGENTREPORTID) T.MACAGENTREPORTID = #bind($MACAGENTREPORTID 'NUMERIC') #end 
+       #chunk($USERID) mbr.USERID = #bind($USERID 'NUMERIC') #end 
+       #chunk($MACMEMBERTYPESYSNAME) mbrt.SYSNAME = #bind($MACMEMBERTYPESYSNAME 'VARCHAR') #end 
+       $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BPrimaryActivityContractAgentReportMemberBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BPrimaryActivityCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT mbr.MACMEMBERID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_MACAGENTREPORT T 
+      INNER JOIN CORE_SM_STATE st on (st.ID = T.STATEID) 
+      INNER JOIN B2B_MACMEMBER mbr on (mbr.MAINACTCONTRID = T.MAINACTCONTRID) 
+      INNER JOIN B2B_MACMEMBERTYPE mbrt on (mbrt.MACMEMBERTYPEID = mbr.MACMEMBERTYPEID) 
+      $ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($MACAGENTREPORTID) T.MACAGENTREPORTID = #bind($MACAGENTREPORTID 'NUMERIC') #end 
+       #chunk($USERACCOUNTID) mbr.USERID = #bind($USERACCOUNTID 'NUMERIC') #end 
+       #chunk($MACMEMBERTYPESYSNAME) mbrt.SYSNAME = #bind($MACMEMBERTYPESYSNAME 'VARCHAR') #end 
+       $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+
+    <query name="dsB2BPrimaryActivityContractMemberBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BPrimaryActivityCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('mbr.MACMEMBERID', 'java.lang.Long', 'MACMEMBERID'),
+        #result('mbr.MAINACTCONTRID', 'java.lang.Long', 'MAINACTCONTRID'),
+        #result('mbr.USERID', 'java.lang.Long', 'MACMEMBERUSERID'),
+        #result('mbrt.MACMEMBERTYPEID', 'java.lang.Long', 'MACMEMBERTYPEID'),
+        #result('mbrt.SYSNAME', 'java.lang.String', 'MACMEMBERTYPESYSNAME'),
+        #result('mbrt.NAME', 'java.lang.String', 'MACMEMBERTYPENAME') 
+        $ASPECTFIELDS 
+FROM 
+      B2B_MACMEMBER mbr
+      INNER JOIN B2B_MACMEMBERTYPE mbrt on (mbrt.MACMEMBERTYPEID = mbr.MACMEMBERTYPEID) 
+      $ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($MAINACTCONTRID) mbr.MAINACTCONTRID = #bind($MAINACTCONTRID 'NUMERIC') #end 
+       #chunk($USERID) mbr.USERID = #bind($USERID 'NUMERIC') #end 
+       #chunk($MACMEMBERTYPESYSNAME) mbrt.SYSNAME = #bind($MACMEMBERTYPESYSNAME 'VARCHAR') #end 
+       $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BPrimaryActivityContractMemberBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BPrimaryActivityCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT mbr.MACMEMBERID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_MACMEMBER mbr
+      INNER JOIN B2B_MACMEMBERTYPE mbrt on (mbrt.MACMEMBERTYPEID = mbr.MACMEMBERTYPEID) 
+      $ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($MAINACTCONTRID) mbr.MAINACTCONTRID = #bind($MAINACTCONTRID 'NUMERIC') #end 
+       #chunk($USERID) mbr.USERID = #bind($USERID 'NUMERIC') #end 
+       #chunk($MACMEMBERTYPESYSNAME) mbrt.SYSNAME = #bind($MACMEMBERTYPESYSNAME 'VARCHAR') #end 
+       $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+
+    <query name="dsB2BStateHistoryBrowseListByParamCustomWhereEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BPrimaryActivityCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result("'INS_OBJSTATEH'", 'java.lang.String', 'TABLENAME'),
+        #result('T.ID', 'java.lang.Long', 'ID'),
+        #result('T.STATEID', 'java.lang.Long', 'STATEID'),
+        #result('T.STATENAME', 'java.lang.String', 'STATESYSNAME'),
+        #result('T2.PUBLICNAME', 'java.lang.String', 'STATENAME'),
+        #result('T.STARTDATE', 'java.math.BigDecimal', 'STATEDATE'),
+        #result("CONCAT(T5.LASTNAME,CONCAT(' ',CONCAT(T5.FIRSTNAME,CONCAT(' ',T5.MIDDLENAME))))", 'java.lang.String', 'USERFULLNAME'),
+        #result('T.NOTE', 'java.lang.String', 'STATENOTE') 
+FROM 
+      INS_OBJSTATEH T 
+      INNER JOIN CORE_SM_STATE T2 ON (T2.ID = T.STATEID) 
+      LEFT JOIN CORE_USERACCOUNT T3 ON (T3.LOGIN = T.USERNAME) 
+      LEFT JOIN CORE_USER T4 ON (T4.USERID = T3.USERID) 
+      LEFT JOIN DEP_EMPLOYEE T5 ON (T5.EMPLOYEEID = T4.OBJECTID) 
+#chain('AND' 'WHERE') 
+       #chunk($OBJID) T.OBJID = #bind($OBJID 'NUMERIC') #end 
+       #chunk($TYPESYSNAME) T.TYPENAME = #bind($TYPESYSNAME 'VARCHAR') #end 
+       #chunk($CUSTOMWHERE) $CUSTOMWHERE #end 
+       $ASPECTRESTRICTION 
+#end 
+
+#chunk($INCLUDECURRENTSTATE)
+
+UNION ALL
+
+SELECT 
+        'INS_OBJSTATE' TABLENAME,
+        T.ID ID,
+        T.STATEID STATEID,
+        T.STATENAME STATESYSNAME,
+        T2.PUBLICNAME STATENAME,
+        T.STARTDATE STATEDATE,
+        CONCAT(T5.LASTNAME,CONCAT(' ',CONCAT(T5.FIRSTNAME,CONCAT(' ',T5.MIDDLENAME)))) USERFULLNAME,
+        T.NOTE STATENOTE
+FROM 
+      INS_OBJSTATE T 
+      INNER JOIN CORE_SM_STATE T2 ON (T2.ID = T.STATEID) 
+      LEFT JOIN CORE_USERACCOUNT T3 ON (T3.LOGIN = T.USERNAME) 
+      LEFT JOIN CORE_USER T4 ON (T4.USERID = T3.USERID) 
+      LEFT JOIN DEP_EMPLOYEE T5 ON (T5.EMPLOYEEID = T4.OBJECTID) 
+#chain('AND' 'WHERE') 
+       #chunk($OBJID) T.OBJID = #bind($OBJID 'NUMERIC') #end 
+       #chunk($TYPESYSNAME) T.TYPENAME = #bind($TYPESYSNAME 'VARCHAR') #end 
+       #chunk($CUSTOMWHERE) $CUSTOMWHERE #end 
+       $ASPECTRESTRICTION 
+#end 
+
+#end 
+ORDER BY STATEDATE ASC
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BStateHistoryBrowseListByParamCustomWhereExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BPrimaryActivityCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT(*)', 'java.lang.Long', 'CNT') 
+FROM (
+
+SELECT 
+        T.ID
+FROM 
+      INS_OBJSTATEH T 
+      INNER JOIN CORE_SM_STATE T2 ON (T2.ID = T.STATEID) 
+      LEFT JOIN CORE_USERACCOUNT T3 ON (T3.LOGIN = T.USERNAME) 
+      LEFT JOIN CORE_USER T4 ON (T4.USERID = T3.USERID) 
+      LEFT JOIN DEP_EMPLOYEE T5 ON (T5.EMPLOYEEID = T4.OBJECTID) 
+#chain('AND' 'WHERE') 
+       #chunk($OBJID) T.OBJID = #bind($OBJID 'NUMERIC') #end 
+       #chunk($TYPESYSNAME) T.TYPENAME = #bind($TYPESYSNAME 'VARCHAR') #end 
+       #chunk($CUSTOMWHERE) $CUSTOMWHERE #end 
+       $ASPECTRESTRICTION 
+#end 
+
+#chunk($INCLUDECURRENTSTATE)
+
+UNION ALL
+
+SELECT 
+        T.ID 
+FROM 
+      INS_OBJSTATE T 
+      INNER JOIN CORE_SM_STATE T2 ON (T2.ID = T.STATEID) 
+      LEFT JOIN CORE_USERACCOUNT T3 ON (T3.LOGIN = T.USERNAME) 
+      LEFT JOIN CORE_USER T4 ON (T4.USERID = T3.USERID) 
+      LEFT JOIN DEP_EMPLOYEE T5 ON (T5.EMPLOYEEID = T4.OBJECTID) 
+#chain('AND' 'WHERE') 
+       #chunk($OBJID) T.OBJID = #bind($OBJID 'NUMERIC') #end 
+       #chunk($TYPESYSNAME) T.TYPENAME = #bind($TYPESYSNAME 'VARCHAR') #end 
+       #chunk($CUSTOMWHERE) $CUSTOMWHERE #end 
+       $ASPECTRESTRICTION 
+#end 
+
+#end 
+
+)
+]]>
+        </sql>
+    </query>
+
+    <query name="dsB2BMainActivityContractAgentReportContentBrowseListByParamForExport" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BPrimaryActivityCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.MACAGENTREPORTCNTID', 'java.lang.Long', 'MACAGENTREPORTCNTID'),
+        #result('T.MACAGENTREPORTID', 'java.lang.Long', 'MACAGENTREPORTID'),
+        #result('T.ISREMOVED', 'java.lang.Long', 'ISREMOVED'),
+        #result('T.CONTRID', 'java.lang.Long', 'CONTRID'),
+        #result('T2.CONTRNUMBER', 'java.lang.String', 'CONTRNUMBER'),
+        #result('T2.INSREGIONCODE', 'java.lang.String', 'CONTRINSREGIONCODE'),
+        #result("CONCAT(CONCAT(T7.FULLNAME,' '),T7.SHORTNAME)", 'java.lang.String', 'CONTRINSREGIONNAME'),
+        #result("CONCAT(CONCAT(CONCAT(CONCAT(T43.LASTNAME,' '),T43.FIRSTNAME),' '),T43.MIDDLENAME)", 'java.lang.String', 'SELLERFULLNAME'),
+        #result('T43.POSITION', 'java.lang.String', 'SELLERPOSITION'),
+        #result('T2.DOCUMENTDATE', 'java.math.BigDecimal', 'CONTRDOCUMENTDATE'),
+        #result('T2.SIGNDATE', 'java.math.BigDecimal', 'CONTRSIGNDATE'),
+        #result('SUBSTR(T2.SIGNDATE,0,5)', 'java.lang.String', 'CONTRSIGNDATETEST'),
+        #result('T2.SIGNDATE', 'java.lang.String', 'CONTRSIGNDATENUM'),
+        #result('T2.STARTDATE', 'java.math.BigDecimal', 'CONTRSTARTDATE'),
+        #result('T2.FINISHDATE', 'java.math.BigDecimal', 'CONTRFINISHDATE'),
+        #result('T2.PREMVALUE', 'java.lang.Double', 'CONTRPREMVALUE'),
+        #result("CASE WHEN T3.PARTICIPANTID IS NULL THEN T6.BRIEFNAME ELSE CONCAT(CONCAT(CONCAT(CONCAT(T3.LASTNAME,' '),T3.FIRSTNAME),' '),T3.MIDDLENAME) END", 'java.lang.String', 'CONTRINSURERFULLNAME'),
+        #result('T3.LASTNAME', 'java.lang.String', 'CONTRINSURERLASTNAME'),
+        #result('T3.FIRSTNAME', 'java.lang.String', 'CONTRINSURERFIRSTNAME'),
+        #result('T3.MIDDLENAME', 'java.lang.String', 'CONTRINSURERMIDDLENAME'),
+        #result('T3.BIRTHDATE', 'java.math.BigDecimal', 'CONTRINSURERBIRTHDATE'),
+        #result('T3.GENDER', 'java.lang.Long', 'CONTRINSURERGENDER'),
+        #result("CASE WHEN T3.PARTICIPANTID IS NULL THEN '' ELSE CASE WHEN T3.GENDER = 0 THEN 'мужской' ELSE 'женский' END END", 'java.lang.String', 'CONTRINSURERGENDERNAME'),
+        #result('T3.CITIZENSHIP', 'java.lang.Long', 'CONTRINSURERCITIZENSHIP'),
+        #result("CASE WHEN T3.PARTICIPANTID IS NULL THEN '' ELSE CASE WHEN T3.CITIZENSHIP = 0 THEN 'Российская Федерация' ELSE 'Иностранный гражданин' END END", 'java.lang.String', 'CONTRINSURERCITIZENSHIPNAME'),
+        #result('pd.DOCSERIES', 'java.lang.String', 'CONTRINSURERDOCSERIES'),
+        #result('pd.DOCNUMBER', 'java.lang.String', 'CONTRINSURERDOCNUMBER'),
+        #result('pd.ISSUEDATE', 'java.math.BigDecimal', 'CONTRINSURERDOCISSUEDATE'),
+        #result('pd.ISSUEDBY', 'java.lang.String', 'CONTRINSURERDOCISSUEDBY'),
+        #result('pa.ADDRESSTEXT1', 'java.lang.String', 'CONTRINSURERADDRESSTEXT1'),
+        #result('pa.ADDRESSTEXT2', 'java.lang.String', 'CONTRINSURERADDRESSTEXT2'),
+        #result('pa.ADDRESSTEXT3', 'java.lang.String', 'CONTRINSURERADDRESSTEXT3') 
+        $ASPECTFIELDS 
+FROM 
+      B2B_MACAGENTREPORTCNT T 
+      INNER JOIN B2B_CONTR T2 ON (T2.CONTRID = T.CONTRID) 
+      LEFT JOIN CRM_PERSON T3 on (T3.PARTICIPANTID = T2.INSURERID) 
+      LEFT JOIN CRM_PERSONDOC pd on (T3.PERSONID = pd.PERSONID)
+      LEFT JOIN CRM_ADDRESS pa on (pa.PARTICIPANTID = T2.INSURERID AND pa.ADDRESSTYPEID = 1003)
+      LEFT JOIN CORE_USERACCOUNT T41 on (T41.USERACCOUNTID = T2.CREATEUSERID) 
+      LEFT JOIN CORE_USER T42 on (T42.USERID = T41.USERID) 
+      LEFT JOIN DEP_EMPLOYEE T43 on (T43.EMPLOYEEID = T42.OBJECTID) 
+      LEFT JOIN CRM_PARTICIPANT T6 on (T6.PARTICIPANTID = T2.INSURERID) 
+      LEFT JOIN CORE_KLADROBJ T7 on (T7.CODE = T2.INSREGIONCODE) 
+      $ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($ISREMOVED) T.ISREMOVED = #bind($ISREMOVED 'NUMERIC') #end 
+       #chunk($MACAGENTREPORTCNTID) T.MACAGENTREPORTCNTID = #bind($MACAGENTREPORTCNTID 'NUMERIC') #end 
+       #chunk($EXCLUDEDMACAGENTREPORTCNTID) T.MACAGENTREPORTCNTID <> #bind($EXCLUDEDMACAGENTREPORTCNTID 'NUMERIC') #end 
+       #chunk($MACAGENTREPORTID) T.MACAGENTREPORTID = #bind($MACAGENTREPORTID 'NUMERIC') #end 
+       #chunk($CUSTOMWHERE) $CUSTOMWHERE #end 
+       $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BMainActivityContractAgentReportContentBrowseListByParamForExportCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BPrimaryActivityCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.MACAGENTREPORTCNTID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_MACAGENTREPORTCNT T 
+      INNER JOIN B2B_CONTR T2 ON (T2.CONTRID = T.CONTRID) 
+      LEFT JOIN CRM_PERSON T3 on (T3.PARTICIPANTID = T2.INSURERID) 
+      LEFT JOIN CRM_PERSONDOC pd on (T3.PERSONID = pd.PERSONID)
+      LEFT JOIN CRM_ADDRESS pa on (pa.PARTICIPANTID = T2.INSURERID AND pa.ADDRESSTYPEID = 1003)
+      LEFT JOIN CORE_USERACCOUNT T41 on (T41.USERACCOUNTID = T2.CREATEUSERID) 
+      LEFT JOIN CORE_USER T42 on (T42.USERID = T41.USERID) 
+      LEFT JOIN DEP_EMPLOYEE T43 on (T43.EMPLOYEEID = T42.OBJECTID) 
+      LEFT JOIN CRM_PARTICIPANT T6 on (T6.PARTICIPANTID = T2.INSURERID) 
+      LEFT JOIN CORE_KLADROBJ T7 on (T7.CODE = T2.INSREGIONCODE) 
+      $ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($ISREMOVED) T.ISREMOVED = #bind($ISREMOVED 'NUMERIC') #end 
+       #chunk($MACAGENTREPORTCNTID) T.MACAGENTREPORTCNTID = #bind($MACAGENTREPORTCNTID 'NUMERIC') #end 
+       #chunk($EXCLUDEDMACAGENTREPORTCNTID) T.MACAGENTREPORTCNTID <> #bind($EXCLUDEDMACAGENTREPORTCNTID 'NUMERIC') #end 
+       #chunk($MACAGENTREPORTID) T.MACAGENTREPORTID = #bind($MACAGENTREPORTID 'NUMERIC') #end 
+       #chunk($CUSTOMWHERE) $CUSTOMWHERE #end 
+       $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+
+</data-map>

@@ -1,0 +1,14 @@
+version: '3'
+services:
+  Admin:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: Admin
+    networks:
+      - Admin
+    ports:
+      - '8080:80'
+networks:
+  Admin:
+    driver: bridge

@@ -1,0 +1,23 @@
+<div class="page-form-edit">
+  <journal class="journal"
+           #journal
+           sysName="ADMINRIGHTSMANAGE"
+           [customParams]="{OBJECTID: roleId, RIGHTOWNER: 'ROLE'}"
+           [journalServicePath]="'journal/'"
+           [journalButtons]="journalButtons"
+           [journalButtonsAction]="journalButtonsAction"
+           (onDoubleClicked)="viewRight(journal.selected)"></journal>
+
+  <!-- Кнопки -->
+  <div class="row" *ngIf="!journal.isInit">
+    <div class="col-sm-6 col-12">
+      <button type="button"
+              class="btn btn-link btn-rounded btn-block"
+              [disabled]="isServiceInProgress"
+              (click)="navigateBack()">Вернуться
+      </button>
+    </div>
+    <div class="col-sm-6 col-12">
+    </div>
+  </div>
+</div>

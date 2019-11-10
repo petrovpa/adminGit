@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://bivgroup.com/schema/b2bcommon10" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xs:complexType name="B2BReportType">
+        <xs:annotation>
+            <xs:documentation>Отчет</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование отчета</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="TemplateName" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование шаблона</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BTermType">
+        <xs:annotation>
+            <xs:documentation>Срок страхования</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="DayCount" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Количество дней</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="MonthCount" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Количество месяцев</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Name" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SysName" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Системное наименование</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="YearCount" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Количество лет</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SaleChannelType">
+        <xs:annotation>
+            <xs:documentation>Канал продаж</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="ExternalId" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Внешний ИД</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Name" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование канала продаж</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Note" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Примечание</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SaleChannelCode" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Код канала продаж</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DataProviderType">
+        <xs:annotation>
+            <xs:documentation>Источник данных</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Discriminator" type="xs:int" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Тип источника данных</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="MethodName" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование метода</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Name" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ServiceName" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование сервиса</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="PaymentVariantType">
+        <xs:annotation>
+            <xs:documentation>Периодичность оплаты</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="CalculatorVersionId" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>ИД версии калькулятора</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Description" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Описание</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Name" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="MaskType">
+        <xs:annotation>
+            <xs:documentation>Маска</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="SysName" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Системное наименование</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Mask" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Маска</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Criterion" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Критерий</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Description" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Описание</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

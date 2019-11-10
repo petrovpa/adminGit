@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+	<db-entity name="PA_APPEAL">
+		<db-attribute name="APPEALDATE" type="FLOAT"/>
+		<db-attribute name="APPEALID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="APPEALNUMBER" type="VARCHAR" length="255"/>
+		<db-attribute name="APPEALOBJECTID" type="NUMERIC" length="19"/>
+		<db-attribute name="CATEGORYID" type="NUMERIC" length="19"/>
+		<db-attribute name="CONTRID" type="NUMERIC" length="19"/>
+		<db-attribute name="INITIATOREMAIL" type="VARCHAR" length="255"/>
+		<db-attribute name="INITIATORID" type="NUMERIC" length="19"/>
+		<db-attribute name="INITIATORNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="INITIATORPHONE" type="VARCHAR" length="255"/>
+		<db-attribute name="INITIATORSURNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="INITIATORTYPEID" type="NUMERIC" length="19"/>
+		<db-attribute name="SOURCEID" type="NUMERIC" length="19"/>
+		<db-attribute name="STATUSNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="STATUSSYSNAME" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="PA_APPEALHIST">
+		<db-attribute name="APPEALHISTID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="APPEALID" type="NUMERIC" length="19"/>
+		<db-attribute name="ISFAVORITE" type="NUMERIC" length="19"/>
+		<db-attribute name="ISUNREADED" type="NUMERIC" length="19"/>
+		<db-attribute name="MESSAGEDATE" type="FLOAT"/>
+		<db-attribute name="MESSAGETEXT" type="VARCHAR" length="1024"/>
+		<db-attribute name="USERACCOUNTID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="PA_CONTRACT">
+		<db-attribute name="CONTRID" type="NUMERIC" length="19"/>
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="PAOBJECTID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="PAUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="RELIABILITYLEVEL" type="NUMERIC" length="19"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="PA_GROUP">
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="GROUPID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="255"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="PA_USER">
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="EMAIL" type="VARCHAR" length="255"/>
+		<db-attribute name="GROUPID" type="NUMERIC" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="PHONENUMBER" type="VARCHAR" length="255"/>
+		<db-attribute name="SMSCODE" type="VARCHAR" length="255"/>
+		<db-attribute name="SMSCODEDATE" type="FLOAT"/>
+		<db-attribute name="STATUSDATE" type="FLOAT"/>
+		<db-attribute name="STATUSID" type="NUMERIC" length="19"/>
+		<db-attribute name="STATUSSYSNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="SURNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="USERID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+	</db-entity>
+	<obj-entity name="PaAppeal" dbEntityName="PA_APPEAL">
+		<obj-attribute name="appealDate" type="java.math.BigDecimal" db-attribute-path="APPEALDATE" note="Дата обращения"/>
+		<obj-attribute name="appealNumber" type="java.lang.String" db-attribute-path="APPEALNUMBER" note="Номер обращения"/>
+		<obj-attribute name="appealObjectId" type="java.lang.Long" db-attribute-path="APPEALOBJECTID" note="Объект обращения"/>
+		<obj-attribute name="categoryId" type="java.lang.Long" db-attribute-path="CATEGORYID" note="Категория обращения"/>
+		<obj-attribute name="contractId" type="java.lang.Long" db-attribute-path="CONTRID" note="ИД договора"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="APPEALID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД записи"/>
+		<obj-attribute name="initiatorEmail" type="java.lang.String" db-attribute-path="INITIATOREMAIL" note="Адрес электронной почты обратившегося"/>
+		<obj-attribute name="initiatorId" type="java.lang.Long" db-attribute-path="INITIATORID" note="ИД инициатора (либо Пользователь B2B, либо Пользователь личного кабинета)"/>
+		<obj-attribute name="initiatorName" type="java.lang.String" db-attribute-path="INITIATORNAME" note="Фамилия обратившегося"/>
+		<obj-attribute name="initiatorPhone" type="java.lang.String" db-attribute-path="INITIATORPHONE" note="Номер телефона обратившегося"/>
+		<obj-attribute name="initiatorSurname" type="java.lang.String" db-attribute-path="INITIATORSURNAME" note="Фамилия обратившегося"/>
+		<obj-attribute name="initiatorTypeId" type="java.lang.Long" db-attribute-path="INITIATORTYPEID" note="Тип инициатора (1 - Пользователь B2B, 2 - Пользователь личного кабинета, 3 - Отправитель с сайта)"/>
+		<obj-attribute name="sourceId" type="java.lang.Long" db-attribute-path="SOURCEID" note="ИД источника"/>
+		<obj-attribute name="statusName" type="java.lang.String" db-attribute-path="STATUSNAME" note="Статус"/>
+		<obj-attribute name="statusSysName" type="java.lang.String" db-attribute-path="STATUSSYSNAME" note="Системное наименование статуса"/>
+	</obj-entity>
+	<obj-entity name="PaAppealHist" dbEntityName="PA_APPEALHIST">
+		<obj-attribute name="appealId" type="java.lang.Long" db-attribute-path="APPEALID" note="ИД обращения"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="APPEALHISTID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД записи"/>
+		<obj-attribute name="isFavorite" type="java.lang.Long" db-attribute-path="ISFAVORITE" note="Является избранным"/>
+		<obj-attribute name="isUnreaded" type="java.lang.Long" db-attribute-path="ISUNREADED" note="Является не прочтенным"/>
+		<obj-attribute name="messageDate" type="java.math.BigDecimal" db-attribute-path="MESSAGEDATE" note="Дата отправки сообщения"/>
+		<obj-attribute name="messageText" type="java.lang.String" db-attribute-path="MESSAGETEXT" note="Текст сообщения"/>
+		<obj-attribute name="userAccountId" type="java.lang.Long" db-attribute-path="USERACCOUNTID" note="Пользователь B2B, отправитель (НЕ инициатор)"/>
+	</obj-entity>
+	<obj-entity name="PaContract" dbEntityName="PA_CONTRACT">
+		<obj-attribute name="contrid" type="java.lang.Long" db-attribute-path="CONTRID" note="Ид договора"/>
+		<obj-attribute name="createdate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания"/>
+		<obj-attribute name="createuserid" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="Пользователь создавший"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Имя пользователя"/>
+		<obj-attribute name="paobjectid" type="java.lang.Long" db-attribute-path="PAOBJECTID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="Ид объекта"/>
+		<obj-attribute name="pauserid" type="java.lang.Long" db-attribute-path="PAUSERID" note="Ид пользователя"/>
+		<obj-attribute name="reliabilitylevel" type="java.lang.Long" db-attribute-path="RELIABILITYLEVEL" note="Уровень достоверности"/>
+		<obj-attribute name="updatedate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата изменения"/>
+		<obj-attribute name="updateuserid" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="Пользователь изменивший запись"/>
+	</obj-entity>
+	<obj-entity name="PaGroup" dbEntityName="PA_GROUP">
+		<obj-attribute name="createdate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания"/>
+		<obj-attribute name="createuserid" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="Пользователь создавший"/>
+		<obj-attribute name="groupid" type="java.lang.Long" db-attribute-path="GROUPID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="Ид группы"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Имя"/>
+		<obj-attribute name="note" type="java.lang.String" db-attribute-path="NOTE" note="Описание"/>
+		<obj-attribute name="sysname" type="java.lang.String" db-attribute-path="SYSNAME" note="Системное имя"/>
+		<obj-attribute name="updatedate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата обновления"/>
+		<obj-attribute name="updateuserid" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="Пользователь обновивший запись"/>
+	</obj-entity>
+	<obj-entity name="PaUser" dbEntityName="PA_USER">
+		<obj-attribute name="createdate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания"/>
+		<obj-attribute name="createuserid" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="Пользователь создавший"/>
+		<obj-attribute name="email" type="java.lang.String" db-attribute-path="EMAIL" note="Емайл"/>
+		<obj-attribute name="groupid" type="java.lang.Long" db-attribute-path="GROUPID" note="Ид группы"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Имя пользователя"/>
+		<obj-attribute name="phoneNumber" type="java.lang.String" db-attribute-path="PHONENUMBER" note="Номер телефона"/>
+		<obj-attribute name="smsCode" type="java.lang.String" db-attribute-path="SMSCODE" note="Код смс"/>
+		<obj-attribute name="smsCodeDate" type="java.math.BigDecimal" db-attribute-path="SMSCODEDATE" note="Дата отправки смс кода"/>
+		<obj-attribute name="statusDate" type="java.math.BigDecimal" db-attribute-path="STATUSDATE" note="Дата перевода статуса"/>
+		<obj-attribute name="statusId" type="java.lang.Long" db-attribute-path="STATUSID" note="ИД статуса"/>
+		<obj-attribute name="statusSysName" type="java.lang.String" db-attribute-path="STATUSSYSNAME" note="Системное наименование статуса"/>
+		<obj-attribute name="surname" type="java.lang.String" db-attribute-path="SURNAME" note="Фамилия"/>
+		<obj-attribute name="updatedate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата изменения"/>
+		<obj-attribute name="updateuserid" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="Пользователь изменивший"/>
+		<obj-attribute name="userid" type="java.lang.Long" db-attribute-path="USERID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="Ид пользователя"/>
+	</obj-entity>
+</data-map>

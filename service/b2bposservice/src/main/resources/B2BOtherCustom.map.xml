@@ -1,0 +1,1735 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+    <query name="dsB2BExportDataBrowseListByParamCustomeWhereEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BOtherCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.EXPORTDATAID', 'java.math.BigDecimal', 'EXPORTDATAID'),
+        #result('T.CREATEDATE', 'java.math.BigDecimal', 'CREATEDATE'),
+        #result('T.STARTDATE', 'java.math.BigDecimal', 'STARTDATE'),
+        #result('T.FINISHDATE', 'java.math.BigDecimal', 'FINISHDATE'),
+        #result('T.TEMPLATEID', 'java.math.BigDecimal', 'TEMPLATEID'), 
+        #result('T.AGENTID', 'java.math.BigDecimal', 'AGENTID'), 
+        #result('T.STATEID', 'java.math.BigDecimal', 'STATEID'),
+        #result('T.DATANUMBER', 'java.lang.String', 'DATANUMBER'),
+        #result('T2.SYSNAME', 'java.lang.String', 'STATESYSNAME'),
+        #result('T2.PUBLICNAME', 'java.lang.String', 'STATENAME'),
+        #result('T3.SYSNAME', 'java.lang.String', 'TEMPLATESYSNAME'),
+        #result('T3.CAPTION', 'java.lang.String', 'TEMPLATECAPTION'),
+        #result('(SELECT COUNT(EDC.CONTENTID) FROM B2B_EXPORTDATA_CONTENT EDC WHERE (EDC.EXPORTDATAID = T.EXPORTDATAID))', 'java.lang.Long', 'CONTENTCNT')
+       $ASPECTFIELDS 
+FROM 
+      B2B_EXPORTDATA T
+      LEFT JOIN CORE_SM_STATE T2 ON (T.STATEID = T2.ID)
+      LEFT JOIN B2B_EXPORTDATA_TEMPLATE T3 ON (T.TEMPLATEID = T3.TEMPLATEID)
+      $ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($EXPORTDATAID) T.EXPORTDATAID = #bind($EXPORTDATAID 'NUMERIC') #end 
+       #chunk($CUSTOMWHERE) $CUSTOMWHERE #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BExportDataBrowseListByParamCustomeWhereExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BOtherCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.EXPORTDATAID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_EXPORTDATA T
+      LEFT JOIN CORE_SM_STATE T2 ON (T.STATEID = T2.ID)
+      LEFT JOIN B2B_EXPORTDATA_TEMPLATE T3 ON (T.TEMPLATEID = T3.TEMPLATEID)
+      $ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($EXPORTDATAID) T.EXPORTDATAID = #bind($EXPORTDATAID 'NUMERIC') #end 
+       #chunk($CUSTOMWHERE) $CUSTOMWHERE #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BExportDataContentMassCreate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BOtherCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            INSERT INTO B2B_EXPORTDATA_CONTENT (
+            CONTENTID,
+            OBJECTID,
+            EXPORTDATAID,
+            TYPEID
+            $ASPECTFIELDS)
+            #foreach($row in $rows)
+              SELECT
+              #bind($row.CONTENTID 'NUMERIC'),
+              #bind($row.OBJECTID 'NUMERIC'),
+              #bind($EXPORTDATAID 'NUMERIC'),
+              #bind($TYPEID 'NUMERIC')
+              $ASPECTVALUESBINDINGS
+              FROM dual
+              #if($velocityCount < $totalCount)
+                UNION ALL
+              #end
+            #end
+            ]]>
+        </sql>
+    </query>            
+    <query name="dsB2BInsHBPropDescrBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BOtherCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.HBPROPDESCRID', 'java.lang.Long', 'HBPROPDESCRID'), 
+        #result('T.NAME', 'java.lang.String', 'NAME'), 
+        #result('T.CAPTION', 'java.lang.String', 'CAPTION'), 
+        #result('T.NOTE', 'java.lang.String', 'NOTE'), 
+        #result('T.PROPJAVATYPE', 'java.lang.String', 'PROPJAVATYPE'), 
+        #result('T.STOREPROPNAME', 'java.lang.String', 'STOREPROPNAME'), 
+        #result('T.ISPK', 'java.lang.Long', 'ISPK'), 
+        #result('T.HBDESCRID', 'java.lang.Long', 'HBDESCRID') 
+        $ASPECTFIELDS 
+FROM 
+      INS_HBPROPDESCR T
+      $ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($HBDESCRID) T.HBDESCRID = #bind($HBDESCRID 'NUMERIC') #end 
+       #chunk($HBDATAVERID) T.HBDESCRID = (SELECT MAX(HBDESCRID) FROM INS_HBDATAVER WHERE HBDATAVERID = #bind($HBDATAVERID 'NUMERIC')) #end 
+       #chunk($NOTELIKE) T.NOTE LIKE '$NOTELIKE' #end 
+       $ASPECTRESTRICTION  
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInsHBPropDescrBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BOtherCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.HBPROPDESCRID)', 'java.lang.Long', 'CNT') 
+FROM 
+      INS_HBPROPDESCR T
+      $ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($HBDESCRID) T.HBDESCRID = #bind($HBDESCRID 'NUMERIC') #end 
+       #chunk($HBDATAVERID) T.HBDESCRID = (SELECT MAX(HBDESCRID) FROM INS_HBDATAVER WHERE HBDATAVERID = #bind($HBDATAVERID 'NUMERIC')) #end 
+       #chunk($NOTELIKE) T.NOTE LIKE '$NOTELIKE' #end 
+       $ASPECTRESTRICTION  
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="depEmployeeUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BContractMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+UPDATE DEP_EMPLOYEE T
+SET 
+T.EMPLOYEEID = T.EMPLOYEEID
+#chunk($POSITION) , T.POSITION = #bind($POSITION 'VARCHAR') #end 
+#chunk($PHONE1) , T.PHONE1 = #bind($PHONE1 'VARCHAR') #end   
+#chunk($EMAIL) , T.EMAIL = #bind($EMAIL 'VARCHAR') #end 
+#chunk($LASTNAME) , T.LASTNAME = #bind($LASTNAME 'VARCHAR') #end 
+#chunk($MIDDLENAME) , T.MIDDLENAME = #bind($MIDDLENAME 'VARCHAR') #end 
+#chunk($FIRSTNAME) , T.FIRSTNAME = #bind($FIRSTNAME 'VARCHAR') #end 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($passwordSha) T.EMPLOYEEID = (
+            select u.objectid 
+            from CORE_USER u 
+            left join CORE_USERACCOUNT ua on (ua.userid = u.userid)
+            where ua.login=#bind($username) 
+            and (ua.password = #bind($passwordSha)) 
+            and ua.STATUS='ACTIVE' 
+        ) #end 
+        #chunk($EMPLOYEEID) T.EMPLOYEEID = #bind($EMPLOYEEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE DEP_EMPLOYEE T
+SET 
+T.EMPLOYEEID = T.EMPLOYEEID
+#chunk($POSITION) , T.POSITION = #bind($POSITION 'VARCHAR') #end 
+#chunk($PHONE1) , T.PHONE1 = #bind($PHONE1 'VARCHAR') #end   
+#chunk($EMAIL) , T.EMAIL = #bind($EMAIL 'VARCHAR') #end 
+#chunk($LASTNAME) , T.LASTNAME = #bind($LASTNAME 'VARCHAR') #end 
+#chunk($MIDDLENAME) , T.MIDDLENAME = #bind($MIDDLENAME 'VARCHAR') #end 
+#chunk($FIRSTNAME) , T.FIRSTNAME = #bind($FIRSTNAME 'VARCHAR') #end 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($passwordSha) T.EMPLOYEEID = (
+            select u.objectid 
+            from CORE_USER u 
+            left join CORE_USERACCOUNT ua on (ua.userid = u.userid)
+            where ua.login=#bind($username) 
+            and (ua.password = #bind($passwordSha)) 
+            and ua.STATUS='ACTIVE' 
+        ) #end 
+        #chunk($EMPLOYEEID) T.EMPLOYEEID = #bind($EMPLOYEEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE DEP_EMPLOYEE T
+SET 
+T.EMPLOYEEID = T.EMPLOYEEID
+#chunk($POSITION) , T.POSITION = #bind($POSITION 'VARCHAR') #end 
+#chunk($PHONE1) , T.PHONE1 = #bind($PHONE1 'VARCHAR') #end   
+#chunk($EMAIL) , T.EMAIL = #bind($EMAIL 'VARCHAR') #end 
+#chunk($LASTNAME) , T.LASTNAME = #bind($LASTNAME 'VARCHAR') #end 
+#chunk($MIDDLENAME) , T.MIDDLENAME = #bind($MIDDLENAME 'VARCHAR') #end 
+#chunk($FIRSTNAME) , T.FIRSTNAME = #bind($FIRSTNAME 'VARCHAR') #end 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($passwordSha) T.EMPLOYEEID = (
+            select u.objectid 
+            from CORE_USER u 
+            left join CORE_USERACCOUNT ua on (ua.userid = u.userid)
+            where ua.login=#bind($username) 
+            and (ua.password = #bind($passwordSha)) 
+            and ua.STATUS='ACTIVE' 
+        ) #end 
+        #chunk($EMPLOYEEID) T.EMPLOYEEID = #bind($EMPLOYEEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+
+    <query name="dsB2BStateBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BOtherCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.ID', 'java.lang.Long', 'STATEID'), 
+        #result('T.SYSNAME', 'java.lang.String', 'STATESYSNAME'), 
+        #result('T.PUBLICNAME', 'java.lang.String', 'STATENAME'), 
+        #result('T.TYPEID', 'java.lang.Long', 'TYPEID'), 
+        #result('T2.SYSNAME', 'java.lang.String', 'TYPESYSNAME'), 
+        #result('T2.PUBLICNAME', 'java.lang.String', 'TYPENAME') 
+        $ASPECTFIELDS 
+FROM 
+      CORE_SM_STATE T 
+      LEFT JOIN CORE_SM_TYPE T2 ON (T2.ID = T.TYPEID)
+      $ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($STATEID) T.ID = #bind($STATEID 'NUMERIC') #end 
+       #chunk($STATESYSNAME) T.SYSNAME = #bind($STATESYSNAME 'VARCHAR') #end 
+       #chunk($STATENAME) T.PUBLICNAME = #bind($STATENAME 'VARCHAR') #end 
+       #chunk($TYPEID) T.TYPEID = #bind($TYPEID 'NUMERIC') #end 
+       #chunk($TYPESYSNAME) T2.SYSNAME = #bind($TYPESYSNAME 'VARCHAR') #end 
+       #chunk($TYPENAME) T2.PUBLICNAME = #bind($TYPENAME 'VARCHAR') #end 
+       $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BStateBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BOtherCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ID)', 'java.lang.Long', 'CNT') 
+FROM 
+      CORE_SM_STATE T 
+      LEFT JOIN CORE_SM_TYPE T2 ON (T2.ID = T.TYPEID)
+      $ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($STATEID) T.ID = #bind($STATEID 'NUMERIC') #end 
+       #chunk($STATESYSNAME) T.SYSNAME = #bind($STATESYSNAME 'VARCHAR') #end 
+       #chunk($STATENAME) T.PUBLICNAME = #bind($STATENAME 'VARCHAR') #end 
+       #chunk($TYPEID) T.TYPEID = #bind($TYPEID 'NUMERIC') #end 
+       #chunk($TYPESYSNAME) T2.SYSNAME = #bind($TYPESYSNAME 'VARCHAR') #end 
+       #chunk($TYPENAME) T2.PUBLICNAME = #bind($TYPENAME 'VARCHAR') #end 
+       $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsUserRoleBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BOtherCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT CUR.*, CUA.USERACCOUNTID FROM CORE_USERROLE CUR
+LEFT JOIN CORE_ROLEACCOUNT CUAR ON CUAR.ROLEID = CUR.ROLEID #chunk($TODATE) AND (CUAR.TODATE = 0 OR CUAR.TODATE IS NULL OR CUAR.TODATE > #bind($TODATE)) #end
+LEFT JOIN CORE_USERACCOUNT CUA ON CUA.USERACCOUNTID = CUAR.USERACCOUNTID
+#chain('AND' 'WHERE') 
+       #chunk($USERACCOUNTID) CUA.USERACCOUNTID = #bind($USERACCOUNTID 'NUMERIC') #end 
+       #chunk($USERID) CUA.USERID = #bind($USERID 'NUMERIC') #end 
+       #chunk($ROLEID) CUA.ROLEID = #bind($ROLEID 'NUMERIC') #end 
+       #chunk($ROLESYSNAME) UPPER(CUR.ROLESYSNAME) = UPPER(#bind($ROLESYSNAME 'VARCHAR')) #end 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BCalendarBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BOtherCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.CALDATE', 'java.math.BigDecimal', 'CALDATE'),
+        #result('T.CALENDARID', 'java.lang.Long', 'CALENDARID'),
+        #result('T.ISDAYOFF', 'java.lang.Long', 'ISDAYOFF'),
+        #result('T.ISHOLIDAY', 'java.lang.Long', 'ISHOLIDAY') 
+       $ASPECTFIELDS 
+FROM 
+      B2B_CALENDAR T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CALDATE) T.CALDATE = #bind($CALDATE 'FLOAT') #end 
+       #chunk($CALENDARID) T.CALENDARID = #bind($CALENDARID 'NUMERIC') #end 
+       #chunk($ISDAYOFF) T.ISDAYOFF = #bind($ISDAYOFF 'NUMERIC') #end 
+       #chunk($ISHOLIDAY) T.ISHOLIDAY = #bind($ISHOLIDAY 'NUMERIC') #end 
+       #chunk($STARTCALDATE) T.CALDATE >= #bind($STARTCALDATE 'FLOAT') #end 
+       #chunk($FINISHCALDATE) T.CALDATE <= #bind($FINISHCALDATE 'FLOAT') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BCalendarBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BOtherCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.CALENDARID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_CALENDAR T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CALDATE) T.CALDATE = #bind($CALDATE 'FLOAT') #end 
+       #chunk($CALENDARID) T.CALENDARID = #bind($CALENDARID 'NUMERIC') #end 
+       #chunk($ISDAYOFF) T.ISDAYOFF = #bind($ISDAYOFF 'NUMERIC') #end 
+       #chunk($ISHOLIDAY) T.ISHOLIDAY = #bind($ISHOLIDAY 'NUMERIC') #end 
+       #chunk($STARTCALDATE) T.CALDATE >= #bind($STARTCALDATE 'FLOAT') #end 
+       #chunk($FINISHCALDATE) T.CALDATE <= #bind($FINISHCALDATE 'FLOAT') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BHandbookDescrAndDataVerBrowseListByNames" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BOtherCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+        <![CDATA[
+            SELECT $NEEDDISTINCT
+                #result('T.HBDESCRID', 'java.lang.Long', 'HBDESCRID'),
+                #result('T.NAME', 'java.lang.String', 'NAME'),
+                #result('T.NOTE', 'java.lang.String', 'NOTE'),
+                #result('T.TABLENAME', 'java.lang.String', 'TABLENAME'),
+                #result('T.ISMULTIHBT', 'java.lang.Long', 'ISMULTIHBT'),
+                #result('v.HBDATAVERID', 'java.lang.Long', 'HBDATAVERID'),
+                #result('v.NAME', 'java.lang.String', 'HBDATAVERNAME'),
+                #result('v.NOTE', 'java.lang.String', 'HBDATAVERNOTE')
+                $ASPECTFIELDS
+            FROM
+                INS_HBDESCR T
+                INNER JOIN INS_HBDATAVER v ON (v.HBDESCRID = T.HBDESCRID)
+                $ASPECTTABLES
+            #chain('AND' 'WHERE')
+                #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end
+                #chunk($HBDATAVERNAME) v.NAME = #bind($HBDATAVERNAME 'VARCHAR') #end
+                $ASPECTRESTRICTION
+            #end
+        ]]>
+        </sql>
+    </query>
+    <query name="dsB2BHandbookDescrAndDataVerBrowseListByNamesCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BOtherCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+        <![CDATA[
+            SELECT
+                #result('COUNT($NEEDDISTINCT v.HBDATAVERID)', 'java.lang.Long', 'CNT')
+            FROM
+                INS_HBDESCR T
+                INNER JOIN INS_HBDATAVER v ON (v.HBDESCRID = T.HBDESCRID)
+                $ASPECTTABLES
+            #chain('AND' 'WHERE')
+                #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end
+                #chunk($HBDATAVERNAME) v.NAME = #bind($HBDATAVERNAME 'VARCHAR') #end
+                $ASPECTRESTRICTION
+            #end
+        ]]>
+        </sql>
+    </query>
+    <query name="dsB2BPartnersDepartmentsListBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BPrimaryActivityCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT $NEEDDISTINCT
+                    #result('T.DEPARTMENTID', 'java.lang.Long', 'DEPARTMENTID'),
+                    #result('T.PARENTDEPARTMENT', 'java.lang.Long', 'PARENTDEPARTMENT'),
+                    #result('T.DEPTSHORTNAME', 'java.lang.String', 'DEPTSHORTNAME'),
+                    #result('T.DEPTFULLNAME', 'java.lang.String', 'DEPTFULLNAME')
+                    $ASPECTFIELDS
+                FROM
+                    DEP_DEPARTMENT T
+                    $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                    #chunk($DEPARTMENTID) T.DEPARTMENTID = #bind($DEPARTMENTID 'NUMERIC') #end
+                    #chunk($DEPTSHORTNAME) T.DEPTSHORTNAME = #bind($DEPTSHORTNAME 'VARCHAR') #end
+                    #chunk($DEPTFULLNAME) T.DEPTFULLNAME = #bind($DEPTFULLNAME 'VARCHAR') #end
+                    #chunk($PARENTDEPARTMENTCODELIKE) PARENTDEPARTMENT IN (SELECT DEPARTMENTID FROM DEP_DEPARTMENT WHERE DEPTCODE LIKE '%$PARENTDEPARTMENTCODELIKE%') #end
+                    #chunk($USERDEPARTMENTID) DEPARTMENTID IN (SELECT PARENTID FROM INS_DEPLVL WHERE PARENTID = T.DEPARTMENTID AND OBJECTID = #bind($USERDEPARTMENTID 'NUMERIC')) #end
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+    <query name="dsB2BPartnersDepartmentsListBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BPrimaryActivityCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT $NEEDDISTINCT
+                    #result('COUNT($NEEDDISTINCT T.DEPARTMENTID)', 'java.lang.Long', 'CNT')
+                FROM
+                    DEP_DEPARTMENT T
+                    $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                    #chunk($DEPARTMENTID) T.DEPARTMENTID = #bind($DEPARTMENTID 'NUMERIC') #end
+                    #chunk($DEPTSHORTNAME) T.DEPTSHORTNAME = #bind($DEPTSHORTNAME 'VARCHAR') #end
+                    #chunk($DEPTFULLNAME) T.DEPTFULLNAME = #bind($DEPTFULLNAME 'VARCHAR') #end
+                    #chunk($PARENTDEPARTMENTCODELIKE) PARENTDEPARTMENT IN (SELECT DEPARTMENTID FROM DEP_DEPARTMENT WHERE DEPTCODE LIKE '%$PARENTDEPARTMENTCODELIKE%') #end
+                    #chunk($USERDEPARTMENTID) DEPARTMENTID IN (SELECT PARENTID FROM INS_DEPLVL WHERE PARENTID = T.DEPARTMENTID AND OBJECTID = #bind($USERDEPARTMENTID 'NUMERIC')) #end
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+    <query name="dsB2BContractExportDataContentBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BOther" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.CONTENTID', 'java.lang.Long', 'CONTENTID'),
+        #result('T.EXPORTDATAID', 'java.lang.Long', 'EXPORTDATAID'),
+        #result('T.OBJECTID', 'java.lang.Long', 'OBJECTID'),
+        #result('T3.SYSNAME', 'java.lang.String', 'PRODSYSNAME'),
+        #result('T.TYPEID', 'java.lang.Long', 'TYPEID') 
+       $ASPECTFIELDS 
+FROM 
+      B2B_EXPORTDATA_CONTENT T 
+  LEFT JOIN B2B_CONTR T1 ON (T1.CONTRID = T.OBJECTID)
+  LEFT JOIN B2B_PRODVER T2 ON (T1.PRODVERID = T2.PRODVERID)
+  LEFT JOIN B2B_PROD T3 ON (T2.PRODID = T3.PRODID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CONTENTID) T.CONTENTID = #bind($CONTENTID 'NUMERIC') #end 
+       #chunk($EXPORTDATAID) T.EXPORTDATAID = #bind($EXPORTDATAID 'NUMERIC') #end 
+       #chunk($OBJECTID) T.OBJECTID = #bind($OBJECTID 'NUMERIC') #end 
+       #chunk($TYPEID) T.TYPEID = #bind($TYPEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BContractExportDataContentBrowseListByParamCountEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BOther" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.CONTENTID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_EXPORTDATA_CONTENT T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CONTENTID) T.CONTENTID = #bind($CONTENTID 'NUMERIC') #end 
+       #chunk($EXPORTDATAID) T.EXPORTDATAID = #bind($EXPORTDATAID 'NUMERIC') #end 
+       #chunk($OBJECTID) T.OBJECTID = #bind($OBJECTID 'NUMERIC') #end 
+       #chunk($TYPEID) T.TYPEID = #bind($TYPEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BExportDataTemplateBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BOther" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.CAPTION', 'java.lang.String', 'CAPTION'),
+        #result('T.DATAMETHOD', 'java.lang.String', 'DATAMETHOD'),
+        #result('T.DATASQL', 'java.lang.String', 'DATASQL'),
+        #result('T.DATASQLCLOB', 'java.lang.String', 'DATASQLCLOB'),
+        #result('T.ISRECORDDISABLE', 'java.lang.Long', 'ISRECORDDISABLE'),
+        #result('T.METHOD', 'java.lang.String', 'METHOD'),
+        #result('T.SQL', 'java.lang.String', 'SQL'),
+        #result('T.SYSNAME', 'java.lang.String', 'SYSNAME'),
+        #result('T.TEMPLATEID', 'java.lang.Long', 'TEMPLATEID'),
+        #result('T.TYPEID', 'java.lang.Long', 'TYPEID'), 
+        #result('T.REPID', 'java.lang.Long', 'REPID'),
+        #result('T1.NAME', 'java.lang.String', 'TYPENAME'),
+        #result('T1.NOTE', 'java.lang.String', 'TYPENOTE'),
+        #result('T1.SYSNAME', 'java.lang.String', 'TYPESYSNAME'),
+        #result('T2.NAME', 'java.lang.String', 'REPNAME'),
+        #result('T2.TEMPLATENAME', 'java.lang.String', 'REPTEMPLATENAME')
+       $ASPECTFIELDS 
+FROM 
+      B2B_EXPORTDATA_TEMPLATE T 
+      left join B2B_EXPORTDATA_TYPE T1 on (T.TYPEID = T1.TYPEID)
+      left join B2B_REP T2 on (T.REPID = T2.REPID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CAPTION) T.CAPTION = #bind($CAPTION 'VARCHAR') #end 
+       #chunk($DATAMETHOD) T.DATAMETHOD = #bind($DATAMETHOD 'VARCHAR') #end 
+       #chunk($DATASQL) T.DATASQL = #bind($DATASQL 'VARCHAR') #end 
+       #chunk($DATASQLCLOB) T.DATASQLCLOB = #bind($DATASQLCLOB 'CLOB') #end 
+       #chunk($ISRECORDDISABLE) T.ISRECORDDISABLE = #bind($ISRECORDDISABLE 'NUMERIC') #end 
+       #chunk($METHOD) T.METHOD = #bind($METHOD 'VARCHAR') #end 
+       #chunk($SQL) T.SQL = #bind($SQL 'VARCHAR') #end 
+       #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+       #chunk($TEMPLATEID) T.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+       #chunk($TYPEID) T.TYPEID = #bind($TYPEID 'NUMERIC') #end 
+       #chunk($REPID) T.REPID = #bind($REPID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BExportDataTemplateBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BOther" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.TEMPLATEID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_EXPORTDATA_TEMPLATE T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CAPTION) T.CAPTION = #bind($CAPTION 'VARCHAR') #end 
+       #chunk($DATAMETHOD) T.DATAMETHOD = #bind($DATAMETHOD 'VARCHAR') #end 
+       #chunk($DATASQL) T.DATASQL = #bind($DATASQL 'VARCHAR') #end 
+       #chunk($DATASQLCLOB) T.DATASQLCLOB = #bind($DATASQLCLOB 'CLOB') #end 
+       #chunk($ISRECORDDISABLE) T.ISRECORDDISABLE = #bind($ISRECORDDISABLE 'NUMERIC') #end 
+       #chunk($METHOD) T.METHOD = #bind($METHOD 'VARCHAR') #end 
+       #chunk($SQL) T.SQL = #bind($SQL 'VARCHAR') #end 
+       #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+       #chunk($TEMPLATEID) T.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+       #chunk($TYPEID) T.TYPEID = #bind($TYPEID 'NUMERIC') #end 
+       #chunk($REPID) T.REPID = #bind($REPID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>   
+    <query name="dsB2BHandbookDescriptionBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BContractMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.HANDBOOKDESCRID', 'java.lang.Long', 'HANDBOOKDESCRID'),
+        #result('T.DESCRIPTION', 'java.lang.String', 'DESCRIPTION'),
+        #result('T.CALCHANDBOOKID', 'java.lang.Long', 'CALCHANDBOOKID'),
+        #result('T.HBDESCRID', 'java.lang.Long', 'HBDESCRID')
+       $ASPECTFIELDS 
+FROM 
+      B2B_HANDBOOKDESCR T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($HANDBOOKDESCRID) T.HANDBOOKDESCRID = #bind($HANDBOOKDESCRID 'NUMERIC') #end 
+       #chunk($CALCHANDBOOKID) T.CALCHANDBOOKID = #bind($CALCHANDBOOKID 'NUMERIC') #end 
+       #chunk($HBDESCRID) T.HBDESCRID = #bind($HBDESCRID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BHandbookDescriptionBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BContractMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.HANDBOOKDESCRID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_HANDBOOKDESCR T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($HANDBOOKDESCRID) T.HANDBOOKDESCRID = #bind($HANDBOOKDESCRID 'NUMERIC') #end 
+       #chunk($CALCHANDBOOKID) T.CALCHANDBOOKID = #bind($CALCHANDBOOKID 'NUMERIC') #end 
+       #chunk($HBDESCRID) T.HBDESCRID = #bind($HBDESCRID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query> 
+    <query name="dsCoreUserUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BOtherCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+UPDATE CORE_USER T
+SET 
+T.USERID = T.USERID
+#chunk($PARTICIPANTID) , T.PARTICIPANTID = #bind($PARTICIPANTID 'NUMERIC') #end 
+#chunk($STATUS) , T.STATUS = #bind($STATUS 'VARCHAR') #end   
+#chunk($BLOCKIFINACTIVE) , T.BLOCKIFINACTIVE = #bind($BLOCKIFINACTIVE 'NUMERIC') #end 
+#chunk($OBJECTTYPE) , T.OBJECTTYPE = #bind($OBJECTTYPE 'NUMERIC') #end 
+#chunk($OBJECTID) , T.OBJECTID = #bind($OBJECTID 'NUMERIC') #end 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE CORE_USER T
+SET 
+T.USERID = T.USERID
+#chunk($PARTICIPANTID) , T.PARTICIPANTID = #bind($PARTICIPANTID 'NUMERIC') #end 
+#chunk($STATUS) , T.STATUS = #bind($STATUS 'VARCHAR') #end   
+#chunk($BLOCKIFINACTIVE) , T.BLOCKIFINACTIVE = #bind($BLOCKIFINACTIVE 'NUMERIC') #end 
+#chunk($OBJECTTYPE) , T.OBJECTTYPE = #bind($OBJECTTYPE 'NUMERIC') #end 
+#chunk($OBJECTID) , T.OBJECTID = #bind($OBJECTID 'NUMERIC') #end 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE CORE_USER T
+SET 
+T.USERID = T.USERID
+#chunk($PARTICIPANTID) , T.PARTICIPANTID = #bind($PARTICIPANTID 'NUMERIC') #end 
+#chunk($STATUS) , T.STATUS = #bind($STATUS 'VARCHAR') #end   
+#chunk($BLOCKIFINACTIVE) , T.BLOCKIFINACTIVE = #bind($BLOCKIFINACTIVE 'NUMERIC') #end 
+#chunk($OBJECTTYPE) , T.OBJECTTYPE = #bind($OBJECTTYPE 'NUMERIC') #end 
+#chunk($OBJECTID) , T.OBJECTID = #bind($OBJECTID 'NUMERIC') #end 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+
+    <query name="dsB2BHandbookBrowseList" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="InsPOSCustom">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true" />
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT
+        #result('TS.HBDESCRID', 'java.lang.Long', 'HBDESCRID'),
+        #result('TS.NAME', 'java.lang.String', 'NAME'),
+        #result('TS.NOTE', 'java.lang.String', 'NOTE'),
+        #result('TS.TABLENAME', 'java.lang.String', 'TABLENAME'),
+        #result('TS.ISMULTIHBT', 'java.lang.String', 'ISMULTIHBT'),
+        #result('T2.HBDATAVERID', 'java.lang.Long', 'HBDATAVERID')
+        $ASPECTFIELDS
+FROM
+    INS_HBDESCR TS
+    LEFT JOIN INS_HBDATAVER T2 ON (TS.HBDESCRID = T2.HBDESCRID)
+#chain('AND' 'WHERE')
+    $ASPECTTABLES 
+        #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+    $ASPECTRESTRICTION
+#end
+  ]]>
+        </sql>
+    </query>
+    <query name="dsB2BHandbookBrowseListCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="InsPOSCustom">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true" />
+        <sql>
+<![CDATA[
+SELECT
+    #result('COUNT($NEEDDISTINCT TS.HBDESCRID)', 'java.lang.Long', 'CNT')
+FROM
+    INS_HBDESCR TS
+    LEFT JOIN INS_HBDATAVER T2 ON (TS.HBDESCRID = T2.HBDESCRID)
+#chain('AND' 'WHERE')
+    $ASPECTTABLES 
+        #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+    $ASPECTRESTRICTION
+#end
+  ]]>
+        </sql>
+    </query>
+    
+    <query name="dsB2BInsHBPropDescrBrowseCustomListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="InsPOSCustom">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true" />
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT
+        #result('T.HBPROPDESCRID', 'java.lang.Long', 'HBPROPDESCRID'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.CAPTION', 'java.lang.String', 'CAPTION'),
+        #result('T.NOTE', 'java.lang.String', 'NOTE'),
+        #result('T.HBDESCRID', 'java.lang.Long', 'HBDESCRID'),
+        #result('T.ISPK', 'java.lang.Long', 'ISPK'),
+        #result('T1.TYPE', 'java.lang.String', 'TYPE'),
+        #result('T1.HIDE', 'java.lang.Long', 'HIDE'),
+        #result('T1.HBDATAVERID', 'java.lang.Long', 'HBDATAVERID'),
+        #result('T1.SYSNAMEFIELD', 'java.lang.String', 'SYSNAMEFIELD'),
+        #result('T1.NAMEFIELD', 'java.lang.String', 'NAMEFIELD'),
+        #result('T1.ORDERNUM', 'java.lang.Long', 'ORDERNUM')
+        $ASPECTFIELDS
+FROM
+      INS_HBPROPDESCR T
+      LEFT JOIN B2B_HBPROPDESCR T1 ON (T.HBPROPDESCRID = T1.INSHBPROPDESCRID)
+      $ASPECTTABLES
+#chain('AND' 'WHERE')
+       #chunk($HBDESCRID) T.HBDESCRID = #bind($HBDESCRID 'NUMERIC') #end
+       #chunk($HBDATAVERID) T.HBDESCRID = (SELECT MAX(HBDESCRID) FROM INS_HBDATAVER WHERE HBDATAVERID = #bind($HBDATAVERID 'NUMERIC')) #end
+       #chunk($NOTELIKE) T.NOTE LIKE '$NOTELIKE' #end
+       $ASPECTRESTRICTION
+#end
+#chunk($ORDERBY) ORDER BY $ORDERBY #end
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInsHBPropDescrBrowseCustomListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="InsPOSCustom">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true" />
+        <sql>
+<![CDATA[
+SELECT
+        #result('COUNT($NEEDDISTINCT T.HBPROPDESCRID)', 'java.lang.Long', 'CNT')
+FROM
+      INS_HBPROPDESCR T
+      $ASPECTTABLES
+#chain('AND' 'WHERE')
+       #chunk($HBDESCRID) T.HBDESCRID = #bind($HBDESCRID 'NUMERIC') #end
+       #chunk($HBDATAVERID) T.HBDESCRID = (SELECT MAX(HBDESCRID) FROM INS_HBDATAVER WHERE HBDATAVERID = #bind($HBDATAVERID 'NUMERIC')) #end
+       #chunk($NOTELIKE) T.NOTE LIKE '$NOTELIKE' #end
+       $ASPECTRESTRICTION
+#end
+]]>
+        </sql>
+    </query>
+    
+    <query name="dsB2BLoadHandbookBySysname" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="InsPOSCustom">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true" />
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT
+        #result('TS.HBDESCRID', 'java.lang.Long', 'HBDESCRID'),
+        #result('TS.NAME', 'java.lang.String', 'NAME'),
+        #result('TS.NOTE', 'java.lang.String', 'NOTE'),
+        #result('TS.TABLENAME', 'java.lang.String', 'TABLENAME'),
+        #result('pk.STOREPROPNAME', 'java.lang.String', 'PKFIELDNAME'),
+        #result('TS.ISMULTIHBT', 'java.lang.String', 'ISMULTIHBT'),
+        #result('T2.HBDATAVERID', 'java.lang.Long', 'HBDATAVERID')
+        $ASPECTFIELDS
+FROM
+    INS_HBDESCR TS
+    LEFT JOIN INS_HBDATAVER T2 ON (TS.HBDESCRID = T2.HBDESCRID)
+    LEFT JOIN INS_HBPROPDESCR pk ON (pk.HBDESCRID = T2.HBDESCRID AND pk.ISPK = 1)
+#chain('AND' 'WHERE')
+    $ASPECTTABLES 
+        #chunk($NAME) TS.NAME = #bind($NAME 'VARCHAR') #end
+        #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+    $ASPECTRESTRICTION
+#end
+  ]]>
+        </sql>
+    </query>
+
+<query name="dsMessageBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BOtherCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT
+        #result('T20.CHNOTIFICATIONID', 'java.lang.Long', 'CHNOTIFICATIONID'),
+        #result('T20.EID', 'java.lang.Long', 'EID'),
+        #result('T20.ID', 'java.lang.Long', 'ID'),
+        #result('T20.ISFAVORITE', 'java.lang.Long', 'ISFAVORITE'),
+        #result('T20.ISUNREAD', 'java.lang.Long', 'ISUNREAD'),
+        #result('T20.NOTE', 'java.lang.String', 'NOTE'),
+        #result('T20.TITLE', 'java.lang.String', 'TITLE'),
+        #result('T20.IDENTIFIERMSG', 'java.lang.String', 'IDENTIFIERMSG'),
+        #result('T20.PDDECLARATIONID', 'java.lang.Long', 'PDDECLARATIONID'),
+        #result('T20.SENDERID', 'java.lang.Long', 'SENDERID'),
+        #result('T20.TYPEMESSAGE', 'java.lang.Long', 'TYPEMESSAGE'),
+        #result('T20.CREATEDATE', 'java.util.Date', 'CREATEDATE'),
+        #result('T20.ISCLIENT', 'java.lang.Long', 'ISCLIENT'),
+        #result('T20.SENDERNAME', 'java.lang.String', 'SENDERNAME'),
+        #result('T20.LOSSNOTICEID', 'java.lang.Long', 'LOSSNOTICEID'),
+        #result('T20.CHATID', 'java.lang.Long', 'CHATID')
+FROM (
+(
+SELECT
+        T.CHNOTIFICATIONID,
+        T.EID,
+        T.ID,
+        T.ISFAVORITE,
+        T.ISUNREAD,
+        T.NOTE,
+        T.TITLE,
+        T.IDENTIFIERMSG,
+        T.PDDECLARATIONID,
+        T.SENDERID,
+        T.TYPEMESSAGE,
+        T.CREATEDATE,
+        T.LOSSNOTICEID,
+        T.CHATID,
+        SDCP.ID as CLPD,
+        1 ISCLIENT,
+        CASE
+        WHEN T2.CLIENTPROFILEID IS NOT NULL
+        THEN CPV.SURNAME || ' ' || CPV.NAME
+            WHEN T2.USERID IS NOT NULL
+        THEN DE.LASTNAME || ' ' || DE.FIRSTNAME
+        END SENDERNAME
+  
+    FROM SD_MESSAGE T
+        INNER JOIN SD_MESSAGE_CORRESPONDENT T2
+            ON (T.SENDERID = T2.ID and T2.USERID is null)
+        LEFT JOIN SD_CLIENTPROFILE SDCP
+            ON (T2.CLIENTPROFILEID = SDCP.ID)
+        LEFT JOIN CDM_PCLIENT_VER CPV
+            ON (SDCP.CLIENTID = CPV.VERID)
+        LEFT JOIN CORE_USERACCOUNT CUA
+            ON (T2.USERID = CUA.USERACCOUNTID)
+        LEFT JOIN CORE_USER CU
+            ON (CU.USERID = CUA.USERID)
+        LEFT JOIN DEP_EMPLOYEE DE
+            ON (DE.EMPLOYEEID = CU.OBJECTID)
+            
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CHNOTIFICATIONID) T.CHNOTIFICATIONID = #bind($CHNOTIFICATIONID 'NUMERIC') #end 
+       #chunk($EID) T.EID = #bind($EID 'NUMERIC') #end 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($ISFAVORITE) T.ISFAVORITE = #bind($ISFAVORITE 'NUMERIC') #end 
+       #chunk($ISUNREAD) T.ISUNREAD = #bind($ISUNREAD 'NUMERIC') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'CLOB') #end
+       #chunk($TITLE) T.TITLE= #bind($TITLE 'VARCHAR') #end
+       #chunk($IDENTIFIERMSG) T.IDENTIFIERMSG = #bind($IDENTIFIERMSG 'VARCHAR') #end
+       #chunk($PDDECLARATIONID) T.PDDECLARATIONID = #bind($PDDECLARATIONID 'NUMERIC') #end 
+       #chunk($SENDERID) T.SENDERID = #bind($SENDERID 'NUMERIC') #end 
+       #chunk($TYPEMESSAGE) T.TYPEMESSAGE = #bind($TYPEMESSAGE 'NUMERIC') #end 
+       #chunk($USERID) T2.USERID = #bind($USERID 'NUMERIC') #end
+       #chunk($CLIENTPROFILEID) T2.CLIENTPROFILEID = #bind($CLIENTPROFILEID 'NUMERIC') #end
+       #chunk($TITLEHASH) T.TITLEHASH = #bind($TITLEHASH 'NUMERIC') #end
+       #chunk($LOSSNOTICEID) T.LOSSNOTICEID = #bind($LOSSNOTICEID 'NUMERIC') #end
+       #chunk($CHATID) T.CHATID = #bind($CHATID 'NUMERIC') #end
+      $ASPECTRESTRICTION
+#end 
+)
+UNION ALL
+(
+SELECT T.CHNOTIFICATIONID,
+    T.EID,
+    T.ID,
+    T.ISFAVORITE,
+    T.ISUNREAD,
+    T.NOTE,
+    T.TITLE,
+    T.IDENTIFIERMSG,
+    T.PDDECLARATIONID,
+    T.SENDERID,
+    T.TYPEMESSAGE,
+    T.CREATEDATE,
+    T.LOSSNOTICEID,
+    T.CHATID,
+    SDCP.ID as CLPD,
+    0 ISCLIENT,
+    CASE
+      WHEN T2.CLIENTPROFILEID IS NOT NULL
+        THEN CPV.SURNAME ||  ' '  || CPV.NAME
+            WHEN T2.USERID IS NOT NULL
+                THEN DE.LASTNAME || ' ' || DE.FIRSTNAME
+    END SENDERNAME
+  
+    FROM SD_MESSAGE T
+        INNER JOIN SD_MESSAGE_CORRESPONDENT T3
+            ON (T.ID = T3.MESSAGEID)
+        INNER JOIN SD_MESSAGE_CORRESPONDENT T2
+            ON (T.SENDERID = T2.ID AND T2.CLIENTPROFILEID IS NULL)
+        LEFT JOIN SD_CLIENTPROFILE SDCP
+            ON (T2.CLIENTPROFILEID = SDCP.ID)
+        LEFT JOIN CDM_PCLIENT_VER CPV
+            ON (SDCP.CLIENTID = CPV.VERID)
+        LEFT JOIN CORE_USERACCOUNT CUA
+            ON (T2.USERID = CUA.USERACCOUNTID)
+        LEFT JOIN CORE_USER CU
+            ON (CU.USERID = CUA.USERID)
+        LEFT JOIN DEP_EMPLOYEE DE
+            ON (DE.EMPLOYEEID       = CU.OBJECTID)
+
+#chain('AND' 'WHERE')
+       #chunk($CHNOTIFICATIONID) T.CHNOTIFICATIONID = #bind($CHNOTIFICATIONID 'NUMERIC') #end
+       #chunk($EID) T.EID = #bind($EID 'NUMERIC') #end 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($ISFAVORITE) T.ISFAVORITE = #bind($ISFAVORITE 'NUMERIC') #end 
+       #chunk($ISUNREAD) T.ISUNREAD = #bind($ISUNREAD 'NUMERIC') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'CLOB') #end
+       #chunk($TITLE) T.TITLE= #bind($TITLE 'VARCHAR') #end
+       #chunk($IDENTIFIERMSG) T.IDENTIFIERMSG = #bind($IDENTIFIERMSG 'VARCHAR') #end
+       #chunk($PDDECLARATIONID) T.PDDECLARATIONID = #bind($PDDECLARATIONID 'NUMERIC') #end 
+       #chunk($SENDERID) T.SENDERID = #bind($SENDERID 'NUMERIC') #end 
+       #chunk($TYPEMESSAGE) T.TYPEMESSAGE = #bind($TYPEMESSAGE 'NUMERIC') #end 
+       #chunk($USERID) T3.USERID = #bind($USERID 'NUMERIC') #end
+       #chunk($CLIENTPROFILEID) T3.CLIENTPROFILEID = #bind($CLIENTPROFILEID 'NUMERIC') #end
+       #chunk($TITLEHASH) T.TITLEHASH = #bind($TITLEHASH 'NUMERIC') #end
+       #chunk($LOSSNOTICEID) T.LOSSNOTICEID = #bind($LOSSNOTICEID 'NUMERIC') #end
+       #chunk($CHATID) T.CHATID = #bind($CHATID 'NUMERIC') #end
+#end
+)
+) T20
+]]>
+        </sql>
+    </query>
+    <query name="dsMessageBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BOtherCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ID)', 'java.lang.Long', 'CNT') 
+FROM 
+      SD_MESSAGE T 
+      INNER JOIN SD_MESSAGE_CORRESPONDENT T2 ON (T.SENDERID = T2.ID)
+      LEFT JOIN SD_CLIENTPROFILE SDCP ON (T2.CLIENTPROFILEID = SDCP.ID)
+      LEFT JOIN CDM_PCLIENT_VER CPV ON (SDCP.CLIENTID = CPV.VERID)
+      LEFT JOIN CORE_USERACCOUNT CUA on (T2.USERID = CUA.USERACCOUNTID)
+      LEFT JOIN CORE_USER CU on (CU.USERID = CUA.USERID)
+      LEFT JOIN DEP_EMPLOYEE DE on (DE.EMPLOYEEID = CU.OBJECTID)      
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CHNOTIFICATIONID) T.CHNOTIFICATIONID = #bind($CHNOTIFICATIONID 'NUMERIC') #end 
+       #chunk($EID) T.EID = #bind($EID 'NUMERIC') #end 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($ISFAVORITE) T.ISFAVORITE = #bind($ISFAVORITE 'NUMERIC') #end 
+       #chunk($ISUNREAD) T.ISUNREAD = #bind($ISUNREAD 'NUMERIC') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'CLOB') #end 
+       #chunk($PDDECLARATIONID) T.PDDECLARATIONID = #bind($PDDECLARATIONID 'NUMERIC') #end 
+       #chunk($SENDERID) T.SENDERID = #bind($SENDERID 'NUMERIC') #end 
+       #chunk($TYPEMESSAGE) T.TYPEMESSAGE = #bind($TYPEMESSAGE 'NUMERIC') #end 
+       #chunk($USERID) T2.USERID = #bind($USERID 'NUMERIC') #end
+       #chunk($TITLEHASH) T.TITLEHASH = #bind($TITLEHASH 'NUMERIC') #end
+       #chunk($LOSSNOTICEID) T.LOSSNOTICEID = #bind($LOSSNOTICEID 'NUMERIC') #end
+       #chunk($CHATID) T_OUT.CHATID = #bind($CHATID 'NUMERIC') #end
+      $ASPECTRESTRICTION
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsMessageLastBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BOtherCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T5.USERID', 'java.lang.Long', 'USERID'),
+        #result('T5.NAME', 'java.lang.String', 'NAME'),
+        #result('T5.SURNAME', 'java.lang.String', 'SURNAME'),
+        #result('T.NOTE', 'java.lang.String', 'LASTMSGTEXT')
+       $ASPECTFIELDS 
+FROM SD_MESSAGE T
+INNER JOIN SD_MESSAGE_CORRESPONDENT T10 ON (T.SENDERID = T10.ID)
+INNER JOIN PA_USER T5 ON (T10.CLIENTPROFILEID = T5.USERID)
+INNER JOIN (
+SELECT T1.CLIENTPROFILEID, MAX(T2.CREATEDATE) MESSAGEDATE
+from SD_MESSAGE_CORRESPONDENT T1
+      INNER JOIN SD_MESSAGE T2 ON (T1.ID= T2.SENDERID)
+where T1.CLIENTPROFILEID is not null
+group by T1.CLIENTPROFILEID) T3 ON (T3.CLIENTPROFILEID = T10.CLIENTPROFILEID) and (T3.MESSAGEDATE=T.CREATEDATE)
+
+$ASPECTTABLES
+#chain('AND' 'WHERE') 
+       #chunk($CUSTOMWHERE) $CUSTOMWHERE #end  
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsMessageLastBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BOtherCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+  #result('COUNT($NEEDDISTINCT T.ID)', 'java.lang.Long', 'CNT') 
+FROM SD_MESSAGE T
+INNER JOIN SD_MESSAGE_CORRESPONDENT T10 ON (T.SENDERID = T10.ID)
+INNER JOIN PA_USER T5 ON (T10.CLIENTPROFILEID = T5.USERID) 
+INNER JOIN (
+SELECT T1.CLIENTPROFILEID, MAX(T2.CREATEDATE) MESSAGEDATE
+from SD_MESSAGE_CORRESPONDENT T1
+      INNER JOIN SD_MESSAGE T2 ON (T1.ID= T2.SENDERID)
+where T1.CLIENTPROFILEID is not null
+group by T1.CLIENTPROFILEID) T3 ON (T3.CLIENTPROFILEID = T10.CLIENTPROFILEID) and (T3.MESSAGEDATE=T.CREATEDATE)
+
+$ASPECTTABLES
+#chain('AND' 'WHERE') 
+       #chunk($CUSTOMWHERE) $CUSTOMWHERE #end  
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsMessageUpdateEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BOtherCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+UPDATE  T
+SET
+    T.ID = T.ID
+#chunk($CHNOTIFICATIONID) , T.CHNOTIFICATIONID = #bind($CHNOTIFICATIONID 'NUMERIC') #end
+#chunk($EID) , T.EID = #bind($EID 'NUMERIC') #end
+#chunk($ISFAVORITE) , T.ISFAVORITE = #bind($ISFAVORITE 'NUMERIC') #end
+#chunk($ISUNREAD) , T.ISUNREAD = #bind($ISUNREAD 'NUMERIC') #end
+#chunk($NOTE) , T.NOTE = #bind($NOTE 'CLOB') #end
+#chunk($PDDECLARATIONID) , T.PDDECLARATIONID = #bind($PDDECLARATIONID 'NUMERIC') #end
+#chunk($SENDERID) , T.SENDERID = #bind($SENDERID 'NUMERIC') #end
+#chunk($TYPEMESSAGE) , T.TYPEMESSAGE = #bind($TYPEMESSAGE 'NUMERIC') #end
+
+       $ASPECTFIELDS
+FROM
+      SD_MESSAGE T
+#chain('AND' 'WHERE')
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end
+       #chunk($PDDECLARATIONID) T.PDDECLARATIONID = #bind($PDDECLARATIONID 'NUMERIC') #end
+       #chunk($CLIENTPROFILEID)
+           T.SENDERID in (SELECT SMC.ID from SD_MESSAGE_CORRESPONDENT SMC where T.SENDERID = SMC.ID and SMC.CLIENTPROFILEID IS NULL)
+       #end
+      $ASPECTRESTRICTION
+#end
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+            <![CDATA[
+UPDATE  T
+SET
+    T.ID = T.ID
+#chunk($CHNOTIFICATIONID) , T.CHNOTIFICATIONID = #bind($CHNOTIFICATIONID 'NUMERIC') #end
+#chunk($EID) , T.EID = #bind($EID 'NUMERIC') #end
+#chunk($ISFAVORITE) , T.ISFAVORITE = #bind($ISFAVORITE 'NUMERIC') #end
+#chunk($ISUNREAD) , T.ISUNREAD = #bind($ISUNREAD 'NUMERIC') #end
+#chunk($NOTE) , T.NOTE = #bind($NOTE 'CLOB') #end
+#chunk($PDDECLARATIONID) , T.PDDECLARATIONID = #bind($PDDECLARATIONID 'NUMERIC') #end
+#chunk($SENDERID) , T.SENDERID = #bind($SENDERID 'NUMERIC') #end
+#chunk($TYPEMESSAGE) , T.TYPEMESSAGE = #bind($TYPEMESSAGE 'NUMERIC') #end
+
+       $ASPECTFIELDS
+FROM
+      SD_MESSAGE T
+#chain('AND' 'WHERE')
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end
+       #chunk($PDDECLARATIONID) T.PDDECLARATIONID = #bind($PDDECLARATIONID 'NUMERIC') #end
+       #chunk($CLIENTPROFILEID)
+           T.SENDERID in (SELECT SMC.ID from SD_MESSAGE_CORRESPONDENT SMC where T.SENDERID = SMC.ID and SMC.CLIENTPROFILEID IS NULL)
+       #end
+      $ASPECTRESTRICTION
+#end
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+            <![CDATA[
+UPDATE       SD_MESSAGE T
+SET
+    T.ID = T.ID
+#chunk($CHNOTIFICATIONID) , T.CHNOTIFICATIONID = #bind($CHNOTIFICATIONID 'NUMERIC') #end
+#chunk($EID) , T.EID = #bind($EID 'NUMERIC') #end
+#chunk($ISFAVORITE) , T.ISFAVORITE = #bind($ISFAVORITE 'NUMERIC') #end
+#chunk($ISUNREAD) , T.ISUNREAD = #bind($ISUNREAD 'NUMERIC') #end
+#chunk($NOTE) , T.NOTE = #bind($NOTE 'CLOB') #end
+#chunk($PDDECLARATIONID) , T.PDDECLARATIONID = #bind($PDDECLARATIONID 'NUMERIC') #end
+#chunk($SENDERID) , T.SENDERID = #bind($SENDERID 'NUMERIC') #end
+#chunk($TYPEMESSAGE) , T.TYPEMESSAGE = #bind($TYPEMESSAGE 'NUMERIC') #end
+
+       $ASPECTFIELDS
+#chain('AND' 'WHERE')
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end
+       #chunk($PDDECLARATIONID) T.PDDECLARATIONID = #bind($PDDECLARATIONID 'NUMERIC') #end
+       #chunk($CLIENTPROFILEID)
+           T.SENDERID in (SELECT SMC.ID from SD_MESSAGE_CORRESPONDENT SMC where T.SENDERID = SMC.ID and SMC.CLIENTPROFILEID IS NULL)
+       #end
+      $ASPECTRESTRICTION
+#end
+]]>
+        </sql>
+    </query>
+    <query name="dsMessageExInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BOtherCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+INSERT INTO SD_MESSAGE (
+CHNOTIFICATIONID,
+EID,
+ID,
+ISFAVORITE,
+ISUNREAD,
+NOTE,
+PDDECLARATIONID,
+SENDERID,
+TYPEMESSAGE,
+TITLE,
+IDENTIFIERMSG,
+TITLEHASH,
+LOSSNOTICEID
+$ASPECTFIELDS ) VALUES (
+#bind($CHNOTIFICATIONID 'NUMERIC'),
+#bind($EID 'NUMERIC'),
+#bind($ID 'NUMERIC'),
+#bind($ISFAVORITE 'NUMERIC'),
+#bind($ISUNREAD 'NUMERIC'),
+#bind($NOTE 'CLOB'),
+#bind($PDDECLARATIONID 'NUMERIC'),
+#bind($SENDERID 'NUMERIC'),
+#bind($TYPEMESSAGE 'NUMERIC'),
+#bind($TITLE 'VARCHAR'),
+#bind($IDENTIFIERMSG 'VARCHAR'),
+#bind($TITLEHASH 'NUMERIC'),
+#bind($LOSSNOTICEID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+            <![CDATA[
+INSERT INTO SD_MESSAGE (
+CHNOTIFICATIONID,
+EID,
+ID,
+ISFAVORITE,
+ISUNREAD,
+NOTE,
+PDDECLARATIONID,
+SENDERID,
+TYPEMESSAGE,
+TITLE,
+IDENTIFIERMSG,
+TITLEHASH,
+LOSSNOTICEID
+$ASPECTFIELDS ) VALUES (
+#bind($CHNOTIFICATIONID 'NUMERIC'),
+#bind($EID 'NUMERIC'),
+#bind($ID 'NUMERIC'),
+#bind($ISFAVORITE 'NUMERIC'),
+#bind($ISUNREAD 'NUMERIC'),
+#bind($NOTE 'CLOB'),
+#bind($PDDECLARATIONID 'NUMERIC'),
+#bind($SENDERID 'NUMERIC'),
+#bind($TYPEMESSAGE 'NUMERIC'),
+#bind($TITLE 'VARCHAR'),
+#bind($IDENTIFIERMSG 'VARCHAR'),
+#bind($TITLEHASH 'NUMERIC'),
+#bind($LOSSNOTICEID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+        </sql>
+        <sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+            <![CDATA[
+INSERT INTO SD_MESSAGE (
+CHNOTIFICATIONID,
+EID,
+ID,
+ISFAVORITE,
+ISUNREAD,
+NOTE,
+PDDECLARATIONID,
+SENDERID,
+TYPEMESSAGE,
+TITLE,
+IDENTIFIERMSG,
+TITLEHASH,
+LOSSNOTICEID
+$ASPECTFIELDS ) VALUES (
+#bind($CHNOTIFICATIONID 'NUMERIC'),
+#bind($EID 'NUMERIC'),
+#bind($ID 'NUMERIC'),
+#bind($ISFAVORITE 'NUMERIC'),
+#bind($ISUNREAD 'NUMERIC'),
+#bind($NOTE 'CLOB'),
+#bind($PDDECLARATIONID 'NUMERIC'),
+#bind($SENDERID 'NUMERIC'),
+#bind($TYPEMESSAGE 'NUMERIC'),
+#bind($TITLE 'VARCHAR'),
+#bind($IDENTIFIERMSG 'VARCHAR'),
+#bind($TITLEHASH 'NUMERIC'),
+#bind($LOSSNOTICEID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+        </sql>
+    </query>
+    
+<query name="dsB2BDeclarationOfChangeForContractCustomBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BOtherCustom" >
+    <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+    <sql>
+        <![CDATA[
+            SELECT $NEEDDISTINCT
+                #result('T.ID', 'java.lang.Long', 'ID'),
+                #result('T.ID', 'java.lang.Long', 'DECLARATIONOFCHANGEID'),
+                #result('TS.DECLARATIONNUMBER', 'java.lang.String', 'DECLARATIONNUMBER'),
+                #result('TS.INCOMINGNUMBER', 'java.lang.String', 'INCOMINGNUMBER'),
+                #result('TS.CONTRACTID', 'java.lang.Long', 'CONTRACTID'),
+                #result('TS.STATEID', 'java.lang.Long', 'STATEID'),
+                #result('TS.RECEIVINGDATE', 'java.util.Date', 'RECEIVINGDATE'),
+                #result('TS.DECLARATIONDATE', 'java.util.Date', 'DECLARATIONDATE'),
+                #result('TS.CREATEDATE', 'java.util.Date', 'createDate'),
+                #result('TS.UPDATEDATE', 'java.util.Date', 'UPDATEDATE'),
+                #result('TS.DATEOFENTRY', 'java.util.Date', 'DATEOFENTRY'),
+                #result('TS.DATELASTDOC', 'java.util.Date', 'DATELASTDOC'),
+                #result('TS.ID', 'java.lang.Long', 'DECLNUMBER'),
+                #result('ctr.CONTRNUMBER', 'java.lang.String', 'CONTRNUMBER'),
+                #result('ctr.SIGNDATE', 'java.math.BigDecimal', 'CONTRSIGNDATE'),
+                #result('ctr.PREMVALUE', 'java.lang.Double', 'CONTRPREMVALUE'),
+                #result('ctr.INSURERID', 'java.lang.Double', 'CONTRINSURERID'),
+                #result('TS.CHANGEPREMVALUE', 'java.lang.Double', 'CHANGEPREMVALUE'),
+                #result('T1.NAME', 'java.lang.String', 'OPERATIONTYPE'),
+                #result('rc.REASONCOMMENT', 'java.lang.String', 'INFO'),
+                #result('ks.NAME', 'java.lang.String', 'STATUS'),
+                #result('T4.NAME', 'java.lang.String', 'PRODNAME'),
+                #result('T4.PRODID', 'java.lang.Long', 'PRODID'),
+                #result('per.BRIEFNAME', 'java.lang.String', 'BRIEFNAME')
+                $ASPECTFIELDS
+            FROM
+                PD_DECLARATIONOFCHANGE T
+                INNER JOIN PD_DECLARATION TS ON (TS.ID = T.ID)
+                LEFT JOIN B2B_CONTR ctr ON (ctr.CONTRID = TS.CONTRACTID)
+                INNER JOIN B2B_PRODVER T3 ON (ctr.PRODVERID = T3.PRODVERID)
+                INNER JOIN B2B_PROD T4 ON (T3.PRODID = T4.PRODID) AND ((T4.ISHIDDEN is null) or (T4.ISHIDDEN != 1))
+                LEFT JOIN PD_REASONCHANGE rc ON (rc.DECLARATIONID = T.ID)
+                LEFT JOIN HB_KINDCHANGEREASON T1 ON (T1.ID = rc.KINDCHANGEREASONID)
+                LEFT JOIN HB_KINDSTATUS ks ON (TS.STATEID = ks.ID)                
+                LEFT JOIN (
+                select 
+                    ID,
+                    CONCAT(SURNAME,CONCAT(' ',CONCAT(NAME,CONCAT(' ',PATRONYMIC)))) AS BRIEFNAME
+                    from CDM_PPERSON            
+                ) per ON per.ID = TS.APPLICANTID
+                $ASPECTTABLES
+            #chain('AND' 'WHERE')
+                #chunk($DECLARATIONOFCHANGEID) T.ID = #bind($DECLARATIONOFCHANGEID 'NUMERIC') #end
+                #chunk($INSURERNAME) UPPER(per.BRIEFNAME) LIKE UPPER('%$INSURERNAME%') #end
+                #chunk($STATEID) TS.STATEID = #bind($STATEID 'NUMERIC') #end
+                #chunk($PRODID) T4.PRODID = #bind($PRODID 'NUMERIC') #end
+                #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+                $ASPECTRESTRICTION
+            #end
+        ]]>
+    </sql>
+</query>
+    <query name="dsB2BDeclarationForContractCustomBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BOtherCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            SELECT $NEEDDISTINCT
+                #result('TS.DECLARATIONNUMBER', 'java.lang.String', 'DECLARATIONNUMBER'),
+                #result('TS.INCOMINGNUMBER', 'java.lang.String', 'INCOMINGNUMBER'),
+                #result('TS.CONTRACTID', 'java.lang.Long', 'CONTRACTID'),
+                #result('TS.STATEID', 'java.lang.Long', 'STATEID'),
+                #result('TS.RECEIVINGDATE', 'java.util.Date', 'RECEIVINGDATE'),
+                #result('TS.DECLARATIONDATE', 'java.util.Date', 'DECLARATIONDATE'),
+                #result('TS.CREATEDATE', 'java.util.Date', 'createDate'),
+                #result('TS.UPDATEDATE', 'java.util.Date', 'UPDATEDATE'),
+                #result('TS.DATEOFENTRY', 'java.util.Date', 'DATEOFENTRY'),
+                #result('TS.DATELASTDOC', 'java.util.Date', 'DATELASTDOC'),
+                #result('TS.ID', 'java.lang.Long', 'ID'),
+                #result('TS.CHANGEPREMVALUE', 'java.lang.Double', 'CHANGEPREMVALUE')
+                $ASPECTFIELDS
+            FROM
+                PD_DECLARATION TS
+                $ASPECTTABLES
+            #chain('AND' 'WHERE')
+                #chunk($STATEID) TS.STATEID = #bind($STATEID 'NUMERIC') #end
+                #chunk($ID) TS.ID = #bind($ID 'NUMERIC') #end
+                $ASPECTRESTRICTION
+            #end
+        ]]>
+        </sql>
+    </query>
+<query name="dsB2BDeclarationOfChangeForContractCustomBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BOtherCustom" >
+    <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+    <sql>
+        <![CDATA[
+            SELECT
+                #result('COUNT($NEEDDISTINCT T.ID)', 'java.lang.Long', 'CNT')
+            FROM
+                PD_DECLARATIONOFCHANGE T
+                INNER JOIN PD_DECLARATION TS ON (TS.ID = T.ID)
+                LEFT JOIN B2B_CONTR ctr ON (ctr.CONTRID = TS.CONTRACTID)
+                INNER JOIN B2B_PRODVER T3 ON (ctr.PRODVERID = T3.PRODVERID)
+                INNER JOIN B2B_PROD T4 ON (T3.PRODID = T4.PRODID) AND ((T4.ISHIDDEN is null) or (T4.ISHIDDEN != 1))
+                LEFT JOIN PD_REASONCHANGE rc ON (rc.DECLARATIONID = T.ID)
+                LEFT JOIN HB_KINDCHANGEREASON T1 ON (T1.ID = rc.KINDCHANGEREASONID)                
+                LEFT JOIN HB_KINDSTATUS ks ON (TS.STATEID = ks.ID)         
+                LEFT JOIN (
+                select 
+                    ID,
+                    CONCAT(SURNAME,CONCAT(' ',CONCAT(NAME,CONCAT(' ',PATRONYMIC)))) AS BRIEFNAME
+                    from CDM_PPERSON            
+                ) per ON per.ID = TS.APPLICANTID       
+                $ASPECTTABLES
+            #chain('AND' 'WHERE')
+                #chunk($DECLARATIONOFCHANGEID) T.ID = #bind($DECLARATIONOFCHANGEID 'NUMERIC') #end
+                #chunk($INSURERNAME) UPPER(per.BRIEFNAME) LIKE UPPER('%$INSURERNAME%') #end
+                #chunk($STATEID) TS.STATEID = #bind($STATEID 'NUMERIC') #end
+                #chunk($PRODID) T4.PRODID = #bind($PRODID 'NUMERIC') #end
+                #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+                $ASPECTRESTRICTION
+            #end
+        ]]>
+    </sql>
+</query>    
+    <query name="dsB2BChangeListGetStateList" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map"
+           root-name="B2BOtherCustom">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            SELECT $NEEDDISTINCT
+                #result('T_OUT.SYSNAME', 'java.lang.String', 'SYSNAME'),
+                #result('T_OUT.ID', 'java.lang.Long', 'ID'),
+                #result('T_OUT.NAME', 'java.lang.String', 'NAME')
+            FROM (
+            SELECT
+            T.SYSNAME AS SYSNAME,
+            T.ID AS ID,
+            T.NAME AS NAME
+            FROM HB_KINDSTATUS T
+          ) T_OUT
+          #chain('AND' 'WHERE')
+          #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+          #end
+        ]]>
+        </sql>
+    </query>
+
+    <query name="dsB2BChangeListGetInsProductList" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map"
+           root-name="B2BOtherCustom">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            SELECT $NEEDDISTINCT
+                #result('T_OUT.SYSNAME', 'java.lang.String', 'SYSNAME'),
+                #result('T_OUT.PRODID', 'java.lang.Long', 'PRODID'),
+                #result('T_OUT.NAME', 'java.lang.String', 'NAME')
+            FROM (
+            SELECT
+            T.SYSNAME AS SYSNAME,
+            T.PRODID AS PRODID,
+            T.NAME AS NAME
+            FROM B2B_PROD T
+          ) T_OUT
+          #chain('AND' 'WHERE')
+          #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+          #end
+        ]]>
+        </sql>
+    </query>
+
+      <query name="dsChatGetTopicType" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map"
+           root-name="B2BOtherCustom">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT $NEEDDISTINCT
+                #result('T.SYSNAME', 'java.lang.String', 'SYSNAME'),
+                #result('T.ID', 'java.lang.Long', 'ID'),
+                #result('T.NAME', 'java.lang.String', 'NAME')
+            FROM HB_KINDCHAT T
+        ]]>
+        </sql>
+    
+    </query>
+
+    <query name="dsB2BDepartmentBrowseListByParamEx"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map"
+           root-name="B2BOtherCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT $NEEDDISTINCT
+                    #result('T.DEPARTMENTID', 'java.lang.Long', 'DEPARTMENTID'),
+                    #result('T.PARENTDEPARTMENT', 'java.lang.Long', 'PARENTDEPARTMENT'),
+                    #result('T.DEPTCODE', 'java.lang.String', 'DEPTCODE'),
+                    #result('T.DEPTSHORTNAME', 'java.lang.String', 'DEPTSHORTNAME'),
+                    #result('T.DEPTFULLNAME', 'java.lang.String', 'DEPTFULLNAME'),
+                    #result('T.DEPTLEVEL', 'java.lang.Long', 'DEPTLEVEL'),
+                    #result('W.LEVELSYSNAME', 'java.lang.String', 'DEPTLEVELSYSNAME'),
+                    #result('P.DEPTCODE', 'java.lang.String', 'PARENTDEPARTMENTCODE')
+                    $ASPECTFIELDS
+                FROM
+                    DEP_DEPARTMENT T
+                    INNER JOIN INS_DEPLVL L ON (L.OBJECTID = T.DEPARTMENTID)
+                    INNER JOIN DEP_DEPARTMENT P ON (P.DEPARTMENTID = L.PARENTID)
+                    LEFT JOIN DEP_DEPTLEVEL W ON (W.DEPTLEVELID = T.DEPTLEVEL)
+                    $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                    #chunk($DEPARTMENTID) T.DEPARTMENTID = #bind($DEPARTMENTID 'NUMERIC') #end
+                    #chunk($PARENTDEPARTMENT) T.PARENTDEPARTMENT = #bind($PARENTDEPARTMENT 'NUMERIC') #end
+                    #chunk($DEPTCODE) T.DEPTCODE = #bind($DEPTCODE 'VARCHAR') #end
+                    #chunk($DEPTCODENOTEQUAL) T.DEPTCODE <> #bind($DEPTCODENOTEQUAL 'VARCHAR') #end
+                    #chunk($DEPTCODALSONOTEQUAL) T.DEPTCODE <> #bind($DEPTCODALSONOTEQUAL 'VARCHAR') #end
+                    #chunk($DEPTSHORTNAME) T.DEPTSHORTNAME = #bind($DEPTSHORTNAME 'VARCHAR') #end
+                    #chunk($DEPTFULLNAME) T.DEPTFULLNAME = #bind($DEPTFULLNAME 'VARCHAR') #end
+                    #chunk($PARENTDEPTCODE)
+                        (P.DEPTCODE = #bind($PARENTDEPTCODE 'VARCHAR'))
+                    #end
+                    #chunk($NOTINIMPORTSESSIONWITHID)
+                        NOT EXISTS (
+                            SELECT * FROM
+                                B2B_IMPORTSESSION_CNT CNT
+                                LEFT JOIN B2B_IS_CNT_DEPARTMENT CNTD ON (CNTD.ID = CNT.ID)
+                            WHERE
+                                CNT.IMPORTSESSIONID = #bind($NOTINIMPORTSESSIONWITHID 'NUMERIC')
+                                AND CNTD.CODE = T.DEPTCODE
+                        )
+                    #end
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+    <query name="dsB2BDepartmentBrowseListByParamExCount"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map"
+           root-name="B2BOtherCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT
+                    #result('COUNT($NEEDDISTINCT T.DEPARTMENTID)', 'java.lang.Long', 'CNT')
+                FROM
+                    DEP_DEPARTMENT T
+                    LEFT JOIN INS_DEPLVL L ON (L.OBJECTID = T.DEPARTMENTID)
+                    LEFT JOIN DEP_DEPARTMENT P ON (P.DEPARTMENTID = L.PARENTID)
+                    LEFT JOIN DEP_DEPTLEVEL W ON (W.DEPTLEVELID = T.DEPTLEVEL)
+                    $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                    #chunk($DEPARTMENTID) T.DEPARTMENTID = #bind($DEPARTMENTID 'NUMERIC') #end
+                    #chunk($PARENTDEPARTMENT) T.PARENTDEPARTMENT = #bind($PARENTDEPARTMENT 'NUMERIC') #end
+                    #chunk($DEPTCODE) T.DEPTCODE = #bind($DEPTCODE 'VARCHAR') #end
+                    #chunk($DEPTCODENOTEQUAL) T.DEPTCODE <> #bind($DEPTCODENOTEQUAL 'VARCHAR') #end
+                    #chunk($DEPTCODALSONOTEQUAL) T.DEPTCODE <> #bind($DEPTCODALSONOTEQUAL 'VARCHAR') #end
+                    #chunk($DEPTSHORTNAME) T.DEPTSHORTNAME = #bind($DEPTSHORTNAME 'VARCHAR') #end
+                    #chunk($DEPTFULLNAME) T.DEPTFULLNAME = #bind($DEPTFULLNAME 'VARCHAR') #end
+                    #chunk($PARENTDEPTCODE)
+                        (P.DEPTCODE = #bind($PARENTDEPTCODE 'VARCHAR'))
+                    #end
+                    #chunk($NOTINIMPORTSESSIONWITHID)
+                        NOT EXISTS (
+                            SELECT * FROM
+                                B2B_IMPORTSESSION_CNT CNT
+                                LEFT JOIN B2B_IS_CNT_DEPARTMENT CNTD ON (CNTD.ID = CNT.ID)
+                            WHERE
+                                CNT.IMPORTSESSIONID = #bind($NOTINIMPORTSESSIONWITHID 'NUMERIC')
+                                AND CNTD.CODE = T.DEPTCODE
+                        )
+                    #end
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+
+    <query name="dsB2BEmployeeBrowseListByParamEx"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map"
+           root-name="B2BOtherCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT $NEEDDISTINCT
+                    #result('e.EMPLOYEEID', 'java.lang.Long', 'EMPLOYEEID'),
+                    #result('e.CODE', 'java.lang.String', 'CODE'),
+                    #result('e.DEPARTMENTID', 'java.lang.Long', 'DEPARTMENTID'),
+                    #result('e.STATUS', 'java.lang.String', 'STATUS'),
+                    #result('e.LASTNAME', 'java.lang.String', 'LASTNAME'),
+                    #result('e.FIRSTNAME', 'java.lang.String', 'FIRSTNAME'),
+                    #result('e.MIDDLENAME', 'java.lang.String', 'MIDDLENAME'),
+                    #result('e.EMAIL', 'java.lang.String', 'EMAIL'),
+                    #result('cu.USERID', 'java.lang.Long', 'USERID'),
+                    #result('ua.USERACCOUNTID', 'java.lang.Long', 'USERACCOUNTID'),
+                    #result('ua.LOGIN', 'java.lang.String', 'LOGIN')
+                    $ASPECTFIELDS
+                FROM
+                    DEP_EMPLOYEE e
+                    LEFT JOIN CORE_USER cu ON (cu.OBJECTID = e.EMPLOYEEID)
+                    LEFT JOIN CORE_USERACCOUNT ua ON (ua.USERID = cu.USERID)
+                    $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                    #chunk($EMPLOYEEID) e.EMPLOYEEID = #bind($EMPLOYEEID 'NUMERIC') #end
+                    #chunk($CODE) e.CODE = #bind($CODE 'VARCHAR') #end
+                    #chunk($LOGIN) ua.LOGIN = #bind($LOGIN 'VARCHAR') #end
+                    #chunk($STATUS) e.STATUS = #bind($STATUS 'VARCHAR') #end
+                    #chunk($DEPARTMENTID) e.DEPARTMENTID = #bind($DEPARTMENTID 'NUMERIC') #end
+                    #chunk($ANYSTATUSEQUALS) (
+                        (e.STATUS = #bind($ANYSTATUSEQUALS 'VARCHAR')) OR
+                        (cu.STATUS = #bind($ANYSTATUSEQUALS 'VARCHAR')) OR
+                        (ua.STATUS = #bind($ANYSTATUSEQUALS 'VARCHAR'))
+                    ) #end
+                    #chunk($ANYSTATUSNOTEQUALS) (
+                        (e.STATUS <> #bind($ANYSTATUSNOTEQUALS 'VARCHAR')) OR
+                        (cu.STATUS <> #bind($ANYSTATUSNOTEQUALS 'VARCHAR')) OR
+                        (ua.STATUS <> #bind($ANYSTATUSNOTEQUALS 'VARCHAR'))
+                    ) #end
+                    #chunk($PARENTDEPTCODE)
+                        (EXISTS(
+                            SELECT
+                                *
+                            FROM
+                                DEP_DEPARTMENT dep
+                                INNER JOIN INS_DEPLVL lvl ON (lvl.OBJECTID = dep.DEPARTMENTID)
+                                INNER JOIN DEP_DEPARTMENT prt ON (prt.DEPARTMENTID = lvl.PARENTID)
+                            WHERE
+                                (dep.DEPARTMENTID = e.DEPARTMENTID) AND (prt.DEPTCODE = #bind($PARENTDEPTCODE 'VARCHAR'))
+                        ))
+                    #end
+                    #chunk($NOTINIMPORTSESSIONWITHID)
+                        NOT EXISTS (
+                            SELECT * FROM
+                                B2B_IMPORTSESSION_CNT CNT
+                                LEFT JOIN B2B_IS_CNT_MANAGER_DEPARTMENT CNTD ON (CNTD.ID = CNT.ID)
+                            WHERE
+                                CNT.IMPORTSESSIONID = #bind($NOTINIMPORTSESSIONWITHID 'NUMERIC')
+                                AND CNTD.MANAGERPERSONNELNUMBER = e.CODE
+                        )
+                    #end
+                    $ASPECTRESTRICTION
+                #end
+                #chunk($ORDERBYUSERACCOUNTCREATIONDATEDESC) ORDER BY ua.CREATIONDATE DESC #end
+            ]]>
+        </sql>
+    </query>
+    <query name="dsB2BEmployeeBrowseListByParamExCount"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map"
+           root-name="B2BOtherCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT
+                    #result('COUNT($NEEDDISTINCT e.EMPLOYEEID)', 'java.lang.Long', 'CNT')
+                FROM
+                    DEP_EMPLOYEE e
+                    LEFT JOIN CORE_USER cu ON (cu.OBJECTID = e.EMPLOYEEID)
+                    LEFT JOIN CORE_USERACCOUNT ua ON (ua.USERID = cu.USERID)
+                    $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                    #chunk($EMPLOYEEID) e.EMPLOYEEID = #bind($EMPLOYEEID 'NUMERIC') #end
+                    #chunk($CODE) e.CODE = #bind($CODE 'VARCHAR') #end
+                    #chunk($LOGIN) ua.LOGIN = #bind($LOGIN 'VARCHAR') #end
+                    #chunk($STATUS) e.STATUS = #bind($STATUS 'VARCHAR') #end
+                    #chunk($DEPARTMENTID) e.DEPARTMENTID = #bind($DEPARTMENTID 'NUMERIC') #end
+                    #chunk($ANYSTATUSEQUALS) (
+                        (e.STATUS = #bind($ANYSTATUSEQUALS 'VARCHAR')) OR
+                        (cu.STATUS = #bind($ANYSTATUSEQUALS 'VARCHAR')) OR
+                        (ua.STATUS = #bind($ANYSTATUSEQUALS 'VARCHAR'))
+                    ) #end
+                    #chunk($ANYSTATUSNOTEQUALS) (
+                        (e.STATUS <> #bind($ANYSTATUSNOTEQUALS 'VARCHAR')) OR
+                        (cu.STATUS <> #bind($ANYSTATUSNOTEQUALS 'VARCHAR')) OR
+                        (ua.STATUS <> #bind($ANYSTATUSNOTEQUALS 'VARCHAR'))
+                    ) #end
+                    #chunk($PARENTDEPTCODE)
+                        (EXISTS(
+                            SELECT
+                                *
+                            FROM
+                                DEP_DEPARTMENT dep
+                                INNER JOIN INS_DEPLVL lvl ON (lvl.OBJECTID = dep.DEPARTMENTID)
+                                INNER JOIN DEP_DEPARTMENT prt ON (prt.DEPARTMENTID = lvl.PARENTID)
+                            WHERE
+                                (dep.DEPARTMENTID = e.DEPARTMENTID) AND (prt.DEPTCODE = #bind($PARENTDEPTCODE 'VARCHAR'))
+                        ))
+                    #end
+                    #chunk($NOTINIMPORTSESSIONWITHID)
+                        NOT EXISTS (
+                            SELECT * FROM
+                                B2B_IMPORTSESSION_CNT CNT
+                                LEFT JOIN B2B_IS_CNT_MANAGER_DEPARTMENT CNTD ON (CNTD.ID = CNT.ID)
+                            WHERE
+                                CNT.IMPORTSESSIONID = #bind($NOTINIMPORTSESSIONWITHID 'NUMERIC')
+                                AND CNTD.MANAGERPERSONNELNUMBER = e.CODE
+                        )
+                    #end
+                    $ASPECTRESTRICTION
+                #end
+                #chunk($ORDERBYUSERACCOUNTCREATIONDATEDESC) ORDER BY ua.CREATIONDATE DESC #end
+            ]]>
+        </sql>
+    </query>
+
+    <!-- при создании пользователя в adminws выполняется проверка только по CORE_USERACCOUNT.LOGIN без учета статусов и пр -->
+    <!-- поэтому следует после всех блокировок также сменить логин на уникальный и очень маловероятный -->
+    <query name="dsB2BCoreUserAccountLoginUpdate"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map"
+           root-name="B2BOtherCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                UPDATE
+                    CORE_USERACCOUNT T
+                SET
+                    T.LOGIN = #bind($LOGIN 'VARCHAR')
+                    $ASPECTFIELDS
+                #chain('AND' 'WHERE')
+                    #chunk() T.USERACCOUNTID = #bind($USERACCOUNTID 'NUMERIC') #end
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+
+    <!-- ресурсосберегающий вариант обновления второстепенных атрибутов (например, адреса электронной) почты сотрудника -->
+    <query name="dsB2BDepEmployeeExpressUpdate"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map"
+           root-name="B2BOtherCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                UPDATE
+                    DEP_EMPLOYEE T
+                SET
+                    T.EMAIL = #bind($EMAIL 'VARCHAR')
+                    $ASPECTFIELDS
+                #chain('AND' 'WHERE')
+                    #chunk() T.EMPLOYEEID = #bind($EMPLOYEEID 'NUMERIC') #end
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+
+    <!-- разблокировка "отключенного" ранее сотрудника -->
+    <query name="dsB2BDepEmployeeStatusUpdate"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map"
+           root-name="B2BOtherCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                UPDATE
+                    DEP_EMPLOYEE T
+                SET
+                    T.STATUS = #bind($STATUS 'VARCHAR')
+                    $ASPECTFIELDS
+                #chain('AND' 'WHERE')
+                    #chunk() T.EMPLOYEEID = #bind($EMPLOYEEID 'NUMERIC') #end
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+
+    <!-- разблокировка "отключенной" ранее учетной записи (с опциональным обновлением логина) -->
+    <query name="dsB2BCoreUserAccountStatusUpdate"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map"
+           root-name="B2BOtherCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                UPDATE
+                    CORE_USERACCOUNT T
+                SET
+                    T.STATUS = #bind($STATUS 'VARCHAR')
+                    #chunk($LOGIN), T.LOGIN = #bind($LOGIN 'VARCHAR') #end
+                    $ASPECTFIELDS
+                #chain('AND' 'WHERE')
+                    #chunk() T.USERACCOUNTID = #bind($USERACCOUNTID 'NUMERIC') #end
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+
+    <!-- разблокировка "отключенного" ранее пользователя -->
+    <query name="dsB2BCoreUserStatusUpdate"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map"
+           root-name="B2BOtherCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                UPDATE
+                    CORE_USER T
+                SET
+                    T.STATUS = #bind($STATUS 'VARCHAR')
+                    $ASPECTFIELDS
+                #chain('AND' 'WHERE')
+                    #chunk() T.USERID = #bind($USERID 'NUMERIC') #end
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+
+    <!-- установка нового подразделения для конкретного сотрудника -->
+    <query name="dsB2BDepEmployeeDepartmentUpdate"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map"
+           root-name="B2BOtherCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                UPDATE
+                    DEP_EMPLOYEE T
+                SET
+                    T.DEPARTMENTID = #bind($DEPARTMENTID 'VARCHAR')
+                    $ASPECTFIELDS
+                #chain('AND' 'WHERE')
+                    #chunk() T.EMPLOYEEID = #bind($EMPLOYEEID 'NUMERIC') #end
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+
+    <query name="dsB2BContractBinFileBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BOtherCustom">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT $NEEDDISTINCT
+                    #result('T.BINFILEID', 'java.lang.Long', 'BINFILEID'),
+                    #result('T.FILENAME', 'java.lang.String', 'FILENAME'),
+                    #result('T.FILEPATH', 'java.lang.String', 'FILEPATH'),
+                    #result('T.FILESIZE', 'java.lang.String', 'FILESIZE'),
+                    #result('T.FILETYPEID', 'java.lang.Long', 'FILETYPEID'),
+                    #result('T.FILETYPENAME', 'java.lang.String', 'FILETYPENAME'),
+                    #result('T.FILESIZE', 'java.lang.String', 'FILESIZE'),
+                    #result('T.OBJID', 'java.lang.Long', 'OBJID'),
+                    #result('T.OBJTABLENAME', 'java.lang.String', 'OBJTABLENAME'),
+                    #result('T.NOTE', 'java.lang.String', 'NOTE'),
+                    #result('T.FSID', 'java.lang.String', 'FSID'),
+                    #result('pr.REPLEVEL', 'java.lang.Long', 'REPLEVEL')
+                    $ASPECTFIELDS
+                FROM
+                    INS_BINFILE T
+                    INNER JOIN B2B_PRODREP pr ON (pr.PRODREPID = T.FILETYPEID)
+                    $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                    #chunk($BINFILEID) T.BINFILEID = #bind($BINFILEID 'NUMERIC') #end
+                    #chunk($OBJTABLENAME) T.OBJTABLENAME = #bind($OBJTABLENAME 'VARCHAR') #end
+                    #chunk($OBJID) T.OBJID = #bind($OBJID 'NUMERIC') #end
+                    #chunk($REPLEVELLIST) (pr.REPLEVEL in ($REPLEVELLIST)) #end
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+    <query name="dsB2BContractBinFileBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BOtherCustom">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT
+                    #result('COUNT($NEEDDISTINCT T.BINFILEID)', 'java.lang.Long', 'CNT')
+                FROM
+                    INS_BINFILE T
+                    INNER JOIN B2B_PRODREP pr ON (pr.PRODREPID = T.FILETYPEID)
+                    $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                    #chunk($BINFILEID) T.BINFILEID = #bind($BINFILEID 'NUMERIC') #end
+                    #chunk($OBJTABLENAME) T.OBJTABLENAME = #bind($OBJTABLENAME 'VARCHAR') #end
+                    #chunk($OBJID) T.OBJID = #bind($OBJID 'NUMERIC') #end
+                    #chunk($REPLEVELLIST) (pr.REPLEVEL in ($REPLEVELLIST)) #end
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+
+</data-map>

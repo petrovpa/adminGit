@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<!-- 
+	Sets the time to live for an element before it expires.
+    	i.e. The maximum time between creation time and when an element expires.
+    	Parameter is optional. The default value is 600 sec.
+           -->
+	<timeToLiveSeconds>600</timeToLiveSeconds>
+</root>

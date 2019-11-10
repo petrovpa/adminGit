@@ -1,0 +1,71 @@
+<form #f="ngForm" [ngClass]="{'was-validated': wasValidated}"
+      class="page-form-edit user-accounts-edit-form" novalidate autocomplete="off">
+
+  <user-short-info [user]="user"></user-short-info>
+
+  <div class="page-title">Связь с учетной записью Active Directory</div>
+
+  <div class="row">
+    <div class="col-sm-6 col-12">
+      <form-control-label title="Связанная учетная запись AD" [required]="true">
+        <input-field name="activeDirectory"
+                     placeholder="Связанная учетная запись AD"
+                     [(ngModel)]="viewAdUserName"
+                     [required]="true"
+                     [disabled]="true"></input-field>
+      </form-control-label>
+    </div>
+    <div class="col-sm-6 col-12">
+      <form-control-label title="Поиск учетной записи AD">
+        <autocomplete name="adAccountSelect"
+                      nameField="ADUSERFULLNAME"
+                      sysnameField="ADUSERLOGIN"
+                      [(ngModel)]="selectedAdAccount"
+                      [items]="activeDirectoryUserList"
+                      (onSelect)="activeDirectoryUserSelect($event)"
+                      required="true"
+                      [disabled]="isBlock"
+                      [serviceCaller]="adServiceCaller"
+                      placeholder="Выберите учетную запись AD"></autocomplete>
+      </form-control-label>
+    </div>
+  </div>
+
+
+  <div class="page__btn">
+    <div class="row">
+      <div class="col-sm-6 col-12">
+        <button type="button"
+                class="btn btn-primary btn-rounded btn-block"
+                [disabled]="isBlock"
+                (click)="bindAccounts()">
+          Связать учетные записи
+        </button>
+      </div>
+      <div class="col-sm-6 col-12">
+        <button type="button"
+                class="btn btn-primary btn-rounded btn-block"
+                [disabled]="isBlock"
+                (click)="removeAccountBinding()">
+          Удалить связь
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-12">
+        <button type="button"
+                class="btn btn-link btn-rounded btn-block"
+                (click)="back($event, f)">
+          Вернуться
+        </button>
+      </div>
+      <div class="col-sm-6 col-12">
+        <button type="button"
+                class="btn btn-primary btn-rounded btn-block"
+                (click)="next($event, f)">
+          Продолжить
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

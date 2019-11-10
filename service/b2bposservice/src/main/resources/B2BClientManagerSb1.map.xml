@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+
+    <query name="dsClientManagerBrowseImportSessionOrgstructListByParams"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map"
+           root-name="B2BClientManagerSb1">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            SELECT $NEEDDISTINCT
+                #result('BIS.ID', 'java.lang.Long', 'ID'),
+                #result('BIS.DISCRIMINATOR', 'java.lang.String', 'DISCRIMINATOR'),
+                #result('BIS.STATEID', 'java.lang.Long', 'STATEID'),
+                #result('TCS.SYSNAME', 'java.lang.String', 'SYSNAME'),
+                #result('TCS.PUBLICNAME', 'java.lang.String', 'NAME'),
+                #result('BIS.CREATEDATE', 'java.sql.Timestamp', 'createDate'),
+                #result('BIS.CREATEUSERID', 'java.lang.Long', 'CREATEUSERID'),
+                #result('BIS.UPDATEDATE','java.sql.Timestamp', 'updateDate'),
+                #result('BIS.UPDATEUSERID', 'java.lang.Long', 'UPDATEUSERID'),
+                #result('BICD.ID', 'java.lang.Long', 'BICDID'),
+                #result('BICD.CODE', 'java.lang.String', 'CODE'),
+                #result('BICD.PARENTCODE', 'java.lang.String', 'PARENTCODE')
+                $ASPECTFIELDS
+            FROM B2B_IMPORTSESSION_CNT BIS
+            LEFT JOIN B2B_IS_CNT_DEPARTMENT BICD ON (BIS.ID = BICD.ID)
+            LEFT JOIN CORE_SM_STATE TCS ON (BIS.STATEID = TCS.ID)
+                $ASPECTTABLES
+            #chain('AND' 'WHERE')
+                #chunk($ID) BIS.ID = #bind($ID 'NUMERIC') #end
+                #chunk($IMPORTSESSIONID) BIS.IMPORTSESSIONID = #bind($IMPORTSESSIONID 'NUMERIC') #end
+                #chunk($DISCRIMINATOR) BIS.DISCRIMINATOR = #bind($DISCRIMINATOR 'VARCHAR') #end
+                $ASPECTRESTRICTION
+            #end
+        ]]>
+        </sql>
+    </query>
+
+    <query name="dsClientManagerBrowseImportSessionOrgstructListByParamsCount"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map"
+           root-name="B2BClientManagerSb1">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            SELECT
+               #result('COUNT($NEEDDISTINCT BIS.ID)', 'java.lang.Long', 'CNT')
+            FROM B2B_IMPORTSESSION_CNT BIS
+            LEFT JOIN B2B_IS_CNT_DEPARTMENT BICD ON (BIS.ID = BICD.ID)
+            LEFT JOIN CORE_SM_STATE TCS ON (BIS.STATEID = TCS.ID)
+                $ASPECTTABLES
+            #chain('AND' 'WHERE')
+                #chunk($ID) BIS.ID = #bind($ID 'NUMERIC') #end
+                #chunk($IMPORTSESSIONID) BIS.IMPORTSESSIONID = #bind($IMPORTSESSIONID 'NUMERIC') #end
+                #chunk($DISCRIMINATOR) BIS.DISCRIMINATOR = #bind($DISCRIMINATOR 'VARCHAR') #end
+                $ASPECTRESTRICTION
+            #end
+        ]]>
+        </sql>
+    </query>
+
+    <query name="dsClientManagerBrowseImportSessionKmVspListByParams"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map"
+           root-name="B2BClientManagerSb1">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            SELECT $NEEDDISTINCT
+                #result('BIS.ID', 'java.lang.Long', 'ID'),
+                #result('BIS.DISCRIMINATOR', 'java.lang.String', 'DISCRIMINATOR'),
+                #result('BIS.STATEID', 'java.lang.Long', 'STATEID'),
+                #result('TCS.SYSNAME', 'java.lang.String', 'STATESYSNAME'),
+                #result('TCS.PUBLICNAME', 'java.lang.String', 'NAME'),
+                #result('BIS.CREATEDATE', 'java.sql.Timestamp', 'createDate'),
+                #result('BIS.CREATEUSERID', 'java.lang.Long', 'CREATEUSERID'),
+                #result('BIS.UPDATEDATE','java.sql.Timestamp', 'updateDate'),
+                #result('BIS.UPDATEUSERID', 'java.lang.Long', 'UPDATEUSERID'),
+                #result('BICMD.MANAGERFULLNAME', 'java.lang.String', 'MANAGERFULLNAME'),
+                #result('BICD.NAME', 'java.lang.String', 'DEPARTMENTNAME')
+                $ASPECTFIELDS
+            FROM B2B_IMPORTSESSION_CNT BIS
+            LEFT JOIN B2B_IS_CNT_MANAGER_DEPARTMENT BICMD ON (BIS.ID = BICMD.ID)
+            LEFT JOIN CORE_SM_STATE TCS ON (BIS.STATEID = TCS.ID)
+            LEFT JOIN (
+                SELECT
+                    cd.ID,
+                    cd.CODE,
+                    cd.NAME
+                FROM
+                    B2B_IMPORTSESSION cdis
+                    LEFT JOIN B2B_IMPORTSESSION_CNT cdc ON (cdc.IMPORTSESSIONID = cdis.ID)
+                    LEFT JOIN B2B_IS_CNT_DEPARTMENT cd ON (cd.ID = cdc.ID)
+                WHERE
+                    cdis.ISLAST = 1
+            ) BICD ON (BICD.CODE = BICMD.DEPARTMENTCODE)
+                $ASPECTTABLES
+            #chain('AND' 'WHERE')
+                #chunk($ID) BIS.ID = #bind($ID 'NUMERIC') #end
+                #chunk($IMPORTSESSIONID) BIS.IMPORTSESSIONID = #bind($IMPORTSESSIONID 'NUMERIC') #end
+                #chunk($DISCRIMINATOR) BIS.DISCRIMINATOR = #bind($DISCRIMINATOR 'VARCHAR') #end
+                $ASPECTRESTRICTION
+            #end
+        ]]>
+        </sql>
+    </query>
+
+    <query name="dsClientManagerBrowseImportSessionKmVspListByParamsCount"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map"
+           root-name="B2BClientManagerSb1">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            SELECT
+               #result('COUNT($NEEDDISTINCT BIS.ID)', 'java.lang.Long', 'CNT')
+            FROM B2B_IMPORTSESSION_CNT BIS
+            LEFT JOIN B2B_IS_CNT_MANAGER_DEPARTMENT BICMD ON (BIS.ID = BICMD.ID)
+            LEFT JOIN CORE_SM_STATE TCS ON (BIS.STATEID = TCS.ID)
+            LEFT JOIN (
+                SELECT
+                    cd.ID,
+                    cd.CODE,
+                    cd.NAME
+                FROM
+                    B2B_IMPORTSESSION cdis
+                    LEFT JOIN B2B_IMPORTSESSION_CNT cdc ON (cdc.IMPORTSESSIONID = cdis.ID)
+                    LEFT JOIN B2B_IS_CNT_DEPARTMENT cd ON (cd.ID = cdc.ID)
+                WHERE
+                    cdis.ISLAST = 1
+            ) BICD ON (BICD.CODE = BICMD.DEPARTMENTCODE)
+                $ASPECTTABLES
+            #chain('AND' 'WHERE')
+                #chunk($ID) BIS.ID = #bind($ID 'NUMERIC') #end
+                #chunk($IMPORTSESSIONID) BIS.IMPORTSESSIONID = #bind($IMPORTSESSIONID 'NUMERIC') #end
+                #chunk($DISCRIMINATOR) BIS.DISCRIMINATOR = #bind($DISCRIMINATOR 'VARCHAR') #end
+                $ASPECTRESTRICTION
+            #end
+        ]]>
+        </sql>
+    </query>
+
+    <query name="dsClientManagerBrowseImportSessionKmContractListByParams"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map"
+           root-name="B2BClientManagerSb1">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            SELECT $NEEDDISTINCT
+                #result('BIS.ID', 'java.lang.Long', 'ID'),
+                #result('BIS.DISCRIMINATOR', 'java.lang.String', 'DISCRIMINATOR'),
+                #result('BIS.STATEID', 'java.lang.Long', 'STATEID'),
+                #result('TCS.SYSNAME', 'java.lang.String', 'STATESYSNAME'),
+                #result('TCS.PUBLICNAME', 'java.lang.String', 'NAME'),
+                #result('BIS.CREATEDATE', 'java.sql.Timestamp', 'createDate'),
+                #result('BIS.CREATEUSERID', 'java.lang.Long', 'CREATEUSERID'),
+                #result('BIS.UPDATEDATE','java.sql.Timestamp', 'updateDate'),
+                #result('BIS.UPDATEUSERID', 'java.lang.Long', 'UPDATEUSERID'),
+                #result('BICMD.MANAGERFULLNAME', 'java.lang.String', 'MANAGERFULLNAME'),
+                #result('BICMC.CONTRACTNUMBER', 'java.lang.String', 'CONTRACTNUMBER')
+                $ASPECTFIELDS
+            FROM B2B_IMPORTSESSION_CNT BIS
+            LEFT JOIN B2B_IS_CNT_MANAGER_CONTRACT BICMC ON (BIS.ID = BICMC.ID)
+            LEFT JOIN CORE_SM_STATE TCS ON (BIS.STATEID = TCS.ID)
+            LEFT JOIN (
+				SELECT
+					CD.ID,
+					CD.MANAGERPERSONNELNUMBER,
+					CD.MANAGERFULLNAME
+				FROM B2B_IMPORTSESSION BICMD2
+					LEFT JOIN B2B_IMPORTSESSION_CNT BICMD3 ON (BICMD3.IMPORTSESSIONID = BICMD2.ID)
+					LEFT JOIN B2B_IS_CNT_MANAGER_DEPARTMENT CD on (BICMD3.ID = CD.ID)
+				WHERE BICMD2.ISLAST = 1
+			) BICMD ON (BICMC.MANAGERPERSONNELNUMBER = BICMD.MANAGERPERSONNELNUMBER)
+                $ASPECTTABLES
+            #chain('AND' 'WHERE')
+                #chunk($ID) BIS.ID = #bind($ID 'NUMERIC') #end
+                #chunk($IMPORTSESSIONID) BIS.IMPORTSESSIONID = #bind($IMPORTSESSIONID 'NUMERIC') #end
+                #chunk($DISCRIMINATOR) BIS.DISCRIMINATOR = #bind($DISCRIMINATOR 'VARCHAR') #end
+                $ASPECTRESTRICTION
+            #end
+        ]]>
+        </sql>
+    </query>
+
+    <query name="dsClientManagerBrowseImportSessionKmContractListByParamsCount"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map"
+           root-name="B2BClientManagerSb1">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            SELECT
+               #result('COUNT($NEEDDISTINCT BIS.ID)', 'java.lang.Long', 'CNT')
+            FROM B2B_IMPORTSESSION_CNT BIS
+            LEFT JOIN B2B_IS_CNT_MANAGER_CONTRACT BICMC ON (BIS.ID = BICMC.ID)
+            LEFT JOIN CORE_SM_STATE TCS ON (BIS.STATEID = TCS.ID)
+            LEFT JOIN (
+				SELECT
+					CD.ID,
+					CD.MANAGERPERSONNELNUMBER,
+					CD.MANAGERFULLNAME
+				FROM B2B_IMPORTSESSION BICMD2
+					LEFT JOIN B2B_IMPORTSESSION_CNT BICMD3 ON (BICMD3.IMPORTSESSIONID = BICMD2.ID)
+					LEFT JOIN B2B_IS_CNT_MANAGER_DEPARTMENT CD on (BICMD3.ID = CD.ID)
+				WHERE BICMD2.ISLAST = 1
+			) BICMD ON (BICMC.MANAGERPERSONNELNUMBER = BICMD.MANAGERPERSONNELNUMBER)
+                $ASPECTTABLES
+            #chain('AND' 'WHERE')
+                #chunk($ID) BIS.ID = #bind($ID 'NUMERIC') #end
+                #chunk($IMPORTSESSIONID) BIS.IMPORTSESSIONID = #bind($IMPORTSESSIONID 'NUMERIC') #end
+                #chunk($DISCRIMINATOR) BIS.DISCRIMINATOR = #bind($DISCRIMINATOR 'VARCHAR') #end
+                $ASPECTRESTRICTION
+            #end
+        ]]>
+        </sql>
+    </query>
+
+    <query name="dsClientManagerBrowseImportSessionList" factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map"
+           root-name="B2BClientManagerSb1">
+        <sql>
+            <![CDATA[
+            SELECT $NEEDDISTINCT
+                #result('TIS.ID', 'java.lang.Long', 'ID'),
+                #result('TIS.CREATEDATE', 'java.sql.Timestamp', 'createDate'),
+                #result('TCS.SYSNAME', 'java.lang.String', 'STATESYSNAME'),
+                #result('TCS.PUBLICNAME', 'java.lang.String', 'STATENAME'),
+                #result('TIS.DISCRIMINATOR', 'java.lang.String', 'DISCRIMINATOR'),
+                #result('TIS.STATEID', 'java.lang.Long', 'STATEID'),
+                #result("TE.LASTNAME || ' ' || TE.FIRSTNAME || ' ' || TE.MIDDLENAME", 'java.lang.String', 'FULLNAME')
+                $ASPECTFIELDS
+            FROM B2B_IMPORTSESSION TIS
+                LEFT JOIN CORE_SM_STATE TCS ON (TCS.ID = TIS.STATEID)
+                LEFT JOIN CORE_USERACCOUNT TCA ON (TIS.CREATEUSERID = TCA.USERACCOUNTID)
+                LEFT JOIN CORE_USER TCU ON (TCA.USERID = TCU.USERID)
+                LEFT JOIN DEP_EMPLOYEE TE ON (TE.EMPLOYEEID = TCU.OBJECTID)
+                $ASPECTTABLES
+            #chain('AND' 'WHERE')
+                #chunk($ID) TIS.ID = #bind($ID 'NUMERIC') #end
+                #chunk($DISCRIMINATOR) TIS.DISCRIMINATOR = #bind($DISCRIMINATOR 'VARCHAR') #end
+                $ASPECTRESTRICTION
+            #end
+            ]]>
+        </sql>
+    </query>
+    <query name="dsClientManagerBrowseImportSessionListCount" factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map"
+           root-name="B2BClientManagerSb1">
+        <sql>
+            <![CDATA[
+            SELECT
+                #result('COUNT($NEEDDISTINCT TIS.ID)', 'java.lang.Long', 'CNT')
+            FROM B2B_IMPORTSESSION TIS
+                LEFT JOIN CORE_SM_STATE TCS ON (TCS.ID = TIS.STATEID)
+                LEFT JOIN CORE_USERACCOUNT TCA ON (TIS.CREATEUSERID = TCA.USERACCOUNTID)
+                LEFT JOIN CORE_USER TCU ON (TCA.USERID = TCU.USERID)
+                LEFT JOIN DEP_EMPLOYEE TE ON (TE.EMPLOYEEID = TCU.OBJECTID)
+                $ASPECTTABLES
+            #chain('AND' 'WHERE')
+                #chunk($ID) TIS.ID = #bind($ID 'NUMERIC') #end
+                #chunk($DISCRIMINATOR) TIS.DISCRIMINATOR = #bind($DISCRIMINATOR 'VARCHAR') #end
+                $ASPECTRESTRICTION
+            #end
+            ]]>
+        </sql>
+    </query>
+
+    <query name="dsClientManagerBrowseByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map"
+           root-name="B2BClientManagerSb1">
+        <sql>
+            SELECT $NEEDDISTINCT
+                #result('CUA.USERACCOUNTID', 'java.lang.Long', 'USERACCOUNTID'),
+                #result("DE.LASTNAME || ' ' || DE.FIRSTNAME || ' ' || DE.MIDDLENAME", 'java.lang.String', 'CLIENTMANAGERFIO')
+                $ASPECTFIELDS
+            FROM CORE_USERACCOUNT CUA
+                LEFT JOIN CORE_USER CU ON (CUA.USERID = CU.USERID)
+                LEFT JOIN CORE_ROLEACCOUNT CR ON (CUA.USERACCOUNTID = CR.USERACCOUNTID)
+                LEFT JOIN CORE_USERROLE CUR ON (CR.ROLEID = CUR.ROLEID)
+                LEFT JOIN DEP_EMPLOYEE DE ON (CU.OBJECTID = DE.EMPLOYEEID)
+                $ASPECTTABLES
+            #chain('AND' 'WHERE')
+                #chunk($STATUS) DE.STATUS = #bind($STATUS 'VARCHAR') #end
+                #chunk($ROLESYSNAME) CUR.ROLESYSNAME = #bind($ROLESYSNAME 'VARCHAR') #end
+                #chunk($TABNUMBER) CUA.LOGIN = #bind($TABNUMBER 'VARCHAR') #end
+                $ASPECTRESTRICTION
+            #end
+        </sql>
+    </query>
+
+    <query name="dsClientManagerBrowseByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map"
+           root-name="B2BClientManagerSb1">
+        <sql>
+            <![CDATA[
+            SELECT
+                #result('COUNT($NEEDDISTINCT CUA.USERACCOUNTID)', 'java.lang.Long', 'CNT')
+            FROM CORE_USERACCOUNT CUA
+                LEFT JOIN CORE_USER CU ON (CUA.USERID = CU.USERID)
+                LEFT JOIN CORE_ROLEACCOUNT CR ON (CUA.USERACCOUNTID = CR.USERACCOUNTID)
+                LEFT JOIN CORE_USERROLE CUR ON (CR.ROLEID = CUR.ROLEID)
+                LEFT JOIN DEP_EMPLOYEE DE ON (CU.OBJECTID = DE.EMPLOYEEID)
+                $ASPECTTABLES
+            #chain('AND' 'WHERE')
+                #chunk($STATUS) DE.STATUS = #bind($STATUS 'VARCHAR') #end
+                #chunk($ROLESYSNAME) CUR.ROLESYSNAME = #bind($ROLESYSNAME 'VARCHAR') #end
+                #chunk($TABNUMBER) CUA.LOGIN = #bind($TABNUMBER 'VARCHAR') #end
+                $ASPECTRESTRICTION
+            #end
+            ]]>
+        </sql>
+    </query>
+</data-map>

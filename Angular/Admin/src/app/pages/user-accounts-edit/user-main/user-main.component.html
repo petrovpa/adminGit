@@ -1,0 +1,197 @@
+<form #f="ngForm" [ngClass]="{'was-validated': wasValidated}"
+      class="page-form-edit user-accounts-edit-form"
+      novalidate autocomplete="off">
+
+  <fieldset>
+    <legend>Общая информация</legend>
+
+    <div class="row">
+      <div class="col-sm-6 col-12">
+        <form-control-label title="Фамилия" [required]="true">
+          <input-name name="surname"
+                      placeholder="Фамилия"
+                      [(ngModel)]="user.LASTNAME"
+                      [required]="true"
+                      [nameInputFilter]="filterLastName"
+                      filterErrorRussian="Только русские символы и тире"
+                      [disabled]="isFormDisabled || isBlock"></input-name>
+        </form-control-label>
+      </div>
+      <div class="col-sm-6 col-12">
+        <form-control-label title="Имя" [required]="true">
+          <input-name name="firstName"
+                      placeholder="Имя"
+                      [(ngModel)]="user.FIRSTNAME"
+                      [required]="true"
+                      [nameInputFilter]="filterName"
+                      filterErrorRussian="Только русские символы"
+                      [disabled]="isFormDisabled || isBlock"></input-name>
+        </form-control-label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6 col-12">
+        <form-control-label title="Отчество">
+          <input-name name="patronymic"
+                      [(ngModel)]="user.MIDDLENAME"
+                      #patronymicControl=ngModel
+                      placeholder="Отчество"
+                      [nameInputFilter]="filterName"
+                      filterErrorRussian="Только русские символы"
+                      [disabled]="isFormDisabled || isBlock"></input-name>
+        </form-control-label>
+      </div>
+      <div class="col-sm-6 col-12" >
+        <form-control-label title="Подразделение" [required]="true" *ngIf="departmentTree && departmentTree.length > 0">
+          <select-tree
+                       name="department"
+                       placeholder="Подразделение"
+                       [selectedValue]="departmentItem"
+                       [nodes]="departmentTree"
+                       [options]="departamentOptions"
+                       [required]="true"
+                       [disabled]="isFormDisabled || isBlock"></select-tree>
+        </form-control-label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6 col-12">
+        <form-control-label title="Электронная почта" [required]="true">
+          <input-email name="personalEmail"
+                       [(ngModel)]="user.EMAIL"
+                       [required]="true"
+                       [disabled]="isFormDisabled || isBlock"></input-email>
+        </form-control-label>
+      </div>
+      <div class="col-sm-6 col-12">
+        <form-control-label title="Контактный телефон" [required]="true">
+          <input-phone name="mobilePhone"
+                       [(ngModel)]="user.PHONE1"
+                       [required]="true"
+                       [disabled]="isFormDisabled || isBlock"></input-phone>
+        </form-control-label>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Управление аккаунтом</legend>
+
+    <div class="row">
+      <div class="col-sm-6 col-12">
+        <form-control-label title="Учетная запись (Логин)" [required]="true">
+          <input-field name="login"
+                       autocomplete="off"
+                       placeholder="Логин"
+                       [(ngModel)]="user.LOGIN"
+                       [required]="true"
+                       [disabled]="isFormDisabled || isBlock"></input-field>
+        </form-control-label>
+      </div>
+
+      <div class="col-sm-6 col-12">
+        <form-control-label title="Тип пользователя" [required]="true">
+          <select2 name="userType"
+                   placeholder="Выберите тип"
+                   [(ngModel)]="user.USERTYPE"
+                   [items]="userTypesList"
+                   bindLabel="NAME"
+                   bindValue="SYSNAME"
+                   [required]="!user.USERID"
+                   [disabled]="isFormDisabled || isBlock || user.USERID"></select2>
+        </form-control-label>
+      </div>
+
+      <div class="col-sm-6 col-12">
+        <form-control-label title="Максимальное количество одновременно открытых сеансов" [required]="true">
+          <input-number name="isConcurrent"
+                       [(ngModel)]="user.ISCONCURRENT"
+                       [required]="true"
+                       [disabled]="isFormDisabled || isBlock"></input-number>
+        </form-control-label>
+      </div>
+
+      <div class="col-sm-6 col-12">
+        <form-control-label title="Метод авторизации" [required]="true">
+          <select2 name="authMethod"
+                   placeholder="Выберете метод"
+                   [(ngModel)]="user.AUTHMETHOD"
+                   [items]="authMethodList"
+                   bindLabel="nameAuthMethod"
+                   bindValue="idAuth"
+                   [required]="!user.AUTHMETHOD"
+                   [disabled]="isFormDisabled || isBlock"></select2>
+        </form-control-label>
+      </div>
+    </div>
+
+    <div *ngIf="!userAccountId" class="row">
+      <div class="col-sm-6 col-12">
+        <form-control-label title="Пароль" [required]="true">
+          <input-field name="password"
+                       autocomplete="new-password"
+                       type="password"
+                       placeholder="Пароль"
+                       [(ngModel)]="user.PASSWORD"
+                       [required]="true"
+                       [disabled]="isFormDisabled"></input-field>
+        </form-control-label>
+      </div>
+      <div class="col-sm-6 col-12">
+        <form-control-label title="Подтверждение пароля" [required]="true">
+          <input-field name="passwordConfirm"
+                       type="password"
+                       placeholder="Подтверждение пароля"
+                       [(ngModel)]="user.RETPASSWORD"
+                       [required]="true"
+                       [disabled]="isFormDisabled"></input-field>
+        </form-control-label>
+      </div>
+    </div>
+  </fieldset>
+
+  <alert-form *ngIf="!isFormDisabled && errorMessage">
+    {{errorMessage}}
+  </alert-form>
+
+  <div class="page__btn">
+    <div class="row">
+      <div class="col-sm-6 col-12">
+        <button *ngIf="userAccountId"
+                class="btn btn-link btn-rounded btn-block"
+                (click)="onChangePassword($event)"
+                [disabled]="isBlock">
+          Сменить пароль
+        </button>
+      </div>
+      <div class="col-sm-6 col-12">
+        <button type="submit"
+                class="btn btn-primary btn-rounded btn-block"
+                (click)="createOrUpdateUser($event, f)"
+                [disabled]="isBlock">
+          Сохранить
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-12">
+        <button type="button"
+                class="btn btn-primary btn-rounded btn-block"
+                (click)="navigateCancel()">
+          Закрыть
+        </button>
+      </div>
+      <div class="col-sm-6 col-12">
+        <button [disabled]="!userAccountId"
+                type="submit"
+                class="btn btn-primary btn-rounded btn-block"
+                (click)="navigateNext()">Продолжить
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
+
+<change-password-dialog #changeDialog [options]="changePasswordDialogOptions"></change-password-dialog>

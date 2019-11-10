@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>Sevice</groupId>
+        <artifactId>sberfrontdocker</artifactId>
+        <version>${global.version}</version> 
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <groupId>Sevice</groupId>
+    <artifactId>life-admin</artifactId>
+    <version>${admin.version}</version>
+    <description>Generated docker</description>
+
+    <build>
+        <plugins>
+            <!-- clear resorces -->
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>${basedir}/Dockerfile/war</directory>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                        <fileset>
+                            <directory>${basedir}/Dockerfile</directory>
+                            <includes>
+                                <include>*</include>
+                            </includes>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+            <!-- copy template docker file -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.7</version>
+                <executions>
+                    <execution>
+                        <id>copy-metadata diasoft</id>
+                        <!-- here the phase you need -->
+                        <phase>integration-test</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/Dockerfile</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${basedir}/template</directory> 
+                                    <filtering>true</filtering>									
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- get metadata admin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.7</version>
+                <executions>
+                    <execution>
+                        <id>copy-metadata admin</id>
+                        <!-- here the phase you need -->
+                        <phase>integration-test</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/Dockerfile/admin</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>../../../AngularJS/admin/dist</directory>
+                                    <excludes>
+                                        <exclude>**/Angular4/**</exclude>
+                                    </excludes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- get war from local maven repository -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.10</version>
+                <executions>
+                    <execution>
+                        <id>copy</id>
+                        <phase>integration-test</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <!-- adminws-->
+                                <artifactItem>
+                                    <groupId>ru.diasoft.fa.platform.services</groupId>
+                                    <artifactId>adminws</artifactId>
+                                    <version>${adminws.version}</version>
+                                    <type>war</type>
+                                </artifactItem>
+                                <!-- corews -->
+                                <artifactItem>
+                                    <groupId>ru.diasoft.fa.platform.services</groupId>
+                                    <artifactId>corews</artifactId>
+                                    <version>${corews.version}</version>
+                                    <type>war</type>
+                                </artifactItem>
+                                <!-- bivhealthws -->                    
+                                <artifactItem>
+                                    <groupId>com.bivgroup.flextera.insurance.bivsberfront.webservice</groupId>
+                                    <artifactId>bivhealthws</artifactId>
+                                    <version>${bivhealthws.version}</version>
+                                    <type>war</type>
+                                </artifactItem>
+                                <!-- b2bposws -->
+                                <artifactItem>
+                                    <groupId>com.bivgroup.flextera.insurance.bivsberfront.webservice</groupId>
+                                    <artifactId>b2bposws</artifactId>
+                                    <version>${b2bposws.version}</version>
+                                    <type>war</type>
+                                </artifactItem>
+                                <!-- adminrest -->
+                                <artifactItem>
+                                    <groupId>com.bivgroup.flextera.insurance.bivsberfront.webservice</groupId>
+                                    <artifactId>admrestws</artifactId>
+                                    <version>${admrestws.version}</version>
+                                    <type>war</type>
+                                </artifactItem>
+								<!-- websmsws -->
+                                <artifactItem>
+                                    <groupId>ru.diasoft.fa.platform.services</groupId>
+                                    <artifactId>websmsws</artifactId>
+                                    <version>${websmsws.version}</version>
+                                    <type>war</type>
+                                </artifactItem>
+								<!-- insposws -->
+                                <artifactItem>
+                                    <groupId>ru.diasoft.flextera.insurance.front.webservice</groupId>
+                                    <artifactId>insposws</artifactId>
+                                    <version>${insposws.version}</version>
+                                    <type>war</type>
+                                </artifactItem>
+								<!-- instarificatorws -->
+                                <artifactItem>
+                                    <groupId>ru.diasoft.flextera.insurance.front.webservice</groupId>
+                                    <artifactId>instarificatorws</artifactId>
+                                    <version>${instarificatorws.version}</version>
+                                    <type>war</type>
+                                </artifactItem>
+                                <!-- bivsberlossws -->
+                                <artifactItem>
+                                    <groupId>com.bivgroup.flextera.insurance.bivsberfront.webservice</groupId>
+                                    <artifactId>bivsberlossws</artifactId>
+                                    <version>${bivsberlossws.version}</version>
+                                    <type>war</type>
+                                </artifactItem>
+                            </artifactItems>
+                            <outputDirectory>${basedir}/Dockerfile/war</outputDirectory>
+                            <overWriteReleases>true</overWriteReleases>
+                            <overWriteSnapshots>true</overWriteSnapshots>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+  
+        </plugins>
+    </build>
+	
+    <profiles>
+        <profile>
+            <id>docker_build</id>
+            <build>
+                <plugins>
+                    <!-- build dockers images -->
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>1.2.1</version>
+                        <executions>
+                            <execution>
+                                <id>chmod +x</id>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <phase>integration-test</phase>
+                                <configuration>
+                                    <workingDirectory>${project.basedir}</workingDirectory>
+                                    <executable>chmod</executable>
+                                    <commandlineArgs>+x ${project.basedir}/Task.sh</commandlineArgs>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>build--dockers--integration system</id>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <phase>integration-test</phase>
+                                <configuration>
+                                    <environmentVariables>
+                                        <WORK_DIR>${project.build.directory}</WORK_DIR>
+                                        <DOCKER_FILE_LOCATION>${project.basedir}/Dockerfile</DOCKER_FILE_LOCATION>
+                                        <PROJECT_VERSION>${project.artifactId}:${project.version}</PROJECT_VERSION>
+                                    </environmentVariables>
+                                    <executable>${project.basedir}/Task.sh</executable>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>	
+            </build>
+        </profile>
+    </profiles>	
+</project>

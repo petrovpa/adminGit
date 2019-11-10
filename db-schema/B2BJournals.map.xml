@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+	<db-entity name="B2B_HANDBOOK_IMPLEMENTATION">
+		<db-attribute name="ID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="4000"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="4000"/>
+	</db-entity>
+	<db-entity name="B2B_HANDBOOK_OWNER">
+		<db-attribute name="HANDBOOKID" type="NUMERIC" length="19"/>
+		<db-attribute name="ID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="USERID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_JOURNAL">
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="DATAPROVIDERID" type="NUMERIC" length="19"/>
+		<db-attribute name="ID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="4000"/>
+		<db-attribute name="SQLDATA" type="VARCHAR" length="4000"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_JOURNALBUTTON">
+		<db-attribute name="ACTION" type="VARCHAR" length="4000"/>
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="GROUPNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="ID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="JOURNALID" type="NUMERIC" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="4000"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="4000"/>
+		<db-attribute name="SEQUENCE" type="NUMERIC" length="19"/>
+		<db-attribute name="TYPEBUTTON" type="NUMERIC" length="19"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="URLPICTURE" type="VARCHAR" length="4000"/>
+	</db-entity>
+	<db-entity name="B2B_JOURNALPARAM">
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="DATAPROVIDERID" type="NUMERIC" length="19"/>
+		<db-attribute name="DATATYPEID" type="NUMERIC" length="19"/>
+		<db-attribute name="HANDBOOKID" type="NUMERIC" length="19"/>
+		<db-attribute name="ID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="ISCOMPLEX" type="NUMERIC" length="19"/>
+		<db-attribute name="ISREQUIRED" type="NUMERIC" length="19"/>
+		<db-attribute name="JOURNALID" type="NUMERIC" length="19"/>
+		<db-attribute name="KEYFIELD" type="VARCHAR" length="255"/>
+		<db-attribute name="MAINPARAMID" type="NUMERIC" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="4000"/>
+		<db-attribute name="NAMEFIELD" type="VARCHAR" length="255"/>
+		<db-attribute name="NAMESPACE" type="VARCHAR" length="255"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="4000"/>
+		<db-attribute name="PARAMSHOWEXPR" type="VARCHAR" length="4000"/>
+		<db-attribute name="PARENTID" type="NUMERIC" length="19"/>
+		<db-attribute name="SEQUENCE" type="NUMERIC" length="19"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="URLCOMPONENT" type="VARCHAR" length="4000"/>
+	</db-entity>
+	<db-entity name="B2B_JOURNALPARAMDATATYPE">
+		<db-attribute name="ID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="4000"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="B2B_KINDHANDBOOK">
+		<db-attribute name="CATEGORY" type="NUMERIC" length="19"/>
+		<db-attribute name="HBDATAVERSIONID" type="NUMERIC" length="19"/>
+		<db-attribute name="ID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="IMPLEMENTATIONID" type="NUMERIC" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="4000"/>
+		<db-attribute name="SQLDATA" type="VARCHAR" length="4000"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="4000"/>
+	</db-entity>
+	<obj-entity name="B2B_Handbook_Implementation" dbEntityName="B2B_HANDBOOK_IMPLEMENTATION">
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="ID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="содержит название способа"/>
+		<obj-attribute name="sysName" type="java.lang.String" db-attribute-path="SYSNAME" note="содержит служебное название способа"/>
+	</obj-entity>
+	<obj-entity name="B2B_Handbook_Owner" dbEntityName="B2B_HANDBOOK_OWNER">
+		<obj-attribute name="handbookId" type="java.lang.Long" db-attribute-path="HANDBOOKID" note="ссылка на объект учета «Классификатор видов справочника»"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="ID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД"/>
+		<obj-attribute name="userId" type="java.lang.Long" db-attribute-path="USERID" note="ссылка на объект учета «Пользователь системы»"/>
+	</obj-entity>
+	<obj-entity name="B2B_Journal" dbEntityName="B2B_JOURNAL">
+		<obj-attribute name="createdate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания"/>
+		<obj-attribute name="createuserid" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="Пользователь создавший запись"/>
+		<obj-attribute name="dataproviderid" type="java.lang.Long" db-attribute-path="DATAPROVIDERID" note="Ссылка на дата провайдер"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="ID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="содержит название журнала"/>
+		<obj-attribute name="sqlData" type="java.lang.String" db-attribute-path="SQLDATA" note="содержит SQL запрос для формирования табличной части журнала"/>
+		<obj-attribute name="sysName" type="java.lang.String" db-attribute-path="SYSNAME" note="содержит системное имя журнала"/>
+		<obj-attribute name="updatedate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата изменения записи"/>
+		<obj-attribute name="updateuserid" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="Пользователь изменивший запись"/>
+	</obj-entity>
+	<obj-entity name="B2B_JournalButton" dbEntityName="B2B_JOURNALBUTTON">
+		<obj-attribute name="action" type="java.lang.String" db-attribute-path="ACTION" note="действие"/>
+		<obj-attribute name="createdate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания"/>
+		<obj-attribute name="createuserid" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="Пользователь создавший запись"/>
+		<obj-attribute name="groupName" type="java.lang.String" db-attribute-path="GROUPNAME" note="содержит название группировки кнопок"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="ID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД объекта"/>
+		<obj-attribute name="journalId" type="java.lang.Long" db-attribute-path="JOURNALID" note="ссылка на объект учета «Журнал»"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="содержит название кнопки"/>
+		<obj-attribute name="note" type="java.lang.String" db-attribute-path="NOTE" note="содержит текст подробного описания кнопки"/>
+		<obj-attribute name="sequence" type="java.lang.Long" db-attribute-path="SEQUENCE" note="содержит сквозной порядковый номер кнопки"/>
+		<obj-attribute name="typeButton" type="java.lang.Long" db-attribute-path="TYPEBUTTON" note="тип кнопки"/>
+		<obj-attribute name="updatedate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата изменения записи"/>
+		<obj-attribute name="updateuserid" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="Пользователь изменивший запись"/>
+		<obj-attribute name="urlPicture" type="java.lang.String" db-attribute-path="URLPICTURE" note="содержит URL на иконку кнопки"/>
+	</obj-entity>
+	<obj-entity name="B2B_JournalParam" dbEntityName="B2B_JOURNALPARAM">
+		<obj-attribute name="createdate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания"/>
+		<obj-attribute name="createuserid" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="Пользователь создавший запись"/>
+		<obj-attribute name="dataTypeId" type="java.lang.Long" db-attribute-path="DATATYPEID" note="содержит классификацию параметра по значению"/>
+		<obj-attribute name="dataproviderid" type="java.lang.Long" db-attribute-path="DATAPROVIDERID" note="содержит ссылку на дата провайдер"/>
+		<obj-attribute name="handbookId" type="java.lang.Long" db-attribute-path="HANDBOOKID" note="ссылка на объект учета «Классификатор видов справочника»"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="ID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="Ид"/>
+		<obj-attribute name="isComplex" type="java.lang.Long" db-attribute-path="ISCOMPLEX" note="содержит признак комплексного параметра"/>
+		<obj-attribute name="isRequired" type="java.lang.Long" db-attribute-path="ISREQUIRED" note="признак обязательного заполнения параметра, без возможности исключения"/>
+		<obj-attribute name="journalID" type="java.lang.Long" db-attribute-path="JOURNALID" note="ссылка на объект учета «Журнал»"/>
+		<obj-attribute name="keyfield" type="java.lang.String" db-attribute-path="KEYFIELD" note="Поле идентификатор для справочника"/>
+		<obj-attribute name="mainParamId" type="java.lang.Long" db-attribute-path="MAINPARAMID" note="ссылка на объект учета «Параметр журнала», используется для связи подчиненных параметров, которые выводиться при выполнении условия главного параметра"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="содержит название параметра"/>
+		<obj-attribute name="namefield" type="java.lang.String" db-attribute-path="NAMEFIELD" note="поле наименование для справочника"/>
+		<obj-attribute name="namespace" type="java.lang.String" db-attribute-path="NAMESPACE" note="Путь к параметру ограничения"/>
+		<obj-attribute name="note" type="java.lang.String" db-attribute-path="NOTE" note="содержит текст подробного описания параметра"/>
+		<obj-attribute name="paramShowExpr" type="java.lang.String" db-attribute-path="PARAMSHOWEXPR" note="содержит список параметров, которые связаны с текущим и выводиться при выполнении условия"/>
+		<obj-attribute name="parentID" type="java.lang.Long" db-attribute-path="PARENTID" note="ссылка на объект учета «Параметр журнала», используется для связи параметров, которые являются частью комплексного параметра"/>
+		<obj-attribute name="sequence" type="java.lang.Long" db-attribute-path="SEQUENCE" note="содержит сквозной порядковый номер параметра"/>
+		<obj-attribute name="sysName" type="java.lang.String" db-attribute-path="SYSNAME" note="содержит системное имя параметра"/>
+		<obj-attribute name="updatedate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата изменения записи"/>
+		<obj-attribute name="updateuserid" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="Пользователь изменивший запись"/>
+		<obj-attribute name="urlComponent" type="java.lang.String" db-attribute-path="URLCOMPONENT" note="содержит URL на компоненту параметра"/>
+	</obj-entity>
+	<obj-entity name="B2B_JournalParamDataType" dbEntityName="B2B_JOURNALPARAMDATATYPE">
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="ID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME"/>
+		<obj-attribute name="sysName" type="java.lang.String" db-attribute-path="SYSNAME"/>
+	</obj-entity>
+	<obj-entity name="B2B_KindHandbook" dbEntityName="B2B_KINDHANDBOOK">
+		<obj-attribute name="category" type="java.math.BigDecimal" db-attribute-path="CATEGORY" note="содержит классификацию справочника по категории"/>
+		<obj-attribute name="hbDataVersionId" type="java.math.BigDecimal" db-attribute-path="HBDATAVERSIONID" note="Версия данных справочника"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="ID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД"/>
+		<obj-attribute name="implementationId" type="java.math.BigDecimal" db-attribute-path="IMPLEMENTATIONID" note="ссылка на объект учета «Способ реализации справочника»"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="содержит название параметра"/>
+		<obj-attribute name="sqlData" type="java.lang.String" db-attribute-path="SQLDATA" note="содержит SQL запрос для формирования списка объектов"/>
+		<obj-attribute name="sysName" type="java.lang.String" db-attribute-path="SYSNAME" note="содержит системное имя параметра"/>
+	</obj-entity>
+</data-map>

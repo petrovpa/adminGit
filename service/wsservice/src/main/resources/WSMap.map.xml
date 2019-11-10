@@ -1,0 +1,3011 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+	<db-entity name="WS_AUTHMETHOD">
+		<db-attribute name="AUTHMETHODID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="WS_METHOD">
+		<db-attribute name="DESCRIPTION" type="VARCHAR" length="255"/>
+		<db-attribute name="METHODID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="SERVICEID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="WS_METHODTEMPLATE">
+		<db-attribute name="METHODID" type="NUMERIC" length="19"/>
+		<db-attribute name="METHODTEMPLATEID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="TEMPLATEID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="WS_SERVICE">
+		<db-attribute name="DESCRIPTION" type="VARCHAR" length="255"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="SERVICEID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+	</db-entity>
+	<db-entity name="WS_TEMPLATE">
+		<db-attribute name="CODE" type="VARCHAR" length="255"/>
+		<db-attribute name="DESCRIPTION" type="VARCHAR" length="255"/>
+		<db-attribute name="ISONEPRODUCT" type="NUMERIC" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="PRODCODEXPATH" type="VARCHAR" length="1024"/>
+		<db-attribute name="TEMPLATEID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="XSDSCHEME" type="VARCHAR" length="1024"/>
+		<db-attribute name="XSDSCHEME2" type="VARCHAR" length="1024"/>
+	</db-entity>
+	<db-entity name="WS_TEMPLATEPRODUCT">
+		<db-attribute name="DESCRIPTION" type="VARCHAR" length="255"/>
+		<db-attribute name="JAXBCLASSNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="TEMPLATEID" type="NUMERIC" length="19"/>
+		<db-attribute name="TEMPLATEPRODUCTID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="XSDSCHEME" type="VARCHAR" length="255"/>
+		<db-attribute name="XSDTARGETNS" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="WS_USER">
+		<db-attribute name="AUTHMETHODID" type="NUMERIC" length="19"/>
+		<db-attribute name="DESCRIPTION" type="VARCHAR" length="255"/>
+		<db-attribute name="LOGIN" type="VARCHAR" length="255"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="PASSWORD" type="VARCHAR" length="255"/>
+		<db-attribute name="PWDEXPDATE" type="FLOAT"/>
+		<db-attribute name="USERID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+	</db-entity>
+	<db-entity name="WS_USERMETHOD">
+		<db-attribute name="METHODID" type="NUMERIC" length="19"/>
+		<db-attribute name="USERID" type="NUMERIC" length="19"/>
+		<db-attribute name="USERMETHODID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+	</db-entity>
+	<db-entity name="WS_USERTEMPLATE">
+		<db-attribute name="TEMPLATEID" type="NUMERIC" length="19"/>
+		<db-attribute name="USERID" type="NUMERIC" length="19"/>
+		<db-attribute name="USERTEMPLATEID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+	</db-entity>
+	<obj-entity name="WSAuthMethod" dbEntityName="WS_AUTHMETHOD">
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="AUTHMETHODID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД записи"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование"/>
+		<obj-attribute name="sysName" type="java.lang.String" db-attribute-path="SYSNAME" note="Системное наименование"/>
+	</obj-entity>
+	<obj-entity name="WSMethod" dbEntityName="WS_METHOD">
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="DESCRIPTION" note="Описание"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="METHODID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД записи"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование"/>
+		<obj-attribute name="serviceId" type="java.lang.Long" db-attribute-path="SERVICEID" note="ИД сервиса"/>
+	</obj-entity>
+	<obj-entity name="WSMethodTemplate" dbEntityName="WS_METHODTEMPLATE">
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="METHODTEMPLATEID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД записи"/>
+		<obj-attribute name="methodId" type="java.lang.Long" db-attribute-path="METHODID" note="ИД метода"/>
+		<obj-attribute name="templateId" type="java.lang.Long" db-attribute-path="TEMPLATEID" note="ИД шаблона"/>
+	</obj-entity>
+	<obj-entity name="WSService" dbEntityName="WS_SERVICE">
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="DESCRIPTION" note="Описание"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="SERVICEID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД записи"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование"/>
+	</obj-entity>
+	<obj-entity name="WSTemplate" dbEntityName="WS_TEMPLATE">
+		<obj-attribute name="code" type="java.lang.String" db-attribute-path="CODE" note="Код"/>
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="DESCRIPTION" note="Описание"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="TEMPLATEID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД записи"/>
+		<obj-attribute name="isOneProduct" type="java.lang.Long" db-attribute-path="ISONEPRODUCT" note="Признак того, что продукт в шаблоне единственный"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование"/>
+		<obj-attribute name="productCodeXPath" type="java.lang.String" db-attribute-path="PRODCODEXPATH" note="Xpath путь для получения кода продукта из XML"/>
+		<obj-attribute name="xsdScheme" type="java.lang.String" db-attribute-path="XSDSCHEME" note="Схема валидации входящих данных"/>
+		<obj-attribute name="xsdScheme2" type="java.lang.String" db-attribute-path="XSDSCHEME2" note="Дополнительная схема валидации входящих данных"/>
+	</obj-entity>
+	<obj-entity name="WSTemplateProduct" dbEntityName="WS_TEMPLATEPRODUCT">
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="DESCRIPTION" note="Описание"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="TEMPLATEPRODUCTID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД записи"/>
+		<obj-attribute name="jaxbClassName" type="java.lang.String" db-attribute-path="JAXBCLASSNAME" note="Наименование класса для конвертации"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование"/>
+		<obj-attribute name="templateId" type="java.math.BigDecimal" db-attribute-path="TEMPLATEID" note="ИД шаблона"/>
+		<obj-attribute name="xsdScheme" type="java.lang.String" db-attribute-path="XSDSCHEME" note="Схема валидации входящих данных"/>
+		<obj-attribute name="xsdTargetNamespace" type="java.lang.String" db-attribute-path="XSDTARGETNS" note="Конечный неймспейс"/>
+	</obj-entity>
+	<obj-entity name="WSUser" dbEntityName="WS_USER">
+		<obj-attribute name="authMethodId" type="java.lang.Long" db-attribute-path="AUTHMETHODID" note="ИД метода авторизации"/>
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="DESCRIPTION" note="Описание"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="USERID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД записи"/>
+		<obj-attribute name="login" type="java.lang.String" db-attribute-path="LOGIN" note="Логин пользователя"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование"/>
+		<obj-attribute name="password" type="java.lang.String" db-attribute-path="PASSWORD" note="Пароль пользователя"/>
+		<obj-attribute name="passwordExpDate" type="java.math.BigDecimal" db-attribute-path="PWDEXPDATE" note="Дата истечения срока действия пароля"/>
+	</obj-entity>
+	<obj-entity name="WSUserMethod" dbEntityName="WS_USERMETHOD">
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="USERMETHODID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД записи"/>
+		<obj-attribute name="methodId" type="java.lang.Long" db-attribute-path="METHODID" note="ИД метода"/>
+		<obj-attribute name="userId" type="java.lang.Long" db-attribute-path="USERID" note="ИД пользователя"/>
+	</obj-entity>
+	<obj-entity name="WSUserTemplate" dbEntityName="WS_USERTEMPLATE">
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="USERTEMPLATEID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД записи"/>
+		<obj-attribute name="templateId" type="java.lang.Long" db-attribute-path="TEMPLATEID" note="ИД шаблона"/>
+		<obj-attribute name="userId" type="java.lang.Long" db-attribute-path="USERID" note="ИД пользователя"/>
+	</obj-entity>
+<query name="dsWSAuthMethodBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.AUTHMETHODID', 'java.lang.Long', 'AUTHMETHODID'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.SYSNAME', 'java.lang.String', 'SYSNAME') 
+       $ASPECTFIELDS 
+FROM 
+      WS_AUTHMETHOD T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($AUTHMETHODID) T.AUTHMETHODID = #bind($AUTHMETHODID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsWSAuthMethodBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.AUTHMETHODID)', 'java.lang.Long', 'CNT') 
+FROM 
+      WS_AUTHMETHOD T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($AUTHMETHODID) T.AUTHMETHODID = #bind($AUTHMETHODID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsWSAuthMethodInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO WS_AUTHMETHOD (
+AUTHMETHODID,
+NAME,
+SYSNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($AUTHMETHODID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($SYSNAME 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO WS_AUTHMETHOD (
+AUTHMETHODID,
+NAME,
+SYSNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($AUTHMETHODID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($SYSNAME 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO WS_AUTHMETHOD (
+AUTHMETHODID,
+NAME,
+SYSNAME 
+$ASPECTFIELDS ) VALUES (
+#bind($AUTHMETHODID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($SYSNAME 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsWSAuthMethodUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.AUTHMETHODID = #bind($AUTHMETHODID 'NUMERIC') 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SYSNAME) , T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      WS_AUTHMETHOD T 
+#chain('AND' 'WHERE') 
+       #chunk($AUTHMETHODID) T.AUTHMETHODID = #bind($AUTHMETHODID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.AUTHMETHODID = #bind($AUTHMETHODID 'NUMERIC') 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SYSNAME) , T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      WS_AUTHMETHOD T 
+#chain('AND' 'WHERE') 
+       #chunk($AUTHMETHODID) T.AUTHMETHODID = #bind($AUTHMETHODID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       WS_AUTHMETHOD T 
+SET 
+    T.AUTHMETHODID = #bind($AUTHMETHODID 'NUMERIC') 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SYSNAME) , T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($AUTHMETHODID) T.AUTHMETHODID = #bind($AUTHMETHODID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsWSAuthMethodUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.AUTHMETHODID = #bind($AUTHMETHODID 'NUMERIC') 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SYSNAME) , TA.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      WS_AUTHMETHOD TA 
+WHERE 
+     TA.AUTHMETHODID in ( 
+       SELECT 
+         T.AUTHMETHODID
+       FROM 
+         WS_AUTHMETHOD T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($AUTHMETHODID) T.AUTHMETHODID = #bind($AUTHMETHODID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.AUTHMETHODID = #bind($AUTHMETHODID 'NUMERIC') 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SYSNAME) , TA.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      WS_AUTHMETHOD TA 
+WHERE 
+     TA.AUTHMETHODID in ( 
+       SELECT 
+         T.AUTHMETHODID
+       FROM 
+         WS_AUTHMETHOD T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($AUTHMETHODID) T.AUTHMETHODID = #bind($AUTHMETHODID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       WS_AUTHMETHOD TA 
+SET 
+    TA.AUTHMETHODID = #bind($AUTHMETHODID 'NUMERIC') 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SYSNAME) , TA.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.AUTHMETHODID in ( 
+       SELECT 
+         T.AUTHMETHODID
+       FROM 
+         WS_AUTHMETHOD T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($AUTHMETHODID) T.AUTHMETHODID = #bind($AUTHMETHODID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsWSAuthMethodDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      WS_AUTHMETHOD T 
+#chain('AND' 'WHERE') 
+       #chunk($AUTHMETHODID) T.AUTHMETHODID = #bind($AUTHMETHODID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      WS_AUTHMETHOD T 
+#chain('AND' 'WHERE') 
+       #chunk($AUTHMETHODID) T.AUTHMETHODID = #bind($AUTHMETHODID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       WS_AUTHMETHOD T 
+#chain('AND' 'WHERE') 
+       #chunk($AUTHMETHODID) T.AUTHMETHODID = #bind($AUTHMETHODID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsWSAuthMethodDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      WS_AUTHMETHOD TA 
+WHERE 
+     TA.AUTHMETHODID in ( 
+       SELECT 
+         T.AUTHMETHODID
+       FROM 
+         WS_AUTHMETHOD T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($AUTHMETHODID) T.AUTHMETHODID = #bind($AUTHMETHODID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      WS_AUTHMETHOD TA 
+WHERE 
+     TA.AUTHMETHODID in ( 
+       SELECT 
+         T.AUTHMETHODID
+       FROM 
+         WS_AUTHMETHOD T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($AUTHMETHODID) T.AUTHMETHODID = #bind($AUTHMETHODID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       WS_AUTHMETHOD TA 
+WHERE 
+     TA.AUTHMETHODID in ( 
+       SELECT 
+         T.AUTHMETHODID
+       FROM 
+         WS_AUTHMETHOD T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($AUTHMETHODID) T.AUTHMETHODID = #bind($AUTHMETHODID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsWSMethodBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.DESCRIPTION', 'java.lang.String', 'DESCRIPTION'),
+        #result('T.METHODID', 'java.lang.Long', 'METHODID'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.SERVICEID', 'java.lang.Long', 'SERVICEID') 
+       $ASPECTFIELDS 
+FROM 
+      WS_METHOD T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($DESCRIPTION) T.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+       #chunk($METHODID) T.METHODID = #bind($METHODID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($SERVICEID) T.SERVICEID = #bind($SERVICEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsWSMethodBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.METHODID)', 'java.lang.Long', 'CNT') 
+FROM 
+      WS_METHOD T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($DESCRIPTION) T.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+       #chunk($METHODID) T.METHODID = #bind($METHODID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($SERVICEID) T.SERVICEID = #bind($SERVICEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsWSMethodInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO WS_METHOD (
+DESCRIPTION,
+METHODID,
+NAME,
+SERVICEID 
+$ASPECTFIELDS ) VALUES (
+#bind($DESCRIPTION 'VARCHAR'),
+#bind($METHODID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($SERVICEID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO WS_METHOD (
+DESCRIPTION,
+METHODID,
+NAME,
+SERVICEID 
+$ASPECTFIELDS ) VALUES (
+#bind($DESCRIPTION 'VARCHAR'),
+#bind($METHODID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($SERVICEID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO WS_METHOD (
+DESCRIPTION,
+METHODID,
+NAME,
+SERVICEID 
+$ASPECTFIELDS ) VALUES (
+#bind($DESCRIPTION 'VARCHAR'),
+#bind($METHODID 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($SERVICEID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsWSMethodUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.METHODID = #bind($METHODID 'NUMERIC') 
+#chunk($DESCRIPTION) , T.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SERVICEID) , T.SERVICEID = #bind($SERVICEID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      WS_METHOD T 
+#chain('AND' 'WHERE') 
+       #chunk($METHODID) T.METHODID = #bind($METHODID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.METHODID = #bind($METHODID 'NUMERIC') 
+#chunk($DESCRIPTION) , T.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SERVICEID) , T.SERVICEID = #bind($SERVICEID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      WS_METHOD T 
+#chain('AND' 'WHERE') 
+       #chunk($METHODID) T.METHODID = #bind($METHODID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       WS_METHOD T 
+SET 
+    T.METHODID = #bind($METHODID 'NUMERIC') 
+#chunk($DESCRIPTION) , T.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SERVICEID) , T.SERVICEID = #bind($SERVICEID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($METHODID) T.METHODID = #bind($METHODID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsWSMethodUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.METHODID = #bind($METHODID 'NUMERIC') 
+#chunk($DESCRIPTION) , TA.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SERVICEID) , TA.SERVICEID = #bind($SERVICEID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      WS_METHOD TA 
+WHERE 
+     TA.METHODID in ( 
+       SELECT 
+         T.METHODID
+       FROM 
+         WS_METHOD T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($METHODID) T.METHODID = #bind($METHODID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.METHODID = #bind($METHODID 'NUMERIC') 
+#chunk($DESCRIPTION) , TA.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SERVICEID) , TA.SERVICEID = #bind($SERVICEID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      WS_METHOD TA 
+WHERE 
+     TA.METHODID in ( 
+       SELECT 
+         T.METHODID
+       FROM 
+         WS_METHOD T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($METHODID) T.METHODID = #bind($METHODID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       WS_METHOD TA 
+SET 
+    TA.METHODID = #bind($METHODID 'NUMERIC') 
+#chunk($DESCRIPTION) , TA.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($SERVICEID) , TA.SERVICEID = #bind($SERVICEID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.METHODID in ( 
+       SELECT 
+         T.METHODID
+       FROM 
+         WS_METHOD T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($METHODID) T.METHODID = #bind($METHODID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsWSMethodDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      WS_METHOD T 
+#chain('AND' 'WHERE') 
+       #chunk($METHODID) T.METHODID = #bind($METHODID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      WS_METHOD T 
+#chain('AND' 'WHERE') 
+       #chunk($METHODID) T.METHODID = #bind($METHODID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       WS_METHOD T 
+#chain('AND' 'WHERE') 
+       #chunk($METHODID) T.METHODID = #bind($METHODID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsWSMethodDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      WS_METHOD TA 
+WHERE 
+     TA.METHODID in ( 
+       SELECT 
+         T.METHODID
+       FROM 
+         WS_METHOD T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($METHODID) T.METHODID = #bind($METHODID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      WS_METHOD TA 
+WHERE 
+     TA.METHODID in ( 
+       SELECT 
+         T.METHODID
+       FROM 
+         WS_METHOD T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($METHODID) T.METHODID = #bind($METHODID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       WS_METHOD TA 
+WHERE 
+     TA.METHODID in ( 
+       SELECT 
+         T.METHODID
+       FROM 
+         WS_METHOD T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($METHODID) T.METHODID = #bind($METHODID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsWSMethodTemplateBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.METHODTEMPLATEID', 'java.lang.Long', 'METHODTEMPLATEID'),
+        #result('T.METHODID', 'java.lang.Long', 'METHODID'),
+        #result('T.TEMPLATEID', 'java.lang.Long', 'TEMPLATEID') 
+       $ASPECTFIELDS 
+FROM 
+      WS_METHODTEMPLATE T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($METHODID) T.METHODID = #bind($METHODID 'NUMERIC') #end 
+       #chunk($METHODTEMPLATEID) T.METHODTEMPLATEID = #bind($METHODTEMPLATEID 'NUMERIC') #end 
+       #chunk($TEMPLATEID) T.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsWSMethodTemplateBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.METHODTEMPLATEID)', 'java.lang.Long', 'CNT') 
+FROM 
+      WS_METHODTEMPLATE T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($METHODID) T.METHODID = #bind($METHODID 'NUMERIC') #end 
+       #chunk($METHODTEMPLATEID) T.METHODTEMPLATEID = #bind($METHODTEMPLATEID 'NUMERIC') #end 
+       #chunk($TEMPLATEID) T.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsWSMethodTemplateInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO WS_METHODTEMPLATE (
+METHODID,
+METHODTEMPLATEID,
+TEMPLATEID 
+$ASPECTFIELDS ) VALUES (
+#bind($METHODID 'NUMERIC'),
+#bind($METHODTEMPLATEID 'NUMERIC'),
+#bind($TEMPLATEID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO WS_METHODTEMPLATE (
+METHODID,
+METHODTEMPLATEID,
+TEMPLATEID 
+$ASPECTFIELDS ) VALUES (
+#bind($METHODID 'NUMERIC'),
+#bind($METHODTEMPLATEID 'NUMERIC'),
+#bind($TEMPLATEID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO WS_METHODTEMPLATE (
+METHODID,
+METHODTEMPLATEID,
+TEMPLATEID 
+$ASPECTFIELDS ) VALUES (
+#bind($METHODID 'NUMERIC'),
+#bind($METHODTEMPLATEID 'NUMERIC'),
+#bind($TEMPLATEID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsWSMethodTemplateUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.METHODTEMPLATEID = #bind($METHODTEMPLATEID 'NUMERIC') 
+#chunk($METHODID) , T.METHODID = #bind($METHODID 'NUMERIC') #end 
+#chunk($TEMPLATEID) , T.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      WS_METHODTEMPLATE T 
+#chain('AND' 'WHERE') 
+       #chunk($METHODTEMPLATEID) T.METHODTEMPLATEID = #bind($METHODTEMPLATEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.METHODTEMPLATEID = #bind($METHODTEMPLATEID 'NUMERIC') 
+#chunk($METHODID) , T.METHODID = #bind($METHODID 'NUMERIC') #end 
+#chunk($TEMPLATEID) , T.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      WS_METHODTEMPLATE T 
+#chain('AND' 'WHERE') 
+       #chunk($METHODTEMPLATEID) T.METHODTEMPLATEID = #bind($METHODTEMPLATEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       WS_METHODTEMPLATE T 
+SET 
+    T.METHODTEMPLATEID = #bind($METHODTEMPLATEID 'NUMERIC') 
+#chunk($METHODID) , T.METHODID = #bind($METHODID 'NUMERIC') #end 
+#chunk($TEMPLATEID) , T.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($METHODTEMPLATEID) T.METHODTEMPLATEID = #bind($METHODTEMPLATEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsWSMethodTemplateUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.METHODTEMPLATEID = #bind($METHODTEMPLATEID 'NUMERIC') 
+#chunk($METHODID) , TA.METHODID = #bind($METHODID 'NUMERIC') #end 
+#chunk($TEMPLATEID) , TA.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      WS_METHODTEMPLATE TA 
+WHERE 
+     TA.METHODTEMPLATEID in ( 
+       SELECT 
+         T.METHODTEMPLATEID
+       FROM 
+         WS_METHODTEMPLATE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($METHODTEMPLATEID) T.METHODTEMPLATEID = #bind($METHODTEMPLATEID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.METHODTEMPLATEID = #bind($METHODTEMPLATEID 'NUMERIC') 
+#chunk($METHODID) , TA.METHODID = #bind($METHODID 'NUMERIC') #end 
+#chunk($TEMPLATEID) , TA.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      WS_METHODTEMPLATE TA 
+WHERE 
+     TA.METHODTEMPLATEID in ( 
+       SELECT 
+         T.METHODTEMPLATEID
+       FROM 
+         WS_METHODTEMPLATE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($METHODTEMPLATEID) T.METHODTEMPLATEID = #bind($METHODTEMPLATEID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       WS_METHODTEMPLATE TA 
+SET 
+    TA.METHODTEMPLATEID = #bind($METHODTEMPLATEID 'NUMERIC') 
+#chunk($METHODID) , TA.METHODID = #bind($METHODID 'NUMERIC') #end 
+#chunk($TEMPLATEID) , TA.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.METHODTEMPLATEID in ( 
+       SELECT 
+         T.METHODTEMPLATEID
+       FROM 
+         WS_METHODTEMPLATE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($METHODTEMPLATEID) T.METHODTEMPLATEID = #bind($METHODTEMPLATEID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsWSMethodTemplateDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      WS_METHODTEMPLATE T 
+#chain('AND' 'WHERE') 
+       #chunk($METHODTEMPLATEID) T.METHODTEMPLATEID = #bind($METHODTEMPLATEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      WS_METHODTEMPLATE T 
+#chain('AND' 'WHERE') 
+       #chunk($METHODTEMPLATEID) T.METHODTEMPLATEID = #bind($METHODTEMPLATEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       WS_METHODTEMPLATE T 
+#chain('AND' 'WHERE') 
+       #chunk($METHODTEMPLATEID) T.METHODTEMPLATEID = #bind($METHODTEMPLATEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsWSMethodTemplateDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      WS_METHODTEMPLATE TA 
+WHERE 
+     TA.METHODTEMPLATEID in ( 
+       SELECT 
+         T.METHODTEMPLATEID
+       FROM 
+         WS_METHODTEMPLATE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($METHODTEMPLATEID) T.METHODTEMPLATEID = #bind($METHODTEMPLATEID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      WS_METHODTEMPLATE TA 
+WHERE 
+     TA.METHODTEMPLATEID in ( 
+       SELECT 
+         T.METHODTEMPLATEID
+       FROM 
+         WS_METHODTEMPLATE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($METHODTEMPLATEID) T.METHODTEMPLATEID = #bind($METHODTEMPLATEID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       WS_METHODTEMPLATE TA 
+WHERE 
+     TA.METHODTEMPLATEID in ( 
+       SELECT 
+         T.METHODTEMPLATEID
+       FROM 
+         WS_METHODTEMPLATE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($METHODTEMPLATEID) T.METHODTEMPLATEID = #bind($METHODTEMPLATEID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsWSServiceBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.DESCRIPTION', 'java.lang.String', 'DESCRIPTION'),
+        #result('T.SERVICEID', 'java.lang.Long', 'SERVICEID'),
+        #result('T.NAME', 'java.lang.String', 'NAME') 
+       $ASPECTFIELDS 
+FROM 
+      WS_SERVICE T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($DESCRIPTION) T.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($SERVICEID) T.SERVICEID = #bind($SERVICEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsWSServiceBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.SERVICEID)', 'java.lang.Long', 'CNT') 
+FROM 
+      WS_SERVICE T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($DESCRIPTION) T.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($SERVICEID) T.SERVICEID = #bind($SERVICEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsWSServiceInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO WS_SERVICE (
+DESCRIPTION,
+NAME,
+SERVICEID 
+$ASPECTFIELDS ) VALUES (
+#bind($DESCRIPTION 'VARCHAR'),
+#bind($NAME 'VARCHAR'),
+#bind($SERVICEID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO WS_SERVICE (
+DESCRIPTION,
+NAME,
+SERVICEID 
+$ASPECTFIELDS ) VALUES (
+#bind($DESCRIPTION 'VARCHAR'),
+#bind($NAME 'VARCHAR'),
+#bind($SERVICEID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO WS_SERVICE (
+DESCRIPTION,
+NAME,
+SERVICEID 
+$ASPECTFIELDS ) VALUES (
+#bind($DESCRIPTION 'VARCHAR'),
+#bind($NAME 'VARCHAR'),
+#bind($SERVICEID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsWSServiceUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.SERVICEID = #bind($SERVICEID 'NUMERIC') 
+#chunk($DESCRIPTION) , T.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      WS_SERVICE T 
+#chain('AND' 'WHERE') 
+       #chunk($SERVICEID) T.SERVICEID = #bind($SERVICEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.SERVICEID = #bind($SERVICEID 'NUMERIC') 
+#chunk($DESCRIPTION) , T.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      WS_SERVICE T 
+#chain('AND' 'WHERE') 
+       #chunk($SERVICEID) T.SERVICEID = #bind($SERVICEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       WS_SERVICE T 
+SET 
+    T.SERVICEID = #bind($SERVICEID 'NUMERIC') 
+#chunk($DESCRIPTION) , T.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($SERVICEID) T.SERVICEID = #bind($SERVICEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsWSServiceUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.SERVICEID = #bind($SERVICEID 'NUMERIC') 
+#chunk($DESCRIPTION) , TA.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      WS_SERVICE TA 
+WHERE 
+     TA.SERVICEID in ( 
+       SELECT 
+         T.SERVICEID
+       FROM 
+         WS_SERVICE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($SERVICEID) T.SERVICEID = #bind($SERVICEID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.SERVICEID = #bind($SERVICEID 'NUMERIC') 
+#chunk($DESCRIPTION) , TA.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      WS_SERVICE TA 
+WHERE 
+     TA.SERVICEID in ( 
+       SELECT 
+         T.SERVICEID
+       FROM 
+         WS_SERVICE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($SERVICEID) T.SERVICEID = #bind($SERVICEID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       WS_SERVICE TA 
+SET 
+    TA.SERVICEID = #bind($SERVICEID 'NUMERIC') 
+#chunk($DESCRIPTION) , TA.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.SERVICEID in ( 
+       SELECT 
+         T.SERVICEID
+       FROM 
+         WS_SERVICE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($SERVICEID) T.SERVICEID = #bind($SERVICEID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsWSServiceDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      WS_SERVICE T 
+#chain('AND' 'WHERE') 
+       #chunk($SERVICEID) T.SERVICEID = #bind($SERVICEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      WS_SERVICE T 
+#chain('AND' 'WHERE') 
+       #chunk($SERVICEID) T.SERVICEID = #bind($SERVICEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       WS_SERVICE T 
+#chain('AND' 'WHERE') 
+       #chunk($SERVICEID) T.SERVICEID = #bind($SERVICEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsWSServiceDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      WS_SERVICE TA 
+WHERE 
+     TA.SERVICEID in ( 
+       SELECT 
+         T.SERVICEID
+       FROM 
+         WS_SERVICE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($SERVICEID) T.SERVICEID = #bind($SERVICEID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      WS_SERVICE TA 
+WHERE 
+     TA.SERVICEID in ( 
+       SELECT 
+         T.SERVICEID
+       FROM 
+         WS_SERVICE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($SERVICEID) T.SERVICEID = #bind($SERVICEID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       WS_SERVICE TA 
+WHERE 
+     TA.SERVICEID in ( 
+       SELECT 
+         T.SERVICEID
+       FROM 
+         WS_SERVICE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($SERVICEID) T.SERVICEID = #bind($SERVICEID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsWSTemplateBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.CODE', 'java.lang.String', 'CODE'),
+        #result('T.DESCRIPTION', 'java.lang.String', 'DESCRIPTION'),
+        #result('T.TEMPLATEID', 'java.lang.Long', 'TEMPLATEID'),
+        #result('T.ISONEPRODUCT', 'java.lang.Long', 'ISONEPRODUCT'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.PRODCODEXPATH', 'java.lang.String', 'PRODCODEXPATH'),
+        #result('T.XSDSCHEME', 'java.lang.String', 'XSDSCHEME'),
+        #result('T.XSDSCHEME2', 'java.lang.String', 'XSDSCHEME2') 
+       $ASPECTFIELDS 
+FROM 
+      WS_TEMPLATE T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CODE) T.CODE = #bind($CODE 'VARCHAR') #end 
+       #chunk($DESCRIPTION) T.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+       #chunk($ISONEPRODUCT) T.ISONEPRODUCT = #bind($ISONEPRODUCT 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($PRODCODEXPATH) T.PRODCODEXPATH = #bind($PRODCODEXPATH 'VARCHAR') #end 
+       #chunk($TEMPLATEID) T.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+       #chunk($XSDSCHEME) T.XSDSCHEME = #bind($XSDSCHEME 'VARCHAR') #end 
+       #chunk($XSDSCHEME2) T.XSDSCHEME2 = #bind($XSDSCHEME2 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsWSTemplateBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.TEMPLATEID)', 'java.lang.Long', 'CNT') 
+FROM 
+      WS_TEMPLATE T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CODE) T.CODE = #bind($CODE 'VARCHAR') #end 
+       #chunk($DESCRIPTION) T.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+       #chunk($ISONEPRODUCT) T.ISONEPRODUCT = #bind($ISONEPRODUCT 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($PRODCODEXPATH) T.PRODCODEXPATH = #bind($PRODCODEXPATH 'VARCHAR') #end 
+       #chunk($TEMPLATEID) T.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+       #chunk($XSDSCHEME) T.XSDSCHEME = #bind($XSDSCHEME 'VARCHAR') #end 
+       #chunk($XSDSCHEME2) T.XSDSCHEME2 = #bind($XSDSCHEME2 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsWSTemplateInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO WS_TEMPLATE (
+CODE,
+DESCRIPTION,
+ISONEPRODUCT,
+NAME,
+PRODCODEXPATH,
+TEMPLATEID,
+XSDSCHEME,
+XSDSCHEME2 
+$ASPECTFIELDS ) VALUES (
+#bind($CODE 'VARCHAR'),
+#bind($DESCRIPTION 'VARCHAR'),
+#bind($ISONEPRODUCT 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($PRODCODEXPATH 'VARCHAR'),
+#bind($TEMPLATEID 'NUMERIC'),
+#bind($XSDSCHEME 'VARCHAR'),
+#bind($XSDSCHEME2 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO WS_TEMPLATE (
+CODE,
+DESCRIPTION,
+ISONEPRODUCT,
+NAME,
+PRODCODEXPATH,
+TEMPLATEID,
+XSDSCHEME,
+XSDSCHEME2 
+$ASPECTFIELDS ) VALUES (
+#bind($CODE 'VARCHAR'),
+#bind($DESCRIPTION 'VARCHAR'),
+#bind($ISONEPRODUCT 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($PRODCODEXPATH 'VARCHAR'),
+#bind($TEMPLATEID 'NUMERIC'),
+#bind($XSDSCHEME 'VARCHAR'),
+#bind($XSDSCHEME2 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO WS_TEMPLATE (
+CODE,
+DESCRIPTION,
+ISONEPRODUCT,
+NAME,
+PRODCODEXPATH,
+TEMPLATEID,
+XSDSCHEME,
+XSDSCHEME2 
+$ASPECTFIELDS ) VALUES (
+#bind($CODE 'VARCHAR'),
+#bind($DESCRIPTION 'VARCHAR'),
+#bind($ISONEPRODUCT 'NUMERIC'),
+#bind($NAME 'VARCHAR'),
+#bind($PRODCODEXPATH 'VARCHAR'),
+#bind($TEMPLATEID 'NUMERIC'),
+#bind($XSDSCHEME 'VARCHAR'),
+#bind($XSDSCHEME2 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsWSTemplateUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') 
+#chunk($CODE) , T.CODE = #bind($CODE 'VARCHAR') #end 
+#chunk($DESCRIPTION) , T.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+#chunk($ISONEPRODUCT) , T.ISONEPRODUCT = #bind($ISONEPRODUCT 'NUMERIC') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($PRODCODEXPATH) , T.PRODCODEXPATH = #bind($PRODCODEXPATH 'VARCHAR') #end 
+#chunk($XSDSCHEME) , T.XSDSCHEME = #bind($XSDSCHEME 'VARCHAR') #end 
+#chunk($XSDSCHEME2) , T.XSDSCHEME2 = #bind($XSDSCHEME2 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      WS_TEMPLATE T 
+#chain('AND' 'WHERE') 
+       #chunk($TEMPLATEID) T.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') 
+#chunk($CODE) , T.CODE = #bind($CODE 'VARCHAR') #end 
+#chunk($DESCRIPTION) , T.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+#chunk($ISONEPRODUCT) , T.ISONEPRODUCT = #bind($ISONEPRODUCT 'NUMERIC') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($PRODCODEXPATH) , T.PRODCODEXPATH = #bind($PRODCODEXPATH 'VARCHAR') #end 
+#chunk($XSDSCHEME) , T.XSDSCHEME = #bind($XSDSCHEME 'VARCHAR') #end 
+#chunk($XSDSCHEME2) , T.XSDSCHEME2 = #bind($XSDSCHEME2 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      WS_TEMPLATE T 
+#chain('AND' 'WHERE') 
+       #chunk($TEMPLATEID) T.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       WS_TEMPLATE T 
+SET 
+    T.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') 
+#chunk($CODE) , T.CODE = #bind($CODE 'VARCHAR') #end 
+#chunk($DESCRIPTION) , T.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+#chunk($ISONEPRODUCT) , T.ISONEPRODUCT = #bind($ISONEPRODUCT 'NUMERIC') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($PRODCODEXPATH) , T.PRODCODEXPATH = #bind($PRODCODEXPATH 'VARCHAR') #end 
+#chunk($XSDSCHEME) , T.XSDSCHEME = #bind($XSDSCHEME 'VARCHAR') #end 
+#chunk($XSDSCHEME2) , T.XSDSCHEME2 = #bind($XSDSCHEME2 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($TEMPLATEID) T.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsWSTemplateUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') 
+#chunk($CODE) , TA.CODE = #bind($CODE 'VARCHAR') #end 
+#chunk($DESCRIPTION) , TA.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+#chunk($ISONEPRODUCT) , TA.ISONEPRODUCT = #bind($ISONEPRODUCT 'NUMERIC') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($PRODCODEXPATH) , TA.PRODCODEXPATH = #bind($PRODCODEXPATH 'VARCHAR') #end 
+#chunk($XSDSCHEME) , TA.XSDSCHEME = #bind($XSDSCHEME 'VARCHAR') #end 
+#chunk($XSDSCHEME2) , TA.XSDSCHEME2 = #bind($XSDSCHEME2 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      WS_TEMPLATE TA 
+WHERE 
+     TA.TEMPLATEID in ( 
+       SELECT 
+         T.TEMPLATEID
+       FROM 
+         WS_TEMPLATE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($TEMPLATEID) T.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') 
+#chunk($CODE) , TA.CODE = #bind($CODE 'VARCHAR') #end 
+#chunk($DESCRIPTION) , TA.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+#chunk($ISONEPRODUCT) , TA.ISONEPRODUCT = #bind($ISONEPRODUCT 'NUMERIC') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($PRODCODEXPATH) , TA.PRODCODEXPATH = #bind($PRODCODEXPATH 'VARCHAR') #end 
+#chunk($XSDSCHEME) , TA.XSDSCHEME = #bind($XSDSCHEME 'VARCHAR') #end 
+#chunk($XSDSCHEME2) , TA.XSDSCHEME2 = #bind($XSDSCHEME2 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      WS_TEMPLATE TA 
+WHERE 
+     TA.TEMPLATEID in ( 
+       SELECT 
+         T.TEMPLATEID
+       FROM 
+         WS_TEMPLATE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($TEMPLATEID) T.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       WS_TEMPLATE TA 
+SET 
+    TA.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') 
+#chunk($CODE) , TA.CODE = #bind($CODE 'VARCHAR') #end 
+#chunk($DESCRIPTION) , TA.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+#chunk($ISONEPRODUCT) , TA.ISONEPRODUCT = #bind($ISONEPRODUCT 'NUMERIC') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($PRODCODEXPATH) , TA.PRODCODEXPATH = #bind($PRODCODEXPATH 'VARCHAR') #end 
+#chunk($XSDSCHEME) , TA.XSDSCHEME = #bind($XSDSCHEME 'VARCHAR') #end 
+#chunk($XSDSCHEME2) , TA.XSDSCHEME2 = #bind($XSDSCHEME2 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.TEMPLATEID in ( 
+       SELECT 
+         T.TEMPLATEID
+       FROM 
+         WS_TEMPLATE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($TEMPLATEID) T.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsWSTemplateDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      WS_TEMPLATE T 
+#chain('AND' 'WHERE') 
+       #chunk($TEMPLATEID) T.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      WS_TEMPLATE T 
+#chain('AND' 'WHERE') 
+       #chunk($TEMPLATEID) T.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       WS_TEMPLATE T 
+#chain('AND' 'WHERE') 
+       #chunk($TEMPLATEID) T.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsWSTemplateDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      WS_TEMPLATE TA 
+WHERE 
+     TA.TEMPLATEID in ( 
+       SELECT 
+         T.TEMPLATEID
+       FROM 
+         WS_TEMPLATE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($TEMPLATEID) T.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      WS_TEMPLATE TA 
+WHERE 
+     TA.TEMPLATEID in ( 
+       SELECT 
+         T.TEMPLATEID
+       FROM 
+         WS_TEMPLATE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($TEMPLATEID) T.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       WS_TEMPLATE TA 
+WHERE 
+     TA.TEMPLATEID in ( 
+       SELECT 
+         T.TEMPLATEID
+       FROM 
+         WS_TEMPLATE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($TEMPLATEID) T.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsWSTemplateProductBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.DESCRIPTION', 'java.lang.String', 'DESCRIPTION'),
+        #result('T.TEMPLATEPRODUCTID', 'java.lang.Long', 'TEMPLATEPRODUCTID'),
+        #result('T.JAXBCLASSNAME', 'java.lang.String', 'JAXBCLASSNAME'),
+        #result('T.RESTREQUESTCLASSNAME', 'java.lang.String', 'RESTREQUESTCLASSNAME'),
+        #result('T.RESTRESPONSECLASSNAME', 'java.lang.String', 'RESTRESPONSECLASSNAME'),
+        #result('T.SERVICENAME', 'java.lang.String', 'SERVICENAME'),
+        #result('T.METHODNAME', 'java.lang.String', 'METHODNAME'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.PRODSYSNAME', 'java.lang.String', 'PRODSYSNAME'),
+        #result('T.TEMPLATEID', 'java.math.BigDecimal', 'TEMPLATEID'),
+        #result('T.XSDSCHEME', 'java.lang.String', 'XSDSCHEME'),
+        #result('T.XSDTARGETNS', 'java.lang.String', 'XSDTARGETNS') 
+       $ASPECTFIELDS 
+FROM 
+      WS_TEMPLATEPRODUCT T
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($DESCRIPTION) T.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+       #chunk($JAXBCLASSNAME) T.JAXBCLASSNAME = #bind($JAXBCLASSNAME 'VARCHAR') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($TEMPLATEID) T.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+       #chunk($TEMPLATEPRODUCTID) T.TEMPLATEPRODUCTID = #bind($TEMPLATEPRODUCTID 'NUMERIC') #end 
+       #chunk($XSDSCHEME) T.XSDSCHEME = #bind($XSDSCHEME 'VARCHAR') #end 
+       #chunk($XSDTARGETNS) T.XSDTARGETNS = #bind($XSDTARGETNS 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsWSTemplateProductBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.TEMPLATEPRODUCTID)', 'java.lang.Long', 'CNT') 
+FROM 
+      WS_TEMPLATEPRODUCT T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($DESCRIPTION) T.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+       #chunk($JAXBCLASSNAME) T.JAXBCLASSNAME = #bind($JAXBCLASSNAME 'VARCHAR') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($TEMPLATEID) T.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+       #chunk($TEMPLATEPRODUCTID) T.TEMPLATEPRODUCTID = #bind($TEMPLATEPRODUCTID 'NUMERIC') #end 
+       #chunk($XSDSCHEME) T.XSDSCHEME = #bind($XSDSCHEME 'VARCHAR') #end 
+       #chunk($XSDTARGETNS) T.XSDTARGETNS = #bind($XSDTARGETNS 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsWSTemplateProductInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO WS_TEMPLATEPRODUCT (
+DESCRIPTION,
+JAXBCLASSNAME,
+NAME,
+TEMPLATEID,
+TEMPLATEPRODUCTID,
+XSDSCHEME,
+XSDTARGETNS 
+$ASPECTFIELDS ) VALUES (
+#bind($DESCRIPTION 'VARCHAR'),
+#bind($JAXBCLASSNAME 'VARCHAR'),
+#bind($NAME 'VARCHAR'),
+#bind($TEMPLATEID 'NUMERIC'),
+#bind($TEMPLATEPRODUCTID 'NUMERIC'),
+#bind($XSDSCHEME 'VARCHAR'),
+#bind($XSDTARGETNS 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO WS_TEMPLATEPRODUCT (
+DESCRIPTION,
+JAXBCLASSNAME,
+NAME,
+TEMPLATEID,
+TEMPLATEPRODUCTID,
+XSDSCHEME,
+XSDTARGETNS 
+$ASPECTFIELDS ) VALUES (
+#bind($DESCRIPTION 'VARCHAR'),
+#bind($JAXBCLASSNAME 'VARCHAR'),
+#bind($NAME 'VARCHAR'),
+#bind($TEMPLATEID 'NUMERIC'),
+#bind($TEMPLATEPRODUCTID 'NUMERIC'),
+#bind($XSDSCHEME 'VARCHAR'),
+#bind($XSDTARGETNS 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO WS_TEMPLATEPRODUCT (
+DESCRIPTION,
+JAXBCLASSNAME,
+NAME,
+TEMPLATEID,
+TEMPLATEPRODUCTID,
+XSDSCHEME,
+XSDTARGETNS 
+$ASPECTFIELDS ) VALUES (
+#bind($DESCRIPTION 'VARCHAR'),
+#bind($JAXBCLASSNAME 'VARCHAR'),
+#bind($NAME 'VARCHAR'),
+#bind($TEMPLATEID 'NUMERIC'),
+#bind($TEMPLATEPRODUCTID 'NUMERIC'),
+#bind($XSDSCHEME 'VARCHAR'),
+#bind($XSDTARGETNS 'VARCHAR')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsWSTemplateProductUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.TEMPLATEPRODUCTID = #bind($TEMPLATEPRODUCTID 'NUMERIC') 
+#chunk($DESCRIPTION) , T.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+#chunk($JAXBCLASSNAME) , T.JAXBCLASSNAME = #bind($JAXBCLASSNAME 'VARCHAR') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($TEMPLATEID) , T.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+#chunk($XSDSCHEME) , T.XSDSCHEME = #bind($XSDSCHEME 'VARCHAR') #end 
+#chunk($XSDTARGETNS) , T.XSDTARGETNS = #bind($XSDTARGETNS 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      WS_TEMPLATEPRODUCT T 
+#chain('AND' 'WHERE') 
+       #chunk($TEMPLATEPRODUCTID) T.TEMPLATEPRODUCTID = #bind($TEMPLATEPRODUCTID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.TEMPLATEPRODUCTID = #bind($TEMPLATEPRODUCTID 'NUMERIC') 
+#chunk($DESCRIPTION) , T.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+#chunk($JAXBCLASSNAME) , T.JAXBCLASSNAME = #bind($JAXBCLASSNAME 'VARCHAR') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($TEMPLATEID) , T.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+#chunk($XSDSCHEME) , T.XSDSCHEME = #bind($XSDSCHEME 'VARCHAR') #end 
+#chunk($XSDTARGETNS) , T.XSDTARGETNS = #bind($XSDTARGETNS 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      WS_TEMPLATEPRODUCT T 
+#chain('AND' 'WHERE') 
+       #chunk($TEMPLATEPRODUCTID) T.TEMPLATEPRODUCTID = #bind($TEMPLATEPRODUCTID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       WS_TEMPLATEPRODUCT T 
+SET 
+    T.TEMPLATEPRODUCTID = #bind($TEMPLATEPRODUCTID 'NUMERIC') 
+#chunk($DESCRIPTION) , T.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+#chunk($JAXBCLASSNAME) , T.JAXBCLASSNAME = #bind($JAXBCLASSNAME 'VARCHAR') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($TEMPLATEID) , T.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+#chunk($XSDSCHEME) , T.XSDSCHEME = #bind($XSDSCHEME 'VARCHAR') #end 
+#chunk($XSDTARGETNS) , T.XSDTARGETNS = #bind($XSDTARGETNS 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($TEMPLATEPRODUCTID) T.TEMPLATEPRODUCTID = #bind($TEMPLATEPRODUCTID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsWSTemplateProductUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.TEMPLATEPRODUCTID = #bind($TEMPLATEPRODUCTID 'NUMERIC') 
+#chunk($DESCRIPTION) , TA.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+#chunk($JAXBCLASSNAME) , TA.JAXBCLASSNAME = #bind($JAXBCLASSNAME 'VARCHAR') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($TEMPLATEID) , TA.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+#chunk($XSDSCHEME) , TA.XSDSCHEME = #bind($XSDSCHEME 'VARCHAR') #end 
+#chunk($XSDTARGETNS) , TA.XSDTARGETNS = #bind($XSDTARGETNS 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      WS_TEMPLATEPRODUCT TA 
+WHERE 
+     TA.TEMPLATEPRODUCTID in ( 
+       SELECT 
+         T.TEMPLATEPRODUCTID
+       FROM 
+         WS_TEMPLATEPRODUCT T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($TEMPLATEPRODUCTID) T.TEMPLATEPRODUCTID = #bind($TEMPLATEPRODUCTID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.TEMPLATEPRODUCTID = #bind($TEMPLATEPRODUCTID 'NUMERIC') 
+#chunk($DESCRIPTION) , TA.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+#chunk($JAXBCLASSNAME) , TA.JAXBCLASSNAME = #bind($JAXBCLASSNAME 'VARCHAR') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($TEMPLATEID) , TA.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+#chunk($XSDSCHEME) , TA.XSDSCHEME = #bind($XSDSCHEME 'VARCHAR') #end 
+#chunk($XSDTARGETNS) , TA.XSDTARGETNS = #bind($XSDTARGETNS 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      WS_TEMPLATEPRODUCT TA 
+WHERE 
+     TA.TEMPLATEPRODUCTID in ( 
+       SELECT 
+         T.TEMPLATEPRODUCTID
+       FROM 
+         WS_TEMPLATEPRODUCT T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($TEMPLATEPRODUCTID) T.TEMPLATEPRODUCTID = #bind($TEMPLATEPRODUCTID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       WS_TEMPLATEPRODUCT TA 
+SET 
+    TA.TEMPLATEPRODUCTID = #bind($TEMPLATEPRODUCTID 'NUMERIC') 
+#chunk($DESCRIPTION) , TA.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+#chunk($JAXBCLASSNAME) , TA.JAXBCLASSNAME = #bind($JAXBCLASSNAME 'VARCHAR') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($TEMPLATEID) , TA.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+#chunk($XSDSCHEME) , TA.XSDSCHEME = #bind($XSDSCHEME 'VARCHAR') #end 
+#chunk($XSDTARGETNS) , TA.XSDTARGETNS = #bind($XSDTARGETNS 'VARCHAR') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.TEMPLATEPRODUCTID in ( 
+       SELECT 
+         T.TEMPLATEPRODUCTID
+       FROM 
+         WS_TEMPLATEPRODUCT T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($TEMPLATEPRODUCTID) T.TEMPLATEPRODUCTID = #bind($TEMPLATEPRODUCTID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsWSTemplateProductDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      WS_TEMPLATEPRODUCT T 
+#chain('AND' 'WHERE') 
+       #chunk($TEMPLATEPRODUCTID) T.TEMPLATEPRODUCTID = #bind($TEMPLATEPRODUCTID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      WS_TEMPLATEPRODUCT T 
+#chain('AND' 'WHERE') 
+       #chunk($TEMPLATEPRODUCTID) T.TEMPLATEPRODUCTID = #bind($TEMPLATEPRODUCTID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       WS_TEMPLATEPRODUCT T 
+#chain('AND' 'WHERE') 
+       #chunk($TEMPLATEPRODUCTID) T.TEMPLATEPRODUCTID = #bind($TEMPLATEPRODUCTID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsWSTemplateProductDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      WS_TEMPLATEPRODUCT TA 
+WHERE 
+     TA.TEMPLATEPRODUCTID in ( 
+       SELECT 
+         T.TEMPLATEPRODUCTID
+       FROM 
+         WS_TEMPLATEPRODUCT T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($TEMPLATEPRODUCTID) T.TEMPLATEPRODUCTID = #bind($TEMPLATEPRODUCTID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      WS_TEMPLATEPRODUCT TA 
+WHERE 
+     TA.TEMPLATEPRODUCTID in ( 
+       SELECT 
+         T.TEMPLATEPRODUCTID
+       FROM 
+         WS_TEMPLATEPRODUCT T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($TEMPLATEPRODUCTID) T.TEMPLATEPRODUCTID = #bind($TEMPLATEPRODUCTID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       WS_TEMPLATEPRODUCT TA 
+WHERE 
+     TA.TEMPLATEPRODUCTID in ( 
+       SELECT 
+         T.TEMPLATEPRODUCTID
+       FROM 
+         WS_TEMPLATEPRODUCT T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($TEMPLATEPRODUCTID) T.TEMPLATEPRODUCTID = #bind($TEMPLATEPRODUCTID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsWSUserBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.AUTHMETHODID', 'java.lang.Long', 'AUTHMETHODID'),
+        #result('T.DESCRIPTION', 'java.lang.String', 'DESCRIPTION'),
+        #result('T.USERID', 'java.lang.Long', 'USERID'),
+        #result('T.LOGIN', 'java.lang.String', 'LOGIN'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.PASSWORD', 'java.lang.String', 'PASSWORD'),
+        #result('T.PWDEXPDATE', 'java.math.BigDecimal', 'PWDEXPDATE') 
+       $ASPECTFIELDS 
+FROM 
+      WS_USER T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($AUTHMETHODID) T.AUTHMETHODID = #bind($AUTHMETHODID 'NUMERIC') #end 
+       #chunk($DESCRIPTION) T.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+       #chunk($LOGIN) T.LOGIN = #bind($LOGIN 'VARCHAR') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($PASSWORD) T.PASSWORD = #bind($PASSWORD 'VARCHAR') #end 
+       #chunk($PWDEXPDATE) T.PWDEXPDATE = #bind($PWDEXPDATE 'FLOAT') #end 
+       #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsWSUserBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.USERID)', 'java.lang.Long', 'CNT') 
+FROM 
+      WS_USER T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($AUTHMETHODID) T.AUTHMETHODID = #bind($AUTHMETHODID 'NUMERIC') #end 
+       #chunk($DESCRIPTION) T.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+       #chunk($LOGIN) T.LOGIN = #bind($LOGIN 'VARCHAR') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($PASSWORD) T.PASSWORD = #bind($PASSWORD 'VARCHAR') #end 
+       #chunk($PWDEXPDATE) T.PWDEXPDATE = #bind($PWDEXPDATE 'FLOAT') #end 
+       #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsWSUserInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO WS_USER (
+AUTHMETHODID,
+DESCRIPTION,
+LOGIN,
+NAME,
+PASSWORD,
+PWDEXPDATE,
+USERID 
+$ASPECTFIELDS ) VALUES (
+#bind($AUTHMETHODID 'NUMERIC'),
+#bind($DESCRIPTION 'VARCHAR'),
+#bind($LOGIN 'VARCHAR'),
+#bind($NAME 'VARCHAR'),
+#bind($PASSWORD 'VARCHAR'),
+#bind($PWDEXPDATE 'FLOAT'),
+#bind($USERID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO WS_USER (
+AUTHMETHODID,
+DESCRIPTION,
+LOGIN,
+NAME,
+PASSWORD,
+PWDEXPDATE,
+USERID 
+$ASPECTFIELDS ) VALUES (
+#bind($AUTHMETHODID 'NUMERIC'),
+#bind($DESCRIPTION 'VARCHAR'),
+#bind($LOGIN 'VARCHAR'),
+#bind($NAME 'VARCHAR'),
+#bind($PASSWORD 'VARCHAR'),
+#bind($PWDEXPDATE 'FLOAT'),
+#bind($USERID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO WS_USER (
+AUTHMETHODID,
+DESCRIPTION,
+LOGIN,
+NAME,
+PASSWORD,
+PWDEXPDATE,
+USERID 
+$ASPECTFIELDS ) VALUES (
+#bind($AUTHMETHODID 'NUMERIC'),
+#bind($DESCRIPTION 'VARCHAR'),
+#bind($LOGIN 'VARCHAR'),
+#bind($NAME 'VARCHAR'),
+#bind($PASSWORD 'VARCHAR'),
+#bind($PWDEXPDATE 'FLOAT'),
+#bind($USERID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsWSUserUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.USERID = #bind($USERID 'NUMERIC') 
+#chunk($AUTHMETHODID) , T.AUTHMETHODID = #bind($AUTHMETHODID 'NUMERIC') #end 
+#chunk($DESCRIPTION) , T.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+#chunk($LOGIN) , T.LOGIN = #bind($LOGIN 'VARCHAR') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($PASSWORD) , T.PASSWORD = #bind($PASSWORD 'VARCHAR') #end 
+#chunk($PWDEXPDATE) , T.PWDEXPDATE = #bind($PWDEXPDATE 'FLOAT') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      WS_USER T 
+#chain('AND' 'WHERE') 
+       #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.USERID = #bind($USERID 'NUMERIC') 
+#chunk($AUTHMETHODID) , T.AUTHMETHODID = #bind($AUTHMETHODID 'NUMERIC') #end 
+#chunk($DESCRIPTION) , T.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+#chunk($LOGIN) , T.LOGIN = #bind($LOGIN 'VARCHAR') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($PASSWORD) , T.PASSWORD = #bind($PASSWORD 'VARCHAR') #end 
+#chunk($PWDEXPDATE) , T.PWDEXPDATE = #bind($PWDEXPDATE 'FLOAT') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      WS_USER T 
+#chain('AND' 'WHERE') 
+       #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       WS_USER T 
+SET 
+    T.USERID = #bind($USERID 'NUMERIC') 
+#chunk($AUTHMETHODID) , T.AUTHMETHODID = #bind($AUTHMETHODID 'NUMERIC') #end 
+#chunk($DESCRIPTION) , T.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+#chunk($LOGIN) , T.LOGIN = #bind($LOGIN 'VARCHAR') #end 
+#chunk($NAME) , T.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($PASSWORD) , T.PASSWORD = #bind($PASSWORD 'VARCHAR') #end 
+#chunk($PWDEXPDATE) , T.PWDEXPDATE = #bind($PWDEXPDATE 'FLOAT') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsWSUserUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.USERID = #bind($USERID 'NUMERIC') 
+#chunk($AUTHMETHODID) , TA.AUTHMETHODID = #bind($AUTHMETHODID 'NUMERIC') #end 
+#chunk($DESCRIPTION) , TA.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+#chunk($LOGIN) , TA.LOGIN = #bind($LOGIN 'VARCHAR') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($PASSWORD) , TA.PASSWORD = #bind($PASSWORD 'VARCHAR') #end 
+#chunk($PWDEXPDATE) , TA.PWDEXPDATE = #bind($PWDEXPDATE 'FLOAT') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      WS_USER TA 
+WHERE 
+     TA.USERID in ( 
+       SELECT 
+         T.USERID
+       FROM 
+         WS_USER T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.USERID = #bind($USERID 'NUMERIC') 
+#chunk($AUTHMETHODID) , TA.AUTHMETHODID = #bind($AUTHMETHODID 'NUMERIC') #end 
+#chunk($DESCRIPTION) , TA.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+#chunk($LOGIN) , TA.LOGIN = #bind($LOGIN 'VARCHAR') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($PASSWORD) , TA.PASSWORD = #bind($PASSWORD 'VARCHAR') #end 
+#chunk($PWDEXPDATE) , TA.PWDEXPDATE = #bind($PWDEXPDATE 'FLOAT') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      WS_USER TA 
+WHERE 
+     TA.USERID in ( 
+       SELECT 
+         T.USERID
+       FROM 
+         WS_USER T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       WS_USER TA 
+SET 
+    TA.USERID = #bind($USERID 'NUMERIC') 
+#chunk($AUTHMETHODID) , TA.AUTHMETHODID = #bind($AUTHMETHODID 'NUMERIC') #end 
+#chunk($DESCRIPTION) , TA.DESCRIPTION = #bind($DESCRIPTION 'VARCHAR') #end 
+#chunk($LOGIN) , TA.LOGIN = #bind($LOGIN 'VARCHAR') #end 
+#chunk($NAME) , TA.NAME = #bind($NAME 'VARCHAR') #end 
+#chunk($PASSWORD) , TA.PASSWORD = #bind($PASSWORD 'VARCHAR') #end 
+#chunk($PWDEXPDATE) , TA.PWDEXPDATE = #bind($PWDEXPDATE 'FLOAT') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.USERID in ( 
+       SELECT 
+         T.USERID
+       FROM 
+         WS_USER T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsWSUserDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      WS_USER T 
+#chain('AND' 'WHERE') 
+       #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      WS_USER T 
+#chain('AND' 'WHERE') 
+       #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       WS_USER T 
+#chain('AND' 'WHERE') 
+       #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsWSUserDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      WS_USER TA 
+WHERE 
+     TA.USERID in ( 
+       SELECT 
+         T.USERID
+       FROM 
+         WS_USER T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      WS_USER TA 
+WHERE 
+     TA.USERID in ( 
+       SELECT 
+         T.USERID
+       FROM 
+         WS_USER T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       WS_USER TA 
+WHERE 
+     TA.USERID in ( 
+       SELECT 
+         T.USERID
+       FROM 
+         WS_USER T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsWSUserMethodBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.USERMETHODID', 'java.lang.Long', 'USERMETHODID'),
+        #result('T.METHODID', 'java.lang.Long', 'METHODID'),
+        #result('T.USERID', 'java.lang.Long', 'USERID') 
+       $ASPECTFIELDS 
+FROM 
+      WS_USERMETHOD T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($METHODID) T.METHODID = #bind($METHODID 'NUMERIC') #end 
+       #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+       #chunk($USERMETHODID) T.USERMETHODID = #bind($USERMETHODID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsWSUserMethodBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.USERMETHODID)', 'java.lang.Long', 'CNT') 
+FROM 
+      WS_USERMETHOD T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($METHODID) T.METHODID = #bind($METHODID 'NUMERIC') #end 
+       #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+       #chunk($USERMETHODID) T.USERMETHODID = #bind($USERMETHODID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsWSUserMethodInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO WS_USERMETHOD (
+METHODID,
+USERID,
+USERMETHODID 
+$ASPECTFIELDS ) VALUES (
+#bind($METHODID 'NUMERIC'),
+#bind($USERID 'NUMERIC'),
+#bind($USERMETHODID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO WS_USERMETHOD (
+METHODID,
+USERID,
+USERMETHODID 
+$ASPECTFIELDS ) VALUES (
+#bind($METHODID 'NUMERIC'),
+#bind($USERID 'NUMERIC'),
+#bind($USERMETHODID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO WS_USERMETHOD (
+METHODID,
+USERID,
+USERMETHODID 
+$ASPECTFIELDS ) VALUES (
+#bind($METHODID 'NUMERIC'),
+#bind($USERID 'NUMERIC'),
+#bind($USERMETHODID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsWSUserMethodUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.USERMETHODID = #bind($USERMETHODID 'NUMERIC') 
+#chunk($METHODID) , T.METHODID = #bind($METHODID 'NUMERIC') #end 
+#chunk($USERID) , T.USERID = #bind($USERID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      WS_USERMETHOD T 
+#chain('AND' 'WHERE') 
+       #chunk($USERMETHODID) T.USERMETHODID = #bind($USERMETHODID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.USERMETHODID = #bind($USERMETHODID 'NUMERIC') 
+#chunk($METHODID) , T.METHODID = #bind($METHODID 'NUMERIC') #end 
+#chunk($USERID) , T.USERID = #bind($USERID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      WS_USERMETHOD T 
+#chain('AND' 'WHERE') 
+       #chunk($USERMETHODID) T.USERMETHODID = #bind($USERMETHODID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       WS_USERMETHOD T 
+SET 
+    T.USERMETHODID = #bind($USERMETHODID 'NUMERIC') 
+#chunk($METHODID) , T.METHODID = #bind($METHODID 'NUMERIC') #end 
+#chunk($USERID) , T.USERID = #bind($USERID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($USERMETHODID) T.USERMETHODID = #bind($USERMETHODID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsWSUserMethodUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.USERMETHODID = #bind($USERMETHODID 'NUMERIC') 
+#chunk($METHODID) , TA.METHODID = #bind($METHODID 'NUMERIC') #end 
+#chunk($USERID) , TA.USERID = #bind($USERID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      WS_USERMETHOD TA 
+WHERE 
+     TA.USERMETHODID in ( 
+       SELECT 
+         T.USERMETHODID
+       FROM 
+         WS_USERMETHOD T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($USERMETHODID) T.USERMETHODID = #bind($USERMETHODID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.USERMETHODID = #bind($USERMETHODID 'NUMERIC') 
+#chunk($METHODID) , TA.METHODID = #bind($METHODID 'NUMERIC') #end 
+#chunk($USERID) , TA.USERID = #bind($USERID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      WS_USERMETHOD TA 
+WHERE 
+     TA.USERMETHODID in ( 
+       SELECT 
+         T.USERMETHODID
+       FROM 
+         WS_USERMETHOD T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($USERMETHODID) T.USERMETHODID = #bind($USERMETHODID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       WS_USERMETHOD TA 
+SET 
+    TA.USERMETHODID = #bind($USERMETHODID 'NUMERIC') 
+#chunk($METHODID) , TA.METHODID = #bind($METHODID 'NUMERIC') #end 
+#chunk($USERID) , TA.USERID = #bind($USERID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.USERMETHODID in ( 
+       SELECT 
+         T.USERMETHODID
+       FROM 
+         WS_USERMETHOD T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($USERMETHODID) T.USERMETHODID = #bind($USERMETHODID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsWSUserMethodDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      WS_USERMETHOD T 
+#chain('AND' 'WHERE') 
+       #chunk($USERMETHODID) T.USERMETHODID = #bind($USERMETHODID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      WS_USERMETHOD T 
+#chain('AND' 'WHERE') 
+       #chunk($USERMETHODID) T.USERMETHODID = #bind($USERMETHODID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       WS_USERMETHOD T 
+#chain('AND' 'WHERE') 
+       #chunk($USERMETHODID) T.USERMETHODID = #bind($USERMETHODID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsWSUserMethodDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      WS_USERMETHOD TA 
+WHERE 
+     TA.USERMETHODID in ( 
+       SELECT 
+         T.USERMETHODID
+       FROM 
+         WS_USERMETHOD T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($USERMETHODID) T.USERMETHODID = #bind($USERMETHODID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      WS_USERMETHOD TA 
+WHERE 
+     TA.USERMETHODID in ( 
+       SELECT 
+         T.USERMETHODID
+       FROM 
+         WS_USERMETHOD T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($USERMETHODID) T.USERMETHODID = #bind($USERMETHODID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       WS_USERMETHOD TA 
+WHERE 
+     TA.USERMETHODID in ( 
+       SELECT 
+         T.USERMETHODID
+       FROM 
+         WS_USERMETHOD T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($USERMETHODID) T.USERMETHODID = #bind($USERMETHODID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsWSUserTemplateBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.USERTEMPLATEID', 'java.lang.Long', 'USERTEMPLATEID'),
+        #result('T.TEMPLATEID', 'java.lang.Long', 'TEMPLATEID'),
+        #result('T.USERID', 'java.lang.Long', 'USERID'),
+        #result('T.URL', 'java.lang.String', 'URL'),
+        #result('T.PAGE', 'java.lang.String', 'PAGE')
+       $ASPECTFIELDS 
+FROM 
+      WS_USERTEMPLATE T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($TEMPLATEID) T.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+       #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+       #chunk($USERTEMPLATEID) T.USERTEMPLATEID = #bind($USERTEMPLATEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsWSUserTemplateBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.USERTEMPLATEID)', 'java.lang.Long', 'CNT') 
+FROM 
+      WS_USERTEMPLATE T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($TEMPLATEID) T.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+       #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+       #chunk($USERTEMPLATEID) T.USERTEMPLATEID = #bind($USERTEMPLATEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsWSUserTemplateInsert" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+INSERT INTO WS_USERTEMPLATE (
+TEMPLATEID,
+USERID,
+USERTEMPLATEID 
+$ASPECTFIELDS ) VALUES (
+#bind($TEMPLATEID 'NUMERIC'),
+#bind($USERID 'NUMERIC'),
+#bind($USERTEMPLATEID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+INSERT INTO WS_USERTEMPLATE (
+TEMPLATEID,
+USERID,
+USERTEMPLATEID 
+$ASPECTFIELDS ) VALUES (
+#bind($TEMPLATEID 'NUMERIC'),
+#bind($USERID 'NUMERIC'),
+#bind($USERTEMPLATEID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+INSERT INTO WS_USERTEMPLATE (
+TEMPLATEID,
+USERID,
+USERTEMPLATEID 
+$ASPECTFIELDS ) VALUES (
+#bind($TEMPLATEID 'NUMERIC'),
+#bind($USERID 'NUMERIC'),
+#bind($USERTEMPLATEID 'NUMERIC')
+$ASPECTVALUESBINDINGS
+ )
+]]>
+</sql>
+</query>
+<query name="dsWSUserTemplateUpdate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  T
+SET 
+    T.USERTEMPLATEID = #bind($USERTEMPLATEID 'NUMERIC') 
+#chunk($TEMPLATEID) , T.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+#chunk($USERID) , T.USERID = #bind($USERID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      WS_USERTEMPLATE T 
+#chain('AND' 'WHERE') 
+       #chunk($USERTEMPLATEID) T.USERTEMPLATEID = #bind($USERTEMPLATEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  T
+SET 
+    T.USERTEMPLATEID = #bind($USERTEMPLATEID 'NUMERIC') 
+#chunk($TEMPLATEID) , T.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+#chunk($USERID) , T.USERID = #bind($USERID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      WS_USERTEMPLATE T 
+#chain('AND' 'WHERE') 
+       #chunk($USERTEMPLATEID) T.USERTEMPLATEID = #bind($USERTEMPLATEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       WS_USERTEMPLATE T 
+SET 
+    T.USERTEMPLATEID = #bind($USERTEMPLATEID 'NUMERIC') 
+#chunk($TEMPLATEID) , T.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+#chunk($USERID) , T.USERID = #bind($USERID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+#chain('AND' 'WHERE') 
+       #chunk($USERTEMPLATEID) T.USERTEMPLATEID = #bind($USERTEMPLATEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsWSUserTemplateUpdateTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.USERTEMPLATEID = #bind($USERTEMPLATEID 'NUMERIC') 
+#chunk($TEMPLATEID) , TA.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+#chunk($USERID) , TA.USERID = #bind($USERID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      WS_USERTEMPLATE TA 
+WHERE 
+     TA.USERTEMPLATEID in ( 
+       SELECT 
+         T.USERTEMPLATEID
+       FROM 
+         WS_USERTEMPLATE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($USERTEMPLATEID) T.USERTEMPLATEID = #bind($USERTEMPLATEID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+UPDATE  TA
+SET 
+    TA.USERTEMPLATEID = #bind($USERTEMPLATEID 'NUMERIC') 
+#chunk($TEMPLATEID) , TA.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+#chunk($USERID) , TA.USERID = #bind($USERID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+FROM 
+      WS_USERTEMPLATE TA 
+WHERE 
+     TA.USERTEMPLATEID in ( 
+       SELECT 
+         T.USERTEMPLATEID
+       FROM 
+         WS_USERTEMPLATE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($USERTEMPLATEID) T.USERTEMPLATEID = #bind($USERTEMPLATEID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+UPDATE       WS_USERTEMPLATE TA 
+SET 
+    TA.USERTEMPLATEID = #bind($USERTEMPLATEID 'NUMERIC') 
+#chunk($TEMPLATEID) , TA.TEMPLATEID = #bind($TEMPLATEID 'NUMERIC') #end 
+#chunk($USERID) , TA.USERID = #bind($USERID 'NUMERIC') #end 
+ 
+       $ASPECTFIELDS 
+WHERE 
+     TA.USERTEMPLATEID in ( 
+       SELECT 
+         T.USERTEMPLATEID
+       FROM 
+         WS_USERTEMPLATE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($USERTEMPLATEID) T.USERTEMPLATEID = #bind($USERTEMPLATEID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+<query name="dsWSUserTemplateDelete" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  T
+FROM 
+      WS_USERTEMPLATE T 
+#chain('AND' 'WHERE') 
+       #chunk($USERTEMPLATEID) T.USERTEMPLATEID = #bind($USERTEMPLATEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  T
+FROM 
+      WS_USERTEMPLATE T 
+#chain('AND' 'WHERE') 
+       #chunk($USERTEMPLATEID) T.USERTEMPLATEID = #bind($USERTEMPLATEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       WS_USERTEMPLATE T 
+#chain('AND' 'WHERE') 
+       #chunk($USERTEMPLATEID) T.USERTEMPLATEID = #bind($USERTEMPLATEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsWSUserTemplateDeleteTA" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="WSMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+DELETE  TA
+FROM 
+      WS_USERTEMPLATE TA 
+WHERE 
+     TA.USERTEMPLATEID in ( 
+       SELECT 
+         T.USERTEMPLATEID
+       FROM 
+         WS_USERTEMPLATE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($USERTEMPLATEID) T.USERTEMPLATEID = #bind($USERTEMPLATEID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.sqlserver.SQLServerAdapter">
+<![CDATA[
+DELETE  TA
+FROM 
+      WS_USERTEMPLATE TA 
+WHERE 
+     TA.USERTEMPLATEID in ( 
+       SELECT 
+         T.USERTEMPLATEID
+       FROM 
+         WS_USERTEMPLATE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($USERTEMPLATEID) T.USERTEMPLATEID = #bind($USERTEMPLATEID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+<sql adapter-class="org.apache.cayenne.dba.oracle.OracleAdapter">
+<![CDATA[
+DELETE       WS_USERTEMPLATE TA 
+WHERE 
+     TA.USERTEMPLATEID in ( 
+       SELECT 
+         T.USERTEMPLATEID
+       FROM 
+         WS_USERTEMPLATE T 
+       $ASPECTTABLES 
+       #chain('AND' 'WHERE') 
+              #chunk($USERTEMPLATEID) T.USERTEMPLATEID = #bind($USERTEMPLATEID 'NUMERIC') #end 
+             $ASPECTRESTRICTION 
+       #end 
+     )
+]]>
+</sql>
+</query>
+</data-map>

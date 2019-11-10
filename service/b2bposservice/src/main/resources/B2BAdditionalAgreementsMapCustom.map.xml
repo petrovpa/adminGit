@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+<query name="dsB2bAddAgrCntBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdditionalAgreementsMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.ADDAGRCAUSEID', 'java.lang.Long', 'ADDAGRCAUSEID'),
+        #result('T.ADDAGRCNTID', 'java.lang.Long', 'ADDAGRCNTID'),
+        #result('T.ADDAGRID', 'java.lang.Long', 'ADDAGRID'), 
+        #result('T2.HBDATAVERID', 'java.lang.Long', 'HBDATAVERID'), 
+        #result('T2.FIELDMAPPING', 'java.lang.String', 'FIELDMAPPING'), 
+        #result('T2.PAGECONTENT', 'java.lang.String', 'PAGECONTENT'), 
+        #result('T2.PRODVERID', 'java.lang.Long', 'PRODVERID'), 
+        #result('T2.SYSNAME', 'java.lang.String', 'SYSNAME') 
+       $ASPECTFIELDS 
+FROM 
+      B2B_ADDAGRCNT T 
+      left join B2B_ADDAGRCAUSE T2 ON (T.ADDAGRCAUSEID = T2.ADDAGRCAUSEID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRCAUSEID) T.ADDAGRCAUSEID = #bind($ADDAGRCAUSEID 'NUMERIC') #end 
+       #chunk($ADDAGRCNTID) T.ADDAGRCNTID = #bind($ADDAGRCNTID 'NUMERIC') #end 
+       #chunk($ADDAGRID) T.ADDAGRID = #bind($ADDAGRID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2bAddAgrCntBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdditionalAgreementsMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ADDAGRCNTID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_ADDAGRCNT T 
+      left join B2B_ADDAGRCAUSE T2 ON (T.ADDAGRCAUSEID = T2.ADDAGRCAUSEID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRCAUSEID) T.ADDAGRCAUSEID = #bind($ADDAGRCAUSEID 'NUMERIC') #end 
+       #chunk($ADDAGRCNTID) T.ADDAGRCNTID = #bind($ADDAGRCNTID 'NUMERIC') #end 
+       #chunk($ADDAGRID) T.ADDAGRID = #bind($ADDAGRID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2BAddAgrDocBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdditionalAgreementsMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.ADDAGRDOCID', 'java.lang.Long', 'ADDAGRDOCID'),
+        #result('T.ADDAGRID', 'java.lang.Long', 'ADDAGRID'),
+        #result('T.PRODBINDOCID', 'java.lang.Long', 'PRODBINDOCID'),
+        
+        #result('T2.BINFILEID', 'java.lang.Long', 'BINFILEID'), 
+        #result('T2.FILENAME', 'java.lang.String', 'FILENAME'), 
+        #result('T2.FILEPATH', 'java.lang.String', 'FILEPATH'), 
+        #result('T2.FILESIZE', 'java.lang.String', 'FILESIZE'), 
+        #result('T2.FILETYPEID', 'java.lang.Long', 'FILETYPEID'), 
+        #result('T2.FILETYPENAME', 'java.lang.String', 'FILETYPENAME'), 
+        #result('T2.NOTE', 'java.lang.String', 'NOTE'),
+        #result('T3.DOCLEVEL', 'java.lang.String', 'DOCTYPELEVEL'),
+        #result('T3.DOCSYSNAME', 'java.lang.String', 'DOCSYSNAME'),
+        #result('T3.NAME', 'java.lang.String', 'DOCTYPENAME')
+          
+       $ASPECTFIELDS 
+FROM 
+      B2B_ADDAGRDOC T 
+      LEFT JOIN INS_BINFILE T2 ON (T2.OBJID = T.ADDAGRDOCID) and (T2.OBJTABLENAME = 'B2B_ADDAGRDOC')
+      left join b2b_prodbindoc T3 on (T.PRODBINDOCID = T3.PRODBINDOCID)
+      
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRDOCID) T.ADDAGRDOCID = #bind($ADDAGRDOCID 'NUMERIC') #end 
+       #chunk($ADDAGRID) T.ADDAGRID = #bind($ADDAGRID 'NUMERIC') #end 
+       #chunk($PRODBINDOCID) T.PRODBINDOCID = #bind($PRODBINDOCID 'NUMERIC') #end 
+        #chunk($DOCLEVEL) T3.DOCLEVEL = #bind($DOCLEVEL 'NUMERIC') #end        
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2BAddAgrDocBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdditionalAgreementsMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ADDAGRDOCID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_ADDAGRDOC T 
+      LEFT JOIN INS_BINFILE T2 ON (T2.OBJID = T.ADDAGRDOCID) and (T2.OBJTABLENAME = 'B2B_ADDAGRDOC')
+      left join b2b_prodbindoc T3 on (T.PRODBINDOCID = T3.PRODBINDOCID)
+      
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRDOCID) T.ADDAGRDOCID = #bind($ADDAGRDOCID 'NUMERIC') #end 
+       #chunk($ADDAGRID) T.ADDAGRID = #bind($ADDAGRID 'NUMERIC') #end 
+       #chunk($PRODBINDOCID) T.PRODBINDOCID = #bind($PRODBINDOCID 'NUMERIC') #end 
+        #chunk($DOCLEVEL) T3.DOCLEVEL = #bind($DOCLEVEL 'NUMERIC') #end        
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2BAddAgrBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdditionalAgreementsMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.ADDAGRID', 'java.lang.Long', 'ADDAGRID'),
+        #result('T.AGRNUMBER', 'java.lang.String', 'AGRNUMBER'),
+        #result('T.CONTRID', 'java.lang.Long', 'CONTRID'),
+        #result('T.INITIATOR', 'java.lang.Long', 'INITIATOR'),
+        #result('T.PRODCONFIGID', 'java.lang.Long', 'PRODCONFIGID'),
+        #result('T.CREATEDATE', 'java.math.BigDecimal', 'CREATEDATE'),
+        #result('T.SIGNDATE', 'java.lang.Long', 'SIGNDATE'),
+        #result('T.STARTDATE', 'java.math.BigDecimal', 'STARTDATE'),
+        #result('T.TYPEID', 'java.lang.Long', 'TYPEID'),
+        #result('T2.SYSNAME', 'java.lang.String', 'STATESYSNAME'),
+        #result('T2.PUBLICNAME', 'java.lang.String', 'STATENAME')         
+       $ASPECTFIELDS 
+FROM 
+      B2B_ADDAGR T 
+      LEFT JOIN CORE_SM_STATE T2 ON (T.STATEID = T2.ID) 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRID) T.ADDAGRID = #bind($ADDAGRID 'NUMERIC') #end 
+       #chunk($AGRNUMBER) T.AGRNUMBER = #bind($AGRNUMBER 'VARCHAR') #end 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($INITIATOR) T.INITIATOR = #bind($INITIATOR 'NUMERIC') #end 
+       #chunk($PRODCONFIGID) T.PRODCONFIGID = #bind($PRODCONFIGID 'NUMERIC') #end 
+       #chunk($SIGNDATE) T.SIGNDATE = #bind($SIGNDATE 'FLOAT') #end 
+       #chunk($STARTDATE) T.STARTDATE = #bind($STARTDATE 'FLOAT') #end 
+       #chunk($TYPEID) T.TYPEID = #bind($TYPEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2BAddAgrBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BAdditionalAgreementsMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ADDAGRID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_ADDAGR T 
+      LEFT JOIN CORE_SM_STATE T2 ON (T.STATEID = T2.ID) 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRID) T.ADDAGRID = #bind($ADDAGRID 'NUMERIC') #end 
+       #chunk($AGRNUMBER) T.AGRNUMBER = #bind($AGRNUMBER 'VARCHAR') #end 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($INITIATOR) T.INITIATOR = #bind($INITIATOR 'NUMERIC') #end 
+       #chunk($PRODCONFIGID) T.PRODCONFIGID = #bind($PRODCONFIGID 'NUMERIC') #end 
+       #chunk($SIGNDATE) T.SIGNDATE = #bind($SIGNDATE 'FLOAT') #end 
+       #chunk($STARTDATE) T.STARTDATE = #bind($STARTDATE 'FLOAT') #end 
+       #chunk($TYPEID) T.TYPEID = #bind($TYPEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+
+    <query name="dsPDDeclarationDocCustomBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BLossMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT
+                    $NEEDDISTINCT
+
+                    #result('T1.BINDOCTYPE', 'java.lang.Long', 'BINDOCTYPE'),
+                    #result('T1.EXTERNALID', 'java.lang.Long', 'EXTERNALID'),
+                    #result('T1.DECLARATIONDOCID', 'java.lang.Long', 'DECLARATIONDOCID'),
+                    #result('T1.DECLARATIONID', 'java.lang.Long', 'DECLARATIONID'),
+                    #result('T1.PATHINPARTNER', 'java.lang.String', 'PATHINPARTNER'),
+                    #result('T1.NAME', 'java.lang.String', 'NAME'),
+                    #result('T1.NOTE', 'java.lang.String', 'NOTE'),
+                    #result('T1.STATEID', 'java.lang.Long', 'STATEID'),
+
+                    #result('T2.BINFILEID', 'java.lang.Long', 'BINFILEID'),
+                    #result('T2.FILENAME', 'java.lang.String', 'FILENAME'),
+                    #result('T2.FILEPATH', 'java.lang.String', 'FILEPATH'),
+                    #result('T2.FILESIZE', 'java.lang.String', 'FILESIZE'),
+                    #result('T2.FILETYPEID', 'java.lang.Long', 'FILETYPEID'),
+                    #result('T2.FILETYPENAME', 'java.lang.String', 'FILETYPENAME'),
+                    #result('T2.NOTE', 'java.lang.String', 'NOTE'),
+                    #result('T2.FSID', 'java.lang.String', 'FSID')
+
+                    $ASPECTFIELDS
+                FROM
+                    PD_DECLARATIONDOC T1
+                    LEFT JOIN INS_BINFILE T2
+                        on (T2.OBJID = T1.DECLARATIONDOCID)
+                        and(T2.OBJTABLENAME = 'PD_DECLARATIONDOC')
+                    $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                    #chunk($DECLARATIONID) T1.DECLARATIONID = #bind($DECLARATIONID 'NUMERIC') #end
+                    #chunk($BINDOCTYPE)   T1.BINDOCTYPE   = #bind($BINDOCTYPE 'NUMERIC') #end
+
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+    <query name="dsPDDeclarationDocCustomBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BLossMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT
+                    #result('COUNT($NEEDDISTINCT T1.DECLARATIONDOCID)', 'java.lang.Long', 'DECLARATIONDOCID')
+                FROM
+                    PD_DECLARATIONDOC T
+                    LEFT JOIN INS_BINFILE T2 on (T2.OBJID = T1.DECLARATIONDOCID)
+                    $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                    #chunk($DECLARATIONID) T1.DECLARATIONID = #bind($DECLARATIONID 'NUMERIC') #end
+                    #chunk($BINDOCTYPE)   T1.BINDOCTYPE   = #bind($BINDOCTYPE 'NUMERIC') #end
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+    <query name="dsPDDeclarationDocCustomBrowseListByParamEx4Integration" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BLossMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[   
+SELECT distinct
+  #result('decl_doc.BINDOCTYPE'      , 'Long' , 'BINDOCTYPE'),
+  #result('decl_doc.EXTERNALID'      , 'Long' , 'EXTERNALID'),
+  #result('decl_doc.DECLARATIONDOCID', 'Long' , 'DECLARATIONDOCID'),
+  #result('decl_doc.DECLARATIONID'   , 'Long' , 'DECLARATIONID'),
+  #result('decl_doc.PATHINPARTNER'   , 'String' , 'PATHINPARTNER'),
+  #result('decl_doc.NAME'             , 'String' , 'NAME'),
+  #result('decl_doc.NOTE'             , 'String' , 'NOTE'),
+  #result('decl_doc.STATEID'          , 'Long' , 'STATEID'),
+  #result('decl_doc.CREATEDATE'       , 'java.math.BigDecimal' , 'CREATEDATE'),
+  #result('binfile.BINFILEID'         , 'Long' , 'BINFILEID'),
+  #result('binfile.FILENAME'          , 'String' , 'FILENAME'),
+  #result('binfile.FILEPATH'          , 'String' , 'FILEPATH'),
+  #result('binfile.FILESIZE'          , 'String' , 'FILESIZE'),
+  #result('binfile.FILETYPEID'        , 'Long' , 'FILETYPEID'),
+  #result('binfile.FILETYPENAME'      , 'String' , 'FILETYPENAME'),
+  #result('binfile.NOTE'              , 'String' , 'NOTE'),
+  #result('binfile.FSID'              , 'String' , 'FSID'),
+  #result('sm_state.SYSNAME'          , 'String' , 'STATESYSNAME'),
+  #result('sm_state.PUBLICNAME'       , 'String' , 'STATENAME'),
+  #result('decl.EXTERNALID'           , 'String' , 'DECLARATIONEXTID'),
+  #result('decl.DOCFOLDER1C'          , 'String' , 'DOCFOLDER1C'),
+  #result('bindoctype.NAME'           , 'String' , 'DOCTYPENAME'),
+  #result('bindoctype.DOCTYPEOISNAME' , 'String' , 'DOCTYPEOISNAME'),
+  #result('kind_decl.SYSNAME'        , 'String' , 'KINDDEClARATIONSYSNAME')
+  
+$ASPECTFIELDS
+  
+FROM PD_DECLARATIONDOC decl_doc
+  INNER JOIN INS_BINFILE binfile ON (binfile.OBJID = decl_doc.DECLARATIONDOCID) AND (binfile.OBJTABLENAME = 'PD_DECLARATIONDOC')
+  INNER JOIN CORE_SM_STATE sm_state ON decl_doc.STATEID = sm_state.ID
+  INNER JOIN PD_DECLARATION decl ON decl_doc.DECLARATIONID = decl.ID
+  INNER JOIN B2B_BINDOCTYPE bindoctype ON decl_doc.BINDOCTYPE = bindoctype.BINDOCTYPE
+  INNER JOIN PD_REASONCHANGE reason ON reason.DECLARATIONID = decl.id
+  INNER JOIN HB_KINDDECLARATION kind_decl ON kind_decl.id = reason.KINDDECLARATIONID AND (kind_decl.SYSNAME = bindoctype.ENTITYSYSNAME OR
+                                                                        upper(kind_decl.SYSNAME || '_PF') =
+                                                                        upper(bindoctype.ENTITYSYSNAME))
+$ASPECTTABLES   
+
+#chain('AND' 'WHERE')
+    #chunk() decl.DOCFOLDER1C is not null #end
+    #chunk($STATESYSNAME) sm_state.SYSNAME = #bind($STATESYSNAME 'NUMERIC') #end
+    #chunk($DECLARATIONID) decl_doc.DECLARATIONID = #bind($DECLARATIONID 'NUMERIC') #end
+    #chunk($BINDOCTYPE)   decl_doc.BINDOCTYPE   = #bind($BINDOCTYPE 'NUMERIC') #end
+    $ASPECTRESTRICTION
+#end
+ORDER BY binfile.BINFILEID DESC
+            ]]>
+        </sql>
+        
+    </query>
+    <query name="dsPDDeclarationDocCustomBrowseListByParamEx4IntegrationCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BLossMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT
+                    #result('COUNT($NEEDDISTINCT T1.DECLARATIONDOCID)', 'java.lang.Long', 'DECLARATIONDOCID')
+                FROM
+                      PD_DECLARATIONDOC T1
+                    LEFT JOIN INS_BINFILE T2
+                        on (T2.OBJID = T1.DECLARATIONDOCID)
+                        and(T2.OBJTABLENAME = 'PD_DECLARATIONDOC')
+                    LEFT JOIN CORE_SM_STATE T3 ON T1.STATEID = T3.ID
+                    LEFT JOIN PD_DECLARATION T4 ON T1.DECLARATIONID = T4.ID
+                    $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                    #chunk() T4.DOCFOLDER1C is not null #end
+                    #chunk($STATESYSNAME) T3.SYSNAME = #bind($STATESYSNAME 'NUMERIC') #end
+                    #chunk($DECLARATIONID) T1.DECLARATIONID = #bind($DECLARATIONID 'NUMERIC') #end
+                    #chunk($BINDOCTYPE)   T1.BINDOCTYPE   = #bind($BINDOCTYPE 'NUMERIC') #end
+
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+    <query name="dsPDDeclarationAndReasonGetSameDeclarationExist" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BLossMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT
+                    $NEEDDISTINCT
+                    #result('T.ID', 'java.lang.Long', 'ID'),
+                    #result('T.STATEID', 'java.lang.Long', 'STATEID'),
+                    #result('T.SUPPOSEDDATEOFENTRY', 'java.lang.Date', 'SUPPOSEDDATEOFENTRY'),
+                    #result('T2.ID', 'java.lang.Long', 'REASONID'),
+                    #result('T2.CHANGEDATE', 'java.util.Date', 'CHANGEDATE'),
+                    #result('state.SYSNAME', 'java.util.String', 'STATESYSNAME')
+                FROM
+                    PD_DECLARATION T
+                    LEFT JOIN PD_REASONCHANGE T2 on t.id = t2.DECLARATIONID
+                    LEFT JOIN CORE_SM_STATE state on state.id = T.STATEID
+                #chain('AND' 'WHERE')
+                    #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end
+                    #chunk($CONTRACTID) T.CONTRACTID = #bind($CONTRACTID 'NUMERIC') #end
+                    #chunk($KINDCHANGEREASONID)  T2.KINDCHANGEREASONID = #bind($KINDCHANGEREASONID 'NUMERIC') #end
+                    #chunk($CHECKDATE) T.SUPPOSEDDATEOFENTRY
+                        BETWEEN
+                            TO_DATE(#bind($SUPPOSEDDATEOFENTRY_START 'VARCHAR'),'YYYY.MM.DD HH24:MI:SS')
+                            AND TO_DATE(#bind($SUPPOSEDDATEOFENTRY_END 'VARCHAR'),'YYYY.MM.DD HH24:MI:SS')
+                    #end
+                #end
+            ]]>
+        </sql>
+    </query>
+    <query name="dsPDDeclarationAndReasonGetSameDeclarationExistCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BLossMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT
+                    #result('COUNT($NEEDDISTINCT T.ID)', 'java.lang.Long', 'ID')
+                FROM
+                    PD_DECLARATION T
+                    LEFT JOIN PD_REASONCHANGE T2 on t.id = t2.DECLARATIONID
+                    LEFT JOIN CORE_SM_STATE state on state.id = T.STATEID
+                #chain('AND' 'WHERE')
+                    #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end
+                    #chunk($CONTRACTID) T.CONTRACTID = #bind($CONTRACTID 'NUMERIC') #end
+                    #chunk($KINDCHANGEREASONID)  T2.KINDCHANGEREASONID = #bind($KINDCHANGEREASONID 'NUMERIC') #end
+                    #chunk($CHECKDATE) T.SUPPOSEDDATEOFENTRY
+                        BETWEEN
+                            TO_DATE(#bind($SUPPOSEDDATEOFENTRY_START 'VARCHAR') ,'YYYY-MM-DD HH24:MI:SS')
+                            AND TO_DATE(#bind($SUPPOSEDDATEOFENTRY_END 'VARCHAR'), 'YYYY-MM-DD HH24:MI:SS')
+                    #end
+                #end
+            ]]>
+        </sql>
+    </query>
+</data-map>

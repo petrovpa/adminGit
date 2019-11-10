@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.bivgroup.flextera.insurance.bivsberfront</groupId>
+        <artifactId>utils</artifactId>
+        <version>1.00.001</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <name>sessionutils</name>
+    <groupId>com.bivgroup.flextera.insurance.bivsberfront.utils</groupId>
+    <artifactId>sessionutils</artifactId>
+    <version>${session-utils.version}</version>
+    <packaging>jar</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.bivgroup.flextera.insurance.bivsberfront.utils</groupId>
+            <artifactId>string-utils</artifactId>
+            <version>${string-utils.version}</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.spec.javax.ws.rs</groupId>
+            <artifactId>jboss-jaxrs-api_2.0_spec</artifactId>
+            <version>1.0.0.Final</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.5.4</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-client</artifactId>
+            <version>3.0.14.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+            <version>8.0</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>1.6</maven.compiler.source>
+        <maven.compiler.target>1.6</maven.compiler.target>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.0.2</version>
+                <configuration>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>

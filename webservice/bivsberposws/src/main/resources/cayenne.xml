@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<domains project-version="2.0">
+    <domain name="WSDomain">
+        <property name="cayenne.DataDomain.usingExternalTransactions" value="false"/>
+        <map name="LossesPOS" location="LossesPosMap.map.xml"/>
+        <map name="BivSberPOS" location="BivSberPosMap.map.xml"/>
+        <map name="BivSberPOSCustom" location="BivSberPosMapCustom.map.xml"/>
+        <map name="LossesPOSCustom" location="LossesPosMapCustom.map.xml"/>
+        <map name="AngularPOSCustom" location="AngularPosMapCustom.map.xml"/>
+        
+        <node name="MapNode" datasource="MapNode.driver.xml" factory="org.apache.cayenne.conf.DriverDataSourceFactory">
+            <map-ref name="LossesPOS"/>      
+            <map-ref name="BivSberPOS"/>      
+            <map-ref name="BivSberPOSCustom"/>      
+            <map-ref name="LossesPOSCustom"/>
+            <map-ref name="AngularPOSCustom"/>
+        </node>
+    </domain>
+</domains>

@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+	<db-entity name="B2B_ADDRESS">
+		<db-attribute name="ADDRESSID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="ADDRESSTEXT1" type="VARCHAR" length="1024"/>
+		<db-attribute name="ADDRESSTEXT2" type="VARCHAR" length="1024"/>
+		<db-attribute name="ADDRESSTEXT3" type="VARCHAR" length="1024"/>
+		<db-attribute name="ADDRESSTYPEID" type="NUMERIC" length="19"/>
+		<db-attribute name="BUILDING" type="VARCHAR" length="255"/>
+		<db-attribute name="CITY" type="VARCHAR" length="255"/>
+		<db-attribute name="CITYKLADR" type="VARCHAR" length="255"/>
+		<db-attribute name="CITYTYPE" type="NUMERIC" length="19"/>
+		<db-attribute name="COUNTRY" type="VARCHAR" length="255"/>
+		<db-attribute name="COUNTRYCODE" type="VARCHAR" length="255"/>
+		<db-attribute name="DISTRICT" type="VARCHAR" length="255"/>
+		<db-attribute name="DISTRICTKLADR" type="VARCHAR" length="255"/>
+		<db-attribute name="DISTRICTTYPE" type="NUMERIC" length="19"/>
+		<db-attribute name="FLAT" type="VARCHAR" length="255"/>
+		<db-attribute name="FLATTYPE" type="VARCHAR" length="255"/>
+		<db-attribute name="FLOOR" type="NUMERIC" length="19"/>
+		<db-attribute name="HOUSE" type="VARCHAR" length="255"/>
+		<db-attribute name="HOUSING" type="VARCHAR" length="255"/>
+		<db-attribute name="POSTALCODE" type="VARCHAR" length="255"/>
+		<db-attribute name="REGION" type="VARCHAR" length="255"/>
+		<db-attribute name="REGIONKLADR" type="VARCHAR" length="255"/>
+		<db-attribute name="REGIONTYPE" type="NUMERIC" length="19"/>
+		<db-attribute name="STREET" type="VARCHAR" length="255"/>
+		<db-attribute name="STREETKLADR" type="VARCHAR" length="255"/>
+		<db-attribute name="STREETTYPE" type="NUMERIC" length="19"/>
+		<db-attribute name="USEKLADR" type="INTEGER" length="19"/>
+		<db-attribute name="VILLAGE" type="VARCHAR" length="255"/>
+		<db-attribute name="VILLAGEKLADR" type="VARCHAR" length="255"/>
+		<db-attribute name="VILLAGETYPE" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_CALENDAR">
+		<db-attribute name="CALDATE" type="FLOAT"/>
+		<db-attribute name="CALENDARID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="ISDAYOFF" type="NUMERIC" length="19"/>
+		<db-attribute name="ISHOLIDAY" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_COUNTRY">
+		<db-attribute name="ALPHACODE2" type="VARCHAR" length="255"/>
+		<db-attribute name="ALPHACODE3" type="VARCHAR" length="255"/>
+		<db-attribute name="BRIEFNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="COUNTRYID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="COUNTRYNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="DIGITCODE" type="VARCHAR" length="255"/>
+		<db-attribute name="ENGNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="FLAG" type="VARCHAR" length="255"/>
+		<db-attribute name="ISNOTUSE" type="NUMERIC" length="19"/>
+		<db-attribute name="NATIVENAME" type="VARCHAR" length="255"/>
+		<db-attribute name="PHONECODE" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="B2B_EXPORTDATA">
+		<db-attribute name="CREATEDATE" type="FLOAT"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="EXPORTDATAID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="FINISHDATE" type="FLOAT"/>
+		<db-attribute name="STARTDATE" type="FLOAT"/>
+		<db-attribute name="STATEID" type="NUMERIC" length="19"/>
+		<db-attribute name="TEMPLATEID" type="NUMERIC" length="19"/>
+		<db-attribute name="AGENTID" type="NUMERIC" length="19"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_EXPORTDATAORGSTRUCT">
+		<db-attribute name="EXPORTDATAID" type="NUMERIC" length="19"/>
+		<db-attribute name="EXPORTDATAORGSTRUCTID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="ORGSTRUCTID" type="NUMERIC" length="19"/>
+		<db-attribute name="ROLEID" type="NUMERIC" length="19"/>
+		<db-attribute name="USERID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_EXPORTDATA_CONTENT">
+		<db-attribute name="CONTENTID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="EXPORTDATAID" type="NUMERIC" length="19"/>
+		<db-attribute name="OBJECTID" type="NUMERIC" length="19"/>
+		<db-attribute name="TYPEID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_EXPORTDATA_TEMPLATE">
+		<db-attribute name="CAPTION" type="VARCHAR" length="512"/>
+		<db-attribute name="DATAMETHOD" type="VARCHAR" length="255"/>
+		<db-attribute name="DATASQL" type="VARCHAR" length="4000"/>
+		<db-attribute name="DATASQLCLOB" type="CLOB"/>
+		<db-attribute name="ISRECORDDISABLE" type="NUMERIC" length="1"/>
+		<db-attribute name="METHOD" type="VARCHAR" length="255"/>
+		<db-attribute name="SQL" type="VARCHAR" length="4000"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="TEMPLATEID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="TYPEID" type="NUMERIC" length="19"/>
+		<db-attribute name="REPID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_EXPORTDATA_TYPE">
+		<db-attribute name="METHODNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="1024"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="TYPEID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_MENU">
+		<db-attribute name="ACTIONURL" type="VARCHAR" isMandatory="true" length="512"/>
+		<db-attribute name="MENUID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="MENUTYPEID" type="NUMERIC" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="PARENTMENUID" type="NUMERIC" length="19"/>
+		<db-attribute name="PICTUREURL" type="VARCHAR" length="512"/>
+		<db-attribute name="PRODCONFIGID" type="NUMERIC" length="19"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="B2B_MENUORGSTRUCT">
+		<db-attribute name="MENUID" type="NUMERIC" length="19"/>
+		<db-attribute name="MENUORGSTRUCTID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="ORGSTRUCTID" type="NUMERIC" length="19"/>
+		<db-attribute name="ROLEID" type="NUMERIC" length="19"/>
+		<db-attribute name="USERID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_MENUTYPE">
+		<db-attribute name="MENUTYPEID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="B2B_REFERRAL">
+		<db-attribute name="LINK" type="VARCHAR" length="1024"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="REFERRALID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="TOKEN" type="VARCHAR" length="255"/>
+		<db-attribute name="URLBEGIN" type="VARCHAR" length="1024"/>
+		<db-attribute name="URLDONE" type="VARCHAR" length="1024"/>
+	</db-entity>
+	<db-entity name="B2B_USERPARAM">
+		<db-attribute name="ENTITYKEY" type="VARCHAR" length="512"/>
+		<db-attribute name="ENTITYTYPE" type="VARCHAR" length="512"/>
+		<db-attribute name="USERACCOUNTID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="USERPARAMID" type="NUMERIC" length="19"/>
+		<db-attribute name="VALUE" type="VARCHAR" length="4096"/>
+	</db-entity>
+	<db-entity name="B2B_HANDBOOKDESCR">
+		<db-attribute name="DESCRIPTION" type="CLOB"/>
+		<db-attribute name="HANDBOOKDESCRID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="CALCHANDBOOKID" type="NUMERIC" length="19"/>
+		<db-attribute name="HBDESCRID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_BINDOCTYPE">
+		<db-attribute name="BINDOCTYPEID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="BINDOCTYPE" type="NUMERIC" length="19"/>
+		<db-attribute name="REQUIRED" type="NUMERIC" length="19"/>
+		<db-attribute name="DOCLEVEL" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODCONFID" type="NUMERIC" length="19"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="TABLENAME" type="VARCHAR" length="255"/>
+		<db-attribute name="ENTITYSYSNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="255"/>
+	</db-entity>
+	<obj-entity name="B2BAddress" dbEntityName="B2B_ADDRESS">
+		<obj-attribute name="addressText1" type="java.lang.String" db-attribute-path="ADDRESSTEXT1" note="Адрес в виде строки 1"/>
+		<obj-attribute name="addressText2" type="java.lang.String" db-attribute-path="ADDRESSTEXT2" note="Адрес в виде строки 2"/>
+		<obj-attribute name="addressText3" type="java.lang.String" db-attribute-path="ADDRESSTEXT3" note="Адрес в виде строки 3"/>
+		<obj-attribute name="addressTypeId" type="java.lang.Long" db-attribute-path="ADDRESSTYPEID" note="Ид типа адреса"/>
+		<obj-attribute name="building" type="java.lang.String" db-attribute-path="BUILDING" note="Строение"/>
+		<obj-attribute name="city" type="java.lang.String" db-attribute-path="CITY" note="Город"/>
+		<obj-attribute name="cityKladr" type="java.lang.String" db-attribute-path="CITYKLADR" note="Кладр города"/>
+		<obj-attribute name="cityType" type="java.lang.Long" db-attribute-path="CITYTYPE" note="Тип города"/>
+		<obj-attribute name="country" type="java.lang.String" db-attribute-path="COUNTRY" note="Страна"/>
+		<obj-attribute name="countryCode" type="java.lang.String" db-attribute-path="COUNTRYCODE" note="Код страны"/>
+		<obj-attribute name="district" type="java.lang.String" db-attribute-path="DISTRICT" note="Район"/>
+		<obj-attribute name="districtKladr" type="java.lang.String" db-attribute-path="DISTRICTKLADR" note="Кладр района"/>
+		<obj-attribute name="districtType" type="java.lang.Long" db-attribute-path="DISTRICTTYPE" note="Тип района"/>
+		<obj-attribute name="flat" type="java.lang.String" db-attribute-path="FLAT" note="Квартира"/>
+		<obj-attribute name="flatType" type="java.lang.String" db-attribute-path="FLATTYPE" note="Тип квартиры"/>
+		<obj-attribute name="floor" type="java.lang.Long" db-attribute-path="FLOOR" note="Этаж"/>
+		<obj-attribute name="house" type="java.lang.String" db-attribute-path="HOUSE" note="Дом"/>
+		<obj-attribute name="housing" type="java.lang.String" db-attribute-path="HOUSING" note="Корпус"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="ADDRESSID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД адреса"/>
+		<obj-attribute name="postalCode" type="java.lang.String" db-attribute-path="POSTALCODE" note="Индекс"/>
+		<obj-attribute name="region" type="java.lang.String" db-attribute-path="REGION" note="Регион"/>
+		<obj-attribute name="regionKladr" type="java.lang.String" db-attribute-path="REGIONKLADR" note="Кладр региона"/>
+		<obj-attribute name="regionType" type="java.lang.Long" db-attribute-path="REGIONTYPE" note="Тип региона"/>
+		<obj-attribute name="street" type="java.lang.String" db-attribute-path="STREET" note="Улица"/>
+		<obj-attribute name="streetKladr" type="java.lang.String" db-attribute-path="STREETKLADR" note="Кладр улицы"/>
+		<obj-attribute name="streetType" type="java.lang.Long" db-attribute-path="STREETTYPE" note="Тип улицы"/>
+		<obj-attribute name="useKladr" type="java.lang.Integer" db-attribute-path="USEKLADR" note="Признак использования КЛАДР"/>
+		<obj-attribute name="village" type="java.lang.String" db-attribute-path="VILLAGE" note="Населенный пункт"/>
+		<obj-attribute name="villageKladr" type="java.lang.String" db-attribute-path="VILLAGEKLADR" note="Кладр населенного пункта"/>
+		<obj-attribute name="villageType" type="java.lang.Long" db-attribute-path="VILLAGETYPE" note="Тип населенного пункта"/>
+	</obj-entity>
+	<obj-entity name="B2BCalendar" dbEntityName="B2B_CALENDAR">
+		<obj-attribute name="calendarDate" type="java.math.BigDecimal" db-attribute-path="CALDATE" note="Дата дня календаря"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="CALENDARID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД записи"/>
+		<obj-attribute name="isDayOff" type="java.lang.Long" db-attribute-path="ISDAYOFF" note="Признак выходного дня"/>
+		<obj-attribute name="isHoliday" type="java.lang.Long" db-attribute-path="ISHOLIDAY" note="Признак праздничного дня"/>
+	</obj-entity>
+	<obj-entity name="B2BCountry" dbEntityName="B2B_COUNTRY">
+		<obj-attribute name="alphacode2" type="java.lang.String" db-attribute-path="ALPHACODE2" note="Альфа код2"/>
+		<obj-attribute name="alphacode3" type="java.lang.String" db-attribute-path="ALPHACODE3" note="Альфа код 3"/>
+		<obj-attribute name="briefname" type="java.lang.String" db-attribute-path="BRIEFNAME" note="Сокращенное название"/>
+		<obj-attribute name="countryname" type="java.lang.String" db-attribute-path="COUNTRYNAME" note="Название страны"/>
+		<obj-attribute name="digitcode" type="java.lang.String" db-attribute-path="DIGITCODE" note="Код страны"/>
+		<obj-attribute name="engname" type="java.lang.String" db-attribute-path="ENGNAME" note="Наименование на английском"/>
+		<obj-attribute name="flag" type="java.lang.String" db-attribute-path="FLAG" note="Путь к изображению флага"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="COUNTRYID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД страны"/>
+		<obj-attribute name="isnotuse" type="java.lang.Long" db-attribute-path="ISNOTUSE" note="Не используется"/>
+		<obj-attribute name="nativename" type="java.lang.String" db-attribute-path="NATIVENAME" note="Наименование на родном языке"/>
+		<obj-attribute name="phonecode" type="java.lang.String" db-attribute-path="PHONECODE" note="Префикс номера телефона"/>
+	</obj-entity>
+	<obj-entity name="B2BExportData" dbEntityName="B2B_EXPORTDATA">
+		<obj-attribute name="createdate" type="java.lang.Float" db-attribute-path="CREATEDATE" note="Дата создания"/>
+		<obj-attribute name="createuserid" type="java.math.BigDecimal" db-attribute-path="CREATEUSERID" note="Пользователь создавший"/>
+		<obj-attribute name="exportdataid" type="java.lang.Long" db-attribute-path="EXPORTDATAID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="Ид"/>
+		<obj-attribute name="finishdate" type="java.math.BigDecimal" db-attribute-path="FINISHDATE" note="Дата по"/>
+		<obj-attribute name="startDate" type="java.math.BigDecimal" db-attribute-path="STARTDATE" note="Дата с"/>
+		<obj-attribute name="stateid" type="java.lang.Long" db-attribute-path="STATEID" note="Состояние"/>
+		<obj-attribute name="templateid" type="java.lang.Long" db-attribute-path="TEMPLATEID" note="Ссылка на объект учета «Шаблон выгрузки»"/>
+		<obj-attribute name="agentid" type="java.lang.Long" db-attribute-path="AGENTID" note="Ссылка на объект учета «Шаблон выгрузки»"/>
+		<obj-attribute name="updatedate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата изменения"/>
+		<obj-attribute name="updateuserid" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="Пользователь изменивший"/>
+	</obj-entity>
+	<obj-entity name="B2BExportDataContent" dbEntityName="B2B_EXPORTDATA_CONTENT">
+		<obj-attribute name="contentid" type="java.lang.Long" db-attribute-path="CONTENTID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="Первичный ключ"/>
+		<obj-attribute name="exportdataid" type="java.lang.Long" db-attribute-path="EXPORTDATAID" note="Ссылка Экспорт"/>
+		<obj-attribute name="objectid" type="java.lang.Long" db-attribute-path="OBJECTID" note="Ид объекта"/>
+		<obj-attribute name="typeid" type="java.lang.Long" db-attribute-path="TYPEID" note="Тип"/>
+	</obj-entity>
+	<obj-entity name="B2BExportDataOrgStruct" dbEntityName="B2B_EXPORTDATAORGSTRUCT">
+		<obj-attribute name="exportdataid" type="java.lang.Long" db-attribute-path="EXPORTDATAID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД экспорта"/>
+		<obj-attribute name="exportdataorgstrucid" type="java.lang.Long" db-attribute-path="EXPORTDATAORGSTRUCTID" note="Первичный ключ"/>
+		<obj-attribute name="orgstructid" type="java.lang.Long" db-attribute-path="ORGSTRUCTID" note="Ид департамента"/>
+		<obj-attribute name="roleid" type="java.lang.Long" db-attribute-path="ROLEID" note="Ид роли"/>
+		<obj-attribute name="userid" type="java.lang.Long" db-attribute-path="USERID" note="Пользователь"/>
+	</obj-entity>
+	<obj-entity name="B2BExportDataTemplate" dbEntityName="B2B_EXPORTDATA_TEMPLATE">
+		<obj-attribute name="caption" type="java.lang.String" db-attribute-path="CAPTION" note="название шаблона"/>
+		<obj-attribute name="datamethod" type="java.lang.String" db-attribute-path="DATAMETHOD" note="метод формирующий данные для последующей выгрузки"/>
+		<obj-attribute name="datasql" type="java.lang.String" db-attribute-path="DATASQL" note="текст кода запроса для заполнения выгрузки"/>
+		<obj-attribute name="datasqlclob" type="java.lang.String" db-attribute-path="DATASQLCLOB" note="текст кода запроса для заполнения выгрузки"/>
+		<obj-attribute name="isrecorddisable" type="java.lang.Long" db-attribute-path="ISRECORDDISABLE" note="признак для отключения записи"/>
+		<obj-attribute name="method" type="java.lang.String" db-attribute-path="METHOD" note="Метод выбирающий перечень ид договоров в наполнение выгрузки"/>
+		<obj-attribute name="sql" type="java.lang.String" db-attribute-path="SQL" note="текст кода запроса для заполнения выгрузки"/>
+		<obj-attribute name="sysname" type="java.lang.String" db-attribute-path="SYSNAME" note="системное имя"/>
+		<obj-attribute name="templateid" type="java.lang.Long" db-attribute-path="TEMPLATEID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="Первичный ключ"/>
+		<obj-attribute name="typeid" type="java.lang.Long" db-attribute-path="TYPEID" note="Cсылка на справочник «Тип объекта выгрузки»"/>
+		<obj-attribute name="reportid" type="java.lang.Long" db-attribute-path="REPID" note="Cсылка на шаблон»"/>
+	</obj-entity>
+	<obj-entity name="B2BExportDataType" dbEntityName="B2B_EXPORTDATA_TYPE">
+		<obj-attribute name="methodname" type="java.lang.String" db-attribute-path="METHODNAME" note="Имя метода формирующего файл выгрузки по данным подготовленным шаблоном."/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование"/>
+		<obj-attribute name="note" type="java.lang.String" db-attribute-path="NOTE" note="Примечание"/>
+		<obj-attribute name="sysname" type="java.lang.String" db-attribute-path="SYSNAME" note="Системное имя"/>
+		<obj-attribute name="typeid" type="java.lang.Long" db-attribute-path="TYPEID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="Первичный ключ"/>
+	</obj-entity>
+	<obj-entity name="B2BMenu" dbEntityName="B2B_MENU">
+		<obj-attribute name="actionurl" type="java.lang.String" db-attribute-path="ACTIONURL" note="URL"/>
+		<obj-attribute name="menuid" type="java.lang.Long" db-attribute-path="MENUID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="Ид"/>
+		<obj-attribute name="menutypeid" type="java.lang.Long" db-attribute-path="MENUTYPEID" note="Тип меню"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Имя"/>
+		<obj-attribute name="parentmenuid" type="java.lang.Long" db-attribute-path="PARENTMENUID" note="Меню заголовок"/>
+		<obj-attribute name="pictureurl" type="java.lang.String" db-attribute-path="PICTUREURL" note="URL Картинки"/>
+		<obj-attribute name="prodconfigid" type="java.lang.Long" db-attribute-path="PRODCONFIGID" note="Id конфигурации"/>
+		<obj-attribute name="sysname" type="java.lang.String" db-attribute-path="SYSNAME" note="Системное имя"/>
+	</obj-entity>
+	<obj-entity name="B2BMenuType" dbEntityName="B2B_MENUTYPE">
+		<obj-attribute name="menutypeid" type="java.lang.Long" db-attribute-path="MENUTYPEID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="Ид"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование типа меню"/>
+		<obj-attribute name="sysname" type="java.lang.String" db-attribute-path="SYSNAME" note="Cистемное наименование типа меню"/>
+	</obj-entity>
+	<obj-entity name="B2BMenuorgstruct" dbEntityName="B2B_MENUORGSTRUCT">
+		<obj-attribute name="menuid" type="java.lang.Long" db-attribute-path="MENUID"/>
+		<obj-attribute name="menuorgstructid" type="java.lang.Long" db-attribute-path="MENUORGSTRUCTID" requiredInsert="true" requiredUpdate="true" requiredDelete="true"/>
+		<obj-attribute name="orgstructid" type="java.lang.Long" db-attribute-path="ORGSTRUCTID"/>
+		<obj-attribute name="roleid" type="java.lang.Long" db-attribute-path="ROLEID"/>
+		<obj-attribute name="userid" type="java.lang.Long" db-attribute-path="USERID"/>
+	</obj-entity>
+	<obj-entity name="B2BReferral" dbEntityName="B2B_REFERRAL">
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="REFERRALID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД реферала"/>
+		<obj-attribute name="link" type="java.lang.String" db-attribute-path="LINK" note="линк реферала сохраняется в договоре в REFERRAL"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование"/>
+		<obj-attribute name="sysName" type="java.lang.String" db-attribute-path="SYSNAME" note="Системное наименование"/>
+		<obj-attribute name="token" type="java.lang.String" db-attribute-path="TOKEN" note="Токен"/>
+		<obj-attribute name="urlBegin" type="java.lang.String" db-attribute-path="URLBEGIN" note="Линк запроса о начале офомрления договора"/>
+		<obj-attribute name="urlDone" type="java.lang.String" db-attribute-path="URLDONE" note="Линк запроса о оплате и заключении договора"/>
+	</obj-entity>
+	<obj-entity name="B2BUserParam" dbEntityName="B2B_USERPARAM">
+		<obj-attribute name="entitykey" type="java.lang.String" db-attribute-path="ENTITYKEY" note="Идентификатор сохраняемого параметра"/>
+		<obj-attribute name="entitytype" type="java.lang.String" db-attribute-path="ENTITYTYPE" note="Тип сущности"/>
+		<obj-attribute name="userAccountId" type="java.lang.Long" db-attribute-path="USERACCOUNTID" note="Ссылка на аккаунт пользователя"/>
+		<obj-attribute name="userParamId" type="java.lang.Long" db-attribute-path="USERPARAMID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="Первичный ключ"/>
+		<obj-attribute name="value" type="java.lang.String" db-attribute-path="VALUE" note="Значение параметра"/>
+	</obj-entity>
+	<obj-entity name="B2BHandbookDescription" dbEntityName="B2B_HANDBOOKDESCR">
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="DESCRIPTION" note="json описания структуры справочника"/>
+		<obj-attribute name="handBookDescrId" type="java.lang.Long" db-attribute-path="HANDBOOKDESCRID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="Первичный ключ"/>
+		<obj-attribute name="calcHandBookId" type="java.lang.Long" db-attribute-path="CALCHANDBOOKID" note="Ид справочника калькулятора"/>
+		<obj-attribute name="hbDescrId" type="java.lang.Long" db-attribute-path="HBDESCRID" note="Ид справочника"/>
+	</obj-entity>
+<obj-entity name="B2B_BINDOCTYPE" dbEntityName="B2B_BINDOCTYPE">	
+	<obj-attribute name="BINDOCTYPEID" type="java.lang.Long" db-attribute-path="BINDOCTYPEID" requiredInsert="true" requiredUpdate="true" requiredDelete="true"  note=""/>
+	<obj-attribute name="BINDOCTYPE" type="java.lang.Long" db-attribute-path="BINDOCTYPE" note=""/>
+	<obj-attribute name="REQUIRED" type="java.lang.Long" db-attribute-path="REQUIRED" note=""/>
+	<obj-attribute name="DOCLEVEL" type="java.lang.Long" db-attribute-path="DOCLEVEL" note=""/>
+	<obj-attribute name="PRODCONFID" type="java.lang.Long" db-attribute-path="PRODCONFID" note=""/>
+	<obj-attribute name="SYSNAME" type="java.lang.String" db-attribute-path="SYSNAME" note=""/>
+	<obj-attribute name="TABLENAME" type="java.lang.String" db-attribute-path="TABLENAME" note=""/>
+	<obj-attribute name="ENTITYSYSNAME" type="java.lang.String" db-attribute-path="ENTITYSYSNAME" note=""/>
+	<obj-attribute name="NAME" type="java.lang.String" db-attribute-path="NAME" note=""/>
+	<obj-attribute name="NOTE" type="java.lang.String" db-attribute-path="NOTE" note=""/>
+</obj-entity>	
+</data-map>

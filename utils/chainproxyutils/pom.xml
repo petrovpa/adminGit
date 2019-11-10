@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.bivgroup.flextera.insurance.bivsberfront</groupId>
+        <artifactId>utils</artifactId>
+        <version>1.00.001</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.bivgroup.flextera.insurance.bivsberfront.utils</groupId>
+    <artifactId>chainproxy-utils</artifactId>
+    <version>${chainproxy-utils-version}</version>
+    <packaging>jar</packaging>
+    <name>chainproxyutils</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.0.2</version>
+                <configuration>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-1.2-api</artifactId>
+            <version>2.6.2</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>dom4j</artifactId>
+                    <groupId>dom4j</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+
+</project>

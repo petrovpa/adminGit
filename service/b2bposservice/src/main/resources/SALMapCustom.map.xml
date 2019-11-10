@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+    <query name="dsSAL_JournalBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.EVENTID', 'java.lang.Long', 'EVENTID'),
+        #result('T.ID', 'java.lang.Long', 'ID'),
+        #result('T.ISRESOLVED', 'java.lang.Long', 'ISRESOLVED'),
+        #result('T.NOTE', 'java.lang.String', 'NOTE'),
+        #result('T.RESOLVEDUSERID', 'java.lang.Long', 'RESOLVEDUSERID'),
+        #result('T.SOURCEID', 'java.lang.Long', 'SOURCEID'),
+        #result('T.CREATEDATE', 'java.math.BigDecimal', 'CREATEDATE'),
+        #result('T.UPDATEDATE', 'java.math.BigDecimal', 'UPDATEDATE'),
+        #result('T1.NAME', 'java.lang.String', 'EVENTNAME'),
+        #result('T1.SYSNAME', 'java.lang.String', 'EVENTSYSNAME'),
+        #result('T2.NAME', 'java.lang.String', 'SOURCENAME'),
+        #result('T2.SYSNAME', 'java.lang.String', 'SOURCESYSNAME'),
+        
+        #result("CONCAT(T72.lastname,CONCAT(' ',CONCAT(T72.firstname,CONCAT(' ',T72.middlename))))", 'java.lang.String', 'CREATEUSERFIO'),
+        #result("CONCAT(T82.lastname,CONCAT(' ',CONCAT(T82.firstname,CONCAT(' ',T82.middlename))))", 'java.lang.String', 'UPDATEUSERFIO')
+        
+        
+       $ASPECTFIELDS 
+FROM 
+      SAL_JOURNAL T 
+LEFT JOIN SAL_KINDEVENT T1 ON (T.EVENTID = T1.ID)
+LEFT JOIN SAL_KINDSOURCE T2 ON (T.SOURCEID = T2.ID)
+LEFT JOIN SAL_JOURNAL_CONTEXT T3 ON (T.ID = T3.JOURNALID)
+LEFT JOIN SAL_JOURNAL_FLAG T4 ON (T.ID = T4.JOURNALID)
+left join core_useraccount T7 on (T.createuserid = T7.useraccountid)
+left join core_user T71 on (T7.userid = T71.userid)
+left join dep_employee T72 on (T71.objectid = T72.employeeid)
+left join core_useraccount T8 on (T.updateuserid = T8.useraccountid)
+left join core_user T81 on (T8.userid = T81.userid)
+left join dep_employee T82 on (T81.objectid = T82.employeeid)
+
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CUSTOMWHERE) $CUSTOMWHERE #end 
+       #chunk($EVENTID) T.EVENTID = #bind($EVENTID 'NUMERIC') #end 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($ISRESOLVED) T.ISRESOLVED = #bind($ISRESOLVED 'NUMERIC') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($RESOLVEDUSERID) T.RESOLVEDUSERID = #bind($RESOLVEDUSERID 'NUMERIC') #end 
+       #chunk($SOURCEID) T.SOURCEID = #bind($SOURCEID 'NUMERIC') #end 
+       #chunk($EVENTNAME) T1.NAME = #bind($EVENTNAME 'VARCHAR') #end 
+       #chunk($EVENTSYSNAME) T1.SYSNAME = #bind($EVENTSYSNAME 'VARCHAR') #end 
+       #chunk($SOURCENAME) T2.NAME = #bind($SOURCENAME 'VARCHAR') #end 
+       #chunk($SOURCESYSNAME) T2.SYSNAME = #bind($SOURCESYSNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsSAL_JournalBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ID)', 'java.lang.Long', 'CNT') 
+FROM 
+      SAL_JOURNAL T 
+LEFT JOIN SAL_KINDEVENT T1 ON (T.EVENTID = T1.ID)
+LEFT JOIN SAL_KINDSOURCE T2 ON (T.SOURCEID = T2.ID)
+LEFT JOIN SAL_JOURNAL_CONTEXT T3 ON (T.ID = T3.JOURNALID)
+LEFT JOIN SAL_JOURNAL_FLAG T4 ON (T.ID = T4.JOURNALID)
+left join core_useraccount T7 on (T.createuserid = T7.useraccountid)
+left join core_user T71 on (T7.userid = T71.userid)
+left join dep_employee T72 on (T71.objectid = T72.employeeid)
+left join core_useraccount T8 on (T.updateuserid = T8.useraccountid)
+left join core_user T81 on (T8.userid = T81.userid)
+left join dep_employee T82 on (T81.objectid = T82.employeeid)
+      
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CUSTOMWHERE) $CUSTOMWHERE #end 
+       #chunk($EVENTID) T.EVENTID = #bind($EVENTID 'NUMERIC') #end 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($ISRESOLVED) T.ISRESOLVED = #bind($ISRESOLVED 'NUMERIC') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($RESOLVEDUSERID) T.RESOLVEDUSERID = #bind($RESOLVEDUSERID 'NUMERIC') #end 
+       #chunk($SOURCEID) T.SOURCEID = #bind($SOURCEID 'NUMERIC') #end 
+       #chunk($EVENTNAME) T1.NAME = #bind($EVENTNAME 'VARCHAR') #end 
+       #chunk($EVENTSYSNAME) T1.SYSNAME = #bind($EVENTSYSNAME 'VARCHAR') #end 
+       #chunk($SOURCENAME) T2.NAME = #bind($SOURCENAME 'VARCHAR') #end 
+       #chunk($SOURCESYSNAME) T2.SYSNAME = #bind($SOURCESYSNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+<query name="dsSAL_Journal_FlagCustomBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.FLAGEVENTID', 'java.lang.Long', 'FLAGEVENTID'),
+        #result('T.ID', 'java.lang.Long', 'ID'),
+        #result('T.JOURNALID', 'java.lang.Long', 'JOURNALID'),
+        #result('T1.NAME', 'java.lang.String', 'KINDFLAGNAME'),
+        #result('T1.SYSNAME', 'java.lang.String', 'KINDFLAGSYSNAME'),
+        #result('T1.EVENTID', 'java.lang.Long', 'KINDFLAGEVENTID'),
+        #result('T1.ID', 'java.lang.Long', 'KINDFLAGID')
+        
+       $ASPECTFIELDS 
+FROM 
+      SAL_JOURNAL_FLAG T 
+LEFT JOIN SAL_KINDFLAGEVENT T1 ON (T1.ID = FLAGEVENTID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($FLAGEVENTID) T.FLAGEVENTID = #bind($FLAGEVENTID 'NUMERIC') #end 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($JOURNALID) T.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_Journal_FlagCustomBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ID)', 'java.lang.Long', 'CNT') 
+FROM 
+      SAL_JOURNAL_FLAG T 
+LEFT JOIN SAL_KINDFLAGEVENT T1 ON (T1.ID = FLAGEVENTID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($FLAGEVENTID) T.FLAGEVENTID = #bind($FLAGEVENTID 'NUMERIC') #end 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($JOURNALID) T.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_Journal_ContextCustomBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.ID', 'java.lang.Long', 'ID'),
+        #result('T.JOURNALID', 'java.lang.Long', 'JOURNALID'),
+        #result('T.PROPERTYSOURCEID', 'java.lang.Long', 'PROPERTYSOURCEID'),
+        #result('T.VALUE', 'java.lang.String', 'VALUE'),
+        #result('T1.NAME', 'java.lang.String', 'KINDCONTEXTSOURCENAME'),
+        #result('T1.SYSNAME', 'java.lang.String', 'KINDCONTEXTSOURCESYSNAME')
+        
+       $ASPECTFIELDS 
+FROM 
+      SAL_JOURNAL_CONTEXT T 
+LEFT JOIN SAL_KINDCONTEXTSOURCE T1 ON (T1.ID = T.PROPERTYSOURCEID)      
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($JOURNALID) T.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+       #chunk($PROPERTYSOURCEID) T.PROPERTYSOURCEID = #bind($PROPERTYSOURCEID 'NUMERIC') #end 
+       #chunk($VALUE) T.VALUE = #bind($VALUE 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsSAL_Journal_ContextCustomBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="SALMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ID)', 'java.lang.Long', 'CNT') 
+FROM 
+      SAL_JOURNAL_CONTEXT T 
+LEFT JOIN SAL_KINDCONTEXTSOURCE T1 ON (T1.ID = T.PROPERTYSOURCEID)      
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ID) T.ID = #bind($ID 'NUMERIC') #end 
+       #chunk($JOURNALID) T.JOURNALID = #bind($JOURNALID 'NUMERIC') #end 
+       #chunk($PROPERTYSOURCEID) T.PROPERTYSOURCEID = #bind($PROPERTYSOURCEID 'NUMERIC') #end 
+       #chunk($VALUE) T.VALUE = #bind($VALUE 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+    
+</data-map>

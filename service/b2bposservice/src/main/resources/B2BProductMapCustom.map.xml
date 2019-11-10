@@ -1,0 +1,1687 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+    <query name="dsB2BProductRedemptionAmountBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMapCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT #result('T.REDEMPTIONAMOUNTID', 'java.lang.Long', 'REDEMPTIONAMOUNTID'),
+       #result('T.PERCENT', 'java.lang.Double', 'PERCENT'),
+       #result('T.ASSURLEVEL', 'java.lang.Long', 'ASSURLEVEL'),
+       #result('T.YEARNUMBER', 'java.lang.Long', 'YEARNUMBER'),
+
+       #result('PRODPAY.PRODPAYVARID', 'java.lang.Long', 'PRODPAYVARID'),
+       #result('PAY.PAYVARID', 'java.lang.Long', 'PAYVARID'),
+       #result('PAY.NAME', 'java.lang.String', 'PAYVARNAME'),
+       #result('PAY.SYSNAME', 'java.lang.String', 'PAYVARSYSNAME'),
+
+       #result('INSAM.PRODINSAMCURID', 'java.lang.Long', 'PRODINSAMCURID'),
+       #result('CUR.CURRENCYID', 'java.lang.Long', 'CURRENCYID'),
+       #result('CUR.NUMERICCODE', 'java.lang.Long', 'NUMERICCODE'),
+       #result('CUR.ALPHACODE', 'java.lang.String', 'ALPHACODE'),
+       #result('CUR.CURRENCYNAME', 'java.lang.String', 'CURRENCYNAME'),
+
+       #result('PINVEST.PRODINVESTID', 'java.lang.Long', 'PRODINVESTID'),
+       #result('PINVEST.INVESTSTRATEGYID', 'java.lang.Long', 'INVESTSTRATEGYID'),
+       #result('INVEST.NAME', 'java.lang.String', 'INVESTNAME'),
+       #result('INVEST.SYSNAME', 'java.lang.String', 'INVESTSYSNAME'),
+       #result('INVEST.CURRENCYID', 'java.lang.String', 'INVESTCURRENCYID'),
+       #result('INVEST.TERMID', 'java.lang.String', 'INVESTTERMID'),
+
+       #result('PTERM.PRODTERMID', 'java.lang.Long', 'PRODTERMID'),
+       #result('TERM.TERMID', 'java.lang.Long', 'TERMID'),
+       #result('TERM.YEARCOUNT', 'java.lang.Long', 'TERMYEARCOUNT'),
+       #result('TERM.NAME', 'java.lang.String', 'TERMNAME'),
+       #result('TERM.SYSNAME', 'java.lang.String', 'TERMSYSNAME')
+FROM
+      B2B_PRODREDEMPTIONAMOUNT T
+      LEFT JOIN B2B_PRODCONF CONF ON CONF.PRODCONFID = T.PRODCONFID
+      LEFT JOIN B2B_PRODVER VER ON VER.PRODVERID = CONF.PRODVERID
+
+      LEFT JOIN B2B_PRODINSAMCUR INSAM ON INSAM.PRODINSAMCURID = T.PRODINSAMCURID
+      LEFT JOIN REF_CURRENCY CUR ON CUR.CURRENCYID = INSAM.CURRENCYID
+
+      LEFT JOIN B2B_PRODPAYVAR PRODPAY ON PRODPAY.PRODPAYVARID = T.PRODPAYVARID
+      LEFT JOIN B2B_PAYVAR PAY ON PAY.PAYVARID = PRODPAY.PAYVARID
+
+      LEFT JOIN B2B_PRODTERM PTERM ON PTERM.PRODTERMID = T.PRODTERMID
+      LEFT JOIN B2B_TERM TERM ON TERM.TERMID = PTERM.TERMID
+
+      LEFT JOIN B2B_PRODINVEST PINVEST ON PINVEST.PRODINVESTID = T.PRODINVESTID
+      LEFT JOIN B2B_INVESTSTRATEGY INVEST ON INVEST.INVESTSTRATEGYID = PINVEST.INVESTSTRATEGYID
+#chain('AND' 'WHERE')
+       #chunk($PRODVERID) T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end
+       #chunk($CUSTOMWHERE) $CUSTOMWHERE #end
+#end
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BRedemptionAmountListByParamBrowseEx"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map"
+           root-name="B2BProductMap">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+SELECT $NEEDDISTINCT
+        #result('T.REDEMPTIONAMOUNTID', 'java.lang.Long', 'REDEMPTIONAMOUNTID'),
+        #result('T.PRODTERMID', 'java.lang.Long', 'PRODTERMID'),
+        #result('T.PRODPAYVARID', 'java.lang.Long', 'PRODPAYVARID'),
+        #result('T.PRODCONFID', 'java.lang.Long', 'PRODCONFID'),
+        #result('T.PERCENT', 'java.lang.Float, 'PERCENT'),
+        #result('T.YEARNUMBER', 'java.lang.Long', 'YEARNUMBER'),
+        #result('T.ASSURLEVEL', 'java.lang.Long', 'ASSURLEVEL'),
+        #result('T.PRODINVESTID', 'java.lang.Long', 'PRODINVESTID'),
+        #result('T.PRODINSAMCURID', 'java.lang.Long', 'PRODINSAMCURID')
+       $ASPECTFIELDS
+FROM
+      B2B_PRODREDEMPTIONAMOUNT T
+$ASPECTTABLES
+  LEFT JOIN B2B_PRODCONF CONF ON T.PRODCONFID = CONF.PRODCONFID
+  LEFT JOIN B2B_PRODVER VER ON CONF.PRODVERID = VER.PRODVERID
+WHERE VER.PRODVERID = #bind($PRODVERID)
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BRedemptionAmountListByParamBrowseExCount"
+           factory="org.apache.cayenne.map.SQLTemplateBuilder"
+           root="data-map"
+           root-name="B2BProductMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+SELECT
+  #result('COUNT($NEEDDISTINCT T.REDEMPTIONAMOUNTID)', 'java.lang.Long', 'CNT')
+FROM B2B_PRODREDEMPTIONAMOUNT T
+$ASPECTTABLES
+  LEFT JOIN B2B_PRODCONF CONF ON T.PRODCONFID = CONF.PRODCONFID
+  LEFT JOIN B2B_PRODVER VER ON CONF.PRODVERID = VER.PRODVERID
+WHERE VER.PRODVERID = #bind($PRODVERID)
+]]>
+        </sql>
+    </query>
+
+    <query name="dsB2BProductReportBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMapCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.CATEGORYID', 'java.lang.Long', 'CATEGORYID'),
+        #result('T.DATAPROVID', 'java.lang.Long', 'DATAPROVID'),
+        #result('T.EDOC', 'java.lang.Long', 'EDOC'),
+        #result('T.PRODREPID', 'java.lang.Long', 'PRODREPID'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.NOTE', 'java.lang.String', 'NOTE'),
+        #result('T.ORIGPRINTING', 'java.lang.Long', 'ORIGPRINTING'),
+        #result('T.POSTN', 'java.lang.Long', 'POSTN'),
+        #result('T.REPLEVEL', 'java.lang.Long', 'REPLEVEL'),
+        #result('T.PREPRINTING', 'java.lang.Long', 'PREPRINTING'),
+        #result('T.PRODCONFID', 'java.lang.Long', 'PRODCONFID'),
+        #result('T.CHECKID', 'java.lang.Long', 'CHECKID'),
+        #result('T.REPID', 'java.lang.Long', 'REPID'),
+        #result('T.REPTYPE', 'java.lang.Long', 'REPTYPE'),
+        #result('T.CPNUM', 'java.lang.Long', 'CPNUM'),
+        #result('T2.TEMPLATENAME', 'java.lang.String', 'TEMPLATENAME'),
+        #result('T2.NAME', 'java.lang.String', 'REPNAME')
+       $ASPECTFIELDS 
+FROM 
+      B2B_PRODREP T 
+      INNER JOIN B2B_REP T2 ON (T2.REPID = T.REPID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CATEGORYID) T.CATEGORYID = #bind($CATEGORYID 'NUMERIC') #end 
+       #chunk($CHECKID) T.CHECKID = #bind($CHECKID 'NUMERIC') #end 
+       #chunk($CPNUM) T.CPNUM = #bind($CPNUM 'NUMERIC') #end 
+       #chunk($DATAPROVID) T.DATAPROVID = #bind($DATAPROVID 'NUMERIC') #end 
+       #chunk($EDOC) T.EDOC = #bind($EDOC 'NUMERIC') #end 
+       #chunk($REPLEVEL) T.REPLEVEL = #bind($REPLEVEL 'NUMERIC') #end 
+       #chunk($REPLEVELLIST) T.REPLEVEL in ($REPLEVELLIST) #end       
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($ORIGPRINTING) T.ORIGPRINTING = #bind($ORIGPRINTING 'NUMERIC') #end 
+       #chunk($POSTN) T.POSTN = #bind($POSTN 'NUMERIC') #end 
+       #chunk($PREPRINTING) T.PREPRINTING = #bind($PREPRINTING 'NUMERIC') #end 
+       #chunk($PRODCONFID) T.PRODCONFID = #bind($PRODCONFID 'NUMERIC') #end 
+       #chunk($PRODREPID) T.PRODREPID = #bind($PRODREPID 'NUMERIC') #end 
+       #chunk($REPID) T.REPID = #bind($REPID 'NUMERIC') #end 
+       #chunk($REPTYPE) T.REPTYPE = #bind($REPTYPE 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end
+#chunk($ORDERBYPRODREPID) ORDER BY T.PRODREPID ASC #end
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BProductReportBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMapCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.PRODREPID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_PRODREP T 
+      INNER JOIN B2B_REP T2 ON (T2.REPID = T.REPID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CATEGORYID) T.CATEGORYID = #bind($CATEGORYID 'NUMERIC') #end 
+       #chunk($CHECKID) T.CHECKID = #bind($CHECKID 'NUMERIC') #end 
+       #chunk($CPNUM) T.CPNUM = #bind($CPNUM 'NUMERIC') #end 
+       #chunk($DATAPROVID) T.DATAPROVID = #bind($DATAPROVID 'NUMERIC') #end 
+       #chunk($EDOC) T.EDOC = #bind($EDOC 'NUMERIC') #end 
+       #chunk($REPLEVEL) T.REPLEVEL = #bind($REPLEVEL 'NUMERIC') #end 
+       #chunk($REPLEVELLIST) T.REPLEVEL in ($REPLEVELLIST) #end       
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($ORIGPRINTING) T.ORIGPRINTING = #bind($ORIGPRINTING 'NUMERIC') #end 
+       #chunk($POSTN) T.POSTN = #bind($POSTN 'NUMERIC') #end 
+       #chunk($PREPRINTING) T.PREPRINTING = #bind($PREPRINTING 'NUMERIC') #end 
+       #chunk($PRODCONFID) T.PRODCONFID = #bind($PRODCONFID 'NUMERIC') #end 
+       #chunk($PRODREPID) T.PRODREPID = #bind($PRODREPID 'NUMERIC') #end 
+       #chunk($REPID) T.REPID = #bind($REPID 'NUMERIC') #end 
+       #chunk($REPTYPE) T.REPTYPE = #bind($REPTYPE 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end
+#chunk($ORDERBYPRODREPID) ORDER BY T.PRODREPID ASC #end
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BProductDefaultValueBrowseListByNameNote" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="InsProductCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('T.DEFTYPE', 'java.lang.String', 'DEFTYPE'),
+        #result('T.PRODDEFVALID', 'java.lang.Long', 'PRODDEFVALID'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.PRODCONFID', 'java.lang.Long', 'PRODCONFID'),
+        #result('T.VALUE', 'java.lang.String', 'VALUE'),
+        #result('T.NOTE', 'java.lang.String', 'NOTE') 
+       $ASPECTFIELDS 
+FROM 
+      B2B_PRODDEFVAL T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($NAME) UPPER(T.NAME) LIKE UPPER ('%$NAME%') #end 
+       #chunk($PRODCONFID) T.PRODCONFID = #bind($PRODCONFID 'NUMERIC') #end 
+       #chunk($PRODDEFVALID) T.PRODDEFVALID = #bind($PRODDEFVALID 'NUMERIC') #end 
+       #chunk($NOTE) UPPER(T.NOTE) LIKE UPPER ('%$NOTE%') #end  
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BProductDefaultValueBrowseListByNameNoteCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="InsProductCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT(T.PRODDEFVALID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_PRODDEFVAL T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE')  
+       #chunk($NAME) UPPER(T.NAME) LIKE UPPER ('%$NAME%') #end 
+       #chunk($PRODCONFID) T.PRODCONFID = #bind($PRODCONFID 'NUMERIC') #end 
+       #chunk($PRODDEFVALID) T.PRODDEFVALID = #bind($PRODDEFVALID 'NUMERIC') #end 
+       #chunk($NOTE) UPPER(T.NOTE) LIKE UPPER ('%$NOTE%') #end   
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+<query name="dsB2BProductVersionBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMapCustom" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.EXPLFINISHDATE', 'java.math.BigDecimal', 'EXPLFINISHDATE'),
+        #result('T.EXPLSTARTDATE', 'java.math.BigDecimal', 'EXPLSTARTDATE'),
+        #result('T.PRODVERID', 'java.lang.Long', 'PRODVERID'),
+        #result('T.LOGOTYPE', 'java.lang.String', 'LOGOTYPE'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.NOTE', 'java.lang.String', 'NOTE'),
+        #result('T.IMGPATH', 'java.lang.String', 'IMGPATH'),
+        #result('T.JSPATH', 'java.lang.String', 'JSPATH'),
+        #result('T.PRODCODE', 'java.lang.String', 'PRODCODE'),
+        #result('T.PRODID', 'java.lang.Long', 'PRODID'),
+        #result('T2.ASSURERID', 'java.lang.Long', 'ASSURERID'),
+        #result('T2.EXTERNALID', 'java.lang.String', 'EXTERNALID'),
+        #result('T2.INSTERMKINDID', 'java.lang.Long', 'INSTERMKINDID'),
+        #result('T2.ISHIDDEN', 'java.lang.Boolean', 'ISHIDDEN'),
+        #result('T2.MODELID', 'java.lang.Long', 'MODELID'),
+        #result('T2.NAME', 'java.lang.String', 'PRODNAME'),
+        #result('T2.NOTE', 'java.lang.String', 'PRODNOTE'),
+        #result('T2.PRODKINDID', 'java.lang.Long', 'PRODKINDID'),
+        #result('T2.STRUCTROOTID', 'java.lang.Long', 'STRUCTROOTID'),
+        #result('T.SYSNAME', 'java.lang.String', 'PRODSYSNAME'),
+        #result('T3.PREPARETOSAVEMETHOD', 'java.lang.String', 'PREPARETOSAVEMETHOD'),
+        #result('T3.ISONLINE', 'java.lang.Long', 'ISONLINE'),
+        #result('T3.PRODCONFID', 'java.lang.Long', 'PRODCONFID'),
+        #result('T5.NAME', 'java.lang.String', 'PRODKINDNAME'),
+        #result('T5.NOTE', 'java.lang.String', 'PRODKINDNOTE'),
+        #result('T5.SYSNAME', 'java.lang.String', 'PRODKINDSYSNAME'),
+        #result('T5.IMGPATH', 'java.lang.String', 'PRODKINDIMGPATH')
+       $ASPECTFIELDS 
+FROM 
+        B2B_PRODVER T 
+      INNER JOIN B2B_PROD T2 ON (T2.PRODID = T.PRODID)
+      inner join B2B_PRODCONF T3 on (T.PRODVERID = T3.PRODVERID)
+      #chunk($ISSALEREPORT) left join B2B_PRODDEFVAL T4 on ((T4.PRODCONFID=T3.PRODCONFID)and(#bind($ISSALEREPORT 'NUMERIC')=1)) #end
+      left join B2B_PRODKIND T5 on (T2.PRODKINDID = T5.PRODKINDID)
+      left join B2B_PRODSALESCHAN T4 ON (T.PRODVERID = T4.PRODVERID)
+$ASPECTTABLES
+#chain('AND' 'WHERE') 
+       #chunk($EXPLFINISHDATE) T.EXPLFINISHDATE = #bind($EXPLFINISHDATE 'FLOAT') #end 
+       #chunk($EXPLSTARTDATE) T.EXPLSTARTDATE = #bind($EXPLSTARTDATE 'FLOAT') #end 
+       #chunk($LOGOTYPE) T.LOGOTYPE = #bind($LOGOTYPE 'CLOB') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($PRODCODE) T.PRODCODE = #bind($PRODCODE 'VARCHAR') #end 
+       #chunk($PRODID) T.PRODID = #bind($PRODID 'NUMERIC') #end 
+       #chunk($PRODVERID) T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+       #chunk($PRODSYSNAME) T.SYSNAME = #bind($PRODSYSNAME 'VARCHAR') #end 
+       #chunk($HIDECHILDCONTR) NOT EXISTS (SELECT * FROM B2B_PRODSTRUCT PS WHERE ((PS.DISCRIMINATOR = 5)AND(PS.CHILDPRODVERID = T.PRODVERID))) #end 
+       #chunk($CP_TODAYDATE) T.EXPLSTARTDATE <= #bind($CP_TODAYDATE 'FLOAT') #end 
+       #chunk($CP_TODAYDATE) T.EXPLFINISHDATE >= #bind($CP_TODAYDATE 'FLOAT') #end 
+       #chunk($ISSALEREPORT) ((T4.NAME='INCLSALEREPORT')and(T4.VALUE = #bind($ISSALEREPORT 'NUMERIC'))) #end
+       #chunk($ISHIDDEN) T2.ISHIDDEN = #bind($ISHIDDEN 'BOOLEAN') #end
+       #chunk($ISSKIPNEGATIVPRODSALESCHANEL) T4.PRODSALESCHANID > -1 #end
+       #chunk($CP_DEPARTMENTID) EXISTS
+  (SELECT *
+  FROM B2B_MAINACTCONTR TCONTR
+  INNER JOIN B2B_MACAGENTCNT TCNT
+  ON (TCNT.MAINACTCONTRID = TCONTR.MAINACTCONTRID)
+  INNER JOIN INS_DEPLVL TDEP
+  ON (TCONTR.ORGSTRUCTID = TDEP.PARENTID) AND (TDEP.OBJECTID = #bind($CP_DEPARTMENTID 'NUMERIC'))
+  WHERE (TCONTR.STARTDATE <= #bind($CP_TODAYDATE 'FLOAT')) AND (TCONTR.FINISHDATE >= #bind($CP_TODAYDATE 'FLOAT'))
+  AND (TCNT.PRODVERID = T.PRODVERID)
+  ) #end
+        #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end
+        #chunk($SALECHANNELID) T4.SALECHANNELID = #bind($SALECHANNELID 'NUMERIC') #end
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2BProductVersionBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMapCustom" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.PRODVERID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_PRODVER T 
+      INNER JOIN B2B_PROD T2 ON (T2.PRODID = T.PRODID)
+      #chunk($ISSALEREPORT) inner join B2B_PRODCONF T3 on (T.PRODVERID = T3.PRODVERID)
+      left join B2B_PRODDEFVAL T4 on ((T4.PRODCONFID=T3.PRODCONFID)and(#bind($ISSALEREPORT 'NUMERIC')=1)) #end
+      left join B2B_PRODSALESCHAN T4 ON (T.PRODVERID = T4.PRODVERID)
+      left join INS_SALECHANNEL T6 ON (T4.SALECHANNELID = T6.SALECHANNELID)
+$ASPECTTABLES
+#chain('AND' 'WHERE') 
+       #chunk($EXPLFINISHDATE) T.EXPLFINISHDATE = #bind($EXPLFINISHDATE 'FLOAT') #end 
+       #chunk($EXPLSTARTDATE) T.EXPLSTARTDATE = #bind($EXPLSTARTDATE 'FLOAT') #end 
+       #chunk($LOGOTYPE) T.LOGOTYPE = #bind($LOGOTYPE 'CLOB') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($PRODCODE) T.PRODCODE = #bind($PRODCODE 'VARCHAR') #end 
+       #chunk($PRODID) T.PRODID = #bind($PRODID 'NUMERIC') #end 
+       #chunk($PRODVERID) T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+       #chunk($PRODSYSNAME) T2.SYSNAME = #bind($PRODSYSNAME 'VARCHAR') #end 
+       #chunk($HIDECHILDCONTR) NOT EXISTS (SELECT * FROM B2B_PRODSTRUCT PS WHERE ((PS.DISCRIMINATOR = 5)AND(PS.CHILDPRODVERID = T.PRODVERID))) #end 
+       #chunk($CP_TODAYDATE) T.EXPLSTARTDATE <= #bind($CP_TODAYDATE 'FLOAT') #end 
+       #chunk($CP_TODAYDATE) T.EXPLFINISHDATE >= #bind($CP_TODAYDATE 'FLOAT') #end 
+       #chunk($ISSALEREPORT) ((T4.NAME='INCLSALEREPORT')and(T4.VALUE = #bind($ISSALEREPORT 'NUMERIC'))) #end
+       #chunk($ISHIDDEN) T2.ISHIDDEN = #bind($ISHIDDEN 'BOOLEAN') #end
+       #chunk($CP_DEPARTMENTID) EXISTS
+  (SELECT *
+  FROM B2B_MAINACTCONTR TCONTR
+  INNER JOIN B2B_MACAGENTCNT TCNT
+  ON (TCNT.MAINACTCONTRID = TCONTR.MAINACTCONTRID)
+  INNER JOIN INS_DEPLVL TDEP
+  ON (TCONTR.ORGSTRUCTID = TDEP.PARENTID) AND (TDEP.OBJECTID = #bind($CP_DEPARTMENTID 'NUMERIC'))
+  WHERE (TCONTR.STARTDATE <= #bind($CP_TODAYDATE 'FLOAT')) AND (TCONTR.FINISHDATE >= #bind($CP_TODAYDATE 'FLOAT'))
+  AND (TCNT.PRODVERID = T.PRODVERID)
+  ) #end
+        #chunk($SALECHANNELID) T6.SALECHANNELID = #bind($SALECHANNELID 'NUMERIC') #end
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2BProductVersionBrowseListByParamCustomWhereEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BContractMapCustom" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.EXPLFINISHDATE', 'java.math.BigDecimal', 'EXPLFINISHDATE'),
+        #result('T.EXPLSTARTDATE', 'java.math.BigDecimal', 'EXPLSTARTDATE'),
+        #result('T.PRODVERID', 'java.lang.Long', 'PRODVERID'),
+        #result('T.LOGOTYPE', 'java.lang.String', 'LOGOTYPE'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.NOTE', 'java.lang.String', 'NOTE'),
+        #result('T.IMGPATH', 'java.lang.String', 'IMGPATH'),
+        #result('T.JSPATH', 'java.lang.String', 'JSPATH'),
+        #result('T.PRODCODE', 'java.lang.String', 'PRODCODE'),
+        #result('T.PRODID', 'java.lang.Long', 'PRODID'),
+        #result('T2.ASSURERID', 'java.lang.Long', 'ASSURERID'),
+        #result('T2.EXTERNALID', 'java.lang.String', 'EXTERNALID'),
+        #result('T2.INSTERMKINDID', 'java.lang.Long', 'INSTERMKINDID'),
+        #result('T2.ISHIDDEN', 'java.lang.Boolean', 'ISHIDDEN'),
+        #result('T2.MODELID', 'java.lang.Long', 'MODELID'),
+        #result('T2.NAME', 'java.lang.String', 'PRODNAME'),
+        #result('T2.NOTE', 'java.lang.String', 'PRODNOTE'),
+        #result('T2.PRODKINDID', 'java.lang.Long', 'PRODKINDID'),
+        #result('T2.STRUCTROOTID', 'java.lang.Long', 'STRUCTROOTID'),
+        #result('T2.SYSNAME', 'java.lang.String', 'PRODSYSNAME') 
+       $ASPECTFIELDS 
+FROM 
+        B2B_PRODVER T 
+        INNER JOIN B2B_PROD T2 ON (T2.PRODID = T.PRODID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CUSTOMWHERE) $CUSTOMWHERE #end 
+       #chunk($EXPLFINISHDATE) T.EXPLFINISHDATE = #bind($EXPLFINISHDATE 'FLOAT') #end 
+       #chunk($EXPLSTARTDATE) T.EXPLSTARTDATE = #bind($EXPLSTARTDATE 'FLOAT') #end 
+       #chunk($LOGOTYPE) T.LOGOTYPE = #bind($LOGOTYPE 'CLOB') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($PRODCODE) T.PRODCODE = #bind($PRODCODE 'VARCHAR') #end 
+       #chunk($PRODID) T.PRODID = #bind($PRODID 'NUMERIC') #end 
+       #chunk($PRODVERID) T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+       #chunk($PRODSYSNAME) T2.SYSNAME = #bind($PRODSYSNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2BProductVersionBrowseListByParamCustomWhereExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BContractMapCustom" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.PRODVERID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_PRODVER T 
+      INNER JOIN B2B_PROD T2 ON (T2.PRODID = T.PRODID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($EXPLFINISHDATE) T.EXPLFINISHDATE = #bind($EXPLFINISHDATE 'FLOAT') #end 
+       #chunk($EXPLSTARTDATE) T.EXPLSTARTDATE = #bind($EXPLSTARTDATE 'FLOAT') #end 
+       #chunk($LOGOTYPE) T.LOGOTYPE = #bind($LOGOTYPE 'CLOB') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($PRODCODE) T.PRODCODE = #bind($PRODCODE 'VARCHAR') #end 
+       #chunk($PRODID) T.PRODID = #bind($PRODID 'NUMERIC') #end 
+       #chunk($PRODVERID) T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+       #chunk($PRODSYSNAME) T2.SYSNAME = #bind($PRODSYSNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2BProductSalesChannelBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.PRODSALESCHANID', 'java.lang.Long', 'PRODSALESCHANID'),
+        #result('T.PRODVERID', 'java.lang.Long', 'PRODVERID'),
+        #result('T.SALECHANNELID', 'java.lang.Long', 'SALECHANNELID'),
+        #result('T2.EXTERNALID', 'java.lang.String', 'SALECHANNELEXTERNALID'),
+        #result('T2.NAME', 'java.lang.String', 'SALECHANNELNAME'),
+        #result('T2.NOTE', 'java.lang.String', 'SALECHANNELNOTE'),
+        #result('T2.SALECHANNELCODE', 'java.lang.String', 'SALECHANNELCODE') 
+       $ASPECTFIELDS 
+FROM 
+    B2B_PRODSALESCHAN T 
+    LEFT JOIN INS_SALECHANNEL T2 ON (T.SALECHANNELID = T2.SALECHANNELID)
+    LEFT JOIN B2B_PRODVER pv ON (pv.PRODVERID = T.PRODVERID)
+    LEFT JOIN B2B_PROD p ON (p.PRODID = pv.PRODID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($PRODSALESCHANID) T.PRODSALESCHANID = #bind($PRODSALESCHANID 'NUMERIC') #end 
+       #chunk($PRODVERID) T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+       #chunk($SALECHANNELID) T.SALECHANNELID = #bind($SALECHANNELID 'NUMERIC') #end 
+       #chunk($PRODSYSNAME) p.SYSNAME = #bind($PRODSYSNAME 'VARCHAR') #end
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2BProductSalesChannelBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.PRODSALESCHANID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_PRODSALESCHAN T 
+      LEFT JOIN INS_SALECHANNEL T2 ON (T.SALECHANNELID = T2.SALECHANNELID)
+      LEFT JOIN B2B_PRODVER pv ON (pv.PRODVERID = T.PRODVERID) 
+      LEFT JOIN B2B_PROD p ON (p.PRODID = pv.PRODID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($PRODSALESCHANID) T.PRODSALESCHANID = #bind($PRODSALESCHANID 'NUMERIC') #end 
+       #chunk($PRODVERID) T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+       #chunk($SALECHANNELID) T.SALECHANNELID = #bind($SALECHANNELID 'NUMERIC') #end 
+       #chunk($PRODSYSNAME) p.SYSNAME = #bind($PRODSYSNAME 'VARCHAR') #end
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2BProductDiscountBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.DISCKINDID', 'java.lang.Long', 'DISCKINDID'),
+        #result('T.FINISHDATE', 'java.math.BigDecimal', 'FINISHDATE'),
+        #result('T.PRODDISCID', 'java.lang.Long', 'PRODDISCID'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.ISPREMIUM', 'java.lang.Long', 'ISPREMIUM'),
+        #result('T.PREMIUMURL', 'java.lang.String', 'PREMIUMURL'),
+        #result('T1.CODE', 'java.lang.String', 'PROMOCODE'),
+        #result('T1.PRODDISCPROMOID', 'java.lang.Long', 'PRODDISCPROMOID'),
+        #result('T1.PROMOCOUNT', 'java.lang.Long', 'PROMOCOUNT'),
+        #result('T.PRODCONFID', 'java.lang.Long', 'PRODCONFID'),
+        #result('T.STARTDATE', 'java.math.BigDecimal', 'STARTDATE') 
+       $ASPECTFIELDS 
+FROM 
+      B2B_PRODDISC T 
+      LEFT JOIN B2B_PRODDISCPROMO T1 ON (T.PRODDISCID = T1.PRODDISCID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($DISCKINDID) T.DISCKINDID = #bind($DISCKINDID 'NUMERIC') #end 
+       #chunk($FINISHDATE) T.FINISHDATE = #bind($FINISHDATE 'FLOAT') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($PROMOCODE) UPPER(T1.CODE) = UPPER('$PROMOCODE') #end
+       #chunk($PRODCONFID) T.PRODCONFID = #bind($PRODCONFID 'NUMERIC') #end 
+       #chunk($PRODDISCID) T.PRODDISCID = #bind($PRODDISCID 'NUMERIC') #end 
+       #chunk($STARTDATE) T.STARTDATE = #bind($STARTDATE 'FLOAT') #end 
+       #chunk($DISCDATE) (T.STARTDATE <= #bind($DISCDATE 'FLOAT')) and (T.FINISHDATE >= #bind($DISCDATE 'FLOAT')) #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2BProductDiscountBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.PRODDISCID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_PRODDISC T 
+      LEFT JOIN B2B_PRODDISCPROMO T1 ON (T.PRODDISCID = T1.PRODDISCID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($DISCKINDID) T.DISCKINDID = #bind($DISCKINDID 'NUMERIC') #end 
+       #chunk($FINISHDATE) T.FINISHDATE = #bind($FINISHDATE 'FLOAT') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($PROMOCODE) T1.CODE = #bind($PROMOCODE 'VARCHAR') #end 
+       #chunk($PRODCONFID) T.PRODCONFID = #bind($PRODCONFID 'NUMERIC') #end 
+       #chunk($PRODDISCID) T.PRODDISCID = #bind($PRODDISCID 'NUMERIC') #end 
+       #chunk($STARTDATE) T.STARTDATE = #bind($STARTDATE 'FLOAT') #end 
+       #chunk($DISCDATE) (T.STARTDATE <= #bind($DISCDATE 'FLOAT')) and (T.FINISHDATE >= #bind($DISCDATE 'FLOAT')) #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+
+<query name="dsB2BGetProductByDiscountCode" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('PROMO.CODE', 'java.lang.String', 'DISCOUNTCODE'),
+        #result('DISC.NAME', 'java.lang.String', 'DISCOUNTNAME'),
+        #result('CONF.SYSNAME', 'java.lang.String', 'CONFIGSYSNAME'),
+        #result('PROD.SYSNAME', 'java.lang.String', 'PRODSYSNAME')
+       $ASPECTFIELDS 
+FROM 
+      B2B_PRODDISC T 
+      INNER JOIN B2B_PRODDISC DISC ON PROMO.PRODDISCID = DISC.PRODDISCID
+      INNER JOIN B2B_PRODCONF CONF ON DISC.PRODCONFID = CONF.PRODCONFID
+      INNER JOIN B2B_PRODVER PVER ON PVER.PRODVERID = CONF.PRODVERID
+      INNER JOIN B2B_PROD PROD ON PVER.PRODID = PROD.PRODID
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($DISCOUNTCODE) PROMO.CODE = #bind($DISCOUNTCODE 'VARCHAR') #end 
+       #chunk($PRODCODE) PROD.SYSNAME = #bind($PRODCODE 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+
+<query name="dsB2BGetProductByDiscountCodeCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('COUNT(PROMO.PRODDISCID)', 'java.lang.Long', 'CNT') 
+       $ASPECTFIELDS 
+FROM 
+      B2B_PRODDISC T 
+      INNER JOIN B2B_PRODDISC DISC ON PROMO.PRODDISCID = DISC.PRODDISCID
+      INNER JOIN B2B_PRODCONF CONF ON DISC.PRODCONFID = CONF.PRODCONFID
+      INNER JOIN B2B_PRODVER PVER ON PVER.PRODVERID = CONF.PRODVERID
+      INNER JOIN B2B_PROD PROD ON PVER.PRODID = PROD.PRODID
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($DISCOUNTCODE) PROMO.CODE = #bind($DISCOUNTCODE 'VARCHAR') #end 
+       #chunk($PRODCODE) PROD.SYSNAME = #bind($PRODCODE 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+
+<query name="dsB2BProductPaymentVariantBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMapCustom" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.PRODPAYVARID', 'java.lang.Long', 'PRODPAYVARID'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.PAYVARID', 'java.lang.Long', 'PAYVARID'),
+        #result('T.PRODVERID', 'java.lang.Long', 'PRODVERID'),
+        #result('T2.CALCVERID', 'java.lang.Long', 'PAYVARCALCVERID'),
+        #result('T2.DESCR', 'java.lang.String', 'PAYVARDESCR'),
+        #result('T2.NAME', 'java.lang.String', 'PAYVARNAME')
+       $ASPECTFIELDS 
+FROM 
+      B2B_PRODPAYVAR T 
+      LEFT JOIN INS_PAYVAR T2 ON (T.PAYVARID = T2.PAYVARID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($PAYVARID) T.PAYVARID = #bind($PAYVARID 'NUMERIC') #end 
+       #chunk($PRODPAYVARID) T.PRODPAYVARID = #bind($PRODPAYVARID 'NUMERIC') #end 
+       #chunk($PRODVERID) T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2BProductPaymentVariantBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMapCustom" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.PRODPAYVARID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_PRODPAYVAR T 
+      LEFT JOIN INS_PAYVAR T2 ON (T.PAYVARID = T2.PAYVARID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($PAYVARID) T.PAYVARID = #bind($PAYVARID 'NUMERIC') #end 
+       #chunk($PRODPAYVARID) T.PRODPAYVARID = #bind($PRODPAYVARID 'NUMERIC') #end 
+       #chunk($PRODVERID) T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+
+<query name="dsB2BProductPayVarBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMapCustom" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+    <sql>
+        <![CDATA[
+SELECT $NEEDDISTINCT
+    #result('T.PRODPAYVARID', 'java.lang.Long', 'PRODPAYVARID'),
+    #result('T.NAME', 'java.lang.String', 'NAME'),
+    #result('T.PAYVARID', 'java.lang.Long', 'PAYVARID'),
+    #result('T.PRODVERID', 'java.lang.Long', 'PRODVERID'),
+    #result('T2.NAME', 'java.lang.String', 'PAYVARNAME'),
+    #result('T2.SYSNAME', 'java.lang.String', 'PAYVARSYSNAME')
+   $ASPECTFIELDS
+FROM
+  B2B_PRODPAYVAR T
+  LEFT JOIN B2B_PAYVAR T2 ON T2.PAYVARID=T.PAYVARID
+$ASPECTTABLES
+#chain('AND' 'WHERE')
+   #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end
+   #chunk($PAYVARID) T.PAYVARID = #bind($PAYVARID 'NUMERIC') #end
+   #chunk($PRODPAYVARID) T.PRODPAYVARID = #bind($PRODPAYVARID 'NUMERIC') #end
+   #chunk($PRODVERID) T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end
+  $ASPECTRESTRICTION
+#end
+]]>
+    </sql>
+</query>
+<query name="dsB2BProductPayVarBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMapCustom" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+    <sql>
+        <![CDATA[
+SELECT
+    #result('COUNT($NEEDDISTINCT T.PRODPAYVARID)', 'java.lang.Long', 'CNT')
+FROM
+  B2B_PRODPAYVAR T
+$ASPECTTABLES
+#chain('AND' 'WHERE')
+   #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end
+   #chunk($PAYVARID) T.PAYVARID = #bind($PAYVARID 'NUMERIC') #end
+   #chunk($PRODPAYVARID) T.PRODPAYVARID = #bind($PRODPAYVARID 'NUMERIC') #end
+   #chunk($PRODVERID) T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end
+  $ASPECTRESTRICTION
+#end
+]]>
+    </sql>
+</query>
+
+<query name="dsB2BProductInvestBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMap" >
+    <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+    <sql>
+        <![CDATA[
+SELECT $NEEDDISTINCT
+    #result('T.DISCRIMINATOR', 'java.lang.Long', 'DISCRIMINATOR'),
+    #result('T.FINISHDATE', 'java.math.BigDecimal', 'FINISHDATE'),
+    #result('T.PRODINVESTID', 'java.lang.Long', 'PRODINVESTID'),
+    #result('T.INVESTSTRATEGYID', 'java.lang.Long', 'INVESTSTRATEGYID'),
+    #result('T.PRODCONFID', 'java.lang.Long', 'PRODCONFID'),
+    #result('T.STARTDATE', 'java.math.BigDecimal', 'STARTDATE'),
+    #result('S.NAME', 'java.lang.String', 'INVESTSTRATEGYNAME'),
+    #result('S.SYSNAME', 'java.lang.String', 'INVESTSTRATEGYSYSNAME'),
+    #result('S.CODE', 'java.lang.String', 'INVESTSTRATEGYCODE'),
+    #result('S.CURRENCYID', 'java.lang.Long', 'INVESTSTRATEGYCURRENCYID'),
+    #result('S.TERMID', 'java.lang.Long', 'INVESTSTRATEGYTERMID'),
+    #result('S.MINPAYVALUE', 'java.lang.Float', 'INVESTSTRATEGYMINPAYVALUE')
+    $ASPECTFIELDS
+FROM
+  B2B_PRODINVEST T
+  LEFT JOIN B2B_INVESTSTRATEGY S ON S.INVESTSTRATEGYID=T.INVESTSTRATEGYID
+#chain('AND' 'WHERE')
+   #chunk($PRODCONFID) T.PRODCONFID = #bind($PRODCONFID 'NUMERIC') #end
+#end
+]]>
+    </sql>
+</query>
+<query name="dsB2BProductInvestBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMapCustom" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+    <sql>
+        <![CDATA[
+SELECT
+    #result('COUNT($NEEDDISTINCT T.PRODINVESTID)', 'java.lang.Long', 'CNT')
+FROM
+    B2B_PRODINVEST T
+#chain('AND' 'WHERE')
+   #chunk($PRODCONFID) T.PRODCONFID = #bind($PRODCONFID 'NUMERIC') #end
+#end
+]]>
+    </sql>
+</query>
+
+<query name="dsB2BProductStructureBaseBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMapCustom" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.CHILDPRODVERID', 'java.lang.Long', 'CHILDPRODVERID'),
+        #result('T.DISCRIMINATOR', 'java.lang.Long', 'DISCRIMINATOR'),
+        #result('T.EXTERNALCODE', 'java.lang.String', 'EXTERNALCODE'),
+        #result('T.HBDATAVERID', 'java.lang.Long', 'HBDATAVERID'),
+        #result('T.HINT', 'java.lang.String', 'HINT'),
+        #result('T.PRODSTRUCTID', 'java.lang.Long', 'PRODSTRUCTID'),
+        #result('T.INSKINDID', 'java.lang.Long', 'INSKINDID'),
+        #result('T.PRODPROGID', 'java.lang.Long', 'PRODPROGID'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.PARENTSTRUCTID', 'java.lang.Long', 'PARENTSTRUCTID'),
+        #result('T.PRODVERID', 'java.lang.Long', 'PRODVERID'),
+        #result('pv.PRODID', 'java.lang.Long', 'PRODID'),
+        #result('T.REPEATED', 'java.lang.Long', 'REPEATED'),
+        #result('T.REQUIRED', 'java.lang.Long', 'REQUIRED'),
+        #result('T.SDCALCMETHOD', 'java.lang.Long', 'SDCALCMETHOD'),
+        #result('T.SDLAG', 'java.lang.Long', 'SDLAG'),
+        #result('T.SYSNAME', 'java.lang.String', 'SYSNAME'),
+        #result('T2.SYSNAME', 'java.lang.String', 'PARENTSTRUCTSYSNAME'),
+        #result('T.SDCALENDARTYPE', 'java.lang.Long', 'SDCALENDARTYPE')
+       $ASPECTFIELDS 
+FROM 
+      B2B_PRODSTRUCT T 
+      LEFT JOIN B2B_PRODSTRUCT T2 ON (T.PARENTSTRUCTID = T2.PRODSTRUCTID)
+      LEFT JOIN B2B_PRODVER pv ON (pv.PRODVERID = T.PRODVERID)
+      LEFT JOIN B2B_PROD p ON (p.PRODID = pv.PRODID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CHILDPRODVERID) T.CHILDPRODVERID = #bind($CHILDPRODVERID 'NUMERIC') #end 
+       #chunk($DISCRIMINATOR) T.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+       #chunk($EXTERNALCODE) T.EXTERNALCODE = #bind($EXTERNALCODE 'VARCHAR') #end 
+       #chunk($HBDATAVERID) T.HBDATAVERID = #bind($HBDATAVERID 'NUMERIC') #end 
+       #chunk($HINT) T.HINT = #bind($HINT 'VARCHAR') #end 
+       #chunk($INSKINDID) T.INSKINDID = #bind($INSKINDID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($PARENTSTRUCTID) T.PARENTSTRUCTID = #bind($PARENTSTRUCTID 'NUMERIC') #end 
+       #chunk($PRODSTRUCTID) T.PRODSTRUCTID = #bind($PRODSTRUCTID 'NUMERIC') #end 
+       #chunk($PRODVERID) T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+       #chunk($PRODID) pv.PRODID = #bind($PRODID 'NUMERIC') #end 
+       #chunk($PRODSYSNAME) p.SYSNAME = #bind($PRODSYSNAME 'VARCHAR') #end
+       #chunk($REPEATED) T.REPEATED = #bind($REPEATED 'NUMERIC') #end 
+       #chunk($REQUIRED) T.REQUIRED = #bind($REQUIRED 'NUMERIC') #end 
+       #chunk($SDCALCMETHOD) T.SDCALCMETHOD = #bind($SDCALCMETHOD 'NUMERIC') #end 
+       #chunk($SDCALENDARTYPE) T.SDCALENDARTYPE = #bind($SDCALENDARTYPE 'NUMERIC') #end        
+       #chunk($SDLAG) T.SDLAG = #bind($SDLAG 'NUMERIC') #end 
+       #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2BProductStructureBaseBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMapCustom" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.PRODSTRUCTID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_PRODSTRUCT T 
+      LEFT JOIN B2B_PRODSTRUCT T2 ON (T.PARENTSTRUCTID = T2.PRODSTRUCTID)
+      LEFT JOIN B2B_PRODVER pv ON (pv.PRODVERID = T.PRODVERID)
+      LEFT JOIN B2B_PROD p ON (p.PRODID = pv.PRODID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CHILDPRODVERID) T.CHILDPRODVERID = #bind($CHILDPRODVERID 'NUMERIC') #end 
+       #chunk($DISCRIMINATOR) T.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+       #chunk($EXTERNALCODE) T.EXTERNALCODE = #bind($EXTERNALCODE 'VARCHAR') #end 
+       #chunk($HBDATAVERID) T.HBDATAVERID = #bind($HBDATAVERID 'NUMERIC') #end 
+       #chunk($HINT) T.HINT = #bind($HINT 'VARCHAR') #end 
+       #chunk($INSKINDID) T.INSKINDID = #bind($INSKINDID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($PARENTSTRUCTID) T.PARENTSTRUCTID = #bind($PARENTSTRUCTID 'NUMERIC') #end 
+       #chunk($PRODSTRUCTID) T.PRODSTRUCTID = #bind($PRODSTRUCTID 'NUMERIC') #end 
+       #chunk($PRODVERID) T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+       #chunk($PRODID) pv.PRODID = #bind($PRODID 'NUMERIC') #end 
+       #chunk($PRODSYSNAME) p.SYSNAME = #bind($PRODSYSNAME 'VARCHAR') #end 
+       #chunk($REPEATED) T.REPEATED = #bind($REPEATED 'NUMERIC') #end 
+       #chunk($REQUIRED) T.REQUIRED = #bind($REQUIRED 'NUMERIC') #end 
+       #chunk($SDCALCMETHOD) T.SDCALCMETHOD = #bind($SDCALCMETHOD 'NUMERIC') #end 
+       #chunk($SDCALENDARTYPE) T.SDCALENDARTYPE = #bind($SDCALENDARTYPE 'NUMERIC') #end 
+       #chunk($SDLAG) T.SDLAG = #bind($SDLAG 'NUMERIC') #end 
+       #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2BProductValueBaseBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.ADDAGRCAUSEID', 'java.lang.Long', 'ADDAGRCAUSEID'),
+        #result('T.DATATYPEID', 'java.lang.Long', 'DATATYPEID'),
+        #result('T.DATATYPESTR', 'java.lang.String', 'DATATYPESTR'),
+        #result('T.DESCR', 'java.lang.String', 'DESCR'),
+        #result('T.DISCRIMINATOR', 'java.lang.Long', 'DISCRIMINATOR'),
+        #result('T.FORMULA', 'java.lang.String', 'FORMULA'),
+        #result('T.PRODVALUEID', 'java.lang.Long', 'PRODVALUEID'),
+        #result('T.ISHANDBOOK', 'java.lang.Long', 'ISHANDBOOK'),
+        #result('T.KINDID', 'java.lang.Long', 'KINDID'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.PRODCONFID', 'java.lang.Long', 'PRODCONFID'),
+        #result('T.PRODDAMAGECATID', 'java.lang.Long', 'PRODDAMAGECATID'),
+        #result('T.PRODSTRUCTID', 'java.lang.Long', 'PRODSTRUCTID'),
+        #result('T.VALGROUPID', 'java.lang.Long', 'VALGROUPID'), 
+        #result('(CASE WHEN T3.PRODVERID IS NULL THEN T2.PRODVERID ELSE T3.PRODVERID END)', 'java.lang.Long', 'PRODVERID') 
+       $ASPECTFIELDS 
+FROM 
+      B2B_PRODVALUE T 
+      LEFT JOIN B2B_PRODCONF T2 ON (T2.PRODCONFID = T.PRODCONFID) 
+      LEFT JOIN B2B_PRODSTRUCT T3 ON (T3.PRODSTRUCTID = T.PRODSTRUCTID) 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRCAUSEID) T.ADDAGRCAUSEID = #bind($ADDAGRCAUSEID 'NUMERIC') #end 
+       #chunk($DATATYPEID) T.DATATYPEID = #bind($DATATYPEID 'NUMERIC') #end 
+       #chunk($DATATYPESTR) T.DATATYPESTR = #bind($DATATYPESTR 'VARCHAR') #end 
+       #chunk($DESCR) T.DESCR = #bind($DESCR 'VARCHAR') #end 
+       #chunk($DISCRIMINATOR) T.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+       #chunk($FORMULA) T.FORMULA = #bind($FORMULA 'VARCHAR') #end 
+       #chunk($ISHANDBOOK) T.ISHANDBOOK = #bind($ISHANDBOOK 'NUMERIC') #end 
+       #chunk($KINDID) T.KINDID = #bind($KINDID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($PRODDAMAGECATID) T.PRODDAMAGECATID = #bind($PRODDAMAGECATID 'NUMERIC') #end 
+       #chunk($PRODSTRUCTID) T.PRODSTRUCTID = #bind($PRODSTRUCTID 'NUMERIC') #end 
+       #chunk($PRODVALUEID) T.PRODVALUEID = #bind($PRODVALUEID 'NUMERIC') #end 
+       #chunk($VALGROUPID) T.VALGROUPID = #bind($VALGROUPID 'NUMERIC') #end 
+       #chunk()
+            #chain('OR' '') 
+                (
+                #chunk($PRODVERID) T2.PRODVERID = #bind($PRODVERID 'NUMERIC')#end 
+                #chunk($PRODVERID) T3.PRODVERID = #bind($PRODVERID 'NUMERIC')#end 
+                )
+            #end 
+       #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2BProductValueBaseBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.PRODVALUEID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_PRODVALUE T 
+      LEFT JOIN B2B_PRODCONF T2 ON (T2.PRODCONFID = T.PRODCONFID) 
+      LEFT JOIN B2B_PRODSTRUCT T3 ON (T3.PRODSTRUCTID = T.PRODSTRUCTID) 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($ADDAGRCAUSEID) T.ADDAGRCAUSEID = #bind($ADDAGRCAUSEID 'NUMERIC') #end 
+       #chunk($DATATYPEID) T.DATATYPEID = #bind($DATATYPEID 'NUMERIC') #end 
+       #chunk($DATATYPESTR) T.DATATYPESTR = #bind($DATATYPESTR 'VARCHAR') #end 
+       #chunk($DESCR) T.DESCR = #bind($DESCR 'VARCHAR') #end 
+       #chunk($DISCRIMINATOR) T.DISCRIMINATOR = #bind($DISCRIMINATOR 'NUMERIC') #end 
+       #chunk($FORMULA) T.FORMULA = #bind($FORMULA 'VARCHAR') #end 
+       #chunk($ISHANDBOOK) T.ISHANDBOOK = #bind($ISHANDBOOK 'NUMERIC') #end 
+       #chunk($KINDID) T.KINDID = #bind($KINDID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($PRODDAMAGECATID) T.PRODDAMAGECATID = #bind($PRODDAMAGECATID 'NUMERIC') #end 
+       #chunk($PRODSTRUCTID) T.PRODSTRUCTID = #bind($PRODSTRUCTID 'NUMERIC') #end 
+       #chunk($PRODVALUEID) T.PRODVALUEID = #bind($PRODVALUEID 'NUMERIC') #end 
+       #chunk($VALGROUPID) T.VALGROUPID = #bind($VALGROUPID 'NUMERIC') #end 
+       #chunk()
+            #chain('OR' '') 
+                (
+                #chunk($PRODVERID) T2.PRODVERID = #bind($PRODVERID 'NUMERIC')#end 
+                #chunk($PRODVERID) T3.PRODVERID = #bind($PRODVERID 'NUMERIC')#end 
+                )
+            #end 
+       #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2BProductBinaryDocumentBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.BINDOCTYPE', 'java.lang.Long', 'BINDOCTYPE'),
+        #result('T.CHECKNAME', 'java.lang.String', 'CHECKNAME'),
+        #result('T.DOCLEVEL', 'java.lang.Long', 'DOCLEVEL'),
+        #result('T.DOCLEVELNOTE', 'java.lang.String', 'DOCLEVELNOTE'),
+        #result('T.PRODBINDOCID', 'java.lang.Long', 'PRODBINDOCID'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.NOTE', 'java.lang.String', 'NOTE'),
+        #result('T.DOCSYSNAME', 'java.lang.String', 'DOCSYSNAME'),
+        #result('T.PRODCONFID', 'java.lang.Long', 'PRODCONFID'),
+        #result('T.REQUIRED', 'java.lang.Boolean', 'REQUIRED') 
+       $ASPECTFIELDS 
+FROM 
+      B2B_PRODBINDOC T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($BINDOCTYPE) T.BINDOCTYPE = #bind($BINDOCTYPE 'NUMERIC') #end 
+       #chunk($CHECKNAME) T.CHECKNAME = #bind($CHECKNAME 'VARCHAR') #end 
+       #chunk($DOCLEVEL) T.DOCLEVEL = #bind($DOCLEVEL 'NUMERIC') #end 
+       #chunk($DOCLEVELLIST) T.DOCLEVEL in ($DOCLEVELLIST) #end
+       #chunk($DOCLEVELNOTE) T.DOCLEVELNOTE = #bind($DOCLEVELNOTE 'VARCHAR') #end 
+       #chunk($DOCSYSNAME) T.DOCSYSNAME = #bind($DOCSYSNAME 'VARCHAR') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($PRODBINDOCID) T.PRODBINDOCID = #bind($PRODBINDOCID 'NUMERIC') #end 
+       #chunk($PRODCONFID) T.PRODCONFID = #bind($PRODCONFID 'NUMERIC') #end 
+       #chunk($REQUIRED) T.REQUIRED = #bind($REQUIRED 'BOOLEAN') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2BProductBinaryDocumentBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.PRODBINDOCID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_PRODBINDOC T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($BINDOCTYPE) T.BINDOCTYPE = #bind($BINDOCTYPE 'NUMERIC') #end 
+       #chunk($CHECKNAME) T.CHECKNAME = #bind($CHECKNAME 'VARCHAR') #end 
+       #chunk($DOCLEVEL) T.DOCLEVEL = #bind($DOCLEVEL 'NUMERIC') #end 
+       #chunk($DOCLEVELLIST) T.DOCLEVEL in ($DOCLEVELLIST) #end
+       #chunk($DOCLEVELNOTE) T.DOCLEVELNOTE = #bind($DOCLEVELNOTE 'VARCHAR') #end 
+       #chunk($DOCSYSNAME) T.DOCSYSNAME = #bind($DOCSYSNAME 'VARCHAR') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($PRODBINDOCID) T.PRODBINDOCID = #bind($PRODBINDOCID 'NUMERIC') #end 
+       #chunk($PRODCONFID) T.PRODCONFID = #bind($PRODCONFID 'NUMERIC') #end 
+       #chunk($REQUIRED) T.REQUIRED = #bind($REQUIRED 'BOOLEAN') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2BProductTermBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.PRODTERMID', 'java.lang.Long', 'PRODTERMID'),
+        #result('T.PRODCONFID', 'java.lang.Long', 'PRODCONFID'),
+        #result('T1.NAME', 'java.lang.String', 'NAME'),
+        #result('T1.SYSNAME', 'java.lang.String', 'SYSNAME'),
+        #result('T1.YEARCOUNT', 'java.lang.Long', 'YEARCOUNT'),
+        #result('T1.MONTHCOUNT', 'java.lang.Long', 'MONTHCOUNT'),
+        #result('T1.DAYCOUNT', 'java.lang.Long', 'DAYCOUNT'),
+        #result('T.TERMID', 'java.lang.Long', 'TERMID') 
+       $ASPECTFIELDS 
+FROM 
+      B2B_PRODTERM T 
+      LEFT JOIN B2B_TERM T1 on (T.TERMID = T1.TERMID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($PRODCONFID) T.PRODCONFID = #bind($PRODCONFID 'NUMERIC') #end 
+       #chunk($PRODTERMID) T.PRODTERMID = #bind($PRODTERMID 'NUMERIC') #end 
+       #chunk($TERMID) T.TERMID = #bind($TERMID 'NUMERIC') #end 
+       #chunk($SYSNAME) T1.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2BProductTermBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.PRODTERMID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_PRODTERM T 
+      LEFT JOIN B2B_TERM T1 on (T.TERMID = T1.TERMID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($PRODCONFID) T.PRODCONFID = #bind($PRODCONFID 'NUMERIC') #end 
+       #chunk($PRODTERMID) T.PRODTERMID = #bind($PRODTERMID 'NUMERIC') #end 
+       #chunk($TERMID) T.TERMID = #bind($TERMID 'NUMERIC') #end 
+       #chunk($SYSNAME) T1.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsB2BProductPremiumCurrencyBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMapCustom" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT
+        #result('T.CURRENCYID', 'java.lang.Long', 'CURRENCYID'),
+        #result('T.PRODPREMCURID', 'java.lang.Long', 'PRODPREMCURID'),
+        #result('T.PRODCONFID', 'java.lang.Long', 'PRODCONFID'),
+        #result('T.PRODSTRUCTID', 'java.lang.Long', 'PRODSTRUCTID'),
+        #result('cur.CURRENCYNAME', 'java.lang.String', 'CURRENCYNAME'),
+        #result('cur.ALPHACODE', 'java.lang.String', 'ALPHACODE'),
+        #result('cur.NUMERICCODE', 'java.lang.String', 'NUMERICCODE'),
+        #result('cur.ISONUMBER', 'java.lang.String', 'ISONUMBER')
+       $ASPECTFIELDS
+FROM
+      B2B_PRODPREMCUR T
+      LEFT JOIN B2B_PRODCONF pc ON (pc.PRODCONFID = T.PRODCONFID)
+      LEFT JOIN B2B_PRODVER pv ON (pv.PRODVERID = pc.PRODVERID)
+      LEFT JOIN B2B_PROD p ON (p.PRODID = pv.PRODID)
+      LEFT JOIN REF_CURRENCY cur ON (cur.CURRENCYID = T.CURRENCYID)
+$ASPECTTABLES
+#chain('AND' 'WHERE')
+       #chunk($CURRENCYID) T.CURRENCYID = #bind($CURRENCYID 'NUMERIC') #end
+       #chunk($PRODCONFID) T.PRODCONFID = #bind($PRODCONFID 'NUMERIC') #end
+       #chunk($PRODPREMCURID) T.PRODPREMCURID = #bind($PRODPREMCURID 'NUMERIC') #end
+       #chunk($PRODSTRUCTID) T.PRODSTRUCTID = #bind($PRODSTRUCTID 'NUMERIC') #end
+       #chunk($PRODSYSNAME) p.SYSNAME = #bind($PRODSYSNAME 'VARCHAR') #end
+      $ASPECTRESTRICTION
+#end
+]]>
+</sql>
+</query>
+<query name="dsB2BProductPremiumCurrencyBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMapCustom" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT
+        #result('COUNT($NEEDDISTINCT T.PRODPREMCURID)', 'java.lang.Long', 'CNT')
+FROM
+      B2B_PRODPREMCUR T
+      LEFT JOIN B2B_PRODCONF pc ON (pc.PRODCONFID = T.PRODCONFID)
+      LEFT JOIN B2B_PRODVER pv ON (pv.PRODVERID = pc.PRODVERID)
+      LEFT JOIN B2B_PROD p ON (p.PRODID = pv.PRODID)
+      LEFT JOIN REF_CURRENCY cur ON (cur.CURRENCYID = T.CURRENCYID)
+$ASPECTTABLES
+#chain('AND' 'WHERE')
+       #chunk($CURRENCYID) T.CURRENCYID = #bind($CURRENCYID 'NUMERIC') #end
+       #chunk($PRODCONFID) T.PRODCONFID = #bind($PRODCONFID 'NUMERIC') #end
+       #chunk($PRODPREMCURID) T.PRODPREMCURID = #bind($PRODPREMCURID 'NUMERIC') #end
+       #chunk($PRODSTRUCTID) T.PRODSTRUCTID = #bind($PRODSTRUCTID 'NUMERIC') #end
+       #chunk($PRODSYSNAME) p.SYSNAME = #bind($PRODSYSNAME 'VARCHAR') #end
+      $ASPECTRESTRICTION
+#end
+]]>
+</sql>
+</query>
+<query name="dsB2BProductInsAmCurrencyBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMapCustom" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT
+        #result('T.CURRENCYID', 'java.lang.Long', 'CURRENCYID'),
+        #result('T.PRODINSAMCURID', 'java.lang.Long', 'PRODINSAMCURID'),
+        #result('T.PRODCONFID', 'java.lang.Long', 'PRODCONFID'),
+        #result('T.PRODSTRUCTID', 'java.lang.Long', 'PRODSTRUCTID'),
+        #result('cur.CURRENCYNAME', 'java.lang.String', 'CURRENCYNAME'),
+        #result('cur.ALPHACODE', 'java.lang.String', 'ALPHACODE'),
+        #result('cur.NUMERICCODE', 'java.lang.String', 'NUMERICCODE'),
+        #result('cur.ISONUMBER', 'java.lang.String', 'ISONUMBER')
+       $ASPECTFIELDS
+FROM
+      B2B_PRODINSAMCUR T
+      LEFT JOIN B2B_PRODCONF pc ON (pc.PRODCONFID = T.PRODCONFID)
+      LEFT JOIN B2B_PRODVER pv ON (pv.PRODVERID = pc.PRODVERID)
+      LEFT JOIN B2B_PROD p ON (p.PRODID = pv.PRODID)
+      LEFT JOIN REF_CURRENCY cur ON (cur.CURRENCYID = T.CURRENCYID)
+$ASPECTTABLES
+#chain('AND' 'WHERE')
+       #chunk($CURRENCYID) T.CURRENCYID = #bind($CURRENCYID 'NUMERIC') #end
+       #chunk($PRODCONFID) T.PRODCONFID = #bind($PRODCONFID 'NUMERIC') #end
+       #chunk($PRODINSAMCURID) T.PRODINSAMCURID = #bind($PRODINSAMCURID 'NUMERIC') #end
+       #chunk($PRODSTRUCTID) T.PRODSTRUCTID = #bind($PRODSTRUCTID 'NUMERIC') #end
+       #chunk($PRODSYSNAME) p.SYSNAME = #bind($PRODSYSNAME 'VARCHAR') #end
+      $ASPECTRESTRICTION
+#end
+]]>
+</sql>
+</query>
+<query name="dsB2BProductInsAmCurrencyBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMapCustom" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT
+        #result('COUNT($NEEDDISTINCT T.PRODINSAMCURID)', 'java.lang.Long', 'CNT')
+FROM
+      B2B_PRODINSAMCUR T
+      LEFT JOIN B2B_PRODCONF pc ON (pc.PRODCONFID = T.PRODCONFID)
+      LEFT JOIN B2B_PRODVER pv ON (pv.PRODVERID = pc.PRODVERID)
+      LEFT JOIN B2B_PROD p ON (p.PRODID = pv.PRODID)
+      LEFT JOIN REF_CURRENCY cur ON (cur.CURRENCYID = T.CURRENCYID)
+$ASPECTTABLES
+#chain('AND' 'WHERE')
+       #chunk($CURRENCYID) T.CURRENCYID = #bind($CURRENCYID 'NUMERIC') #end
+       #chunk($PRODCONFID) T.PRODCONFID = #bind($PRODCONFID 'NUMERIC') #end
+       #chunk($PRODINSAMCURID) T.PRODINSAMCURID = #bind($PRODINSAMCURID 'NUMERIC') #end
+       #chunk($PRODSTRUCTID) T.PRODSTRUCTID = #bind($PRODSTRUCTID 'NUMERIC') #end
+       #chunk($PRODSYSNAME) p.SYSNAME = #bind($PRODSYSNAME 'VARCHAR') #end
+      $ASPECTRESTRICTION
+#end
+]]>
+</sql>
+</query>
+    <query name="dsB2BProductStructureMACUsageCnt" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMapCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT $NEEDDISTINCT
+                    #result('COUNT (T.MAINACTCONTRID)', 'java.lang.Long', 'USEDINMACCNT') 
+                    $ASPECTFIELDS
+                FROM
+                    B2B_MAINACTCONTR T
+                    INNER JOIN B2B_MACAGENTCNT cnt ON (cnt.MAINACTCONTRID = T.MAINACTCONTRID)
+                    INNER JOIN B2B_MACAGENTCOMMIS cms ON (cms.MACAGENTCNTID = cnt.MACAGENTCNTID)
+                    $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                    #chunk($MACORGSTRUCTID) T.ORGSTRUCTID = #bind($MACORGSTRUCTID 'NUMERIC') #end
+                    #chunk($PRODSTRUCTID) cms.PRODSTRUCTID = #bind($PRODSTRUCTID 'NUMERIC') #end
+                    #chunk($MACCURRENCYID) cms.CURRENCYID = #bind($MACCURRENCYID 'NUMERIC') #end
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+    <query name="dsB2BProductStructureMACUsageCntCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMapCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT $NEEDDISTINCT
+                    #result('1', 'java.lang.Long', 'CNT')
+                FROM
+                    B2B_MAINACTCONTR T
+                    INNER JOIN B2B_MACAGENTCNT cnt ON (cnt.MAINACTCONTRID = T.MAINACTCONTRID)
+                    INNER JOIN B2B_MACAGENTCOMMIS cms ON (cms.MACAGENTCNTID = cnt.MACAGENTCNTID)
+                    $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                    #chunk($MACORGSTRUCTID) T.ORGSTRUCTID = #bind($MACORGSTRUCTID 'NUMERIC') #end
+                    #chunk($PRODSTRUCTID) cms.PRODSTRUCTID = #bind($PRODSTRUCTID 'NUMERIC') #end
+                    #chunk($MACCURRENCYID) cms.CURRENCYID = #bind($MACCURRENCYID 'NUMERIC') #end
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+    <query name="dsB2BProductGetMainInfoByContractID" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMapCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT 
+                    #result('T.CONTRID', 'java.lang.Long', 'CONTRID'),
+                    #result('pv.PRODVERID', 'java.lang.Long', 'PRODVERID'),
+                    #result('pc.PRODCONFID', 'java.lang.Long', 'PRODCONFID'),
+                    #result('pv.PRODID', 'java.lang.Long', 'PRODID'),
+                    #result('p.SYSNAME', 'java.lang.String', 'PRODSYSNAME')
+                    $ASPECTFIELDS
+                FROM
+                    B2B_CONTR T
+                    INNER JOIN B2B_PRODVER pv ON (pv.PRODVERID = T.PRODVERID)
+                    INNER JOIN B2B_PROD p ON (p.PRODID = pv.PRODID)
+                    INNER JOIN B2B_PRODCONF pc ON (pc.PRODVERID = pv.PRODVERID)
+                    $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                    #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+    <query name="dsB2BProductGetMainInfoByContractIDCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMapCustom" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT
+                    #result('COUNT(*)', 'java.lang.Long', 'CNT')
+                FROM
+                    B2B_CONTR T
+                    INNER JOIN B2B_PRODVER pv ON (pv.PRODVERID = T.PRODVERID)
+                    INNER JOIN B2B_PROD p ON (p.PRODID = pv.PRODID)
+                    INNER JOIN B2B_PRODCONF pc ON (pc.PRODVERID = pv.PRODVERID)
+                    $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                    #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+    
+    <query name="dsB2BActivationProductBrowseListByParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMapCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+    #result('T.ACTIVCODEID', 'java.lang.Long', 'ACTIVCODEID'),
+    #result('T.ISACTIVATED', 'java.lang.Long', 'ISACTIVATED'),
+    #result('T.CONTRID', 'java.lang.Long', 'CONTRID'),
+    #result('T.CODE', 'java.lang.String', 'CODE'),
+    #result('T.SERIES', 'java.lang.String', 'SERIES'),
+    #result('T.NUM', 'java.lang.String', 'NUM'),
+    #result('T.STARTDATE', 'java.math.BigDecimal', 'CODESTARTDATE'),
+    #result('T.ENDDATE', 'java.math.BigDecimal', 'CODEENDDATE'),
+    #result('T1.STARTDATE', 'java.math.BigDecimal', 'PRODUCTACTIVATIONSTARTDATE'),
+    #result('T1.ENDDATE', 'java.math.BigDecimal', 'PRODUCTACTIVATIONENDDATE'),
+    #result('T1.PRODACTIVID', 'java.lang.Long', 'PRODACTIVID'),
+
+    #result('T3.PRODVERID', 'java.lang.Long', 'PRODVERID'),
+    #result('T4.NAME', 'java.lang.String', 'PRODNAME'),
+    #result('T4.NOTE', 'java.lang.String', 'PRODNOTE'),
+    #result('T4.SYSNAME', 'java.lang.String', 'PRODSYSNAME'),
+    #result('T4.PRODID', 'java.lang.Long', 'PRODID')
+FROM 
+      B2B_ACTIVCODE T 
+      LEFT JOIN B2B_PRODACTIV T1 on (T.PRODACTIVID = T1.PRODACTIVID)
+      LEFT JOIN B2B_PRODACTIVTYPE T2 on (T2.PRODACTIVTYPEID = T1.PRODACTIVID)
+      LEFT JOIN B2B_PRODVER T3 ON (T1.PRODVERID = T3.PRODVERID)
+      LEFT JOIN B2B_PROD T4 ON (T3.PRODID = T4.PRODID)
+      
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CODE) T.CODE = #bind($CODE 'VARCHAR') #end 
+       #chunk($SERIES) T.SERIES = #bind($SERIES 'VARCHAR') #end 
+       #chunk($NUM) T.NUM = #bind($NUM 'VARCHAR') #end 
+       #chunk($ACTIVATIONTYPE) T2.SYSNAME = #bind($ACTIVATIONTYPE 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BActivationProductBrowseListByParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMapCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.ACTIVCODEID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_ACTIVCODE T 
+      LEFT JOIN B2B_PRODACTIV T1 on (T.PRODACTIVID = T1.PRODACTIVID)
+      LEFT JOIN B2B_PRODACTIVTYPE T2 on (T2.PRODACTIVTYPEID = T1.PRODACTIVID)
+      LEFT JOIN B2B_PRODVER T3 ON (T1.PRODVERID = T3.PRODVERID)
+      LEFT JOIN B2B_PROD T4 ON (T3.PRODID = T4.PRODID)
+      
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CODE) T.CODE = #bind($CODE 'VARCHAR') #end 
+       #chunk($SERIES) T.SERIES = #bind($SERIES 'VARCHAR') #end 
+       #chunk($NUMBER) T.NUMBER = #bind($NUMBER 'VARCHAR') #end 
+       #chunk($ACTIVATIONTYPE) T2.SYSNAME = #bind($ACTIVATIONTYPE 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>    
+
+    <query name="dsB2BActivatedContractBrowseListByParamForMigrate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMapCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+#result('T.SERNUM', 'java.lang.String', 'SERNUM'),
+#result('T.PRODUCT', 'java.lang.String', 'PRODUCT'),
+#result('T.ACTIVCODE', 'java.lang.String', 'ACTIVCODE'),
+#result('T.PAYDATESTR', 'java.lang.String', 'PAYDATESTR'),
+#result('T.ACTIVATEDATESTR', 'java.lang.String', 'ACTIVATEDATESTR'),
+#result('T.INSURERSURNAME', 'java.lang.String', 'INSURERSURNAME'),
+#result('T.INSURERNAME', 'java.lang.String', 'INSURERNAME'),
+#result('T.INSURERMIDDLENAME', 'java.lang.String', 'INSURERMIDDLENAME'),
+#result('T.INSURERGENDER', 'java.lang.String', 'INSURERGENDER'),
+#result('T.INSURERBIRTHDATESTR', 'java.lang.String', 'INSURERBIRTHDATESTR'),
+#result('T.INSURERSERIES', 'java.lang.String', 'INSURERSERIES'),
+#result('T.INSURERNUMBER', 'java.lang.String', 'INSURERNUMBER'),
+#result('T.INSURERISSUEDBY', 'java.lang.String', 'INSURERISSUEDBY'),
+#result('T.INSURERISSUEDATESTR', 'java.lang.String', 'INSURERISSUEDATESTR'),
+#result('T.INSUREREMAIL', 'java.lang.String', 'INSUREREMAIL'),
+#result('T.INSURERPHONE', 'java.lang.String', 'INSURERPHONE'),
+#result('T.INSUREDSURNAME', 'java.lang.String', 'INSUREDSURNAME'),
+#result('T.INSUREDNAME', 'java.lang.String', 'INSUREDNAME'),
+#result('T.INSUREDMIDDLENAME', 'java.lang.String', 'INSUREDMIDDLENAME'),
+#result('T.INSUREDGENDER', 'java.lang.String', 'INSUREDGENDER'),
+#result('T.INSUREDBIRTHDATESTR', 'java.lang.String', 'INSUREDBIRTHDATESTR'),
+#result('T.INSUREDSERIES', 'java.lang.String', 'INSUREDSERIES'),
+#result('T.INSUREDNUMBER', 'java.lang.String', 'INSUREDNUMBER'),
+#result('T.INSUREDISSUEDBY', 'java.lang.String', 'INSUREDISSUEDBY'),
+#result('T.INSUREDISSUEDATESTR', 'java.lang.String', 'INSUREDISSUEDATESTR'),
+#result('T.BENSURNAME', 'java.lang.String', 'BENSURNAME'),
+#result('T.BENNAME', 'java.lang.String', 'BENNAME'),
+#result('T.BENMIDDLENAME', 'java.lang.String', 'BENMIDDLENAME'),
+#result('T.BENGENDER', 'java.lang.String', 'BENGENDER'),
+#result('T.BENBIRTHDATESTR', 'java.lang.String', 'BENBIRTHDATESTR'),
+#result('T.BENSERIES', 'java.lang.String', 'BENSERIES'),
+#result('T.BENNUMBER', 'java.lang.String', 'BENNUMBER'),
+#result('T.BENISSUEDBY', 'java.lang.String', 'BENISSUEDBY'),
+#result('T.BENISSUEDATESTR', 'java.lang.String', 'BENISSUEDATESTR'),
+#result('T.CONTRID', 'java.lang.Long', 'CONTRID')
+FROM 
+      A_ACTIVATEDCONTR T 
+#chain('AND' 'WHERE') 
+       #chunk() 1 = 1 #end 
+#end  
+ORDER BY T.CONTRID    
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestBaseActiveTickerBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMapCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+SELECT $NEEDDISTINCT
+        #result('T.INVBATICKERID', 'java.lang.Long', 'INVBATICKERID'),
+        #result('T.INVBASEACTIVEID', 'java.lang.Long', 'INVBASEACTIVEID'),
+        #result('T.INVTICKERID', 'java.lang.Long', 'INVTICKERID'),
+        #result('T2.BRIEFNAME', 'java.lang.String', 'BRIEFNAME'),
+        #result('T2.CODE', 'java.lang.String', 'CODE'),
+        #result('T2.NAME', 'java.lang.String', 'NAME'),
+        #result('T2.STOCKEXCHNAME', 'java.lang.String', 'STOCKEXCHNAME'),
+        #result('T2.SYSNAME', 'java.lang.String', 'SYSNAME')
+       $ASPECTFIELDS
+FROM
+      B2B_INVBATICKER T
+      left join B2B_INVTICKER T2 on (T.INVTICKERID = T2.INVTICKERID)
+$ASPECTTABLES
+#chain('AND' 'WHERE')
+       #chunk($INVBASEACTIVEID) T.INVBASEACTIVEID = #bind($INVBASEACTIVEID 'NUMERIC') #end
+       #chunk($INVBATICKERID) T.INVBATICKERID = #bind($INVBATICKERID 'NUMERIC') #end
+       #chunk($INVTICKERID) T.INVTICKERID = #bind($INVTICKERID 'NUMERIC') #end
+      $ASPECTRESTRICTION
+#end
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestBaseActiveTickerBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMapCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+SELECT
+        #result('COUNT($NEEDDISTINCT T.INVBATICKERID)', 'java.lang.Long', 'CNT')
+FROM
+      B2B_INVBATICKER T
+      left join B2B_INVTICKER T2 on (T.INVTICKERID = T2.INVTICKERID)
+$ASPECTTABLES
+#chain('AND' 'WHERE')
+       #chunk($INVBASEACTIVEID) T.INVBASEACTIVEID = #bind($INVBASEACTIVEID 'NUMERIC') #end
+       #chunk($INVBATICKERID) T.INVBATICKERID = #bind($INVBATICKERID 'NUMERIC') #end
+       #chunk($INVTICKERID) T.INVTICKERID = #bind($INVTICKERID 'NUMERIC') #end
+      $ASPECTRESTRICTION
+#end
+]]>
+        </sql>
+    </query>
+
+    <query name="dsB2BProductInvestBaseActiveBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMapCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.CODE', 'java.lang.String', 'CODE'),
+        #result('T.ISNOTUSE', 'java.lang.Long', 'ISNOTUSE'),
+        #result('T.ISSEVERALTICKERS', 'java.lang.Long', 'ISSEVERALTICKERS'),
+        #result('T.INVBASEACTIVEID', 'java.lang.Long', 'INVBASEACTIVEID'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.NOTE', 'java.lang.String', 'NOTE'),
+        #result('T.SYSNAME', 'java.lang.String', 'SYSNAME') 
+       $ASPECTFIELDS 
+FROM 
+      B2B_INVBASEACTIVE T 
+      INNER JOIN B2B_INVESTSTRATEGY T1 ON (T.INVBASEACTIVEID = T1.INVBASEACTIVEID)
+      INNER JOIN B2B_PRODINVEST T2 ON (T1.INVESTSTRATEGYID = T2.INVESTSTRATEGYID)
+      INNER JOIN B2B_PRODCONF T3 ON (T2.PRODCONFID = T3.PRODCONFID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CODE) T.CODE = #bind($CODE 'VARCHAR') #end 
+       #chunk($INVBASEACTIVEID) T.INVBASEACTIVEID = #bind($INVBASEACTIVEID 'NUMERIC') #end 
+       #chunk($ISNOTUSE) T.ISNOTUSE = #bind($ISNOTUSE 'NUMERIC') #end 
+       #chunk($ISSEVERALTICKERS) T.ISSEVERALTICKERS = #bind($ISSEVERALTICKERS 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+       #chunk($PRODVERID) T3.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BProductInvestBaseActiveBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMapCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.INVBASEACTIVEID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_INVBASEACTIVE T 
+      INNER JOIN B2B_INVESTSTRATEGY T1 ON (T.INVBASEACTIVEID = T1.INVBASEACTIVEID)
+      INNER JOIN B2B_PRODINVEST T2 ON (T1.INVESTSTRATEGYID = T2.INVESTSTRATEGYID)
+      INNER JOIN B2B_PRODCONF T3 ON (T2.PRODCONFID = T3.PRODCONFID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CODE) T.CODE = #bind($CODE 'VARCHAR') #end 
+       #chunk($INVBASEACTIVEID) T.INVBASEACTIVEID = #bind($INVBASEACTIVEID 'NUMERIC') #end 
+       #chunk($ISNOTUSE) T.ISNOTUSE = #bind($ISNOTUSE 'NUMERIC') #end 
+       #chunk($ISSEVERALTICKERS) T.ISSEVERALTICKERS = #bind($ISSEVERALTICKERS 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($NOTE) T.NOTE = #bind($NOTE 'VARCHAR') #end 
+       #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end 
+       #chunk($PRODVERID) T3.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestTrancheBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMapCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.BARRIER', 'java.lang.Double', 'BARRIER'),
+        #result('T.CALCDATE', 'java.math.BigDecimal', 'CALCDATE'),
+        #result('T.PLANDATE', 'java.math.BigDecimal', 'PLANDATE'),
+        #result('T.CONTRACTSTARTDATE', 'java.math.BigDecimal', 'CONTRACTSTARTDATE'),
+        #result('T.INVBASEACTIVEID', 'java.lang.Long', 'INVBASEACTIVEID'),
+        #result('T.INVTRANCHEID', 'java.lang.Long', 'INVTRANCHEID'),
+        #result('T.INVTRANCHEKINDID', 'java.lang.Long', 'INVTRANCHEKINDID'),
+        #result('T.RATE', 'java.lang.Double', 'RATE'),
+        #result('T.SALEFINISHDATE', 'java.math.BigDecimal', 'SALEFINISHDATE'),
+        #result('T.SALESTARTDATE', 'java.math.BigDecimal', 'SALESTARTDATE'),
+
+        #result('T2.CODE', 'java.lang.String', 'BACODE'),
+        #result('T2.ISNOTUSE', 'java.lang.Long', 'BAISNOTUSE'),
+        #result('T2.ISSEVERALTICKERS', 'java.lang.Long', 'BAISSEVERALTICKERS'),
+        #result('T2.INVBASEACTIVEID', 'java.lang.Long', 'BAINVBASEACTIVEID'),
+        #result('T2.NAME', 'java.lang.String', 'BANAME'),
+        #result('T2.NOTE', 'java.lang.String', 'BANOTE'),
+        #result('T2.SYSNAME', 'java.lang.String', 'BASYSNAME'),
+
+        #result('T3.CODE', 'java.lang.String', 'INVSTCODE'),
+        #result('T3.CURRENCYID', 'java.lang.Long', 'INVSTCURRENCYID'),
+        #result('T3.INVBASEACTIVEID', 'java.lang.Long', 'INVSTINVBASEACTIVEID'),
+        #result('T3.INVESTSTRATEGYID', 'java.lang.Long', 'INVSTINVESTSTRATEGYID'),
+        #result('T3.NAME', 'java.lang.String', 'INVSTNAME'),
+        #result('T3.NOTE', 'java.lang.String', 'INVSTNOTE'),
+        #result('T3.SYSNAME', 'java.lang.String', 'INVSTSYSNAME'),
+        #result('T3.TERMID', 'java.lang.Long', 'INVSTTERMID'),
+        #result('T3.TERMYEARCOUNT', 'java.lang.Long', 'INVSTTERMYEARCOUNT'), 
+
+        #result('T4.NAME', 'java.lang.String', 'TERMNAME'),
+
+        #result('T5.CURRENCYNAME', 'java.lang.String', 'CURRENCYNAME'),
+                
+        #result('T6.MINAMVALUE', 'java.lang.Double', 'MINAMVALUE'),
+        #result('T6.MAXAMVALUE', 'java.lang.Double', 'MAXAMVALUE')
+        
+                
+       $ASPECTFIELDS 
+FROM 
+      B2B_INVTRANCHE T 
+      left join B2B_INVBASEACTIVE T2 on (T.INVBASEACTIVEID = T2.INVBASEACTIVEID)
+      left join B2B_INVESTSTRATEGY T3 on (T3.INVBASEACTIVEID = T2.INVBASEACTIVEID)
+      left join B2B_TERM T4 on (T3.TERMID = T4.TERMID)
+      left join REF_CURRENCY T5 on (T3.CURRENCYID = T5.CURRENCYID)
+      inner join B2B_INVCONTRIBUTION T6 on (T.INVTRANCHEID = T6.INVTRANCHEID) AND (T3.CURRENCYID = T6.CURRENCYID) AND (T3.TERMID = T6.TERMID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($BARRIER) T.BARRIER = #bind($BARRIER 'NUMERIC') #end 
+       #chunk($CALCDATE) T.CALCDATE = #bind($CALCDATE 'FLOAT') #end 
+       #chunk($CONTRACTSTARTDATE) T.CONTRACTSTARTDATE = #bind($CONTRACTSTARTDATE 'FLOAT') #end 
+       #chunk($INVBASEACTIVEID) T.INVBASEACTIVEID = #bind($INVBASEACTIVEID 'NUMERIC') #end 
+       #chunk($INVTRANCHEID) T.INVTRANCHEID = #bind($INVTRANCHEID 'NUMERIC') #end 
+       #chunk($INVTRANCHEKINDID) T.INVTRANCHEKINDID = #bind($INVTRANCHEKINDID 'NUMERIC') #end 
+       #chunk($RATE) T.RATE = #bind($RATE 'NUMERIC') #end 
+       #chunk($SALEFINISHDATE) T.SALEFINISHDATE = #bind($SALEFINISHDATE 'FLOAT') #end 
+       #chunk($SALESTARTDATE) T.SALESTARTDATE = #bind($SALESTARTDATE 'FLOAT') #end 
+       #chunk($CP_TODAYDATE) (T.SALESTARTDATE <= #bind($CP_TODAYDATE 'FLOAT')) AND (T.SALEFINISHDATE >= #bind($CP_TODAYDATE 'FLOAT')) #end
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestTrancheBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMapCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.INVTRANCHEID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_INVTRANCHE T 
+      left join B2B_INVBASEACTIVE T2 on (T.INVBASEACTIVEID = T2.INVBASEACTIVEID)
+      left join B2B_INVESTSTRATEGY T3 on (T3.INVBASEACTIVEID = T2.INVBASEACTIVEID)
+      left join B2B_TERM T4 on (T3.TERMID = T4.TERMID)
+      left join REF_CURRENCY T5 on (T3.CURRENCYID = T5.CURRENCYID)
+      inner join B2B_INVCONTRIBUTION T6 on (T.INVTRANCHEID = T6.INVTRANCHEID) AND (T3.CURRENCYID = T6.CURRENCYID) AND (T3.TERMID = T6.TERMID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($BARRIER) T.BARRIER = #bind($BARRIER 'NUMERIC') #end 
+       #chunk($CALCDATE) T.CALCDATE = #bind($CALCDATE 'FLOAT') #end 
+       #chunk($CONTRACTSTARTDATE) T.CONTRACTSTARTDATE = #bind($CONTRACTSTARTDATE 'FLOAT') #end 
+       #chunk($INVBASEACTIVEID) T.INVBASEACTIVEID = #bind($INVBASEACTIVEID 'NUMERIC') #end 
+       #chunk($INVTRANCHEID) T.INVTRANCHEID = #bind($INVTRANCHEID 'NUMERIC') #end 
+       #chunk($INVTRANCHEKINDID) T.INVTRANCHEKINDID = #bind($INVTRANCHEKINDID 'NUMERIC') #end 
+       #chunk($RATE) T.RATE = #bind($RATE 'NUMERIC') #end 
+       #chunk($SALEFINISHDATE) T.SALEFINISHDATE = #bind($SALEFINISHDATE 'FLOAT') #end 
+       #chunk($SALESTARTDATE) T.SALESTARTDATE = #bind($SALESTARTDATE 'FLOAT') #end 
+       #chunk($CP_TODAYDATE) (T.SALESTARTDATE <= #bind($CP_TODAYDATE 'FLOAT')) AND (T.SALEFINISHDATE >= #bind($CP_TODAYDATE 'FLOAT')) #end
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestTrancheBrowseListByParamToDataProv" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMapCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.BARRIER', 'java.lang.Double', 'BARRIER'),
+        #result('T.CALCDATE', 'java.math.BigDecimal', 'CALCDATE'),
+        #result('T.CONTRACTSTARTDATE', 'java.math.BigDecimal', 'CONTRACTSTARTDATE'),
+        #result('T.INVBASEACTIVEID', 'java.lang.Long', 'INVBASEACTIVEID'),
+        #result('T.INVTRANCHEID', 'java.lang.Long', 'INVTRANCHEID'),
+        #result('T.INVTRANCHEKINDID', 'java.lang.Long', 'INVTRANCHEKINDID'),
+        #result('T.RATE', 'java.lang.Double', 'RATE'),
+        #result('T.SALEFINISHDATE', 'java.math.BigDecimal', 'SALEFINISHDATE'),
+        #result('T.SALESTARTDATE', 'java.math.BigDecimal', 'SALESTARTDATE')
+
+   
+                
+       $ASPECTFIELDS 
+FROM 
+      B2B_INVTRANCHE T 
+      
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($BARRIER) T.BARRIER = #bind($BARRIER 'NUMERIC') #end 
+       #chunk($CALCDATE) T.CALCDATE = #bind($CALCDATE 'FLOAT') #end 
+       #chunk($CONTRACTSTARTDATE) T.CONTRACTSTARTDATE = #bind($CONTRACTSTARTDATE 'FLOAT') #end 
+       #chunk($INVBASEACTIVEID) T.INVBASEACTIVEID = #bind($INVBASEACTIVEID 'NUMERIC') #end 
+       #chunk($INVTRANCHEID) T.INVTRANCHEID = #bind($INVTRANCHEID 'NUMERIC') #end 
+       #chunk($INVTRANCHEKINDID) T.INVTRANCHEKINDID = #bind($INVTRANCHEKINDID 'NUMERIC') #end 
+       #chunk($RATE) T.RATE = #bind($RATE 'NUMERIC') #end 
+       #chunk($SALEFINISHDATE) T.SALEFINISHDATE = #bind($SALEFINISHDATE 'FLOAT') #end 
+       #chunk($SALESTARTDATE) T.SALESTARTDATE = #bind($SALESTARTDATE 'FLOAT') #end 
+       #chunk($CP_TODAYDATE) (T.SALESTARTDATE <= #bind($CP_TODAYDATE 'FLOAT')) AND (T.SALEFINISHDATE >= #bind($CP_TODAYDATE 'FLOAT')) #end
+       #chunk($CPFINISH_TODAYDATE) (T.SALEFINISHDATE >= #bind($CPFINISH_TODAYDATE 'FLOAT')) #end
+       #chunk($TRANCHESTARTDATE) (T.SALESTARTDATE >= #bind($TRANCHESTARTDATE 'FLOAT')) #end
+       #chunk($TRANCHEFINISHDATE) (T.SALESTARTDATE <= #bind($TRANCHEFINISHDATE 'FLOAT')) #end
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestTrancheBrowseListByParamToDataProvCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductMapCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.INVTRANCHEID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_INVTRANCHE T 
+      left join B2B_INVBASEACTIVE T2 on (T.INVBASEACTIVEID = T2.INVBASEACTIVEID)
+      left join B2B_INVESTSTRATEGY T3 on (T3.INVBASEACTIVEID = T2.INVBASEACTIVEID)
+      left join B2B_TERM T4 on (T3.TERMID = T4.TERMID)
+      left join REF_CURRENCY T5 on (T3.CURRENCYID = T5.CURRENCYID)
+      inner join B2B_INVCONTRIBUTION T6 on (T.INVTRANCHEID = T6.INVTRANCHEID) AND (T3.CURRENCYID = T6.CURRENCYID) AND (T3.TERMID = T6.TERMID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($BARRIER) T.BARRIER = #bind($BARRIER 'NUMERIC') #end 
+       #chunk($CALCDATE) T.CALCDATE = #bind($CALCDATE 'FLOAT') #end 
+       #chunk($CONTRACTSTARTDATE) T.CONTRACTSTARTDATE = #bind($CONTRACTSTARTDATE 'FLOAT') #end 
+       #chunk($INVBASEACTIVEID) T.INVBASEACTIVEID = #bind($INVBASEACTIVEID 'NUMERIC') #end 
+       #chunk($INVTRANCHEID) T.INVTRANCHEID = #bind($INVTRANCHEID 'NUMERIC') #end 
+       #chunk($INVTRANCHEKINDID) T.INVTRANCHEKINDID = #bind($INVTRANCHEKINDID 'NUMERIC') #end 
+       #chunk($RATE) T.RATE = #bind($RATE 'NUMERIC') #end 
+       #chunk($SALEFINISHDATE) T.SALEFINISHDATE = #bind($SALEFINISHDATE 'FLOAT') #end 
+       #chunk($SALESTARTDATE) T.SALESTARTDATE = #bind($SALESTARTDATE 'FLOAT') #end 
+       #chunk($CP_TODAYDATE) (T.SALESTARTDATE <= #bind($CP_TODAYDATE 'FLOAT')) AND (T.SALEFINISHDATE >= #bind($CP_TODAYDATE 'FLOAT')) #end
+       #chunk($CPFINISH_TODAYDATE) (T.SALEFINISHDATE >= #bind($CPFINISH_TODAYDATE 'FLOAT')) #end
+       #chunk($TRANCHESTARTDATE) (T.SALESTARTDATE >= #bind($TRANCHESTARTDATE 'FLOAT')) #end
+       #chunk($TRANCHEFINISHDATE) (T.SALESTARTDATE <= #bind($TRANCHEFINISHDATE 'FLOAT')) #end
+      $ASPECTRESTRICTION
+#end
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BProductInvestmentStrategyBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductCustomMap">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT $NEEDDISTINCT
+                    #result('pis.PRODINVESTID', 'java.lang.Long', 'PRODINVESTID'),
+                    #result('pis.STARTDATE', 'java.math.BigDecimal', 'STARTDATE'),
+                    #result('pis.FINISHDATE', 'java.math.BigDecimal', 'FINISHDATE'),
+                    #result('pis.INVESTSTRATEGYID', 'java.lang.Long', 'INVESTSTRATEGYID'),
+                    #result('ist.STARTDATE', 'java.math.BigDecimal', 'STRATEGYSTARTDATE'),
+                    #result('ist.NAME', 'java.lang.String', 'STRATEGYNAME'),
+                    #result('ist.SYSNAME', 'java.lang.String', 'STRATEGYSYSNAME'),
+                    #result('ist.FINISHDATE', 'java.math.BigDecimal', 'STRATEGYFINISHDATE'),
+                    #result('ist.ISFORSALE', 'java.lang.Long', 'STRATEGYISFORSALE'),
+                    #result('ist.INVBASEACTIVEID', 'java.lang.Long', 'STRATEGYINVBASEACTIVEID'),
+                    #result('ist.CURRENCYID', 'java.lang.Long', 'STRATEGYCURRENCYID'),
+                    #result('ist.COUPONSIZE', 'java.lang.Double', 'STRATEGYCOUPONSIZE'),
+                    #result('ist.MINPAYVALUE', 'java.lang.Double', 'STRATEGYMINPAYVALUE'),
+                    #result('ist.TERMID', 'java.lang.Long', 'STRATEGYTERMID'),
+                    #result('p.SYSNAME', 'java.lang.String', 'PRODSYSNAME'),
+                    #result('iba.NAME', 'java.lang.String', 'BANAME'),
+                    #result('iba.NOTE', 'java.lang.String', 'BANOTE')
+                    $ASPECTFIELDS
+                FROM
+                    B2B_PRODINVEST pis
+                    INNER JOIN B2B_PRODCONF pc ON (pc.PRODCONFID = pis.PRODCONFID)
+                    INNER JOIN B2B_PRODVER pv ON (pv.PRODVERID = pc.PRODVERID)
+                    INNER JOIN B2B_PROD p ON (p.PRODID = pv.PRODID)
+                    INNER JOIN B2B_INVESTSTRATEGY ist ON (pis.INVESTSTRATEGYID = ist.INVESTSTRATEGYID)
+                    LEFT JOIN B2B_INVBASEACTIVE iba ON (ist.INVBASEACTIVEID = iba.INVBASEACTIVEID)
+                    $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                    #chunk($PRODINVESTID) pis.PRODINVESTID = #bind($PRODINVESTID 'NUMERIC') #end
+                    #chunk($PRODSYSNAME) p.SYSNAME = #bind($PRODSYSNAME 'VARCHAR') #end
+                    #chunk($CHECKDATE) #bind($CHECKDATE 'NUMERIC') BETWEEN pis.STARTDATE AND (pis.FINISHDATE+1) #end
+                    #chunk($INVESTSTRATEGYID) ist.INVESTSTRATEGYID = #bind($INVESTSTRATEGYID 'NUMERIC') #end
+                    #chunk($CHECKSTRATEGYDATE) #bind($CHECKSTRATEGYDATE 'NUMERIC') BETWEEN ist.STARTDATE AND (ist.FINISHDATE+1) #end
+                    #chunk($STRATEGYISFORSALE) ist.ISFORSALE = #bind($STRATEGYISFORSALE 'NUMERIC') #end
+                    #chunk($STRATEGYTERMID) ist.TERMID = #bind($STRATEGYTERMID 'NUMERIC') #end
+                    #chunk($STRATEGYTERMIDNULLOREQUAL) ((ist.TERMID IS NULL) OR (ist.TERMID = #bind($STRATEGYTERMIDNULLOREQUAL 'NUMERIC'))) #end
+                    #chunk($STRATCURRENCYID) ist.CURRENCYID = #bind($STRATCURRENCYID 'NUMERIC') #end
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+    <query name="dsB2BProductInvestmentStrategyBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductCustomMap">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT
+                    #result('COUNT($NEEDDISTINCT pis.PRODINVESTID)', 'java.lang.Long', 'CNT')
+                FROM
+                    B2B_PRODINVEST pis
+                    INNER JOIN B2B_PRODCONF pc ON (pc.PRODCONFID = pis.PRODCONFID)
+                    INNER JOIN B2B_PRODVER pv ON (pv.PRODVERID = pc.PRODVERID)
+                    INNER JOIN B2B_PROD p ON (p.PRODID = pv.PRODID)
+                    INNER JOIN B2B_INVESTSTRATEGY ist ON (pis.INVESTSTRATEGYID = ist.INVESTSTRATEGYID)
+                    LEFT JOIN B2B_INVBASEACTIVE iba ON (ist.INVBASEACTIVEID = iba.INVBASEACTIVEID)
+                    $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                    #chunk($PRODINVESTID) pis.PRODINVESTID = #bind($PRODINVESTID 'NUMERIC') #end
+                    #chunk($PRODSYSNAME) p.SYSNAME = #bind($PRODSYSNAME 'VARCHAR') #end
+                    #chunk($CHECKDATE) #bind($CHECKDATE 'NUMERIC') BETWEEN pis.STARTDATE AND pis.FINISHDATE #end
+                    #chunk($INVESTSTRATEGYID) ist.INVESTSTRATEGYID = #bind($INVESTSTRATEGYID 'NUMERIC') #end
+                    #chunk($CHECKSTRATEGYDATE) #bind($CHECKSTRATEGYDATE 'NUMERIC') BETWEEN ist.STARTDATE AND ist.FINISHDATE #end
+                    #chunk($STRATEGYISFORSALE) ist.ISFORSALE = #bind($STRATEGYISFORSALE 'NUMERIC') #end
+                    #chunk($STRATEGYTERMID) ist.TERMID = #bind($STRATEGYTERMID 'NUMERIC') #end
+                    #chunk($STRATEGYTERMIDNULLOREQUAL) ((ist.TERMID IS NULL) OR (ist.TERMID = #bind($STRATEGYTERMIDNULLOREQUAL 'NUMERIC'))) #end
+                    #chunk($STRATCURRENCYID) ist.CURRENCYID = #bind($STRATCURRENCYID 'NUMERIC') #end
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+
+    <!-- получение константы продукта по имени константы и сис. наименованию версии продукта -->
+    <query name="dsB2BProductDefaultValueGetByNameAndProductSysName" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductCustomMap">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT $NEEDDISTINCT
+                    #result('pv.SYSNAME', 'java.lang.String', 'PRODSYSNAME'),
+                    #result('dv.NAME', 'java.lang.String', 'NAME'),
+                    #result('dv.VALUE', 'java.lang.String', 'VALUE')
+                    $ASPECTFIELDS
+                FROM
+                    B2B_PRODDEFVAL dv
+                    LEFT JOIN B2B_PRODCONF pc ON (pc.PRODCONFID = dv.PRODCONFID)
+                    LEFT JOIN B2B_PRODVER pv ON (pv.PRODVERID = pc.PRODVERID)
+                    $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                    #chunk($PRODSYSNAME) pv.SYSNAME = #bind($PRODSYSNAME 'VARCHAR') #end
+                    #chunk($NAME) dv.NAME = #bind($NAME 'VARCHAR') #end
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+    <query name="dsB2BProductDefaultValueGetByNameAndProductSysNameCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BProductCustomMap">
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT
+                    #result('COUNT($NEEDDISTINCT dv.PRODDEFVALID)', 'java.lang.Long', 'CNT')
+                FROM
+                    B2B_PRODDEFVAL dv
+                    LEFT JOIN B2B_PRODCONF pc ON (pc.PRODCONFID = dv.PRODCONFID)
+                    LEFT JOIN B2B_PRODVER pv ON (pv.PRODVERID = pc.PRODVERID)
+                    $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                    #chunk($PRODSYSNAME) pv.SYSNAME = #bind($PRODSYSNAME 'VARCHAR') #end
+                    #chunk($NAME) dv.NAME = #bind($NAME 'VARCHAR') #end
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+
+</data-map>

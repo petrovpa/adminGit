@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="http://support.diasoft.ru"
+                   xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+                   xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <SOAP-ENV:Header>
+        <wsse:Security>
+            <wsse:UsernameToken wsu:Id="Flextera">
+                <wsse:Username>man</wsse:Username>
+                <wsse:Password
+                        Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">
+                    356a192b7913b04c54574d18c28d46e6395428ab
+                </wsse:Password>
+            </wsse:UsernameToken>
+        </wsse:Security>
+    </SOAP-ENV:Header>
+    <SOAP-ENV:Body>
+        <ns1:DSCALL>
+            <ns1:commandtext>dsLifeIntegrationGetContractsData</ns1:commandtext>
+            <ns1:commanddata>&lt;?xml version='1.0' encoding='UTF-8'?&gt;&lt;BODY version="2.11"&gt;&lt;CONTRIDLIST
+                type="java.util.List"&gt;&lt;ListItems&gt;&lt;Item type="java.lang.Long"&gt;2264007&lt;/Item&gt;&lt;/ListItems&gt;&lt;/CONTRIDLIST&gt;&lt;/BODY&gt;
+            </ns1:commanddata>
+        </ns1:DSCALL>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

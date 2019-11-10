@@ -1,0 +1,34 @@
+<form #f="ngForm" novalidate class="page-form-edit">
+  <user-short-info [user]="user"></user-short-info>
+
+  <div class="page-title">Права</div>
+
+  <journal class="journal"
+           #journal
+           sysName="ADMINRIGHTSMANAGE"
+           [customParams]="{OBJECTID: userAccountId, RIGHTOWNER: 'ACCOUNT'}"
+           [journalServicePath]="'journal/'"
+           [journalButtons]="journalButtons"
+           [journalButtonsAction]="journalButtonsAction"
+           (onDoubleClicked)="viewRight(journal.selected)"></journal>
+
+  <div class="page__btn">
+    <div class="row">
+      <div class="col-sm-6 col-12">
+        <button type="button"
+                class="btn btn-link btn-rounded btn-block"
+                (click)="back($event, f)">
+          Вернуться
+        </button>
+      </div>
+
+      <div class="col-sm-6 col-12">
+        <button type="button"
+                class="btn btn-primary btn-rounded btn-block"
+                (click)="navigateCancel()">
+          Закрыть
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

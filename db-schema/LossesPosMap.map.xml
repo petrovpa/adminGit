@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+	<db-entity name="LOSS_ADDRESS">
+		<db-attribute name="ADDRESSID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="ADDRESSSYSNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="ADDRESSTEXT1" type="VARCHAR" length="255"/>
+		<db-attribute name="ADDRESSTEXT2" type="VARCHAR" length="255"/>
+		<db-attribute name="ADDRESSTEXT3" type="VARCHAR" length="255"/>
+		<db-attribute name="BUILDING" type="VARCHAR" length="255"/>
+		<db-attribute name="CITY" type="VARCHAR" length="255"/>
+		<db-attribute name="CITYKLADR" type="VARCHAR" length="255"/>
+		<db-attribute name="CITYTYPE" type="NUMERIC" length="19"/>
+		<db-attribute name="COUNTRY" type="VARCHAR" length="255"/>
+		<db-attribute name="DISTRICT" type="VARCHAR" length="255"/>
+		<db-attribute name="DISTRICTKLADR" type="VARCHAR" length="255"/>
+		<db-attribute name="DISTRICTTYPE" type="NUMERIC" length="19"/>
+		<db-attribute name="FLAT" type="VARCHAR" length="255"/>
+		<db-attribute name="FLATTYPE" type="VARCHAR" length="255"/>
+		<db-attribute name="HOUSE" type="VARCHAR" length="255"/>
+		<db-attribute name="HOUSING" type="VARCHAR" length="255"/>
+		<db-attribute name="ISINVALID" type="INTEGER"/>
+		<db-attribute name="OBJID" type="NUMERIC" length="19"/>
+		<db-attribute name="OBJSYSNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="PERMANENTLOCATIONFLAG" type="INTEGER"/>
+		<db-attribute name="POSTALCODE" type="VARCHAR" length="255"/>
+		<db-attribute name="PRIORITY" type="NUMERIC" length="19"/>
+		<db-attribute name="REGION" type="VARCHAR" length="255"/>
+		<db-attribute name="REGIONKLADR" type="VARCHAR" length="255"/>
+		<db-attribute name="REGIONTYPE" type="NUMERIC" length="19"/>
+		<db-attribute name="REGISTRDATE" type="FLOAT" length="38"/>
+		<db-attribute name="REGISTRTODATE" type="FLOAT" length="38"/>
+		<db-attribute name="STREET" type="VARCHAR" length="255"/>
+		<db-attribute name="STREETKLADR" type="VARCHAR" length="255"/>
+		<db-attribute name="STREETTYPE" type="NUMERIC" length="19"/>
+		<db-attribute name="USEKLADR" type="INTEGER"/>
+		<db-attribute name="VILLAGE" type="VARCHAR" length="255"/>
+		<db-attribute name="VILLAGEKLADR" type="VARCHAR" length="255"/>
+		<db-attribute name="VILLAGETYPE" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="LOSS_BINDOC">
+		<db-attribute name="BINDOCID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="LOSS_BINFILE">
+		<db-attribute name="BINFILEID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="FILENAME" type="VARCHAR" length="255"/>
+		<db-attribute name="FILEPATH" type="VARCHAR" length="255"/>
+		<db-attribute name="FILESIZE" type="VARCHAR" length="255"/>
+		<db-attribute name="FILETYPEID" type="NUMERIC" length="19"/>
+		<db-attribute name="FILETYPENAME" type="VARCHAR" length="255"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="255"/>
+		<db-attribute name="OBJID" type="NUMERIC" length="19"/>
+		<db-attribute name="OBJTABLENAME" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="LOSS_CHATS">
+		<db-attribute name="CHATNUM" type="NUMERIC" length="19"/>
+		<db-attribute name="CHATSID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="MESSAGE" type="VARCHAR" length="255"/>
+		<db-attribute name="MESSAGEID" type="NUMERIC" length="19"/>
+		<db-attribute name="REQUESTID" type="NUMERIC" length="19"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="USERNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="USERROLEID" type="NUMERIC" length="19"/>
+		<db-attribute name="USERROLESYSNAME" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="LOSS_CONTR">
+		<db-attribute name="CANCELDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CNT_ID" type="NUMERIC" length="19"/>
+		<db-attribute name="CONTRID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="CONTRNUM" type="VARCHAR" length="255"/>
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="DOCDATE" type="FLOAT" length="38"/>
+		<db-attribute name="PRODID" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODUCTSYSNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID " type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="LOSS_PERSON">
+		<db-attribute name="ADDRESS" type="VARCHAR" length="255"/>
+		<db-attribute name="BIRTHDATE" type="FLOAT" length="38"/>
+		<db-attribute name="BIRTHPLACE" type="VARCHAR" length="255"/>
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="DOCISSUEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="DOCISSUEPLACE" type="VARCHAR" length="255"/>
+		<db-attribute name="DOCISSUERCODE" type="VARCHAR" length="255"/>
+		<db-attribute name="DOCNUM" type="VARCHAR" length="255"/>
+		<db-attribute name="DOCSER" type="VARCHAR" length="255"/>
+		<db-attribute name="EMAIL" type="VARCHAR" length="255"/>
+		<db-attribute name="GENDER" type="NUMERIC" length="19"/>
+		<db-attribute name="INN" type="VARCHAR" length="255"/>
+		<db-attribute name="ISBENEFICIAR" type="INTEGER"/>
+		<db-attribute name="ISINSURER" type="INTEGER"/>
+		<db-attribute name="LOSSPERSONID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="MIDDLENAME" type="VARCHAR" length="255"/>
+		<db-attribute name="MOBILEPHONENUM" type="VARCHAR" length="255"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="PARTICIPANTID" type="NUMERIC" length="19"/>
+		<db-attribute name="PHONENUM" type="VARCHAR" length="255"/>
+		<db-attribute name="SURNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="WORKPHONENUM" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="LOSS_PROD">
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="1024"/>
+		<db-attribute name="PRODID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="PRODKINDID" type="NUMERIC" length="19"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="LOSS_PRODBINDOC">
+		<db-attribute name="BINDOCID" type="NUMERIC" length="19"/>
+		<db-attribute name="BINDOCTYPE" type="NUMERIC" length="19"/>
+		<db-attribute name="CHECKNAME" type="VARCHAR" length="1024"/>
+		<db-attribute name="PRODBINDOCID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="PRODID" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODKINDID" type="NUMERIC" length="19"/>
+		<db-attribute name="REFUNDTYPEID" type="NUMERIC" length="19"/>
+		<db-attribute name="REQUIRED" type="BOOLEAN"/>
+	</db-entity>
+	<db-entity name="LOSS_PRODREP">
+		<db-attribute name="CHECKID" type="NUMERIC" length="19"/>
+		<db-attribute name="CPNUM" type="NUMERIC" length="19"/>
+		<db-attribute name="EARLYREPAYMENT" type="NUMERIC" length="19"/>
+		<db-attribute name="EXPIRIED" type="NUMERIC" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="1024"/>
+		<db-attribute name="POSTN" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODID" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODKINDID" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODREPID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="REPID" type="NUMERIC" length="19"/>
+		<db-attribute name="REPTYPE" type="NUMERIC" length="19"/>
+		<db-attribute name="RETURNPARTID" type="NUMERIC" length="19"/>
+		<db-attribute name="RETURNREASONID" type="NUMERIC" length="19"/>
+		<db-attribute name="RETURNTYPEID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="LOSS_REP">
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="PAGEFLOWNAME" type="VARCHAR" length="1024"/>
+		<db-attribute name="REPID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+	</db-entity>
+	<db-entity name="LOSS_REQUEST">
+		<db-attribute name="BANKNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="BENEFICIARID" type="NUMERIC" length="19"/>
+		<db-attribute name="BIC" type="VARCHAR" length="255"/>
+		<db-attribute name="BKNUM" type="VARCHAR" length="255"/>
+		<db-attribute name="CALCAMOUNT" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="CANCELCOMMENT" type="VARCHAR" length="255"/>
+		<db-attribute name="CANCELREASON" type="VARCHAR" length="255"/>
+		<db-attribute name="CANCELREASONID" type="NUMERIC" length="19"/>
+		<db-attribute name="CAUSES" type="VARCHAR" length="1024"/>
+		<db-attribute name="CONFIRMDOCS" type="VARCHAR" length="1024"/>
+		<db-attribute name="CONTRID" type="NUMERIC" length="19"/>
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="CREATEUSERROLE" type="VARCHAR" length="255"/>
+		<db-attribute name="CULPRIT" type="VARCHAR" length="1024"/>
+		<db-attribute name="CURACCOUNT" type="VARCHAR" length="255"/>
+		<db-attribute name="DECISIONCSKO" type="NUMERIC" length="19"/>
+		<db-attribute name="DECISIONSK" type="NUMERIC" length="19"/>
+		<db-attribute name="DECLARERID" type="NUMERIC" length="19"/>
+		<db-attribute name="EVENTDATE" type="FLOAT" length="38"/>
+		<db-attribute name="FACEACCOUNT" type="VARCHAR" length="255"/>
+		<db-attribute name="INN" type="VARCHAR" length="255"/>
+		<db-attribute name="INSOBJADDRESS" type="VARCHAR" length="255"/>
+		<db-attribute name="INSOBJNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="INSOBJTYPE" type="NUMERIC" length="19"/>
+		<db-attribute name="INSURERID" type="NUMERIC" length="19"/>
+		<db-attribute name="ISEMPTYDOCEXIST" type="INTEGER"/>
+		<db-attribute name="ISNEEDINSPECT" type="INTEGER"/>
+		<db-attribute name="ISOTHERINS" type="INTEGER"/>
+		<db-attribute name="ISTHIRDPART" type="INTEGER"/>
+		<db-attribute name="KORACCOUNT" type="VARCHAR" length="255"/>
+		<db-attribute name="KPP" type="VARCHAR" length="255"/>
+		<db-attribute name="LOSSES" type="VARCHAR" length="1024"/>
+		<db-attribute name="LOSSESAMOUNT" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="NAMEOTHERINS" type="VARCHAR" length="255"/>
+		<db-attribute name="REQUESTDATE" type="FLOAT" length="38"/>
+		<db-attribute name="REQUESTID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="REQUESTNODEID" type="NUMERIC" length="19"/>
+		<db-attribute name="REQUESTNUM" type="VARCHAR" length="255"/>
+		<db-attribute name="STATEID" type="NUMERIC" length="19"/>
+		<db-attribute name="TOTALAMOUNT" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="USERCOMMENT" type="CLOB"/>
+		<db-attribute name="USERCOMMENT2" type="CLOB"/>
+		<db-attribute name="VERNUMBER" type="NUMERIC" length="19"/>
+		<db-attribute name="WHENWHOCLAIM" type="VARCHAR" length="1024"/>
+	</db-entity>
+	<db-entity name="LOSS_REQUESTDOC">
+		<db-attribute name="BINDOCID" type="NUMERIC" length="19"/>
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="ISDOCCHECKING" type="INTEGER"/>
+		<db-attribute name="ISORIGINALRECEIVED" type="INTEGER"/>
+		<db-attribute name="REQUESTDOCID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="REQUESTID" type="NUMERIC" length="19"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="LOSS_REQUESTNODE">
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="LASTVERNUMBER" type="NUMERIC" length="19"/>
+		<db-attribute name="REQUESTID" type="NUMERIC" length="19"/>
+		<db-attribute name="REQUESTNODEID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="RVERSION" type="NUMERIC" length="19"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="LOSS_REQUESTORGHIST">
+		<db-attribute name="CREATEDATE" type="FLOAT"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="NEWORGSTRUCTID" type="NUMERIC" length="19"/>
+		<db-attribute name="NEWUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="OLDORGSTRUCTID" type="NUMERIC" length="19"/>
+		<db-attribute name="OLDUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="REQUESTID" type="NUMERIC" length="19"/>
+		<db-attribute name="REQUESTORGHISTID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT"/>
+		<db-attribute name="UPDATETEXT" type="VARCHAR" length="255"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="LOSS_REQUESTORGSTRUCT">
+		<db-attribute name="ORGSTRUCTID" type="NUMERIC" length="19"/>
+		<db-attribute name="REQUESTID" type="NUMERIC" length="19"/>
+		<db-attribute name="REQUESTORGSTRUCTID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="ROLEID" type="NUMERIC" length="19"/>
+		<db-attribute name="USERID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<obj-entity name="LossesAddress" dbEntityName="LOSS_ADDRESS">
+		<obj-attribute name="addressSysName" type="java.lang.String" db-attribute-path="ADDRESSSYSNAME" note="Системное наименование адреса"/>
+		<obj-attribute name="addressText1" type="java.lang.String" db-attribute-path="ADDRESSTEXT1" note="Адрес строкой"/>
+		<obj-attribute name="addressText2" type="java.lang.String" db-attribute-path="ADDRESSTEXT2" note="Адрес строкой"/>
+		<obj-attribute name="addressText3" type="java.lang.String" db-attribute-path="ADDRESSTEXT3" note="Адрес строкой"/>
+		<obj-attribute name="building" type="java.lang.String" db-attribute-path="BUILDING" note="Корпус"/>
+		<obj-attribute name="city" type="java.lang.String" db-attribute-path="CITY" note="Город"/>
+		<obj-attribute name="cityKladr" type="java.lang.String" db-attribute-path="CITYKLADR" note="Кладр города"/>
+		<obj-attribute name="cityType" type="java.lang.Long" db-attribute-path="CITYTYPE" note="Тип города"/>
+		<obj-attribute name="country" type="java.lang.String" db-attribute-path="COUNTRY" note="Страна"/>
+		<obj-attribute name="district" type="java.lang.String" db-attribute-path="DISTRICT" note="Район"/>
+		<obj-attribute name="districtKladr" type="java.lang.String" db-attribute-path="DISTRICTKLADR" note="Кладр района"/>
+		<obj-attribute name="districtType" type="java.lang.Long" db-attribute-path="DISTRICTTYPE" note="Тип района"/>
+		<obj-attribute name="flat" type="java.lang.String" db-attribute-path="FLAT" note="Квартира"/>
+		<obj-attribute name="flatType" type="java.lang.String" db-attribute-path="FLATTYPE" note="Тип квартиры"/>
+		<obj-attribute name="house" type="java.lang.String" db-attribute-path="HOUSE" note="Дом"/>
+		<obj-attribute name="housing" type="java.lang.String" db-attribute-path="HOUSING" note="Строение"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="ADDRESSID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД адреса"/>
+		<obj-attribute name="isInvalid" type="java.lang.Integer" db-attribute-path="ISINVALID" note="Адрес не актуален"/>
+		<obj-attribute name="objId" type="java.lang.Long" db-attribute-path="OBJID" note="ИД объекта"/>
+		<obj-attribute name="objSysName" type="java.lang.String" db-attribute-path="OBJSYSNAME" note="Системное наименование объекта"/>
+		<obj-attribute name="permanentLocationFlag" type="java.lang.Integer" db-attribute-path="PERMANENTLOCATIONFLAG" note="Флаг временного размещения"/>
+		<obj-attribute name="postalCode" type="java.lang.String" db-attribute-path="POSTALCODE" note="Индекс"/>
+		<obj-attribute name="priority" type="java.lang.Long" db-attribute-path="PRIORITY" note="Приоритет"/>
+		<obj-attribute name="region" type="java.lang.String" db-attribute-path="REGION" note="Регион"/>
+		<obj-attribute name="regionKladr" type="java.lang.String" db-attribute-path="REGIONKLADR" note="Кладр региона"/>
+		<obj-attribute name="regionType" type="java.lang.Long" db-attribute-path="REGIONTYPE" note="Тип региона"/>
+		<obj-attribute name="registrDate" type="java.math.BigDecimal" db-attribute-path="REGISTRDATE" note="Дата регистрации"/>
+		<obj-attribute name="registrToDate" type="java.math.BigDecimal" db-attribute-path="REGISTRTODATE" note="Дата окончания регистрации"/>
+		<obj-attribute name="street" type="java.lang.String" db-attribute-path="STREET" note="Улица"/>
+		<obj-attribute name="streetKladr" type="java.lang.String" db-attribute-path="STREETKLADR" note="Кладр улицы"/>
+		<obj-attribute name="streetType" type="java.lang.Long" db-attribute-path="STREETTYPE" note="Тип улицы"/>
+		<obj-attribute name="useKladr" type="java.lang.Integer" db-attribute-path="USEKLADR" note="Флаг адрес по КЛАДР"/>
+		<obj-attribute name="village" type="java.lang.String" db-attribute-path="VILLAGE" note="Деревня"/>
+		<obj-attribute name="villageKladr" type="java.lang.String" db-attribute-path="VILLAGEKLADR" note="Кладр деревни"/>
+		<obj-attribute name="villageType" type="java.lang.Long" db-attribute-path="VILLAGETYPE" note="Тип деревни"/>
+	</obj-entity>
+	<obj-entity name="LossesBinaryDocument" dbEntityName="LOSS_BINDOC">
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="BINDOCID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД документа"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование документа"/>
+		<obj-attribute name="note" type="java.lang.String" db-attribute-path="NOTE" note="Примечание"/>
+	</obj-entity>
+	<obj-entity name="LossesBinfile" dbEntityName="LOSS_BINFILE">
+		<obj-attribute name="createDate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания файла"/>
+		<obj-attribute name="createUserId" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="ИД пользователя добавившего файл"/>
+		<obj-attribute name="fileName" type="java.lang.String" db-attribute-path="FILENAME" note="Имя файла"/>
+		<obj-attribute name="filePath" type="java.lang.String" db-attribute-path="FILEPATH" note="Путь до файла"/>
+		<obj-attribute name="fileSize" type="java.lang.String" db-attribute-path="FILESIZE" note="Размер файла"/>
+		<obj-attribute name="fileTypeId" type="java.lang.Long" db-attribute-path="FILETYPEID" note="Тип файла"/>
+		<obj-attribute name="fileTypeName" type="java.lang.String" db-attribute-path="FILETYPENAME" note="Наименование типа"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="BINFILEID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД файла"/>
+		<obj-attribute name="note" type="java.lang.String" db-attribute-path="NOTE" note="Примечание"/>
+		<obj-attribute name="objId" type="java.lang.Long" db-attribute-path="OBJID" note="ИД объекта"/>
+		<obj-attribute name="objTableName" type="java.lang.String" db-attribute-path="OBJTABLENAME" note="Наименование таблицы объекта"/>
+	</obj-entity>
+	<obj-entity name="LossesChats" dbEntityName="LOSS_CHATS">
+		<obj-attribute name="Id" type="java.lang.Long" db-attribute-path="CHATSID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД записи"/>
+		<obj-attribute name="chatNumber" type="java.lang.Long" db-attribute-path="CHATNUM" note="Номер чата"/>
+		<obj-attribute name="createDate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания записи чата"/>
+		<obj-attribute name="createUserId" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="Пользователь создавший запись"/>
+		<obj-attribute name="message" type="java.lang.String" db-attribute-path="MESSAGE" note="Сообщение чата"/>
+		<obj-attribute name="messageId" type="java.lang.Long" db-attribute-path="MESSAGEID" note="Номер сообщения чата"/>
+		<obj-attribute name="requestId" type="java.lang.Long" db-attribute-path="REQUESTID" note="ИД заявки на возврат"/>
+		<obj-attribute name="updateDate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата обновления записи чата"/>
+		<obj-attribute name="updateUserId" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="ИД пользователя обновившего запись чата"/>
+		<obj-attribute name="userName" type="java.lang.String" db-attribute-path="USERNAME" note="ФИО пользователя"/>
+		<obj-attribute name="userRoleId" type="java.lang.Long" db-attribute-path="USERROLEID" note="ИД роли пользователя"/>
+		<obj-attribute name="userRoleSysName" type="java.lang.String" db-attribute-path="USERROLESYSNAME" note="Системное имя роли пользователя"/>
+	</obj-entity>
+	<obj-entity name="LossesContr" dbEntityName="LOSS_CONTR">
+		<obj-attribute name="cancelDate" type="java.math.BigDecimal" db-attribute-path="CANCELDATE" note="Дата расторжения договора"/>
+		<obj-attribute name="contrNumber" type="java.lang.String" db-attribute-path="CONTRNUM" note="Номер договора"/>
+		<obj-attribute name="contractIdsId" type="java.lang.Long" db-attribute-path="CNT_ID" note="ИД договора из IDS по которому возврат"/>
+		<obj-attribute name="createDate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания записи"/>
+		<obj-attribute name="createUserId" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="ИД пользователя создавшего запись"/>
+		<obj-attribute name="documentDate" type="java.math.BigDecimal" db-attribute-path="DOCDATE" note="Дата договора"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="CONTRID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД договора"/>
+		<obj-attribute name="productId" type="java.lang.Long" db-attribute-path="PRODID" note="ИД продукта"/>
+		<obj-attribute name="productSysName" type="java.lang.String" db-attribute-path="PRODUCTSYSNAME" note="Системное наименование продукта"/>
+		<obj-attribute name="updateDate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата изменения записи"/>
+		<obj-attribute name="updateUserId" type="java.lang.Long" db-attribute-path="UPDATEUSERID " note="ИД пользователя изменившего запись"/>
+	</obj-entity>
+	<obj-entity name="LossesPerson" dbEntityName="LOSS_PERSON">
+		<obj-attribute name="address" type="java.lang.String" db-attribute-path="ADDRESS" note="Адрес регистрации"/>
+		<obj-attribute name="birthDate" type="java.math.BigDecimal" db-attribute-path="BIRTHDATE" note="Дата рождения"/>
+		<obj-attribute name="birthPlace" type="java.lang.String" db-attribute-path="BIRTHPLACE" note="Место рождения"/>
+		<obj-attribute name="createDate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания записи"/>
+		<obj-attribute name="createUserId" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="ИД пользователя создавшего запись"/>
+		<obj-attribute name="documentIssueDate" type="java.lang.Float" db-attribute-path="DOCISSUEDATE" note="Дата выдачи паспорта"/>
+		<obj-attribute name="documentIssuePlace" type="java.lang.String" db-attribute-path="DOCISSUEPLACE" note="Место выдачи паспорта"/>
+		<obj-attribute name="documentIssuerCode" type="java.lang.String" db-attribute-path="DOCISSUERCODE" note="Код подразделения"/>
+		<obj-attribute name="documentNumber" type="java.lang.String" db-attribute-path="DOCNUM" note="Номер документа"/>
+		<obj-attribute name="documentSeries" type="java.lang.String" db-attribute-path="DOCSER" note="Серия документа"/>
+		<obj-attribute name="eMail" type="java.lang.String" db-attribute-path="EMAIL" note="Адрес электронной почты"/>
+		<obj-attribute name="gender" type="java.lang.String" db-attribute-path="GENDER" note="пол 1 м 2 ж"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="LOSSPERSONID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД страхователя"/>
+		<obj-attribute name="inn" type="java.lang.String" db-attribute-path="INN" note="ИНН"/>
+		<obj-attribute name="isBeneficiar" type="java.lang.Integer" db-attribute-path="ISBENEFICIAR" note="Выгодопреобретатель"/>
+		<obj-attribute name="isInsurer" type="java.lang.Integer" db-attribute-path="ISINSURER" note="Страхователь"/>
+		<obj-attribute name="middleName" type="java.lang.String" db-attribute-path="MIDDLENAME" note="Отчество"/>
+		<obj-attribute name="mobilePhoneNum" type="java.lang.String" db-attribute-path="MOBILEPHONENUM" note="Номер мобильного телефона"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Имя"/>
+		<obj-attribute name="participantId" type="java.lang.Long" db-attribute-path="PARTICIPANTID" note="ИД партиципанта"/>
+		<obj-attribute name="phoneNum" type="java.lang.String" db-attribute-path="PHONENUM" note="Номер телефона"/>
+		<obj-attribute name="surName" type="java.lang.String" db-attribute-path="SURNAME" note="Фамилия"/>
+		<obj-attribute name="updateDate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата изменения записи"/>
+		<obj-attribute name="updateUserId" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="ИД пользователя изменившего запись"/>
+		<obj-attribute name="workPhoneNum" type="java.lang.String" db-attribute-path="WORKPHONENUM" note="Номер рабочего телефона"/>
+	</obj-entity>
+	<obj-entity name="LossesProduct" dbEntityName="LOSS_PROD">
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД продукта"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" requiredCreate="true" requiredInsert="true" note="Наименование продукта"/>
+		<obj-attribute name="note" type="java.lang.String" db-attribute-path="NOTE" note="Примечание"/>
+		<obj-attribute name="productKindId" type="java.lang.Long" db-attribute-path="PRODKINDID" requiredCreate="true" requiredInsert="true" note="ИД типа продукта"/>
+		<obj-attribute name="sysName" type="java.lang.String" db-attribute-path="SYSNAME" note="Системное наименование"/>
+	</obj-entity>
+	<obj-entity name="LossesProductBinaryDocument" dbEntityName="LOSS_PRODBINDOC">
+		<obj-attribute name="binDocId" type="java.lang.String" db-attribute-path="BINDOCID" note="ИД документа"/>
+		<obj-attribute name="binDocType" type="java.lang.Long" db-attribute-path="BINDOCTYPE" requiredCreate="true" requiredInsert="true" note="Тип документа по причине возврата"/>
+		<obj-attribute name="checkName" type="java.lang.String" db-attribute-path="CHECKNAME" note="Ссылка на проверку через наименование"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODBINDOCID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД бинарного документа"/>
+		<obj-attribute name="productId" type="java.lang.Long" db-attribute-path="PRODID" note="ИД конфигурации продукта"/>
+		<obj-attribute name="productKindId" type="java.lang.Long" db-attribute-path="PRODKINDID" note="ИД группы проэктов"/>
+		<obj-attribute name="refundTypeId" type="java.lang.Long" db-attribute-path="REFUNDTYPEID" note="Тип возврата"/>
+		<obj-attribute name="required" type="java.lang.Boolean" db-attribute-path="REQUIRED" requiredCreate="true" requiredInsert="true" note="Обязательный"/>
+	</obj-entity>
+	<obj-entity name="LossesProductReport" dbEntityName="LOSS_PRODREP">
+		<obj-attribute name="earlyRepayment" type="java.lang.Long" db-attribute-path="EARLYREPAYMENT" note="Досрочное погашение договора (флаг используется только отказами)"/>
+		<obj-attribute name="expiried" type="java.lang.Long" db-attribute-path="EXPIRIED" note="Истечение срока договора (флаг используется только отказами)"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODREPID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД отчета"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование"/>
+		<obj-attribute name="note" type="java.lang.String" db-attribute-path="NOTE" note="Примечание"/>
+		<obj-attribute name="position" type="java.lang.Long" db-attribute-path="POSTN" note="Позиция"/>
+		<obj-attribute name="productId" type="java.lang.Long" db-attribute-path="PRODID" requiredCreate="true" requiredInsert="true" note="ИД продукта"/>
+		<obj-attribute name="productKindId" type="java.lang.Long" db-attribute-path="PRODKINDID" note="ИД типа продукта"/>
+		<obj-attribute name="reportCheck" type="java.lang.Long" db-attribute-path="CHECKID" note="Проверка перед выводом отчета"/>
+		<obj-attribute name="reportId" type="java.lang.Long" db-attribute-path="REPID" note="ИД отчета"/>
+		<obj-attribute name="reportType" type="java.lang.Long" db-attribute-path="REPTYPE" note="Тип отчета (1 - заявление, 2 - дополнительное соглашение, 3 - отказ)"/>
+		<obj-attribute name="returnPartId" type="java.lang.Long" db-attribute-path="RETURNPARTID" note="Объем возврата"/>
+		<obj-attribute name="returnReasonId" type="java.lang.Long" db-attribute-path="RETURNREASONID" note="Причина возврата"/>
+		<obj-attribute name="returnTypeId" type="java.lang.Long" db-attribute-path="RETURNTYPEID" note="вид возврата (1 контрактный 2 неконтрактный)"/>
+		<obj-attribute name="сopyNumber" type="java.lang.Long" db-attribute-path="CPNUM" note="Количество копий"/>
+	</obj-entity>
+	<obj-entity name="LossesReport" dbEntityName="LOSS_REP">
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="REPID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД отчета"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" requiredCreate="true" requiredInsert="true" note="Наименование отчета"/>
+		<obj-attribute name="pageflowName" type="java.lang.String" db-attribute-path="PAGEFLOWNAME" note="Наименование pageflow"/>
+	</obj-entity>
+	<obj-entity name="LossesRequest" dbEntityName="LOSS_REQUEST">
+		<obj-attribute name="bankName" type="java.lang.String" db-attribute-path="BANKNAME" note="Наименование банка получателя"/>
+		<obj-attribute name="beneficiarId" type="java.lang.Long" db-attribute-path="BENEFICIARID" note="ИД выгодопреобретателя"/>
+		<obj-attribute name="bic" type="java.lang.String" db-attribute-path="BIC" note="БИК получателя"/>
+		<obj-attribute name="bkNum" type="java.lang.String" db-attribute-path="BKNUM" note="Номер банковской карты получателя"/>
+		<obj-attribute name="calcAmount" type="java.lang.Double" db-attribute-path="CALCAMOUNT" note="Рассчетная сумма выплаты"/>
+		<obj-attribute name="cancelComment" type="java.lang.String" db-attribute-path="CANCELCOMMENT" note="Комментарий к отказу в возврате"/>
+		<obj-attribute name="cancelReason" type="java.lang.String" db-attribute-path="CANCELREASON" note="Причина отказа возврата"/>
+		<obj-attribute name="cancelReasonId" type="java.lang.Long" db-attribute-path="CANCELREASONID" note="ИД причины отказа возврата"/>
+		<obj-attribute name="causes" type="java.lang.String" db-attribute-path="CAUSES" note="Обстоятельства и причины события"/>
+		<obj-attribute name="confirmDocs" type="java.lang.String" db-attribute-path="CONFIRMDOCS" note="Документы подтверждающие событие"/>
+		<obj-attribute name="contrId" type="java.lang.Long" db-attribute-path="CONTRID" note="ИД договора"/>
+		<obj-attribute name="createDate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания записи"/>
+		<obj-attribute name="createUserId" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="ИД пользователя создавшего запись"/>
+		<obj-attribute name="createUserRole" type="java.lang.String" db-attribute-path="CREATEUSERROLE" note="роль пользователя создавшего заявку"/>
+		<obj-attribute name="culprit" type="java.lang.String" db-attribute-path="CULPRIT" note="Виновник"/>
+		<obj-attribute name="curAccount" type="java.lang.String" db-attribute-path="CURACCOUNT" note="Расчетный счет получателя"/>
+		<obj-attribute name="decisionCSKO" type="java.lang.Long" db-attribute-path="DECISIONCSKO" note="Решение ЦСКО"/>
+		<obj-attribute name="decisionSK" type="java.lang.Long" db-attribute-path="DECISIONSK" note="Решение СК"/>
+		<obj-attribute name="declarerId" type="java.lang.Long" db-attribute-path="DECLARERID" note="ИД заявителя"/>
+		<obj-attribute name="eventDate" type="java.math.BigDecimal" db-attribute-path="EVENTDATE" note="Дата события"/>
+		<obj-attribute name="faceAccount" type="java.lang.String" db-attribute-path="FACEACCOUNT" note="Лицевой счет получателя"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="REQUESTID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД заявки на возврат"/>
+		<obj-attribute name="inn" type="java.lang.String" db-attribute-path="INN" note="ИНН получателя"/>
+		<obj-attribute name="insObjAddress" type="java.lang.String" db-attribute-path="INSOBJADDRESS" note="Адрес объекта страхования или события"/>
+		<obj-attribute name="insObjName" type="java.lang.String" db-attribute-path="INSOBJNAME" note="Наименование объекта страхования"/>
+		<obj-attribute name="insObjType" type="java.lang.Long" db-attribute-path="INSOBJTYPE" note="Тип объекта страхования"/>
+		<obj-attribute name="insurerId" type="java.lang.Long" db-attribute-path="INSURERID" note="ИД страхователя"/>
+		<obj-attribute name="isEmptyDocExist" type="java.lang.Integer" db-attribute-path="ISEMPTYDOCEXIST" note="В заявке есть не прикрепленные документы"/>
+		<obj-attribute name="isNeedInspect" type="java.lang.Integer" db-attribute-path="ISNEEDINSPECT" note="Флаг необходимости осмотра объекта"/>
+		<obj-attribute name="isOtherIns" type="java.lang.Integer" db-attribute-path="ISOTHERINS" note="Признак страхования в другой страховой"/>
+		<obj-attribute name="isThirdPart" type="java.lang.Integer" db-attribute-path="ISTHIRDPART" note="Признак предъявления претензий третьим лицам"/>
+		<obj-attribute name="korAccount" type="java.lang.String" db-attribute-path="KORACCOUNT" note="Корр. счет"/>
+		<obj-attribute name="kpp" type="java.lang.String" db-attribute-path="KPP" note="КПП"/>
+		<obj-attribute name="losses" type="java.lang.String" db-attribute-path="LOSSES" note="Причиненные убытки"/>
+		<obj-attribute name="lossesAmount" type="java.lang.Long" db-attribute-path="LOSSESAMOUNT" note="Предположительная сумма убытков"/>
+		<obj-attribute name="nameOtherIns" type="java.lang.String" db-attribute-path="NAMEOTHERINS" note="Наименование другой страховой компании"/>
+		<obj-attribute name="requestDate" type="java.math.BigDecimal" db-attribute-path="REQUESTDATE" note="Дата заявки на возврат"/>
+		<obj-attribute name="requestNodeId" type="java.lang.Long" db-attribute-path="REQUESTNODEID" note="ИД ноды"/>
+		<obj-attribute name="requestNumber" type="java.lang.String" db-attribute-path="REQUESTNUM" note="Номер заявки"/>
+		<obj-attribute name="stateId" type="java.lang.Long" db-attribute-path="STATEID" note="Состояние заявки"/>
+		<obj-attribute name="totalAmount" type="java.lang.Double" db-attribute-path="TOTALAMOUNT" note="Итоговая сумма убытка"/>
+		<obj-attribute name="updateDate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата изменения записи"/>
+		<obj-attribute name="updateUserId" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="ИД пользователя изменившего запись"/>
+		<obj-attribute name="userComment" type="java.lang.String" db-attribute-path="USERCOMMENT" note="Комментарии пользователя"/>
+		<obj-attribute name="userComment2" type="java.lang.String" db-attribute-path="USERCOMMENT2" note="Комментарии сотрудников СГИ"/>
+		<obj-attribute name="versionNumber" type="java.math.BigDecimal" db-attribute-path="VERNUMBER" note="Номер версии"/>
+		<obj-attribute name="whenwhoclaim" type="java.lang.String" db-attribute-path="WHENWHOCLAIM" note="Кому и когда заявлено о событии"/>
+	</obj-entity>
+	<obj-entity name="LossesRequestDoc" dbEntityName="LOSS_REQUESTDOC">
+		<obj-attribute name="binaryDocumentId" type="java.lang.Long" db-attribute-path="BINDOCID" note="Вид документа"/>
+		<obj-attribute name="createDate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания записи"/>
+		<obj-attribute name="createUserId" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="ИД пользователя создавшего запись"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="REQUESTDOCID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД прикрепленного документа"/>
+		<obj-attribute name="isDocumentChecking" type="java.lang.Integer" db-attribute-path="ISDOCCHECKING" note="Флаг Документ проверен"/>
+		<obj-attribute name="isOriginalReceived" type="java.lang.Integer" db-attribute-path="ISORIGINALRECEIVED" note="Флаг Оригинал получен"/>
+		<obj-attribute name="requestId" type="java.lang.Long" db-attribute-path="REQUESTID" note="ИД заявки"/>
+		<obj-attribute name="updateDate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата изменения записи"/>
+		<obj-attribute name="updateUserId" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="ИД пользователя изменившего запись"/>
+	</obj-entity>
+	<obj-entity name="LossesRequestNode" dbEntityName="LOSS_REQUESTNODE">
+		<obj-attribute name="createDate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания записи"/>
+		<obj-attribute name="createUserId" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="ИД пользователя создавшего запись"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="REQUESTNODEID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД ноды заявки"/>
+		<obj-attribute name="lastVersionNumber" type="java.lang.Long" db-attribute-path="LASTVERNUMBER" note="Номер последней версии заявки"/>
+		<obj-attribute name="rVersion" type="java.lang.Long" db-attribute-path="RVERSION" note="Номер версии для оптимистической блокировки"/>
+		<obj-attribute name="requestId" type="java.lang.Long" db-attribute-path="REQUESTID" note="ИД заявки"/>
+		<obj-attribute name="updateDate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата изменения записи"/>
+		<obj-attribute name="updateUserId" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="ИД пользователя изменившего запись"/>
+	</obj-entity>
+	<obj-entity name="LossesRequestOrgHist" dbEntityName="LOSS_REQUESTORGHIST">
+		<obj-attribute name="createDate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания"/>
+		<obj-attribute name="createUserId" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="ИД старого пользователя"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="REQUESTORGHISTID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД истории изменения пользователя"/>
+		<obj-attribute name="newOrgStructId" type="java.lang.Long" db-attribute-path="NEWORGSTRUCTID" note="ИД нового подразделения"/>
+		<obj-attribute name="newUserId" type="java.lang.Long" db-attribute-path="NEWUSERID" note="ИД нового пользователя"/>
+		<obj-attribute name="oldOrgStructId" type="java.lang.Long" db-attribute-path="OLDORGSTRUCTID" note="ИД старого подразделения"/>
+		<obj-attribute name="oldUserId" type="java.lang.Long" db-attribute-path="OLDUSERID" note="ИД старого пользователя"/>
+		<obj-attribute name="requestId" type="java.lang.Long" db-attribute-path="REQUESTID" note="ИД заявки"/>
+		<obj-attribute name="updateDate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата изменения"/>
+		<obj-attribute name="updateText" type="java.lang.String" db-attribute-path="UPDATETEXT" note="Текст изменения"/>
+		<obj-attribute name="updateUserId" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="ИД изменившего пользователя"/>
+	</obj-entity>
+	<obj-entity name="LossesRequestOrgStruct" dbEntityName="LOSS_REQUESTORGSTRUCT">
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="REQUESTORGSTRUCTID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД связи заявки с орг. структурой"/>
+		<obj-attribute name="orgStructId" type="java.lang.Long" db-attribute-path="ORGSTRUCTID" note="ИД орг. структуры"/>
+		<obj-attribute name="requestId" type="java.lang.Long" db-attribute-path="REQUESTID" note="ИД заявки"/>
+		<obj-attribute name="roleId" type="java.lang.Long" db-attribute-path="ROLEID" note="Ссылка на роль"/>
+		<obj-attribute name="userId" type="java.lang.Long" db-attribute-path="USERID" note="Ссылка на пользователя"/>
+	</obj-entity>
+	<db-relationship name="TO_LOSS_PRODBINDOC" source="LOSS_BINDOC" target="LOSS_PRODBINDOC" toMany="true">
+		<db-attribute-pair source="BINDOCID" target="BINDOCID"/>
+	</db-relationship>
+	<db-relationship name="TO_LOSS_REQUESTDOC" source="LOSS_BINDOC" target="LOSS_REQUESTDOC" toMany="true">
+		<db-attribute-pair source="BINDOCID" target="BINDOCID"/>
+	</db-relationship>
+	<db-relationship name="TO_LOSS_REQUEST" source="LOSS_CONTR" target="LOSS_REQUEST" toMany="true">
+		<db-attribute-pair source="CONTRID" target="CONTRID"/>
+	</db-relationship>
+	<db-relationship name="TO_LOSS_REQUEST" source="LOSS_PERSON" target="LOSS_REQUEST" toMany="true">
+		<db-attribute-pair source="LOSSPERSONID" target="DECLARERID"/>
+	</db-relationship>
+	<db-relationship name="TO_LOSS_PRODBINDOC" source="LOSS_PROD" target="LOSS_PRODBINDOC" toMany="true">
+		<db-attribute-pair source="PRODID" target="PRODID"/>
+	</db-relationship>
+	<db-relationship name="TO_LOSS_PRODREP" source="LOSS_PROD" target="LOSS_PRODREP" toMany="true">
+		<db-attribute-pair source="PRODID" target="PRODID"/>
+	</db-relationship>
+	<db-relationship name="TO_LOSS_BINDOC" source="LOSS_PRODBINDOC" target="LOSS_BINDOC" toMany="false">
+		<db-attribute-pair source="BINDOCID" target="BINDOCID"/>
+	</db-relationship>
+	<db-relationship name="TO_LOSS_PROD" source="LOSS_PRODBINDOC" target="LOSS_PROD" toMany="false">
+		<db-attribute-pair source="PRODID" target="PRODID"/>
+	</db-relationship>
+	<db-relationship name="TO_LOSS_PROD" source="LOSS_PRODREP" target="LOSS_PROD" toMany="false">
+		<db-attribute-pair source="PRODID" target="PRODID"/>
+	</db-relationship>
+	<db-relationship name="TO_LOSS_REP" source="LOSS_PRODREP" target="LOSS_REP" toMany="false">
+		<db-attribute-pair source="REPID" target="REPID"/>
+	</db-relationship>
+	<db-relationship name="TO_LOSS_PRODREP" source="LOSS_REP" target="LOSS_PRODREP" toMany="true">
+		<db-attribute-pair source="REPID" target="REPID"/>
+	</db-relationship>
+	<db-relationship name="TO_LOSS_CONTR" source="LOSS_REQUEST" target="LOSS_CONTR" toMany="false">
+		<db-attribute-pair source="CONTRID" target="CONTRID"/>
+	</db-relationship>
+	<db-relationship name="TO_LOSS_INSURER" source="LOSS_REQUEST" target="LOSS_PERSON" toMany="false">
+		<db-attribute-pair source="DECLARERID" target="LOSSPERSONID"/>
+	</db-relationship>
+	<db-relationship name="TO_LOSS_REQUESTDOC" source="LOSS_REQUEST" target="LOSS_REQUESTDOC" toMany="true">
+		<db-attribute-pair source="REQUESTID" target="REQUESTID"/>
+	</db-relationship>
+	<db-relationship name="TO_LOSS_REQUESTNODE" source="LOSS_REQUEST" target="LOSS_REQUESTNODE" toMany="false">
+		<db-attribute-pair source="REQUESTNODEID" target="REQUESTNODEID"/>
+	</db-relationship>
+	<db-relationship name="TO_LOSS_BINDOC" source="LOSS_REQUESTDOC" target="LOSS_BINDOC" toMany="false">
+		<db-attribute-pair source="BINDOCID" target="BINDOCID"/>
+	</db-relationship>
+	<db-relationship name="TO_LOSS_REQUEST" source="LOSS_REQUESTDOC" target="LOSS_REQUEST" toMany="false">
+		<db-attribute-pair source="REQUESTID" target="REQUESTID"/>
+	</db-relationship>
+	<db-relationship name="TO_LOSS_REQUEST" source="LOSS_REQUESTNODE" target="LOSS_REQUEST" toMany="true">
+		<db-attribute-pair source="REQUESTNODEID" target="REQUESTNODEID"/>
+	</db-relationship>
+	<obj-relationship name="toLossRequestdoc" source="LossesBinaryDocument" target="LossesRequestDoc" db-relationship-path="TO_LOSS_REQUESTDOC"/>
+	<obj-relationship name="toLossRequest" source="LossesContr" target="LossesRequest" db-relationship-path="TO_LOSS_REQUEST"/>
+	<obj-relationship name="toLossRequest" source="LossesPerson" target="LossesRequest" db-relationship-path="TO_LOSS_REQUEST"/>
+	<obj-relationship name="toLossProdbindoc" source="LossesProduct" target="LossesProductBinaryDocument" db-relationship-path="TO_LOSS_PRODBINDOC"/>
+	<obj-relationship name="toLossProdrep" source="LossesProduct" target="LossesProductReport" db-relationship-path="TO_LOSS_PRODREP"/>
+	<obj-relationship name="toLossProd" source="LossesProductBinaryDocument" target="LossesProduct" db-relationship-path="TO_LOSS_PROD"/>
+	<obj-relationship name="toLossProd" source="LossesProductReport" target="LossesProduct" db-relationship-path="TO_LOSS_PROD"/>
+	<obj-relationship name="toLossRep" source="LossesProductReport" target="LossesReport" db-relationship-path="TO_LOSS_REP"/>
+	<obj-relationship name="toLossProdrep" source="LossesReport" target="LossesProductReport" db-relationship-path="TO_LOSS_PRODREP"/>
+	<obj-relationship name="toLossContr" source="LossesRequest" target="LossesContr" db-relationship-path="TO_LOSS_CONTR"/>
+	<obj-relationship name="toLossInsurer" source="LossesRequest" target="LossesPerson" db-relationship-path="TO_LOSS_INSURER"/>
+	<obj-relationship name="toLossRequestdoc" source="LossesRequest" target="LossesRequestDoc" db-relationship-path="TO_LOSS_REQUESTDOC"/>
+	<obj-relationship name="toLossRequestnode" source="LossesRequest" target="LossesRequestNode" db-relationship-path="TO_LOSS_REQUESTNODE"/>
+	<obj-relationship name="toLossRequest" source="LossesRequestDoc" target="LossesRequest" db-relationship-path="TO_LOSS_REQUEST"/>
+	<obj-relationship name="toLossbindoc" source="LossesRequestDoc" target="LossesBinaryDocument" db-relationship-path="TO_LOSS_BINDOC"/>
+	<obj-relationship name="toLossRequest" source="LossesRequestNode" target="LossesRequest" db-relationship-path="TO_LOSS_REQUEST"/>
+</data-map>

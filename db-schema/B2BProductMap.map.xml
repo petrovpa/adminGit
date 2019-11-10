@@ -1,0 +1,1097 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+	<db-entity name="B2B_ACTIVCODE">
+		<db-attribute name="ACTIVATIONDATE" type="FLOAT" length="38"/>
+		<db-attribute name="ACTIVCODEID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="CODE" type="VARCHAR" length="255"/>
+		<db-attribute name="CONTRID" type="NUMERIC" length="19"/>
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="ENDDATE" type="FLOAT" length="38"/>
+		<db-attribute name="ISACTIVATED" type="NUMERIC" length="19"/>
+		<db-attribute name="NUM" type="VARCHAR" length="255"/>
+		<db-attribute name="PRODACTIVID" type="NUMERIC" length="19"/>
+		<db-attribute name="SERIES" type="VARCHAR" length="255"/>
+		<db-attribute name="STARTDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_DAMAGECAT">
+		<db-attribute name="DAMAGECATID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="DETAILHBDATAVERID" type="NUMERIC" length="19"/>
+		<db-attribute name="EXTERNALCODE" type="VARCHAR" length="255"/>
+		<db-attribute name="HINT" type="VARCHAR" length="255"/>
+		<db-attribute name="INSEVENTID" type="NUMERIC" length="19"/>
+		<db-attribute name="JSPATH" type="VARCHAR" length="255"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="255"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="VALUEHBDATAVERID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_INSEVENT">
+		<db-attribute name="HINT" type="VARCHAR" length="255"/>
+		<db-attribute name="INSELEMRISKID" type="NUMERIC" length="19"/>
+		<db-attribute name="INSEVENTID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="255"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="B2B_PAYVAR">
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="PAYVARID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="B2B_PAYVARCNT">
+		<db-attribute name="DATESHIFT" type="NUMERIC" length="19"/>
+		<db-attribute name="NUM" type="NUMERIC" length="19"/>
+		<db-attribute name="PAYVARCNTID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="PAYVARID" type="NUMERIC" length="19"/>
+		<db-attribute name="PREMSHARE" type="NUMERIC" length="19" precision="6"/>
+	</db-entity>
+	<db-entity name="B2B_PROD">
+		<db-attribute name="ASSURERID" type="NUMERIC" length="19"/>
+		<db-attribute name="EXTERNALCODE" type="VARCHAR" length="255"/>
+		<db-attribute name="EXTERNALID" type="VARCHAR" length="255"/>
+		<db-attribute name="INSTERMKINDID" type="NUMERIC" length="19"/>
+		<db-attribute name="ISHIDDEN" type="BOOLEAN"/>
+		<db-attribute name="ISMULTICONTR" type="BOOLEAN"/>
+		<db-attribute name="MODELID" type="NUMERIC" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="1024"/>
+		<db-attribute name="PRODID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="PRODKINDID" type="NUMERIC" length="19"/>
+		<db-attribute name="STRUCTROOTID" type="NUMERIC" length="19"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="HASPPOOPTION" type="NUMERIC" length="19"/>
+		<db-attribute name="LKVISIBLE" type="NUMERIC" length="19"/>
+		<db-attribute name="ISHIDDENONCREATE" type="NUMERIC" length="19"/>
+		<db-attribute name="GROUPSYSNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="GROUPNAME" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="B2B_PRODKIND">
+		<db-attribute name="ISHIDDEN" type="BOOLEAN"/>
+		<db-attribute name="IMGPATH" type="VARCHAR" length="255"/>		
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="1024"/>
+		<db-attribute name="PRODKINDID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+	</db-entity>
+
+	<db-entity name="B2B_PRODACTIV">
+		<db-attribute name="ENDDATE" type="FLOAT" length="38"/>
+		<db-attribute name="PRODACTIVID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="PRODACTIVTYPEID" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODVERID" type="NUMERIC" length="19"/>
+		<db-attribute name="STARTDATE" type="FLOAT" length="38"/>
+	</db-entity>
+	<db-entity name="B2B_PRODACTIVCONT">
+		<db-attribute name="ACTIONNEXT" type="VARCHAR" length="512"/>
+		<db-attribute name="ACTIONPREV" type="VARCHAR" length="512"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="4000"/>
+		<db-attribute name="POSITION" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODACTIVCONTID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="PRODACTIVID" type="NUMERIC" length="19"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="URL" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="B2B_PRODACTIVTYPE">
+		<db-attribute name="MASTERURL" type="VARCHAR" length="1024"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="255"/>
+		<db-attribute name="PRODACTIVTYPEID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="B2B_PRODADDCHT">
+		<db-attribute name="COPYINSOBJ" type="BOOLEAN"/>
+		<db-attribute name="EXTERNALID" type="VARCHAR" length="255"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="1024"/>
+		<db-attribute name="PAGEFLOWNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="PRODADDCHTID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="PRODCONFID" type="NUMERIC" length="19"/>
+		<db-attribute name="TEMPLATE" type="VARCHAR" length="1024"/>
+	</db-entity>
+	<db-entity name="B2B_PRODBINDOC">
+		<db-attribute name="BINDOCTYPE" type="NUMERIC" length="19"/>
+		<db-attribute name="CHECKNAME" type="VARCHAR" length="1024"/>
+		<db-attribute name="DOCLEVEL" type="NUMERIC" length="19"/>
+		<db-attribute name="DOCLEVELNOTE" type="VARCHAR" length="255"/>
+		<db-attribute name="DOCSYSNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="1024"/>
+		<db-attribute name="PRODBINDOCID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="PRODCONFID" type="NUMERIC" length="19"/>
+		<db-attribute name="REQUIRED" type="BOOLEAN"/>
+	</db-entity>
+	<db-entity name="B2B_PRODCALCRATERULE">
+		<db-attribute name="CALCVARIANTID" type="NUMERIC" length="19"/>
+		<db-attribute name="CURRENCYID" type="NUMERIC" length="19"/>
+		<db-attribute name="PERCENT" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="PRODCALCRATERULEID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="PRODCONFID" type="NUMERIC" length="19"/>
+		<db-attribute name="RATEDATE" type="FLOAT"/>
+		<db-attribute name="RATEVALUE" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="RULEDATE" type="FLOAT"/>
+	</db-entity>
+	<db-entity name="B2B_PRODCONF">
+		<db-attribute name="CALCVERID" type="NUMERIC" length="19"/>
+		<db-attribute name="HBDATAVERID" type="NUMERIC" length="19"/>
+		<db-attribute name="ISONLINE" type="NUMERIC" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="1024"/>
+		<db-attribute name="PREPARETOSAVEMETHOD" type="VARCHAR" length="255"/>
+		<db-attribute name="PRODCONFID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="PRODVERID" type="NUMERIC" length="19"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="B2B_PRODDAMAGECAT">
+		<db-attribute name="CONDITION" type="VARCHAR" length="1024"/>
+		<db-attribute name="DAMAGECATID" type="NUMERIC" length="19"/>
+		<db-attribute name="HINT" type="VARCHAR" length="255"/>
+		<db-attribute name="ISNEEDCHECKDOC" type="NUMERIC" length="19"/>
+		<db-attribute name="ISNEEDUW" type="NUMERIC" length="19"/>
+		<db-attribute name="ISRZUAUTOSET" type="NUMERIC" length="19"/>
+		<db-attribute name="MINRZUVALUE" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="255"/>
+		<db-attribute name="PRODDAMAGECATID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="PRODINSEVENTID" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODSTRUCTOBJID" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODSTRUCTRISKID" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODSTRUCTTOBJID" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODVERID" type="NUMERIC" length="19"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="B2B_PRODDAMAGECATCNT">
+		<db-attribute name="INSEVENTID" type="NUMERIC" length="19"/>
+		<db-attribute name="MINRZUVALUE" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="PRODDAMAGECATCNTID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="PRODDAMAGECATID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_PRODDEFVAL">
+		<db-attribute name="DEFTYPE" type="VARCHAR" length="255"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="255"/>
+		<db-attribute name="PRODCONFID" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODDEFVALID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="VALUE" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="B2B_PRODDISC">
+		<db-attribute name="DISCKINDID" type="NUMERIC" length="19"/>
+		<db-attribute name="FINISHDATE" type="FLOAT" length="38"/>
+		<db-attribute name="ISPREMIUM" type="NUMERIC" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="PREMIUMURL" type="VARCHAR" length="1024"/>
+		<db-attribute name="PRODCONFID" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODDISCID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="STARTDATE" type="FLOAT" length="38"/>
+	</db-entity>
+	<db-entity name="B2B_PRODDISCPROMO">
+		<db-attribute name="CODE" type="VARCHAR" length="255"/>
+		<db-attribute name="PRODDISCID" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODDISCPROMOID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="PROMOCOUNT" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_PRODDISCVAL">
+		<db-attribute name="DISCOUNTVALUE" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="PRODDISCID" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODDISCVALID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="PRODSTRUCTID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_PRODELEMRISK">
+		<db-attribute name="HINT" type="VARCHAR" length="255"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="255"/>
+		<db-attribute name="PRIORITY" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODELEMRISKID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="PRODSTRUCTID" type="NUMERIC" length="19"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="B2B_PRODFORM">
+		<db-attribute name="FORMINDEX" type="NUMERIC" length="19"/>
+		<db-attribute name="FORMTYPEID" type="NUMERIC" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="PAGE" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODFORMID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_PRODINSAMCUR">
+		<db-attribute name="CURRENCYID" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODCONFID" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODINSAMCURID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="PRODSTRUCTID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_PRODINSCOVER">
+		<db-attribute name="INSCOVERID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="B2B_PRODINTEGROUTE">
+		<db-attribute name="PRODINTEGROUTEID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="PRODUCTNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="PROGRAMNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="ROUTE" type="VARCHAR" length="255"/>
+		<db-attribute name="METHODNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="SERVICENAME" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="B2B_PRODNUMMETHOD">
+		<db-attribute name="METHODID" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODCONFID" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODNUMMETHODID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_PRODPAYVAR">
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="PAYVARID" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODPAYVARID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="PRODVERID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_PRODPOSSVALUE">
+		<db-attribute name="HINT" type="VARCHAR" length="255"/>
+		<db-attribute name="ISDEFAULT" type="NUMERIC" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="PRODPOSSVALUEID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="PRODVALUEID" type="NUMERIC" length="19"/>
+		<db-attribute name="VALUE2DOUBLE" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="VALUE2LONG" type="NUMERIC" length="19"/>
+		<db-attribute name="VALUE2STRING" type="VARCHAR" length="1024"/>
+		<db-attribute name="VALUEDOUBLE" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="VALUELONG" type="NUMERIC" length="19"/>
+		<db-attribute name="VALUESTRING" type="VARCHAR" length="1024"/>
+	</db-entity>
+	<db-entity name="B2B_PRODPREMCUR">
+		<db-attribute name="CURRENCYID" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODCONFID" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODPREMCURID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="PRODSTRUCTID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_PRODPROG">
+		<db-attribute name="CREATEDATE" type="FLOAT"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="EXPLFINISHDATE" type="FLOAT"/>
+		<db-attribute name="EXPLSTARTDATE" type="FLOAT"/>
+		<db-attribute name="EXTERNALID" type="VARCHAR" length="255"/>
+		<db-attribute name="INSAMVALUE" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="ISUSETCOND" type="NUMERIC" length="1"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="1024"/>
+		<db-attribute name="PREMVALUE" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="PRODCODE" type="VARCHAR" length="255"/>
+		<db-attribute name="PRODPROGID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="PRODRULEID" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODVERID" type="NUMERIC" length="19"/>
+		<db-attribute name="PROGCODE" type="VARCHAR" length="255"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="LKVISIBLE" type="NUMERIC" length="19"/>
+		<db-attribute name="HASPPOOPTION" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_PRODREP">
+		<db-attribute name="CATEGORYID" type="NUMERIC" length="19"/>
+		<db-attribute name="CHECKID" type="NUMERIC" length="19"/>
+		<db-attribute name="CPNUM" type="NUMERIC" length="19"/>
+		<db-attribute name="DATAPROVID" type="NUMERIC" length="19"/>
+		<db-attribute name="EDOC" type="NUMERIC" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="1024"/>
+		<db-attribute name="ORIGPRINTING" type="NUMERIC" length="19"/>
+		<db-attribute name="POSTN" type="NUMERIC" length="19"/>
+		<db-attribute name="PREPRINTING" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODCONFID" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODREPID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="REPID" type="NUMERIC" length="19"/>
+		<db-attribute name="REPLEVEL" type="NUMERIC" length="19"/>
+		<db-attribute name="REPTYPE" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_PRODRIDER">
+		<db-attribute name="PRODID" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODRIDERID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_PRODSALESCHAN">
+		<db-attribute name="PRODSALESCHANID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="PRODVERID" type="NUMERIC" length="19"/>
+		<db-attribute name="SALECHANNELID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_PRODSTRUCT">
+		<db-attribute name="CHILDPRODVERID" type="NUMERIC" length="19"/>
+		<db-attribute name="DISCRIMINATOR" type="NUMERIC" length="19"/>
+		<db-attribute name="EXTERNALCODE" type="VARCHAR" length="255"/>
+		<db-attribute name="HBDATAVERID" type="NUMERIC" length="19"/>
+		<db-attribute name="HINT" type="VARCHAR" length="255"/>
+		<db-attribute name="INSCOVERID" type="NUMERIC" length="19"/>
+		<db-attribute name="INSKINDID" type="NUMERIC" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="PARENTSTRUCTID" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODSTRUCTID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="PRODVERID" type="NUMERIC" length="19"/>
+		<db-attribute name="REPEATED" type="NUMERIC" length="19"/>
+		<db-attribute name="REQUIRED" type="NUMERIC" length="19"/>
+		<db-attribute name="SDCALCMETHOD" type="NUMERIC" length="19"/>
+		<db-attribute name="SDCALENDARTYPE" type="NUMERIC" length="19"/>
+		<db-attribute name="SDLAG" type="NUMERIC" length="19"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="B2B_PRODTERM">
+		<db-attribute name="PRODCONFID" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODTERMID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="TERMID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_PRODVALUE">
+		<db-attribute name="ADDAGRCAUSEID" type="NUMERIC" length="19"/>
+		<db-attribute name="DATATYPEID" type="NUMERIC" length="19"/>
+		<db-attribute name="DATATYPESTR" type="VARCHAR" length="255"/>
+		<db-attribute name="DESCR" type="VARCHAR" length="1024"/>
+		<db-attribute name="DISCRIMINATOR" type="NUMERIC" length="19"/>
+		<db-attribute name="FORMULA" type="VARCHAR" length="1024"/>
+		<db-attribute name="ISHANDBOOK" type="NUMERIC" length="19"/>
+		<db-attribute name="KINDID" type="NUMERIC" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="PRODCONFID" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODDAMAGECATID" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODSTRUCTID" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODVALUEID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="VALGROUPID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_PRODVER">
+		<db-attribute name="CREATEDATE" type="FLOAT"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="EXPLFINISHDATE" type="FLOAT"/>
+		<db-attribute name="EXPLSTARTDATE" type="FLOAT"/>
+		<db-attribute name="IMGPATH" type="VARCHAR" length="255"/>
+		<db-attribute name="JSPATH" type="VARCHAR" length="255"/>
+		<db-attribute name="LOGOTYPE" type="CLOB"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="1024"/>
+		<db-attribute name="PRODCODE" type="VARCHAR" length="255"/>
+		<db-attribute name="PRODID" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODVERID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="STATEID" type="NUMERIC" length="19"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="LKVISIBLE" type="NUMERIC" length="19"/>		
+	</db-entity>
+	<db-entity name="B2B_REP">
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="REPID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="TEMPLATENAME" type="VARCHAR" length="1024"/>
+	</db-entity>
+	<db-entity name="B2B_TERM">
+		<db-attribute name="DAYCOUNT" type="NUMERIC" length="19"/>
+		<db-attribute name="MONTHCOUNT" type="NUMERIC" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="TERMID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="YEARCOUNT" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_INVBASEACTIVE">
+		<db-attribute name="INVBASEACTIVEID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="CODE" type="VARCHAR" length="255"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="255"/>
+		<db-attribute name="ISSEVERALTICKERS" type="NUMERIC" length="19"/>
+		<db-attribute name="ISNOTUSE" type="NUMERIC" length="19"/>
+	</db-entity>	
+	<db-entity name="B2B_INVESTSTRATEGY">
+		<db-attribute name="INVESTSTRATEGYID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="CODE" type="VARCHAR" length="255"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="255"/>
+		<db-attribute name="CURRENCYID" type="NUMERIC" length="19"/>
+		<db-attribute name="TERMID" type="NUMERIC" length="19"/>
+		<db-attribute name="TERMYEARCOUNT" type="NUMERIC" length="19"/>
+		<db-attribute name="INVBASEACTIVEID" type="NUMERIC" length="19"/>
+		<db-attribute name="RATE" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="MINAMVALUE" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="MAXAMVALUE" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="COUPONSIZE" type="NUMERIC" length="19" precision="6"/>
+		<db-attribute name="ISFORSALE" type="NUMERIC" length="19"/>
+		<db-attribute name="ISFORPPO" type="NUMERIC" length="19"/>
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>		
+	</db-entity>	
+	<db-entity name="B2B_INVBATICKER">
+		<db-attribute name="INVBATICKERID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="INVBASEACTIVEID" type="NUMERIC" length="19"/>
+		<db-attribute name="INVTICKERID" type="NUMERIC" length="19"/>
+	</db-entity>	
+	<db-entity name="B2B_INVTICKER">
+		<db-attribute name="INVTICKERID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="CODE" type="VARCHAR" length="255"/>
+		<db-attribute name="BRIEFNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="STOCKEXCHNAME" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="B2B_INVSTRATGROUP">
+		<db-attribute name="INVSTRATGROUPID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="255"/>
+		<db-attribute name="SYSNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="CODE" type="VARCHAR" length="255"/>
+		<db-attribute name="NOTE" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="B2B_INVSTRATGROUPLINK">
+		<db-attribute name="INVSTRATGROUPLINKID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="INVSTRATGROUPID" type="NUMERIC" length="19"/>
+		<db-attribute name="INVESTSTRATEGYID" type="NUMERIC" length="19"/>
+	</db-entity>
+	<db-entity name="B2B_PRODINVEST">
+		<db-attribute name="PRODINVESTID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="PRODCONFID" type="NUMERIC" length="19"/>
+		<db-attribute name="INVESTSTRATEGYID" type="NUMERIC" length="19"/>
+		<db-attribute name="INVESTGROUPID" type="NUMERIC" length="19"/>
+		<db-attribute name="STARTDATE" type="FLOAT" length="38"/>
+		<db-attribute name="FINISHDATE" type="FLOAT" length="38"/>
+		<db-attribute name="DISCRIMINATOR" type="NUMERIC" length="19"/>
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>		
+	</db-entity>	
+	<db-entity name="B2B_PRODREDEMPTIONAMOUNT">	
+		<db-attribute name="REDEMPTIONAMOUNTID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="PRODCONFID" type="NUMERIC" length="19"/>
+		<db-attribute name="YEARNUMBER" type="NUMERIC" length="6"/>
+		<db-attribute name="PRODPAYVARID" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODINVESTID" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODTERMID" type="NUMERIC" length="19"/>
+		<db-attribute name="PRODINSAMCURID" type="NUMERIC" length="19"/>
+		<db-attribute name="ASSURLEVEL" type="NUMERIC" length="19"/>
+		<db-attribute name="PERCENT" type="NUMERIC" length="8" precision="2"/>
+		<db-attribute name="CREATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="CREATEUSERID" type="NUMERIC" length="19"/>
+		<db-attribute name="UPDATEDATE" type="FLOAT" length="38"/>
+		<db-attribute name="UPDATEUSERID" type="NUMERIC" length="19"/>
+	</db-entity>	
+	<obj-entity name="B2BActivationCode" dbEntityName="B2B_ACTIVCODE">
+		<obj-attribute name="activationDate" type="java.math.BigDecimal" db-attribute-path="ACTIVATIONDATE" note="Дата активации"/>
+		<obj-attribute name="code" type="java.lang.String" db-attribute-path="CODE" note="Код активации"/>
+		<obj-attribute name="contrId" type="java.lang.Long" db-attribute-path="CONTRID" note="ИД договора"/>
+		<obj-attribute name="createDate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания записи"/>
+		<obj-attribute name="createUserId" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="ИД пользователя создавшего запись"/>
+		<obj-attribute name="endDate" type="java.math.BigDecimal" db-attribute-path="ENDDATE" note="Дата окончания действия кода активации"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="ACTIVCODEID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД кода активации"/>
+		<obj-attribute name="isActivated" type="java.lang.Long" db-attribute-path="ISACTIVATED" note="Флаг код активирован"/>
+		<obj-attribute name="number" type="java.lang.String" db-attribute-path="NUM" note="Номер договора"/>
+		<obj-attribute name="prodActivId" type="java.lang.Long" db-attribute-path="PRODACTIVID" note="Ссылка на активацию продукта"/>
+		<obj-attribute name="series" type="java.lang.String" db-attribute-path="SERIES" note="Серия договора"/>
+		<obj-attribute name="startDate" type="java.math.BigDecimal" db-attribute-path="STARTDATE" note="Дата начала действия кода"/>
+		<obj-attribute name="updateDate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата изменения записи"/>
+		<obj-attribute name="updateUserId" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="ИД пользователя, изменившего запись"/>
+	</obj-entity>
+	<obj-entity name="B2BDamageCategory" dbEntityName="B2B_DAMAGECAT">
+		<obj-attribute name="detailHbDataVerId" type="java.lang.Long" db-attribute-path="DETAILHBDATAVERID" note="ИД версии справочника с детализацией"/>
+		<obj-attribute name="externalCode" type="java.lang.String" db-attribute-path="EXTERNALCODE" note="Внешний код"/>
+		<obj-attribute name="hint" type="java.lang.String" db-attribute-path="HINT" note="Подсказка"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="DAMAGECATID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД категории ущерба"/>
+		<obj-attribute name="insEventId" type="java.lang.Long" db-attribute-path="INSEVENTID" note="ИД страхового события"/>
+		<obj-attribute name="jsPath" type="java.lang.String" db-attribute-path="JSPATH" note="Путь к странице"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование"/>
+		<obj-attribute name="note" type="java.lang.String" db-attribute-path="NOTE" note="Примечание"/>
+		<obj-attribute name="sysName" type="java.lang.String" db-attribute-path="SYSNAME" note="Системное наименование"/>
+		<obj-attribute name="valueHbDataVerId" type="java.lang.Long" db-attribute-path="VALUEHBDATAVERID" note="ИД версии справочника с показателями"/>
+	</obj-entity>
+	<obj-entity name="B2BInsuranceEvent" dbEntityName="B2B_INSEVENT">
+		<obj-attribute name="hint" type="java.lang.String" db-attribute-path="HINT" note="Подсказка"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="INSEVENTID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД события"/>
+		<obj-attribute name="insElemRiskId" type="java.lang.Long" db-attribute-path="INSELEMRISKID" note="ИД элементарного риска"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование"/>
+		<obj-attribute name="note" type="java.lang.String" db-attribute-path="NOTE" note="Примечание"/>
+		<obj-attribute name="sysName" type="java.lang.String" db-attribute-path="SYSNAME" note="Системное наименование"/>
+	</obj-entity>
+	<obj-entity name="B2BPaymentVariant" dbEntityName="B2B_PAYVAR">
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование – название периодичности оплаты"/>
+		<obj-attribute name="payVarId" type="java.lang.Long" db-attribute-path="PAYVARID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="Идентификатор периодичности оплаты"/>
+		<obj-attribute name="sysName" type="java.lang.String" db-attribute-path="SYSNAME" note="Псевдоним – уникальный номер периодичности оплаты"/>
+	</obj-entity>
+	<obj-entity name="B2BPaymentVariantContent" dbEntityName="B2B_PAYVARCNT">
+		<obj-attribute name="dateShift" type="java.lang.Long" db-attribute-path="DATESHIFT" note="Сдвиг – сдвиг даты для элемента (в месяцах)"/>
+		<obj-attribute name="num" type="java.lang.Long" db-attribute-path="NUM" note="Порядковый норме – номер элемента"/>
+		<obj-attribute name="payVarCntId" type="java.lang.Long" db-attribute-path="PAYVARCNTID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="Идентификатор элемента состава периодичности оплаты"/>
+		<obj-attribute name="payVarId" type="java.lang.Long" db-attribute-path="PAYVARID" note="Идентификатор периодичности оплаты"/>
+		<obj-attribute name="premShare" type="java.lang.Double" db-attribute-path="PREMSHARE" note="Доля – доля премии элемента"/>
+	</obj-entity>
+	<obj-entity name="B2BProduct" dbEntityName="B2B_PROD">
+		<obj-attribute name="assurerId" type="java.lang.Long" db-attribute-path="ASSURERID" note="ИД страховщика"/>
+		<obj-attribute name="externalCode" type="java.lang.String" db-attribute-path="EXTERNALCODE" note="Внешний код продукта"/>
+		<obj-attribute name="externalId" type="java.lang.String" db-attribute-path="EXTERNALID" note="Внешний ИД"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД продукта"/>
+		<obj-attribute name="insTermKindId" type="java.lang.Long" db-attribute-path="INSTERMKINDID" note="Вид"/>
+		<obj-attribute name="isHidden" type="java.lang.Boolean" db-attribute-path="ISHIDDEN" note="Продукт скрыт или нет"/>
+		<obj-attribute name="isMultiContract" type="java.lang.Boolean" db-attribute-path="ISMULTICONTR" note="Признак мультивалютного договора"/>
+		<obj-attribute name="modelId" type="java.lang.Long" db-attribute-path="MODELID" note="Модель учета"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" requiredCreate="true" requiredInsert="true" note="Наименование продукта"/>
+		<obj-attribute name="note" type="java.lang.String" db-attribute-path="NOTE" note="Примечание"/>
+		<obj-attribute name="productKindId" type="java.lang.Long" db-attribute-path="PRODKINDID" note="ИД типа продукта"/>
+		<obj-attribute name="structRootId" type="java.lang.Long" db-attribute-path="STRUCTROOTID" note="Структура"/>
+		<obj-attribute name="sysName" type="java.lang.String" db-attribute-path="SYSNAME" note="Системное наименование"/>
+		<obj-attribute name="groupName" type="java.lang.String" db-attribute-path="GROUPNAME" note="наименование группы продуктов"/>
+		<obj-attribute name="groupSysName" type="java.lang.String" db-attribute-path="GROUPSYSNAME" note="Системное наименование группы продуктов"/>
+		<obj-attribute name="lkVisible" type="java.lang.Long" db-attribute-path="LKVISIBLE" note="Отображение в ЛК"/>
+		<obj-attribute name="isHiddenOnCreate" type="java.lang.Long" db-attribute-path="ISHIDDENONCREATE" note="Скрыть со страницы создания продукта"/>
+		<obj-attribute name="hasPpoOption" type="java.lang.Long" db-attribute-path="HASPPOOPTION" note="опция ППО"/>
+	</obj-entity>
+	<obj-entity name="B2BProductKind" dbEntityName="B2B_PRODKIND">
+		<obj-attribute name="productKindId" type="java.lang.Long" db-attribute-path="PRODKINDID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД продукта"/>
+		<obj-attribute name="isHidden" type="java.lang.Boolean" db-attribute-path="ISHIDDEN" note="Продукт скрыт или нет"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" requiredCreate="true" requiredInsert="true" note="Наименование продукта"/>
+		<obj-attribute name="note" type="java.lang.String" db-attribute-path="NOTE" note="Примечание"/>
+		<obj-attribute name="jsPath" type="java.lang.String" db-attribute-path="IMGPATH" note="Картинка"/>
+		<obj-attribute name="sysName" type="java.lang.String" db-attribute-path="SYSNAME" note="Системное наименование"/>
+	</obj-entity>
+	<obj-entity name="B2BProductActivation" dbEntityName="B2B_PRODACTIV">
+		<obj-attribute name="endDate" type="java.math.BigDecimal" db-attribute-path="ENDDATE" note="Дата окончания действия активации по продукту"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODACTIVID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД активации продукта"/>
+		<obj-attribute name="prodActivTypeId" type="java.lang.Long" db-attribute-path="PRODACTIVTYPEID" note="Ссылка на тип активации"/>
+		<obj-attribute name="prodVerId" type="java.lang.Long" db-attribute-path="PRODVERID" note="Ссылка на версию активируемого продукта"/>
+		<obj-attribute name="startDate" type="java.math.BigDecimal" db-attribute-path="STARTDATE" note="Дата начала действия активации по продукту"/>
+	</obj-entity>
+	<obj-entity name="B2BProductActivationContent" dbEntityName="B2B_PRODACTIVCONT">
+		<obj-attribute name="actionNext" type="java.lang.String" db-attribute-path="ACTIONNEXT" note="Имя функции для перехода вперед"/>
+		<obj-attribute name="actionPrev" type="java.lang.String" db-attribute-path="ACTIONPREV" note="Имя функции для перехода назад"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODACTIVCONTID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД формы активации"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование"/>
+		<obj-attribute name="note" type="java.lang.String" db-attribute-path="NOTE" note="Примечание"/>
+		<obj-attribute name="position" type="java.lang.Long" db-attribute-path="POSITION" note="Позиция формы в мастере"/>
+		<obj-attribute name="prodActivId" type="java.lang.Long" db-attribute-path="PRODACTIVID" note="Ссылка на активацию продукта"/>
+		<obj-attribute name="sysName" type="java.lang.String" db-attribute-path="SYSNAME" note="Системное наименование формы"/>
+		<obj-attribute name="url" type="java.lang.String" db-attribute-path="URL" note="роут до формы активации"/>
+	</obj-entity>
+	<obj-entity name="B2BProductActivationType" dbEntityName="B2B_PRODACTIVTYPE">
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODACTIVTYPEID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД типа активаций"/>
+		<obj-attribute name="masterUrl" type="java.lang.String" db-attribute-path="MASTERURL" note="URL страницы активации продуктов"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование"/>
+		<obj-attribute name="note" type="java.lang.String" db-attribute-path="NOTE" note="Примечание"/>
+		<obj-attribute name="sysName" type="java.lang.String" db-attribute-path="SYSNAME" note="Системное наименование"/>
+	</obj-entity>
+	<obj-entity name="B2BProductAdditionalChangeType" dbEntityName="B2B_PRODADDCHT">
+		<obj-attribute name="copyInsuranceObject" type="java.lang.Boolean" db-attribute-path="COPYINSOBJ" note="Флаг копирования объекта страхования"/>
+		<obj-attribute name="externalId" type="java.lang.String" db-attribute-path="EXTERNALID" note="Внешний ИД"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODADDCHTID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД типа изменения по договору"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" requiredCreate="true" requiredInsert="true" note="Наименование"/>
+		<obj-attribute name="note" type="java.lang.String" db-attribute-path="NOTE" note="Примечание"/>
+		<obj-attribute name="pageFlowName" type="java.lang.String" db-attribute-path="PAGEFLOWNAME" requiredCreate="true" requiredInsert="true" note="Наименование бизнес процесса"/>
+		<obj-attribute name="productConfigId" type="java.lang.Long" db-attribute-path="PRODCONFID" requiredCreate="true" requiredInsert="true" note="ИД конфигурации продукта"/>
+		<obj-attribute name="template" type="java.lang.String" db-attribute-path="TEMPLATE" note="Шаблон содержимого доп. соглашения"/>
+	</obj-entity>
+	<obj-entity name="B2BProductBinaryDocument" dbEntityName="B2B_PRODBINDOC">
+		<obj-attribute name="binDocType" type="java.lang.Long" db-attribute-path="BINDOCTYPE" requiredCreate="true" requiredInsert="true" note="Тип документа"/>
+		<obj-attribute name="checkName" type="java.lang.String" db-attribute-path="CHECKNAME" note="Ссылка на проверку через наименование"/>
+		<obj-attribute name="docLevel" type="java.lang.Long" db-attribute-path="DOCLEVEL" note="Тип документа по виду страхования"/>
+		<obj-attribute name="documentLevelNote" type="java.lang.String" db-attribute-path="DOCLEVELNOTE" note="Описание уровня документа"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODBINDOCID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД бинарного документа"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" requiredCreate="true" requiredInsert="true" note="Наименование"/>
+		<obj-attribute name="note" type="java.lang.String" db-attribute-path="NOTE" note="Примечание"/>
+		<obj-attribute name="prodDocSystemName" type="java.lang.String" db-attribute-path="DOCSYSNAME" note="Системное имя для сортировки в таблицах"/>
+		<obj-attribute name="productConfigId" type="java.lang.Long" db-attribute-path="PRODCONFID" requiredCreate="true" requiredInsert="true" note="ИД конфигурации продукта"/>
+		<obj-attribute name="required" type="java.lang.Boolean" db-attribute-path="REQUIRED" requiredCreate="true" requiredInsert="true" note="Обязательный"/>
+	</obj-entity>
+	<obj-entity name="B2BProductCalcRateRule" dbEntityName="B2B_PRODCALCRATERULE">
+		<obj-attribute name="calcVariantId" type="java.lang.Long" db-attribute-path="CALCVARIANTID" note="Тип расчета"/>
+		<obj-attribute name="currencyId" type="java.lang.Long" db-attribute-path="CURRENCYID" note="ИД валюты"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODCALCRATERULEID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД"/>
+		<obj-attribute name="percent" type="java.lang.Double" db-attribute-path="PERCENT" note="Процент"/>
+		<obj-attribute name="productConfigId" type="java.lang.Long" db-attribute-path="PRODCONFID" note="ИД конфигурации продукта"/>
+		<obj-attribute name="rateDate" type="java.math.BigDecimal" db-attribute-path="RATEDATE" note="Дата курса"/>
+		<obj-attribute name="rateValue" type="java.lang.Double" db-attribute-path="RATEVALUE" note="Значение"/>
+		<obj-attribute name="ruleDate" type="java.math.BigDecimal" db-attribute-path="RULEDATE" note="Дата правила"/>
+	</obj-entity>
+	<obj-entity name="B2BProductConfig" dbEntityName="B2B_PRODCONF">
+		<obj-attribute name="calculatorVersionId" type="java.lang.Long" db-attribute-path="CALCVERID" note="ИД версии калькулятора"/>
+		<obj-attribute name="hbDataVerId" type="java.lang.Long" db-attribute-path="HBDATAVERID" note="ИД версии справочника расш. атрибутов продукта"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODCONFID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД конфигурации продукта"/>
+		<obj-attribute name="isOnline" type="java.lang.Long" db-attribute-path="ISONLINE" requiredCreate="true" requiredInsert="true" note="Флаг онлайн продукта"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование"/>
+		<obj-attribute name="note" type="java.lang.String" db-attribute-path="NOTE" note="Примечание"/>
+		<obj-attribute name="prepareToSaveMethod" type="java.lang.String" db-attribute-path="PREPARETOSAVEMETHOD" note="Имя метода подготовки к сохранению договора"/>
+		<obj-attribute name="productVersionId" type="java.lang.Long" db-attribute-path="PRODVERID" requiredCreate="true" requiredInsert="true" note="ИД версии продукта"/>
+		<obj-attribute name="sysName" type="java.lang.String" db-attribute-path="SYSNAME" note="Системное наименование"/>
+	</obj-entity>
+	<obj-entity name="B2BProductDamageCategory" dbEntityName="B2B_PRODDAMAGECAT">
+		<obj-attribute name="condition" type="java.lang.String" db-attribute-path="CONDITION" note="Условия и ограничения (на некоем МетаЯзыке)"/>
+		<obj-attribute name="damageCatId" type="java.lang.Long" db-attribute-path="DAMAGECATID" note="ИД категории ущерба"/>
+		<obj-attribute name="hint" type="java.lang.String" db-attribute-path="HINT" note="Подсказка"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODDAMAGECATID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД категории ущерба"/>
+		<obj-attribute name="isNeedCheckDoc" type="java.lang.Long" db-attribute-path="ISNEEDCHECKDOC" note="Флаг необходимости ручной проверки прикрепленных документов"/>
+		<obj-attribute name="isNeedUnderwriting" type="java.lang.Long" db-attribute-path="ISNEEDUW" note="Флаг необходимости ручного рассмотрения заявления на выплату по СС"/>
+		<obj-attribute name="isRZUAutoSet" type="java.lang.Long" db-attribute-path="ISRZUAUTOSET" note="Флаг автоматической установки первого РЗУ"/>
+		<obj-attribute name="minRZUValue" type="java.lang.Double" db-attribute-path="MINRZUVALUE" note="Минимальная сумма первого РЗУ"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование категории ущерба"/>
+		<obj-attribute name="note" type="java.lang.String" db-attribute-path="NOTE" note="Примечание"/>
+		<obj-attribute name="prodInsEventId" type="java.lang.Long" db-attribute-path="PRODINSEVENTID" note="ИД вида страхового события по продукту"/>
+		<obj-attribute name="prodStructObjId" type="java.lang.Long" db-attribute-path="PRODSTRUCTOBJID" note="ИД объекта в структуре продукта"/>
+		<obj-attribute name="prodStructRiskId" type="java.lang.Long" db-attribute-path="PRODSTRUCTRISKID" note="ИД риска в структуре продукта"/>
+		<obj-attribute name="prodStructTObjId" type="java.lang.Long" db-attribute-path="PRODSTRUCTTOBJID" note="ИД группы объектов в структуре продукта"/>
+		<obj-attribute name="prodVerId" type="java.lang.Long" db-attribute-path="PRODVERID" note="ИД версии продукта"/>
+		<obj-attribute name="sysName" type="java.lang.String" db-attribute-path="SYSNAME" note="Системное наименование категории ущерба"/>
+	</obj-entity>
+	<obj-entity name="B2BProductDamageCategoryContent" dbEntityName="B2B_PRODDAMAGECATCNT">
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODDAMAGECATCNTID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД состава категории ущерба по продукту"/>
+		<obj-attribute name="insEventId" type="java.lang.Long" db-attribute-path="INSEVENTID" note="ИД вида страхового события"/>
+		<obj-attribute name="minRzuValue" type="java.lang.Double" db-attribute-path="MINRZUVALUE" note="Сумма первой РЗУ"/>
+		<obj-attribute name="prodDamageCatId" type="java.lang.Long" db-attribute-path="PRODDAMAGECATID" note="ИД категории ущерба по убытку"/>
+	</obj-entity>
+	<obj-entity name="B2BProductDefaultValue" dbEntityName="B2B_PRODDEFVAL">
+		<obj-attribute name="defType" type="java.lang.String" db-attribute-path="DEFTYPE" requiredCreate="true" requiredInsert="true" note="Тип"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODDEFVALID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД значения по-умолчанию"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" requiredCreate="true" requiredInsert="true" note="Наименование"/>
+		<obj-attribute name="note" type="java.lang.String" db-attribute-path="NOTE" note="Примечание"/>
+		<obj-attribute name="productConfigId" type="java.lang.Long" db-attribute-path="PRODCONFID" requiredCreate="true" requiredInsert="true" note="ИД конфигурации продукта"/>
+		<obj-attribute name="value" type="java.lang.String" db-attribute-path="VALUE" requiredCreate="true" requiredInsert="true" note="Значение"/>
+	</obj-entity>
+	<obj-entity name="B2BProductDiscount" dbEntityName="B2B_PRODDISC">
+		<obj-attribute name="discountKindId" type="java.lang.Long" db-attribute-path="DISCKINDID" note="Вид"/>
+		<obj-attribute name="finishDate" type="java.math.BigDecimal" db-attribute-path="FINISHDATE" note="Дата окончания действия скидки"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODDISCID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД"/>
+		<obj-attribute name="isPremium" type="java.lang.Long" db-attribute-path="ISPREMIUM" note="Премиум аккаунт"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование"/>
+		<obj-attribute name="premiumURL" type="java.lang.String" db-attribute-path="PREMIUMURL" note="УРЛ премиум аккаунта"/>
+		<obj-attribute name="productConfig" type="java.lang.Long" db-attribute-path="PRODCONFID" note="Конфигурация продукта"/>
+		<obj-attribute name="startDate" type="java.math.BigDecimal" db-attribute-path="STARTDATE" note="Дата начала действия скидки"/>
+	</obj-entity>
+	<obj-entity name="B2BProductDiscountPromoCode" dbEntityName="B2B_PRODDISCPROMO">
+		<obj-attribute name="code" type="java.lang.String" db-attribute-path="CODE" note="Промокод"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODDISCPROMOID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД"/>
+		<obj-attribute name="productDiscountId" type="java.lang.Long" db-attribute-path="PRODDISCID" note="ИД скидки"/>
+		<obj-attribute name="promoCount" type="java.lang.Long" db-attribute-path="PROMOCOUNT" note="Кол-во промокодов"/>
+	</obj-entity>
+	<obj-entity name="B2BProductDiscountValue" dbEntityName="B2B_PRODDISCVAL">
+		<obj-attribute name="discountValue" type="java.lang.Double" db-attribute-path="DISCOUNTVALUE" note="Скидка"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODDISCVALID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД"/>
+		<obj-attribute name="productDiscountId" type="java.lang.Long" db-attribute-path="PRODDISCID" note="ИД скидки"/>
+		<obj-attribute name="productStructureId" type="java.lang.Long" db-attribute-path="PRODSTRUCTID" note="ИД структуры продукта"/>
+	</obj-entity>
+	<obj-entity name="B2BProductElementaryRisk" dbEntityName="B2B_PRODELEMRISK">
+		<obj-attribute name="hint" type="java.lang.String" db-attribute-path="HINT" note="Подсказка"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODELEMRISKID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД элементарного риска"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование"/>
+		<obj-attribute name="note" type="java.lang.String" db-attribute-path="NOTE" note="Комментарий"/>
+		<obj-attribute name="priority" type="java.math.BigDecimal" db-attribute-path="PRIORITY" note="Приоритет"/>
+		<obj-attribute name="prodStructId" type="java.math.BigDecimal" db-attribute-path="PRODSTRUCTID" note="ИД страхового риска в структуре продукта"/>
+		<obj-attribute name="sysName" type="java.lang.String" db-attribute-path="SYSNAME" note="Системное наименование элементарного риска"/>
+	</obj-entity>
+	<obj-entity name="B2BProductForm" dbEntityName="B2B_PRODFORM">
+		<obj-attribute name="formTypeId" type="java.lang.Long" db-attribute-path="FORMTYPEID" note="Вид формы"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODFORMID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД"/>
+		<obj-attribute name="index" type="java.lang.Long" db-attribute-path="FORMINDEX" note="Порядковый номер"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование"/>
+		<obj-attribute name="page" type="java.lang.Long" db-attribute-path="PAGE" note="Страница"/>
+	</obj-entity>
+	<obj-entity name="B2BProductInsAmCurrency" dbEntityName="B2B_PRODINSAMCUR">
+		<obj-attribute name="currencyId" type="java.lang.Long" db-attribute-path="CURRENCYID" note="ИД валюты"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODINSAMCURID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД"/>
+		<obj-attribute name="productConfigId" type="java.lang.Long" db-attribute-path="PRODCONFID" note="ИД конфигурации продукта (устаревшее, теперь прикрепляется к секции договора)"/>
+		<obj-attribute name="productStructureId" type="java.lang.Long" db-attribute-path="PRODSTRUCTID" note="ИД структуры секции договора"/>
+	</obj-entity>
+	<obj-entity name="B2BProductInsuranceCover" dbEntityName="B2B_PRODINSCOVER">
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="INSCOVERID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД страхового покрытия"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование страхового покрытия"/>
+		<obj-attribute name="sysname" type="java.lang.String" db-attribute-path="SYSNAME" note="Системное наименование страхового покрытия"/>
+	</obj-entity>
+	<db-entity name="B2B_PRODINTEGROUTE">
+		<db-attribute name="PRODINTEGROUTEID" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="19"/>
+		<db-attribute name="PRODUCTNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="PROGRAMNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="ROUTE" type="VARCHAR" length="255"/>
+		<db-attribute name="METHODNAME" type="VARCHAR" length="255"/>
+		<db-attribute name="SERVICENAME" type="VARCHAR" length="255"/>
+	</db-entity>
+	<obj-entity name="B2BProductIntegrationRoute" dbEntityName="B2B_PRODINTEGROUTE">
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODINTEGROUTEID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД роутинга интеграции"/>
+		<obj-attribute name="productName" type="java.lang.String" db-attribute-path="PRODUCTNAME" note="Системное наименование продукта ОИС"/>
+		<obj-attribute name="programName" type="java.lang.String" db-attribute-path="PROGRAMNAME" note="Системное наименование программы ОИС"/>
+		<obj-attribute name="route" type="java.lang.String" db-attribute-path="ROUTE" note="Имя таблицы, по системному имени которой будет происходить интеграция"/>
+		<obj-attribute name="methodName" type="java.lang.String" db-attribute-path="METHODNAME" note="метод browse для выборки данных из таблицы указанной в route"/>
+		<obj-attribute name="serviceName" type="java.lang.String" db-attribute-path="SERVICENAME" note="имя сервиса, в котором реализован метод"/>
+	</obj-entity>
+	<obj-entity name="B2BProductNumMethod" dbEntityName="B2B_PRODNUMMETHOD">
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODNUMMETHODID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД"/>
+		<obj-attribute name="methodId" type="java.lang.Long" db-attribute-path="METHODID" note="ИД метода"/>
+		<obj-attribute name="productConfigId" type="java.lang.Long" db-attribute-path="PRODCONFID" note="ИД конфигурации продукта"/>
+	</obj-entity>
+	<obj-entity name="B2BProductPaymentVariant" dbEntityName="B2B_PRODPAYVAR">
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODPAYVARID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД варианта оплаты продукта"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование"/>
+		<obj-attribute name="paymentVariantId" type="java.lang.Long" db-attribute-path="PAYVARID" requiredCreate="true" requiredInsert="true" note="ИД варианта оплаты"/>
+		<obj-attribute name="productVersionId" type="java.lang.Long" db-attribute-path="PRODVERID" requiredCreate="true" requiredInsert="true" note="ИД версии продукта"/>
+	</obj-entity>
+	<obj-entity name="B2BProductPossibleValue" dbEntityName="B2B_PRODPOSSVALUE">
+		<obj-attribute name="hint" type="java.lang.String" db-attribute-path="HINT" note="Подсказка"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODPOSSVALUEID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД"/>
+		<obj-attribute name="isDefault" type="java.lang.Long" db-attribute-path="ISDEFAULT" note="Признак значение по-умолчанию"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование"/>
+		<obj-attribute name="productValueId" type="java.lang.Long" db-attribute-path="PRODVALUEID" note="ИД показателя"/>
+		<obj-attribute name="value2Double" type="java.lang.Double" db-attribute-path="VALUE2DOUBLE" note="Дробное значение"/>
+		<obj-attribute name="value2Long" type="java.lang.Long" db-attribute-path="VALUE2LONG" note="Целое значение"/>
+		<obj-attribute name="value2String" type="java.lang.String" db-attribute-path="VALUE2STRING" note="Строковое значение"/>
+		<obj-attribute name="valueDouble" type="java.lang.Double" db-attribute-path="VALUEDOUBLE" note="Дробное значение"/>
+		<obj-attribute name="valueLong" type="java.lang.Long" db-attribute-path="VALUELONG" note="Целое значение"/>
+		<obj-attribute name="valueString" type="java.lang.String" db-attribute-path="VALUESTRING" note="Строковое значение"/>
+	</obj-entity>
+	<obj-entity name="B2BProductPremiumCurrency" dbEntityName="B2B_PRODPREMCUR">
+		<obj-attribute name="currencyId" type="java.lang.Long" db-attribute-path="CURRENCYID" note="ИД валюты"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODPREMCURID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД"/>
+		<obj-attribute name="productConfigId" type="java.lang.Long" db-attribute-path="PRODCONFID" note="ИД конфигурации продукта (устаревшее, теперь прикрепляется к секции договора)"/>
+		<obj-attribute name="productStructureId" type="java.lang.Long" db-attribute-path="PRODSTRUCTID" note="ИД структуры секции договора"/>
+	</obj-entity>
+	<obj-entity name="B2BProductProgram" dbEntityName="B2B_PRODPROG">
+		<obj-attribute name="createDate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания"/>
+		<obj-attribute name="createUserId" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="ИД создавшего пользователя"/>
+		<obj-attribute name="exploitationFinishDate" type="java.math.BigDecimal" db-attribute-path="EXPLFINISHDATE" note="Дата окончания эксплуатации"/>
+		<obj-attribute name="exploitationStartDate" type="java.math.BigDecimal" db-attribute-path="EXPLSTARTDATE" note="Дата начала эксплуатации"/>
+		<obj-attribute name="externalId" type="java.lang.String" db-attribute-path="EXTERNALID" note="Внешний ИД"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODPROGID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД программы продукта"/>
+		<obj-attribute name="insAmountValue" type="java.lang.Double" db-attribute-path="INSAMVALUE" note="Страховая сумма"/>
+		<obj-attribute name="isUseTCondition" type="java.lang.Long" db-attribute-path="ISUSETCOND" note="Признак использования типовых условий"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" requiredCreate="true" requiredInsert="true" note="Наименование"/>
+		<obj-attribute name="note" type="java.lang.String" db-attribute-path="NOTE" note="Примечание"/>
+		<obj-attribute name="premiumValue" type="java.lang.Double" db-attribute-path="PREMVALUE" note="Премия"/>
+		<obj-attribute name="productCode" type="java.lang.String" db-attribute-path="PRODCODE" note="Код продукта для формирования номера договора"/>
+		<obj-attribute name="productRuleId" type="java.lang.Long" db-attribute-path="PRODRULEID" note="ИД правила страхования"/>
+		<obj-attribute name="productVersionId" type="java.lang.Long" db-attribute-path="PRODVERID" requiredCreate="true" requiredInsert="true" note="ИД версии продукта"/>
+		<obj-attribute name="programCode" type="java.lang.String" db-attribute-path="PROGCODE" note="Код программы"/>
+		<obj-attribute name="sysName" type="java.lang.String" db-attribute-path="SYSNAME" requiredCreate="true" requiredInsert="true" note="Системное наименование"/>
+		<obj-attribute name="updateDate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата изменения"/>
+		<obj-attribute name="updateUserId" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="ИД пользователя, изменившего запись"/>
+		<obj-attribute name="lkVisible" type="java.lang.Long" db-attribute-path="LKVISIBLE" note="Видимость в ЛК"/>
+		<obj-attribute name="hasPpoOption" type="java.lang.Long" db-attribute-path="HASPPOOPTION" note="ППО опция"/>
+	</obj-entity>
+	<obj-entity name="B2BProductReport" dbEntityName="B2B_PRODREP">
+		<obj-attribute name="categoryId" type="java.lang.Long" db-attribute-path="CATEGORYID" note="Категория документа по страховому продукту"/>
+		<obj-attribute name="dataProviderId" type="java.lang.Long" db-attribute-path="DATAPROVID" note="ИД провайдера данных"/>
+		<obj-attribute name="eDoc" type="java.lang.Long" db-attribute-path="EDOC" note="Признак принадлежности к группе документов для отправки на Email или сохранения на диск"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODREPID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД отчета"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование"/>
+		<obj-attribute name="note" type="java.lang.String" db-attribute-path="NOTE" note="Примечание"/>
+		<obj-attribute name="originalPrinting" type="java.lang.Long" db-attribute-path="ORIGPRINTING" note="Чистовая печать"/>
+		<obj-attribute name="position" type="java.lang.Long" db-attribute-path="POSTN" note="Позиция"/>
+		<obj-attribute name="prePrinting" type="java.lang.Long" db-attribute-path="PREPRINTING" note="Предварительная печать"/>
+		<obj-attribute name="productConfigId" type="java.lang.Long" db-attribute-path="PRODCONFID" requiredCreate="true" requiredInsert="true" note="ИД конфигурации продукта"/>
+		<obj-attribute name="reportCheck" type="java.lang.Long" db-attribute-path="CHECKID" note="Проверка перед выводом отчета"/>
+		<obj-attribute name="reportId" type="java.lang.Long" db-attribute-path="REPID" note="ИД отчета"/>
+		<obj-attribute name="reportLevel" type="java.lang.Long" db-attribute-path="REPLEVEL" note="Уровень отчета (1 - отчет по договору (котировке) 2 - отчет по объекту в договоре (количество таких отчетов в рамках договора равно количеству объектов в договоре) 3 - отчет по риску в договоре  (количество таких отчетов в рамках договора равно общему количеству рисков в договоре))"/>
+		<obj-attribute name="reportType" type="java.lang.Long" db-attribute-path="REPTYPE" note="Тип отчета (1 - Страховая документация, 2 - Печатный документ)"/>
+		<obj-attribute name="сopyNumber" type="java.lang.Long" db-attribute-path="CPNUM" note="Количество копий"/>
+	</obj-entity>
+	<obj-entity name="B2BProductRider" dbEntityName="B2B_PRODRIDER">
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODRIDERID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД райдера"/>
+		<obj-attribute name="productId" type="java.lang.Long" db-attribute-path="PRODID" requiredCreate="true" requiredInsert="true" note="ИД продукта"/>
+	</obj-entity>
+	<obj-entity name="B2BProductSalesChannel" dbEntityName="B2B_PRODSALESCHAN">
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODSALESCHANID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД канала продаж продукта"/>
+		<obj-attribute name="productVersionId" type="java.lang.Long" db-attribute-path="PRODVERID" requiredCreate="true" requiredInsert="true" note="ИД версии продукта"/>
+		<obj-attribute name="saleChannelId" type="java.lang.Long" db-attribute-path="SALECHANNELID" requiredCreate="true" requiredInsert="true" note="ИД канала продаж"/>
+	</obj-entity>
+	<obj-entity name="B2BProductStructureBase" dbEntityName="B2B_PRODSTRUCT">
+		<obj-attribute name="childProdVerId" type="java.lang.Long" db-attribute-path="CHILDPRODVERID" note="ИД версии подчиненного продукта"/>
+		<obj-attribute name="discriminator" type="java.lang.Long" db-attribute-path="DISCRIMINATOR" note="Тип сущности"/>
+		<obj-attribute name="externalCode" type="java.lang.String" db-attribute-path="EXTERNALCODE" note="Внешний код структуры"/>
+		<obj-attribute name="hbDataVerId" type="java.lang.Long" db-attribute-path="HBDATAVERID" note="ИД версии данных справочника расш. атрибутов объекта структуры"/>
+		<obj-attribute name="hint" type="java.lang.String" db-attribute-path="HINT" note="Подсказка"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODSTRUCTID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД"/>
+		<obj-attribute name="insCoverId" type="java.lang.Long" db-attribute-path="INSCOVERID" note="Страховое покрытие"/>
+		<obj-attribute name="insuranceKindId" type="java.lang.Long" db-attribute-path="INSKINDID" note="Вид страхования"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование"/>
+		<obj-attribute name="parentStructureId" type="java.lang.Long" db-attribute-path="PARENTSTRUCTID" note="ИД родительской структуры"/>
+		<obj-attribute name="productVersionId" type="java.lang.Long" db-attribute-path="PRODVERID" note="ИД версии продукта"/>
+		<obj-attribute name="repeated" type="java.lang.Long" db-attribute-path="REPEATED" note="Повторяется"/>
+		<obj-attribute name="required" type="java.lang.Long" db-attribute-path="REQUIRED" note="Обязательный"/>
+		<obj-attribute name="startDateCalcMethod" type="java.lang.Long" db-attribute-path="SDCALCMETHOD" note="Правило определения даты начала - условие"/>
+		<obj-attribute name="startDateCalendarType" type="java.lang.Long" db-attribute-path="SDCALENDARTYPE" note="Правило определения даты начала - тип календаля"/>
+		<obj-attribute name="startDateLag" type="java.lang.Long" db-attribute-path="SDLAG" note="Правило определения даты начала - лаг"/>
+		<obj-attribute name="sysName" type="java.lang.String" db-attribute-path="SYSNAME" note="Псевдоним"/>
+	</obj-entity>
+	<obj-entity name="B2BProductStructureMultiProduct" dbEntityName="B2B_PRODSTRUCT">
+		<obj-attribute name="childProdVerId" type="java.lang.Long" db-attribute-path="CHILDPRODVERID" note="ИД версии подчиненного продукта"/>
+		<obj-attribute name="discriminator" type="java.lang.Long" db-attribute-path="DISCRIMINATOR" note="Тип сущности"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODSTRUCTID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД"/>
+		<obj-attribute name="parentStructureId" type="java.lang.Long" db-attribute-path="PARENTSTRUCTID" note="ИД родительской структуры"/>
+		<obj-attribute name="productVersionId" type="java.lang.Long" db-attribute-path="PRODVERID" note="ИД версии продукта"/>
+		<obj-attribute name="startDateCalcMethod" type="java.lang.Long" db-attribute-path="SDCALCMETHOD" note="Правило определения даты начала - условие"/>
+		<obj-attribute name="startDateCalendarType" type="java.lang.Long" db-attribute-path="SDCALENDARTYPE" note="Правило определения даты начала - тип календаля"/>
+		<obj-attribute name="startDateLag" type="java.lang.Long" db-attribute-path="SDLAG" note="Правило определения даты начала - лаг"/>
+	</obj-entity>
+	<obj-entity name="B2BProductStructureObject" dbEntityName="B2B_PRODSTRUCT">
+		<obj-attribute name="discriminator" type="java.lang.Long" db-attribute-path="DISCRIMINATOR" note="Тип сущности"/>
+		<obj-attribute name="externalCode" type="java.lang.String" db-attribute-path="EXTERNALCODE" note="Внешний код структуры"/>
+		<obj-attribute name="hbDataVerId" type="java.lang.Long" db-attribute-path="HBDATAVERID" note="ИД версии данных справочника расш. атрибутов объекта структуры"/>
+		<obj-attribute name="hint" type="java.lang.String" db-attribute-path="HINT" note="Подсказка"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODSTRUCTID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование"/>
+		<obj-attribute name="parentStructureId" type="java.lang.Long" db-attribute-path="PARENTSTRUCTID" note="ИД родительской структуры"/>
+		<obj-attribute name="productVersionId" type="java.lang.Long" db-attribute-path="PRODVERID" note="ИД версии продукта"/>
+		<obj-attribute name="required" type="java.lang.Long" db-attribute-path="REQUIRED" note="Обязательный"/>
+		<obj-attribute name="startDateCalcMethod" type="java.lang.Long" db-attribute-path="SDCALCMETHOD" note="Правило определения даты начала - условие"/>
+		<obj-attribute name="startDateCalendarType" type="java.lang.Long" db-attribute-path="SDCALENDARTYPE" note="Правило определения даты начала - тип календаля"/>
+		<obj-attribute name="startDateLag" type="java.lang.Long" db-attribute-path="SDLAG" note="Правило определения даты начала - лаг"/>
+		<obj-attribute name="sysName" type="java.lang.String" db-attribute-path="SYSNAME" note="Псевдоним"/>
+	</obj-entity>
+	<obj-entity name="B2BProductStructureObjectGroup" dbEntityName="B2B_PRODSTRUCT">
+		<obj-attribute name="discriminator" type="java.lang.Long" db-attribute-path="DISCRIMINATOR" note="Тип сущности"/>
+		<obj-attribute name="externalCode" type="java.lang.String" db-attribute-path="EXTERNALCODE" note="Внешний код структуры"/>
+		<obj-attribute name="hbDataVerId" type="java.lang.Long" db-attribute-path="HBDATAVERID" note="ИД версии данных справочника расш. атрибутов объекта структуры"/>
+		<obj-attribute name="hint" type="java.lang.String" db-attribute-path="HINT" note="Подсказка"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODSTRUCTID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование"/>
+		<obj-attribute name="parentStructureId" type="java.lang.Long" db-attribute-path="PARENTSTRUCTID" note="ИД родительской структуры"/>
+		<obj-attribute name="productVersionId" type="java.lang.Long" db-attribute-path="PRODVERID" note="ИД версии продукта"/>
+		<obj-attribute name="repeated" type="java.lang.Long" db-attribute-path="REPEATED" note="Повторяется"/>
+		<obj-attribute name="required" type="java.lang.Long" db-attribute-path="REQUIRED" note="Обязательный"/>
+		<obj-attribute name="startDateCalcMethod" type="java.lang.Long" db-attribute-path="SDCALCMETHOD" note="Правило определения даты начала - условие"/>
+		<obj-attribute name="startDateCalendarType" type="java.lang.Long" db-attribute-path="SDCALENDARTYPE" note="Правило определения даты начала - тип календаля"/>
+		<obj-attribute name="startDateLag" type="java.lang.Long" db-attribute-path="SDLAG" note="Правило определения даты начала - лаг"/>
+		<obj-attribute name="sysName" type="java.lang.String" db-attribute-path="SYSNAME" note="Псевдоним"/>
+	</obj-entity>
+	<obj-entity name="B2BProductStructureOr" dbEntityName="B2B_PRODSTRUCT">
+		<obj-attribute name="discriminator" type="java.lang.Long" db-attribute-path="DISCRIMINATOR" note="Тип сущности"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODSTRUCTID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД"/>
+		<obj-attribute name="parentStructureId" type="java.lang.Long" db-attribute-path="PARENTSTRUCTID" note="ИД родительской структуры"/>
+		<obj-attribute name="productVersionId" type="java.lang.Long" db-attribute-path="PRODVERID" note="ИД версии продукта"/>
+	</obj-entity>
+	<obj-entity name="B2BProductStructureRisk" dbEntityName="B2B_PRODSTRUCT">
+		<obj-attribute name="discriminator" type="java.lang.Long" db-attribute-path="DISCRIMINATOR" note="Тип сущности"/>
+		<obj-attribute name="hbDataVerId" type="java.lang.Long" db-attribute-path="HBDATAVERID" note="ИД версии данных справочника расш. атрибутов объекта структуры"/>
+		<obj-attribute name="hint" type="java.lang.String" db-attribute-path="HINT" note="Подсказка"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODSTRUCTID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД"/>
+		<obj-attribute name="insCoverId" type="java.lang.Long" db-attribute-path="INSCOVERID" note="Страховое покрытие"/>
+		<obj-attribute name="insuranceKindId" type="java.lang.Long" db-attribute-path="INSKINDID" note="Вид страхования"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование"/>
+		<obj-attribute name="parentStructureId" type="java.lang.Long" db-attribute-path="PARENTSTRUCTID" note="ИД родительской структуры"/>
+		<obj-attribute name="required" type="java.lang.Long" db-attribute-path="REQUIRED" note="Обязательный"/>
+		<obj-attribute name="startDateCalcMethod" type="java.lang.Long" db-attribute-path="SDCALCMETHOD" note="Правило определения даты начала - условие"/>
+		<obj-attribute name="startDateCalendarType" type="java.lang.Long" db-attribute-path="SDCALENDARTYPE" note="Правило определения даты начала - тип календаля"/>
+		<obj-attribute name="startDateLag" type="java.lang.Long" db-attribute-path="SDLAG" note="Правило определения даты начала - лаг"/>
+		<obj-attribute name="sysName" type="java.lang.String" db-attribute-path="SYSNAME" note="Псевдоним"/>
+	</obj-entity>
+	<obj-entity name="B2BProductStructureSection" dbEntityName="B2B_PRODSTRUCT">
+		<obj-attribute name="discriminator" type="java.lang.Long" db-attribute-path="DISCRIMINATOR" note="Тип сущности"/>
+		<obj-attribute name="externalCode" type="java.lang.String" db-attribute-path="EXTERNALCODE" note="Внешний код структуры"/>
+		<obj-attribute name="hbDataVerId" type="java.lang.Long" db-attribute-path="HBDATAVERID" note="ИД версии данных справочника расш. атрибутов секции"/>
+		<obj-attribute name="hint" type="java.lang.String" db-attribute-path="HINT" note="Подсказка"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODSTRUCTID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование"/>
+		<obj-attribute name="productVersionId" type="java.lang.Long" db-attribute-path="PRODVERID" note="ИД версии продукта"/>
+		<obj-attribute name="repeated" type="java.lang.Long" db-attribute-path="REPEATED" note="Повторяется"/>
+		<obj-attribute name="required" type="java.lang.Long" db-attribute-path="REQUIRED" note="Обязательный"/>
+		<obj-attribute name="startDateCalcMethod" type="java.lang.Long" db-attribute-path="SDCALCMETHOD" note="Правило определения даты начала - условие"/>
+		<obj-attribute name="startDateCalendarType" type="java.lang.Long" db-attribute-path="SDCALENDARTYPE" note="Правило определения даты начала - тип календаля"/>
+		<obj-attribute name="startDateLag" type="java.lang.Long" db-attribute-path="SDLAG" note="Правило определения даты начала - лаг"/>
+		<obj-attribute name="sysName" type="java.lang.String" db-attribute-path="SYSNAME" note="Псевдоним"/>
+	</obj-entity>
+	<obj-entity name="B2BProductTerm" dbEntityName="B2B_PRODTERM">
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODTERMID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД записи"/>
+		<obj-attribute name="productConfigId" type="java.lang.Long" db-attribute-path="PRODCONFID" note="ИД конфигурации продукта"/>
+		<obj-attribute name="termId" type="java.lang.Long" db-attribute-path="TERMID" note="ИД срока"/>
+	</obj-entity>
+	<obj-entity name="B2BProductValue" dbEntityName="B2B_PRODVALUE">
+		<obj-attribute name="addAgrCauseId" type="java.lang.Long" db-attribute-path="ADDAGRCAUSEID" note="Ид типа причины по ДОПСУ"/>
+		<obj-attribute name="dataTypeId" type="java.lang.Long" db-attribute-path="DATATYPEID" note="ИД типа данных"/>
+		<obj-attribute name="dataTypeStr" type="java.lang.String" db-attribute-path="DATATYPESTR" note="Строка типа данных"/>
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="DESCR" note="Примечание"/>
+		<obj-attribute name="discriminator" type="java.lang.Long" db-attribute-path="DISCRIMINATOR" note="Тип сущности"/>
+		<obj-attribute name="formula" type="java.lang.String" db-attribute-path="FORMULA" note="Формула"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODVALUEID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД"/>
+		<obj-attribute name="isHandbook" type="java.lang.Long" db-attribute-path="ISHANDBOOK" note="Признак формирования справочника"/>
+		<obj-attribute name="kindId" type="java.lang.Long" db-attribute-path="KINDID" note="ИД вида"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование показателя"/>
+		<obj-attribute name="productConfigId" type="java.lang.Long" db-attribute-path="PRODCONFID" note="ИД конфигурации продукта"/>
+		<obj-attribute name="productDamageCategoryId" type="java.lang.Long" db-attribute-path="PRODDAMAGECATID" note="Ид категории ущерба по убытку"/>
+		<obj-attribute name="productStructureId" type="java.lang.Long" db-attribute-path="PRODSTRUCTID" note="ИД структуры продукта"/>
+		<obj-attribute name="valueGroupId" type="java.lang.Long" db-attribute-path="VALGROUPID" note="ИД группы"/>
+	</obj-entity>
+	<obj-entity name="B2BProductValueAddAgrCause" dbEntityName="B2B_PRODVALUE">
+		<obj-attribute name="addAgrCauseId" type="java.lang.Long" db-attribute-path="ADDAGRCAUSEID" note="Ид типа причины по ДОПСУ"/>
+		<obj-attribute name="dataTypeId" type="java.lang.Long" db-attribute-path="DATATYPEID" note="ИД типа данных"/>
+		<obj-attribute name="dataTypeStr" type="java.lang.String" db-attribute-path="DATATYPESTR" note="Строка типа данных"/>
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="DESCR" note="Примечание"/>
+		<obj-attribute name="discriminator" type="java.lang.Long" db-attribute-path="DISCRIMINATOR" note="Тип сущности"/>
+		<obj-attribute name="formula" type="java.lang.String" db-attribute-path="FORMULA" note="Формула"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODVALUEID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД"/>
+		<obj-attribute name="isHandbook" type="java.lang.Long" db-attribute-path="ISHANDBOOK" note="Признак формирования справочника"/>
+		<obj-attribute name="kindId" type="java.lang.Long" db-attribute-path="KINDID" note="ИД вида"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование показателя"/>
+		<obj-attribute name="valueGroupId" type="java.lang.Long" db-attribute-path="VALGROUPID" note="ИД группы"/>
+	</obj-entity>
+	<obj-entity name="B2BProductValueBase" dbEntityName="B2B_PRODVALUE">
+		<obj-attribute name="addAgrCauseId" type="java.lang.Long" db-attribute-path="ADDAGRCAUSEID" note="Ид типа причины по ДОПСУ"/>
+		<obj-attribute name="dataTypeId" type="java.lang.Long" db-attribute-path="DATATYPEID" note="ИД типа данных"/>
+		<obj-attribute name="dataTypeStr" type="java.lang.String" db-attribute-path="DATATYPESTR" note="Строка типа данных"/>
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="DESCR" note="Примечание"/>
+		<obj-attribute name="discriminator" type="java.lang.Long" db-attribute-path="DISCRIMINATOR" note="Тип сущности"/>
+		<obj-attribute name="formula" type="java.lang.String" db-attribute-path="FORMULA" note="Формула"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODVALUEID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД"/>
+		<obj-attribute name="isHandbook" type="java.lang.Long" db-attribute-path="ISHANDBOOK" note="Признак формирования справочника"/>
+		<obj-attribute name="kindId" type="java.lang.Long" db-attribute-path="KINDID" note="ИД вида"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование показателя"/>
+		<obj-attribute name="productConfigId" type="java.lang.Long" db-attribute-path="PRODCONFID" note="ИД конфигурации продукта"/>
+		<obj-attribute name="productDamageCategoryId" type="java.lang.Long" db-attribute-path="PRODDAMAGECATID" note="Ид категории ущерба по убытку"/>
+		<obj-attribute name="productStructureId" type="java.lang.Long" db-attribute-path="PRODSTRUCTID" note="ИД структуры продукта"/>
+		<obj-attribute name="valueGroupId" type="java.lang.Long" db-attribute-path="VALGROUPID" note="ИД группы"/>
+	</obj-entity>
+	<obj-entity name="B2BProductValueDamageCategory" dbEntityName="B2B_PRODVALUE">
+		<obj-attribute name="dataTypeId" type="java.lang.Long" db-attribute-path="DATATYPEID" note="ИД типа данных"/>
+		<obj-attribute name="dataTypeStr" type="java.lang.String" db-attribute-path="DATATYPESTR" note="Строка типа данных"/>
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="DESCR" note="Примечание"/>
+		<obj-attribute name="discriminator" type="java.lang.Long" db-attribute-path="DISCRIMINATOR" note="Тип сущности"/>
+		<obj-attribute name="formula" type="java.lang.String" db-attribute-path="FORMULA" note="Формула"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODVALUEID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД"/>
+		<obj-attribute name="isHandbook" type="java.lang.Long" db-attribute-path="ISHANDBOOK" note="Признак формирования справочника"/>
+		<obj-attribute name="kindId" type="java.lang.Long" db-attribute-path="KINDID" note="ИД вида"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование показателя"/>
+		<obj-attribute name="productDamageCategoryId" type="java.lang.Long" db-attribute-path="PRODDAMAGECATID" note="Ид категории ущерба по убытку"/>
+		<obj-attribute name="valueGroupId" type="java.lang.Long" db-attribute-path="VALGROUPID" note="ИД группы"/>
+	</obj-entity>
+	<obj-entity name="B2BProductValueStructure" dbEntityName="B2B_PRODVALUE">
+		<obj-attribute name="dataTypeId" type="java.lang.Long" db-attribute-path="DATATYPEID" note="ИД типа данных"/>
+		<obj-attribute name="dataTypeStr" type="java.lang.String" db-attribute-path="DATATYPESTR" note="Строка типа данных"/>
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="DESCR" note="Примечание"/>
+		<obj-attribute name="discriminator" type="java.lang.Long" db-attribute-path="DISCRIMINATOR" note="Тип сущности"/>
+		<obj-attribute name="formula" type="java.lang.String" db-attribute-path="FORMULA" note="Формула"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODVALUEID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД"/>
+		<obj-attribute name="isHandbook" type="java.lang.Long" db-attribute-path="ISHANDBOOK" note="Признак формирования справочника"/>
+		<obj-attribute name="kindId" type="java.lang.Long" db-attribute-path="KINDID" note="ИД вида"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование показателя"/>
+		<obj-attribute name="productStructureId" type="java.lang.Long" db-attribute-path="PRODSTRUCTID" note="ИД структуры продукта"/>
+		<obj-attribute name="valueGroupId" type="java.lang.Long" db-attribute-path="VALGROUPID" note="ИД группы"/>
+	</obj-entity>
+	<obj-entity name="B2BProductVersion" dbEntityName="B2B_PRODVER">
+		<obj-attribute name="createDate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания"/>
+		<obj-attribute name="createUserId" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="ИД создавшего пользователя"/>
+		<obj-attribute name="exploitationFinishDate" type="java.math.BigDecimal" db-attribute-path="EXPLFINISHDATE" note="Конечная дата эксплуатации"/>
+		<obj-attribute name="exploitationStartDate" type="java.math.BigDecimal" db-attribute-path="EXPLSTARTDATE" note="Начальная дата эксплуатации"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="PRODVERID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД версии продукта"/>
+		<obj-attribute name="imagePath" type="java.lang.String" db-attribute-path="IMGPATH" note="Путь к картинке версии"/>
+		<obj-attribute name="javascriptPath" type="java.lang.String" db-attribute-path="JSPATH" note="Путь к стартовой JS"/>
+		<obj-attribute name="logotype" type="java.lang.String" db-attribute-path="LOGOTYPE" note="Логотип"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование"/>
+		<obj-attribute name="note" type="java.lang.String" db-attribute-path="NOTE" note="Примечание"/>
+		<obj-attribute name="productCode" type="java.lang.String" db-attribute-path="PRODCODE" note="Код продукта"/>
+		<obj-attribute name="productId" type="java.lang.Long" db-attribute-path="PRODID" requiredCreate="true" requiredInsert="true" note="ИД продукта"/>
+		<obj-attribute name="stateId" type="java.lang.Long" db-attribute-path="STATEID" note="ИД состояния продукта"/>
+		<obj-attribute name="updateDate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата изменения"/>
+		<obj-attribute name="updateUserId" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="ИД пользователя, изменившего запись"/>
+		<obj-attribute name="lkVisible" type="java.lang.Long" db-attribute-path="LKVISIBLE" note="Видимость ЛК"/>
+	</obj-entity>
+	<obj-entity name="B2BReport" dbEntityName="B2B_REP">
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="REPID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД отчета"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" requiredCreate="true" requiredInsert="true" note="Наименование отчета"/>
+		<obj-attribute name="templateName" type="java.lang.String" db-attribute-path="TEMPLATENAME" note="Наименование шаблона"/>
+	</obj-entity>
+	<obj-entity name="B2BTerm" dbEntityName="B2B_TERM">
+		<obj-attribute name="dayCount" type="java.lang.Long" db-attribute-path="DAYCOUNT" note="Количество дней"/>
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="TERMID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД записи"/>
+		<obj-attribute name="monthCount" type="java.lang.Long" db-attribute-path="MONTHCOUNT" note="Количество месяцев"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME" note="Наименование"/>
+		<obj-attribute name="sysName" type="java.lang.String" db-attribute-path="SYSNAME" note="Системное наименование"/>
+		<obj-attribute name="yearCount" type="java.lang.Long" db-attribute-path="YEARCOUNT" note="Количество лет"/>
+	</obj-entity>
+<obj-entity name="B2BInvestBaseActive" dbEntityName="B2B_INVBASEACTIVE">	
+	<obj-attribute name="IvestBaseActiveID" type="java.lang.Long" db-attribute-path="INVBASEACTIVEID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД базового актива"/>
+	<obj-attribute name="Name" type="java.lang.String" db-attribute-path="NAME" note="Наименование"/>
+	<obj-attribute name="SysName" type="java.lang.String" db-attribute-path="SYSNAME" note="Системное наименование"/>
+	<obj-attribute name="Code" type="java.lang.String" db-attribute-path="CODE" note="Код"/>
+	<obj-attribute name="Note" type="java.lang.String" db-attribute-path="NOTE" note="Примечание"/>
+	<obj-attribute name="IsSeveralTickers" type="java.lang.Long" db-attribute-path="ISSEVERALTICKERS" note="Флаг  несколько тикеров"/>
+	<obj-attribute name="IsNotUse" type="java.lang.Long" db-attribute-path="ISNOTUSE" note="Флаг не используется"/>
+</obj-entity>	
+<obj-entity name="B2BInvestStrategy" dbEntityName="B2B_INVESTSTRATEGY">	
+	<obj-attribute name="InvestStrategyID" type="java.lang.Long" db-attribute-path="INVESTSTRATEGYID" requiredInsert="true" requiredUpdate="true" requiredDelete="true" note="ИД инвестиционной стратегии"/>
+	<obj-attribute name="Name" type="java.lang.String" db-attribute-path="NAME" note="Наименование"/>
+	<obj-attribute name="SysName" type="java.lang.String" db-attribute-path="SYSNAME" note="Системное наименование"/>
+	<obj-attribute name="Code" type="java.lang.String" db-attribute-path="CODE" note="Код"/>
+	<obj-attribute name="Note" type="java.lang.String" db-attribute-path="NOTE" note="Примечание"/>
+	<obj-attribute name="CurrencyID" type="java.lang.Long" db-attribute-path="CURRENCYID" note="ИД валюты"/>
+	<obj-attribute name="TermID" type="java.lang.Long" db-attribute-path="TERMID" note="ИД срока страхования"/>
+	<obj-attribute name="TermYearCount" type="java.lang.Long" db-attribute-path="TERMYEARCOUNT" note="Количество лет срока страхования"/>
+	<obj-attribute name="InvestBaseActiveID" type="java.lang.Long" db-attribute-path="INVBASEACTIVEID" note="ИД базового актива"/>
+	<obj-attribute name="Rate" type="java.lang.Double" db-attribute-path="RATE" note="Размер купона"/>
+	<obj-attribute name="MinimumAmountValue" type="java.lang.Double" db-attribute-path="MINAMVALUE" note="Минимальная страховая сумма"/>
+	<obj-attribute name="MaximumAmountValue" type="java.lang.Double" db-attribute-path="MAXAMVALUE" note="Максимальная страховая сумма"/>
+	<obj-attribute name="isForSale" type="java.lang.Long" db-attribute-path="ISFORSALE" note="Флаг купона для продажи"/>
+	<obj-attribute name="isForPPO" type="java.lang.Long" db-attribute-path="ISFORPPO" note="Флаг купона для ППО"/>
+	<obj-attribute name="CreateDate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания записи"/>
+	<obj-attribute name="CreateUserID" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="ИД пользователя, создавшего запись"/>
+	<obj-attribute name="UpdateDate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата изменения записи"/>
+	<obj-attribute name="UpdateUserID" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="ИД пользователя изменившего запись"/>
+</obj-entity>	
+<obj-entity name="B2BInvestBaseActiveTicker" dbEntityName="B2B_INVBATICKER">	
+	<obj-attribute name="ID" type="java.lang.Long" db-attribute-path="INVBATICKERID" requiredInsert="true" requiredUpdate="true" requiredDelete="true"  note="ИД связи базового актива с тикером"/>
+	<obj-attribute name="InvestBaseActiveId" type="java.lang.Long" db-attribute-path="INVBASEACTIVEID" note="ИД базового актива"/>
+	<obj-attribute name="InvestTickerId" type="java.lang.Long" db-attribute-path="INVTICKERID" note="ИД тикера"/>
+</obj-entity>	
+<obj-entity name="B2BInvestTicker" dbEntityName="B2B_INVTICKER">	
+	<obj-attribute name="InvestTickerId" type="java.lang.Long" db-attribute-path="INVTICKERID" requiredInsert="true" requiredUpdate="true" requiredDelete="true"  note="ИД тикера"/>
+	<obj-attribute name="Name" type="java.lang.String" db-attribute-path="NAME" note="Наименование тикера"/>
+	<obj-attribute name="SysName" type="java.lang.String" db-attribute-path="SYSNAME" note="Системное наименование тикера"/>
+	<obj-attribute name="Code" type="java.lang.String" db-attribute-path="CODE" note="Код тикера"/>
+	<obj-attribute name="BriefName" type="java.lang.String" db-attribute-path="BRIEFNAME" note="Сокращенное наименование"/>
+	<obj-attribute name="StockExchangeName" type="java.lang.String" db-attribute-path="STOCKEXCHNAME" note="Биржа"/>
+</obj-entity>	
+<obj-entity name="B2BInvestStrategyGroup" dbEntityName="B2B_INVSTRATGROUP">	
+	<obj-attribute name="ID" type="java.lang.Long" db-attribute-path="INVSTRATGROUPID" requiredInsert="true" requiredUpdate="true" requiredDelete="true"  note="ид группы инвестиционных стратегий"/>
+	<obj-attribute name="Name" type="java.lang.String" db-attribute-path="NAME" note="наименование"/>
+	<obj-attribute name="SysName" type="java.lang.String" db-attribute-path="SYSNAME" note="системное наименование"/>
+	<obj-attribute name="Code" type="java.lang.String" db-attribute-path="CODE" note="код"/>
+	<obj-attribute name="Note" type="java.lang.String" db-attribute-path="NOTE" note="примечание"/>
+</obj-entity>	
+<obj-entity name="B2BInvestStrategyGroupLink" dbEntityName="B2B_INVSTRATGROUPLINK">	
+	<obj-attribute name="ID" type="java.lang.Long" db-attribute-path="INVSTRATGROUPLINKID" requiredInsert="true" requiredUpdate="true" requiredDelete="true"  note="ИД связи"/>
+	<obj-attribute name="InvestStrategyGroupId" type="java.lang.Long" db-attribute-path="INVSTRATGROUPID" note="ИД группы стратегий"/>
+	<obj-attribute name="InvestStrategyId" type="java.lang.Long" db-attribute-path="INVESTSTRATEGYID" note="ИД стратегии"/>
+</obj-entity>	
+<obj-entity name="B2BProductInvestBase" dbEntityName="B2B_PRODINVEST">	
+	<obj-attribute name="ID" type="java.lang.Long" db-attribute-path="PRODINVESTID" requiredInsert="true" requiredUpdate="true" requiredDelete="true"  note="ИД связи стратегии с продуктом"/>
+	<obj-attribute name="ProductConfigId" type="java.lang.Long" db-attribute-path="PRODCONFID" note="ИД конфигурации продукта"/>
+	<obj-attribute name="InvestStrategyId" type="java.lang.Long" db-attribute-path="INVESTSTRATEGYID" note="ИД стратегии"/>
+	<obj-attribute name="InvestStragetyGroupId" type="java.lang.Long" db-attribute-path="INVESTGROUPID" note="ИД группы стратегий"/>
+	<obj-attribute name="StartDate" type="java.math.BigDecimal" db-attribute-path="STARTDATE" note="Дата начала действия"/>
+	<obj-attribute name="FinishDate" type="java.math.BigDecimal" db-attribute-path="FINISHDATE" note="Дата окончания действия"/>
+	<obj-attribute name="Discriminator" type="java.lang.Long" db-attribute-path="DISCRIMINATOR" note="Тип сущности"/>
+	<obj-attribute name="CreateDate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания записи"/>
+	<obj-attribute name="CreateUserID" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="ИД пользователя, создавшего запись"/>
+	<obj-attribute name="UpdateDate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата изменения записи"/>
+	<obj-attribute name="UpdateUserID" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="ИД пользователя изменившего запись"/>
+</obj-entity>	
+<obj-entity name="B2BProductInvest" dbEntityName="B2B_PRODINVEST">	
+	<obj-attribute name="ID" type="java.lang.Long" db-attribute-path="PRODINVESTID" requiredInsert="true" requiredUpdate="true" requiredDelete="true"  note="ИД связи стратегии с продуктом"/>
+	<obj-attribute name="ProductConfigId" type="java.lang.Long" db-attribute-path="PRODCONFID" note="ИД конфигурации продукта"/>
+	<obj-attribute name="InvestStrategyId" type="java.lang.Long" db-attribute-path="INVESTSTRATEGYID" note="ИД стратегии"/>
+	<obj-attribute name="StartDate" type="java.math.BigDecimal" db-attribute-path="STARTDATE" note="Дата начала действия"/>
+	<obj-attribute name="FinishDate" type="java.math.BigDecimal" db-attribute-path="FINISHDATE" note="Дата окончания действия"/>
+	<obj-attribute name="Discriminator" type="java.lang.Long" db-attribute-path="DISCRIMINATOR" note="Тип сущности"/>
+	<obj-attribute name="CreateDate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания записи"/>
+	<obj-attribute name="CreateUserID" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="ИД пользователя, создавшего запись"/>
+	<obj-attribute name="UpdateDate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата изменения записи"/>
+	<obj-attribute name="UpdateUserID" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="ИД пользователя изменившего запись"/>
+</obj-entity>	
+<obj-entity name="B2BProductInvestGroup" dbEntityName="B2B_PRODINVEST">	
+	<obj-attribute name="ID" type="java.lang.Long" db-attribute-path="PRODINVESTID" requiredInsert="true" requiredUpdate="true" requiredDelete="true"  note="ИД связи стратегии с продуктом"/>
+	<obj-attribute name="ProductConfigId" type="java.lang.Long" db-attribute-path="PRODCONFID" note="ИД конфигурации продукта"/>
+	<obj-attribute name="InvestStragetyGroupId" type="java.lang.Long" db-attribute-path="INVESTGROUPID" note="ИД группы стратегий"/>
+	<obj-attribute name="StartDate" type="java.math.BigDecimal" db-attribute-path="STARTDATE" note="Дата начала действия"/>
+	<obj-attribute name="FinishDate" type="java.math.BigDecimal" db-attribute-path="FINISHDATE" note="Дата окончания действия"/>
+	<obj-attribute name="Discriminator" type="java.lang.Long" db-attribute-path="DISCRIMINATOR" note="Тип сущности"/>
+	<obj-attribute name="CreateDate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания записи"/>
+	<obj-attribute name="CreateUserID" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="ИД пользователя, создавшего запись"/>
+	<obj-attribute name="UpdateDate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата изменения записи"/>
+	<obj-attribute name="UpdateUserID" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="ИД пользователя изменившего запись"/>
+</obj-entity>	
+<obj-entity name="B2BProductRedemptionAmount" dbEntityName="B2B_PRODREDEMPTIONAMOUNT">	
+	<obj-attribute name="RedemptionAmountId" type="java.lang.Long" db-attribute-path="REDEMPTIONAMOUNTID" requiredInsert="true" requiredUpdate="true" requiredDelete="true"  note="ИД Выкупной суммы"/>
+	<obj-attribute name="ProductConfigId" type="java.lang.Long" db-attribute-path="PRODCONFID" note="Ссылка на конфигурацию продукта"/>
+	<obj-attribute name="Year" type="java.lang.Long" db-attribute-path="YEAR" note="Номер года"/>
+	<obj-attribute name="ProductPaymentVariantId" type="java.lang.Long" db-attribute-path="PRODPAYVARID" note="Периодичность оплаты"/>
+	<obj-attribute name="ProductInvestId" type="java.lang.Long" db-attribute-path="PRODINVESTID" note="Ссылка на инвестиционную стратегию по продукту"/>
+	<obj-attribute name="ProductTermId" type="java.lang.Long" db-attribute-path="PRODTERMID" note="Срок страхования по продукту"/>
+	<obj-attribute name="ProductInsAmountCurrencyId" type="java.lang.Long" db-attribute-path="PRODINSAMCURID" note="Валюта"/>
+	<obj-attribute name="AssuranceLevelIncreased" type="java.lang.Long" db-attribute-path="ASSURLEVEL" note="Флаг повышенный уровень гарантий"/>
+	<obj-attribute name="Percent" type="java.lang.Double" db-attribute-path="PERCENT" note="Коэффициент ВС"/>
+	<obj-attribute name="CreateDate" type="java.math.BigDecimal" db-attribute-path="CREATEDATE" note="Дата создания записи"/>
+	<obj-attribute name="CreateUserId" type="java.lang.Long" db-attribute-path="CREATEUSERID" note="ИД пользователя изменившего запись"/>
+	<obj-attribute name="UpdateDate" type="java.math.BigDecimal" db-attribute-path="UPDATEDATE" note="Дата изменения записи"/>
+	<obj-attribute name="UpdateUserId" type="java.lang.Long" db-attribute-path="UPDATEUSERID" note="ИД пользователя изменившего запись"/>
+</obj-entity>	
+</data-map>

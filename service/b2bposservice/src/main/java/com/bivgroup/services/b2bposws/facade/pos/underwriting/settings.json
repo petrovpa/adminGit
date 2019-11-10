@@ -1,0 +1,76 @@
+{
+  "obj": {
+    "USERPARAM": {
+      "journal": {
+        "QUESTIONNAIRELIST-1.1": {
+          "T": {
+            "DECLARATIONNUMBER": {
+              "TYPESYSNAME": "string",
+              "isEnable": false,
+              "tableAlias": "T",
+              "type": "like",
+              "value": "040404"
+            },
+            "STATEID": {
+              "TYPESYSNAME": "handbook",
+              "isEnable": true,
+              "tableAlias": "T",
+              "type": "in",
+              "value": "9001"
+            }
+          },
+          "T1": {},
+          "T2": {},
+          "T3": {},
+          "T4": {},
+          "T5": {},
+          "T52": {},
+          "T53": {},
+          "T6": {},
+          "T72": {},
+          "PROD": {
+            "NAME": {
+              "TYPESYSNAME": "string",
+              "isEnable": false,
+              "tableAlias": "PROD",
+              "type": "like",
+              "value": "Смартполис"
+            }
+          },
+          "undefined": {
+            "CONCAT(T.LASTNAME, CONCAT(' ', CONCAT(T.FIRSTNAME, CONCAT(' ', T.PATRONYMIC))))": {
+              "TYPESYSNAME": "string",
+              "isEnable": false,
+              "type": "like",
+              "value": "Панченко"
+            }
+          },
+          "SPECIAL": {
+            "FILLDATE": {
+              "TYPESYSNAME": "date",
+              "isEnable": false,
+              "tableAlias": "SPECIAL",
+              "type": "between",
+              "valueStartTime": "00:00",
+              "valueFinishTime": "23:59",
+              "valueDateTime": "00:00",
+              "valueStart": "28.12.2017",
+              "valueFinish": "28.12.2017",
+              "value": "09.01.2018"
+            }
+          },
+          "prog": {
+            "PRODPROGID": {
+              "TYPESYSNAME": "handbook",
+              "isEnable": false,
+              "tableAlias": "prog",
+              "type": "in",
+              "value": "218002"
+            }
+          }
+        }
+      }
+    },
+    "sessionid": "e8Ds0vUNppmT3beos9GZWaMw1ZeXoDI9joIdDOi5rM8fsmxk2vyOb2OM%2BeBO31ZTDyohSZTyfEL9F9bwc9j%2FgF56bKtxJbtCoZCmDmWrcDCmz3TwL4YeNBxHxrdfBPlSoFHvEAeB9Qw%3D"
+  }
+}

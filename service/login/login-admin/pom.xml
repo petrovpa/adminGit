@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.bivgroup.service.login</groupId>
+        <artifactId>login</artifactId>
+        <version>1.00.00</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.bivgroup.service.login.admin</groupId>
+    <artifactId>login-admin</artifactId>
+    <version>${login-admin.version}</version>
+    <packaging>jar</packaging>
+    <name>login-admin</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.bivgroup.service.login.base</groupId>
+            <artifactId>login-base</artifactId>
+            <version>${login-base.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jaxrs</artifactId>
+            <version>3.0.14.Final</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+</project>

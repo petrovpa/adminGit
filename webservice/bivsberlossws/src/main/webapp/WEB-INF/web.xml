@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+    <description>BIVGroup bivsberlossws Web Service</description>
+    <display-name>bivsberlossws</display-name>
+    <session-config>
+        <session-timeout>60</session-timeout>
+    </session-config>
+    <!-- Auto scan REST service -->
+    <context-param>
+        <param-name>resteasy.scan</param-name>
+        <param-value>false</param-value>
+    </context-param>
+    
+    <context-param>
+        <param-name>resteasy.resources</param-name>
+        <param-value>ru.diasoft.services.bivsberlossws.BoxPropertyGate</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>resteasy.providers</param-name>
+        <param-value>com.bivgroup.core.audit.rest.AuditBindingFilter</param-value>
+    </context-param>
+     
+    <servlet>
+        <servlet-name>resteasy-servlet</servlet-name>
+        <servlet-class>
+            org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher
+        </servlet-class>
+    </servlet>
+  
+    <servlet-mapping>
+        <servlet-name>resteasy-servlet</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
+
+    <!--file servlet-->
+    <servlet>
+        <servlet-name>fileServlet</servlet-name>
+        <servlet-class>net.balusc.webapp.FileServlet</servlet-class>
+        <init-param>
+            <param-name>basePath</param-name>
+            <param-value>/home/mvolkov/hg/1/bivsberfront/AngularJS/BIVHABSBER/app</param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <description>BIVGroup fileUpload Web Service</description>
+        <display-name>B2BFILEUPLOAD</display-name>
+        <servlet-name>B2BFILEUPLOAD</servlet-name>
+        <servlet-class>ru.diasoft.services.bivsberlossws.B2BFileUpLoadServlet</servlet-class>
+        <init-param>
+            <param-name>servletClassName</param-name>
+            <param-value>ru.diasoft.services.bivsberlossws.B2BFileUpLoadServle</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>B2BFILEUPLOAD</servlet-name>
+        <url-pattern>/b2bfileupload</url-pattern>
+    </servlet-mapping>    
+    <servlet-mapping>
+        <servlet-name>fileServlet</servlet-name>
+        <url-pattern>/html/*</url-pattern>
+    </servlet-mapping>
+
+    <!--zip servlet-->
+
+    <servlet>
+        <description>BIVGroup zipfileUpload Web Service</description>
+        <display-name>B2BZIPFILEUPLOAD</display-name>
+        <servlet-name>B2BZIPFILEUPLOAD</servlet-name>
+        <servlet-class>ru.diasoft.services.bivsberlossws.B2BZipFileUploadServlet</servlet-class>
+        <init-param>
+            <param-name>servletClassName</param-name>
+            <param-value>ru.diasoft.services.bivsberlossws.B2BZipFileUploadServlet</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>B2BZIPFILEUPLOAD</servlet-name>
+        <url-pattern>/b2bzipfileupload</url-pattern>
+    </servlet-mapping>
+
+    <!--www servlet-->
+    <servlet>
+        <description>BIVGroup WWW Files Web Service</description>
+        <display-name>WWWFILES</display-name>
+        <servlet-name>WWWFILES</servlet-name>
+        <servlet-class>ru.diasoft.services.bivsberlossws.WWWFilesServlet</servlet-class>
+        <init-param>
+            <param-name>servletClassName</param-name>
+            <param-value>ru.diasoft.services.bivsberlossws.WWWFilesServlet</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>WWWFILES</servlet-name>
+        <url-pattern>/wwwfiles</url-pattern>
+    </servlet-mapping>
+
+</web-app>

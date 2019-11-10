@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data-map project-version="2.0">
+    <obj-entity name="B2B_SUBSYSTEM" dbEntityName="B2B_SUBSYSTEM">
+        <obj-attribute name="SUBSYSTEMID" type="java.lang.Long" db-attribute-path="SUBSYSTEMID" requiredCreate="true" requiredInsert="true" note="ИД подсистемы"/>
+        <obj-attribute name="NAME" type="java.lang.String" db-attribute-path="NAME" note="Имя подсистемы"/>
+        <obj-attribute name="SYSNAME" type="java.lang.String" db-attribute-path="NAME" note="Системное имя подсистемы"/>
+        <obj-attribute name="EXTERNALID" type="java.lang.String" db-attribute-path="EXTERNALID" note="Внешний идентификатор подсистемы"/>
+    </obj-entity>
+
+    <query name="b2bSubSystemByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2bSubSystemCustom" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT $NEEDDISTINCT
+                    #result('T.SUBSYSTEMID', 'java.lang.Long', 'SUBSYSTEMID'),
+                    #result('T.NAME', 'java.lang.String', 'NAME'),
+                    #result('T.SYSNAME', 'java.lang.String', 'SYSNAME'),
+                    #result('T.HBDATAVERID', 'java.lang.Long', 'HBDATAVERID'),
+                    #result('T.EXTERNALID', 'java.lang.String', 'EXTERNALID')
+                   $ASPECTFIELDS
+                FROM B2B_SUBSYSTEM T
+                $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                    #chunk($SUBSYSTEMID) T.SUBSYSTEMID = #bind($SUBSYSTEMID 'NUMERIC') #end
+                    #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end
+                    #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end
+                    #chunk($EXTERNALID) T.EXTERNALID = #bind($EXTERNALID 'VARCHAR') #end
+                    $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+    <query name="b2bSubSystemByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2bSubSystemCustom" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT
+                    #result('COUNT($NEEDDISTINCT T.SUBSYSTEMID)', 'java.lang.Long', 'CNT')
+                FROM B2B_SUBSYSTEM T
+                $ASPECTTABLES
+                #chain('AND' 'WHERE')
+                       #chunk($SUBSYSTEMID) T.SUBSYSTEMID = #bind($SUBSYSTEMID 'NUMERIC') #end
+                       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end
+                       #chunk($SYSNAME) T.SYSNAME = #bind($SYSNAME 'VARCHAR') #end
+                       #chunk($EXTERNALID) T.EXTERNALID = #bind($EXTERNALID 'VARCHAR') #end
+                       $ASPECTRESTRICTION
+                #end
+            ]]>
+        </sql>
+    </query>
+
+</data-map>

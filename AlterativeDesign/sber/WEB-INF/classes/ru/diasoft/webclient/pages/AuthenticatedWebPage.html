@@ -1,0 +1,120 @@
+<wicket:extend>
+<table border=0 width=100% height=100% cellpadding=0 cellspacing=0>
+    <tr height=0>
+        <td>
+            <div class="hide"> 
+            <span wicket:id="mainMenuHeader"/>
+            </div> 
+        </td>
+    </tr>
+    <tr>
+        <td>
+
+            <div class="hide"> 
+            <!-- Header -->
+            <table cellspacing=0 cellpadding=0 height=94 border=0 wicket:id="ribbonPanel">
+                <tr>
+                    <td colspan=6 height=3 background="/webclient/img/headerPanelTopLineBG.png"><img
+                            src="/webclient/img/1tr.gif" width=1 height=3 border=0></td>
+                </tr>
+                <tr height=88>
+                    <td width=6><img src="/webclient/img/headerPanelLeft.png" width=6 height=88 border=0></td>
+                    <td width=99 background="/webclient/img/headerPanelBG.png">
+                        <span wicket:id="mainMenuRibbon"/>
+                    </td>
+                    <td width=6><img src="/webclient/img/headerPanelRight.png" width=6 height=88 border=0></td>
+                    <td width=6><img src="/webclient/img/headerPanelLeft.png" width=6 height=88 border=0></td>
+                    <td width=100% background="/webclient/img/headerPanelBG.png">
+
+
+                        <table cellspacing=0 cellpadding=0 align=right border=0>
+                            <tr>
+                                <td><img wicket:id="logo" width=237 height=59 border=0></td>
+                                <td width=6><img src="/webclient/img/1tr.gif" width=6 height=1 border=0></td>
+                            </tr>
+                        </table>
+
+
+                    </td>
+                    <td width=6><img src="/webclient/img/headerPanelRight.png" width=6 height=88 border=0></td>
+                </tr>
+                <tr>
+                    <td colspan=6 height=3 background="/webclient/img/headerPanelBottomLineBG.png"><img
+                            src="/webclient/img/1tr.gif" width=1 height=3 border=0></td>
+                </tr>
+            </table>
+            <!-- Header -->
+            </div> 
+
+        </td>
+    </tr>
+    <tr height=100%>
+        <td>
+            <table border=1 width=100% height=100% cellpadding=0 cellspacing=0 class=body_tbl>
+                <tr valign=top>
+                    <td width=200 class=lft_mnu id="lmTD">
+                        <table height=100% cellspacing=10 cellpadding=0 align=right border=0>
+                            <tr height=65>
+                                <td>
+                                <img src="/webclient/img/Vert_SB_INS_V_4CO.PNG" width=200 height=145 border=0>
+                                </td>
+                            </tr>
+                            <tr height=100% valign=top>
+                                <td valign=top>
+                                <img src="/webclient/img/1tr.gif" width=1 height=1 class=lft_mnu>
+                                <span wicket:id="mainMenu"/><br/>
+                                </td>
+                            </tr>
+<!--                            <tr height=50>-->
+<!--                                <td valign=bottom align=center>-->
+<!--                                <img src="/webclient/img/logo_sber.gif" width=100 height=23 border=0>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+                        </table>
+                    </td>
+                    <td width=6 class=dividerPanel>
+                            <!--
+                            <a href="javascript: chVisLMnu()" style="display:block"><img
+                            id="lm_close_btn" src="/webclient/img/1tr.gif" width=7 height=70 border=1
+                            style="background: url('/webclient/img/lm_close_btn.gif') repeat-x 0 center"></a>
+                            -->
+                    </td>
+                    <td width=100% class=tusha style="font: 11px Tahoma; color : #000000;">
+
+                        <!-- White Sheet Start -->
+                        <table width=100% height=100% class="whiteSheet">
+                            <tr>
+                                <td valign=top>
+                                    <div id="AbonentName">
+                                    <div wicket:id="textHeader">text</div>
+                                    <div wicket:id="abonentButtons" align="right"><input type="button" wicket:id="action"/></div></div>
+                                    <wicket:child/>
+                                </td>
+                            </tr>
+                        </table>
+                        <!-- White Sheet End -->
+
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=4 height=18 background="/webclient/img/statusBarBG.png">
+
+                        <table width=300 cellspacing=0 cellpadding=0 align=left border=0>
+                            <tr>
+                                <td height=18 background="/webclient/img/statusBarContentBG.png">&nbsp;&nbsp;
+                                    <span wicket:id="abonentname">abonent_name</span></td>
+                                <td height=18 background="/webclient/img/statusBarContentBG.png">&nbsp;&nbsp;
+                                    <span id="statusbar"> </span></td>
+
+                            </tr>
+                           
+                        </table>
+
+                        <a wicket:id="homeLink2" style="display:none;">Main Page</a>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</wicket:extend>

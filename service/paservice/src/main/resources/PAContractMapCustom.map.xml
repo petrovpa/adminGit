@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+<query name="dsPAContractBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PAContractMapCustom" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.CANCELDATE', 'java.math.BigDecimal', 'CANCELDATE'),
+        #result('T.CONTRNODEID', 'java.lang.Long', 'CONTRNODEID'),
+        #result('T.CONTRNDNUMBER', 'java.lang.String', 'CONTRNDNUMBER'),
+        #result('T.CONTRNUMBER', 'java.lang.String', 'CONTRNUMBER'),
+        #result('T.CONTRPOLNUM', 'java.lang.String', 'CONTRPOLNUM'),
+        #result('T.CONTRPOLSER', 'java.lang.String', 'CONTRPOLSER'),
+        #result('T.DOCUMENTDATE', 'java.math.BigDecimal', 'DOCUMENTDATE'),
+        #result('T.CREATEDATE', 'java.math.BigDecimal', 'CREATEDATE'),
+        #result('T.UPDATEDATE', 'java.math.BigDecimal', 'UPDATEDATE'),
+        #result('T.DURATION', 'java.lang.Long', 'DURATION'),
+        #result('T.EXTERNALID', 'java.lang.String', 'EXTERNALID'),
+        #result('T.FINISHDATE', 'java.math.BigDecimal', 'FINISHDATE'),
+        #result('T.CONTRID', 'java.lang.Long', 'CONTRID'),
+        #result('T.INSAMCURRENCYID', 'java.lang.Long', 'INSAMCURRENCYID'),
+        #result('T.INSAMVALUE', 'java.lang.Double', 'INSAMVALUE'),
+        #result('T.INSREGIONCODE', 'java.lang.String', 'INSREGIONCODE'),
+        #result('T.INSURERID', 'java.lang.Long', 'INSURERID'),
+        #result('T.INSURERREPID', 'java.lang.Long', 'INSURERREPID'),
+        #result('T.NUMMETHODID', 'java.lang.Long', 'NUMMETHODID'),
+        #result('T.PAYVARID', 'java.lang.Long', 'PAYVARID'),
+        #result('T.PREMCURRENCYID', 'java.lang.Long', 'PREMCURRENCYID'),
+        #result('T.PREMDELTA', 'java.lang.Double', 'PREMDELTA'),
+        #result('T.PREMVALUE', 'java.lang.Double', 'PREMVALUE'),
+        #result('T.PRODPROGID', 'java.lang.Long', 'PRODPROGID'),
+        #result('T.PRODVERID', 'java.lang.Long', 'PRODVERID'),
+        #result('T.SALESOFFICE', 'java.lang.String', 'SALESOFFICE'),
+        #result('T.SELLERID', 'java.lang.Long', 'SELLERID'),
+        #result('T.STARTDATE', 'java.math.BigDecimal', 'STARTDATE'),
+        #result('T.VERNUMBER', 'java.lang.Long', 'VERNUMBER'),
+        #result('T2.SYSNAME', 'java.lang.String', 'STATESYSNAME'),
+        #result('T2.PUBLICNAME', 'java.lang.String', 'STATENAME'),
+        #result('T3.NAME', 'java.lang.String', 'PRODVERNAME'),
+        #result('T4.EXTERNALCODE', 'java.lang.String', 'PRODEXTERNALCODE'),
+        #result('T4.NAME', 'java.lang.String', 'PRODNAME'),
+        #result('T4.PRODID', 'java.lang.Long', 'PRODID'),
+        #result('T5.BRIEFNAME', 'java.lang.String', 'INSURERBRIEFNAME'),
+        #result('T5.BRIEFNAME', 'java.lang.String', 'INSURERREPBRIEFNAME'),
+        #result('T7.PRODCONFID', 'java.lang.Long', 'PRODCONFID'),
+        #result('T8REJ.VALUE', 'java.lang.Long', 'ENABLEREJECT'),
+        #result('T8ADD.VALUE', 'java.lang.Long', 'ENABLEADDAGREE')
+         
+       $ASPECTFIELDS 
+FROM 
+      B2B_CONTR T 
+      INNER JOIN PA_CONTRACT T1 ON (T.CONTRID = T1.CONTRID)
+      INNER JOIN CORE_SM_STATE T2 ON (T.STATEID = T2.ID)
+      INNER JOIN B2B_PRODVER T3 ON (T.PRODVERID = T3.PRODVERID)
+      INNER JOIN B2B_PROD T4 ON (T3.PRODID = T4.PRODID) AND ((T4.ISHIDDEN is null) or (T4.ISHIDDEN != 1))
+      LEFT JOIN CRM_PARTICIPANT T5 ON (T.INSURERID = T5.PARTICIPANTID)
+      LEFT JOIN CRM_PARTICIPANT T6 ON (T.INSURERREPID = T6.PARTICIPANTID)
+      LEFT JOIN B2B_PRODCONF T7 ON (T.PRODVERID = T7.PRODVERID)
+      LEFT JOIN B2B_PRODDEFVAL T8REJ ON ((T7.PRODCONFID = T8REJ.PRODCONFID) AND (T8REJ.NAME = 'ENABLEREJECT'))
+      LEFT JOIN B2B_PRODDEFVAL T8ADD ON ((T7.PRODCONFID = T8ADD.PRODCONFID) AND (T8ADD.NAME = 'ENABLEADDAGREE'))
+      
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CANCELDATE) T.CANCELDATE = #bind($CANCELDATE 'FLOAT') #end 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($CONTRNDNUMBER) T.CONTRNDNUMBER = #bind($CONTRNDNUMBER 'VARCHAR') #end 
+       #chunk($CONTRNODEID) T.CONTRNODEID = #bind($CONTRNODEID 'NUMERIC') #end 
+       #chunk($CONTRNUMBER) T.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+       #chunk($CONTRPOLNUM) T.CONTRPOLNUM = #bind($CONTRPOLNUM 'VARCHAR') #end 
+       #chunk($CONTRPOLSER) T.CONTRPOLSER = #bind($CONTRPOLSER 'VARCHAR') #end 
+       #chunk($DOCUMENTDATE) T.DOCUMENTDATE = #bind($DOCUMENTDATE 'FLOAT') #end 
+       #chunk($DURATION) T.DURATION = #bind($DURATION 'NUMERIC') #end 
+       #chunk($EXTERNALID) T.EXTERNALID = #bind($EXTERNALID 'VARCHAR') #end 
+       #chunk($FINISHDATE) T.FINISHDATE = #bind($FINISHDATE 'FLOAT') #end 
+       #chunk($INSAMCURRENCYID) T.INSAMCURRENCYID = #bind($INSAMCURRENCYID 'NUMERIC') #end 
+       #chunk($INSAMVALUE) T.INSAMVALUE = #bind($INSAMVALUE 'NUMERIC') #end 
+       #chunk($INSREGIONCODE) T.INSREGIONCODE = #bind($INSREGIONCODE 'VARCHAR') #end 
+       #chunk($INSURERID) T.INSURERID = #bind($INSURERID 'NUMERIC') #end 
+       #chunk($INSURERREPID) T.INSURERREPID = #bind($INSURERREPID 'NUMERIC') #end 
+       #chunk($NUMMETHODID) T.NUMMETHODID = #bind($NUMMETHODID 'NUMERIC') #end 
+       #chunk($PAYVARID) T.PAYVARID = #bind($PAYVARID 'NUMERIC') #end 
+       #chunk($PREMCURRENCYID) T.PREMCURRENCYID = #bind($PREMCURRENCYID 'NUMERIC') #end 
+       #chunk($PREMDELTA) T.PREMDELTA = #bind($PREMDELTA 'NUMERIC') #end 
+       #chunk($PREMVALUE) T.PREMVALUE = #bind($PREMVALUE 'NUMERIC') #end 
+       #chunk($PRODPROGID) T.PRODPROGID = #bind($PRODPROGID 'NUMERIC') #end 
+       #chunk($PRODVERID) T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+       #chunk($SALESOFFICE) T.SALESOFFICE = #bind($SALESOFFICE 'VARCHAR') #end 
+       #chunk($SELLERID) T.SELLERID = #bind($SELLERID 'NUMERIC') #end 
+       #chunk($STARTDATE) T.STARTDATE = #bind($STARTDATE 'FLOAT') #end 
+       #chunk($VERNUMBER) T.VERNUMBER = #bind($VERNUMBER 'NUMERIC') #end 
+       #chunk($MULTICONDITION) #bind($MULTICONDITION) #end 
+       #chunk($PAUSERID) T1.PAUSERID = #bind($PAUSERID 'NUMERIC') #end 
+       
+    #chunk($PRODVERIDLIST) T.PRODVERID in ($PRODVERIDLIST) #end
+    #chunk($NOTE) UPPER(T.NOTE) LIKE UPPER('%$NOTE%')  #end
+    #chunk($PRODID) T4.PRODID = #bind($PRODID 'NUMERIC') #end
+    #chunk($CONTRNUMBERLIKE) UPPER(T.CONTRNUMBER) LIKE UPPER('%$CONTRNUMBERLIKE%') #end
+    #chunk($INSURERNAME) UPPER(T5.BRIEFNAME) LIKE UPPER('%$INSURERNAME%') #end
+    #chunk($INSURERREPNAME) UPPER(T6.BRIEFNAME) LIKE UPPER('%$INSURERREPNAME%') #end
+    #chunk($STATESYSNAME) T2.SYSNAME = #bind($STATESYSNAME 'VARCHAR') #end
+    #chunk($STATESYSNAMELIST) T2.SYSNAME in ($STATESYSNAMELIST) #end
+    #chunk($STARTCREATEDATE) T.CREATEDATE >= #bind($STARTCREATEDATE 'FLOAT') #end
+    #chunk($FINISHCREATEDATE) T.CREATEDATE <= #bind($FINISHCREATEDATE 'FLOAT') #end
+    #chunk($STARTSTARTDATE) T.STARTDATE >= #bind($STARTSTARTDATE 'FLOAT') #end
+    #chunk($STARTFINISHDATE) T.STARTDATE <= #bind($STARTFINISHDATE 'FLOAT') #end
+    #chunk($DOCUMENTSTARTDATE) T.DOCUMENTDATE >= #bind($DOCUMENTSTARTDATE 'FLOAT') #end
+    #chunk($DOCUMENTFINISHDATE) T.DOCUMENTDATE <= #bind($DOCUMENTFINISHDATE 'FLOAT') #end
+    #chunk($SIGNDATEUPBOUND) T.SIGNDATE >= #bind($SIGNDATEUPBOUND 'FLOAT') #end
+    #chunk($SIGNDATEDOWNBOUND) T.SIGNDATE <= #bind($SIGNDATEDOWNBOUND 'FLOAT') #end
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsPAContractBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PAContractMapCustom" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.CONTRID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_CONTR T 
+      INNER JOIN PA_CONTRACT T1 ON (T.CONTRID = T1.CONTRID)
+      INNER JOIN CORE_SM_STATE T2 ON (T.STATEID = T2.ID)
+      INNER JOIN B2B_PRODVER T3 ON (T.PRODVERID = T3.PRODVERID)
+      INNER JOIN B2B_PROD T4 ON (T3.PRODID = T4.PRODID) AND ((T4.ISHIDDEN is null) or (T4.ISHIDDEN != 1))
+      LEFT JOIN CRM_PARTICIPANT T5 ON (T.INSURERID = T5.PARTICIPANTID)
+      LEFT JOIN CRM_PARTICIPANT T6 ON (T.INSURERREPID = T6.PARTICIPANTID)
+      
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CANCELDATE) T.CANCELDATE = #bind($CANCELDATE 'FLOAT') #end 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($CONTRNDNUMBER) T.CONTRNDNUMBER = #bind($CONTRNDNUMBER 'VARCHAR') #end 
+       #chunk($CONTRNODEID) T.CONTRNODEID = #bind($CONTRNODEID 'NUMERIC') #end 
+       #chunk($CONTRNUMBER) T.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+       #chunk($CONTRPOLNUM) T.CONTRPOLNUM = #bind($CONTRPOLNUM 'VARCHAR') #end 
+       #chunk($CONTRPOLSER) T.CONTRPOLSER = #bind($CONTRPOLSER 'VARCHAR') #end 
+       #chunk($DOCUMENTDATE) T.DOCUMENTDATE = #bind($DOCUMENTDATE 'FLOAT') #end 
+       #chunk($DURATION) T.DURATION = #bind($DURATION 'NUMERIC') #end 
+       #chunk($EXTERNALID) T.EXTERNALID = #bind($EXTERNALID 'VARCHAR') #end 
+       #chunk($FINISHDATE) T.FINISHDATE = #bind($FINISHDATE 'FLOAT') #end 
+       #chunk($INSAMCURRENCYID) T.INSAMCURRENCYID = #bind($INSAMCURRENCYID 'NUMERIC') #end 
+       #chunk($INSAMVALUE) T.INSAMVALUE = #bind($INSAMVALUE 'NUMERIC') #end 
+       #chunk($INSREGIONCODE) T.INSREGIONCODE = #bind($INSREGIONCODE 'VARCHAR') #end 
+       #chunk($INSURERID) T.INSURERID = #bind($INSURERID 'NUMERIC') #end 
+       #chunk($INSURERREPID) T.INSURERREPID = #bind($INSURERREPID 'NUMERIC') #end 
+       #chunk($NUMMETHODID) T.NUMMETHODID = #bind($NUMMETHODID 'NUMERIC') #end 
+       #chunk($PAYVARID) T.PAYVARID = #bind($PAYVARID 'NUMERIC') #end 
+       #chunk($PREMCURRENCYID) T.PREMCURRENCYID = #bind($PREMCURRENCYID 'NUMERIC') #end 
+       #chunk($PREMDELTA) T.PREMDELTA = #bind($PREMDELTA 'NUMERIC') #end 
+       #chunk($PREMVALUE) T.PREMVALUE = #bind($PREMVALUE 'NUMERIC') #end 
+       #chunk($PRODPROGID) T.PRODPROGID = #bind($PRODPROGID 'NUMERIC') #end 
+       #chunk($PRODVERID) T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+       #chunk($SALESOFFICE) T.SALESOFFICE = #bind($SALESOFFICE 'VARCHAR') #end 
+       #chunk($SELLERID) T.SELLERID = #bind($SELLERID 'NUMERIC') #end 
+       #chunk($STARTDATE) T.STARTDATE = #bind($STARTDATE 'FLOAT') #end 
+       #chunk($VERNUMBER) T.VERNUMBER = #bind($VERNUMBER 'NUMERIC') #end 
+       #chunk($MULTICONDITION) #bind($MULTICONDITION) #end 
+       #chunk($PAUSERID) T1.PAUSERID = #bind($PAUSERID 'NUMERIC') #end 
+       
+    #chunk($PRODVERIDLIST) T.PRODVERID in ($PRODVERIDLIST) #end
+    #chunk($NOTE) UPPER(T.NOTE) LIKE UPPER('%$NOTE%')  #end
+    #chunk($PRODID) T4.PRODID = #bind($PRODID 'NUMERIC') #end
+    #chunk($CONTRNUMBERLIKE) UPPER(T.CONTRNUMBER) LIKE UPPER('%$CONTRNUMBERLIKE%') #end
+    #chunk($INSURERNAME) UPPER(T5.BRIEFNAME) LIKE UPPER('%$INSURERNAME%') #end
+    #chunk($INSURERREPNAME) UPPER(T6.BRIEFNAME) LIKE UPPER('%$INSURERREPNAME%') #end
+    #chunk($STATESYSNAME) T2.SYSNAME = #bind($STATESYSNAME 'VARCHAR') #end
+    #chunk($STATESYSNAMELIST) T2.SYSNAME in ($STATESYSNAMELIST) #end
+    #chunk($STARTCREATEDATE) T.CREATEDATE >= #bind($STARTCREATEDATE 'FLOAT') #end
+    #chunk($FINISHCREATEDATE) T.CREATEDATE <= #bind($FINISHCREATEDATE 'FLOAT') #end
+    #chunk($STARTSTARTDATE) T.STARTDATE >= #bind($STARTSTARTDATE 'FLOAT') #end
+    #chunk($STARTFINISHDATE) T.STARTDATE <= #bind($STARTFINISHDATE 'FLOAT') #end
+    #chunk($DOCUMENTSTARTDATE) T.DOCUMENTDATE >= #bind($DOCUMENTSTARTDATE 'FLOAT') #end
+    #chunk($DOCUMENTFINISHDATE) T.DOCUMENTDATE <= #bind($DOCUMENTFINISHDATE 'FLOAT') #end
+    #chunk($SIGNDATEUPBOUND) T.SIGNDATE >= #bind($SIGNDATEUPBOUND 'FLOAT') #end
+    #chunk($SIGNDATEDOWNBOUND) T.SIGNDATE <= #bind($SIGNDATEDOWNBOUND 'FLOAT') #end
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsPaAppealBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PAContractMapCustom" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.APPEALDATE', 'java.math.BigDecimal', 'APPEALDATE'),
+        #result('T.APPEALNUMBER', 'java.lang.String', 'APPEALNUMBER'),
+        #result('T.APPEALOBJECTID', 'java.lang.Long', 'APPEALOBJECTID'),
+        #result('T.CATEGORYID', 'java.lang.Long', 'CATEGORYID'),
+        #result('T.CONTRID', 'java.lang.Long', 'CONTRID'),
+        #result('T.APPEALID', 'java.lang.Long', 'APPEALID'),
+        #result('T.INITIATOREMAIL', 'java.lang.String', 'INITIATOREMAIL'),
+        #result('T.INITIATORID', 'java.lang.Long', 'INITIATORID'),
+        #result('T.INITIATORNAME', 'java.lang.String', 'INITIATORNAME'),
+        #result('T.INITIATORPHONE', 'java.lang.String', 'INITIATORPHONE'),
+        #result('T.INITIATORSURNAME', 'java.lang.String', 'INITIATORSURNAME'),
+        #result('T.INITIATORTYPEID', 'java.lang.Long', 'INITIATORTYPEID'),
+        #result('T.SOURCEID', 'java.lang.Long', 'SOURCEID'),
+        #result('T.STATUSNAME', 'java.lang.String', 'STATUSNAME'),
+        #result('T.STATUSSYSNAME', 'java.lang.String', 'STATUSSYSNAME'),
+        #result('T2.CONTRNUMBER', 'java.lang.String', 'CONTRNUMBER'),
+        #result('(select COUNT(T3.APPEALHISTID) from PA_APPEALHIST T3 where (T3.ISUNREADED = 1) and(T3.APPEALID = T.APPEALID))', 'java.lang.Long', 'UNREADEDCOUNT')
+       $ASPECTFIELDS 
+FROM 
+      PA_APPEAL T 
+      LEFT JOIN B2B_CONTR T2 ON (T.CONTRID = T2.CONTRID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($APPEALDATE) T.APPEALDATE = #bind($APPEALDATE 'FLOAT') #end 
+       #chunk($APPEALID) T.APPEALID = #bind($APPEALID 'NUMERIC') #end 
+       #chunk($APPEALNUMBER) T.APPEALNUMBER = #bind($APPEALNUMBER 'VARCHAR') #end 
+       #chunk($APPEALOBJECTID) T.APPEALOBJECTID = #bind($APPEALOBJECTID 'NUMERIC') #end 
+       #chunk($CATEGORYID) T.CATEGORYID = #bind($CATEGORYID 'NUMERIC') #end 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($INITIATOREMAIL) T.INITIATOREMAIL = #bind($INITIATOREMAIL 'VARCHAR') #end 
+       #chunk($INITIATORID) T.INITIATORID = #bind($INITIATORID 'NUMERIC') #end 
+       #chunk($INITIATORNAME) T.INITIATORNAME = #bind($INITIATORNAME 'VARCHAR') #end 
+       #chunk($INITIATORPHONE) T.INITIATORPHONE = #bind($INITIATORPHONE 'VARCHAR') #end 
+       #chunk($INITIATORSURNAME) T.INITIATORSURNAME = #bind($INITIATORSURNAME 'VARCHAR') #end 
+       #chunk($INITIATORTYPEID) T.INITIATORTYPEID = #bind($INITIATORTYPEID 'NUMERIC') #end 
+       #chunk($SOURCEID) T.SOURCEID = #bind($SOURCEID 'NUMERIC') #end 
+       #chunk($STATUSNAME) T.STATUSNAME = #bind($STATUSNAME 'VARCHAR') #end 
+       #chunk($STATUSSYSNAME) T.STATUSSYSNAME = #bind($STATUSSYSNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsPaAppealBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PAContractMapCustom" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.APPEALID)', 'java.lang.Long', 'CNT') 
+FROM 
+      PA_APPEAL T 
+      LEFT JOIN B2B_CONTR T2 ON (T.CONTRID = T2.CONTRID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($APPEALDATE) T.APPEALDATE = #bind($APPEALDATE 'FLOAT') #end 
+       #chunk($APPEALID) T.APPEALID = #bind($APPEALID 'NUMERIC') #end 
+       #chunk($APPEALNUMBER) T.APPEALNUMBER = #bind($APPEALNUMBER 'VARCHAR') #end 
+       #chunk($APPEALOBJECTID) T.APPEALOBJECTID = #bind($APPEALOBJECTID 'NUMERIC') #end 
+       #chunk($CATEGORYID) T.CATEGORYID = #bind($CATEGORYID 'NUMERIC') #end 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($INITIATOREMAIL) T.INITIATOREMAIL = #bind($INITIATOREMAIL 'VARCHAR') #end 
+       #chunk($INITIATORID) T.INITIATORID = #bind($INITIATORID 'NUMERIC') #end 
+       #chunk($INITIATORNAME) T.INITIATORNAME = #bind($INITIATORNAME 'VARCHAR') #end 
+       #chunk($INITIATORPHONE) T.INITIATORPHONE = #bind($INITIATORPHONE 'VARCHAR') #end 
+       #chunk($INITIATORSURNAME) T.INITIATORSURNAME = #bind($INITIATORSURNAME 'VARCHAR') #end 
+       #chunk($INITIATORTYPEID) T.INITIATORTYPEID = #bind($INITIATORTYPEID 'NUMERIC') #end 
+       #chunk($SOURCEID) T.SOURCEID = #bind($SOURCEID 'NUMERIC') #end 
+       #chunk($STATUSNAME) T.STATUSNAME = #bind($STATUSNAME 'VARCHAR') #end 
+       #chunk($STATUSSYSNAME) T.STATUSSYSNAME = #bind($STATUSSYSNAME 'VARCHAR') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsPaAppealHistBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PAContractMapCustom" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.APPEALID', 'java.lang.Long', 'APPEALID'),
+        #result('T.APPEALHISTID', 'java.lang.Long', 'APPEALHISTID'),
+        #result('T.ISFAVORITE', 'java.lang.Long', 'ISFAVORITE'),
+        #result('T.ISUNREADED', 'java.lang.Long', 'ISUNREADED'),
+        #result('T.MESSAGEDATE', 'java.math.BigDecimal', 'MESSAGEDATE'),
+        #result('T.MESSAGETEXT', 'java.lang.String', 'MESSAGETEXT'),
+        #result('T.USERACCOUNTID', 'java.lang.Long', 'USERACCOUNTID'),
+        #result('T5.LASTNAME', 'java.lang.String', 'UALASTNAME'),
+        #result('T5.FIRSTNAME', 'java.lang.String', 'UAFIRSTNAME'),
+        #result('T5.MIDDLENAME', 'java.lang.String', 'UAMIDDLENAME')
+       $ASPECTFIELDS 
+FROM 
+      PA_APPEALHIST T 
+      INNER JOIN PA_APPEAL T2 ON (T2.APPEALID = T.APPEALID)
+      LEFT JOIN CORE_USERACCOUNT T3 ON (T3.USERACCOUNTID = T.USERACCOUNTID)
+      LEFT JOIN CORE_USER T4 ON (T4.USERID = T3.USERID)
+      LEFT JOIN DEP_EMPLOYEE T5 ON (T5.EMPLOYEEID = T4.OBJECTID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($INITIATORID) T2.INITIATORID = #bind($INITIATORID 'NUMERIC') #end 
+       #chunk($APPEALHISTID) T.APPEALHISTID = #bind($APPEALHISTID 'NUMERIC') #end 
+       #chunk($APPEALID) T.APPEALID = #bind($APPEALID 'NUMERIC') #end 
+       #chunk($ISFAVORITE) T.ISFAVORITE = #bind($ISFAVORITE 'NUMERIC') #end 
+       #chunk($ISUNREADED) T.ISUNREADED = #bind($ISUNREADED 'NUMERIC') #end 
+       #chunk($MESSAGEDATE) T.MESSAGEDATE = #bind($MESSAGEDATE 'FLOAT') #end 
+       #chunk($MESSAGETEXT) T.MESSAGETEXT = #bind($MESSAGETEXT 'VARCHAR') #end 
+       #chunk($USERACCOUNTID) T.USERACCOUNTID = #bind($USERACCOUNTID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsPaAppealHistBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PAContractMapCustom" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.APPEALHISTID)', 'java.lang.Long', 'CNT') 
+FROM 
+      PA_APPEALHIST T 
+      INNER JOIN PA_APPEAL T2 ON (T2.APPEALID = T.APPEALID)
+      LEFT JOIN CORE_USERACCOUNT T3 ON (T3.USERACCOUNTID = T.USERACCOUNTID)
+      LEFT JOIN CORE_USER T4 ON (T4.USERID = T3.USERID)
+      LEFT JOIN DEP_EMPLOYEE T5 ON (T5.EMPLOYEEID = T4.OBJECTID)
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($APPEALHISTID) T.APPEALHISTID = #bind($APPEALHISTID 'NUMERIC') #end 
+       #chunk($APPEALID) T.APPEALID = #bind($APPEALID 'NUMERIC') #end 
+       #chunk($ISFAVORITE) T.ISFAVORITE = #bind($ISFAVORITE 'NUMERIC') #end 
+       #chunk($ISUNREADED) T.ISUNREADED = #bind($ISUNREADED 'NUMERIC') #end 
+       #chunk($MESSAGEDATE) T.MESSAGEDATE = #bind($MESSAGEDATE 'FLOAT') #end 
+       #chunk($MESSAGETEXT) T.MESSAGETEXT = #bind($MESSAGETEXT 'VARCHAR') #end 
+       #chunk($USERACCOUNTID) T.USERACCOUNTID = #bind($USERACCOUNTID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsPaUserBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PersonalAreaMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.EMAIL', 'java.lang.String', 'EMAIL'),
+        #result('T.GROUPID', 'java.lang.Long', 'GROUPID'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.PHONENUMBER', 'java.lang.String', 'PHONENUMBER'),
+        #result('T.SMSCODE', 'java.lang.String', 'SMSCODE'),
+        #result('T.SMSCODEDATE', 'java.math.BigDecimal', 'SMSCODEDATE'),
+        #result('T.STATUSDATE', 'java.math.BigDecimal', 'STATUSDATE'),
+        #result('T.STATUSID', 'java.lang.Long', 'STATUSID'),
+        #result('T.STATUSSYSNAME', 'java.lang.String', 'STATUSSYSNAME'),
+        #result('T.SURNAME', 'java.lang.String', 'SURNAME'),
+        #result('T.USERID', 'java.lang.Long', 'USERID') 
+       $ASPECTFIELDS 
+FROM 
+      PA_USER T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($EMAIL) T.EMAIL = #bind($EMAIL 'VARCHAR') #end 
+       #chunk($GROUPID) T.GROUPID = #bind($GROUPID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($PHONENUMBER) T.PHONENUMBER = #bind($PHONENUMBER 'VARCHAR') #end 
+       #chunk($SMSCODE) T.SMSCODE = #bind($SMSCODE 'VARCHAR') #end 
+       #chunk($SMSCODEDATE) T.SMSCODEDATE = #bind($SMSCODEDATE 'FLOAT') #end 
+       #chunk($STATUSDATE) T.STATUSDATE = #bind($STATUSDATE 'FLOAT') #end 
+       #chunk($STATUSID) T.STATUSID = #bind($STATUSID 'NUMERIC') #end 
+       #chunk($STATUSSYSNAME) T.STATUSSYSNAME = #bind($STATUSSYSNAME 'VARCHAR') #end 
+       #chunk($SURNAME) T.SURNAME = #bind($SURNAME 'VARCHAR') #end 
+       #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+       #chunk()
+            #chain('OR' '') 
+                (
+                #chunk($PHONENUMBERLIKE) T.PHONENUMBER like #bind($PHONENUMBERLIKE 'VARCHAR')#end 
+                #chunk($EMAILUPPERCASE) UPPER(T.EMAIL) = #bind($EMAILUPPERCASE 'VARCHAR')#end 
+                )
+            #end 
+       #end 
+      $ASPECTRESTRICTION 
+#end
+ORDER BY T.STATUSID DESC
+]]>
+</sql>
+</query>
+<query name="dsPaUserBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PersonalAreaMap" ><property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+<sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.USERID)', 'java.lang.Long', 'CNT') 
+FROM 
+      PA_USER T 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($EMAIL) T.EMAIL = #bind($EMAIL 'VARCHAR') #end 
+       #chunk($GROUPID) T.GROUPID = #bind($GROUPID 'NUMERIC') #end 
+       #chunk($NAME) T.NAME = #bind($NAME 'VARCHAR') #end 
+       #chunk($PHONENUMBER) T.PHONENUMBER = #bind($PHONENUMBER 'VARCHAR') #end 
+       #chunk($SMSCODE) T.SMSCODE = #bind($SMSCODE 'VARCHAR') #end 
+       #chunk($SMSCODEDATE) T.SMSCODEDATE = #bind($SMSCODEDATE 'FLOAT') #end 
+       #chunk($STATUSDATE) T.STATUSDATE = #bind($STATUSDATE 'FLOAT') #end 
+       #chunk($STATUSID) T.STATUSID = #bind($STATUSID 'NUMERIC') #end 
+       #chunk($STATUSSYSNAME) T.STATUSSYSNAME = #bind($STATUSSYSNAME 'VARCHAR') #end 
+       #chunk($SURNAME) T.SURNAME = #bind($SURNAME 'VARCHAR') #end 
+       #chunk($USERID) T.USERID = #bind($USERID 'NUMERIC') #end 
+       #chunk()
+            #chain('OR' '') 
+                (
+                #chunk($PHONENUMBERLIKE) T.PHONENUMBER like #bind($PHONENUMBERLIKE 'VARCHAR')#end 
+                #chunk($EMAILUPPERCASE) UPPER(T.EMAIL) = #bind($EMAILUPPERCASE 'VARCHAR')#end 
+                )
+            #end 
+       #end 
+ 
+      $ASPECTRESTRICTION 
+#end
+ORDER BY T.STATUSID DESC
+]]>
+</sql>
+</query>
+
+<query name="dsPAAttachableContractBrowseListByParamExForProcessing" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PAContractMapCustom" >
+    <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+    <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+    #result('T.CONTRID', 'java.lang.Long', 'CONTRID'),
+    #result('T2.PRODCONFID', 'java.lang.Long', 'PRODCONFID'),
+    #result('T.CONTRNUMBER', 'java.lang.String', 'CONTRNUMBER'),
+    #result('T4.FIRSTNAME', 'java.lang.String', 'NAME'),
+    #result('T4.LASTNAME', 'java.lang.String', 'SURNAME'),
+    #result('phone.VALUE', 'java.lang.String', 'PHONENUMBER'),
+    #result('mail.VALUE', 'java.lang.String', 'EMAIL'),
+    #result('T6.BANKCASHFLOWID', 'java.lang.Long', 'BANKCASHFLOWID'),
+    #result('T7.SYSNAME', 'java.lang.String', 'BANKCASHFLOWSTATESYSNAME')
+    $ASPECTFIELDS 
+FROM 
+    B2B_CONTR T
+    INNER JOIN B2B_PRODCONF T2 on (T2.PRODVERID = T.PRODVERID)
+    LEFT JOIN CRM_PERSON T4 ON (T4.PARTICIPANTID = T.INSURERID)
+    INNER JOIN CRM_CONTACTPERSON T5 ON (T5.PARTICIPANTID = T.INSURERID)
+    INNER JOIN (SELECT c.CONTACTPERSONID, max(c.VALUE) as VALUE FROM CRM_CONTACT c INNER JOIN CRM_CONTACTTYPE ct ON (ct.CONTACTTYPEID = c.CONTACTTYPEID) WHERE ct.SYSNAME = 'MobilePhone' GROUP BY c.CONTACTPERSONID) phone ON (phone.CONTACTPERSONID = T5.CONTACTPERSONID)
+    LEFT JOIN (SELECT c.CONTACTPERSONID, max(c.VALUE) as VALUE FROM CRM_CONTACT c INNER JOIN CRM_CONTACTTYPE ct ON (ct.CONTACTTYPEID = c.CONTACTTYPEID) WHERE ct.SYSNAME = 'PersonalEmail' GROUP BY c.CONTACTPERSONID) mail ON (mail.CONTACTPERSONID = T5.CONTACTPERSONID)
+    INNER JOIN B2B_BANKCASHFLOW T6 on (T6.CONTRID = T.CONTRID)
+    INNER JOIN CORE_SM_STATE T7 ON (T7.ID = T6.STATEID)
+    LEFT JOIN PA_CONTRACT T8 on (T8.CONTRID = T.CONTRID)
+    $ASPECTTABLES 
+#chain('AND' 'WHERE') 
+    #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+    #chunk($CONTRNUMBER) T.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+    #chunk($BANKCASHFLOWID) T6.BANKCASHFLOWID = #bind($BANKCASHFLOWID 'NUMERIC') #end 
+    #chunk($BANKCASHFLOWSTATESYSNAME) T7.SYSNAME = #bind($BANKCASHFLOWSTATESYSNAME 'VARCHAR') #end 
+    #chunk($PAUSERIDISNULL) T8.PAUSERID is null #end 
+    $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+<query name="dsPAAttachableContractBrowseListByParamExForProcessingCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="PAContractMapCustom" >
+    <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+    <sql>
+<![CDATA[
+SELECT
+    #result('COUNT($NEEDDISTINCT T.CONTRID)', 'java.lang.Long', 'CNT') 
+FROM 
+    B2B_CONTR T
+    INNER JOIN B2B_PRODCONF T2 on (T2.PRODVERID = T.PRODVERID)
+    LEFT JOIN CRM_PERSON T4 ON (T4.PARTICIPANTID = T.INSURERID)
+    INNER JOIN CRM_CONTACTPERSON T5 ON (T5.PARTICIPANTID = T.INSURERID)
+    INNER JOIN (SELECT c.CONTACTPERSONID, max(c.VALUE) as VALUE FROM CRM_CONTACT c INNER JOIN CRM_CONTACTTYPE ct ON (ct.CONTACTTYPEID = c.CONTACTTYPEID) WHERE ct.SYSNAME = 'MobilePhone' GROUP BY c.CONTACTPERSONID) phone ON (phone.CONTACTPERSONID = T5.CONTACTPERSONID)
+    LEFT JOIN (SELECT c.CONTACTPERSONID, max(c.VALUE) as VALUE FROM CRM_CONTACT c INNER JOIN CRM_CONTACTTYPE ct ON (ct.CONTACTTYPEID = c.CONTACTTYPEID) WHERE ct.SYSNAME = 'PersonalEmail' GROUP BY c.CONTACTPERSONID) mail ON (mail.CONTACTPERSONID = T5.CONTACTPERSONID)
+    INNER JOIN B2B_BANKCASHFLOW T6 on (T6.CONTRID = T.CONTRID)
+    INNER JOIN CORE_SM_STATE T7 ON (T7.ID = T6.STATEID)
+    LEFT JOIN PA_CONTRACT T8 on (T8.CONTRID = T.CONTRID)
+    $ASPECTTABLES 
+#chain('AND' 'WHERE') 
+    #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+    #chunk($CONTRNUMBER) T.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+    #chunk($BANKCASHFLOWID) T6.BANKCASHFLOWID = #bind($BANKCASHFLOWID 'NUMERIC') #end 
+    #chunk($BANKCASHFLOWSTATESYSNAME) T7.SYSNAME = #bind($BANKCASHFLOWSTATESYSNAME 'VARCHAR') #end 
+    #chunk($PAUSERIDISNULL) T8.PAUSERID is null #end 
+    $ASPECTRESTRICTION 
+#end 
+]]>
+</sql>
+</query>
+-->
+</data-map>

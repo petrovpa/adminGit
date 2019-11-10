@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<Menu>
+	<Items>
+		<Item>
+			<ItemCaption>Система</ItemCaption>
+			<ItemSysname>D0011</ItemSysname>
+			<ItemDescription>Система</ItemDescription>
+			<ItemAction>NONE</ItemAction>
+			<ItemActionParams/>
+			<ItemExpanded>0</ItemExpanded>
+			<Items>
+				<Item>
+					<ItemCaption>Выход</ItemCaption>
+					<ItemSysname>D00111</ItemSysname>
+					<ItemDescription>Завершение работы с системой</ItemDescription>
+					<ItemAction>EXIT</ItemAction>
+					<ItemActionParams/>
+					<ItemExpanded>0</ItemExpanded>
+				</Item>
+			</Items>
+		</Item>
+		<Item>
+			<ItemCaption>Операции</ItemCaption>
+			<ItemSysname>D0012</ItemSysname>
+			<ItemDescription>Операции</ItemDescription>
+			<ItemAction>NONE</ItemAction>
+			<ItemActionParams/>
+			<ItemExpanded>1</ItemExpanded>
+			<Items>
+				<Item>
+					<ItemCaption>Кредитные карты</ItemCaption>
+					<ItemSysname>D00121</ItemSysname>
+					<ItemDescription>Кредитные карты</ItemDescription>
+					<ItemAction>NEWPAGEFLOW</ItemAction>
+					<ItemActionParams>cardOperations</ItemActionParams>
+					<ItemExpanded>0</ItemExpanded>
+				</Item>
+				<!--
+				<Item>
+					<ItemCaption>Потребительские кредиты</ItemCaption>
+					<ItemSysname>D00122</ItemSysname>
+					<ItemDescription>Нецелевые потребительские кредиты</ItemDescription>
+					<ItemAction>NEWPAGEFLOW</ItemAction>
+					<ItemActionParams>loanOperations</ItemActionParams>
+					<ItemExpanded>0</ItemExpanded>
+				</Item>
+				-->
+			</Items>
+		</Item>
+		<Item>
+			<ItemSysname>D0013</ItemSysname>
+			<ItemCaption>Задачи</ItemCaption>
+			<ItemDescription>Назначенные на пользователя задачи</ItemDescription>
+			<ItemAction>NONE</ItemAction>
+			<ItemActionParams/>
+			<ItemExpanded>0</ItemExpanded>
+			<Items>
+				<Item>
+					<ItemCaption>Список задач</ItemCaption>
+					<ItemSysname>D00131</ItemSysname>
+					<ItemDescription>Назначенные на пользователя задачи</ItemDescription>
+					<ItemAction>NEWPAGEFLOW</ItemAction>
+					<ItemActionParams>showTaskList</ItemActionParams>
+					<ItemExpanded>1</ItemExpanded>
+				</Item>
+			</Items>
+		</Item>
+		<Item>
+			<ItemSysname>D0014</ItemSysname>
+			<ItemCaption>Документы</ItemCaption>
+			<ItemDescription>Работа с документами</ItemDescription>
+			<ItemAction>NONE</ItemAction>
+			<ItemActionParams/>
+			<ItemExpanded>0</ItemExpanded>
+			<Items>
+				<Item>
+					<ItemCaption>Заявки</ItemCaption>
+					<ItemSysname>D00141</ItemSysname>
+					<ItemDescription>Список заявок</ItemDescription>
+					<ItemAction>NEWPAGEFLOW</ItemAction>
+					<ItemActionParams>showApplicationList</ItemActionParams>
+					<ItemExpanded>1</ItemExpanded>
+				</Item>
+				<Item>
+					<ItemCaption>Подписать документ</ItemCaption>
+					<ItemSysname>D00142</ItemSysname>
+					<ItemDescription>Подпись</ItemDescription>
+					<ItemAction>NEWPAGEFLOW</ItemAction>
+					<ItemActionParams>showDemoPage</ItemActionParams>
+					<ItemExpanded>1</ItemExpanded>
+				</Item>
+				<Item>
+					<ItemCaption>Отправить SMS</ItemCaption>
+					<ItemSysname>D00143</ItemSysname>
+					<ItemDescription>SMS</ItemDescription>
+					<ItemAction>NEWPAGEFLOW</ItemAction>
+					<ItemActionParams>smsDemo</ItemActionParams>
+					<ItemExpanded>1</ItemExpanded>
+				</Item>
+				<Item>
+					<ItemCaption>Отправить сообщение по почте</ItemCaption>
+					<ItemSysname>D00144</ItemSysname>
+					<ItemDescription>SMTP</ItemDescription>
+					<ItemAction>NEWPAGEFLOW</ItemAction>
+					<ItemActionParams>smtpDemo</ItemActionParams>
+					<ItemExpanded>1</ItemExpanded>
+				</Item>
+				
+			</Items>
+		</Item>
+		<Item>
+			<ItemSysname>D0015</ItemSysname>
+			<ItemCaption>Клиенты</ItemCaption>
+			<ItemDescription>Работа с данными клиентов</ItemDescription>
+			<ItemAction>NONE</ItemAction>
+			<ItemActionParams/>
+			<ItemExpanded>0</ItemExpanded>
+			<Items>
+				<Item>
+					<ItemCaption>Карточка клиента</ItemCaption>
+					<ItemSysname>D00151</ItemSysname>
+					<ItemDescription>Просмотр карточки клиента</ItemDescription>
+					<ItemAction>NEWPAGEFLOW</ItemAction>
+					<ItemActionParams>showClientCard</ItemActionParams>
+					<ItemExpanded>0</ItemExpanded>
+				</Item>
+			</Items>
+		</Item>
+		<Item>
+			<ItemSysname>D0016</ItemSysname>
+			<ItemCaption>Отчеты</ItemCaption>
+			<ItemDescription>Получение аналитических отчетов по заявкам</ItemDescription>
+			<ItemAction>NONE</ItemAction>
+			<ItemActionParams/>
+			<ItemExpanded>0</ItemExpanded>
+			<Items>
+				<Item>
+					<ItemCaption>Реестр рассмотренных заявок</ItemCaption>
+					<ItemSysname>D00161</ItemSysname>
+					<ItemDescription>Реестр рассмотренных заявок</ItemDescription>
+					<ItemAction>NEWPAGEFLOW</ItemAction>
+					<ItemActionParams>reportApplicationReestr</ItemActionParams>
+					<ItemExpanded>0</ItemExpanded>
+				</Item>
+				<Item>
+					<ItemCaption>Отчет о продажах</ItemCaption>
+					<ItemSysname>D00162</ItemSysname>
+					<ItemDescription>Отчет о продажах</ItemDescription>
+					<ItemAction>NEWPAGEFLOW</ItemAction>
+					<ItemActionParams>reportSales</ItemActionParams>
+					<ItemExpanded>0</ItemExpanded>
+				</Item>
+				<Item>
+					<ItemCaption>Данные о заемщиках</ItemCaption>
+					<ItemSysname>D00163</ItemSysname>
+					<ItemDescription>Данные о заемщиках</ItemDescription>
+					<ItemAction>NEWPAGEFLOW</ItemAction>
+					<ItemActionParams>reportClientInfo</ItemActionParams>
+					<ItemExpanded>0</ItemExpanded>
+				</Item>
+				<Item>
+					<ItemCaption>Отчет о прохождении заявок</ItemCaption>
+					<ItemSysname>D00164</ItemSysname>
+					<ItemDescription>Отчет о прохождении заявок</ItemDescription>
+					<ItemAction>NEWPAGEFLOW</ItemAction>
+					<ItemActionParams>reportAppConsiderations</ItemActionParams>
+					<ItemExpanded>0</ItemExpanded>
+				</Item>
+				<Item>
+					<ItemCaption>Отчет о принятых заявках</ItemCaption>
+					<ItemSysname>D00165</ItemSysname>
+					<ItemDescription>Отчет о принятых заявках</ItemDescription>
+					<ItemAction>NEWPAGEFLOW</ItemAction>
+					<ItemActionParams>reportReceivedApplications</ItemActionParams>
+					<ItemExpanded>0</ItemExpanded>
+				</Item>
+			</Items>
+		</Item>
+		<Item>
+			<ItemSysname>D0017</ItemSysname>
+			<ItemCaption>WEB заявка</ItemCaption>
+			<ItemDescription>Заявка на выпуск платиковой карты через WEB сайт РБР</ItemDescription>
+			<ItemAction>NEWPAGEFLOW</ItemAction>
+			<ItemActionParams>WebCardApplication</ItemActionParams>
+			<ItemExpanded>0</ItemExpanded>
+		</Item>
+		<Item>
+			<ItemSysname>D0018</ItemSysname>
+			<ItemCaption>Справка</ItemCaption>
+			<ItemDescription>Информация о работе с системой</ItemDescription>
+			<ItemAction>NONE</ItemAction>
+			<ItemActionParams/>
+			<ItemExpanded>0</ItemExpanded>
+		</Item>
+		<Item>
+			<ItemCaption>GL Тест</ItemCaption>
+			<ItemSysname>D0019</ItemSysname>
+			<ItemDescription>Тест</ItemDescription>
+			<ItemAction>NONE</ItemAction>
+			<ItemActionParams/>
+			<ItemExpanded>0</ItemExpanded>
+			<Items>
+				<Item>
+					<ItemCaption>Справочник валют</ItemCaption>
+					<ItemSysname>D00191</ItemSysname>
+					<ItemDescription>Справочник валют</ItemDescription>
+					<ItemAction>NEWPAGEFLOW</ItemAction>
+					<ItemActionParams>glTest_currencyList</ItemActionParams>
+					<ItemExpanded>0</ItemExpanded>
+				</Item>
+				<Item>
+					<ItemCaption>Лукап валют</ItemCaption>
+					<ItemSysname>D00192</ItemSysname>
+					<ItemDescription>Лукап валют</ItemDescription>
+					<ItemAction>NEWPAGEFLOW</ItemAction>
+					<ItemActionParams>glTest_addCurrencyRate</ItemActionParams>
+					<ItemExpanded>0</ItemExpanded>
+				</Item>
+				<Item>
+					<ItemCaption>Карточка клиента-физика</ItemCaption>
+					<ItemSysname>D00193</ItemSysname>
+					<ItemDescription>Запрос 1 в МХ</ItemDescription>
+					<ItemAction>NEWPAGEFLOW</ItemAction>
+					<ItemActionParams>glTest_showClientList</ItemActionParams>
+					<ItemExpanded>0</ItemExpanded>
+				</Item>
+				<Item>
+					<ItemCaption>Массовая операция</ItemCaption>
+					<ItemSysname>D00194</ItemSysname>
+					<ItemDescription>Запрос в УБ</ItemDescription>
+					<ItemAction>NEWPAGEFLOW</ItemAction>
+					<ItemActionParams>glTest_massOper</ItemActionParams>
+					<ItemExpanded>0</ItemExpanded>
+				</Item>
+				<Item>
+					<ItemCaption>Обновить метаданные</ItemCaption>
+					<ItemSysname>UpdateMetadata</ItemSysname>
+					<ItemDescription>Обновить метаданные</ItemDescription>
+					<ItemAction>UPDATE_METADATA</ItemAction>
+					<ItemActionParams/>
+					<ItemExpanded>0</ItemExpanded>
+				</Item>
+			</Items>
+		</Item>
+	<Item>
+            <ItemCaption>Пользователи</ItemCaption>
+            <ItemSysname>User</ItemSysname>
+            <ItemDescription>Работа с пользователями</ItemDescription>
+            <ItemAction>NONE</ItemAction>
+            <ItemActionParams></ItemActionParams>
+            <ItemExpanded>1</ItemExpanded>
+            <AccessOrder>Deny</AccessOrder>
+            <Allow>#sozAdmin</Allow>
+            <Items>
+                <Item>
+                    <ItemCaption>Уполномоченные лица</ItemCaption>
+                    <ItemSysname>applicationPersonEmpowered</ItemSysname>
+                    <ItemDescription>Список уполномоченных лиц</ItemDescription>
+                    <ItemAction>NEWPAGEFLOW</ItemAction>
+                    <ItemActionParams>Admin/applicationPersonEmpowered</ItemActionParams>
+                    <ItemExpanded>0</ItemExpanded>
+                </Item>
+                <Item>
+                    <ItemCaption>Точки продаж</ItemCaption>
+                    <ItemSysname>SalePoints</ItemSysname>
+                    <ItemDescription>Список точек продаж</ItemDescription>
+                    <ItemAction>NEWPAGEFLOW</ItemAction>
+                    <ItemActionParams>Admin/AdminSalePoints</ItemActionParams>
+                    <ItemExpanded>0</ItemExpanded>
+                </Item>
+                <Item>
+                    <ItemCaption>Каналы продаж</ItemCaption>
+                    <ItemSysname>SalesChannels</ItemSysname>
+                    <ItemDescription>Список каналов продаж</ItemDescription>
+                    <ItemAction>NEWPAGEFLOW</ItemAction>
+                    <ItemActionParams>Admin/AdminSalesChannels</ItemActionParams>
+                    <ItemExpanded>0</ItemExpanded>
+                </Item>
+                <Item>
+                    <ItemCaption>Пользовательские роли</ItemCaption>
+                    <ItemSysname>UserRoles</ItemSysname>
+                    <ItemDescription>Список простых справочников</ItemDescription>
+                    <ItemAction>NEWPAGEFLOW</ItemAction>
+                    <ItemActionParams>Admin/AdminUserRoles</ItemActionParams>
+                    <ItemExpanded>0</ItemExpanded>
+                </Item>
+                <Item>
+                    <ItemCaption>Пользователи</ItemCaption>
+                    <ItemSysname>UserRoles</ItemSysname>
+                    <ItemDescription>Список пользователей</ItemDescription>
+                    <ItemAction>NEWPAGEFLOW</ItemAction>
+                    <ItemActionParams>Admin/admParticipants</ItemActionParams>
+                    <ItemExpanded>0</ItemExpanded>
+                </Item>
+            </Items>
+        </Item>
+
+
+
+	     <Item>
+            <ItemCaption>Пользователи2</ItemCaption>
+            <ItemSysname>User</ItemSysname>
+            <ItemDescription>Работа с пользователями</ItemDescription>
+            <ItemAction>NONE</ItemAction>
+            <ItemActionParams></ItemActionParams>
+            <ItemExpanded>1</ItemExpanded>
+            <AccessOrder>Deny</AccessOrder>
+            <Allow>%admin</Allow>
+            <Items>
+                <Item>
+                    <ItemCaption>Уполномоченные лица</ItemCaption>
+                    <ItemSysname>applicationPersonEmpowered</ItemSysname>
+                    <ItemDescription>Список уполномоченных лиц</ItemDescription>
+                    <ItemAction>NEWPAGEFLOW</ItemAction>
+                    <ItemActionParams>Admin/applicationPersonEmpowered</ItemActionParams>
+                    <ItemExpanded>0</ItemExpanded>
+                </Item>
+                <Item>
+                    <ItemCaption>Точки продаж</ItemCaption>
+                    <ItemSysname>SalePoints</ItemSysname>
+                    <ItemDescription>Список точек продаж</ItemDescription>
+                    <ItemAction>NEWPAGEFLOW</ItemAction>
+                    <ItemActionParams>Admin/AdminSalePoints</ItemActionParams>
+                    <ItemExpanded>0</ItemExpanded>
+                </Item>
+                <Item>
+                    <ItemCaption>Каналы продаж</ItemCaption>
+                    <ItemSysname>SalesChannels</ItemSysname>
+                    <ItemDescription>Список каналов продаж</ItemDescription>
+                    <ItemAction>NEWPAGEFLOW</ItemAction>
+                    <ItemActionParams>Admin/AdminSalesChannels</ItemActionParams>
+                    <ItemExpanded>0</ItemExpanded>
+                </Item>
+                <Item>
+                    <ItemCaption>Пользовательские роли</ItemCaption>
+                    <ItemSysname>UserRoles</ItemSysname>
+                    <ItemDescription>Список простых справочников</ItemDescription>
+                    <ItemAction>NEWPAGEFLOW</ItemAction>
+                    <ItemActionParams>Admin/AdminUserRoles</ItemActionParams>
+                    <ItemExpanded>0</ItemExpanded>
+                </Item>
+                <Item>
+                    <ItemCaption>Пользователи</ItemCaption>
+                    <ItemSysname>UserRoles</ItemSysname>
+                    <ItemDescription>Список пользователей</ItemDescription>
+                    <ItemAction>NEWPAGEFLOW</ItemAction>
+                    <ItemActionParams>Admin/admParticipants</ItemActionParams>
+                    <ItemExpanded>0</ItemExpanded>
+                </Item>
+            </Items>
+            </Item>
+ 	</Items>  
+</Menu>

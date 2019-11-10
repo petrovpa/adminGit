@@ -1,0 +1,69 @@
+<form #f="ngForm" [ngClass]="{'was-validated': wasValidated}"
+      class="page-form-edit role-manage-edit-form"
+      novalidate autocomplete="off">
+  <!-- Форма -->
+  <fieldset>
+    <legend>Параметры автозагрузки файлов</legend>
+
+    <div class="row">
+      <div class="col-sm-6 col-12">
+          <form-control-label title="Время запуска автоимпорта c (ч.)" [required]="true">
+            <input-number name="timeStart"
+                         autocomplete="off"
+                         placeholder="c"
+                         [(ngModel)]="Settings.TIMESTART"
+                         [required]="true"
+                         [disabled]="isFormDisabled || isBlock"></input-number>
+          </form-control-label>
+      </div>
+
+      <div class="col-sm-6 col-12">
+        <form-control-label title="Время запуска автоимпорта по (ч.)" [required]="true">
+          <input-number name="timeFinash"
+                         autocomplete="off"
+                         placeholder="по"
+                         [(ngModel)]="Settings.TIMEFINISH"
+                         [required]="true"
+                         [disabled]="isFormDisabled || isBlock"></input-number>
+        </form-control-label>
+        </div>
+    </div>
+
+      <div class="row">
+        <div class="col-sm-6 col-12">
+          <form-control-label title="Каталог размещения файлов для импорта" [required]="true">
+            <input-field name="catalog"
+                         autocomplete="off"
+                         placeholder="Введите путь"
+                         [(ngModel)]="Settings.CATALOG"
+                         [required]="true"
+                         [disabled]="isFormDisabled || isBlock"></input-field>
+          </form-control-label>
+        </div>
+
+        <div class="col-sm-6 col-12">
+          <form-control-label title="Почтовый адрес, куда отправится отчёт по импорту" [required]="true">
+            <input-email name="mail"
+                         autocomplete="off"
+                         placeholder="Введите почтовый адрес"
+                         [(ngModel)]="Settings.MAIL"
+                         [required]="true"
+                         [disabled]="isFormDisabled || isBlock"></input-email>
+          </form-control-label>
+        </div>
+      </div>
+
+      <div class="page__btn">
+        <div class="row">
+          <div class="col-sm-6 col-12">
+            <button type="button"
+                    class="btn btn-primary btn-rounded btn-block"
+                    (click)="doSave(f)"
+                    [disabled]="isBlock">
+              Сохранить
+            </button>
+          </div>
+        </div>
+      </div>
+  </fieldset>
+</form>

@@ -1,0 +1,66 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "noEmitHelpers": true,
+    "importHelpers": true,
+    "strictNullChecks": false,
+    "lib": [
+      "es2015",
+      "dom"
+    ],
+    "baseUrl": "./src",
+    "paths": {
+      "@app/*": [
+        "app/*"
+      ],
+      "@core/*": [
+        "../../core/*"
+      ],
+      "@assets/*": [
+        "../../sbslife/*"
+      ],
+      "@node/*": [
+        "../../node_modules/*"
+      ],
+      "@angular/*": [
+        "../../node_modules/@angular/*"
+      ],
+      "@frontend/*": [
+        "../../node_modules/@frontend/*"
+      ]
+    },
+    "typeRoots": [
+      "../../node_modules/@types"
+    ],
+    "types": [
+      "hammerjs",
+      "node"
+    ]
+  },
+  "include": [
+    "src/**/*.ts",
+    "core/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "src/**/*.e2e.ts",
+    "src/**/*.spec.ts",
+    "core/**/*.e2e.ts",
+    "core/**/*.spec.ts"
+  ],
+  "angularCompilerOptions": {
+    "skipMetadataEmit": true
+  },
+  "compileOnSave": false,
+  "buildOnSave": false,
+  "atom": {
+    "rewriteTsconfig": false
+  }
+}

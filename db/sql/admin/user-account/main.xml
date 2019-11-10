@@ -1,0 +1,42 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet author="pzabaluev" context="update" id="admin-user-account-addJournal">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <sqlCheck expectedResult="0">
+                    SELECT COUNT(*) FROM INS_DATAPROV WHERE DATAPROVID=20700;
+                </sqlCheck>
+            </and>
+        </preConditions>
+        <sqlFile path="admin/user-account/data/addJournal.sql" encoding="UTF-8" />
+        <comment>add Admin User account data provider</comment>
+    </changeSet>
+
+    <changeSet author="vpodgurskiy" context="update" id="admin-user-account-updateJournalParam">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <sqlCheck expectedResult="0">
+                    SELECT COUNT(*) FROM B2B_JOURNALPARAM
+                    WHERE JOURNALID = 11 AND SYSNAME = 'USERNAME' AND NAMESPACE = 'USERNAME';
+                </sqlCheck>
+            </and>
+        </preConditions>
+        <sqlFile path="admin/user-account/data/updateJournalParam.sql" encoding="UTF-8" />
+        <comment>update Journal param</comment>
+    </changeSet>
+
+    <changeSet author="vpodgurskiy" context="update" id="admin-user-account-remoteUserFiltering">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <sqlCheck expectedResult="0">
+                    SELECT COUNT(*) FROM INS_HBDATAVER WHERE HBDATAVERID=400000;
+                </sqlCheck>
+            </and>
+        </preConditions>
+        <sqlFile path="admin/user-account/data/remoteUserFiltering.sql" encoding="UTF-8" />
+        <comment>add data provider to filter remote users</comment>
+    </changeSet>
+</databaseChangeLog>

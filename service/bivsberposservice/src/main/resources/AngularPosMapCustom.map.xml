@@ -1,0 +1,1080 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+    <query name="dsHabContractBrowseListParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="InsPOSCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql><![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.CONTRID', 'java.lang.Long', 'CONTRID'),
+        #result('T.DURATION', 'java.lang.Long', 'DURATION'),
+        #result('T.CONTRNODEID', 'java.lang.Long', 'CONTRNODEID'),
+        #result('T.EXTERNALID', 'java.lang.String', 'EXTERNALID'),
+        #result('T.CONTRNUMBER', 'java.lang.String', 'CONTRNUMBER'),
+        #result('T.CREDCONTRNUM', 'java.lang.String', 'CREDCONTRNUM'),
+        #result('T.CONTRPOLNUM', 'java.lang.String', 'CONTRPOLNUM'),
+        #result('T.CONTRPOLSER', 'java.lang.String', 'CONTRPOLSER'),
+        #result('T.PRODPROGID', 'java.lang.Long', 'PRODPROGID'),
+        #result('T.CURRENCYRATE', 'java.lang.Float', 'CURRENCYRATE'),
+        #result('T.NOTE', 'java.lang.String', 'NOTE'),
+        #result('T.ORGSTRUCTID', 'java.lang.Long', 'ORGSTRUCTID'),
+        #result('T.INSUREDID', 'java.lang.Long', 'INSUREDID'),
+        #result('T5.BRIEFNAME', 'java.lang.String', 'INSBRIEFNAME'),
+        #result('T70.PERSONID', 'java.lang.Long', 'INSPERSONID'),
+        #result('T70.CITIZENSHIP', 'java.lang.Long', 'INSCITIZENSHIP'),
+        #result('T70.FIRSTNAME', 'java.lang.String', 'INSFIRSTNAME'),
+        #result('T70.MIDDLENAME', 'java.lang.String', 'INSMIDDLENAME'),
+        #result('T70.LASTNAME', 'java.lang.String', 'INSLASTNAME'),
+        #result('T70.BIRTHDATE', 'java.math.BigDecimal', 'INSBIRTHDATE'),
+        #result('T70.BIRTHPLACE', 'java.lang.String', 'INSBIRTHPLACE'),
+        #result('T70.GENDER', 'java.lang.Long', 'INSGENDER'),
+        #result('T7.DOCSERIES', 'java.lang.String', 'INSDOCSERIES'),
+        #result('T7.DOCNUMBER', 'java.lang.String', 'INSDOCNUMBER'),
+        #result('T7.ISSUEDBY', 'java.lang.String', 'INSISSUEDBY'),
+        #result('T7.ISSUERCODE', 'java.lang.String', 'INSISSUERCODE'),
+        #result('T7.ISSUEDATE', 'java.math.BigDecimal', 'INSISSUEDATE'),
+        #result('T73.SYSNAME', 'java.lang.String', 'INSDOCTYPE'),            
+        #result('T73.CODE', 'java.lang.String', 'INSDOCCODE'),            
+        #result('T71.COUNTRY', 'java.lang.String', 'INSCOUNTRY'),
+        #result('T71.POSTALCODE', 'java.lang.String', 'INSPOSTALCODE'),
+        #result('T71.REGIONTYPE', 'java.lang.Long', 'INSREGIONTYPE'),
+        #result('T71.REGION', 'java.lang.String', 'INSREGION'),
+        #result('T71.REGIONKLADR', 'java.lang.String', 'INSREGIONKLADR'),
+        #result('T71.DISTRICTTYPE', 'java.lang.Long', 'INSDISTRICTTYPE'),
+        #result('T71.DISTRICT', 'java.lang.String', 'INSDISTRICT'),
+        #result('T71.DISTRICTKLADR', 'java.lang.String', 'INSDISTRICTKLADR'),
+        #result('T71.CITYTYPE', 'java.lang.Long', 'INSCITYTYPE'),
+        #result('T71.CITY', 'java.lang.String', 'INSCITY'),
+        #result('T71.CITYKLADR', 'java.lang.String', 'INSCITYKLADR'),
+        #result('T71.VILLAGETYPE', 'java.lang.Long', 'INSVILLAGETYPE'),
+        #result('T71.VILLAGE', 'java.lang.String', 'INSVILLAGE'),
+        #result('T71.VILLAGEKLADR', 'java.lang.String', 'INSVILLAGEKLADR'),
+        #result('T71.STREETTYPE', 'java.lang.Long', 'INSSTREETTYPE'),
+        #result('T71.STREET', 'java.lang.String', 'INSSTREET'),
+        #result('T71.STREETKLADR', 'java.lang.String', 'INSSTREETKLADR'),
+        #result('T71.HOUSE', 'java.lang.String', 'INSHOUSE'),
+        #result('T71.HOUSING', 'java.lang.String', 'INSHOUSING'),
+        #result('T71.BUILDING', 'java.lang.String', 'INSBUILDING'),
+        #result('T71.FLATTYPE', 'java.lang.String', 'INSFLATTYPE'),
+        #result('T71.FLAT', 'java.lang.String', 'INSFLAT'),
+        #result('T71.ADDRESSTEXT1', 'java.lang.String', 'INSADDRESSTEXT1'),
+        #result('T71.ADDRESSTEXT2', 'java.lang.String', 'INSADDRESSTEXT2'),
+        #result('T71.ADDRESSTEXT3', 'java.lang.String', 'INSADDRESSTEXT3'),
+
+        #result('T72.OBJTYPEID', 'java.lang.Long', 'OBJTYPEID'),
+        #result('T72.NAME', 'java.lang.String', 'OBJNAME'),
+        #result('T72.POSTALCODE', 'java.lang.String', 'OBJPOSTALCODE'),
+        #result('T72.REGIONTYPE', 'java.lang.Long', 'OBJREGIONTYPE'),
+        #result('T72.REGION', 'java.lang.String', 'OBJREGION'),
+        #result('T72.REGIONKLADR', 'java.lang.String', 'OBJREGIONKLADR'),
+        #result('T72.DISTRICTTYPE', 'java.lang.Long', 'OBJDISTRICTTYPE'),
+        #result('T72.DISTRICT', 'java.lang.String', 'OBJDISTRICT'),
+        #result('T72.DISTRICTKLADR', 'java.lang.String', 'OBJDISTRICTKLADR'),
+        #result('T72.CITYTYPE', 'java.lang.Long', 'OBJCITYTYPE'),
+        #result('T72.CITY', 'java.lang.String', 'OBJCITY'),
+        #result('T72.CITYKLADR', 'java.lang.String', 'OBJCITYKLADR'),
+        #result('T72.VILLAGETYPE', 'java.lang.Long', 'OBJVILLAGETYPE'),
+        #result('T72.VILLAGE', 'java.lang.String', 'OBJVILLAGE'),
+        #result('T72.VILLAGEKLADR', 'java.lang.String', 'OBJVILLAGEKLADR'),
+        #result('T72.STREETTYPE', 'java.lang.Long', 'OBJSTREETTYPE'),
+        #result('T72.STREET', 'java.lang.String', 'OBJSTREET'),
+        #result('T72.STREETKLADR', 'java.lang.String', 'OBJSTREETKLADR'),
+        #result('T72.HOUSE', 'java.lang.String', 'OBJHOUSE'),
+        #result('T72.HOUSING', 'java.lang.String', 'OBJHOUSING'),
+        #result('T72.BUILDING', 'java.lang.String', 'OBJBUILDING'),
+        #result('T72.FLATTYPE', 'java.lang.String', 'OBJFLATTYPE'),
+        #result('T72.FLAT', 'java.lang.String', 'OBJFLAT'),
+        #result('T72.ADDRESSTEXT1', 'java.lang.String', 'OBJADDRESSTEXT1'),
+                                   
+        #result('T.STATEID', 'java.lang.Long', 'STATEID'),
+        #result('T2.SYSNAME', 'java.lang.String', 'STATESYSNAME'),
+        #result('T2.PUBLICNAME', 'java.lang.String', 'STATENAME'),
+        #result('T.PRODVERID', 'java.lang.Long', 'PRODVERID'),
+        #result('T3.NAME', 'java.lang.String', 'PRODUCTVERSIONNAME'),
+        #result('T4.PRODID', 'java.lang.Long', 'PRODID'),
+        #result('T4.NAME', 'java.lang.String', 'PRODUCTNAME'),
+        #result('T4.SYSNAME', 'java.lang.String', 'PRODUCTSYSNAME'),
+        #result('T.PAYCURRENCYID', 'java.lang.Double', 'CURRENCYID'),
+        #result('T.PAYPREMVALUE', 'java.lang.Double', 'PAYPREMVALUE'),
+        #result('T.PREMVALUE', 'java.lang.Double', 'PREMIUM'),
+        #result('T.INSAMVALUE', 'java.lang.Double', 'INSAMVALUE'),
+        #result('T.PREMCURRENCYID', 'java.lang.Long', 'PREMIUMCURRENCYID'),
+        #result('TCUR.NUMERICCODE', 'java.lang.String', 'PREMIUMCURRNUMCODE'),
+        #result('TACUR.ALPHACODE', 'java.lang.String', 'INSAMCURRNAME'),          
+        #result('TCUR.ISONUMBER', 'java.lang.String', 'PREMIUMCURRISO'),
+        #result('TACUR.ISONUMBER', 'java.lang.String', 'INSAMCURRISO'),          
+        #result('T.PREMVALUE', 'java.lang.Double', 'PREMVALUE'),
+        #result('T.PREMCURRENCYID', 'java.lang.Long', 'PREMCURRENCYID'),
+        #result('T.INSAMCURRENCYID', 'java.lang.Long', 'INSAMCURRENCYID'),
+        #result('T.CREATEUSERID', 'java.lang.Long', 'CREATEUSERID'),
+        #result('T.CREATEDATE', 'java.math.BigDecimal', 'CREATEDATE'),
+        #result('T.UPDATEUSERID', 'java.lang.Long', 'UPDATEUSERID'),
+        #result('T.UPDATEDATE', 'java.math.BigDecimal', 'UPDATEDATE'),
+        #result('T.SELLERID', 'java.lang.Long', 'SELLERID'),
+        #result('T.SIGNDATE', 'java.math.BigDecimal', 'SIGNDATE'),
+        #result('T.STARTDATE', 'java.math.BigDecimal', 'STARTDATE'),
+        #result('T.FINISHDATE', 'java.math.BigDecimal', 'FINISHDATE'),
+        #result('T8.PRODCONFID', 'java.lang.Long', 'PRODCONFID'),
+        #result('T.PAYVARID', 'java.lang.Long', 'PAYVARID'),
+        #result('T82.DOUBLEFIELD00', 'java.lang.Double', 'INSGOAMVALUE'),
+        #result('T82.LONGFIELD01', 'java.lang.Long', 'INSCOUNT60'),
+        #result('T82.LONGFIELD02', 'java.lang.Long', 'INSCOUNT70'),
+        #result('T82.LONGFIELD03', 'java.lang.Long', 'INSCOUNT2'),
+        #result('T82.LONGFIELD04', 'java.lang.Long', 'ISSPORTENABLED'),
+        #result('T82.LONGFIELD05', 'java.lang.Long', 'LOCALTZOFFSET'),
+        #result('T82.LONGFIELD06', 'java.lang.Long', 'TRAVELTYPE'),
+        #result('T82.STRINGFIELD00', 'java.lang.String', 'DOPPACKLIST'),
+        #result('T82.STRINGFIELD01', 'java.lang.String', 'PRODPROGSYSNAME'),
+        #result('T82.STRINGFIELD03', 'java.lang.String', 'TERRITORY'),
+        #result('T82.STRINGFIELD04', 'java.lang.String', 'RISKSYSNAMES'),
+        #result('T82.STRINGFIELD05', 'java.lang.String', 'sessionId'),
+        #result('T83.NAME', 'java.lang.String', 'SELLERFIO'),
+        #result('T10.SYSNAME', 'java.lang.String', 'PROGSYSNAME'),
+        #result('T811.VALUE', 'java.lang.String', 'SBERPRODCODE'),
+            
+        #result('T.DOCUMENTDATE', 'java.math.BigDecimal', 'DOCUMENTDATE')
+FROM
+      INS_CONTR T
+      INNER JOIN INS_CONTRNODE T6 ON (T.CONTRID = T6.CONTRID)
+      INNER JOIN CORE_SM_STATE T2 ON (T.STATEID = T2.ID)
+      INNER JOIN INS_PRODVER T3 ON (T.PRODVERID = T3.PRODVERID)
+      INNER JOIN INS_PROD T4 ON (T3.PRODID = T4.PRODID) AND ((T4.ISHIDDEN is null) or (T4.ISHIDDEN != 1))
+      LEFT JOIN CRM_PARTICIPANT T5 ON (T.INSUREDID = T5.PARTICIPANTID)
+      LEFT JOIN CRM_PERSON T70 ON (T.INSUREDID = T70.PARTICIPANTID)
+      LEFT JOIN CRM_PERSONDOC T7 ON (T70.PERSONID = T7.PERSONID)
+      LEFT JOIN CRM_PERSONDOCTYPE T73 ON (T73.PERSONDOCTYPEID = T7.PERSONDOCTYPEID)
+      LEFT JOIN CRM_ADDRESS T71 ON (T.INSUREDID = T71.PARTICIPANTID)
+      LEFT JOIN INS_CONTRPROPERTY T72 ON (T.CONTRID = T72.CONTRID)
+      LEFT JOIN REF_CURRENCY TCUR ON (T.PREMCURRENCYID = TCUR.CURRENCYID)      
+      LEFT JOIN REF_CURRENCY TACUR ON (T.INSAMCURRENCYID = TACUR.CURRENCYID)      
+      LEFT JOIN INS_PRODCONF T8 ON ((T.PRODVERID = T8.PRODVERID) AND (T8.SYSNAME = 'POS'))
+      LEFT JOIN INS_PRODDEFVAL T81 ON ((T8.PRODCONFID = T81.PRODCONFID) AND (T81.NAME = 'CONTREXTDATAVERID'))
+      LEFT JOIN INS_PRODDEFVAL T811 ON ((T8.PRODCONFID = T811.PRODCONFID) AND (T811.NAME = 'SBERPRODCODE'))
+      LEFT JOIN INS_CONTREXT T82 ON ((T82.CONTRID = T.CONTRID) AND (T82.HBDATAVERID = T81.VALUE))
+      LEFT JOIN INS_SELLER T83 ON (T.SELLERID = T83.SELLERID)      
+      LEFT JOIN INS_PRODPROG T10 ON (T.PRODPROGID = T10.PRODPROGID)
+      #chunk($PDSELLERID) INNER JOIN INS_PRODDISTR T9 ON ((T9.SELLERID = $PDSELLERID) AND (T9.PRODVERID = T.PRODVERID)) #end
+      $ASPECTTABLES
+#chain('AND' 'WHERE')
+    #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end
+    #chunk($EXTERNALID) T.EXTERNALID = #bind($EXTERNALID 'VARCHAR') #end
+    #chunk($CONTRNUMBER) UPPER(T.CONTRNUMBER) LIKE UPPER('%$CONTRNUMBER%')  #end
+    #chunk($CREDCONTRNUM) UPPER(T.CREDCONTRNUM) LIKE UPPER('%$CREDCONTRNUM%')  #end
+    #chunk($CONTRPOLSER) T.CONTRPOLSER = #bind($CONTRPOLSER 'VARCHAR') #end
+    #chunk($CONTRPOLNUM) T.CONTRPOLNUM = #bind($CONTRPOLNUM 'VARCHAR') #end
+    #chunk($STATESYSNAME) T2.SYSNAME = #bind($STATESYSNAME 'VARCHAR') #end
+    #chunk($NOTE) UPPER(T.NOTE) LIKE UPPER('%$NOTE%')  #end
+    #chunk($ORGSTRUCTID) T.ORGSTRUCTID = #bind($ORGSTRUCTID 'NUMERIC') #end
+    #chunk($PRODID) T4.PRODID = #bind($PRODID 'NUMERIC') #end
+    #chunk($PRODVERID) T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end
+    #chunk($INSUREDNAME) UPPER(T5.BRIEFNAME) LIKE UPPER('%$INSUREDNAME%') #end
+    #chunk($STATEID) T.STATEID = #bind($STATEID 'NUMERIC') #end
+    #chunk($STATESYSNAME) T2.SYSNAME = #bind($STATESYSNAME 'VARCHAR') #end
+    #chunk($NODELETED) T2.SYSNAME != 'INS_CONTRACT_DELETED' #end
+    #chunk($STATESYSNAMELIST) T2.SYSNAME in ($STATESYSNAMELIST) #end
+    #chunk($CREATESTARTDATE) T.CREATEDATE >= #bind($CREATESTARTDATE 'FLOAT') #end
+    #chunk($CREATEFINISHDATE) T.CREATEDATE <= #bind($CREATEFINISHDATE 'FLOAT') #end
+    #chunk($PDSELLERID) T9.STARTDATE <= #bind($NOWDATE 'FLOAT') #end
+    #chunk($SELLERID) T.SELLERID = #bind($SELLERID 'NUMERIC') #end
+    #chunk($STARTSTARTDATE) T.STARTDATE >= #bind($STARTSTARTDATE 'FLOAT') #end
+    #chunk($STARTFINISHDATE) T.STARTDATE <= #bind($STARTFINISHDATE 'FLOAT') #end
+    #chunk($DOCUMENTSTARTDATE) T.DOCUMENTDATE >= #bind($DOCUMENTSTARTDATE 'FLOAT') #end
+    #chunk($DOCUMENTFINISHDATE) T.DOCUMENTDATE <= #bind($DOCUMENTFINISHDATE 'FLOAT') #end
+    #chunk($SIGNDATEUPBOUND) T.SIGNDATE >= #bind($SIGNDATEUPBOUND 'FLOAT') #end
+    #chunk($SIGNDATEDOWNBOUND) T.SIGNDATE <= #bind($SIGNDATEDOWNBOUND 'FLOAT') #end
+    #chunk($CREATEUSERIDISNULL) T.CREATEUSERID IS NULL #end
+    #chunk($CREATEUSERIDISNOTNULL) T.CREATEUSERID IS NOT NULL #end
+    #chunk($POSTCTRLTEXTID) T.POSTCTRLTEXTID = #bind($POSTCTRLTEXTID 'NUMERIC') #end
+    #chunk($POSTCTRLCONDID) T.POSTCTRLCONDID = #bind($POSTCTRLCONDID 'NUMERIC') #end   
+    #chunk($UWSYSNAME) ((T82.STRINGFIELD04 = #bind($UWSYSNAME 'VARCHAR')) OR (T82.STRINGFIELD05 = #bind($UWSYSNAME 'VARCHAR')) OR (T82.STRINGFIELD06 = #bind($UWSYSNAME 'VARCHAR'))) #end                                   
+    #chunk($SELLERFIO) UPPER(T83.NAME) LIKE UPPER('%$SELLERFIO%')  #end            
+    #chunk($BRANCHID) T.BRANCHID = #bind($BRANCHID 'NUMERIC') #end            
+      $ASPECTRESTRICTION
+#end
+]]>
+        </sql>
+    </query>
+    <query name="dsHabContractBrowseListParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="InsPOSCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql><![CDATA[
+SELECT
+        #result('COUNT($NEEDDISTINCT T.CONTRID)', 'java.lang.Long', 'CNT')
+FROM
+      INS_CONTR T
+      INNER JOIN INS_CONTRNODE T6 ON (T.CONTRID = T6.CONTRID)
+      INNER JOIN CORE_SM_STATE T2 ON (T.STATEID = T2.ID)
+      INNER JOIN INS_PRODVER T3 ON (T.PRODVERID = T3.PRODVERID)
+      INNER JOIN INS_PROD T4 ON (T3.PRODID = T4.PRODID) AND ((T4.ISHIDDEN is null) or (T4.ISHIDDEN != 1))
+      LEFT JOIN CRM_PARTICIPANT T5 ON (T.INSUREDID = T5.PARTICIPANTID)
+      LEFT JOIN CRM_PERSON T70 ON (T.INSUREDID = T70.PARTICIPANTID)
+      LEFT JOIN CRM_PERSONDOC T7 ON (T70.PERSONID = T7.PERSONID)
+      LEFT JOIN CRM_PERSONDOCTYPE T73 ON (T73.PERSONDOCTYPEID = T7.PERSONDOCTYPEID)
+      LEFT JOIN CRM_ADDRESS T71 ON (T.INSUREDID = T71.PARTICIPANTID)
+      LEFT JOIN INS_CONTRPROPERTY T72 ON (T.CONTRID = T72.CONTRID)
+            
+      LEFT JOIN INS_PRODCONF T8 ON ((T.PRODVERID = T8.PRODVERID) AND (T8.SYSNAME = 'POS'))
+      LEFT JOIN INS_PRODDEFVAL T81 ON ((T8.PRODCONFID = T81.PRODCONFID) AND (T81.NAME = 'CONTREXTDATAVERID'))
+      LEFT JOIN INS_CONTREXT T82 ON ((T82.CONTRID = T.CONTRID) AND (T82.HBDATAVERID = T81.VALUE))
+      LEFT JOIN INS_SELLER T83 ON (T.SELLERID = T83.SELLERID)      
+      LEFT JOIN INS_PRODPROG T10 ON (T.PRODPROGID = T10.PRODPROGID)
+      #chunk($PDSELLERID) INNER JOIN INS_PRODDISTR T9 ON ((T9.SELLERID = $PDSELLERID) AND (T9.PRODVERID = T.PRODVERID)) #end
+      $ASPECTTABLES
+#chain('AND' 'WHERE')
+    #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end
+    #chunk($EXTERNALID) T.EXTERNALID = #bind($EXTERNALID 'VARCHAR') #end
+    #chunk($CONTRNUMBER) UPPER(T.CONTRNUMBER) LIKE UPPER('%$CONTRNUMBER%')  #end
+    #chunk($CREDCONTRNUM) UPPER(T.CREDCONTRNUM) LIKE UPPER('%$CREDCONTRNUM%')  #end
+    #chunk($CONTRPOLSER) T2.CONTRPOLSER = #bind($CONTRPOLSER 'VARCHAR') #end
+    #chunk($CONTRPOLNUM) T2.CONTRPOLNUM = #bind($CONTRPOLNUM 'VARCHAR') #end
+    #chunk($STATESYSNAME) T2.SYSNAME = #bind($STATESYSNAME 'VARCHAR') #end
+    #chunk($NOTE) UPPER(T.NOTE) LIKE UPPER('%$NOTE%')  #end
+    #chunk($ORGSTRUCTID) T.ORGSTRUCTID = #bind($ORGSTRUCTID 'NUMERIC') #end
+    #chunk($CREATEUSERID) T.CREATEUSERID = #bind($CREATEUSERID 'NUMERIC') #end
+    #chunk($UPDATEUSERID) T.UPDATEUSERID = #bind($UPDATEUSERID 'NUMERIC') #end
+    #chunk($PRODID) T4.PRODID = #bind($PRODID 'NUMERIC') #end
+    #chunk($PRODVERID) T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end
+    #chunk($INSUREDNAME) UPPER(T5.BRIEFNAME) LIKE UPPER('%$INSUREDNAME%') #end
+    #chunk($STATEID) T.STATEID = #bind($STATEID 'NUMERIC') #end
+    #chunk($STATESYSNAME) T2.SYSNAME = #bind($STATESYSNAME 'VARCHAR') #end
+    #chunk($NODELETED) T2.SYSNAME != 'INS_CONTRACT_DELETED' #end
+    #chunk($STATESYSNAMELIST) T2.SYSNAME in ($STATESYSNAMELIST) #end
+    #chunk($CREATESTARTDATE) T.CREATEDATE >= #bind($CREATESTARTDATE 'FLOAT') #end
+    #chunk($CREATEFINISHDATE) T.CREATEDATE <= #bind($CREATEFINISHDATE 'FLOAT') #end
+    #chunk($PDSELLERID) T9.STARTDATE <= #bind($NOWDATE 'FLOAT') #end
+    #chunk($SELLERID) T.SELLERID = #bind($SELLERID 'NUMERIC') #end
+    #chunk($STARTSTARTDATE) T.STARTDATE >= #bind($STARTSTARTDATE 'FLOAT') #end
+    #chunk($STARTFINISHDATE) T.STARTDATE <= #bind($STARTFINISHDATE 'FLOAT') #end
+    #chunk($DOCUMENTSTARTDATE) T.DOCUMENTDATE >= #bind($DOCUMENTSTARTDATE 'FLOAT') #end
+    #chunk($DOCUMENTFINISHDATE) T.DOCUMENTDATE <= #bind($DOCUMENTFINISHDATE 'FLOAT') #end
+    #chunk($SIGNDATEUPBOUND) T.SIGNDATE >= #bind($SIGNDATEUPBOUND 'FLOAT') #end
+    #chunk($SIGNDATEDOWNBOUND) T.SIGNDATE <= #bind($SIGNDATEDOWNBOUND 'FLOAT') #end
+    #chunk($CREATEUSERIDISNULL) T.CREATEUSERID IS NULL #end
+    #chunk($CREATEUSERIDISNOTNULL) T.CREATEUSERID IS NOT NULL #end
+    #chunk($POSTCTRLTEXTID) T.POSTCTRLTEXTID = #bind($POSTCTRLTEXTID 'NUMERIC') #end
+    #chunk($POSTCTRLCONDID) T.POSTCTRLCONDID = #bind($POSTCTRLCONDID 'NUMERIC') #end              
+    #chunk($UWSYSNAME) ((T82.STRINGFIELD04 = #bind($UWSYSNAME 'VARCHAR')) OR (T82.STRINGFIELD05 = #bind($UWSYSNAME 'VARCHAR')) OR (T82.STRINGFIELD06 = #bind($UWSYSNAME 'VARCHAR'))) #end                                   
+    #chunk($SELLERFIO) UPPER(T83.NAME) LIKE UPPER('%$SELLERFIO%')  #end            
+    #chunk($BRANCHID) T.BRANCHID = #bind($BRANCHID 'NUMERIC') #end            
+      $ASPECTRESTRICTION
+#end
+]]>
+        </sql>
+    </query>
+    
+    <query name="dsContractBrowseListForIntegration" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="InsPOSCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql><![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.CONTRID', 'java.lang.Long', 'CONTRID'),
+        #result('T.DURATION', 'java.lang.Long', 'DURATION'),
+        #result('T.CONTRNODEID', 'java.lang.Long', 'CONTRNODEID'),
+        #result('T.EXTERNALID', 'java.lang.String', 'EXTERNALID'),
+        #result('T.CONTRNUMBER', 'java.lang.String', 'CONTRNUMBER'),
+        #result('T.CREDCONTRNUM', 'java.lang.String', 'CREDCONTRNUM'),
+        #result('T.CONTRPOLNUM', 'java.lang.String', 'CONTRPOLNUM'),
+        #result('T.CONTRPOLSER', 'java.lang.String', 'CONTRPOLSER'),
+        #result('T.PRODPROGID', 'java.lang.Long', 'PRODPROGID'),
+        #result('T.CURRENCYRATE', 'java.lang.Float', 'CURRENCYRATE'),
+        #result('T.NOTE', 'java.lang.String', 'NOTE'),
+        #result('T.ORGSTRUCTID', 'java.lang.Long', 'ORGSTRUCTID'),
+        #result('T.INSUREDID', 'java.lang.Long', 'INSUREDID'),            
+            
+        #result('T.STATEID', 'java.lang.Long', 'STATEID'),
+        #result('T2.SYSNAME', 'java.lang.String', 'STATESYSNAME'),
+        #result('T2.PUBLICNAME', 'java.lang.String', 'STATENAME'),
+        #result('T.PRODVERID', 'java.lang.Long', 'PRODVERID'),
+        #result('T3.NAME', 'java.lang.String', 'PRODUCTVERSIONNAME'),
+        #result('T4.PRODID', 'java.lang.Long', 'PRODID'),
+        #result('T4.NAME', 'java.lang.String', 'PRODUCTNAME'),
+        #result('T4.SYSNAME', 'java.lang.String', 'PRODUCTSYSNAME'),
+        #result('T.PAYCURRENCYID', 'java.lang.Double', 'CURRENCYID'),
+        #result('T.PAYPREMVALUE', 'java.lang.Double', 'PAYPREMVALUE'),
+        #result('T.PREMVALUE', 'java.lang.Double', 'PREMIUM'),
+        #result('T.INSAMVALUE', 'java.lang.Double', 'INSAMVALUE'),
+        #result('T.PREMCURRENCYID', 'java.lang.Long', 'PREMIUMCURRENCYID'),
+        #result('TCUR.NUMERICCODE', 'java.lang.String', 'PREMIUMCURRNUMCODE'),
+        #result('TACUR.ALPHACODE', 'java.lang.String', 'INSAMCURRNAME'),          
+        #result('TCUR.ISONUMBER', 'java.lang.String', 'PREMIUMCURRISO'),
+        #result('TACUR.ISONUMBER', 'java.lang.String', 'INSAMCURRISO'),          
+        #result('T.PREMVALUE', 'java.lang.Double', 'PREMVALUE'),
+        #result('T.PREMCURRENCYID', 'java.lang.Long', 'PREMCURRENCYID'),
+        #result('T.INSAMCURRENCYID', 'java.lang.Long', 'INSAMCURRENCYID'),
+        #result('T.CREATEUSERID', 'java.lang.Long', 'CREATEUSERID'),
+        #result('T.CREATEDATE', 'java.math.BigDecimal', 'CREATEDATE'),
+        #result('T.UPDATEUSERID', 'java.lang.Long', 'UPDATEUSERID'),
+        #result('T.UPDATEDATE', 'java.math.BigDecimal', 'UPDATEDATE'),
+        #result('T.SELLERID', 'java.lang.Long', 'SELLERID'),
+        #result('T.SIGNDATE', 'java.math.BigDecimal', 'SIGNDATE'),
+        #result('T.STARTDATE', 'java.math.BigDecimal', 'STARTDATE'),
+        #result('T.FINISHDATE', 'java.math.BigDecimal', 'FINISHDATE'),
+        #result('T8.PRODCONFID', 'java.lang.Long', 'PRODCONFID'),
+        #result('T.PAYVARID', 'java.lang.Long', 'PAYVARID'),
+        #result('T82.DOUBLEFIELD00', 'java.lang.Double', 'INSGOAMVALUE'),
+        #result('T82.DOUBLEFIELD01', 'java.lang.Double', 'movDetailAmValSum'),
+        #result('T82.DOUBLEFIELD02', 'java.lang.Double', 'movDetailAmValOst'),
+        #result('T82.LONGFIELD01', 'java.lang.Long', 'INSCOUNT60'),
+        #result('T82.LONGFIELD02', 'java.lang.Long', 'INSCOUNT70'),
+        #result('T82.LONGFIELD03', 'java.lang.Long', 'INSCOUNT2'),
+        #result('T82.LONGFIELD04', 'java.lang.Long', 'ISSPORTENABLED'),
+        #result('T82.LONGFIELD05', 'java.lang.Long', 'LOCALTZOFFSET'),
+        #result('T82.LONGFIELD06', 'java.lang.Long', 'TRAVELTYPE'),
+        #result('T82.STRINGFIELD00', 'java.lang.String', 'DOPPACKLIST'),
+        #result('T82.STRINGFIELD01', 'java.lang.String', 'PRODPROGSYSNAME'),
+        #result('T82.STRINGFIELD03', 'java.lang.String', 'TERRITORY'),
+        #result('T82.STRINGFIELD04', 'java.lang.String', 'RISKSYSNAMES'),
+        #result('T82.STRINGFIELD05', 'java.lang.String', 'sessionId'),
+        #result('T82.STRINGFIELD06', 'java.lang.String', 'protectTypeList'),
+        #result('T83.NAME', 'java.lang.String', 'SELLERFIO'),
+        #result('T831.SALECHANNELCODE', 'java.lang.String', 'SALECHANNELCODE'),
+        #result('T831.NAME', 'java.lang.String', 'SALECHANNELNAME'),            
+        #result('T10.SYSNAME', 'java.lang.String', 'PROGSYSNAME'),
+        #result('T811.VALUE', 'java.lang.String', 'SBERPRODCODE'),            
+        #result('T.DOCUMENTDATE', 'java.math.BigDecimal', 'DOCUMENTDATE')
+FROM
+      INS_CONTR T
+      INNER JOIN INS_CONTRNODE T6 ON (T.CONTRID = T6.CONTRID)
+      INNER JOIN CORE_SM_STATE T2 ON (T.STATEID = T2.ID)
+      INNER JOIN INS_PRODVER T3 ON (T.PRODVERID = T3.PRODVERID)
+      INNER JOIN INS_PROD T4 ON (T3.PRODID = T4.PRODID) AND ((T4.ISHIDDEN is null) or (T4.ISHIDDEN != 1))
+      LEFT JOIN CRM_PARTICIPANT T5 ON (T.INSUREDID = T5.PARTICIPANTID)
+      LEFT JOIN CRM_PERSON T70 ON (T.INSUREDID = T70.PARTICIPANTID)
+      LEFT JOIN CRM_PERSONDOC T7 ON (T70.PERSONID = T7.PERSONID)
+      LEFT JOIN CRM_PERSONDOCTYPE T73 ON (T73.PERSONDOCTYPEID = T7.PERSONDOCTYPEID)
+      LEFT JOIN CRM_ADDRESS T71 ON (T.INSUREDID = T71.PARTICIPANTID)
+            LEFT JOIN CRM_CONTACTPERSON TCP ON (TCP.PARTICIPANTID = T.INSUREDID)
+            LEFT JOIN CRM_CONTACT TCE ON ((TCE.CONTACTPERSONID = TCP.CONTACTPERSONID) AND (TCE.CONTACTTYPEID = 1006))
+            LEFT JOIN CRM_CONTACT TCPH ON ((TCPH.CONTACTPERSONID = TCP.CONTACTPERSONID) AND (TCPH.CONTACTTYPEID = 1005))
+            
+      LEFT JOIN REF_CURRENCY TCUR ON (T.PREMCURRENCYID = TCUR.CURRENCYID)      
+      LEFT JOIN REF_CURRENCY TACUR ON (T.INSAMCURRENCYID = TACUR.CURRENCYID)      
+      LEFT JOIN INS_PRODCONF T8 ON ((T.PRODVERID = T8.PRODVERID) AND (T8.SYSNAME = 'POS'))
+      LEFT JOIN INS_PRODDEFVAL T81 ON ((T8.PRODCONFID = T81.PRODCONFID) AND (T81.NAME = 'CONTREXTDATAVERID'))
+      LEFT JOIN INS_PRODDEFVAL T811 ON ((T8.PRODCONFID = T811.PRODCONFID) AND (T811.NAME = 'SBERPRODCODE'))
+      LEFT JOIN INS_CONTREXT T82 ON ((T82.CONTRID = T.CONTRID) AND (T82.HBDATAVERID = T81.VALUE))
+      LEFT JOIN INS_SELLER T83 ON (T.SELLERID = T83.SELLERID)      
+      LEFT JOIN INS_SALECHANNEL T831 ON (T831.SALECHANNELID = T83.SALECHANNELID)      
+      LEFT JOIN INS_PRODPROG T10 ON (T.PRODPROGID = T10.PRODPROGID)
+      #chunk($PDSELLERID) INNER JOIN INS_PRODDISTR T9 ON ((T9.SELLERID = $PDSELLERID) AND (T9.PRODVERID = T.PRODVERID)) #end
+      $ASPECTTABLES
+#chain('AND' 'WHERE')
+    #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end
+    #chunk($CONTRIDLIST) T.CONTRID in ($CONTRIDLIST) #end        
+      $ASPECTRESTRICTION
+#end
+]]>
+        </sql>
+    </query>
+    <query name="dsContractBrowseListForIntegrationCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="InsPOSCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql><![CDATA[
+SELECT
+        #result('COUNT($NEEDDISTINCT T.CONTRID)', 'java.lang.Long', 'CNT')
+FROM
+      INS_CONTR T
+      INNER JOIN INS_CONTRNODE T6 ON (T.CONTRID = T6.CONTRID)
+      INNER JOIN CORE_SM_STATE T2 ON (T.STATEID = T2.ID)
+      INNER JOIN INS_PRODVER T3 ON (T.PRODVERID = T3.PRODVERID)
+      INNER JOIN INS_PROD T4 ON (T3.PRODID = T4.PRODID) AND ((T4.ISHIDDEN is null) or (T4.ISHIDDEN != 1))
+      LEFT JOIN CRM_PARTICIPANT T5 ON (T.INSUREDID = T5.PARTICIPANTID)
+      LEFT JOIN CRM_PERSON T70 ON (T.INSUREDID = T70.PARTICIPANTID)
+      LEFT JOIN CRM_PERSONDOC T7 ON (T70.PERSONID = T7.PERSONID)
+      LEFT JOIN CRM_PERSONDOCTYPE T73 ON (T73.PERSONDOCTYPEID = T7.PERSONDOCTYPEID)
+      LEFT JOIN CRM_ADDRESS T71 ON (T.INSUREDID = T71.PARTICIPANTID)
+            LEFT JOIN CRM_CONTACTPERSON TCP ON (TCP.PARTICIPANTID = T.INSUREDID)
+            LEFT JOIN CRM_CONTACT TCE ON ((TCE.CONTACTPERSONID = TCP.CONTACTPERSONID) AND (TCE.CONTACTTYPEID = 1006))
+            LEFT JOIN CRM_CONTACT TCPH ON ((TCPH.CONTACTPERSONID = TCP.CONTACTPERSONID) AND (TCPH.CONTACTTYPEID = 1005))
+            
+      LEFT JOIN INS_PRODCONF T8 ON ((T.PRODVERID = T8.PRODVERID) AND (T8.SYSNAME = 'POS'))
+      LEFT JOIN INS_PRODDEFVAL T81 ON ((T8.PRODCONFID = T81.PRODCONFID) AND (T81.NAME = 'CONTREXTDATAVERID'))
+      LEFT JOIN INS_CONTREXT T82 ON ((T82.CONTRID = T.CONTRID) AND (T82.HBDATAVERID = T81.VALUE))
+      LEFT JOIN INS_SELLER T83 ON (T.SELLERID = T83.SELLERID)      
+      LEFT JOIN INS_PRODPROG T10 ON (T.PRODPROGID = T10.PRODPROGID)
+      #chunk($PDSELLERID) INNER JOIN INS_PRODDISTR T9 ON ((T9.SELLERID = $PDSELLERID) AND (T9.PRODVERID = T.PRODVERID)) #end
+      $ASPECTTABLES
+#chain('AND' 'WHERE')
+    #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end
+    #chunk($CONTRIDLIST) T.CONTRID in ($CONTRIDLIST) #end      
+      $ASPECTRESTRICTION
+#end
+]]>
+        </sql>
+    </query>    
+        
+    <query name="dsSisContractBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="InsPOSCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql><![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.CONTRID', 'java.lang.Long', 'CONTRID'),
+        #result('T.DURATION', 'java.lang.Long', 'DURATION'),
+        #result('T.CONTRNODEID', 'java.lang.Long', 'CONTRNODEID'),
+        #result('T.EXTERNALID', 'java.lang.String', 'EXTERNALID'),
+        #result('T.CONTRNUMBER', 'java.lang.String', 'CONTRNUMBER'),
+        #result('T.CREDCONTRNUM', 'java.lang.String', 'CREDCONTRNUM'),
+        #result('T.CONTRPOLNUM', 'java.lang.String', 'CONTRPOLNUM'),
+        #result('T.CONTRPOLSER', 'java.lang.String', 'CONTRPOLSER'),
+        #result('T.PRODPROGID', 'java.lang.Long', 'PRODPROGID'),
+        #result('T.CURRENCYRATE', 'java.lang.Float', 'CURRENCYRATE'),
+        #result('T.NOTE', 'java.lang.String', 'NOTE'),
+        #result('T.ORGSTRUCTID', 'java.lang.Long', 'ORGSTRUCTID'),
+        #result('T.INSUREDID', 'java.lang.Long', 'INSUREDID'),
+        #result('T5.BRIEFNAME', 'java.lang.String', 'INSBRIEFNAME'),
+        #result('T70.PERSONID', 'java.lang.Long', 'INSPERSONID'),
+        #result('T70.CITIZENSHIP', 'java.lang.Long', 'INSCITIZENSHIP'),
+        #result('T70.FIRSTNAME', 'java.lang.String', 'INSFIRSTNAME'),
+        #result('T70.MIDDLENAME', 'java.lang.String', 'INSMIDDLENAME'),
+        #result('T70.LASTNAME', 'java.lang.String', 'INSLASTNAME'),
+        #result('T70.BIRTHDATE', 'java.math.BigDecimal', 'INSBIRTHDATE'),
+        #result('T70.BIRTHPLACE', 'java.lang.String', 'INSBIRTHPLACE'),
+        #result('T70.GENDER', 'java.lang.Long', 'INSGENDER'),
+        #result('T7.DOCSERIES', 'java.lang.String', 'INSDOCSERIES'),
+        #result('T7.DOCNUMBER', 'java.lang.String', 'INSDOCNUMBER'),
+        #result('T7.ISSUEDBY', 'java.lang.String', 'INSISSUEDBY'),
+        #result('T7.ISSUERCODE', 'java.lang.String', 'INSISSUERCODE'),
+        #result('T7.ISSUEDATE', 'java.math.BigDecimal', 'INSISSUEDATE'),
+        #result('T73.SYSNAME', 'java.lang.String', 'INSDOCTYPE'),            
+        #result('T73.CODE', 'java.lang.String', 'INSDOCCODE'),            
+        #result('T71.COUNTRY', 'java.lang.String', 'INSCOUNTRY'),
+        #result('T71.POSTALCODE', 'java.lang.String', 'INSPOSTALCODE'),
+        #result('T71.REGIONTYPE', 'java.lang.Long', 'INSREGIONTYPE'),
+        #result('T71.REGION', 'java.lang.String', 'INSREGION'),
+        #result('T71.REGIONKLADR', 'java.lang.String', 'INSREGIONKLADR'),
+        #result('T71.DISTRICTTYPE', 'java.lang.Long', 'INSDISTRICTTYPE'),
+        #result('T71.DISTRICT', 'java.lang.String', 'INSDISTRICT'),
+        #result('T71.DISTRICTKLADR', 'java.lang.String', 'INSDISTRICTKLADR'),
+        #result('T71.CITYTYPE', 'java.lang.Long', 'INSCITYTYPE'),
+        #result('T71.CITY', 'java.lang.String', 'INSCITY'),
+        #result('T71.CITYKLADR', 'java.lang.String', 'INSCITYKLADR'),
+        #result('T71.VILLAGETYPE', 'java.lang.Long', 'INSVILLAGETYPE'),
+        #result('T71.VILLAGE', 'java.lang.String', 'INSVILLAGE'),
+        #result('T71.VILLAGEKLADR', 'java.lang.String', 'INSVILLAGEKLADR'),
+        #result('T71.STREETTYPE', 'java.lang.Long', 'INSSTREETTYPE'),
+        #result('T71.STREET', 'java.lang.String', 'INSSTREET'),
+        #result('T71.STREETKLADR', 'java.lang.String', 'INSSTREETKLADR'),
+        #result('T71.HOUSE', 'java.lang.String', 'INSHOUSE'),
+        #result('T71.HOUSING', 'java.lang.String', 'INSHOUSING'),
+        #result('T71.BUILDING', 'java.lang.String', 'INSBUILDING'),
+        #result('T71.FLATTYPE', 'java.lang.String', 'INSFLATTYPE'),
+        #result('T71.FLAT', 'java.lang.String', 'INSFLAT'),
+        #result('T71.ADDRESSTEXT1', 'java.lang.String', 'INSADDRESSTEXT1'),
+        #result('T71.ADDRESSTEXT2', 'java.lang.String', 'INSADDRESSTEXT2'),
+        #result('T71.ADDRESSTEXT3', 'java.lang.String', 'INSADDRESSTEXT3'),
+        #result('TCE.VALUE', 'java.lang.String', 'INSEMAIL'),
+        #result('TCPH.VALUE', 'java.lang.String', 'INSPHONE'),
+            
+            
+        #result('T.STATEID', 'java.lang.Long', 'STATEID'),
+        #result('T2.SYSNAME', 'java.lang.String', 'STATESYSNAME'),
+        #result('T2.PUBLICNAME', 'java.lang.String', 'STATENAME'),
+        #result('T.PRODVERID', 'java.lang.Long', 'PRODVERID'),
+        #result('T3.NAME', 'java.lang.String', 'PRODUCTVERSIONNAME'),
+        #result('T4.PRODID', 'java.lang.Long', 'PRODID'),
+        #result('T4.NAME', 'java.lang.String', 'PRODUCTNAME'),
+        #result('T4.SYSNAME', 'java.lang.String', 'PRODUCTSYSNAME'),
+        #result('T.PAYCURRENCYID', 'java.lang.Double', 'CURRENCYID'),
+        #result('T.PAYPREMVALUE', 'java.lang.Double', 'PAYPREMVALUE'),
+        #result('T.PREMVALUE', 'java.lang.Double', 'PREMIUM'),
+        #result('T.INSAMVALUE', 'java.lang.Double', 'INSAMVALUE'),
+        #result('T.PREMCURRENCYID', 'java.lang.Long', 'PREMIUMCURRENCYID'),
+        #result('TCUR.NUMERICCODE', 'java.lang.String', 'PREMIUMCURRNUMCODE'),
+        #result('TACUR.ALPHACODE', 'java.lang.String', 'INSAMCURRNAME'),          
+        #result('TCUR.ISONUMBER', 'java.lang.String', 'PREMIUMCURRISO'),
+        #result('TACUR.ISONUMBER', 'java.lang.String', 'INSAMCURRISO'),          
+        #result('T.PREMVALUE', 'java.lang.Double', 'PREMVALUE'),
+        #result('T.PREMCURRENCYID', 'java.lang.Long', 'PREMCURRENCYID'),
+        #result('T.INSAMCURRENCYID', 'java.lang.Long', 'INSAMCURRENCYID'),
+        #result('T.CREATEUSERID', 'java.lang.Long', 'CREATEUSERID'),
+        #result('T.CREATEDATE', 'java.math.BigDecimal', 'CREATEDATE'),
+        #result('T.UPDATEUSERID', 'java.lang.Long', 'UPDATEUSERID'),
+        #result('T.UPDATEDATE', 'java.math.BigDecimal', 'UPDATEDATE'),
+        #result('T.SELLERID', 'java.lang.Long', 'SELLERID'),
+        #result('T.SIGNDATE', 'java.math.BigDecimal', 'SIGNDATE'),
+        #result('T.STARTDATE', 'java.math.BigDecimal', 'STARTDATE'),
+        #result('T.FINISHDATE', 'java.math.BigDecimal', 'FINISHDATE'),
+        #result('T8.PRODCONFID', 'java.lang.Long', 'PRODCONFID'),
+        #result('T.PAYVARID', 'java.lang.Long', 'PAYVARID'),
+        #result('T82.DOUBLEFIELD00', 'java.lang.Double', 'INSGOAMVALUE'),
+        #result('T82.DOUBLEFIELD01', 'java.lang.Double', 'movDetailAmValSum'),
+        #result('T82.DOUBLEFIELD02', 'java.lang.Double', 'movDetailAmValOst'),
+        #result('T82.LONGFIELD01', 'java.lang.Long', 'INSCOUNT60'),
+        #result('T82.LONGFIELD02', 'java.lang.Long', 'INSCOUNT70'),
+        #result('T82.LONGFIELD03', 'java.lang.Long', 'INSCOUNT2'),
+        #result('T82.LONGFIELD04', 'java.lang.Long', 'ISSPORTENABLED'),
+        #result('T82.LONGFIELD05', 'java.lang.Long', 'LOCALTZOFFSET'),
+        #result('T82.LONGFIELD06', 'java.lang.Long', 'TRAVELTYPE'),
+        #result('T82.STRINGFIELD00', 'java.lang.String', 'DOPPACKLIST'),
+        #result('T82.STRINGFIELD01', 'java.lang.String', 'PRODPROGSYSNAME'),
+        #result('T82.STRINGFIELD03', 'java.lang.String', 'TERRITORY'),
+        #result('T82.STRINGFIELD04', 'java.lang.String', 'RISKSYSNAMES'),
+        #result('T82.STRINGFIELD05', 'java.lang.String', 'sessionId'),
+        #result('T82.STRINGFIELD06', 'java.lang.String', 'protectTypeList'),
+        #result('T83.NAME', 'java.lang.String', 'SELLERFIO'),
+        #result('T10.SYSNAME', 'java.lang.String', 'PROGSYSNAME'),
+        #result('T811.VALUE', 'java.lang.String', 'SBERPRODCODE'),
+            
+        #result('T.DOCUMENTDATE', 'java.math.BigDecimal', 'DOCUMENTDATE')
+FROM
+      INS_CONTR T
+      INNER JOIN INS_CONTRNODE T6 ON (T.CONTRID = T6.CONTRID)
+      INNER JOIN CORE_SM_STATE T2 ON (T.STATEID = T2.ID)
+      INNER JOIN INS_PRODVER T3 ON (T.PRODVERID = T3.PRODVERID)
+      INNER JOIN INS_PROD T4 ON (T3.PRODID = T4.PRODID) AND ((T4.ISHIDDEN is null) or (T4.ISHIDDEN != 1))
+      LEFT JOIN CRM_PARTICIPANT T5 ON (T.INSUREDID = T5.PARTICIPANTID)
+      LEFT JOIN CRM_PERSON T70 ON (T.INSUREDID = T70.PARTICIPANTID)
+      LEFT JOIN CRM_PERSONDOC T7 ON (T70.PERSONID = T7.PERSONID)
+      LEFT JOIN CRM_PERSONDOCTYPE T73 ON (T73.PERSONDOCTYPEID = T7.PERSONDOCTYPEID)
+      LEFT JOIN CRM_ADDRESS T71 ON (T.INSUREDID = T71.PARTICIPANTID)
+            LEFT JOIN CRM_CONTACTPERSON TCP ON (TCP.PARTICIPANTID = T.INSUREDID)
+            LEFT JOIN CRM_CONTACT TCE ON ((TCE.CONTACTPERSONID = TCP.CONTACTPERSONID) AND (TCE.CONTACTTYPEID = 1006))
+            LEFT JOIN CRM_CONTACT TCPH ON ((TCPH.CONTACTPERSONID = TCP.CONTACTPERSONID) AND (TCPH.CONTACTTYPEID = 1005))
+            
+      LEFT JOIN REF_CURRENCY TCUR ON (T.PREMCURRENCYID = TCUR.CURRENCYID)      
+      LEFT JOIN REF_CURRENCY TACUR ON (T.INSAMCURRENCYID = TACUR.CURRENCYID)      
+      LEFT JOIN INS_PRODCONF T8 ON ((T.PRODVERID = T8.PRODVERID) AND (T8.SYSNAME = 'POS'))
+      LEFT JOIN INS_PRODDEFVAL T81 ON ((T8.PRODCONFID = T81.PRODCONFID) AND (T81.NAME = 'CONTREXTDATAVERID'))
+      LEFT JOIN INS_PRODDEFVAL T811 ON ((T8.PRODCONFID = T811.PRODCONFID) AND (T811.NAME = 'SBERPRODCODE'))
+      LEFT JOIN INS_CONTREXT T82 ON ((T82.CONTRID = T.CONTRID) AND (T82.HBDATAVERID = T81.VALUE))
+      LEFT JOIN INS_SELLER T83 ON (T.SELLERID = T83.SELLERID)      
+      LEFT JOIN INS_PRODPROG T10 ON (T.PRODPROGID = T10.PRODPROGID)
+      #chunk($PDSELLERID) INNER JOIN INS_PRODDISTR T9 ON ((T9.SELLERID = $PDSELLERID) AND (T9.PRODVERID = T.PRODVERID)) #end
+      $ASPECTTABLES
+#chain('AND' 'WHERE')
+    #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end
+    #chunk($EXTERNALID) T.EXTERNALID = #bind($EXTERNALID 'VARCHAR') #end
+    #chunk($CONTRNUMBER) UPPER(T.CONTRNUMBER) LIKE UPPER('%$CONTRNUMBER%')  #end
+    #chunk($CREDCONTRNUM) UPPER(T.CREDCONTRNUM) LIKE UPPER('%$CREDCONTRNUM%')  #end
+    #chunk($CONTRPOLSER) T.CONTRPOLSER = #bind($CONTRPOLSER 'VARCHAR') #end
+    #chunk($CONTRPOLNUM) T.CONTRPOLNUM = #bind($CONTRPOLNUM 'VARCHAR') #end
+    #chunk($STATESYSNAME) T2.SYSNAME = #bind($STATESYSNAME 'VARCHAR') #end
+    #chunk($NOTE) UPPER(T.NOTE) LIKE UPPER('%$NOTE%')  #end
+    #chunk($ORGSTRUCTID) T.ORGSTRUCTID = #bind($ORGSTRUCTID 'NUMERIC') #end
+    #chunk($PRODID) T4.PRODID = #bind($PRODID 'NUMERIC') #end
+    #chunk($PRODVERID) T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end
+    #chunk($INSUREDNAME) UPPER(T5.BRIEFNAME) LIKE UPPER('%$INSUREDNAME%') #end
+    #chunk($STATEID) T.STATEID = #bind($STATEID 'NUMERIC') #end
+    #chunk($STATESYSNAME) T2.SYSNAME = #bind($STATESYSNAME 'VARCHAR') #end
+    #chunk($NODELETED) T2.SYSNAME != 'INS_CONTRACT_DELETED' #end
+    #chunk($STATESYSNAMELIST) T2.SYSNAME in ($STATESYSNAMELIST) #end
+    #chunk($CREATESTARTDATE) T.CREATEDATE >= #bind($CREATESTARTDATE 'FLOAT') #end
+    #chunk($CREATEFINISHDATE) T.CREATEDATE <= #bind($CREATEFINISHDATE 'FLOAT') #end
+    #chunk($PDSELLERID) T9.STARTDATE <= #bind($NOWDATE 'FLOAT') #end
+    #chunk($SELLERID) T.SELLERID = #bind($SELLERID 'NUMERIC') #end
+    #chunk($STARTSTARTDATE) T.STARTDATE >= #bind($STARTSTARTDATE 'FLOAT') #end
+    #chunk($STARTFINISHDATE) T.STARTDATE <= #bind($STARTFINISHDATE 'FLOAT') #end
+    #chunk($DOCUMENTSTARTDATE) T.DOCUMENTDATE >= #bind($DOCUMENTSTARTDATE 'FLOAT') #end
+    #chunk($DOCUMENTFINISHDATE) T.DOCUMENTDATE <= #bind($DOCUMENTFINISHDATE 'FLOAT') #end
+    #chunk($SIGNDATEUPBOUND) T.SIGNDATE >= #bind($SIGNDATEUPBOUND 'FLOAT') #end
+    #chunk($SIGNDATEDOWNBOUND) T.SIGNDATE <= #bind($SIGNDATEDOWNBOUND 'FLOAT') #end
+    #chunk($CREATEUSERIDISNULL) T.CREATEUSERID IS NULL #end
+    #chunk($CREATEUSERIDISNOTNULL) T.CREATEUSERID IS NOT NULL #end
+    #chunk($POSTCTRLTEXTID) T.POSTCTRLTEXTID = #bind($POSTCTRLTEXTID 'NUMERIC') #end
+    #chunk($POSTCTRLCONDID) T.POSTCTRLCONDID = #bind($POSTCTRLCONDID 'NUMERIC') #end   
+    #chunk($UWSYSNAME) ((T82.STRINGFIELD04 = #bind($UWSYSNAME 'VARCHAR')) OR (T82.STRINGFIELD05 = #bind($UWSYSNAME 'VARCHAR')) OR (T82.STRINGFIELD06 = #bind($UWSYSNAME 'VARCHAR'))) #end                                   
+    #chunk($SELLERFIO) UPPER(T83.NAME) LIKE UPPER('%$SELLERFIO%')  #end            
+    #chunk($BRANCHID) T.BRANCHID = #bind($BRANCHID 'NUMERIC') #end            
+      $ASPECTRESTRICTION
+#end
+]]>
+        </sql>
+    </query>
+    <query name="dsSisContractBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="InsPOSCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql><![CDATA[
+SELECT
+        #result('COUNT($NEEDDISTINCT T.CONTRID)', 'java.lang.Long', 'CNT')
+FROM
+      INS_CONTR T
+      INNER JOIN INS_CONTRNODE T6 ON (T.CONTRID = T6.CONTRID)
+      INNER JOIN CORE_SM_STATE T2 ON (T.STATEID = T2.ID)
+      INNER JOIN INS_PRODVER T3 ON (T.PRODVERID = T3.PRODVERID)
+      INNER JOIN INS_PROD T4 ON (T3.PRODID = T4.PRODID) AND ((T4.ISHIDDEN is null) or (T4.ISHIDDEN != 1))
+      LEFT JOIN CRM_PARTICIPANT T5 ON (T.INSUREDID = T5.PARTICIPANTID)
+      LEFT JOIN CRM_PERSON T70 ON (T.INSUREDID = T70.PARTICIPANTID)
+      LEFT JOIN CRM_PERSONDOC T7 ON (T70.PERSONID = T7.PERSONID)
+      LEFT JOIN CRM_PERSONDOCTYPE T73 ON (T73.PERSONDOCTYPEID = T7.PERSONDOCTYPEID)
+      LEFT JOIN CRM_ADDRESS T71 ON (T.INSUREDID = T71.PARTICIPANTID)
+            LEFT JOIN CRM_CONTACTPERSON TCP ON (TCP.PARTICIPANTID = T.INSUREDID)
+            LEFT JOIN CRM_CONTACT TCE ON ((TCE.CONTACTPERSONID = TCP.CONTACTPERSONID) AND (TCE.CONTACTTYPEID = 1006))
+            LEFT JOIN CRM_CONTACT TCPH ON ((TCPH.CONTACTPERSONID = TCP.CONTACTPERSONID) AND (TCPH.CONTACTTYPEID = 1005))
+            
+      LEFT JOIN INS_PRODCONF T8 ON ((T.PRODVERID = T8.PRODVERID) AND (T8.SYSNAME = 'POS'))
+      LEFT JOIN INS_PRODDEFVAL T81 ON ((T8.PRODCONFID = T81.PRODCONFID) AND (T81.NAME = 'CONTREXTDATAVERID'))
+      LEFT JOIN INS_CONTREXT T82 ON ((T82.CONTRID = T.CONTRID) AND (T82.HBDATAVERID = T81.VALUE))
+      LEFT JOIN INS_SELLER T83 ON (T.SELLERID = T83.SELLERID)      
+      LEFT JOIN INS_PRODPROG T10 ON (T.PRODPROGID = T10.PRODPROGID)
+      #chunk($PDSELLERID) INNER JOIN INS_PRODDISTR T9 ON ((T9.SELLERID = $PDSELLERID) AND (T9.PRODVERID = T.PRODVERID)) #end
+      $ASPECTTABLES
+#chain('AND' 'WHERE')
+    #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end
+    #chunk($EXTERNALID) T.EXTERNALID = #bind($EXTERNALID 'VARCHAR') #end
+    #chunk($CONTRNUMBER) UPPER(T.CONTRNUMBER) LIKE UPPER('%$CONTRNUMBER%')  #end
+    #chunk($CREDCONTRNUM) UPPER(T.CREDCONTRNUM) LIKE UPPER('%$CREDCONTRNUM%')  #end
+    #chunk($CONTRPOLSER) T2.CONTRPOLSER = #bind($CONTRPOLSER 'VARCHAR') #end
+    #chunk($CONTRPOLNUM) T2.CONTRPOLNUM = #bind($CONTRPOLNUM 'VARCHAR') #end
+    #chunk($STATESYSNAME) T2.SYSNAME = #bind($STATESYSNAME 'VARCHAR') #end
+    #chunk($NOTE) UPPER(T.NOTE) LIKE UPPER('%$NOTE%')  #end
+    #chunk($ORGSTRUCTID) T.ORGSTRUCTID = #bind($ORGSTRUCTID 'NUMERIC') #end
+    #chunk($CREATEUSERID) T.CREATEUSERID = #bind($CREATEUSERID 'NUMERIC') #end
+    #chunk($UPDATEUSERID) T.UPDATEUSERID = #bind($UPDATEUSERID 'NUMERIC') #end
+    #chunk($PRODID) T4.PRODID = #bind($PRODID 'NUMERIC') #end
+    #chunk($PRODVERID) T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end
+    #chunk($INSUREDNAME) UPPER(T5.BRIEFNAME) LIKE UPPER('%$INSUREDNAME%') #end
+    #chunk($STATEID) T.STATEID = #bind($STATEID 'NUMERIC') #end
+    #chunk($STATESYSNAME) T2.SYSNAME = #bind($STATESYSNAME 'VARCHAR') #end
+    #chunk($NODELETED) T2.SYSNAME != 'INS_CONTRACT_DELETED' #end
+    #chunk($STATESYSNAMELIST) T2.SYSNAME in ($STATESYSNAMELIST) #end
+    #chunk($CREATESTARTDATE) T.CREATEDATE >= #bind($CREATESTARTDATE 'FLOAT') #end
+    #chunk($CREATEFINISHDATE) T.CREATEDATE <= #bind($CREATEFINISHDATE 'FLOAT') #end
+    #chunk($PDSELLERID) T9.STARTDATE <= #bind($NOWDATE 'FLOAT') #end
+    #chunk($SELLERID) T.SELLERID = #bind($SELLERID 'NUMERIC') #end
+    #chunk($STARTSTARTDATE) T.STARTDATE >= #bind($STARTSTARTDATE 'FLOAT') #end
+    #chunk($STARTFINISHDATE) T.STARTDATE <= #bind($STARTFINISHDATE 'FLOAT') #end
+    #chunk($DOCUMENTSTARTDATE) T.DOCUMENTDATE >= #bind($DOCUMENTSTARTDATE 'FLOAT') #end
+    #chunk($DOCUMENTFINISHDATE) T.DOCUMENTDATE <= #bind($DOCUMENTFINISHDATE 'FLOAT') #end
+    #chunk($SIGNDATEUPBOUND) T.SIGNDATE >= #bind($SIGNDATEUPBOUND 'FLOAT') #end
+    #chunk($SIGNDATEDOWNBOUND) T.SIGNDATE <= #bind($SIGNDATEDOWNBOUND 'FLOAT') #end
+    #chunk($CREATEUSERIDISNULL) T.CREATEUSERID IS NULL #end
+    #chunk($CREATEUSERIDISNOTNULL) T.CREATEUSERID IS NOT NULL #end
+    #chunk($POSTCTRLTEXTID) T.POSTCTRLTEXTID = #bind($POSTCTRLTEXTID 'NUMERIC') #end
+    #chunk($POSTCTRLCONDID) T.POSTCTRLCONDID = #bind($POSTCTRLCONDID 'NUMERIC') #end              
+    #chunk($UWSYSNAME) ((T82.STRINGFIELD04 = #bind($UWSYSNAME 'VARCHAR')) OR (T82.STRINGFIELD05 = #bind($UWSYSNAME 'VARCHAR')) OR (T82.STRINGFIELD06 = #bind($UWSYSNAME 'VARCHAR'))) #end                                   
+    #chunk($SELLERFIO) UPPER(T83.NAME) LIKE UPPER('%$SELLERFIO%')  #end            
+    #chunk($BRANCHID) T.BRANCHID = #bind($BRANCHID 'NUMERIC') #end            
+      $ASPECTRESTRICTION
+#end
+]]>
+        </sql>
+    </query>
+    
+    <query name="dsSisContractObjBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="InsPOSCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql><![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.CONTRID', 'java.lang.Long', 'CONTRID'),    
+        #result('T.CONTROBJID', 'java.lang.Long', 'CONTROBJID'),    
+        #result('T.INSOBJID', 'java.lang.Long', 'INSOBJID'),    
+        #result('T.CURRENCYID', 'java.lang.Long', 'CURRENCYID'),    
+        #result('T.INSAMCURRENCYID', 'java.lang.Long', 'INSAMCURRENCYID'),    
+        #result('T.PREMCURRENCYID', 'java.lang.Long', 'PREMCURRENCYID'),    
+        #result('T.STATEID', 'java.lang.Long', 'STATEID'),    
+        #result('T.INSAMVALUE', 'java.lang.Double', 'INSAMVALUE'),    
+        #result('T.PREMVALUE', 'java.lang.Double', 'PREMVALUE'),    
+        #result('T.PAYPREMVALUE', 'java.lang.Double', 'PAYPREMVALUE'),  
+        
+        #result('T1.DISCRIMINATOR', 'java.lang.Long', 'DISCRIMINATOR'),
+        #result('T1.INSOBJNODEID', 'java.lang.Long', 'INSOBJNODEID'),
+        #result('T1.OBJAREA', 'java.lang.Long', 'OBJAREA'),
+        #result('T1.FACINGTYPE', 'java.lang.String', 'FACINGTYPE'),
+        #result('T1.HOUSEHAS', 'java.lang.String', 'HOUSEHAS'),
+        #result('T1.NAME', 'java.lang.String', 'NAME'),
+        #result('T1.NOTE', 'java.lang.String', 'NOTE'),
+        #result('T1.OBJTYPESYSNAME', 'java.lang.String', 'OBJTYPESYSNAME'),
+        #result('T1.PRODYEARSYSNAME', 'java.lang.String', 'PRODYEARSYSNAME'),
+        #result('T1.WALMATERIAL', 'java.lang.String', 'WALMATERIAL'),
+              
+        #result('T2.CONTRPROPERTYID', 'java.lang.Long', 'CONTRPROPERTYID'),
+        #result('T2.USEKLADR', 'java.lang.Long', 'USEKLADR'),
+        #result('T2.FLOOR', 'java.lang.Long', 'FLOOR'),
+        #result('T2.FLOORCOUNT', 'java.lang.Long', 'FLOORCOUNT'),
+        #result('T2.OBJWEAR', 'java.lang.Long', 'OBJWEAR'),
+        #result('T2.ADDRESSTEXT1', 'java.lang.String', 'ADDRESSTEXT1'),
+        #result('T2.BUILDERINN', 'java.lang.String', 'BUILDERINN'),
+        #result('T2.BUILDERNAME', 'java.lang.String', 'BUILDERNAME'),
+        #result('T2.BUILDING', 'java.lang.String', 'BUILDING'),
+        #result('T2.BUILDINGADDRESS', 'java.lang.String', 'BUILDINGADDRESS'),
+        #result('T2.BUILDINGPERCENT', 'java.lang.Double', 'BUILDINGPERCENT'),
+        #result('T2.CITY', 'java.lang.String', 'CITY'),
+        #result('T2.CITYKLADR', 'java.lang.String', 'CITYKLADR'),
+        #result('T2.CITYTYPE', 'java.lang.Long', 'CITYTYPE'),
+        #result('T2.DISTRICT', 'java.lang.String', 'DISTRICT'),
+        #result('T2.DISTRICTKLADR', 'java.lang.String', 'DISTRICTKLADR'),
+        #result('T2.DISTRICTTYPE', 'java.lang.Long', 'DISTRICTTYPE'),
+        #result('T2.FLAT', 'java.lang.String', 'FLAT'),
+        #result('T2.FLATTYPE', 'java.lang.String', 'FLATTYPE'),
+        #result('T2.HOUSE', 'java.lang.String', 'HOUSE'),
+        #result('T2.HOUSING', 'java.lang.String', 'HOUSING'),
+        #result('T2.IDENTIFIER', 'java.lang.String', 'IDENTIFIER'),
+        #result('T2.ISUNDERCONSTR', 'java.lang.Integer', 'ISUNDERCONSTR'),
+        #result('T2.NAME', 'java.lang.String', 'PROPERTYNAME'),
+        #result('T2.OBJTYPEID', 'java.lang.Long', 'OBJTYPEID'),
+        #result('T2.OBJNAME', 'java.lang.String', 'OBJNAME'),
+        #result('T2.OBJREADID', 'java.lang.Long', 'OBJREADID'),
+        #result('T2.OWNERNAME', 'java.lang.String', 'OWNERNAME'),
+        #result('T2.POSTALCODE', 'java.lang.String', 'POSTALCODE'),
+        #result('T2.PURCHASESUMFACT', 'java.lang.Double', 'PURCHASESUMFACT'),
+        #result('T2.PURCHASESUMREAL', 'java.lang.Double', 'PURCHASESUMREAL'),
+        #result('T2.REGION', 'java.lang.String', 'REGION'),
+        #result('T2.REGIONKLADR', 'java.lang.String', 'REGIONKLADR'),
+        #result('T2.REGIONTYPE', 'java.lang.Long', 'REGIONTYPE'),
+        #result('T2.SELLERTYPE', 'java.lang.Long', 'SELLERTYPE'),
+        #result('T2.STREET', 'java.lang.String', 'STREET'),
+        #result('T2.STREETKLADR', 'java.lang.String', 'STREETKLADR'),
+        #result('T2.STREETTYPE', 'java.lang.Long', 'STREETTYPE'),
+        #result('T2.VALUATDATE', 'java.math.BigDecimal', 'VALUATDATE'),
+        #result('T2.VALUATORGNAME', 'java.lang.String', 'VALUATORGNAME'),
+        #result('T2.VILLAGE', 'java.lang.String', 'VILLAGE'),
+        #result('T2.VILLAGEKLADR', 'java.lang.String', 'VILLAGEKLADR'),
+        #result('T2.VILLAGETYPE', 'java.math.BigDecimal', 'VILLAGETYPE'),
+        #result('T2.CADASTRALNUMBER', 'java.lang.String', 'CADASTRALNUMBER'),
+        #result('T2.ADDITIONALINFO', 'java.lang.String', 'ADDITIONALINFO')       
+            
+FROM
+    INS_CONTROBJ T
+    LEFT JOIN INS_INSOBJ T1 ON (T1.INSOBJID = T.INSOBJID)
+    LEFT JOIN INS_CONTRPROPERTY T2 ON (T1.CONTRPROPERTYID = T2.CONTRPROPERTYID)
+
+      $ASPECTTABLES
+#chain('AND' 'WHERE')
+      #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end   
+      $ASPECTRESTRICTION
+#end
+]]>
+        </sql>
+    </query>
+    <query name="dsSisContractObjBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="InsPOSCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql><![CDATA[
+SELECT
+        #result('COUNT($NEEDDISTINCT T.CONTRID)', 'java.lang.Long', 'CNT')
+FROM
+    INS_CONTROBJ T
+      $ASPECTTABLES
+#chain('AND' 'WHERE')
+      #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end   
+      $ASPECTRESTRICTION
+#end
+]]>
+        </sql>
+    </query>
+    
+    <query name="dsMortgageContractBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="InsPOSCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql><![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.CONTRID', 'java.lang.Long', 'CONTRID'),
+        #result('T.DURATION', 'java.lang.Long', 'DURATION'),
+        #result('T.CONTRNODEID', 'java.lang.Long', 'CONTRNODEID'),
+        #result('T.EXTERNALID', 'java.lang.String', 'EXTERNALID'),
+        #result('T.CONTRNUMBER', 'java.lang.String', 'CONTRNUMBER'),
+        #result('T.CREDCONTRNUM', 'java.lang.String', 'CREDCONTRNUM'),
+        #result('T.CONTRPOLNUM', 'java.lang.String', 'CONTRPOLNUM'),
+        #result('T.CONTRPOLSER', 'java.lang.String', 'CONTRPOLSER'),
+        #result('T.PRODPROGID', 'java.lang.Long', 'PRODPROGID'),
+        #result('T.CURRENCYRATE', 'java.lang.Float', 'CURRENCYRATE'),
+        #result('T.NOTE', 'java.lang.String', 'NOTE'),
+        #result('T.ORGSTRUCTID', 'java.lang.Long', 'ORGSTRUCTID'),
+        #result('T.INSUREDID', 'java.lang.Long', 'INSUREDID'),
+        #result('T5.BRIEFNAME', 'java.lang.String', 'INSBRIEFNAME'),
+        #result('T70.PERSONID', 'java.lang.Long', 'INSPERSONID'),
+        #result('T70.CITIZENSHIP', 'java.lang.Long', 'INSCITIZENSHIP'),
+        #result('T70.FIRSTNAME', 'java.lang.String', 'INSFIRSTNAME'),
+        #result('T70.MIDDLENAME', 'java.lang.String', 'INSMIDDLENAME'),
+        #result('T70.LASTNAME', 'java.lang.String', 'INSLASTNAME'),
+        #result('T70.BIRTHDATE', 'java.math.BigDecimal', 'INSBIRTHDATE'),
+        #result('T70.BIRTHPLACE', 'java.lang.String', 'INSBIRTHPLACE'),
+        #result('T70.GENDER', 'java.lang.Long', 'INSGENDER'),
+        #result('T7.DOCSERIES', 'java.lang.String', 'INSDOCSERIES'),
+        #result('T7.DOCNUMBER', 'java.lang.String', 'INSDOCNUMBER'),
+        #result('T7.ISSUEDBY', 'java.lang.String', 'INSISSUEDBY'),
+        #result('T7.ISSUERCODE', 'java.lang.String', 'INSISSUERCODE'),
+        #result('T7.ISSUEDATE', 'java.math.BigDecimal', 'INSISSUEDATE'),
+        #result('T73.SYSNAME', 'java.lang.String', 'INSDOCTYPE'),            
+        #result('T73.CODE', 'java.lang.String', 'INSDOCCODE'),            
+        #result('T71.COUNTRY', 'java.lang.String', 'INSCOUNTRY'),
+        #result('T71.POSTALCODE', 'java.lang.String', 'INSPOSTALCODE'),
+        #result('T71.REGIONTYPE', 'java.lang.Long', 'INSREGIONTYPE'),
+        #result('T71.REGION', 'java.lang.String', 'INSREGION'),
+        #result('T71.REGIONKLADR', 'java.lang.String', 'INSREGIONKLADR'),
+        #result('T71.DISTRICTTYPE', 'java.lang.Long', 'INSDISTRICTTYPE'),
+        #result('T71.DISTRICT', 'java.lang.String', 'INSDISTRICT'),
+        #result('T71.DISTRICTKLADR', 'java.lang.String', 'INSDISTRICTKLADR'),
+        #result('T71.CITYTYPE', 'java.lang.Long', 'INSCITYTYPE'),
+        #result('T71.CITY', 'java.lang.String', 'INSCITY'),
+        #result('T71.CITYKLADR', 'java.lang.String', 'INSCITYKLADR'),
+        #result('T71.VILLAGETYPE', 'java.lang.Long', 'INSVILLAGETYPE'),
+        #result('T71.VILLAGE', 'java.lang.String', 'INSVILLAGE'),
+        #result('T71.VILLAGEKLADR', 'java.lang.String', 'INSVILLAGEKLADR'),
+        #result('T71.STREETTYPE', 'java.lang.Long', 'INSSTREETTYPE'),
+        #result('T71.STREET', 'java.lang.String', 'INSSTREET'),
+        #result('T71.STREETKLADR', 'java.lang.String', 'INSSTREETKLADR'),
+        #result('T71.HOUSE', 'java.lang.String', 'INSHOUSE'),
+        #result('T71.HOUSING', 'java.lang.String', 'INSHOUSING'),
+        #result('T71.BUILDING', 'java.lang.String', 'INSBUILDING'),
+        #result('T71.FLATTYPE', 'java.lang.String', 'INSFLATTYPE'),
+        #result('T71.FLAT', 'java.lang.String', 'INSFLAT'),
+        #result('T71.ADDRESSTEXT1', 'java.lang.String', 'INSADDRESSTEXT1'),
+        #result('T71.ADDRESSTEXT2', 'java.lang.String', 'INSADDRESSTEXT2'),
+        #result('T71.ADDRESSTEXT3', 'java.lang.String', 'INSADDRESSTEXT3'),
+        #result('TCE.VALUE', 'java.lang.String', 'INSEMAIL'),
+        #result('TCPH.VALUE', 'java.lang.String', 'INSPHONE'),
+            
+            
+        #result('T.STATEID', 'java.lang.Long', 'STATEID'),
+        #result('T2.SYSNAME', 'java.lang.String', 'STATESYSNAME'),
+        #result('T2.PUBLICNAME', 'java.lang.String', 'STATENAME'),
+        #result('T.PRODVERID', 'java.lang.Long', 'PRODVERID'),
+        #result('T3.NAME', 'java.lang.String', 'PRODUCTVERSIONNAME'),
+        #result('T4.PRODID', 'java.lang.Long', 'PRODID'),
+        #result('T4.NAME', 'java.lang.String', 'PRODUCTNAME'),
+        #result('T4.SYSNAME', 'java.lang.String', 'PRODUCTSYSNAME'),
+        #result('T.PAYCURRENCYID', 'java.lang.Double', 'CURRENCYID'),
+        #result('T.PAYPREMVALUE', 'java.lang.Double', 'PAYPREMVALUE'),
+        #result('T.PREMVALUE', 'java.lang.Double', 'PREMIUM'),
+        #result('T.INSAMVALUE', 'java.lang.Double', 'INSAMVALUE'),
+        #result('T.PREMCURRENCYID', 'java.lang.Long', 'PREMIUMCURRENCYID'),
+        #result('TCUR.NUMERICCODE', 'java.lang.String', 'PREMIUMCURRNUMCODE'),
+        #result('TACUR.ALPHACODE', 'java.lang.String', 'INSAMCURRNAME'),          
+        #result('TCUR.ISONUMBER', 'java.lang.String', 'PREMIUMCURRISO'),
+        #result('TACUR.ISONUMBER', 'java.lang.String', 'INSAMCURRISO'),          
+        #result('T.PREMVALUE', 'java.lang.Double', 'PREMVALUE'),
+        #result('T.PREMCURRENCYID', 'java.lang.Long', 'PREMCURRENCYID'),
+        #result('T.INSAMCURRENCYID', 'java.lang.Long', 'INSAMCURRENCYID'),
+        #result('T.CREATEUSERID', 'java.lang.Long', 'CREATEUSERID'),
+        #result('T.CREATEDATE', 'java.math.BigDecimal', 'CREATEDATE'),
+        #result('T.UPDATEUSERID', 'java.lang.Long', 'UPDATEUSERID'),
+        #result('T.UPDATEDATE', 'java.math.BigDecimal', 'UPDATEDATE'),
+        #result('T.SELLERID', 'java.lang.Long', 'SELLERID'),
+        #result('T.SIGNDATE', 'java.math.BigDecimal', 'SIGNDATE'),
+        #result('T.STARTDATE', 'java.math.BigDecimal', 'STARTDATE'),
+        #result('T.FINISHDATE', 'java.math.BigDecimal', 'FINISHDATE'),
+        #result('T8.PRODCONFID', 'java.lang.Long', 'PRODCONFID'),
+        #result('T.PAYVARID', 'java.lang.Long', 'PAYVARID'),
+        #result('T82.DOUBLEFIELD04', 'java.lang.Double', 'credDate'),
+        #result('T82.LONGFIELD05', 'java.lang.Long', 'LOCALTZOFFSET'),
+        #result('T82.STRINGFIELD05', 'java.lang.String', 'sessionId'),
+        #result('T83.NAME', 'java.lang.String', 'SELLERFIO'),
+        #result('T10.SYSNAME', 'java.lang.String', 'PROGSYSNAME'),
+        #result('T811.VALUE', 'java.lang.String', 'SBERPRODCODE'),
+            
+        #result('T.DOCUMENTDATE', 'java.math.BigDecimal', 'DOCUMENTDATE')
+FROM
+      INS_CONTR T
+      INNER JOIN INS_CONTRNODE T6 ON (T.CONTRID = T6.CONTRID)
+      INNER JOIN CORE_SM_STATE T2 ON (T.STATEID = T2.ID)
+      INNER JOIN INS_PRODVER T3 ON (T.PRODVERID = T3.PRODVERID)
+      INNER JOIN INS_PROD T4 ON (T3.PRODID = T4.PRODID) AND ((T4.ISHIDDEN is null) or (T4.ISHIDDEN != 1))
+      LEFT JOIN CRM_PARTICIPANT T5 ON (T.INSUREDID = T5.PARTICIPANTID)
+      LEFT JOIN CRM_PERSON T70 ON (T.INSUREDID = T70.PARTICIPANTID)
+      LEFT JOIN CRM_PERSONDOC T7 ON (T70.PERSONID = T7.PERSONID)
+      LEFT JOIN CRM_PERSONDOCTYPE T73 ON (T73.PERSONDOCTYPEID = T7.PERSONDOCTYPEID)
+      LEFT JOIN CRM_ADDRESS T71 ON (T.INSUREDID = T71.PARTICIPANTID)
+            LEFT JOIN CRM_CONTACTPERSON TCP ON (TCP.PARTICIPANTID = T.INSUREDID)
+            LEFT JOIN CRM_CONTACT TCE ON ((TCE.CONTACTPERSONID = TCP.CONTACTPERSONID) AND (TCE.CONTACTTYPEID = 1006))
+            LEFT JOIN CRM_CONTACT TCPH ON ((TCPH.CONTACTPERSONID = TCP.CONTACTPERSONID) AND (TCPH.CONTACTTYPEID = 1005))
+            
+      LEFT JOIN REF_CURRENCY TCUR ON (T.PREMCURRENCYID = TCUR.CURRENCYID)      
+      LEFT JOIN REF_CURRENCY TACUR ON (T.INSAMCURRENCYID = TACUR.CURRENCYID)      
+      LEFT JOIN INS_PRODCONF T8 ON ((T.PRODVERID = T8.PRODVERID) AND (T8.SYSNAME = 'POS'))
+      LEFT JOIN INS_PRODDEFVAL T81 ON ((T8.PRODCONFID = T81.PRODCONFID) AND (T81.NAME = 'CONTREXTDATAVERID'))
+      LEFT JOIN INS_PRODDEFVAL T811 ON ((T8.PRODCONFID = T811.PRODCONFID) AND (T811.NAME = 'SBERPRODCODE'))
+      LEFT JOIN INS_CONTREXT T82 ON ((T82.CONTRID = T.CONTRID) AND (T82.HBDATAVERID = T81.VALUE))
+      LEFT JOIN INS_SELLER T83 ON (T.SELLERID = T83.SELLERID)      
+      LEFT JOIN INS_PRODPROG T10 ON (T.PRODPROGID = T10.PRODPROGID)
+      #chunk($PDSELLERID) INNER JOIN INS_PRODDISTR T9 ON ((T9.SELLERID = $PDSELLERID) AND (T9.PRODVERID = T.PRODVERID)) #end
+      $ASPECTTABLES
+#chain('AND' 'WHERE')
+    #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end
+    #chunk($EXTERNALID) T.EXTERNALID = #bind($EXTERNALID 'VARCHAR') #end
+    #chunk($CONTRNUMBER) UPPER(T.CONTRNUMBER) LIKE UPPER('%$CONTRNUMBER%')  #end
+    #chunk($CREDCONTRNUM) UPPER(T.CREDCONTRNUM) LIKE UPPER('%$CREDCONTRNUM%')  #end
+    #chunk($CONTRPOLSER) T.CONTRPOLSER = #bind($CONTRPOLSER 'VARCHAR') #end
+    #chunk($CONTRPOLNUM) T.CONTRPOLNUM = #bind($CONTRPOLNUM 'VARCHAR') #end
+    #chunk($STATESYSNAME) T2.SYSNAME = #bind($STATESYSNAME 'VARCHAR') #end
+    #chunk($NOTE) UPPER(T.NOTE) LIKE UPPER('%$NOTE%')  #end
+    #chunk($ORGSTRUCTID) T.ORGSTRUCTID = #bind($ORGSTRUCTID 'NUMERIC') #end
+    #chunk($PRODID) T4.PRODID = #bind($PRODID 'NUMERIC') #end
+    #chunk($PRODVERID) T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end
+    #chunk($INSUREDNAME) UPPER(T5.BRIEFNAME) LIKE UPPER('%$INSUREDNAME%') #end
+    #chunk($STATEID) T.STATEID = #bind($STATEID 'NUMERIC') #end
+    #chunk($STATESYSNAME) T2.SYSNAME = #bind($STATESYSNAME 'VARCHAR') #end
+    #chunk($NODELETED) T2.SYSNAME != 'INS_CONTRACT_DELETED' #end
+    #chunk($STATESYSNAMELIST) T2.SYSNAME in ($STATESYSNAMELIST) #end
+    #chunk($CREATESTARTDATE) T.CREATEDATE >= #bind($CREATESTARTDATE 'FLOAT') #end
+    #chunk($CREATEFINISHDATE) T.CREATEDATE <= #bind($CREATEFINISHDATE 'FLOAT') #end
+    #chunk($PDSELLERID) T9.STARTDATE <= #bind($NOWDATE 'FLOAT') #end
+    #chunk($SELLERID) T.SELLERID = #bind($SELLERID 'NUMERIC') #end
+    #chunk($STARTSTARTDATE) T.STARTDATE >= #bind($STARTSTARTDATE 'FLOAT') #end
+    #chunk($STARTFINISHDATE) T.STARTDATE <= #bind($STARTFINISHDATE 'FLOAT') #end
+    #chunk($DOCUMENTSTARTDATE) T.DOCUMENTDATE >= #bind($DOCUMENTSTARTDATE 'FLOAT') #end
+    #chunk($DOCUMENTFINISHDATE) T.DOCUMENTDATE <= #bind($DOCUMENTFINISHDATE 'FLOAT') #end
+    #chunk($SIGNDATEUPBOUND) T.SIGNDATE >= #bind($SIGNDATEUPBOUND 'FLOAT') #end
+    #chunk($SIGNDATEDOWNBOUND) T.SIGNDATE <= #bind($SIGNDATEDOWNBOUND 'FLOAT') #end
+    #chunk($CREATEUSERIDISNULL) T.CREATEUSERID IS NULL #end
+    #chunk($CREATEUSERIDISNOTNULL) T.CREATEUSERID IS NOT NULL #end
+    #chunk($POSTCTRLTEXTID) T.POSTCTRLTEXTID = #bind($POSTCTRLTEXTID 'NUMERIC') #end
+    #chunk($POSTCTRLCONDID) T.POSTCTRLCONDID = #bind($POSTCTRLCONDID 'NUMERIC') #end   
+    #chunk($UWSYSNAME) ((T82.STRINGFIELD04 = #bind($UWSYSNAME 'VARCHAR')) OR (T82.STRINGFIELD05 = #bind($UWSYSNAME 'VARCHAR')) OR (T82.STRINGFIELD06 = #bind($UWSYSNAME 'VARCHAR'))) #end                                   
+    #chunk($SELLERFIO) UPPER(T83.NAME) LIKE UPPER('%$SELLERFIO%')  #end            
+    #chunk($BRANCHID) T.BRANCHID = #bind($BRANCHID 'NUMERIC') #end            
+      $ASPECTRESTRICTION
+#end
+]]>
+        </sql>
+    </query>
+    <query name="dsMortgageContractBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="InsPOSCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql><![CDATA[
+SELECT
+        #result('COUNT($NEEDDISTINCT T.CONTRID)', 'java.lang.Long', 'CNT')
+FROM
+      INS_CONTR T
+      INNER JOIN INS_CONTRNODE T6 ON (T.CONTRID = T6.CONTRID)
+      INNER JOIN CORE_SM_STATE T2 ON (T.STATEID = T2.ID)
+      INNER JOIN INS_PRODVER T3 ON (T.PRODVERID = T3.PRODVERID)
+      INNER JOIN INS_PROD T4 ON (T3.PRODID = T4.PRODID) AND ((T4.ISHIDDEN is null) or (T4.ISHIDDEN != 1))
+      LEFT JOIN CRM_PARTICIPANT T5 ON (T.INSUREDID = T5.PARTICIPANTID)
+      LEFT JOIN CRM_PERSON T70 ON (T.INSUREDID = T70.PARTICIPANTID)
+      LEFT JOIN CRM_PERSONDOC T7 ON (T70.PERSONID = T7.PERSONID)
+      LEFT JOIN CRM_PERSONDOCTYPE T73 ON (T73.PERSONDOCTYPEID = T7.PERSONDOCTYPEID)
+      LEFT JOIN CRM_ADDRESS T71 ON (T.INSUREDID = T71.PARTICIPANTID)
+            LEFT JOIN CRM_CONTACTPERSON TCP ON (TCP.PARTICIPANTID = T.INSUREDID)
+            LEFT JOIN CRM_CONTACT TCE ON ((TCE.CONTACTPERSONID = TCP.CONTACTPERSONID) AND (TCE.CONTACTTYPEID = 1006))
+            LEFT JOIN CRM_CONTACT TCPH ON ((TCPH.CONTACTPERSONID = TCP.CONTACTPERSONID) AND (TCPH.CONTACTTYPEID = 1005))
+            
+      LEFT JOIN INS_PRODCONF T8 ON ((T.PRODVERID = T8.PRODVERID) AND (T8.SYSNAME = 'POS'))
+      LEFT JOIN INS_PRODDEFVAL T81 ON ((T8.PRODCONFID = T81.PRODCONFID) AND (T81.NAME = 'CONTREXTDATAVERID'))
+      LEFT JOIN INS_CONTREXT T82 ON ((T82.CONTRID = T.CONTRID) AND (T82.HBDATAVERID = T81.VALUE))
+      LEFT JOIN INS_SELLER T83 ON (T.SELLERID = T83.SELLERID)      
+      LEFT JOIN INS_PRODPROG T10 ON (T.PRODPROGID = T10.PRODPROGID)
+      #chunk($PDSELLERID) INNER JOIN INS_PRODDISTR T9 ON ((T9.SELLERID = $PDSELLERID) AND (T9.PRODVERID = T.PRODVERID)) #end
+      $ASPECTTABLES
+#chain('AND' 'WHERE')
+    #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end
+    #chunk($EXTERNALID) T.EXTERNALID = #bind($EXTERNALID 'VARCHAR') #end
+    #chunk($CONTRNUMBER) UPPER(T.CONTRNUMBER) LIKE UPPER('%$CONTRNUMBER%')  #end
+    #chunk($CREDCONTRNUM) UPPER(T.CREDCONTRNUM) LIKE UPPER('%$CREDCONTRNUM%')  #end
+    #chunk($CONTRPOLSER) T2.CONTRPOLSER = #bind($CONTRPOLSER 'VARCHAR') #end
+    #chunk($CONTRPOLNUM) T2.CONTRPOLNUM = #bind($CONTRPOLNUM 'VARCHAR') #end
+    #chunk($STATESYSNAME) T2.SYSNAME = #bind($STATESYSNAME 'VARCHAR') #end
+    #chunk($NOTE) UPPER(T.NOTE) LIKE UPPER('%$NOTE%')  #end
+    #chunk($ORGSTRUCTID) T.ORGSTRUCTID = #bind($ORGSTRUCTID 'NUMERIC') #end
+    #chunk($CREATEUSERID) T.CREATEUSERID = #bind($CREATEUSERID 'NUMERIC') #end
+    #chunk($UPDATEUSERID) T.UPDATEUSERID = #bind($UPDATEUSERID 'NUMERIC') #end
+    #chunk($PRODID) T4.PRODID = #bind($PRODID 'NUMERIC') #end
+    #chunk($PRODVERID) T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end
+    #chunk($INSUREDNAME) UPPER(T5.BRIEFNAME) LIKE UPPER('%$INSUREDNAME%') #end
+    #chunk($STATEID) T.STATEID = #bind($STATEID 'NUMERIC') #end
+    #chunk($STATESYSNAME) T2.SYSNAME = #bind($STATESYSNAME 'VARCHAR') #end
+    #chunk($NODELETED) T2.SYSNAME != 'INS_CONTRACT_DELETED' #end
+    #chunk($STATESYSNAMELIST) T2.SYSNAME in ($STATESYSNAMELIST) #end
+    #chunk($CREATESTARTDATE) T.CREATEDATE >= #bind($CREATESTARTDATE 'FLOAT') #end
+    #chunk($CREATEFINISHDATE) T.CREATEDATE <= #bind($CREATEFINISHDATE 'FLOAT') #end
+    #chunk($PDSELLERID) T9.STARTDATE <= #bind($NOWDATE 'FLOAT') #end
+    #chunk($SELLERID) T.SELLERID = #bind($SELLERID 'NUMERIC') #end
+    #chunk($STARTSTARTDATE) T.STARTDATE >= #bind($STARTSTARTDATE 'FLOAT') #end
+    #chunk($STARTFINISHDATE) T.STARTDATE <= #bind($STARTFINISHDATE 'FLOAT') #end
+    #chunk($DOCUMENTSTARTDATE) T.DOCUMENTDATE >= #bind($DOCUMENTSTARTDATE 'FLOAT') #end
+    #chunk($DOCUMENTFINISHDATE) T.DOCUMENTDATE <= #bind($DOCUMENTFINISHDATE 'FLOAT') #end
+    #chunk($SIGNDATEUPBOUND) T.SIGNDATE >= #bind($SIGNDATEUPBOUND 'FLOAT') #end
+    #chunk($SIGNDATEDOWNBOUND) T.SIGNDATE <= #bind($SIGNDATEDOWNBOUND 'FLOAT') #end
+    #chunk($CREATEUSERIDISNULL) T.CREATEUSERID IS NULL #end
+    #chunk($CREATEUSERIDISNOTNULL) T.CREATEUSERID IS NOT NULL #end
+    #chunk($POSTCTRLTEXTID) T.POSTCTRLTEXTID = #bind($POSTCTRLTEXTID 'NUMERIC') #end
+    #chunk($POSTCTRLCONDID) T.POSTCTRLCONDID = #bind($POSTCTRLCONDID 'NUMERIC') #end              
+    #chunk($UWSYSNAME) ((T82.STRINGFIELD04 = #bind($UWSYSNAME 'VARCHAR')) OR (T82.STRINGFIELD05 = #bind($UWSYSNAME 'VARCHAR')) OR (T82.STRINGFIELD06 = #bind($UWSYSNAME 'VARCHAR'))) #end                                   
+    #chunk($SELLERFIO) UPPER(T83.NAME) LIKE UPPER('%$SELLERFIO%')  #end            
+    #chunk($BRANCHID) T.BRANCHID = #bind($BRANCHID 'NUMERIC') #end            
+      $ASPECTRESTRICTION
+#end
+]]>
+        </sql>
+    </query>
+    
+    <query name="dsContractObjBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="InsPOSCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql><![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.CONTRID', 'java.lang.Long', 'CONTRID'),    
+        #result('T.CONTROBJID', 'java.lang.Long', 'CONTROBJID'),    
+        #result('T.INSOBJID', 'java.lang.Long', 'INSOBJID'),    
+        #result('T.CURRENCYID', 'java.lang.Long', 'CURRENCYID'),    
+        #result('T.INSAMCURRENCYID', 'java.lang.Long', 'INSAMCURRENCYID'),    
+        #result('T.PREMCURRENCYID', 'java.lang.Long', 'PREMCURRENCYID'),    
+        #result('T.STATEID', 'java.lang.Long', 'STATEID'),    
+        #result('T.INSAMVALUE', 'java.lang.Double', 'INSAMVALUE'),    
+        #result('T.PREMVALUE', 'java.lang.Double', 'PREMVALUE'),    
+        #result('T.PAYPREMVALUE', 'java.lang.Double', 'PAYPREMVALUE'),  
+        
+        #result('T1.DISCRIMINATOR', 'java.lang.Long', 'DISCRIMINATOR'),
+        #result('T1.INSOBJNODEID', 'java.lang.Long', 'INSOBJNODEID'),
+        #result('T1.OBJAREA', 'java.lang.Long', 'OBJAREA'),
+        #result('T1.FACINGTYPE', 'java.lang.String', 'FACINGTYPE'),
+        #result('T1.HOUSEHAS', 'java.lang.String', 'HOUSEHAS'),
+        #result('T1.NAME', 'java.lang.String', 'NAME'),
+        #result('T1.NOTE', 'java.lang.String', 'NOTE'),
+        #result('T1.OBJTYPESYSNAME', 'java.lang.String', 'OBJTYPESYSNAME'),
+        #result('T1.PRODYEARSYSNAME', 'java.lang.String', 'PRODYEARSYSNAME'),
+        #result('T1.WALMATERIAL', 'java.lang.String', 'WALMATERIAL'),
+              
+        #result('T2.CONTRPROPERTYID', 'java.lang.Long', 'CONTRPROPERTYID'),
+        #result('T2.USEKLADR', 'java.lang.Long', 'USEKLADR'),
+        #result('T2.FLOOR', 'java.lang.Long', 'FLOOR'),
+        #result('T2.FLOORCOUNT', 'java.lang.Long', 'FLOORCOUNT'),
+        #result('T2.OBJWEAR', 'java.lang.Long', 'OBJWEAR'),
+        #result('T2.ADDRESSTEXT1', 'java.lang.String', 'ADDRESSTEXT1'),
+        #result('T2.BUILDERINN', 'java.lang.String', 'BUILDERINN'),
+        #result('T2.BUILDERNAME', 'java.lang.String', 'BUILDERNAME'),
+        #result('T2.BUILDING', 'java.lang.String', 'BUILDING'),
+        #result('T2.BUILDINGADDRESS', 'java.lang.String', 'BUILDINGADDRESS'),
+        #result('T2.BUILDINGPERCENT', 'java.lang.Double', 'BUILDINGPERCENT'),
+        #result('T2.CITY', 'java.lang.String', 'CITY'),
+        #result('T2.CITYKLADR', 'java.lang.String', 'CITYKLADR'),
+        #result('T2.CITYTYPE', 'java.lang.Long', 'CITYTYPE'),
+        #result('T2.DISTRICT', 'java.lang.String', 'DISTRICT'),
+        #result('T2.DISTRICTKLADR', 'java.lang.String', 'DISTRICTKLADR'),
+        #result('T2.DISTRICTTYPE', 'java.lang.Long', 'DISTRICTTYPE'),
+        #result('T2.FLAT', 'java.lang.String', 'FLAT'),
+        #result('T2.FLATTYPE', 'java.lang.String', 'FLATTYPE'),
+        #result('T2.HOUSE', 'java.lang.String', 'HOUSE'),
+        #result('T2.HOUSING', 'java.lang.String', 'HOUSING'),
+        #result('T2.IDENTIFIER', 'java.lang.String', 'IDENTIFIER'),
+        #result('T2.ISUNDERCONSTR', 'java.lang.Integer', 'ISUNDERCONSTR'),
+        #result('T2.NAME', 'java.lang.String', 'PROPERTYNAME'),
+        #result('T2.OBJTYPEID', 'java.lang.Long', 'OBJTYPEID'),
+        #result('T2.OBJNAME', 'java.lang.String', 'OBJNAME'),
+        #result('T2.OBJREADID', 'java.lang.Long', 'OBJREADID'),
+        #result('T2.OWNERNAME', 'java.lang.String', 'OWNERNAME'),
+        #result('T2.POSTALCODE', 'java.lang.String', 'POSTALCODE'),
+        #result('T2.PURCHASESUMFACT', 'java.lang.Double', 'PURCHASESUMFACT'),
+        #result('T2.PURCHASESUMREAL', 'java.lang.Double', 'PURCHASESUMREAL'),
+        #result('T2.REGION', 'java.lang.String', 'REGION'),
+        #result('T2.REGIONKLADR', 'java.lang.String', 'REGIONKLADR'),
+        #result('T2.REGIONTYPE', 'java.lang.Long', 'REGIONTYPE'),
+        #result('T2.SELLERTYPE', 'java.lang.Long', 'SELLERTYPE'),
+        #result('T2.STREET', 'java.lang.String', 'STREET'),
+        #result('T2.STREETKLADR', 'java.lang.String', 'STREETKLADR'),
+        #result('T2.STREETTYPE', 'java.lang.Long', 'STREETTYPE'),
+        #result('T2.VALUATDATE', 'java.math.BigDecimal', 'VALUATDATE'),
+        #result('T2.VALUATORGNAME', 'java.lang.String', 'VALUATORGNAME'),
+        #result('T2.VILLAGE', 'java.lang.String', 'VILLAGE'),
+        #result('T2.VILLAGEKLADR', 'java.lang.String', 'VILLAGEKLADR'),
+        #result('T2.VILLAGETYPE', 'java.math.BigDecimal', 'VILLAGETYPE'),
+        #result('T2.CADASTRALNUMBER', 'java.lang.String', 'CADASTRALNUMBER'),
+        #result('T2.ADDITIONALINFO', 'java.lang.String', 'ADDITIONALINFO')       
+            
+FROM
+    INS_CONTROBJ T
+    LEFT JOIN INS_INSOBJ T1 ON (T1.INSOBJID = T.INSOBJID)
+    LEFT JOIN INS_CONTRPROPERTY T2 ON (T1.CONTRPROPERTYID = T2.CONTRPROPERTYID)
+
+      $ASPECTTABLES
+#chain('AND' 'WHERE')
+      #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end   
+      $ASPECTRESTRICTION
+#end
+]]>
+        </sql>
+    </query>
+    <query name="dsContractObjBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="InsPOSCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql><![CDATA[
+SELECT
+        #result('COUNT($NEEDDISTINCT T.CONTRID)', 'java.lang.Long', 'CNT')
+FROM
+    INS_CONTROBJ T
+      $ASPECTTABLES
+#chain('AND' 'WHERE')
+      #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end   
+      $ASPECTRESTRICTION
+#end
+]]>
+        </sql>
+    </query>      
+</data-map>

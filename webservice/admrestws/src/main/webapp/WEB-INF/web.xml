@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+    <description>BIVGroup admrestws Web Service</description>
+    <display-name>admrestws</display-name>
+    <session-config>
+        <session-timeout>60</session-timeout>
+    </session-config>
+    <!-- Auto scan REST service -->
+    <context-param>
+        <param-name>resteasy.scan</param-name>
+        <param-value>false</param-value>
+    </context-param>
+    
+    <context-param>
+        <param-name>resteasy.resources</param-name>
+        <param-value>
+            com.bivgroup.service.login.admin.service.LoginAdminGate,
+            com.bivgroup.service.password.service.AccountPassWebServiceGate,
+            com.bivgroup.rest.admrestws.services.AdminWebServiceGate,
+            com.bivgroup.rest.departmentservice.DepartmentWebServiceGate,
+            com.bivgroup.rest.journalservice.JournalWebServiceGate,
+            com.bivgroup.rest.menuservice.MenuWebServiceGate,
+            com.bivgroup.rest.admrestws.services.RightsService,
+            com.bivgroup.rest.active_directory.service.ActiveDirectoryWebServiceGate
+        </param-value>
+    </context-param>
+    <context-param> 
+        <param-name>resteasy.providers</param-name> 
+        <param-value>
+            com.bivgroup.rest.admrestws.common.DateFormatProvider,
+            com.bivgroup.core.audit.rest.AuditBindingFilter,
+            com.bivgroup.core.audit.rest.AuditInfoFilter
+        </param-value>
+    </context-param>
+    <servlet>
+        <servlet-name>resteasy-servlet</servlet-name>
+        <servlet-class>
+            org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher
+        </servlet-class>
+    </servlet>
+  
+    <servlet-mapping>
+        <servlet-name>resteasy-servlet</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
+
+</web-app>

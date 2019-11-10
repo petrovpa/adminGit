@@ -1,0 +1,22 @@
+<div class="header">
+  <a class="logo" (click)="openMain()">
+    <img src="assets/img/logo.png" alt="">
+    Администрирование
+  </a>
+
+  <div class="header-inner">
+    <div class="username">
+      <span class="username-icon">
+        <i class="icon-username"></i>
+      </span>
+      <span class="username-fio">
+        {{fio}}
+      </span>
+    </div>
+
+    <a class="logo logout" (click)="logout()">
+      <i class="icon-exit"></i>
+      Выход
+    </a>
+  </div>
+</div>

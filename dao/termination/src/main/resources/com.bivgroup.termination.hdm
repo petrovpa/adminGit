@@ -1,0 +1,791 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!-- Generated 03.08.2017 22:59:21 unknow unknow -->
+<hibernate-mapping
+            package="com.bivgroup.termination"
+            default-lazy="false"
+>
+
+<class
+entity-name="ReasonChangeForContract"
+table="PD_REASONCHANGE"
+>
+
+<id
+        name="id"
+        type="long"
+        >
+
+<column name="id" />
+        <generator class="enhanced-sequence">
+                <param name="optimizer">pooled</param>
+                <param name="prefer_sequence_per_entity">true</param>
+                <param name="jpa_entity_name">PD_REASONCHANGE</param>
+                <param name="increment_size">10</param>
+                <param name="sequence_per_entity_suffix">_SEQ</param>
+        </generator>
+</id>
+
+<discriminator type="string">
+        <column
+        name="DISCRIMINATOR" />
+</discriminator>
+
+
+
+<many-to-one
+        name="kindChangeReasonId_EN"
+			entity-name="KindChangeReason"
+        >
+        <column
+        name="kindChangeReasonId" />
+</many-to-one>
+<property
+        name="kindChangeReasonId"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+<many-to-one
+        name="declarationId_EN"
+			entity-name="DeclarationOfChangeForContract"
+        >
+        <column
+        name="declarationId" />
+</many-to-one>
+<property
+        name="declarationId"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+
+<bag name="values"
+table="PD_REASONCHANGE_VALUE"
+     inverse="true"
+     lazy="false"
+     cascade="delete"
+>
+<key
+>
+        <column
+        name="reasonId" />
+</key>
+<one-to-many class="com.bivgroup.termination.ValueReasonChangeForContract"
+             entity-name="ValueReasonChangeForContract"
+/>
+</bag>
+</class>
+<class
+entity-name="KindChangeReason"
+table="HB_KINDCHANGEREASON"
+>
+
+<id
+        name="id"
+        type="long"
+        >
+
+<column name="id" />
+        <generator class="enhanced-sequence">
+                <param name="optimizer">pooled</param>
+                <param name="prefer_sequence_per_entity">true</param>
+                <param name="jpa_entity_name">HB_KINDCHANGEREASON</param>
+                <param name="increment_size">10</param>
+                <param name="sequence_per_entity_suffix">_SEQ</param>
+        </generator>
+</id>
+
+
+
+
+<property
+        name="sysname"
+        type="string"
+        >
+        <column
+        name="sysname" />
+</property>
+
+<property
+        name="name"
+        type="string"
+        >
+        <column
+        name="name" />
+</property>
+
+<property
+        name="insProductId"
+        type="long"
+        >
+        <column
+        name="insProductId" />
+</property>
+
+
+</class>
+<class
+entity-name="DeclarationForContract"
+table="PD_Declaration"
+>
+
+<id
+        name="ID"
+        type="long"
+        >
+
+<column name="ID" />
+        <generator class="enhanced-sequence">
+                <param name="optimizer">pooled</param>
+                <param name="prefer_sequence_per_entity">true</param>
+                <param name="jpa_entity_name">PD_Declaration</param>
+                <param name="increment_size">10</param>
+                <param name="sequence_per_entity_suffix">_SEQ</param>
+        </generator>
+</id>
+
+<discriminator type="string">
+        <column
+        name="DISCRIMINATOR" />
+</discriminator>
+
+
+
+<property
+        name="IsExistOriginal"
+        type="integer"
+        >
+        <column
+        name="IsExistOriginal" />
+</property>
+
+<property
+        name="EID"
+        type="long"
+        >
+        <column
+        name="EID" />
+</property>
+
+<property
+        name="TypeRecipient"
+        type="integer"
+        >
+        <column
+        name="TypeRecipient" />
+</property>
+
+<property
+        name="DateOfEntry"
+        type="timestamp"
+        >
+        <column
+        name="DateOfEntry" />
+</property>
+
+<property
+        name="ChangePremValue"
+        type="float"
+        >
+        <column
+        name="ChangePremValue" />
+</property>
+
+<property
+        name="ReceivingDate"
+        type="timestamp"
+        >
+        <column
+        name="ReceivingDate" />
+</property>
+
+<property
+        name="IncomingDate"
+        type="timestamp"
+        >
+        <column
+        name="IncomingDate" />
+</property>
+
+<property
+        name="IncomingNumber"
+        type="string"
+        >
+        <column
+        name="IncomingNumber" />
+</property>
+
+<property
+        name="DepartureDate"
+        type="timestamp"
+        >
+        <column
+        name="DepartureDate" />
+</property>
+
+<property
+        name="SupposedDateOfEntry"
+        type="timestamp"
+        >
+        <column
+        name="SupposedDateOfEntry" />
+</property>
+
+<property
+        name="Initiator"
+        type="integer"
+        >
+        <column
+        name="Initiator" />
+</property>
+
+<property
+        name="DeclarationDate"
+        type="timestamp"
+        >
+        <column
+        name="DeclarationDate" />
+</property>
+
+<property
+        name="DeclarationNumber"
+        type="string"
+        >
+        <column
+        name="DeclarationNumber" />
+</property>
+
+<property
+        name="ContractID"
+        type="long"
+        >
+        <column
+        name="ContractID" />
+</property>
+
+<property
+        name="DateLastDoc"
+        type="timestamp"
+        >
+        <column
+        name="DateLastDoc" />
+</property>
+
+<property
+        name="UpdateUser"
+        type="long"
+        >
+        <column
+        name="UpdateUser" />
+</property>
+
+<property
+        name="UpdateDate"
+        type="timestamp"
+        >
+        <column
+        name="UpdateDate" />
+</property>
+
+<property
+        name="CreateUser"
+        type="long"
+        >
+        <column
+        name="CreateUser" />
+</property>
+
+<property
+        name="CreateDate"
+        type="timestamp"
+        >
+        <column
+        name="CreateDate" />
+</property>
+
+<many-to-one
+        name="RecipientID_EN"
+			entity-name="PPerson"
+        >
+        <column
+        name="RecipientID" />
+</many-to-one>
+<property
+        name="RecipientID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+<many-to-one
+        name="RepresentativeID_EN"
+			entity-name="PPerson"
+        >
+        <column
+        name="RepresentativeID" />
+</many-to-one>
+<property
+        name="RepresentativeID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+<many-to-one
+        name="ApplicantID_EN"
+			entity-name="PPerson"
+        >
+        <column
+        name="ApplicantID" />
+</many-to-one>
+<property
+        name="ApplicantID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+<many-to-one
+        name="StateID_EN"
+			entity-name="KindStatus"
+        >
+        <column
+        name="StateID" />
+</many-to-one>
+<property
+        name="StateID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+<many-to-one
+        name="ReceivingChannelID_EN"
+			entity-name="ReceivingChannel"
+        >
+        <column
+        name="ReceivingChannelID" />
+</many-to-one>
+<property
+        name="ReceivingChannelID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+
+<bag name="Notes"
+table="SD_UserPost"
+     inverse="true"
+     lazy="false"
+     cascade="delete"
+>
+<key
+>
+        <column
+        name="PDDeclarationID" />
+</key>
+<one-to-many class="com.bivgroup.termination.UserPost"
+             entity-name="UserPost"
+/>
+</bag>
+</class>
+<class
+entity-name="ReceivingChannel"
+table="HD_ReceivingChannel"
+>
+
+<id
+        name="ID"
+        type="long"
+        >
+
+<column name="ID" />
+        <generator class="enhanced-sequence">
+                <param name="optimizer">pooled</param>
+                <param name="prefer_sequence_per_entity">true</param>
+                <param name="jpa_entity_name">HD_ReceivingChannel</param>
+                <param name="increment_size">10</param>
+                <param name="sequence_per_entity_suffix">_SEQ</param>
+        </generator>
+</id>
+
+
+
+
+<property
+        name="IsFillDepartureDate"
+        type="integer"
+        >
+        <column
+        name="IsFillDepartureDate" />
+</property>
+
+<property
+        name="Sysname"
+        type="string"
+        >
+        <column
+        name="Sysname" />
+</property>
+
+<property
+        name="Name"
+        type="string"
+        >
+        <column
+        name="Name" />
+</property>
+
+<property
+        name="EID"
+        type="long"
+        >
+        <column
+        name="EID" />
+</property>
+
+
+</class>
+<class
+entity-name="UserPost"
+table="SD_UserPost"
+>
+
+<id
+        name="ID"
+        type="long"
+        >
+
+<column name="ID" />
+        <generator class="enhanced-sequence">
+                <param name="optimizer">pooled</param>
+                <param name="prefer_sequence_per_entity">true</param>
+                <param name="jpa_entity_name">SD_UserPost</param>
+                <param name="increment_size">10</param>
+                <param name="sequence_per_entity_suffix">_SEQ</param>
+        </generator>
+</id>
+
+
+
+
+<property
+        name="CHNotificationID"
+        type="long"
+        >
+        <column
+        name="CHNotificationID" />
+</property>
+
+<property
+        name="Note"
+        type="string"
+        >
+        <column
+        name="Note" />
+</property>
+
+<property
+        name="CreateUser"
+        type="long"
+        >
+        <column
+        name="CreateUser" />
+</property>
+
+<property
+        name="CreateDate"
+        type="timestamp"
+        >
+        <column
+        name="CreateDate" />
+</property>
+
+<property
+        name="EID"
+        type="long"
+        >
+        <column
+        name="EID" />
+</property>
+
+<many-to-one
+        name="PDDeclarationID_EN"
+			entity-name="DeclarationForContract"
+        >
+        <column
+        name="PDDeclarationID" />
+</many-to-one>
+<property
+        name="PDDeclarationID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+
+</class>
+<joined-subclass
+entity-name="DeclarationOfChangeForContract"
+extends="DeclarationForContract"
+table="PD_DECLARATIONOFCHANGE"
+>
+
+<key>
+        <column
+        name="id" not-null="true" />
+</key>
+
+
+
+
+<property
+        name="sectionId"
+        type="long"
+        >
+        <column
+        name="sectionId" />
+</property>
+
+
+<bag name="reasons"
+table="PD_REASONCHANGE"
+     inverse="true"
+     lazy="false"
+     cascade="delete"
+>
+<key
+>
+        <column
+        name="declarationId" />
+</key>
+<one-to-many class="com.bivgroup.termination.ReasonChangeForContract"
+             entity-name="ReasonChangeForContract"
+/>
+</bag>
+</joined-subclass>
+<class
+entity-name="ValueReasonChangeForContract"
+table="PD_REASONCHANGE_VALUE"
+>
+
+<id
+        name="id"
+        type="long"
+        >
+
+<column name="id" />
+        <generator class="enhanced-sequence">
+                <param name="optimizer">pooled</param>
+                <param name="prefer_sequence_per_entity">true</param>
+                <param name="jpa_entity_name">PD_REASONCHANGE_VALUE</param>
+                <param name="increment_size">10</param>
+                <param name="sequence_per_entity_suffix">_SEQ</param>
+        </generator>
+</id>
+
+
+
+
+<property
+        name="dateBegin"
+        type="date"
+        >
+        <column
+        name="dateBegin" />
+</property>
+
+<property
+        name="dateEnd"
+        type="date"
+        >
+        <column
+        name="dateEnd" />
+</property>
+
+<property
+        name="valueHandbook"
+        type="long"
+        >
+        <column
+        name="valueHandbook" />
+</property>
+
+<property
+        name="valueBoolean"
+        type="integer"
+        >
+        <column
+        name="valueBoolean" />
+</property>
+
+<many-to-one
+        name="reasonId_EN"
+			entity-name="ReasonChangeForContract"
+        >
+        <column
+        name="reasonId" />
+</many-to-one>
+<property
+        name="reasonId"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+
+</class>
+<joined-subclass
+entity-name="ReasonChangeForContract_Freeze"
+extends="ReasonChangeForContract"
+table="PD_REASONCHANGE_F"
+>
+
+<key>
+        <column
+        name="id" not-null="true" />
+</key>
+
+
+
+
+<property
+        name="attrDate1"
+        type="date"
+        >
+        <column
+        name="attrDate1" />
+</property>
+
+<property
+        name="attrBoolean1"
+        type="integer"
+        >
+        <column
+        name="attrBoolean1" />
+</property>
+
+
+</joined-subclass>
+<joined-subclass
+entity-name="ReasonChangeForContract_Option"
+extends="ReasonChangeForContract"
+table="PD_REASONCHANGE_O"
+>
+
+<key>
+        <column
+        name="id" not-null="true" />
+</key>
+
+
+
+
+<property
+        name="attrInt1"
+        type="long"
+        >
+        <column
+        name="attrInt1" />
+</property>
+
+
+</joined-subclass>
+<class
+entity-name="TerminationReason"
+table="HD_TerminationReason"
+>
+
+<id
+        name="ID"
+        type="long"
+        >
+
+<column name="ID" />
+        <generator class="enhanced-sequence">
+                <param name="optimizer">pooled</param>
+                <param name="prefer_sequence_per_entity">true</param>
+                <param name="jpa_entity_name">HD_TerminationReason</param>
+                <param name="increment_size">10</param>
+                <param name="sequence_per_entity_suffix">_SEQ</param>
+        </generator>
+</id>
+
+
+
+
+<property
+        name="Sysname"
+        type="string"
+        >
+        <column
+        name="Sysname" />
+</property>
+
+<property
+        name="Name"
+        type="string"
+        >
+        <column
+        name="Name" />
+</property>
+
+<property
+        name="EID"
+        type="long"
+        >
+        <column
+        name="EID" />
+</property>
+
+
+</class>
+<joined-subclass
+entity-name="DeclarationOfAvoidanceForContract"
+extends="DeclarationForContract"
+table="PD_DeclarationOfAvoid"
+>
+
+<key>
+        <column
+        name="ID" not-null="true" />
+</key>
+
+
+
+
+<many-to-one
+        name="TerminationReasonID_EN"
+			entity-name="TerminationReason"
+        >
+        <column
+        name="TerminationReasonID" />
+</many-to-one>
+<property
+        name="TerminationReasonID"
+        type="long"
+        update="false"
+        insert="false"
+        >
+</property>
+
+
+</joined-subclass>
+
+</hibernate-mapping>

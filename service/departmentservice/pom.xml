@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <department-service.version>1.02.01-SNAPSHOT</department-service.version>
+        <service-caller.version>1.01.03</service-caller.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.0.2</version>
+                <configuration>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <groupId>com.bivgroup.flextera.insurance.bivsberfront.service</groupId>
+    <artifactId>department-service</artifactId>
+    <version>${department-service.version}</version>
+    <packaging>jar</packaging>
+    <name>departmentservice</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.bivgroup</groupId>
+            <artifactId>service-caller</artifactId>
+            <version>${service-caller.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jaxrs</artifactId>
+            <version>3.0.14.Final</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>biv-nexus</id>
+            <name>BIV nexus repository</name>
+            <url>https://192.168.1.46:8443/repository/biv-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>biv-nexus-snapshots</id>
+            <name>BIV snapshots nexus repository</name>
+            <url>https://192.168.1.46:8443/repository/biv-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+    
+</project>

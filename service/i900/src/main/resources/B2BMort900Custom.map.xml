@@ -1,0 +1,1278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+    <query name="dsB2BMort900BrowseListByParamCustomeWhereEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BMort900Custom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.BANKSTATEMENTID', 'java.lang.Long', 'BANKSTATEMENTID'),
+        #result('T.DOCDATE', 'java.math.BigDecimal', 'DOCDATE'),
+        #result('T.INPUTDATE', 'java.math.BigDecimal', 'INPUTDATE'),
+        #result('T.INPUTBEGINDATE', 'java.math.BigDecimal', 'INPUTBEGINDATE'),
+        #result('T.INPUTFINISHDATE', 'java.math.BigDecimal', 'INPUTFINISHDATE'),
+        #result('T.BANKSTATETEMPLATEID', 'java.lang.Long', 'BANKSTATETEMPLATEID'),
+        #result('T.NUM', 'java.lang.String', 'NUM'),
+        #result('T.ERRORTEXT', 'java.lang.String', 'ERRORTEXT'),
+        #result('T.STATEID', 'java.math.BigDecimal', 'STATEID'),
+        #result('T2.SYSNAME', 'java.lang.String', 'STATESYSNAME'),
+        #result('T2.PUBLICNAME', 'java.lang.String', 'STATENAME'),
+        #result('T4.FILENAME', 'java.lang.String', 'FILENAME'),
+        #result('BST.NAME', 'java.lang.String', 'FILETYPE'),  
+        #result('T.COUNTERRORSTRING', 'java.lang.Long', 'COUNTERRORSTRING'),
+        #result('T.COUNTADDSTRING', 'java.lang.Long', 'COUNTADDSTRING'),
+        #result('T.COUNTUPDATESTRING', 'java.lang.Long', 'COUNTUPDATESTRING'),    
+        #result("CONCAT(de.LASTNAME,CONCAT(' ',CONCAT(de.FIRSTNAME,CONCAT(' ',de.MIDDLENAME))))", 'java.lang.String', 'NamePerson'),
+        #result('(SELECT COUNT(CF.BANKCASHFLOWID) FROM B2B_BANKCASHFLOW CF WHERE (CF.BANKSTATEMENTID = T.BANKSTATEMENTID))', 'java.lang.Long', 'CASHFLOWCNT')
+       $ASPECTFIELDS 
+FROM 
+      B2B_BANKSTATE T
+      LEFT JOIN CORE_SM_STATE T2 ON (T.STATEID = T2.ID)       
+      LEFT JOIN B2B_BANKSTATEDOC T3 on (T3.BANKSTATEMENTID = T.BANKSTATEMENTID)
+      LEFT JOIN INS_BINFILE T4 on (T4.OBJID = T3.BANKSTATEDOCID and T4.OBJTABLENAME = 'B2B_BANKSTATEDOC')
+      LEFT JOIN CORE_USERACCOUNT ua on (ua.useraccountid = T4.createuserid)
+      LEFT JOIN core_user u on (u.userid = ua.userid)
+      LEFT JOIN dep_employee de on (u.objectid = de.employeeid)
+      LEFT JOIN B2B_BANKSTATETEMPLATE BST on (T.BANKSTATETEMPLATEID = BST.BANKSTATETEMPLATEID)
+      $ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($BANKSTATEMENTID) T.BANKSTATEMENTID = #bind($BANKSTATEMENTID 'NUMERIC') #end 
+       #chunk($CUSTOMWHERE) $CUSTOMWHERE #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BMort900BrowseListByParamCustomeWhereExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BMort900Custom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.BANKSTATEMENTID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_BANKSTATE T
+      LEFT JOIN CORE_SM_STATE T2 ON (T.STATEID = T2.ID)
+      LEFT JOIN B2B_BANKSTATEDOC T3 on (T3.BANKSTATEMENTID = T.BANKSTATEMENTID)
+      LEFT JOIN INS_BINFILE T4 on (T4.OBJID = T3.BANKSTATEDOCID and T4.OBJTABLENAME = 'B2B_BANKSTATEDOC')
+      left join CORE_USERACCOUNT ua on (ua.useraccountid = T4.createuserid)
+      left join core_user u on (u.userid = ua.userid)
+      left join dep_employee de on (u.objectid = de.employeeid)
+      $ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($BANKSTATEMENTID) T.BANKSTATEMENTID = #bind($BANKSTATEMENTID 'NUMERIC') #end 
+       #chunk($CUSTOMWHERE) $CUSTOMWHERE #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+
+    <query name="dsB2BBankStateDocumentBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BMort900Custom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.BANKSTATEDOCID', 'java.lang.Long', 'BANKSTATEDOCID'),
+        #result('T.BANKSTATEMENTID', 'java.lang.Long', 'BANKSTATEMENTID'),
+        #result('T.PRODBINDOCID', 'java.lang.Long', 'PRODBINDOCID'),
+        
+        #result('T2.BINFILEID', 'java.lang.Long', 'BINFILEID'), 
+        #result('T2.FILENAME', 'java.lang.String', 'FILENAME'), 
+        #result('T2.FILEPATH', 'java.lang.String', 'FILEPATH'), 
+        #result('T2.FILESIZE', 'java.lang.String', 'FILESIZE'), 
+        #result('T2.FILETYPEID', 'java.lang.Long', 'FILETYPEID'), 
+        #result('T2.FILETYPENAME', 'java.lang.String', 'FILETYPENAME'), 
+        #result('T2.NOTE', 'java.lang.String', 'NOTE'),
+        #result('T3.DOCLEVEL', 'java.lang.String', 'DOCTYPELEVEL'),
+        #result('T3.DOCSYSNAME', 'java.lang.String', 'DOCSYSNAME'),
+        #result('T3.NAME', 'java.lang.String', 'DOCTYPENAME')
+          
+       $ASPECTFIELDS 
+FROM
+      B2B_BANKSTATEDOC T
+      LEFT JOIN INS_BINFILE T2 ON (T2.OBJID = T.BANKSTATEDOCID) and (T2.OBJTABLENAME = 'B2B_BANKSTATEDOC')
+      left join b2b_prodbindoc T3 on (T.PRODBINDOCID = T3.PRODBINDOCID) 
+      
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($BANKSTATEDOCID) T.BANKSTATEDOCID = #bind($BANKSTATEDOCID 'NUMERIC') #end 
+       #chunk($BANKSTATEMENTID) T.BANKSTATEMENTID = #bind($BANKSTATEMENTID 'NUMERIC') #end 
+       #chunk($PRODBINDOCID) T.PRODBINDOCID = #bind($PRODBINDOCID 'NUMERIC') #end 
+       #chunk($DOCLEVEL) T3.DOCLEVEL = #bind($DOCLEVEL 'NUMERIC') #end        
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BBankStateDocumentBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BMort900Custom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.BANKSTATEDOCID)', 'java.lang.Long', 'CNT') 
+FROM
+      B2B_BANKSTATEDOC T
+      LEFT JOIN INS_BINFILE T2 ON (T2.OBJID = T.BANKSTATEDOCID) and (T2.OBJTABLENAME = 'B2B_BANKSTATEDOC')
+      left join b2b_prodbindoc T3 on (T.PRODBINDOCID = T3.PRODBINDOCID) 
+      
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($BANKSTATEDOCID) T.BANKSTATEDOCID = #bind($BANKSTATEDOCID 'NUMERIC') #end 
+       #chunk($BANKSTATEMENTID) T.BANKSTATEMENTID = #bind($BANKSTATEMENTID 'NUMERIC') #end 
+       #chunk($PRODBINDOCID) T.PRODBINDOCID = #bind($PRODBINDOCID 'NUMERIC') #end 
+       #chunk($DOCLEVEL) T3.DOCLEVEL = #bind($DOCLEVEL 'NUMERIC') #end        
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BBankCashFlowBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BMort900Custom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.BANKCASHFLOWID', 'java.lang.Long', 'BANKCASHFLOWID'),
+        #result('T.BANKSTATEMENTID', 'java.lang.Long', 'BANKSTATEMENTID'),
+        #result('T.BANKSTATETEMPLATEID', 'java.lang.String', 'BANKSTATETEMPLATEID'),
+        #result('T.CREATEDATE', 'java.math.BigDecimal', 'CREATEDATE'),
+        #result('T.INPUTDATE', 'java.math.BigDecimal', 'INPUTDATE'),
+        #result('T.INPUTNUMBER', 'java.lang.String', 'INPUTNUMBER'),
+        #result('T.AMVALUE', 'java.lang.Double', 'AMVALUE'),
+        #result('T.PAYER', 'java.lang.String', 'PAYER'), 
+        #result('T.ERRORTEXT', 'java.lang.String', 'ERRORTEXT'), 
+        #result('T.PURPOSE', 'java.lang.String', 'PURPOSE'), 
+        #result('T3.NAME', 'java.lang.String', 'TEMPLATENAME'),
+        #result('T3.SYSNAME', 'java.lang.String', 'TEMPLATESYSNAME'),
+        #result('T2.PUBLICNAME', 'java.lang.String', 'STATUSNAME'),
+        #result('T2.SYSNAME', 'java.lang.String', 'STATESYSNAME')
+          
+       $ASPECTFIELDS 
+FROM 
+      B2B_BANKCASHFLOW T
+      LEFT JOIN CORE_SM_STATE T2 ON (T.STATEID = T2.ID)
+      LEFT JOIN B2B_BANKSTATETEMPLATE T3 ON (T3.BANKSTATETEMPLATEID = T.BANKSTATETEMPLATEID)
+      
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($BANKCASHFLOWID) T.BANKCASHFLOWID = #bind($BANKCASHFLOWID 'NUMERIC') #end 
+       #chunk($BANKSTATEMENTID) T.BANKSTATEMENTID = #bind($BANKSTATEMENTID 'NUMERIC') #end 
+       #chunk($CUSTOMWHERE) $CUSTOMWHERE #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BBankCashFlowBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BMort900Custom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.BANKCASHFLOWID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_BANKCASHFLOW T
+      LEFT JOIN CORE_SM_STATE T2 ON (T.STATEID = T2.ID)
+      LEFT JOIN B2B_BANKSTATETEMPLATE T3 ON (T3.BANKSTATETEMPLATEID = T.BANKSTATETEMPLATEID)
+      
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($BANKCASHFLOWID) T.BANKCASHFLOWID = #bind($BANKCASHFLOWID 'NUMERIC') #end 
+       #chunk($BANKSTATEMENTID) T.BANKSTATEMENTID = #bind($BANKSTATEMENTID 'NUMERIC') #end 
+       #chunk($CUSTOMWHERE) $CUSTOMWHERE #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BBankCashFlowBrowseListByParamExForProcessing" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BMort900Custom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.AMVALUE', 'java.lang.Double', 'AMVALUE'),
+        #result('T.BANKSTATEMENTID', 'java.lang.Long', 'BANKSTATEMENTID'),
+        #result('T.BANKSTATETEMPLATEID', 'java.lang.Long', 'BANKSTATETEMPLATEID'),
+        #result('T.BFCVALUE', 'java.lang.String', 'BFCVALUE'),
+        #result('T.CODE', 'java.lang.String', 'CODE'),
+        #result('T.ERRORTEXT', 'java.lang.String', 'ERRORTEXT'),
+        #result('T.BANKCASHFLOWID', 'java.lang.Long', 'BANKCASHFLOWID'),
+        #result('T.INDEXBASE', 'java.lang.String', 'INDEXBASE'),
+        #result('T.INDEXDATE', 'java.lang.String', 'INDEXDATE'),
+        #result('T.INDEXNUMBER', 'java.lang.String', 'INDEXNUMBER'),
+        #result('T.INDEXPERIOD', 'java.lang.String', 'INDEXPERIOD'),
+        #result('T.INDEXTYPE', 'java.lang.String', 'INDEXTYPE'),
+        #result('T.INPUTDATE', 'java.math.BigDecimal', 'INPUTDATE'),
+        #result('T.INPUTNUMBER', 'java.lang.String', 'INPUTNUMBER'),
+        #result('T.OKATO', 'java.lang.String', 'OKATO'),
+        #result('T.ORIGINATORSTATE', 'java.lang.String', 'ORIGINATORSTATE'),
+        #result('T.PAYDATE', 'java.math.BigDecimal', 'PAYDATE'),
+        #result('T.PAYER', 'java.lang.String', 'PAYER'),
+        #result('T.PAYERACCOUNT', 'java.lang.String', 'PAYERACCOUNT'),
+        #result('T.PAYERBANK', 'java.lang.String', 'PAYERBANK'),
+        #result('T.PAYERBIK', 'java.lang.String', 'PAYERBIK'),
+        #result('T.PAYERCORACCOUNT', 'java.lang.String', 'PAYERCORACCOUNT'),
+        #result('T.PAYERINN', 'java.lang.String', 'PAYERINN'),
+        #result('T.PAYERKPP', 'java.lang.String', 'PAYERKPP'),
+        #result('T.PAYERRSACCOUNT', 'java.lang.String', 'PAYERRSACCOUNT'),
+        #result('T.PAYMENTMETHOD', 'java.lang.String', 'PAYMENTMETHOD'),
+        #result('T.PAYMENTTYPE', 'java.lang.String', 'PAYMENTTYPE'),
+        #result('T.PRIORITY', 'java.lang.String', 'PRIORITY'),
+        #result('T.PURPOSE', 'java.lang.String', 'PURPOSE'),
+        #result('T.RECEIPTDATE', 'java.math.BigDecimal', 'RECEIPTDATE'),
+        #result('T.RECIPIENT', 'java.lang.String', 'RECIPIENT'),
+        #result('T.RECIPIENTACCOUNT', 'java.lang.String', 'RECIPIENTACCOUNT'),
+        #result('T.RECIPIENTBANK', 'java.lang.String', 'RECIPIENTBANK'),
+        #result('T.RECIPIENTBIK', 'java.lang.String', 'RECIPIENTBIK'),
+        #result('T.RECIPIENTCORACCOUNT', 'java.lang.String', 'RECIPIENTCORACCOUNT'),
+        #result('T.RECIPIENTINN', 'java.lang.String', 'RECIPIENTINN'),
+        #result('T.RECIPIENTKPP', 'java.lang.String', 'RECIPIENTKPP'),
+        #result('T.RECIPIENTRSACCOUNT', 'java.lang.String', 'RECIPIENTRSACCOUNT'),
+        #result('T.TEMPLATE', 'java.lang.String', 'TEMPLATE'),
+        #result('T.TYPE', 'java.lang.String', 'TYPE'), 
+        #result('T.CONTRID', 'java.lang.Long', 'CONTRID'), 
+        #result('T2.SYSNAME', 'java.lang.String', 'STATESYSNAME'), 
+        #result('T4.SYSNAME', 'java.lang.String', 'BANKSTATEMENTSTATESYSNAME'), 
+        #result('T5.NOTE', 'java.lang.String', 'TEMPLATEMETHODNAME') 
+       $ASPECTFIELDS 
+FROM 
+      B2B_BANKCASHFLOW T 
+      LEFT JOIN CORE_SM_STATE T2 on (T2.ID = T.STATEID)
+      LEFT JOIN B2B_BANKSTATE T3 on (T3.BANKSTATEMENTID = T.BANKSTATEMENTID)
+      LEFT JOIN CORE_SM_STATE T4 on (T4.ID = T3.STATEID)
+      LEFT JOIN B2B_BANKSTATETEMPLATE T5 on (T5.BANKSTATETEMPLATEID = T.BANKSTATETEMPLATEID)
+      $ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($AMVALUE) T.AMVALUE = #bind($AMVALUE 'NUMERIC') #end 
+       #chunk($BANKCASHFLOWID) T.BANKCASHFLOWID = #bind($BANKCASHFLOWID 'NUMERIC') #end 
+       #chunk($BANKSTATEMENTID) T.BANKSTATEMENTID = #bind($BANKSTATEMENTID 'NUMERIC') #end 
+       #chunk($BANKSTATETEMPLATEID) T.BANKSTATETEMPLATEID = #bind($BANKSTATETEMPLATEID 'NUMERIC') #end 
+       #chunk($BFCVALUE) T.BFCVALUE = #bind($BFCVALUE 'VARCHAR') #end 
+       #chunk($CODE) T.CODE = #bind($CODE 'VARCHAR') #end 
+       #chunk($ERRORTEXT) T.ERRORTEXT = #bind($ERRORTEXT 'VARCHAR') #end 
+       #chunk($INDEXBASE) T.INDEXBASE = #bind($INDEXBASE 'VARCHAR') #end 
+       #chunk($INDEXDATE) T.INDEXDATE = #bind($INDEXDATE 'VARCHAR') #end 
+       #chunk($INDEXNUMBER) T.INDEXNUMBER = #bind($INDEXNUMBER 'VARCHAR') #end 
+       #chunk($INDEXPERIOD) T.INDEXPERIOD = #bind($INDEXPERIOD 'VARCHAR') #end 
+       #chunk($INDEXTYPE) T.INDEXTYPE = #bind($INDEXTYPE 'VARCHAR') #end 
+       #chunk($INPUTDATE) T.INPUTDATE = #bind($INPUTDATE 'FLOAT') #end 
+       #chunk($INPUTNUMBER) T.INPUTNUMBER = #bind($INPUTNUMBER 'VARCHAR') #end 
+       #chunk($OKATO) T.OKATO = #bind($OKATO 'VARCHAR') #end 
+       #chunk($ORIGINATORSTATE) T.ORIGINATORSTATE = #bind($ORIGINATORSTATE 'VARCHAR') #end 
+       #chunk($PAYDATE) T.PAYDATE = #bind($PAYDATE 'FLOAT') #end 
+       #chunk($PAYER) T.PAYER = #bind($PAYER 'VARCHAR') #end 
+       #chunk($PAYERACCOUNT) T.PAYERACCOUNT = #bind($PAYERACCOUNT 'VARCHAR') #end 
+       #chunk($PAYERBANK) T.PAYERBANK = #bind($PAYERBANK 'VARCHAR') #end 
+       #chunk($PAYERBIK) T.PAYERBIK = #bind($PAYERBIK 'VARCHAR') #end 
+       #chunk($PAYERCORACCOUNT) T.PAYERCORACCOUNT = #bind($PAYERCORACCOUNT 'VARCHAR') #end 
+       #chunk($PAYERINN) T.PAYERINN = #bind($PAYERINN 'VARCHAR') #end 
+       #chunk($PAYERKPP) T.PAYERKPP = #bind($PAYERKPP 'VARCHAR') #end 
+       #chunk($PAYERRSACCOUNT) T.PAYERRSACCOUNT = #bind($PAYERRSACCOUNT 'VARCHAR') #end 
+       #chunk($PAYMENTMETHOD) T.PAYMENTMETHOD = #bind($PAYMENTMETHOD 'VARCHAR') #end 
+       #chunk($PAYMENTTYPE) T.PAYMENTTYPE = #bind($PAYMENTTYPE 'VARCHAR') #end 
+       #chunk($PRIORITY) T.PRIORITY = #bind($PRIORITY 'VARCHAR') #end 
+       #chunk($PURPOSE) T.PURPOSE = #bind($PURPOSE 'VARCHAR') #end 
+       #chunk($RECEIPTDATE) T.RECEIPTDATE = #bind($RECEIPTDATE 'FLOAT') #end 
+       #chunk($RECIPIENT) T.RECIPIENT = #bind($RECIPIENT 'VARCHAR') #end 
+       #chunk($RECIPIENTACCOUNT) T.RECIPIENTACCOUNT = #bind($RECIPIENTACCOUNT 'VARCHAR') #end 
+       #chunk($RECIPIENTBANK) T.RECIPIENTBANK = #bind($RECIPIENTBANK 'VARCHAR') #end 
+       #chunk($RECIPIENTBIK) T.RECIPIENTBIK = #bind($RECIPIENTBIK 'VARCHAR') #end 
+       #chunk($RECIPIENTCORACCOUNT) T.RECIPIENTCORACCOUNT = #bind($RECIPIENTCORACCOUNT 'VARCHAR') #end 
+       #chunk($RECIPIENTINN) T.RECIPIENTINN = #bind($RECIPIENTINN 'VARCHAR') #end 
+       #chunk($RECIPIENTKPP) T.RECIPIENTKPP = #bind($RECIPIENTKPP 'VARCHAR') #end 
+       #chunk($RECIPIENTRSACCOUNT) T.RECIPIENTRSACCOUNT = #bind($RECIPIENTRSACCOUNT 'VARCHAR') #end 
+       #chunk($TEMPLATE) T.TEMPLATE = #bind($TEMPLATE 'VARCHAR') #end 
+       #chunk($TYPE) T.TYPE = #bind($TYPE 'VARCHAR') #end 
+       #chunk($STATESYSNAME) T2.SYSNAME = #bind($STATESYSNAME 'VARCHAR') #end 
+       #chunk($BANKSTATEMENTSTATESYSNAME) T4.SYSNAME = #bind($BANKSTATEMENTSTATESYSNAME 'VARCHAR') #end 
+       #chunk($EXCLUDEDSYSNAMELIST) T2.SYSNAME NOT IN ($EXCLUDEDSYSNAMELIST) #end 
+       #chunk($INCLUDEDSYSNAMELIST) T2.SYSNAME IN ($INCLUDEDSYSNAMELIST) #end 
+       #chunk($EXCLUDEDBANKCASHFLOWID) T.BANKCASHFLOWID <> #bind($EXCLUDEDBANKCASHFLOWID 'NUMERIC') #end 
+       #chunk($CONTRIDISNULL) T.CONTRID is null #end 
+       #chunk($MAXPROCESSRECORD) ROWNUM <= ($MAXPROCESSRECORD) #end
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BBankCashFlowBrowseListByParamExForProcessingCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BMort900Custom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.BANKCASHFLOWID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_BANKCASHFLOW T 
+      LEFT JOIN CORE_SM_STATE T2 on (T2.ID = T.STATEID)
+      LEFT JOIN B2B_BANKSTATE T3 on (T3.BANKSTATEMENTID = T.BANKSTATEMENTID)
+      LEFT JOIN CORE_SM_STATE T4 on (T4.ID = T3.STATEID)
+      LEFT JOIN B2B_BANKSTATETEMPLATE T5 on (T5.BANKSTATETEMPLATEID = T.BANKSTATETEMPLATEID)      
+      $ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($AMVALUE) T.AMVALUE = #bind($AMVALUE 'NUMERIC') #end 
+       #chunk($BANKCASHFLOWID) T.BANKCASHFLOWID = #bind($BANKCASHFLOWID 'NUMERIC') #end 
+       #chunk($BANKSTATEMENTID) T.BANKSTATEMENTID = #bind($BANKSTATEMENTID 'NUMERIC') #end 
+       #chunk($BANKSTATETEMPLATEID) T.BANKSTATETEMPLATEID = #bind($BANKSTATETEMPLATEID 'NUMERIC') #end 
+       #chunk($BFCVALUE) T.BFCVALUE = #bind($BFCVALUE 'VARCHAR') #end 
+       #chunk($CODE) T.CODE = #bind($CODE 'VARCHAR') #end 
+       #chunk($ERRORTEXT) T.ERRORTEXT = #bind($ERRORTEXT 'VARCHAR') #end 
+       #chunk($INDEXBASE) T.INDEXBASE = #bind($INDEXBASE 'VARCHAR') #end 
+       #chunk($INDEXDATE) T.INDEXDATE = #bind($INDEXDATE 'VARCHAR') #end 
+       #chunk($INDEXNUMBER) T.INDEXNUMBER = #bind($INDEXNUMBER 'VARCHAR') #end 
+       #chunk($INDEXPERIOD) T.INDEXPERIOD = #bind($INDEXPERIOD 'VARCHAR') #end 
+       #chunk($INDEXTYPE) T.INDEXTYPE = #bind($INDEXTYPE 'VARCHAR') #end 
+       #chunk($INPUTDATE) T.INPUTDATE = #bind($INPUTDATE 'FLOAT') #end 
+       #chunk($INPUTNUMBER) T.INPUTNUMBER = #bind($INPUTNUMBER 'VARCHAR') #end 
+       #chunk($OKATO) T.OKATO = #bind($OKATO 'VARCHAR') #end 
+       #chunk($ORIGINATORSTATE) T.ORIGINATORSTATE = #bind($ORIGINATORSTATE 'VARCHAR') #end 
+       #chunk($PAYDATE) T.PAYDATE = #bind($PAYDATE 'FLOAT') #end 
+       #chunk($PAYER) T.PAYER = #bind($PAYER 'VARCHAR') #end 
+       #chunk($PAYERACCOUNT) T.PAYERACCOUNT = #bind($PAYERACCOUNT 'VARCHAR') #end 
+       #chunk($PAYERBANK) T.PAYERBANK = #bind($PAYERBANK 'VARCHAR') #end 
+       #chunk($PAYERBIK) T.PAYERBIK = #bind($PAYERBIK 'VARCHAR') #end 
+       #chunk($PAYERCORACCOUNT) T.PAYERCORACCOUNT = #bind($PAYERCORACCOUNT 'VARCHAR') #end 
+       #chunk($PAYERINN) T.PAYERINN = #bind($PAYERINN 'VARCHAR') #end 
+       #chunk($PAYERKPP) T.PAYERKPP = #bind($PAYERKPP 'VARCHAR') #end 
+       #chunk($PAYERRSACCOUNT) T.PAYERRSACCOUNT = #bind($PAYERRSACCOUNT 'VARCHAR') #end 
+       #chunk($PAYMENTMETHOD) T.PAYMENTMETHOD = #bind($PAYMENTMETHOD 'VARCHAR') #end 
+       #chunk($PAYMENTTYPE) T.PAYMENTTYPE = #bind($PAYMENTTYPE 'VARCHAR') #end 
+       #chunk($PRIORITY) T.PRIORITY = #bind($PRIORITY 'VARCHAR') #end 
+       #chunk($PURPOSE) T.PURPOSE = #bind($PURPOSE 'VARCHAR') #end 
+       #chunk($RECEIPTDATE) T.RECEIPTDATE = #bind($RECEIPTDATE 'FLOAT') #end 
+       #chunk($RECIPIENT) T.RECIPIENT = #bind($RECIPIENT 'VARCHAR') #end 
+       #chunk($RECIPIENTACCOUNT) T.RECIPIENTACCOUNT = #bind($RECIPIENTACCOUNT 'VARCHAR') #end 
+       #chunk($RECIPIENTBANK) T.RECIPIENTBANK = #bind($RECIPIENTBANK 'VARCHAR') #end 
+       #chunk($RECIPIENTBIK) T.RECIPIENTBIK = #bind($RECIPIENTBIK 'VARCHAR') #end 
+       #chunk($RECIPIENTCORACCOUNT) T.RECIPIENTCORACCOUNT = #bind($RECIPIENTCORACCOUNT 'VARCHAR') #end 
+       #chunk($RECIPIENTINN) T.RECIPIENTINN = #bind($RECIPIENTINN 'VARCHAR') #end 
+       #chunk($RECIPIENTKPP) T.RECIPIENTKPP = #bind($RECIPIENTKPP 'VARCHAR') #end 
+       #chunk($RECIPIENTRSACCOUNT) T.RECIPIENTRSACCOUNT = #bind($RECIPIENTRSACCOUNT 'VARCHAR') #end 
+       #chunk($TEMPLATE) T.TEMPLATE = #bind($TEMPLATE 'VARCHAR') #end 
+       #chunk($TYPE) T.TYPE = #bind($TYPE 'VARCHAR') #end 
+       #chunk($STATESYSNAME) T2.SYSNAME = #bind($STATESYSNAME 'VARCHAR') #end 
+       #chunk($BANKSTATEMENTSTATESYSNAME) T4.SYSNAME = #bind($BANKSTATEMENTSTATESYSNAME 'VARCHAR') #end 
+       #chunk($EXCLUDEDSYSNAMELIST) T2.SYSNAME NOT IN ($EXCLUDEDSYSNAMELIST) #end 
+       #chunk($INCLUDEDSYSNAMELIST) T2.SYSNAME IN ($INCLUDEDSYSNAMELIST) #end 
+       #chunk($EXCLUDEDBANKCASHFLOWID) T.BANKCASHFLOWID <> #bind($EXCLUDEDBANKCASHFLOWID 'NUMERIC') #end 
+       #chunk($CONTRIDISNULL) T.CONTRID is null #end 
+       #chunk($MAXPROCESSRECORD) ROWNUM <= ($MAXPROCESSRECORD) #end
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BMort900CheckLogin" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BMort900Custom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[ 
+select
+ ua.*,
+ ua.AUTHMETHOD, 
+ e.firstname,
+ e.middlename,
+ e.lastname,
+ e.DEPARTMENTID,
+ u.OBJECTTYPE
+from CORE_USERACCOUNT ua 	
+left join CORE_USER u on (ua.userid = u.userid)			 					
+left join DEP_EMPLOYEE e on (e.employeeid = u.objectid)			 					
+where ua.login=#bind($username) 
+and (ua.password = #bind($passwordSha)) 
+and ua.STATUS='ACTIVE'
+            ]]> 
+        </sql>
+    </query>    
+    <query name="dsB2BBankPurposeDetailMassCreate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BMort900Custom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            INSERT INTO B2B_BANKPURPOSEDETAIL (
+            BANKPURPOSEDETAILID,
+            NUM,
+            VALUE,
+            BANKCASHFLOWID
+            $ASPECTFIELDS)
+            #foreach($row in $rows)
+              SELECT
+              #bind($row.BANKPURPOSEDETAILID 'NUMERIC'),
+              #bind($row.NUM 'NUMERIC'),
+              #bind($row.VALUE 'VARCHAR'),
+              #bind($BANKCASHFLOWID 'NUMERIC')
+              $ASPECTVALUESBINDINGS
+              FROM dual
+              #if($velocityCount < $totalCount)
+                UNION ALL
+              #end
+            #end
+            ]]>
+        </sql>
+    </query>
+    <query name="dsB2BBankStateTemplatePurposeDetailBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BMort900Custom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT $NEEDDISTINCT 
+                        #result('T.BANKSTATETEMPLATEPDETID', 'java.lang.Long', 'BANKSTATETEMPLATEPDETID'),
+                        #result('T.BANKSTATETEMPLATEID', 'java.lang.Long', 'BANKSTATETEMPLATEID'),
+                        #result('T.CONSTANTVALUESTR', 'java.lang.String', 'CONSTANTVALUESTR'),
+                        #result('T.DATATYPEID', 'java.lang.Long', 'DATATYPEID'),
+                        #result('T.DATATYPESTR', 'java.lang.String', 'DATATYPESTR'),
+                        #result('T.NAME', 'java.lang.String', 'NAME'),
+                        #result('T.NOTE', 'java.lang.String', 'NOTE'),
+                        #result('T.NUM', 'java.lang.Long', 'NUM'),
+                        #result('T.SYSNAME', 'java.lang.String', 'SYSNAME')
+                        $ASPECTFIELDS 
+                FROM 
+                      B2B_BANKSTATETEMPLATEPDET T 
+                      $ASPECTTABLES 
+                #chain('AND' 'WHERE') 
+                       #chunk($BANKSTATETEMPLATEPDETID) T.BANKSTATETEMPLATEPDETID = #bind($BANKSTATETEMPLATEPDETID 'NUMERIC') #end 
+                       #chunk($BANKSTATETEMPLATEID) T.BANKSTATETEMPLATEID = #bind($BANKSTATETEMPLATEID 'NUMERIC') #end 
+                       $ASPECTRESTRICTION 
+                #end 
+                ORDER BY T.NUM ASC
+            ]]>
+        </sql>
+    </query>
+    <query name="dsB2BBankStateTemplatePurposeDetailBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BMort900Custom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT 
+                        #result('COUNT($NEEDDISTINCT T.BANKSTATETEMPLATEPDETID)', 'java.lang.Long', 'CNT') 
+                FROM 
+                      B2B_BANKSTATETEMPLATEPDET T 
+                      $ASPECTTABLES 
+                #chain('AND' 'WHERE') 
+                       #chunk($BANKSTATETEMPLATEPDETID) T.BANKSTATETEMPLATEPDETID = #bind($BANKSTATETEMPLATEPDETID 'NUMERIC') #end 
+                       #chunk($BANKSTATETEMPLATEID) T.BANKSTATETEMPLATEID = #bind($BANKSTATETEMPLATEID 'NUMERIC') #end 
+                       $ASPECTRESTRICTION 
+                #end 
+            ]]>
+        </sql>
+    </query>
+
+    <query name="dsB2BpcfPurposeDetailBrowseListByParamEx" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BMort900Custom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.BANKSTATETEMPLATEPDETID', 'java.lang.Long', 'BANKSTATETEMPLATEPDETID'),
+        #result('T.BANKSTATETEMPLATEID', 'java.lang.Long', 'BANKSTATETEMPLATEID'),
+        #result('T.DATATYPESTR', 'java.lang.String', 'DATATYPESTR'),
+        #result('T.CONSTANTVALUESTR', 'java.lang.String', 'CONSTANTVALUESTR'),
+        #result('T.NAME', 'java.lang.String', 'NAME'),
+        #result('T.NOTE', 'java.lang.String', 'NOTE'),
+        #result('T.NUM', 'java.lang.String', 'NUM'),
+        #result('T.SYSNAME', 'java.lang.String', 'SYSNAME'),
+        #result('T1.BANKCASHFLOWID', 'java.lang.Long', 'BANKCASHFLOWID'),
+        #result('T2.BANKPURPOSEDETAILID', 'java.lang.Long', 'BANKPURPOSEDETAILID'),
+        #result('T2.VALUE', 'java.lang.String', 'VALUE')
+       $ASPECTFIELDS 
+FROM 
+    B2B_BANKSTATETEMPLATEPDET t
+    left join B2B_BANKCASHFLOW t1 on (1 = 1)
+    left join b2b_bankpurposeDetail t2 on (t2.BANKCASHFLOWID = t1.BANKCASHFLOWID and ((t2.NUM = t.num) or (t2.num is null)))
+      
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($BANKCASHFLOWID) T1.BANKCASHFLOWID = #bind($BANKCASHFLOWID 'NUMERIC') #end 
+       #chunk($BANKSTATETEMPLATEID) T.BANKSTATETEMPLATEID = #bind($BANKSTATETEMPLATEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BpcfPurposeDetailBrowseListByParamExCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BMort900Custom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT t.BANKSTATETEMPLATEPDETID)', 'java.lang.Long', 'CNT') 
+FROM 
+    B2B_BANKSTATETEMPLATEPDET t
+    left join B2B_BANKCASHFLOW t1 on (1 = 1)
+    left join b2b_bankpurposeDetail t2 on (t2.BANKCASHFLOWID = t1.BANKCASHFLOWID and ((t2.NUM = t.num) or (t2.num is null)))
+      
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($BANKCASHFLOWID) T1.BANKCASHFLOWID = #bind($BANKCASHFLOWID 'NUMERIC') #end 
+       #chunk($BANKSTATETEMPLATEID) T.BANKSTATETEMPLATEID = #bind($BANKSTATETEMPLATEID 'NUMERIC') #end 
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BContractBrowseListByParamExForTM" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BContractMapCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT $NEEDDISTINCT 
+                    #result('T.CONTRID', 'java.lang.Long', 'CONTRID'),
+                    #result('T.CONTRNODEID', 'java.lang.Long', 'CONTRNODEID'),
+                    #result('p.SYSNAME', 'java.lang.String', 'PRODSYSNAME'),
+                    #result('ct.VALUE', 'java.lang.String', 'INSURERPHONE'),
+                    #result('T.FINISHDATE', 'java.math.BigDecimal', 'FINISHDATE'),
+                    #result('(SELECT COUNT(pplan.PAYID) FROM B2B_PAY pplan WHERE pplan.CONTRID = T.CONTRID)', 'java.lang.String', 'PAYMENTPLANCNT'),
+                    #result('(SELECT COUNT(pfact.PAYFACTID) FROM B2B_PAYFACT pfact WHERE pfact.CONTRNODEID = T.CONTRNODEID)', 'java.lang.String', 'PAYMENTFACTCNT') 
+                    $ASPECTFIELDS 
+                FROM 
+                    B2B_CONTR T 
+                    INNER JOIN B2B_PRODVER pv ON (T.PRODVERID = pv.PRODVERID)
+                    INNER JOIN B2B_PRODCONF pc ON (T.PRODVERID = pc.PRODVERID)
+                    INNER JOIN B2B_PROD p ON (pv.PRODID = p.PRODID) AND ((p.ISHIDDEN is null) or (p.ISHIDDEN != 1))
+                    LEFT JOIN CRM_CONTACTPERSON ctp ON (ctp.PARTICIPANTID = T.INSURERID)
+                    LEFT JOIN CRM_CONTACT ct ON (ct.CONTACTPERSONID = ctp.CONTACTPERSONID and ct.CONTACTTYPEID = 1005)
+                    $ASPECTTABLES 
+                #chain('AND' 'WHERE') 
+                    #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+                    #chunk($PRODSYSNAME) p.SYSNAME = #bind($PRODSYSNAME 'VARCHAR') #end 
+                    #chunk($INSURERPHONE) ct.VALUE = #bind($INSURERPHONE 'VARCHAR') #end 
+                    #chunk($BANKCASHFLOWINPUTDATE) EXISTS (SELECT * FROM B2B_PAY pplan WHERE pplan.CONTRID = T.CONTRID AND #bind($BANKCASHFLOWINPUTDATE 'FLOAT') <= pplan.PAYDATE) #end 
+                    #chunk($EXCLUDEEQUALPAYCOUNTS) (SELECT COUNT(pplan.PAYID) FROM B2B_PAY pplan WHERE pplan.CONTRID = T.CONTRID) > (SELECT COUNT(pfact.PAYFACTID) FROM B2B_PAYFACT pfact WHERE pfact.CONTRNODEID = T.CONTRNODEID) #end 
+                    #chunk($PROPERTYADDRESSTEXT) (SELECT MAX(ext.STRINGFIELD01) FROM B2B_CONTREXT ext WHERE ext.CONTRID = T.CONTRID) = #bind($PROPERTYADDRESSTEXT 'VARCHAR') #end 
+                    $ASPECTRESTRICTION 
+                #end 
+                ORDER BY T.CONTRID DESC
+            ]]>
+        </sql>
+    </query>
+    <query name="dsB2BContractBrowseListByParamExForTMCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BContractMapCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+                SELECT 
+                    #result('COUNT($NEEDDISTINCT T.CONTRID)', 'java.lang.Long', 'CNT') 
+                FROM 
+                    B2B_CONTR T 
+                    INNER JOIN B2B_PRODVER pv ON (T.PRODVERID = pv.PRODVERID)
+                    INNER JOIN B2B_PRODCONF pc ON (T.PRODVERID = pc.PRODVERID)
+                    INNER JOIN B2B_PROD p ON (pv.PRODID = p.PRODID) AND ((p.ISHIDDEN is null) or (p.ISHIDDEN != 1))
+                    LEFT JOIN CRM_CONTACTPERSON ctp ON (ctp.PARTICIPANTID = T.INSURERID)
+                    LEFT JOIN CRM_CONTACT ct ON (ct.CONTACTPERSONID = ctp.CONTACTPERSONID and ct.CONTACTTYPEID = 1005)
+                    $ASPECTTABLES 
+                #chain('AND' 'WHERE') 
+                    #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+                    #chunk($PRODSYSNAME) p.SYSNAME = #bind($PRODSYSNAME 'VARCHAR') #end 
+                    #chunk($INSURERPHONE) ct.VALUE = #bind($INSURERPHONE 'VARCHAR') #end 
+                    #chunk($BANKCASHFLOWINPUTDATE) EXISTS (SELECT * FROM B2B_PAY pplan WHERE pplan.CONTRID = T.CONTRID AND #bind($BANKCASHFLOWINPUTDATE 'FLOAT') <= pplan.PAYDATE) #end 
+                    #chunk($EXCLUDEEQUALPAYCOUNTS) (SELECT COUNT(pplan.PAYID) FROM B2B_PAY pplan WHERE pplan.CONTRID = T.CONTRID) > (SELECT COUNT(pfact.PAYFACTID) FROM B2B_PAYFACT pfact WHERE pfact.CONTRNODEID = T.CONTRNODEID) #end 
+                    #chunk($PROPERTYADDRESSTEXT) (SELECT MAX(ext.STRINGFIELD01) FROM B2B_CONTREXT ext WHERE ext.CONTRID = T.CONTRID) = #bind($PROPERTYADDRESSTEXT 'VARCHAR') #end 
+                    $ASPECTRESTRICTION 
+                #end 
+            ]]>
+        </sql>
+    </query>
+    <query name="dsB2BBankCashFlowMassCreate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BMort900Custom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            INSERT INTO B2B_BANKCASHFLOW (
+BANKCASHFLOWID,
+PURPOSE,
+BANKSTATEMENTID,
+BANKSTATETEMPLATEID,
+STATEID,
+CREATEDATE,
+CREATEUSERID
+)
+            #foreach($row in $rows)
+              SELECT
+              #bind($row.BANKCASHFLOWID 'NUMERIC'),
+              #bind($row.description 'VARCHAR'),
+              #bind($BANKSTATEMENTID 'NUMERIC'),
+              #bind($BANKSTATETEMPLATEID 'NUMERIC'),
+              #bind($STATEID 'NUMERIC'),
+              #bind($CREATEDATE 'FLOAT'),
+              #bind($CREATEUSERID 'NUMERIC')
+              FROM dual
+              #if($velocityCount < $totalCount)
+                UNION ALL
+              #end
+            #end
+            ]]>
+        </sql>
+    </query>
+    <query name="dsB2BBankPurposeDetailBatchCreate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BMort900Custom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            INSERT INTO B2B_BANKPURPOSEDETAIL (
+            BANKPURPOSEDETAILID,
+            NUM,
+            VALUE,
+            BANKCASHFLOWID
+            $ASPECTFIELDS)
+            #foreach($row in $rows)
+              SELECT
+              #bind($row.BANKPURPOSEDETAILID 'NUMERIC'),
+              #bind($row.NUM 'NUMERIC'),
+              #bind($row.VALUE 'VARCHAR'),
+              #bind($row.BANKCASHFLOWID 'NUMERIC')
+              $ASPECTVALUESBINDINGS
+              FROM dual
+              #if($velocityCount < $totalCount)
+                UNION ALL
+              #end
+            #end
+            ]]>
+        </sql>
+    </query>
+    <query name="dsB2BStateBatchCreate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BContractMapCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            INSERT INTO INS_OBJSTATE (
+ID,
+OBJID,
+STATEID,
+STATENAME,
+TYPEID,
+TYPENAME,
+STARTDATE,
+USERNAME
+)
+            #foreach($row in $rows)
+              SELECT
+              #bind($row.ID 'NUMERIC'),
+              #bind($row.OBJID 'NUMERIC'),
+              #bind($STATEID 'NUMERIC'),
+              #bind($STATENAME 'VARCHAR'),
+              #bind($TYPEID 'NUMERIC'),
+              #bind($TYPENAME 'VARCHAR'),
+              #bind($STARTDATE 'FLOAT'),
+              #bind($USERNAME 'VARCHAR')
+              FROM dual
+              #if($velocityCount < $totalCount)
+                UNION ALL
+              #end
+            #end
+            ]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestMassCreate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BMort900Custom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            INSERT INTO B2B_INVAM (
+INVAMID,
+DISCRIMINATOR,
+CONTRNUMBER,
+CALCDATE,
+INSAMVALUE,
+INDVALUE,
+INVVALUE,
+BAVALUE,
+REDEMPVALUE,
+DIDVALUE,
+INSAMIDDVALUE,
+IDDVALUE,
+COEFINTVALUE
+)
+            #foreach($row in $rows)
+              SELECT
+              #bind($row.INVAMID 'NUMERIC'),
+              #bind($row.DISCRIMINATOR 'NUMERIC'),
+              #bind($row.CONTRNUMBER 'VARCHAR'),
+              #bind($row.CALCDATE 'FLOAT'),
+              #bind($row.INSAMVALUE 'NUMERIC'),
+              #bind($row.INDVALUE 'NUMERIC'),
+              #bind($row.INVVALUE 'NUMERIC'),
+              #bind($row.BAVALUE 'NUMERIC'),
+              #bind($row.REDEMPVALUE 'NUMERIC'),
+              #bind($row.DIDVALUE 'NUMERIC'),
+              #bind($row.INSAMIDDVALUE 'NUMERIC'),
+              #bind($row.IDDVALUE 'NUMERIC'),
+              #bind($row.COEFINTVALUE 'NUMERIC')
+              FROM dual
+              #if($velocityCount < $totalCount)
+                UNION ALL
+              #end
+            #end
+            ]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestCouponMassCreate" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BMort900Custom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            INSERT INTO B2B_INVAM (
+INVAMID,
+DISCRIMINATOR,
+CONTRNUMBER,
+CALCDATE,
+CPPCTMEM,
+CPCONTRAMVALUE,
+CPRVLTAMVALUE,
+CPACRDCONTRAMVALUE,
+CPACRDRVLTAMVALUE,
+PREMVALUE,
+CPPCTWMEM,
+RATESTART,
+RATECALC,
+CONTRCURRENCYID,
+CONDINVCURRENCYID,
+ISCONDITION,
+ISTODAYCPACRD,
+BARRIERVALUE,
+MULTIMEMVALUE,
+CONDNOTE,
+CONDCODE
+)
+            #foreach($row in $rows)
+              SELECT
+              #bind($row.INVAMID 'NUMERIC'),
+              #bind($row.DISCRIMINATOR 'NUMERIC'),
+              #bind($row.CONTRNUMBER 'VARCHAR'),
+              #bind($row.CALCDATE 'FLOAT'),
+              #bind($row.CPPCTMEM 'NUMERIC'),
+              #bind($row.CPCONTRAMVALUE 'NUMERIC'),
+              #bind($row.CPRVLTAMVALUE 'NUMERIC'),
+              #bind($row.CPACRDCONTRAMVALUE 'NUMERIC'),
+              #bind($row.CPACRDRVLTAMVALUE 'NUMERIC'),
+              #bind($row.PREMVALUE 'NUMERIC'),
+              #bind($row.CPPCTWMEM 'NUMERIC'),
+              #bind($row.RATESTART 'NUMERIC'),
+              #bind($row.RATECALC 'NUMERIC'),
+              #bind($row.CONTRCURRENCYID 'NUMERIC'),
+              #bind($row.CONDINVCURRENCYID 'NUMERIC'),
+              #bind($row.ISCONDITION 'NUMERIC'),
+              #bind($row.ISTODAYCPACRD 'NUMERIC'),
+              #bind($row.BARRIERVALUE 'NUMERIC'),
+              #bind($row.MULTIMEMVALUE 'NUMERIC'),
+              #bind($row.CONDNOTE 'VARCHAR'),
+              #bind($row.CONDCODE 'VARCHAR')
+              FROM dual
+              #if($velocityCount < $totalCount)
+                UNION ALL
+              #end
+            #end
+            ]]>
+        </sql>
+    </query>
+    <query name="dsB2BContractBrowseListByInvestParam" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BMort900Custom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT $NEEDDISTINCT 
+        #result('T.CONTRNUMBER', 'java.lang.String', 'CONTRNUMBER'),
+        #result('T.CONTRID', 'java.lang.Long', 'CONTRID')
+       $ASPECTFIELDS 
+FROM 
+      B2B_CONTR T 
+      INNER JOIN B2B_CONTRNODE T10 ON (T.CONTRID = T10.CONTRID)
+      INNER JOIN B2B_PRODVER T3 ON (T.PRODVERID = T3.PRODVERID)
+      INNER JOIN B2B_PROD T4 ON (T3.PRODID = T4.PRODID) 
+$ASPECTTABLES 
+#chain('AND' 'WHERE') 
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($CONTRNUMBER) T.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+       #chunk($PRODVERID) T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+       #chunk($PRODID) T4.PRODID = #bind($PRODID 'NUMERIC') #end
+       #chunk($PRODSYSNAME) T4.SYSNAME = #bind($PRODSYSNAME 'VARCHAR') #end
+       #chunk($PRODSYSNAMELIST) T4.SYSNAME in ($PRODSYSNAMELIST) #end
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BContractBrowseListByInvestParamCount" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BMort900Custom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+SELECT 
+        #result('COUNT($NEEDDISTINCT T.CONTRID)', 'java.lang.Long', 'CNT') 
+FROM 
+      B2B_CONTR T 
+      INNER JOIN B2B_CONTRNODE T10 ON (T.CONTRID = T10.CONTRID)
+      INNER JOIN B2B_PRODVER T3 ON (T.PRODVERID = T3.PRODVERID)
+      INNER JOIN B2B_PROD T4 ON (T3.PRODID = T4.PRODID) 
+$ASPECTTABLES
+#chain('AND' 'WHERE')
+       #chunk($CONTRID) T.CONTRID = #bind($CONTRID 'NUMERIC') #end 
+       #chunk($CONTRNUMBER) T.CONTRNUMBER = #bind($CONTRNUMBER 'VARCHAR') #end 
+       #chunk($PRODVERID) T.PRODVERID = #bind($PRODVERID 'NUMERIC') #end 
+       #chunk($PRODID) T4.PRODID = #bind($PRODID 'NUMERIC') #end
+       #chunk($PRODSYSNAME) T4.SYSNAME = #bind($PRODSYSNAME 'VARCHAR') #end
+       #chunk($PRODSYSNAMELIST) T4.SYSNAME in ($PRODSYSNAMELIST) #end
+      $ASPECTRESTRICTION 
+#end 
+]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestMassSave" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BMort900Custom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            MERGE INTO B2B_INVAM DST
+USING (
+            SELECT
+0 INVAMID,
+1 DISCRIMINATOR,
+null CONTRNUMBER,
+null CALCDATE,
+null INSAMVALUE,
+null INDVALUE,
+null INVVALUE,
+null BAVALUE,
+null REDEMPVALUE,
+null DIDVALUE,
+null INSAMIDDVALUE,
+null IDDVALUE,
+null COEFINTVALUE
+FROM dual
+UNION ALL
+            #foreach($row in $rows)
+              SELECT
+              #bind($row.INVAMID 'NUMERIC'),
+              #bind($row.DISCRIMINATOR 'NUMERIC'),
+              #bind($row.CONTRNUMBER 'VARCHAR'),
+              #bind($row.CALCDATE 'FLOAT'),
+              #bind($row.INSAMVALUE 'NUMERIC'),
+              #bind($row.INDVALUE 'NUMERIC'),
+              #bind($row.INVVALUE 'NUMERIC'),
+              #bind($row.BAVALUE 'NUMERIC'),
+              #bind($row.REDEMPVALUE 'NUMERIC'),
+              #bind($row.DIDVALUE 'NUMERIC'),
+              #bind($row.INSAMIDDVALUE 'NUMERIC'),
+              #bind($row.IDDVALUE 'NUMERIC'),
+              #bind($row.COEFINTVALUE 'NUMERIC')
+              FROM dual
+              #if($velocityCount < $totalCount)
+                UNION ALL
+              #end
+            #end
+) SRC ON  (DST.INVAMID = SRC.INVAMID) 
+WHEN MATCHED THEN 
+UPDATE SET 
+DISCRIMINATOR = SRC.DISCRIMINATOR,
+CONTRNUMBER = SRC.CONTRNUMBER,
+CALCDATE = SRC.CALCDATE,
+INSAMVALUE = SRC.INSAMVALUE,
+INDVALUE = SRC.INDVALUE,
+INVVALUE = SRC.INVVALUE,
+BAVALUE = SRC.BAVALUE,
+REDEMPVALUE = SRC.REDEMPVALUE,
+DIDVALUE = SRC.DIDVALUE,
+INSAMIDDVALUE = SRC.INSAMIDDVALUE,
+IDDVALUE = SRC.IDDVALUE,
+COEFINTVALUE  = SRC.COEFINTVALUE 
+WHEN NOT MATCHED THEN 
+INSERT (INVAMID,
+DISCRIMINATOR,
+CONTRNUMBER,
+CALCDATE,
+INSAMVALUE,
+INDVALUE,
+INVVALUE,
+BAVALUE,
+REDEMPVALUE,
+DIDVALUE,
+INSAMIDDVALUE,
+IDDVALUE,
+COEFINTVALUE)
+VALUES (
+SRC.INVAMID,
+SRC.DISCRIMINATOR,
+SRC.CONTRNUMBER,
+SRC.CALCDATE,
+SRC.INSAMVALUE,
+SRC.INDVALUE,
+SRC.INVVALUE,
+SRC.BAVALUE,
+SRC.REDEMPVALUE,
+SRC.DIDVALUE,
+SRC.INSAMIDDVALUE,
+SRC.IDDVALUE,
+SRC.COEFINTVALUE
+)
+            ]]>
+        </sql>
+    </query>
+    <query name="dsB2BStateMassSave" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BContractMapCustom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            MERGE INTO INS_OBJSTATE DST
+USING (
+            SELECT
+0 OBJID,
+null STATEID,
+null STATENAME,
+null TYPEID
+FROM dual
+UNION ALL
+            #foreach($row in $rows)
+              SELECT
+              #bind($row.OBJID 'NUMERIC'),
+              #bind($row.STATEID 'NUMERIC'),
+              #bind($row.STATENAME 'VARCHAR'),
+              #bind($row.TYPEID 'NUMERIC')
+              FROM dual
+              #if($velocityCount < $totalCount)
+                UNION ALL
+              #end
+            #end
+) SRC ON  ((DST.OBJID = SRC.OBJID) AND (DST.TYPEID = SRC.TYPEID)) 
+WHEN MATCHED THEN 
+UPDATE SET 
+STATEID = SRC.STATEID,
+STATENAME = SRC.STATENAME
+            ]]>
+        </sql>
+    </query>
+    <query name="dsB2BContractExtInvestMassSave" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BContractMass" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+<![CDATA[
+MERGE INTO B2B_CONTREXT DST
+USING (
+            SELECT
+0 CONTREXTID,
+null DOUBLEFIELD36,
+null DOUBLEFIELD37
+FROM dual
+UNION ALL
+            #foreach($row in $rows)
+              SELECT
+#bind($row.CONTREXTID 'NUMERIC'),
+#bind($row.DOUBLEFIELD36 'NUMERIC'),
+#bind($row.DOUBLEFIELD37 'NUMERIC')
+              FROM dual
+              #if($velocityCount < $totalCount)
+                UNION ALL
+              #end
+            #end
+) SRC ON  (DST.CONTREXTID = SRC.CONTREXTID)
+WHEN MATCHED THEN 
+UPDATE SET 
+DOUBLEFIELD36 = SRC.DOUBLEFIELD36,
+DOUBLEFIELD37 = SRC.DOUBLEFIELD37  
+            ]]>
+        </sql>
+    </query>
+    <query name="dsB2BBankCashFlowMassSave" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BMort900Custom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+MERGE INTO B2B_BANKCASHFLOW DST
+USING (
+            SELECT
+0 BANKCASHFLOWID,
+null STATEID,
+null ERRORTEXT
+FROM dual
+UNION ALL
+            #foreach($row in $rows)
+              SELECT
+              #bind($row.BANKCASHFLOWID 'NUMERIC'),
+              #bind($row.STATEID 'NUMERIC'),
+              #bind($row.ERRORTEXT 'VARCHAR')
+              FROM dual
+              #if($velocityCount < $totalCount)
+                UNION ALL
+              #end
+            #end
+) SRC ON  (DST.BANKCASHFLOWID = SRC.BANKCASHFLOWID)
+WHEN MATCHED THEN 
+UPDATE SET 
+STATEID = SRC.STATEID,
+ERRORTEXT = SRC.ERRORTEXT  
+            ]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestDIDMassSave" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BMort900Custom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            MERGE INTO B2B_INVAM DST
+USING (
+            SELECT
+0 INVAMID,
+3 DISCRIMINATOR,
+null CONTRNUMBER,
+null PROGNAME,
+null INSUREDNAME,
+null CONTRSTARTDATE,
+null TERMYEARCOUNT,
+null PAYVAR,
+null INSAMVALUE,
+null PREMVALUE,
+null PREMTOTALVALUE,
+null DIDCONTRVALUE,
+null DIDPAYMENTVALUE,
+null INDVALUE,
+null DIDVALUE,
+null DIDYEAR,
+null RATEVALUE,
+null CREATEDATE
+FROM dual
+UNION ALL
+            #foreach($row in $rows)
+              SELECT
+              #bind($row.INVAMID 'NUMERIC'),
+              #bind($row.DISCRIMINATOR 'NUMERIC'),
+              #bind($row.CONTRNUMBER 'VARCHAR'),
+              #bind($row.PROGNAME 'VARCHAR'),
+              #bind($row.INSUREDNAME 'VARCHAR'),
+              #bind($row.CONTRSTARTDATE 'FLOAT'),
+              #bind($row.TERMYEARCOUNT 'NUMERIC'),
+              #bind($row.PAYVAR 'NUMERIC'),
+              #bind($row.INSAMVALUE 'NUMERIC'),
+              #bind($row.PREMVALUE 'NUMERIC'),
+              #bind($row.PREMTOTALVALUE 'NUMERIC'),
+              #bind($row.DIDCONTRVALUE 'NUMERIC'),
+              #bind($row.DIDPAYMENTVALUE 'NUMERIC'),
+              #bind($row.INDVALUE 'NUMERIC'),
+              #bind($row.DIDVALUE 'NUMERIC'),
+              #bind($row.DIDYEAR 'NUMERIC'),
+              #bind($row.RATEVALUE 'NUMERIC'),
+              #bind($row.CREATEDATE 'NUMERIC')
+              FROM dual
+              #if($velocityCount < $totalCount)
+                UNION ALL
+              #end
+            #end
+) SRC ON  (DST.INVAMID = SRC.INVAMID) 
+WHEN MATCHED THEN 
+UPDATE SET 
+DISCRIMINATOR = SRC.DISCRIMINATOR,
+CONTRNUMBER = SRC.CONTRNUMBER,
+PROGNAME = SRC.PROGNAME,
+INSUREDNAME = SRC.INSUREDNAME,
+CONTRSTARTDATE = SRC.CONTRSTARTDATE,
+TERMYEARCOUNT = SRC.TERMYEARCOUNT,
+PAYVAR = SRC.PAYVAR,
+INSAMVALUE = SRC.INSAMVALUE,
+PREMVALUE = SRC.PREMVALUE,
+PREMTOTALVALUE = SRC.PREMTOTALVALUE,
+DIDCONTRVALUE = SRC.DIDCONTRVALUE,
+DIDPAYMENTVALUE  = SRC.DIDPAYMENTVALUE,
+INDVALUE  = SRC.INDVALUE,
+DIDVALUE  = SRC.DIDVALUE,
+DIDYEAR  = SRC.DIDYEAR,
+RATEVALUE  = SRC.RATEVALUE 
+WHEN NOT MATCHED THEN 
+INSERT (
+INVAMID,
+DISCRIMINATOR,
+CONTRNUMBER,
+PROGNAME,
+INSUREDNAME,
+CONTRSTARTDATE,
+TERMYEARCOUNT,
+PAYVAR,
+INSAMVALUE,
+PREMVALUE,
+PREMTOTALVALUE,
+DIDCONTRVALUE,
+DIDPAYMENTVALUE,
+INDVALUE,
+DIDVALUE,
+DIDYEAR,
+RATEVALUE,
+CREATEDATE
+)
+VALUES (
+SRC.INVAMID,
+SRC.DISCRIMINATOR,
+SRC.CONTRNUMBER,
+SRC.PROGNAME,
+SRC.INSUREDNAME,
+SRC.CONTRSTARTDATE,
+SRC.TERMYEARCOUNT,
+SRC.PAYVAR,
+SRC.INSAMVALUE,
+SRC.PREMVALUE,
+SRC.PREMTOTALVALUE,
+SRC.DIDCONTRVALUE,
+SRC.DIDPAYMENTVALUE,
+SRC.INDVALUE,
+SRC.DIDVALUE,
+SRC.DIDYEAR,
+SRC.RATEVALUE,
+SRC.CREATEDATE
+)
+            ]]>
+        </sql>
+    </query>
+    <query name="dsB2BInvestCouponMassSave" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BMort900Custom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            MERGE INTO B2B_INVAM DST
+USING (
+            SELECT
+0 INVAMID,
+2 DISCRIMINATOR,
+null CONTRNUMBER,
+null CALCDATE,
+null CPPCTMEM,
+null CPCONTRAMVALUE,
+null CPRVLTAMVALUE,
+null CPACRDCONTRAMVALUE,
+null CPACRDRVLTAMVALUE,
+null PREMVALUE,
+null CPPCTWMEM,
+null RATESTART,
+null RATECALC,
+null CONTRCURRENCYID,
+null CONDINVCURRENCYID,
+null ISCONDITION,
+null ISTODAYCPACRD,
+null BARRIERVALUE,
+null MULTIMEMVALUE,
+null CONDNOTE,
+null CONDCODE 
+FROM dual
+UNION ALL
+            #foreach($row in $rows)
+              SELECT
+              #bind($row.INVAMID 'NUMERIC'),
+              #bind($row.DISCRIMINATOR 'NUMERIC'),
+              #bind($row.CONTRNUMBER 'VARCHAR'),
+              #bind($row.CALCDATE 'FLOAT'),
+              #bind($row.CPPCTMEM 'NUMERIC'),
+              #bind($row.CPCONTRAMVALUE 'NUMERIC'),
+              #bind($row.CPRVLTAMVALUE 'NUMERIC'),
+              #bind($row.CPACRDCONTRAMVALUE 'NUMERIC'),
+              #bind($row.CPACRDRVLTAMVALUE 'NUMERIC'),
+              #bind($row.PREMVALUE 'NUMERIC'),
+              #bind($row.CPPCTWMEM 'NUMERIC'),
+              #bind($row.RATESTART 'NUMERIC'),
+              #bind($row.RATECALC 'NUMERIC'),
+              #bind($row.CONTRCURRENCYID 'NUMERIC'),
+              #bind($row.CONDINVCURRENCYID 'NUMERIC'),
+              #bind($row.ISCONDITION 'NUMERIC'),
+              #bind($row.ISTODAYCPACRD 'NUMERIC'),
+              #bind($row.BARRIERVALUE 'NUMERIC'),
+              #bind($row.MULTIMEMVALUE 'NUMERIC'),
+              #bind($row.CONDNOTE 'VARCHAR'),
+              #bind($row.CONDCODE 'VARCHAR') 
+              FROM dual
+              #if($velocityCount < $totalCount)
+                UNION ALL
+              #end
+            #end
+) SRC ON  (DST.INVAMID = SRC.INVAMID) 
+WHEN MATCHED THEN 
+UPDATE SET 
+DISCRIMINATOR = SRC.DISCRIMINATOR,
+CONTRNUMBER = SRC.CONTRNUMBER,
+CALCDATE = SRC.CALCDATE,
+CPPCTMEM = SRC.CPPCTMEM,
+CPCONTRAMVALUE = SRC.CPCONTRAMVALUE,
+CPRVLTAMVALUE = SRC.CPRVLTAMVALUE,
+CPACRDCONTRAMVALUE = SRC.CPACRDCONTRAMVALUE,
+CPACRDRVLTAMVALUE = SRC.CPACRDRVLTAMVALUE,
+PREMVALUE = SRC.PREMVALUE,
+CPPCTWMEM = SRC.CPPCTWMEM,
+RATESTART = SRC.RATESTART,
+RATECALC = SRC.RATECALC,
+CONTRCURRENCYID  = SRC.CONTRCURRENCYID,
+CONDINVCURRENCYID  = SRC.CONDINVCURRENCYID,
+ISCONDITION  = SRC.ISCONDITION,
+ISTODAYCPACRD  = SRC.ISTODAYCPACRD,
+BARRIERVALUE  = SRC.BARRIERVALUE,
+MULTIMEMVALUE  = SRC.MULTIMEMVALUE,
+CONDNOTE  = SRC.CONDNOTE,
+CONDCODE  = SRC.CONDCODE 
+WHEN NOT MATCHED THEN 
+INSERT (
+INVAMID,
+DISCRIMINATOR,
+CONTRNUMBER,
+CALCDATE,
+CPPCTMEM,
+CPCONTRAMVALUE,
+CPRVLTAMVALUE,
+CPACRDCONTRAMVALUE,
+CPACRDRVLTAMVALUE,
+PREMVALUE,
+CPPCTWMEM,
+RATESTART,
+RATECALC,
+CONTRCURRENCYID,
+CONDINVCURRENCYID,
+ISCONDITION,
+ISTODAYCPACRD,
+BARRIERVALUE,
+MULTIMEMVALUE,
+CONDNOTE,
+CONDCODE 
+)
+VALUES (
+SRC.INVAMID,
+SRC.DISCRIMINATOR,
+SRC.CONTRNUMBER,
+SRC.CALCDATE,
+SRC.CPPCTMEM,
+SRC.CPCONTRAMVALUE,
+SRC.CPRVLTAMVALUE,
+SRC.CPACRDCONTRAMVALUE,
+SRC.CPACRDRVLTAMVALUE,
+SRC.PREMVALUE,
+SRC.CPPCTWMEM,
+SRC.RATESTART,
+SRC.RATECALC,
+SRC.CONTRCURRENCYID,
+SRC.CONDINVCURRENCYID,
+SRC.ISCONDITION,
+SRC.ISTODAYCPACRD,
+SRC.BARRIERVALUE,
+SRC.MULTIMEMVALUE,
+SRC.CONDNOTE,
+SRC.CONDCODE 
+)
+            ]]>
+        </sql>
+    </query>
+        <query name="dsB2BTickerRateMassSave" factory="org.apache.cayenne.map.SQLTemplateBuilder" root="data-map" root-name="B2BMort900Custom" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+            MERGE INTO B2B_INVTICKERRATE DST
+USING (
+            SELECT
+0 INVTICKERRATEID,
+null TRDATE,
+null RATEVALUE,
+null TICKERCODE,
+null TICKERNAME 
+FROM dual
+UNION ALL
+            #foreach($row in $rows)
+              SELECT
+              #bind($row.INVTICKERRATEID 'NUMERIC'),
+              #bind($row.TRDATE 'FLOAT'),
+              #bind($row.RATEVALUE 'NUMERIC'),
+              #bind($row.TICKERCODE 'VARCHAR'),
+              #bind($row.TICKERNAME 'VARCHAR') 
+              FROM dual
+              #if($velocityCount < $totalCount)
+                UNION ALL
+              #end
+            #end
+) SRC ON  (DST.INVTICKERRATEID = SRC.INVTICKERRATEID) 
+WHEN MATCHED THEN 
+UPDATE SET 
+TRDATE = SRC.TRDATE,
+RATEVALUE = SRC.RATEVALUE,
+TICKERCODE = SRC.TICKERCODE,
+TICKERNAME  = SRC.TICKERNAME 
+WHEN NOT MATCHED THEN 
+INSERT (
+INVTICKERRATEID,
+TRDATE,
+RATEVALUE,
+TICKERCODE,
+TICKERNAME 
+)
+VALUES (
+SRC.INVTICKERRATEID,
+SRC.TRDATE,
+SRC.RATEVALUE,
+SRC.TICKERCODE,
+SRC.TICKERNAME 
+)
+            ]]>
+        </sql>
+    </query>
+</data-map>

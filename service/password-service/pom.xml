@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <properties>
+        <password-service.version>1.00.01</password-service.version>
+        <service-caller.version>1.01.03</service-caller.version>
+        <service-loader-utils.version>1.00.00</service-loader-utils.version>
+        <service-utils.version>1.01.01</service-utils.version>
+    </properties>
+
+    <groupId>com.bivgroup.service.password</groupId>
+    <artifactId>password-service</artifactId>
+    <version>${password-service.version}</version>
+    <packaging>jar</packaging>
+    <name>password-service</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.bivgroup</groupId>
+            <artifactId>service-caller</artifactId>
+            <version>${service-caller.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.bivgroup.flextera.insurance.bivsberfront.utils</groupId>
+            <artifactId>service-loader-utils</artifactId>
+            <version>${service-loader-utils.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.bivgroup.flextera.insurance.bivsberfront.utils</groupId>
+            <artifactId>service-utils</artifactId>
+            <version>${service-utils.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jaxrs</artifactId>
+            <version>3.0.14.Final</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+</project>

@@ -1,0 +1,14 @@
+﻿Запуск Фронт - в docker контейнере
+1. собрать проект bivsberfront (желательно еще  front 6) c профилем -P build_wildfly 
+2. подготовить среду , для не достающих приложений запустить virtual\prepare\set_art.sh -- желательно брать только платформенные сервисы  --  процедура копирует сервисы в локальное maven хранилище
+3. собрать dockers (каталог) контейнеры (можно скопировать нужные контейнеры себе) 
+    c профилем -P docker_build
+	TODO -- сделать сохранение контейнеров в общее фиксированное хранилище (либо мы просто используем внутренний docker hub, exampl: docker push myRegistry/myImage)
+3. подготовить основной consul сервер  (если это надо), см \distrib	
+4. запустить docker контейнеры: docker_start_main - основное приложение (exampl: docker-compose up), docker_start_sign - подписи и отсылка (exampl: docker-compose up)
+   если через maven то профиля 
+    -P docker_start_main
+	-P docker_start_sign
+	
+PS Для установки docker,consul можно воспользоваться скриптами  в /ansible_admin	
+  

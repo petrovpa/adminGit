@@ -1,0 +1,682 @@
+{
+  "Status": "OK",
+  "SESSIONID": "e8Ds0vUNppmT3beos9GZWaMw1ZeXoDI9joIdDOi5rM8fsmxk2vyOb2OM%2BeBO31ZTDyohSZTyfEKlCjht5akxjVkcli%2BAzyjx3XRelnSa6iIbNobJqyJghS%2FJGwhCRgrMo77uQf4g1F4%3D",
+  "Result": {
+    "PRODMAP": {
+      "PRODPREMCURS": [],
+      "Status": "OK",
+      "PREPARETOSAVEMETHOD": "dsB2BCaringParentsPrepareToSave",
+      "SYSNAME": "POS",
+      "PRODCONFID": 500000,
+      "ISONLINE": 0,
+      "PRODVALUES": [
+        {
+          "ISHANDBOOK": 0,
+          "PRODVALUEID": 511000,
+          "PRODPOSSVALUES": [],
+          "DATATYPEID": 2,
+          "PRODCONFID": 500000,
+          "PRODSTRUCTID": 511000,
+          "DATATYPESTR": "java.lang.Long",
+          "KINDID": 1,
+          "DISCRIMINATOR": 1,
+          "NAME": "childSex",
+          "DESCR": "ИД ребенка"
+        },
+        {
+          "PRODVALUEID": 500001,
+          "PRODPOSSVALUES": [],
+          "DATATYPEID": 2,
+          "PRODCONFID": 500000,
+          "KINDID": 1,
+          "NAME": "childSex",
+          "DESCR": "Пол (ребенок)"
+        },
+        {
+          "PRODVALUEID": 500002,
+          "PRODPOSSVALUES": [],
+          "DATATYPEID": 4,
+          "PRODCONFID": 500000,
+          "KINDID": 1,
+          "NAME": "childDateOfBirth",
+          "DESCR": "Дата рождения (ребенок)"
+        },
+        {
+          "PRODVALUEID": 500003,
+          "PRODPOSSVALUES": [],
+          "DATATYPEID": 2,
+          "PRODCONFID": 500000,
+          "KINDID": 1,
+          "NAME": "adultSex",
+          "DESCR": "Пол (взрослый)"
+        },
+        {
+          "PRODVALUEID": 500004,
+          "PRODPOSSVALUES": [],
+          "DATATYPEID": 4,
+          "PRODCONFID": 500000,
+          "KINDID": 1,
+          "NAME": "adultDateOfBirth",
+          "DESCR": "Дата рождения (взрослый)"
+        },
+        {
+          "PRODVALUEID": 500005,
+          "PRODPOSSVALUES": [],
+          "DATATYPEID": 2,
+          "PRODCONFID": 500000,
+          "KINDID": 1,
+          "NAME": "termOfInsurance",
+          "DESCR": "Срок страхования (лет)"
+        },
+        {
+          "PRODVALUEID": 500006,
+          "PRODPOSSVALUES": [],
+          "DATATYPEID": 2,
+          "PRODCONFID": 500000,
+          "KINDID": 1,
+          "NAME": "payVarPeriod",
+          "DESCR": "Периодичность уплаты взносов"
+        },
+        {
+          "PRODVALUEID": 500007,
+          "PRODPOSSVALUES": [],
+          "DATATYPEID": 2,
+          "PRODCONFID": 500000,
+          "KINDID": 1,
+          "NAME": "currency",
+          "DESCR": "Валюта страхования"
+        },
+        {
+          "PRODVALUEID": 500008,
+          "PRODPOSSVALUES": [],
+          "DATATYPEID": 2,
+          "PRODCONFID": 500000,
+          "KINDID": 1,
+          "NAME": "rentPayoutPayVar",
+          "DESCR": "Вариант выплаты в случае дожития"
+        },
+        {
+          "PRODVALUEID": 500009,
+          "PRODPOSSVALUES": [],
+          "DATATYPEID": 2,
+          "PRODCONFID": 500000,
+          "KINDID": 1,
+          "NAME": "rentPayoutDuration",
+          "DESCR": "Срок выплаты ренты"
+        },
+        {
+          "PRODVALUEID": 500010,
+          "PRODPOSSVALUES": [],
+          "DATATYPEID": 2,
+          "PRODCONFID": 500000,
+          "KINDID": 1,
+          "NAME": "childIsAmateurSport",
+          "DESCR": "Опция любительский спорт (Застрахованный - ребенок)"
+        },
+        {
+          "PRODVALUEID": 500011,
+          "PRODPOSSVALUES": [],
+          "DATATYPEID": 2,
+          "PRODCONFID": 500000,
+          "KINDID": 1,
+          "NAME": "expectedReturnRate",
+          "DESCR": "Ожидаемая доходность"
+        },
+        {
+          "PRODVALUEID": 500012,
+          "PRODPOSSVALUES": [],
+          "DATATYPEID": 3,
+          "PRODCONFID": 500000,
+          "KINDID": 1,
+          "NAME": "insAmSurvivor2",
+          "DESCR": "СС Дожитие 2 с возвратом взносов (ОСНОВНАЯ программа)"
+        },
+        {
+          "PRODVALUEID": 500013,
+          "PRODPOSSVALUES": [],
+          "DATATYPEID": 3,
+          "PRODCONFID": 500000,
+          "KINDID": 1,
+          "NAME": "insAmMorbidDisease",
+          "DESCR": "СС Диагностирование особо опасных заболеваний"
+        },
+        {
+          "PRODVALUEID": 500014,
+          "PRODPOSSVALUES": [],
+          "DATATYPEID": 3,
+          "PRODCONFID": 500000,
+          "KINDID": 1,
+          "NAME": "insAmDisabled",
+          "DESCR": "CC ивалидность ЛП и травмы в результате НС"
+        },
+        {
+          "PRODVALUEID": 500015,
+          "PRODPOSSVALUES": [],
+          "DATATYPEID": 3,
+          "PRODCONFID": 500000,
+          "KINDID": 1,
+          "NAME": "insAmSurgeryAccident",
+          "DESCR": "Хирургическое вмешательство в результате НС"
+        },
+        {
+          "PRODVALUEID": 500016,
+          "PRODPOSSVALUES": [],
+          "DATATYPEID": 3,
+          "PRODCONFID": 500000,
+          "KINDID": 1,
+          "NAME": "insAmSurvivor1IntermediatePayout",
+          "DESCR": "СС Дожитие 1 с промежуточной выплатой"
+        },
+        {
+          "PRODVALUEID": 500017,
+          "PRODPOSSVALUES": [],
+          "DATATYPEID": 2,
+          "PRODCONFID": 500000,
+          "KINDID": 1,
+          "NAME": "termSurvivor1IntermediatePayout",
+          "DESCR": "Срок страхования по риску Дожитие 1 с промежуточной выплатой"
+        }
+      ],
+      "PRODADDCHTS": [],
+      "CALCVERID": 500000,
+      "PRODTERMS": [
+        {
+          "PRODTERMID": 500002,
+          "PRODCONFID": 500000,
+          "TERM": {
+            "MONTHCOUNT": 0,
+            "YEARCOUNT": 6,
+            "SYSNAME": "year6",
+            "DAYCOUNT": -1,
+            "TERMID": 1001,
+            "NAME": "6 лет"
+          }
+        },
+        {
+          "PRODTERMID": 500003,
+          "PRODCONFID": 500000,
+          "TERM": {
+            "MONTHCOUNT": 0,
+            "YEARCOUNT": 7,
+            "SYSNAME": "year7",
+            "DAYCOUNT": -1,
+            "TERMID": 1002,
+            "NAME": "7 лет"
+          }
+        },
+        {
+          "PRODTERMID": 500004,
+          "PRODCONFID": 500000,
+          "TERM": {
+            "MONTHCOUNT": 0,
+            "YEARCOUNT": 8,
+            "SYSNAME": "year8",
+            "DAYCOUNT": -1,
+            "TERMID": 1003,
+            "NAME": "8 лет"
+          }
+        },
+        {
+          "PRODTERMID": 500005,
+          "PRODCONFID": 500000,
+          "TERM": {
+            "MONTHCOUNT": 0,
+            "YEARCOUNT": 9,
+            "SYSNAME": "year9",
+            "DAYCOUNT": -1,
+            "TERMID": 1004,
+            "NAME": "9 лет"
+          }
+        },
+        {
+          "PRODTERMID": 500001,
+          "PRODCONFID": 500000,
+          "TERM": {
+            "MONTHCOUNT": 0,
+            "YEARCOUNT": 5,
+            "SYSNAME": "year5",
+            "DAYCOUNT": -1,
+            "TERMID": 1000,
+            "NAME": "5 лет"
+          }
+        },
+        {
+          "PRODTERMID": 500006,
+          "PRODCONFID": 500000,
+          "TERM": {
+            "MONTHCOUNT": 0,
+            "YEARCOUNT": 10,
+            "SYSNAME": "year10",
+            "DAYCOUNT": -1,
+            "TERMID": 1005,
+            "NAME": "10 лет"
+          }
+        },
+        {
+          "PRODTERMID": 500007,
+          "PRODCONFID": 500000,
+          "TERM": {
+            "MONTHCOUNT": 0,
+            "YEARCOUNT": 11,
+            "SYSNAME": "year11",
+            "DAYCOUNT": -1,
+            "TERMID": 1006,
+            "NAME": "11 лет"
+          }
+        },
+        {
+          "PRODTERMID": 500008,
+          "PRODCONFID": 500000,
+          "TERM": {
+            "MONTHCOUNT": 0,
+            "YEARCOUNT": 12,
+            "SYSNAME": "year12",
+            "DAYCOUNT": -1,
+            "TERMID": 1007,
+            "NAME": "12 лет"
+          }
+        },
+        {
+          "PRODTERMID": 500009,
+          "PRODCONFID": 500000,
+          "TERM": {
+            "MONTHCOUNT": 0,
+            "YEARCOUNT": 13,
+            "SYSNAME": "year13",
+            "DAYCOUNT": -1,
+            "TERMID": 1008,
+            "NAME": "13 лет"
+          }
+        },
+        {
+          "PRODTERMID": 500010,
+          "PRODCONFID": 500000,
+          "TERM": {
+            "MONTHCOUNT": 0,
+            "YEARCOUNT": 14,
+            "SYSNAME": "year14",
+            "DAYCOUNT": -1,
+            "TERMID": 1009,
+            "NAME": "14 лет"
+          }
+        },
+        {
+          "PRODTERMID": 500011,
+          "PRODCONFID": 500000,
+          "TERM": {
+            "MONTHCOUNT": 0,
+            "YEARCOUNT": 15,
+            "SYSNAME": "year15",
+            "DAYCOUNT": -1,
+            "TERMID": 1010,
+            "NAME": "15 лет"
+          }
+        },
+        {
+          "PRODTERMID": 500012,
+          "PRODCONFID": 500000,
+          "TERM": {
+            "MONTHCOUNT": 0,
+            "YEARCOUNT": 16,
+            "SYSNAME": "year16",
+            "DAYCOUNT": -1,
+            "TERMID": 1011,
+            "NAME": "16 лет"
+          }
+        },
+        {
+          "PRODTERMID": 500013,
+          "PRODCONFID": 500000,
+          "TERM": {
+            "MONTHCOUNT": 0,
+            "YEARCOUNT": 17,
+            "SYSNAME": "year17",
+            "DAYCOUNT": -1,
+            "TERMID": 1012,
+            "NAME": "17 лет"
+          }
+        },
+        {
+          "PRODTERMID": 500014,
+          "PRODCONFID": 500000,
+          "TERM": {
+            "MONTHCOUNT": 0,
+            "YEARCOUNT": 18,
+            "SYSNAME": "year18",
+            "DAYCOUNT": -1,
+            "TERMID": 1013,
+            "NAME": "18 лет"
+          }
+        },
+        {
+          "PRODTERMID": 500015,
+          "PRODCONFID": 500000,
+          "TERM": {
+            "MONTHCOUNT": 0,
+            "YEARCOUNT": 19,
+            "SYSNAME": "year19",
+            "DAYCOUNT": -1,
+            "TERMID": 1014,
+            "NAME": "19 лет"
+          }
+        },
+        {
+          "PRODTERMID": 500016,
+          "PRODCONFID": 500000,
+          "TERM": {
+            "MONTHCOUNT": 0,
+            "YEARCOUNT": 20,
+            "SYSNAME": "year20",
+            "DAYCOUNT": -1,
+            "TERMID": 1015,
+            "NAME": "20 лет"
+          }
+        },
+        {
+          "PRODTERMID": 500017,
+          "PRODCONFID": 500000,
+          "TERM": {
+            "MONTHCOUNT": 0,
+            "YEARCOUNT": 21,
+            "SYSNAME": "year21",
+            "DAYCOUNT": -1,
+            "TERMID": 1016,
+            "NAME": "21 год"
+          }
+        },
+        {
+          "PRODTERMID": 500018,
+          "PRODCONFID": 500000,
+          "TERM": {
+            "MONTHCOUNT": 0,
+            "YEARCOUNT": 22,
+            "SYSNAME": "year22",
+            "DAYCOUNT": -1,
+            "TERMID": 1017,
+            "NAME": "22 года"
+          }
+        },
+        {
+          "PRODTERMID": 500019,
+          "PRODCONFID": 500000,
+          "TERM": {
+            "MONTHCOUNT": 0,
+            "YEARCOUNT": 23,
+            "SYSNAME": "year23",
+            "DAYCOUNT": -1,
+            "TERMID": 1018,
+            "NAME": "23 года"
+          }
+        }
+      ],
+      "PRODINSAMCURS": [
+        {
+          "CURRENCY": {
+            "FRACTIONALPART": 2,
+            "NUMERICCODE": "810",
+            "MINORUNIT": "Копейка",
+            "ISONUMBER": "643",
+            "MINORUNITFORMID": 5,
+            "CURRENCYID": 1,
+            "ALPHACODE": "RUB",
+            "CURRENCYNAME": "Российский рубль",
+            "NAMEWORDFORMID": 4
+          },
+          "PRODCONFID": 500000,
+          "PRODSTRUCTID": 500000,
+          "PRODINSAMCURID": 500001
+        },
+        {
+          "CURRENCY": {
+            "FRACTIONALPART": 2,
+            "NUMERICCODE": "840",
+            "MINORUNIT": "Цент",
+            "ISONUMBER": "840",
+            "MINORUNITFORMID": 7,
+            "CURRENCYID": 2,
+            "ALPHACODE": "USD",
+            "CURRENCYNAME": "Доллар США",
+            "NAMEWORDFORMID": 6
+          },
+          "PRODCONFID": 500000,
+          "PRODSTRUCTID": 500000,
+          "PRODINSAMCURID": 500002
+        }
+      ],
+      "NAME": "Заботливые родители",
+      "PRODNUMMETHODS": [],
+      "PRODBINDOCS": [],
+      "HBDATAVERID": 500000,
+      "PRODDEFVALS": [],
+      "PRODVER": {
+        "IMGPATH": "i/houseProtect.png",
+        "PRODVERID": 500000,
+        "PROD": {
+          "SYSNAME": "B2B_CARING_PARENTS",
+          "EXTERNALCODE": "B2B_CARING_PARENTS",
+          "PRODRIDERS": [],
+          "NOTE": "Заботливые родители",
+          "ISHIDDEN": false,
+          "ISMULTICONTR": false,
+          "MODELID": 1,
+          "INSTERMKINDID": 1,
+          "PRODID": 500000,
+          "NAME": "Заботливые родители"
+        },
+        "JSPATH": "#/caringParentsIns",
+        "PRODPROGS": [
+          {
+            "SYSNAME": "CP_BASIC",
+            "PRODVERID": 500000,
+            "PRODPROGID": 500000,
+            "PROGCODE": "1",
+            "NOTE": "Основная програма страхования",
+            "NAME": "Программа"
+          }
+        ],
+        "PRODSTRUCTS": [
+          {
+            "PARENTSTRUCTID": 500000,
+            "SYSNAME": "life",
+            "PRODSTRUCTID": 510000,
+            "SDCALCMETHOD": 1,
+            "PRODVALUES": [],
+            "HINT": "ТипОбъектовСтрахования",
+            "REQUIRED": 1,
+            "PARENTSTRUCTSYSNAME": "Section",
+            "DISCRIMINATOR": 2,
+            "NAME": "Накопительное страхование жизни",
+            "PRODVERID": 500000,
+            "HBDATAVERID": 510000,
+            "PRODID": 500000
+          },
+          {
+            "PARENTSTRUCTID": 510000,
+            "SYSNAME": "insuredAdult",
+            "PRODSTRUCTID": 512000,
+            "SDCALCMETHOD": 1,
+            "PRODVALUES": [],
+            "HINT": "ОбъектСтрахования",
+            "REQUIRED": 1,
+            "PARENTSTRUCTSYSNAME": "life",
+            "DISCRIMINATOR": 3,
+            "NAME": "Застрахованное лицо (Взрослый)",
+            "PRODVERID": 500000,
+            "HBDATAVERID": 512000,
+            "PRODID": 500000
+          },
+          {
+            "PARENTSTRUCTID": 510000,
+            "SYSNAME": "insuredChild",
+            "PRODSTRUCTID": 511000,
+            "SDCALCMETHOD": 1,
+            "PRODVALUES": [
+              {
+                "ISHANDBOOK": 0,
+                "PRODVALUEID": 511000,
+                "DATATYPEID": 2,
+                "PRODCONFID": 500000,
+                "PRODSTRUCTID": 511000,
+                "DATATYPESTR": "java.lang.Long",
+                "KINDID": 1,
+                "DISCRIMINATOR": 1,
+                "NAME": "childSex",
+                "DESCR": "ИД ребенка"
+              }
+            ],
+            "HINT": "ОбъектСтрахования",
+            "REQUIRED": 1,
+            "PARENTSTRUCTSYSNAME": "life",
+            "DISCRIMINATOR": 3,
+            "NAME": "Застрахованное лицо (Ребенок)",
+            "PRODVERID": 500000,
+            "HBDATAVERID": 511000,
+            "PRODID": 500000
+          },
+          {
+            "PARENTSTRUCTID": 511000,
+            "SYSNAME": "childDisabledLpOrInjuredNs",
+            "PRODVERID": 500000,
+            "PRODSTRUCTID": 511008,
+            "SDCALCMETHOD": 1,
+            "PRODVALUES": [],
+            "HINT": "СтраховойРиск",
+            "REQUIRED": 1,
+            "PARENTSTRUCTSYSNAME": "insuredChild",
+            "DISCRIMINATOR": 4,
+            "PRODID": 500000,
+            "NAME": "Инвалидность ЛП и Травмы НС (Застрахованный - ребенок)"
+          },
+          {
+            "PARENTSTRUCTID": 511000,
+            "SYSNAME": "childSurgeryAccident",
+            "PRODVERID": 500000,
+            "PRODSTRUCTID": 511007,
+            "SDCALCMETHOD": 1,
+            "PRODVALUES": [],
+            "HINT": "СтраховойРиск",
+            "PARENTSTRUCTSYSNAME": "insuredChild",
+            "DISCRIMINATOR": 4,
+            "PRODID": 500000,
+            "NAME": "Хирургическое вмешательство"
+          },
+          {
+            "PARENTSTRUCTID": 511000,
+            "SYSNAME": "childDiagnosedMorbidDisease",
+            "PRODVERID": 500000,
+            "PRODSTRUCTID": 511006,
+            "SDCALCMETHOD": 1,
+            "PRODVALUES": [],
+            "HINT": "СтраховойРиск",
+            "PARENTSTRUCTSYSNAME": "insuredChild",
+            "DISCRIMINATOR": 4,
+            "PRODID": 500000,
+            "NAME": "Диагностирование особо опасных заболеваний"
+          },
+          {
+            "PARENTSTRUCTID": 511000,
+            "SYSNAME": "childSurvives1",
+            "PRODVERID": 500000,
+            "PRODSTRUCTID": 511002,
+            "SDCALCMETHOD": 1,
+            "PRODVALUES": [],
+            "HINT": "СтраховойРиск",
+            "REQUIRED": 1,
+            "PARENTSTRUCTSYSNAME": "insuredChild",
+            "DISCRIMINATOR": 4,
+            "PRODID": 500000,
+            "NAME": "Дожитие с промежуточной выплатой (Дожитие 1)"
+          },
+          {
+            "PARENTSTRUCTID": 511000,
+            "SYSNAME": "childSurvives2",
+            "PRODVERID": 500000,
+            "PRODSTRUCTID": 511001,
+            "SDCALCMETHOD": 1,
+            "PRODVALUES": [],
+            "HINT": "СтраховойРиск",
+            "REQUIRED": 1,
+            "PARENTSTRUCTSYSNAME": "insuredChild",
+            "DISCRIMINATOR": 4,
+            "PRODID": 500000,
+            "NAME": "Дожитие до окончания срока страхования (Дожитие 2)"
+          },
+          {
+            "PARENTSTRUCTID": 512000,
+            "SYSNAME": "adultDeathAccident",
+            "PRODVERID": 500000,
+            "PRODSTRUCTID": 512002,
+            "SDCALCMETHOD": 1,
+            "PRODVALUES": [],
+            "HINT": "СтраховойРиск",
+            "REQUIRED": 1,
+            "PARENTSTRUCTSYSNAME": "insuredAdult",
+            "DISCRIMINATOR": 4,
+            "PRODID": 500000,
+            "NAME": "Смерть в результате несчастного случая"
+          },
+          {
+            "PARENTSTRUCTID": 512000,
+            "SYSNAME": "adultFreeOfPayments",
+            "PRODVERID": 500000,
+            "PRODSTRUCTID": 512001,
+            "SDCALCMETHOD": 1,
+            "PRODVALUES": [],
+            "HINT": "СтраховойРиск",
+            "REQUIRED": 1,
+            "PARENTSTRUCTSYSNAME": "insuredAdult",
+            "DISCRIMINATOR": 4,
+            "PRODID": 500000,
+            "NAME": "Освобождение от уплаты страховых взносов"
+          },
+          {
+            "SYSNAME": "Section",
+            "PRODVERID": 500000,
+            "PRODSTRUCTID": 500000,
+            "SDCALCMETHOD": 1,
+            "HBDATAVERID": 500000,
+            "PRODVALUES": [],
+            "HINT": "СекцияДоговора",
+            "REQUIRED": 1,
+            "DISCRIMINATOR": 6,
+            "PRODID": 500000,
+            "NAME": "СекцияДоговора"
+          }
+        ],
+        "PRODPAYVARS": [
+          {
+            "PRODVERID": 500000,
+            "PRODPAYVARID": 500001,
+            "PAYVAR": {
+              "SYSNAME": "ONETIME",
+              "PAYVARID": 103,
+              "PAYVARCNTS": [],
+              "NAME": "Единовременно"
+            },
+            "NAME": "ONETIME"
+          },
+          {
+            "PRODVERID": 500000,
+            "PRODPAYVARID": 500002,
+            "PAYVAR": {
+              "SYSNAME": "ANNUALLY",
+              "PAYVARID": 100,
+              "PAYVARCNTS": [],
+              "NAME": "Ежегодно"
+            },
+            "NAME": "ANNUALLY"
+          }
+        ],
+        "NOTE": "Заботливые родители",
+        "EXPLSTARTDATE": 1246838400000,
+        "EXPLFINISHDATE": 4070908800000,
+        "NAME": "Версия 1",
+        "PRODSALESCHANS": []
+      },
+      "PRODCALCRATERULES": [],
+      "LOADALLDATA": 1,
+      "PRODREPS": [],
+      "PRODDISCS": []
+    }
+  }
+}

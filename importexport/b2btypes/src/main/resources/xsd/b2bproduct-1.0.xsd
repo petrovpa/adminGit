@@ -1,0 +1,1121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:b2bcommon="http://bivgroup.com/schema/b2bcommon10" xmlns:b2bproduct="http://bivgroup.com/schema/b2bproduct10" xmlns:b2btarificator="http://bivgroup.com/schema/b2btarificator10" targetNamespace="http://bivgroup.com/schema/b2bproduct10" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xs:import namespace="http://bivgroup.com/schema/b2bcommon10" schemaLocation="b2bcommon-1.0.xsd"/>
+    <xs:import namespace="http://bivgroup.com/schema/b2btarificator10" schemaLocation="b2btarificator-1.0.xsd"/>
+    <xs:element name="B2BProducts">
+        <xs:annotation>
+            <xs:documentation>Тип данных для описания списка продуктов</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="B2BProduct" type="b2bproduct:B2BProductType" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation>Продукт B2B</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="B2BProductType">
+        <xs:annotation>
+            <xs:documentation>Продукт B2B</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="AssurerId" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>ИД страховщика</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ExternalCode" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Внешний код продукта</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ExternalId" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Внешний ИД</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="InsTermKindId" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Вид</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="IsHidden" type="xs:boolean" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Продукт скрыт или нет</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ModelId" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Модель учета</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Name" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование продукта</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Note" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Примечание</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ProductKindId" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>ИД типа продукта</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="StructRootSysName" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Корень структуры продукта (системное наименование)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SysName" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Системное наименование</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="B2BProductRiders" type="b2bproduct:B2BProductRidersType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Список райдеров</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="B2BProductVersions" type="b2bproduct:B2BProductVersionsType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Список версий</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductRiderType">
+        <xs:annotation>
+            <xs:documentation>Райдер</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Id" type="xs:int" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>ИД (временное поле)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductRidersType">
+        <xs:annotation>
+            <xs:documentation>Тип данных для описания списка райдеров</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="B2BProductRider" type="b2bproduct:B2BProductRiderType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Райдер</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductVersionType">
+        <xs:annotation>
+            <xs:documentation>Версия продукта</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="ExploitationFinishDate" type="xs:date" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Конечная дата эксплуатации</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ExploitationStartDate" type="xs:date" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Начальная дата эксплуатации</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ImagePath" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Путь к картинке версии</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="JavaScriptPath" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Путь к стартовой JS</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Logotype" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Логотип</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Name" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Note" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Примечание</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ProductCode" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Код продукта</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="StateId" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>ИД состояния продукта</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="B2BProductConfigs" type="b2bproduct:B2BProductConfigsType" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Список конфигураций продукта</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="B2BProductStructures" type="b2bproduct:B2BProductStructuresType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Структура продукта</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="B2BProductSalesChannels" type="b2bproduct:B2BProductSalesChannelsType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Список доступных каналов продаж</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="B2BProductPaymentVariants" type="b2bproduct:B2BProductPaymentVariantsType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Список периодичностей оплаты по договору</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="B2BProductPrograms" type="b2bproduct:B2BProductProgramsType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Список программ страхования</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductVersionsType">
+        <xs:annotation>
+            <xs:documentation>Тип данных для описания списка версий продукта</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="B2BProductVersion" type="b2bproduct:B2BProductVersionType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Версия продукта</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductConfigType">
+        <xs:annotation>
+            <xs:documentation>Конфигурация продукта</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Calculator" type="b2btarificator:CalculatorType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Калькулятор (содержит только подключенную к конфигурации продукта версию)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ValuesHB" type="b2btarificator:HandbookDescriptorType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Показатели по продукту (только подключенная версия справочника)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Name" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Note" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Примечание</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SysName" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Системное наименование</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="B2BProductValues" type="b2bproduct:B2BProductValuesType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Список показателей</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="B2BProductDiscounts" type="b2bproduct:B2BProductDiscountsType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Список скидок</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="B2BProductForms" type="b2bproduct:B2BProductFormsType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Список форм продукта</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="B2BProductCalcRateRules" type="b2bproduct:B2BProductCalcRateRulesType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Список правил расчета курса оплаты премии</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="B2BProductPremiumCurrencies" type="b2bproduct:B2BProductPremiumCurrenciesType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Список валют расчета</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="B2BProductInsAmCurrencies" type="b2bproduct:B2BProductInsAmCurrenciesType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Список валют договора</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="B2BProductNumMethods" type="b2bproduct:B2BProductNumMethodsType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Список методов нумерации</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="B2BProductDefaultValues" type="b2bproduct:B2BProductDefaultValuesType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Список значений по-умолчанию</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="B2BProductReports" type="b2bproduct:B2BProductReportsType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Список отчетов по продукту</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="B2BProductBinaryDocuments" type="b2bproduct:B2BProductBinaryDocumentsType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Список типов прикрепляемых документов</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductConfigsType">
+        <xs:annotation>
+            <xs:documentation>Тип данных для описания списка конфигураций продукта</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="B2BProductConfig" type="b2bproduct:B2BProductConfigType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Конфигурация продукта</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductStructureType">
+        <xs:annotation>
+            <xs:documentation>Элемент структуры продукта</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="ChildProdVerId" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>ИД версии подчиненного продукта</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Discriminator" type="xs:int" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Тип сущности</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ExternalCode" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Внешний код структуры</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ValuesHB" type="b2btarificator:HandbookDescriptorType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Показатели объекта структуры (только подключенная версия справочника)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Hint" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Подсказка</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="InsuranceKindId" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Вид страхования</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ParentStructureSysName" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Системное наименование родительской структуры</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Repeated" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Повторяется</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Required" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Обязательный</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="StartDateCalcMethod" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Правило определения даты начала - условие</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="StartDateLag" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Правило определения даты начала - лаг</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SysName" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Псевдоним</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="B2BProductValues" type="b2bproduct:B2BProductValuesType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Список показателей</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductStructuresType">
+        <xs:annotation>
+            <xs:documentation>Тип данных для описания структуры продукта</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="B2BProductStructure" type="b2bproduct:B2BProductStructureType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Элемент структуры продукта</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductValueType">
+        <xs:annotation>
+            <xs:documentation>Показатель</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="AddAgrCauseId" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>ИД типа причины по ДОПСУ</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DataTypeId" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>ИД типа данных</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DataTypeStr" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Строка типа данных</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Description" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Примечание</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Discriminator" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Тип сущности</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Formula" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Формула</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="IsHandbook" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Признак формирования справочника</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="KindId" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>ИД вида</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Name" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование показателя</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ValueGroupId" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>ИД группы</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="B2BProductPossibleValues" type="b2bproduct:B2BProductPossibleValuesType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Список возможных значений показателя</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductValuesType">
+        <xs:annotation>
+            <xs:documentation>Тип данных для описания списка показателей</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="B2BProductValue" type="b2bproduct:B2BProductValueType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Показатель</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductPossibleValueType">
+        <xs:annotation>
+            <xs:documentation>Возможное значение показателя</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Hint" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Подсказка</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="IsDefault" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Признак значение по-умолчанию</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Value2Double" type="xs:decimal" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Дробное значение</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Value2Long" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Целое значение</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Value2String" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Строковое значение</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ValueDouble" type="xs:decimal" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Дробное значение</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ValueLong" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Целое значение</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ValueString" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Строковое значение</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductPossibleValuesType">
+        <xs:annotation>
+            <xs:documentation>Тип данных для описания списка возможных значений показателя</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="B2BProductPossibleValue" type="b2bproduct:B2BProductPossibleValueType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Возможное значение показателя</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductSalesChannelType">
+        <xs:annotation>
+            <xs:documentation>Продуктовый канал продаж</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="SaleChannel" type="b2bcommon:SaleChannelType" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Канал продаж</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductSalesChannelsType">
+        <xs:annotation>
+            <xs:documentation>Тип данных для описания списка продуктовых каналов продаж</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="B2BProductSalesChannel" type="b2bproduct:B2BProductSalesChannelType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Продуктовый канал продаж</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductDiscountType">
+        <xs:annotation>
+            <xs:documentation>Скидка</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="DiscountKindId" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Вид</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="FinishDate" type="xs:date" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Дата окончания действия скидки</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="IsPremium" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Премиум аккаунт</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="PremiumURL" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>УРЛ премиум аккаунта</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="StartDate" type="xs:date" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Дата начала действия скидки</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="B2BProductDiscountPromoCodes" type="b2bproduct:B2BProductDiscountPromoCodesType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Список промокодов</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="B2BProductDiscountValues" type="b2bproduct:B2BProductDiscountValuesType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Список значений скидки</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductDiscountsType">
+        <xs:annotation>
+            <xs:documentation>Тип данных для описания списка скидок</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="B2BProductDiscount" type="b2bproduct:B2BProductDiscountType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Скидка</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductDiscountPromoCodeType">
+        <xs:annotation>
+            <xs:documentation>Промокод</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Code" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Промокод</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="PromoCount" type="xs:int" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Кол-во промокодов</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductDiscountPromoCodesType">
+        <xs:annotation>
+            <xs:documentation>Тип данных для описания списка промокодов</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="B2BProductDiscountPromoCode" type="b2bproduct:B2BProductDiscountPromoCodeType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Промокод</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductDiscountValueType">
+        <xs:annotation>
+            <xs:documentation>Значение скидки</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="DiscountValue" type="xs:decimal" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Значение скидки</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ProductStructureSysName" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Системное наименование структуры продукта, к которой применяется значение скидки</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductDiscountValuesType">
+        <xs:annotation>
+            <xs:documentation>Тип данных для описания списка значений скидки</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="B2BProductDiscountValue" type="b2bproduct:B2BProductDiscountValueType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Значение скидки</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductFormType">
+        <xs:annotation>
+            <xs:documentation>Форма продукта</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="FormTypeId" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Вид формы</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Index" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Порядковый номер</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Page" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Страница</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductFormsType">
+        <xs:annotation>
+            <xs:documentation>Тип данных для описания списка форм продукта</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="B2BProductForm" type="b2bproduct:B2BProductFormType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Форма продукта</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductCalcRateRuleType">
+        <xs:annotation>
+            <xs:documentation>Правило расчета курса оплаты премии</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="CalcVariantId" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Тип расчета</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="CurrencyId" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>ИД валюты</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Percent" type="xs:decimal" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Процент</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="RateDate" type="xs:date" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Дата курса</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="RateValue" type="xs:decimal" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Значение курса</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="RuleDate" type="xs:date" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Дата правила</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductCalcRateRulesType">
+        <xs:annotation>
+            <xs:documentation>Тип данных для описания списка правил расчета курса оплаты премии</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="B2BProductCalcRateRule" type="b2bproduct:B2BProductCalcRateRuleType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Правило расчета курса оплаты премии</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductPremiumCurrencyType">
+        <xs:annotation>
+            <xs:documentation>Валюта расчета</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="CurrencyId" type="xs:int" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>ИД валюты</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductPremiumCurrenciesType">
+        <xs:annotation>
+            <xs:documentation>Тип данных для описания списка валют расчета</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="B2BProductPremiumCurrency" type="b2bproduct:B2BProductPremiumCurrencyType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Валюта расчета</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductInsAmCurrencyType">
+        <xs:annotation>
+            <xs:documentation>Валюта договора</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="CurrencyId" type="xs:int" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>ИД валюты</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductInsAmCurrenciesType">
+        <xs:annotation>
+            <xs:documentation>Тип данных для описания списка валют договора</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="B2BProductInsAmCurrency" type="b2bproduct:B2BProductInsAmCurrencyType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Валюта договора</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductNumMethodType">
+        <xs:annotation>
+            <xs:documentation>Метод нумерации</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="MethodId" type="xs:int" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>ИД метода</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductNumMethodsType">
+        <xs:annotation>
+            <xs:documentation>Тип данных для описания списка методов нумерации</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="B2BProductNumMethod" type="b2bproduct:B2BProductNumMethodType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Метод нумерации</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductDefaultValueType">
+        <xs:annotation>
+            <xs:documentation>Значение по-умолчанию</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="DefType" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Тип</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Name" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Note" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Примечание</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Value" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Значение</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ContractAutoNumberMask" type="b2bcommon:MaskType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Маска для автонумерации номера договора (если наименование поля = CONTRAUTONUMBERSYSNAME)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductDefaultValuesType">
+        <xs:annotation>
+            <xs:documentation>Тип данных для описания списка значений по-умолчанию</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="B2BProductDefaultValue" type="b2bproduct:B2BProductDefaultValueType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Значение по-умолчанию</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductReportType">
+        <xs:annotation>
+            <xs:documentation>Отчет по продукту</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="CategoryId" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Категория документа по страховому продукту</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="CopyNumber" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Количество копий</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DataProvider" type="b2bcommon:DataProviderType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Провайдер данных</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="EDoc" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Признак принадлежности к группе документов для отправки на Email или сохранения на диск</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Name" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Note" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Примечание</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="OriginalPrinting" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Чистовая печать</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Position" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Позиция</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="PrePrinting" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Предварительная печать</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ReportCheckId" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Проверка перед выводом отчета</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Report" type="b2bcommon:B2BReportType" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Отчет</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ReportLevel" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Уровень отчета</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ReportType" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Тип отчета</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductReportsType">
+        <xs:annotation>
+            <xs:documentation>Тип данных для описания списка отчетов по продукту</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="B2BProductReport" type="b2bproduct:B2BProductReportType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Отчет по продукту</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductPaymentVariantType">
+        <xs:annotation>
+            <xs:documentation>Периодичность оплаты</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="PaymentVariant" type="b2bcommon:PaymentVariantType" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Периодичность оплаты</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductPaymentVariantsType">
+        <xs:annotation>
+            <xs:documentation>Тип данных для описания списка периодичностей оплаты</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="B2BProductPaymentVariant" type="b2bproduct:B2BProductPaymentVariantType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Периодичность оплаты</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductProgramType">
+        <xs:annotation>
+            <xs:documentation>Программа страхования</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="ExploitationFinishDate" type="xs:date" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Дата окончания эксплуатации</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ExploitationStartDate" type="xs:date" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Дата начала эксплуатации</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ExternalId" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Внешний ИД</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="InsAmountValue" type="xs:decimal" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Страховая сумма</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="IsUseTCondition" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Признак использования типовых условий</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Name" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Note" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Примечание</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="PremiumValue" type="xs:decimal" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Премия</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ProductCode" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Код продукта для формирования номера договора</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ProductRuleId" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>ИД правила страхования</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ProgramCode" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Код программы</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SysName" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Системное наименование</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductProgramsType">
+        <xs:annotation>
+            <xs:documentation>Тип данных для описания списка программ страхования</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="B2BProductProgram" type="b2bproduct:B2BProductProgramType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Программа страхования</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductBinaryDocumentType">
+        <xs:annotation>
+            <xs:documentation>Тип прикрепляемого документа</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="BinDocType" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Тип документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="CheckName" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Ссылка на проверку через наименование</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DocumentLevel" type="xs:int" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Тип документа по виду страхования</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DocumentLevelNote" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Описание уровня документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DocumentSysName" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Системное наименование</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Name" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Note" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Примечание</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Required" type="xs:boolean" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Обязательный</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="B2BProductBinaryDocumentsType">
+        <xs:annotation>
+            <xs:documentation>Тип данных для описания списка типов прикрепляемых документов</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="B2BProductBinaryDocument" type="b2bproduct:B2BProductBinaryDocumentType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Тип прикрепляемого документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
