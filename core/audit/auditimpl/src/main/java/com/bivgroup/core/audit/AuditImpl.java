@@ -7,9 +7,18 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.Marker;
 import org.apache.logging.log4j.MarkerManager;
+import ru.diasoft.services.config.Config;
+import ru.diasoft.services.config.exception.ConfigException;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.*;
 
 public class AuditImpl implements Audit {
@@ -17,6 +26,7 @@ public class AuditImpl implements Audit {
     private static final Marker AUDIT_MARKER = MarkerManager.getMarker("Audit");
     private static final Marker WORK_ERROR_MARKER = MarkerManager.getMarker("work_error");
     private static final String LOGIN_PARAMETER_NAME = "login";
+    private static final String SYSTEM_PARAMETER_NAME = "system";
     private static final String OPERATION_PARAMETER_NAME = "operation";
     private static final String USER_ACCOUNT_ID_PARAMETER_NAME = "userAccountId";
     private static final String CUSTOM_MESSAGE_ACCOUNT_ID_PARAMETER_NAME = "customMessage";
@@ -33,6 +43,7 @@ public class AuditImpl implements Audit {
             messageMap.put(IP_INFO_PARAMETER_NAME, ipInfo);
         }
         messageMap.put(MARKER_PARAMETER_NAME, AUDIT_MARKER.getName());
+        messageMap.put(SYSTEM_PARAMETER_NAME, getSystemName());
         messageMap.put(LOGIN_PARAMETER_NAME, login);
         messageMap.put(OPERATION_PARAMETER_NAME, operation);
         messageMap.put(RESULT_STATUS_PARAMETER_NAME, resultStatus.getResultName());
@@ -49,6 +60,7 @@ public class AuditImpl implements Audit {
         }
         messageMap.put(MARKER_PARAMETER_NAME, AUDIT_MARKER.getName());
         messageMap.put(LOGIN_PARAMETER_NAME, login);
+        messageMap.put(SYSTEM_PARAMETER_NAME, getSystemName());
         messageMap.put(OPERATION_PARAMETER_NAME, operation);
         messageMap.put(RESULT_STATUS_PARAMETER_NAME, resultStatus.getResultName());
         messageMap.put(USER_ACCOUNT_ID_PARAMETER_NAME, userAccountId);
@@ -67,6 +79,7 @@ public class AuditImpl implements Audit {
         }
         messageMap.put(MARKER_PARAMETER_NAME, AUDIT_MARKER.getName());
         messageMap.put(LOGIN_PARAMETER_NAME, login);
+        messageMap.put(SYSTEM_PARAMETER_NAME, getSystemName());
         messageMap.put(OPERATION_PARAMETER_NAME, operation);
         messageMap.put(USER_ACCOUNT_ID_PARAMETER_NAME, userAccountId);
         messageMap.put(RESULT_STATUS_PARAMETER_NAME, resultStatus.getResultName());
@@ -194,5 +207,63 @@ public class AuditImpl implements Audit {
             logger.error(WORK_ERROR_MARKER, "При копировании объекта класса {} произошла ошибка: {}", itemClazz, e.fillInStackTrace());
         }
         return copyItem;
+    }
+
+    private String systemName = "none";
+    public static final String COREWS = "corews";
+    //  private DataContext context = null;
+    private static final String coreSettingSystemNameGetter = "select SETTINGVALUE from CORE_SETTING where SETTINGSYSNAME = 'SystemSysName' and ROWNUM = 1";
+
+    private String getSystemName() {
+        if ("none".equalsIgnoreCase(systemName)) {
+            DataSource dataSource = null;
+            Connection conn = null;
+            Statement statement = null;
+            ResultSet rs = null;
+            try {
+                dataSource = Config.getConfig(COREWS).getDataSource();
+                conn = dataSource.getConnection();
+                statement = conn.createStatement();
+                statement.execute(coreSettingSystemNameGetter);
+                rs = statement.getResultSet();
+                rs.next();
+                systemName = rs.getString(1);
+                return systemName;
+            } catch (SQLException e) {
+                e.printStackTrace();
+                logger.error("fail getting system name from CORE_SETTING", e);
+            } catch (ConfigException e) {
+                e.printStackTrace();
+                logger.error("fail getting datasourceName from common-config.xml", e);
+            } finally {
+                try {
+                    rs.close();
+                } catch (Exception e) { /* ignored */ }
+                try {
+                    statement.close();
+                } catch (Exception e) { /* ignored */ }
+                try {
+                    conn.close();
+                } catch (Exception e) { /* ignored */ }
+                dataSource = null;
+            }
+        }
+        return systemName;
+    }
+
+    DataSource getJNDIDataSource(String driverName) throws Exception {
+        String DATASOURCE_CONTEXT = driverName;
+        Connection result = null;
+        try {
+            Context initialContext = new InitialContext();
+            //cast is necessary
+            DataSource datasource = (DataSource) initialContext.lookup(DATASOURCE_CONTEXT);
+            if (datasource != null) {
+                return datasource;
+            }
+        } catch (Exception e) {
+            throw new Exception("Faild to create DataSource for getting system name for audit", e);
+        }
+        return null;
     }
 }
