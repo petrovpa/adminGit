@@ -36,16 +36,16 @@
         <module>primaryactivity</module>
         <module>wsservice</module>
         <module>integrationservice</module>
-        <module>yandexmoneypayservicecaller</module>
+<!--        <module>yandexmoneypayservicecaller</module>-->
         <module>login</module>
         <module>password-service</module>
         <module>departmentservice</module>
         <module>journalservice</module>
-        <module>menuservice</module>
+<!--        <module>menuservice</module>-->
         <module>base-facade</module>
         <module>dictionary-hibernate</module>
-        <module>uniopenapicommon</module>
-        <module>uniopenapisoap</module>
-        <module>uniopenapirest</module>
+<!--        <module>uniopenapicommon</module>-->
+<!--        <module>uniopenapisoap</module>-->
+<!--        <module>uniopenapirest</module>-->
     </modules>
 </project>

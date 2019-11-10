@@ -12,9 +12,9 @@
     <name>projects</name>
     <packaging>pom</packaging>
     <modules>
-        <module>losses</module>
-        <module>B2B</module>
-        <module>pa</module>
+<!--        <module>losses</module>-->
+<!--        <module>B2B</module>-->
+<!--        <module>pa</module>-->
         <module>admin</module>
     </modules>
 </project>

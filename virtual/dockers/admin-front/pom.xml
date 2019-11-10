@@ -9,7 +9,7 @@
     </parent>
 
     <groupId>Sevice</groupId>
-    <artifactId>life-admin</artifactId>
+    <artifactId>front-admin</artifactId>
     <version>${admin.version}</version>
     <description>Generated docker</description>
 
@@ -29,7 +29,7 @@
                             <followSymlinks>false</followSymlinks>
                         </fileset>
                         <fileset>
-                            <directory>${basedir}/Dockerfile</directory>
+                            <directory>${basedir}/Dockerfile/admin</directory>
                             <includes>
                                 <include>*</include>
                             </includes>
@@ -105,26 +105,26 @@
                         <configuration>
                             <artifactItems>
                                 <!-- adminws-->
-                                <artifactItem>
-                                    <groupId>ru.diasoft.fa.platform.services</groupId>
-                                    <artifactId>adminws</artifactId>
-                                    <version>${adminws.version}</version>
-                                    <type>war</type>
-                                </artifactItem>
+<!--                                <artifactItem>-->
+<!--                                    <groupId>ru.diasoft.fa.platform.services</groupId>-->
+<!--                                    <artifactId>adminws</artifactId>-->
+<!--                                    <version>${adminws.version}</version>-->
+<!--                                    <type>war</type>-->
+<!--                                </artifactItem>-->
                                 <!-- corews -->
-                                <artifactItem>
-                                    <groupId>ru.diasoft.fa.platform.services</groupId>
-                                    <artifactId>corews</artifactId>
-                                    <version>${corews.version}</version>
-                                    <type>war</type>
-                                </artifactItem>
+<!--                                <artifactItem>-->
+<!--                                    <groupId>ru.diasoft.fa.platform.services</groupId>-->
+<!--                                    <artifactId>corews</artifactId>-->
+<!--                                    <version>${corews.version}</version>-->
+<!--                                    <type>war</type>-->
+<!--                                </artifactItem>-->
                                 <!-- bivhealthws -->                    
-                                <artifactItem>
-                                    <groupId>com.bivgroup.flextera.insurance.bivsberfront.webservice</groupId>
-                                    <artifactId>bivhealthws</artifactId>
-                                    <version>${bivhealthws.version}</version>
-                                    <type>war</type>
-                                </artifactItem>
+<!--                                <artifactItem>-->
+<!--                                    <groupId>com.bivgroup.flextera.insurance.bivsberfront.webservice</groupId>-->
+<!--                                    <artifactId>bivhealthws</artifactId>-->
+<!--                                    <version>${bivhealthws.version}</version>-->
+<!--                                    <type>war</type>-->
+<!--                                </artifactItem>-->
                                 <!-- b2bposws -->
                                 <artifactItem>
                                     <groupId>com.bivgroup.flextera.insurance.bivsberfront.webservice</groupId>
@@ -140,26 +140,26 @@
                                     <type>war</type>
                                 </artifactItem>
 								<!-- websmsws -->
-                                <artifactItem>
-                                    <groupId>ru.diasoft.fa.platform.services</groupId>
-                                    <artifactId>websmsws</artifactId>
-                                    <version>${websmsws.version}</version>
-                                    <type>war</type>
-                                </artifactItem>
+<!--                                <artifactItem>-->
+<!--                                    <groupId>ru.diasoft.fa.platform.services</groupId>-->
+<!--                                    <artifactId>websmsws</artifactId>-->
+<!--                                    <version>${websmsws.version}</version>-->
+<!--                                    <type>war</type>-->
+<!--                                </artifactItem>-->
 								<!-- insposws -->
-                                <artifactItem>
-                                    <groupId>ru.diasoft.flextera.insurance.front.webservice</groupId>
-                                    <artifactId>insposws</artifactId>
-                                    <version>${insposws.version}</version>
-                                    <type>war</type>
-                                </artifactItem>
+<!--                                <artifactItem>-->
+<!--                                    <groupId>ru.diasoft.flextera.insurance.front.webservice</groupId>-->
+<!--                                    <artifactId>insposws</artifactId>-->
+<!--                                    <version>${insposws.version}</version>-->
+<!--                                    <type>war</type>-->
+<!--                                </artifactItem>-->
 								<!-- instarificatorws -->
-                                <artifactItem>
-                                    <groupId>ru.diasoft.flextera.insurance.front.webservice</groupId>
-                                    <artifactId>instarificatorws</artifactId>
-                                    <version>${instarificatorws.version}</version>
-                                    <type>war</type>
-                                </artifactItem>
+<!--                                <artifactItem>-->
+<!--                                    <groupId>ru.diasoft.flextera.insurance.front.webservice</groupId>-->
+<!--                                    <artifactId>instarificatorws</artifactId>-->
+<!--                                    <version>${instarificatorws.version}</version>-->
+<!--                                    <type>war</type>-->
+<!--                                </artifactItem>-->
                                 <!-- bivsberlossws -->
                                 <artifactItem>
                                     <groupId>com.bivgroup.flextera.insurance.bivsberfront.webservice</groupId>
