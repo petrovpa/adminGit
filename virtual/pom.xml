@@ -11,7 +11,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <global.version>2.01.05</global.version>
         <platform.version>6.03.17-HF5-12051502</platform.version>
-        <admin.version>life2.01.00</admin.version>
+        <admin.version>life2.02.00</admin.version>
     </properties>
 
     <modules>
