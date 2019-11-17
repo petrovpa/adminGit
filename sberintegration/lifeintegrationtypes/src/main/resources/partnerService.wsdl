@@ -1,0 +1,431 @@
+<?xml version="1.0" ?><wsdl:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://esb.sberinsur.ru/partner" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns="http://esb.sberinsur.ru/partner/Shema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:files="http://sberinsur.ru/fuse/files" targetNamespace="http://esb.sberinsur.ru/partner">
+  <wsdl:import location="FilesFuse.xsd" namespace="http://sberinsur.ru/fuse/files">
+    </wsdl:import>
+  <wsdl:import location="PartnerSchema.xsd" namespace="http://esb.sberinsur.ru/partner/Shema">
+    </wsdl:import>
+  <wsdl:types>
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://esb.sberinsur.ru/partner" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns="http://esb.sberinsur.ru/partner/Shema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" elementFormDefault="qualified" targetNamespace="http://new.webservice.namespace"></xs:schema>
+  </wsdl:types>
+  <wsdl:message name="ClaimCutList">
+    <wsdl:part element="ns:ClaimCut" name="ClaimCutList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ChangeCutList">
+    <wsdl:part element="ns:ChangeCutList" name="ChangeCutList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetChangeCut">
+    <wsdl:part element="ns:GetChangeList" name="GetChangeCut">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ClaimList">
+    <wsdl:part element="ns:Claim" name="ClaimList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetFileListRequestMessage">
+    <wsdl:part element="files:GetFileList" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="FindFolderRequestMessage">
+    <wsdl:part element="files:FindFolder" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetFileResponseMessage">
+    <wsdl:part element="files:GetFileResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddFileRequestMessage">
+    <wsdl:part element="files:AddFile" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="PutClaim">
+    <wsdl:part element="ns:ClaimImport" name="PutClaim">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DeleteFileResponseMessage">
+    <wsdl:part element="files:DeleteFileResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetChange">
+    <wsdl:part element="ns:GetChange" name="GetChange">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetFileListResponseMessage">
+    <wsdl:part element="files:GetFileListResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="PutChange">
+    <wsdl:part element="ns:ChangeImport" name="PutChange">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetClaim">
+    <wsdl:part element="ns:GetClaim" name="GetClaim">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DeleteFileRequestMessage">
+    <wsdl:part element="files:DeleteFile" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetPolicy">
+    <wsdl:part element="ns:GetPolicy" name="GetPolicy">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="PutUser">
+    <wsdl:part element="ns:RegistrationUser" name="PutUser">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DocumentListImport">
+    <wsdl:part element="ns:DocumentListImport" name="DocumentListImport">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddFileResponseMessage">
+    <wsdl:part element="files:AddFileResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Answer">
+    <wsdl:part element="ns:AnswerImportList" name="Answer">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="PutPolicy">
+    <wsdl:part element="ns:ContractList" name="PutPolicy">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ChangeList">
+    <wsdl:part element="ns:ChangeList" name="ChangeList" >
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetDeletedObjects">
+    <wsdl:part element="ns:GetDeletedObjects" name="GetDeletedObjects">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AnswerUser">
+    <wsdl:part element="ns:RegistrationUserAnswer" name="AnswerUser">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddFolderRequestMessage">
+    <wsdl:part element="files:AddFolder" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ContractList">
+    <wsdl:part element="ns:ContractExport" name="ContractList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetClaimCut">
+    <wsdl:part element="ns:GetClaimList" name="GetClaimCut">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetFileRequestMessage">
+    <wsdl:part element="files:GetFile" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetPolicyCut">
+    <wsdl:part element="ns:GetPolicyList" name="GetPolicyCut">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DeletedObjectsList">
+    <wsdl:part element="ns:DeletedObjectsList" name="DeletedObjectsList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ContractCutList">
+    <wsdl:part element="ns:ContractCutList" name="ContractCutList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddFolderResponseMessage">
+    <wsdl:part element="files:AddFolderResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="FindFolderResponseMessage">
+    <wsdl:part element="files:FindFolderResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="PartnerPortType">
+    <wsdl:operation name="ProcessImportPolicy">
+      <wsdl:input message="tns:PutPolicy">
+    </wsdl:input>
+      <wsdl:output message="tns:Answer">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessExportPolicyCut">
+      <wsdl:input message="tns:GetPolicyCut">
+    </wsdl:input>
+      <wsdl:output message="tns:ContractCutList">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessExportPolicy">
+      <wsdl:input message="tns:GetPolicy">
+    </wsdl:input>
+      <wsdl:output message="tns:ContractList">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessResponseCut">
+      <wsdl:input message="tns:Answer">
+    </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessRegistrationUser">
+      <wsdl:input message="tns:PutUser">
+    </wsdl:input>
+      <wsdl:output message="tns:AnswerUser">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessImportClaim">
+      <wsdl:input message="tns:PutClaim">
+    </wsdl:input>
+      <wsdl:output message="tns:Answer">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessExportClaimCut">
+      <wsdl:input message="tns:GetClaimCut">
+    </wsdl:input>
+      <wsdl:output message="tns:ClaimCutList">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessExportClaim">
+      <wsdl:input message="tns:GetClaim">
+    </wsdl:input>
+      <wsdl:output message="tns:ClaimList">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileList">
+      <wsdl:input message="tns:GetFileListRequestMessage">
+    </wsdl:input>
+      <wsdl:output message="tns:GetFileListResponseMessage">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFolder">
+      <wsdl:input message="tns:AddFolderRequestMessage">
+    </wsdl:input>
+      <wsdl:output message="tns:AddFolderResponseMessage">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFile">
+      <wsdl:input message="tns:GetFileRequestMessage">
+    </wsdl:input>
+      <wsdl:output message="tns:GetFileResponseMessage">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFile">
+      <wsdl:input message="tns:AddFileRequestMessage">
+    </wsdl:input>
+      <wsdl:output message="tns:AddFileResponseMessage">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFile">
+      <wsdl:input message="tns:DeleteFileRequestMessage">
+    </wsdl:input>
+      <wsdl:output message="tns:DeleteFileResponseMessage">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindFolder">
+      <wsdl:input message="tns:FindFolderRequestMessage">
+    </wsdl:input>
+      <wsdl:output message="tns:FindFolderResponseMessage">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessImportChange">
+      <wsdl:input message="tns:PutChange">
+    </wsdl:input>
+      <wsdl:output message="tns:Answer">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessExportChangeCut">
+      <wsdl:input message="tns:GetChangeCut">
+    </wsdl:input>
+      <wsdl:output message="tns:ChangeCutList">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessExportChange">
+      <wsdl:input message="tns:GetChange">
+    </wsdl:input>
+      <wsdl:output message="tns:ChangeList">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DocumentListImport">
+      <wsdl:input message="tns:DocumentListImport">
+    </wsdl:input>
+      <wsdl:output message="tns:Answer">
+    </wsdl:output>
+    </wsdl:operation>
+		<wsdl:operation name="ProcessDeletedObjects">
+      <wsdl:input message="tns:GetDeletedObjects">
+    </wsdl:input>
+      <wsdl:output message="tns:DeletedObjectsList">
+    </wsdl:output>
+		</wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PartnerPortTypeSOAP11Binding" type="tns:PartnerPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="ProcessImportPolicy">
+      <soap:operation soapAction="http://esb.sberinsur.ru/partner/ImportPolicy" style="document"/>
+      <wsdl:input>
+        <soap:body parts="PutPolicy" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="Answer" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessExportPolicyCut">
+      <soap:operation soapAction="http://esb.sberinsur.ru/partner/ExportPolicyCut" style="document"/>
+      <wsdl:input>
+        <soap:body parts="GetPolicyCut" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="ContractCutList" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessExportPolicy">
+      <soap:operation soapAction="http://esb.sberinsur.ru/partner/ExportPolicy" style="document"/>
+      <wsdl:input>
+        <soap:body parts="GetPolicy" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="ContractList" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessResponseCut">
+      <soap:operation soapAction="http://esb.sberinsur.ru/partner/PolicyCutAnswer" style="document"/>
+      <wsdl:input>
+        <soap:body parts="Answer" use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessRegistrationUser">
+      <soap:operation soapAction="http://esb.sberinsur.ru/partner/RegistrationUser" style="document"/>
+      <wsdl:input>
+        <soap:body parts="PutUser" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="AnswerUser" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessImportClaim">
+      <soap:operation soapAction="http://esb.sberinsur.ru/partner/ImportClaim" style="document"/>
+      <wsdl:input>
+        <soap:body parts="PutClaim" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="Answer" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessExportClaimCut">
+      <soap:operation soapAction="http://esb.sberinsur.ru/partner/ExportClaimCut" style="document"/>
+      <wsdl:input>
+        <soap:body parts="GetClaimCut" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="ClaimCutList" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessExportClaim">
+      <soap:operation soapAction="http://esb.sberinsur.ru/partner/ExportClaim" style="document"/>
+      <wsdl:input>
+        <soap:body parts="GetClaim" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="ClaimList" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileList">
+      <soap:operation soapAction="http://sberinsur.ru/fuse/files#Files:GetFileList" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFolder">
+      <soap:operation soapAction="http://sberinsur.ru/fuse/files#Files:AddFolder" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFile">
+      <soap:operation soapAction="http://sberinsur.ru/fuse/files#Files:GetFile" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFile">
+      <soap:operation soapAction="http://sberinsur.ru/fuse/files#Files:AddFile" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFile">
+      <soap:operation soapAction="http://sberinsur.ru/fuse/files#Files:DeleteFile" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindFolder">
+      <soap:operation soapAction="http://sberinsur.ru/fuse/files#Files:FindFolder" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessImportChange">
+      <soap:operation soapAction="http://esb.sberinsur.ru/partner/ImportChange" style="document"/>
+      <wsdl:input>
+        <soap:body parts="PutChange" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="Answer" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessExportChangeCut">
+      <soap:operation soapAction="http://esb.sberinsur.ru/partner/ExportChangeCut" style="document"/>
+      <wsdl:input>
+        <soap:body parts="GetChangeCut" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="ChangeCutList" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessExportChange">
+      <soap:operation soapAction="http://esb.sberinsur.ru/partner/ExportChange" style="document"/>
+      <wsdl:input>
+        <soap:body parts="GetChange" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="ChangeList" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DocumentListImport">
+      <soap:operation soapAction="http://esb.sberinsur.ru/partner/DocumentListImport" style="document"/>
+      <wsdl:input>
+        <soap:body parts="DocumentListImport" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="Answer" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+		<wsdl:operation name="ProcessDeletedObjects">
+			<soap:operation soapAction="http://esb.sberinsur.ru/partner/DeletedObjects"/>
+			<wsdl:input>
+				<soap:body parts="GetDeletedObjects" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body parts="DeletedObjectsList" use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PartnerPortTypeService">
+    <wsdl:port binding="tns:PartnerPortTypeSOAP11Binding" name="PartnerPortTypePort">
+      <soap:address location="http://10.1.72.9:8045/bsbsi-esb-partner/partnerService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

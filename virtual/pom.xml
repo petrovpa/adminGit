@@ -11,19 +11,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <global.version>2.01.05</global.version>
         <platform.version>6.03.17-HF5-12051502</platform.version>
-        <tasks.version>life2.01.01</tasks.version>
-        <front.version>${global.version}</front.version>
-        <tasks.version>life2.01.198</tasks.version>
-        <sign.version>life2.01.198</sign.version>
-        <sign-first.version>life2.01.198</sign-first.version>
-        <sberfront.version>life2.01.198</sberfront.version>
-        <metadatafront.version>life2.01.198</metadatafront.version>
-        <metadatasign.version>life2.01.198</metadatasign.version>
-        <metadatatasks.version>life2.01.198</metadatatasks.version>
-	<uniopenapiwsimage.version>life2.01.198</uniopenapiwsimage.version>
-        <admin.version>life1.00.00</admin.version>
-        <wsimage.version>2.01.08</wsimage.version>
-        <mobileapi.version>lifetest2.01.03</mobileapi.version>
+        <admin.version>life2.01.00</admin.version>
     </properties>
 
     <modules>

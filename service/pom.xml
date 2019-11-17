@@ -41,7 +41,7 @@
         <module>password-service</module>
         <module>departmentservice</module>
         <module>journalservice</module>
-<!--        <module>menuservice</module>-->
+        <module>menuservice</module>
         <module>base-facade</module>
         <module>dictionary-hibernate</module>
 <!--        <module>uniopenapicommon</module>-->

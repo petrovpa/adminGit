@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+   <DEFAULT_PACKAGE>1001</DEFAULT_PACKAGE>
+   <DEFAULTLOGIN>site</DEFAULTLOGIN>
+   <DEFAULTPASSWORD>1b4066df280b6605bb682da6e8050eb5784923a6</DEFAULTPASSWORD>
+   <!-- url до active directory -->
+   <ldapUrl>ldap://10.1.50.21 ldap://10.1.50.22</ldapUrl>
+   <!-- база поиска в active directory (searchBase) -->
+   <usersSearchBase>OU=Пользователи,OU=Офис,DC=sberinsur,DC=local</usersSearchBase>
+   <!-- фильтр поиска пользователей по умолчанию, будет добавляться ко всем поискам пользователей -->
+   <filterSearchBase>(objectClass=User)(objectCategory=Person)(userPrincipalName=*)</filterSearchBase>
+   <!--фильтр для исключения пользователей по указаным директориям-->
+   <excludeDistinguishedName>Уволенные и декрет;Служебные записи</excludeDistinguishedName>
+   <!-- логин пользователя для запросов к active directory -->
+   <defaultLogin>biv@sberinsur.local</defaultLogin>
+   <!-- пароль пользователя для запросов к active directory -->
+   <defaultPwd>M2DEjrv@hmOG</defaultPwd>
+   <!-- Проверка ограничений по числу активных сессий -->
+   <doCheckSessionCount>true</doCheckSessionCount>
+</root>
