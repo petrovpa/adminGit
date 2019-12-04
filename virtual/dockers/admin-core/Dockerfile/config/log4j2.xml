@@ -322,7 +322,7 @@
             <DefaultRolloverStrategy compressionLevel="1" max="3"/>
         </RollingFile>   
 <!-- test audit server        <Socket name="auditElastic" host="10.2.55.39" port="5044">-->
-        <Socket name="auditElastic" host="10.2.55.31" port="5044">
+        <Socket name="auditElastic" host="10.2.55.39" port="5044">
             <PatternLayout>
                 <pattern>%msg%n</pattern>
             <charset>UTF-8</charset>
