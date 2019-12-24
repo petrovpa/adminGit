@@ -13,6 +13,7 @@ export const environment: Environment = {
   restPath: '/docker/life/admrestws/rest/',
   fileUploadPath: '/docker/life/bivsberlossws/rest/boxproperty-gate/b2bfileupload',
   fileDownloadPath: '/docker/life/bivsberlossws/b2bfileupload',
+  controlShowError: true,
 
   /** Angular debug tools in the dev console
    * https://github.com/angular/angular/blob/86405345b781a9dc2438c0fbe3e9409245647019/TOOLS_JS.md

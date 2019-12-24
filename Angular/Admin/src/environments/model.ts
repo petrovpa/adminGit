@@ -7,6 +7,7 @@ export interface Environment {
   restPath: string;
   fileUploadPath: string;
   fileDownloadPath: string;
+  controlShowError: boolean;
 
   ENV_PROVIDERS: any;
   decorateModuleRef(modRef: NgModuleRef<any>): NgModuleRef<any>;
