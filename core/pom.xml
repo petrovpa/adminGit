@@ -18,7 +18,7 @@
         </dependency>
     </dependencies>
     <modules>
-        <module>audit</module>
+<!--    transfer to common repo    <module>audit</module>-->
         <module>biv-ldap</module>
         <module>validators</module>
         <module>servicecaller</module>

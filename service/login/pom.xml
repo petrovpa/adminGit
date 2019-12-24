@@ -9,7 +9,6 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <service-caller.version>1.01.03</service-caller.version>
-        <audit-api.version>1.00.00</audit-api.version>
         <login-base.version>1.00.01</login-base.version>
         <login-common.version>1.00.01</login-common.version>
         <login-admin.version>1.00.01</login-admin.version>
@@ -52,9 +51,9 @@
             <version>${service-caller.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.bivgroup.core.audit.interface</groupId>
+            <groupId>com.bivgroup.common.audit.interface</groupId>
             <artifactId>audit-api</artifactId>
-            <version>${audit-api.version}</version>
+            <version>2.00.00</version>
         </dependency>
         <dependency>
             <groupId>com.bivgroup</groupId>
