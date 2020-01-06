@@ -968,10 +968,11 @@ public class AdminWebServiceGate extends BaseService {
         DefaultResponse<List<Map<String, Object>>> response = ResponseFactory.createEmptyGenericResponse();
         String error = "";
         try {
-            Map<String, Object> depStructureResult = callAdminWs("depStructure", request);
+            Map<String, Object> requestMap = ConvertUtils.convertObjectToMapWithoutNull(request.getParams());
+            Map<String, Object> depStructureResult = soapServiceCaller.callExternalService(B2BPOSWS,"dsGetDepsStructure", requestMap);
             if (RESULT_STATUS_OK.equalsIgnoreCase(getStringParam(depStructureResult, STATUS))) {
-                response = ResponseFactory.createResponseListMapByKeyName(depStructureResult, "depTree");
-                response.setSessionId(getStringParam(depStructureResult, SESSION_ID_PARAMNAME));
+                response = ResponseFactory.createResponseListMapByKeyName(getMapParamName(depStructureResult, "Result"), "depTree");
+                response.setSessionId(request.getSessionId());
             } else {
                 error = getStringParam(depStructureResult, ADMIN_CALL_ERROR);
                 if (error.isEmpty()) {

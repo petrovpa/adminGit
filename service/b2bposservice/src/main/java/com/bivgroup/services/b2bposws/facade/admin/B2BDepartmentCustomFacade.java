@@ -15,7 +15,9 @@ import ru.diasoft.services.inscore.system.annotations.WsMethod;
 import ru.diasoft.utils.DefaultedHashMap;
 import ru.diasoft.utils.XMLUtil;
 
+import java.sql.Timestamp;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author kkulkov
@@ -30,6 +32,9 @@ public class B2BDepartmentCustomFacade extends B2BBaseFacade {
     private static final String B2BPOSWS = Constants.B2BPOSWS;
     private static final List<Map<String, Object>> timeZones;
     private static final String DEFAULT_COREWS_URL = "http://localhost:8080/corews/corews";
+
+    private static final Map<String, Object> cachedDepartmentsTree = new HashMap();
+    private static Timestamp cacheUpdateDate;
 
     static {
         long multi = 1000 * 60 * 60;
@@ -655,4 +660,78 @@ public class B2BDepartmentCustomFacade extends B2BBaseFacade {
         return result;
     }
 
+    @WsMethod(requiredParams = {})
+    public Map<String, Object> dsGetDepsStructure(Map<String, Object> params) throws Exception {
+        //проверяем актуальность данных в кэше
+        boolean isNeedCacheUpdate = false;
+        if (cachedDepartmentsTree.isEmpty()) {
+            isNeedCacheUpdate = true;
+        } else {
+            Timestamp tableUpdateDate = (Timestamp) selectQueryAndGetOneValueFromFistItem(
+                    "getDepartmentTableModificationDate", new HashMap<>(), "modificationDate");
+            if (cacheUpdateDate == null || tableUpdateDate == null || tableUpdateDate.after(cacheUpdateDate)) {
+                isNeedCacheUpdate = true;
+            }
+        }
+        if (isNeedCacheUpdate) {
+            //получаем из бд список всех подразделений и формируем из них иерархическую вложенную мапу
+            cacheUpdateDate = new Timestamp((new Date()).getTime());
+            List<Map<String, Object>> allDepsInfo = selectQueryAndGetListFromResultMap("getAllDepartments", new HashMap<>());
+            cachedDepartmentsTree.clear();
+            Map<String, Object> node = allDepsInfo.stream()
+                    .filter(p -> Long.valueOf(0L).equals(((Map) p).get("NODEID")))
+                    .findFirst()
+                    .orElse(new HashMap<>());
+            if (node.isEmpty()) {
+                node.put("NODEID", 0L);
+            }
+            cachedDepartmentsTree.putAll(buildStructureTree(allDepsInfo, node));
+        }
+
+        List resultTree = new ArrayList<Object>();
+        if (params.containsKey("DEPARTMENTID")) {
+            resultTree.add( selectRootNodeByDepartmentId(cachedDepartmentsTree, getLongParam(params, "DEPARTMENTID")));
+        } else {
+            resultTree.add(cachedDepartmentsTree);
+        }
+        Map<String, Object> result = new HashMap<String, Object>();
+        result.put("depTree", resultTree);
+        return result;
+    }
+
+    private Map<String, Object> buildStructureTree(List <Map<String, Object>> depsInfo, Map<String, Object> node) throws Exception {
+        final Long parentId = (Long) node.get("NODEID");
+
+        List<Map<String, Object>> result = depsInfo.stream()
+                .filter(p -> parentId.equals(((Map) p).get("PARENTID")))
+                .collect(Collectors.toList());
+
+        if (result.size() > 0) {
+            List chld = new ArrayList<Object>();
+            for (Object tree : result) {
+                chld.add(buildStructureTree(depsInfo, (Map<String, Object>) tree));
+            }
+            node.put("Children", chld);
+        }
+        node.put("Name", node.get("NAME"));
+        node.put("ID", node.get("NODEID"));
+        node.put("Description", node.get("NAME"));
+        return node;
+    }
+
+    private Map<String, Object> selectRootNodeByDepartmentId(Map<String, Object> depsInfo, Long rootDepartmentId) throws Exception {
+        if (rootDepartmentId.equals(getLongParam(depsInfo, "NODEID"))) {
+            return depsInfo;
+        }
+        List <Map<String, Object>> chlds = getListParam(depsInfo,"Children");
+        if (chlds != null) {
+            for (Map<String, Object> chld : chlds) {
+                Map<String, Object> result = selectRootNodeByDepartmentId(chld, rootDepartmentId);
+                if (result !=null) {
+                    return result;
+                }
+            }
+        }
+        return null;
+    }
 }

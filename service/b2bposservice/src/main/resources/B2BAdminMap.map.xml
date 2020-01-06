@@ -1663,4 +1663,36 @@ SET
         ]]>
       </sql>
     </query>
+
+    <query name="getAllDepartments" factory="org.apache.cayenne.map.SQLTemplateBuilder"  root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+			SELECT $NEEDDISTINCT
+			  #result('DD.DEPARTMENTID', 'java.lang.Long', 'NODEID'),
+			  #result('DD.PARENTDEPARTMENT', 'java.lang.Long', 'PARENTID'),
+			  #result('DD.DEPTFULLNAME', 'java.lang.String', 'NAME')
+              $ASPECTFIELDS
+			FROM
+			  DEP_DEPARTMENT DD
+              $ASPECTTABLES
+			ORDER BY DD.DEPTFULLNAME
+            $ASPECTRESTRICTION
+			]]>
+        </sql>
+    </query>
+    <query name="getDepartmentTableModificationDate" factory="org.apache.cayenne.map.SQLTemplateBuilder"  root="data-map" root-name="B2BAdminMap" >
+        <property name="cayenne.GenericSelectQuery.fetchingDataRows" value="true"/>
+        <sql>
+            <![CDATA[
+			SELECT
+			  #result('TIMESTAMP', 'java.sql.Timestamp', 'modificationDate')
+			FROM
+			  USER_TAB_MODIFICATIONS
+            WHERE
+              TABLE_NAME = 'DEP_DEPARTMENT'
+			]]>
+        </sql>
+    </query>
+
 </data-map>
