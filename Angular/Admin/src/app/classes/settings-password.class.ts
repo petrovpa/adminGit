@@ -30,7 +30,8 @@ export class SettingsPassword {
   // LICENSE_EXP_CNT
   warnLicenceExpirationDays: number;
   // SESSION_SIZE
-  sessionSize: number;
+//   параметр вынесен в common-config (maxSessionSize)
+//   sessionSize: number;
 
   constructor() {
     this.digits = true;

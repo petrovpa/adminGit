@@ -30,7 +30,7 @@ export class PasswordSettingsService {
       'USR_MAX_FAILED_LOGIN_ATTEMPTS': settings.maxUnsuccessfulLoginAttempts,
       'USR_MAX_INACTIVITY_TIME': settings.maxInactivityPeriod,
       'LICENSE_EXP_CNT': settings.warnLicenceExpirationDays,
-      "SESSION_SIZE": settings.sessionSize
+//       "SESSION_SIZE": settings.sessionSize
     });
   }
 
@@ -52,7 +52,7 @@ export class PasswordSettingsService {
       settings.maxUnsuccessfulLoginAttempts = res['USR_MAX_FAILED_LOGIN_ATTEMPTS'];
       settings.maxInactivityPeriod = res['USR_MAX_INACTIVITY_TIME'];
       settings.warnLicenceExpirationDays = res['LICENSE_EXP_CNT'];
-      settings.sessionSize = res['SESSION_SIZE']
+//       settings.sessionSize = res['SESSION_SIZE']
       return settings;
     });
   }
