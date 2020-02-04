@@ -243,7 +243,11 @@ public abstract class LoginBase {
             auditMessageBuilder.append("\nОшибка входа пользователя с логином ").append(login)
                     .append(".\nОшибка: ").append(errorText).append('.');
             log.append(errorText);
-            subResult.put(ERROR, errorText);
+
+            //Скрытие текста ошибки по задаче безопасности #60610
+            //subResult.put(ERROR, errorText);
+            subResult.put(ERROR, "Не удалось авторизоваться");
+
         } else {
             String newSession = getStringParam(subResult, SESSION_ID_PARAM_NAME);
             SessionController controller = DefaultServiceLoader.loadServiceAny(SessionController.class);
