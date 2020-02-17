@@ -290,20 +290,21 @@ public class AdminWebServiceGate extends BaseService {
 
         RoleUserAddParams roleUserAddParams = request.getParams();
         Map<String, Object> requestMap = ConvertUtils.convertObjectToMapWithoutNull(roleUserAddParams);
-        requestMap.putAll(dereferenceRequest.dereferenceByObjectId(ADMINWS, "admUserRoleByID", roleUserAddParams.getRoleId(),
+        Map<String, Object> responseMap = ConvertUtils.convertObjectToMapWithoutNull(response);
+        try {
+            requestMap.putAll(dereferenceRequest.dereferenceByObjectId(ADMINWS, "admUserRoleByID", roleUserAddParams.getRoleId(),
                 "ROLEID", "ROLESYSNAME", "ROLENAME"));
 
-        RoleUserAddParams requestParam = request.getParams();
-        if (requestParam.getUserAccountId() != null) {
-            final Long userAccountId = requestParam.getUserAccountId();
-            requestMap.putAll(dereferenceRequest.dereferenceByObjectId(ADMINWS, "admCurrentUserInfo", userAccountId,
-                    USER_ACCOUNT_ID_PARAM_NAME, "EMPLOYEENAME", "USERLOGIN"));
+            RoleUserAddParams requestParam = request.getParams();
+
+            if (requestParam.getUserAccountId() != null) {
+                final Long userAccountId = requestParam.getUserAccountId();
+                requestMap.putAll(dereferenceRequest.dereferenceByObjectId(ADMINWS, "admCurrentUserInfo", userAccountId,
+                        USER_ACCOUNT_ID_PARAM_NAME, "EMPLOYEENAME", "USERLOGIN"));
+            }
+        } finally {
+            audit.audit(auditParameters, requestMap, responseMap, (Class<Obfuscator>[]) null, null);
         }
-
-        Map<String, Object> responseMap = ConvertUtils.convertObjectToMapWithoutNull(response);
-
-        audit.audit(auditParameters, requestMap, responseMap, (Class<Obfuscator>[]) null, null);
-
         return response;
     }
 
@@ -1037,9 +1038,15 @@ public class AdminWebServiceGate extends BaseService {
             response = ResponseFactory.createErrorGenericResponse(error);
         }
 
+        DefaultRequest<UserInfoByAccountIdParams> usrRequest =
+                new DefaultRequest<>(request.getSessionId(), new UserInfoByAccountIdParams(request.getParams().getAccountId()));
+
+        DefaultResponse<UserInfoByAccountIdResult> userInfo = getUserInfoByAccountId(usrRequest);
+
         auditParameters.setMessage(auditMessageBuilder.toString());
 
         Map<String, Object> requestMap = ConvertUtils.convertObjectToMapWithoutNull(request.getParams());
+        requestMap.put("USERLOGIN", userInfo.getResult().getLogin());
         Map<String, Object> responseMap = ConvertUtils.convertObjectToMapWithoutNull(response);
 
         audit.audit(auditParameters, requestMap, responseMap, (Class<Obfuscator>[]) null, null);
