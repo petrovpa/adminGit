@@ -29,7 +29,8 @@
         <param-value>
             com.bivgroup.rest.admrestws.common.DateFormatProvider,
             com.bivgroup.core.audit.rest.AuditBindingFilter,
-            com.bivgroup.core.audit.rest.AuditInfoFilter
+            com.bivgroup.core.audit.rest.AuditInfoFilter,
+            com.bivgroup.rest.admrestws.common.ExceptionFilterProvider
         </param-value>
     </context-param>
     <servlet>
