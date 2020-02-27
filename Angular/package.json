@@ -38,7 +38,7 @@
     "ie-shim": "^0.1.0",
     "intl": "^1.2.5",
     "lodash": "^4.17.15",
-    "lodash-es": "4.17.10",
+    "lodash-es": "4.17.14",
     "moment": "^2.20.1",
     "ng2-currency-mask": "^5.3.1",
     "ng2-money": "^0.1.0",
