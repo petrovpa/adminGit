@@ -10,7 +10,7 @@
     <name>bivldap</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <log4j2.version>2.6.2</log4j2.version>
+        <log4j2.version>2.13.3</log4j2.version>
         <config-utils.version>1.00.00</config-utils.version>
         <string-utils.version>1.00.02</string-utils.version>
     </properties>
