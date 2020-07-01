@@ -31,7 +31,7 @@
         <config-utils.version>1.00.00</config-utils.version>
         <xml-utils.version>1.00.00</xml-utils.version>
         <service-utils.version>1.01.01</service-utils.version>
-        <log4j2.version>2.6.2</log4j2.version>
+        <log4j2.version>2.13.3</log4j2.version>
     </properties>
 
     <groupId>com.bivgroup</groupId>
